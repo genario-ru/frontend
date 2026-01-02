@@ -341,7 +341,9 @@ export const zPostDeleteUserResponse = z.object({
 
 export const zGetResetPasswordByTokenData = z.object({
   body: z.optional(z.never()),
-  path: z.optional(z.never()),
+  path: z.object({
+    token: z.string(),
+  }),
   query: z.optional(
     z.object({
       callbackURL: z.optional(z.string()),
@@ -695,6 +697,13 @@ export const zPostEmailOtpResetPasswordData = z.object({
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
+});
+
+/**
+ * Success
+ */
+export const zPostEmailOtpResetPasswordResponse = z.object({
+  success: z.optional(z.boolean()),
 });
 
 export const zSetRoleData = z.object({

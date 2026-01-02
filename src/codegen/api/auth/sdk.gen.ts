@@ -193,6 +193,7 @@ import {
   zPostEmailOtpCheckVerificationOtpData,
   zPostEmailOtpCheckVerificationOtpResponse,
   zPostEmailOtpResetPasswordData,
+  zPostEmailOtpResetPasswordResponse,
   zPostEmailOtpSendVerificationOtpData,
   zPostEmailOtpSendVerificationOtpResponse,
   zPostEmailOtpVerifyEmailData,
@@ -675,9 +676,9 @@ export const postDeleteUser = <ThrowOnError extends boolean = false>(
  * Redirects the user to the callback URL with the token
  */
 export const getResetPasswordByToken = <ThrowOnError extends boolean = false>(
-  options?: Options<GetResetPasswordByTokenData, ThrowOnError>,
+  options: Options<GetResetPasswordByTokenData, ThrowOnError>,
 ) => {
-  return (options?.client ?? client).get<
+  return (options.client ?? client).get<
     GetResetPasswordByTokenResponses,
     GetResetPasswordByTokenErrors,
     ThrowOnError
@@ -1306,6 +1307,9 @@ export const postEmailOtpResetPassword = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) => {
       return await zPostEmailOtpResetPasswordData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zPostEmailOtpResetPasswordResponse.parseAsync(data);
     },
     security: [
       {

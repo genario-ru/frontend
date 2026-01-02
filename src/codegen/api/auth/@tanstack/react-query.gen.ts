@@ -107,6 +107,7 @@ import type {
   PostEmailOtpCheckVerificationOtpResponse,
   PostEmailOtpResetPasswordData,
   PostEmailOtpResetPasswordError,
+  PostEmailOtpResetPasswordResponse,
   PostEmailOtpSendVerificationOtpData,
   PostEmailOtpSendVerificationOtpError,
   PostEmailOtpSendVerificationOtpResponse,
@@ -567,14 +568,14 @@ export const postDeleteUserMutation = (
 };
 
 export const getResetPasswordByTokenQueryKey = (
-  options?: Options<GetResetPasswordByTokenData>,
+  options: Options<GetResetPasswordByTokenData>,
 ) => createQueryKey("getResetPasswordByToken", options, false, ["Default"]);
 
 /**
  * Redirects the user to the callback URL with the token
  */
 export const getResetPasswordByTokenOptions = (
-  options?: Options<GetResetPasswordByTokenData>,
+  options: Options<GetResetPasswordByTokenData>,
 ) => {
   return queryOptions({
     queryFn: async ({ queryKey, signal }) => {
@@ -1088,12 +1089,12 @@ export const postForgetPasswordEmailOtpMutation = (
 export const postEmailOtpResetPasswordMutation = (
   options?: Partial<Options<PostEmailOtpResetPasswordData>>,
 ): UseMutationOptions<
-  unknown,
+  PostEmailOtpResetPasswordResponse,
   PostEmailOtpResetPasswordError,
   Options<PostEmailOtpResetPasswordData>
 > => {
   const mutationOptions: UseMutationOptions<
-    unknown,
+    PostEmailOtpResetPasswordResponse,
     PostEmailOtpResetPasswordError,
     Options<PostEmailOtpResetPasswordData>
   > = {

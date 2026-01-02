@@ -1183,7 +1183,9 @@ export type PostDeleteUserResponse =
 
 export type GetResetPasswordByTokenData = {
   body?: never;
-  path?: never;
+  path: {
+    token: string;
+  };
   query?: {
     /**
      * The URL to redirect the user to reset their password
@@ -2660,8 +2662,13 @@ export type PostEmailOtpResetPasswordResponses = {
   /**
    * Success
    */
-  200: unknown;
+  200: {
+    success?: boolean;
+  };
 };
+
+export type PostEmailOtpResetPasswordResponse =
+  PostEmailOtpResetPasswordResponses[keyof PostEmailOtpResetPasswordResponses];
 
 export type SetRoleData = {
   body: {
