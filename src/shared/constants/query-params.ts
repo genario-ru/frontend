@@ -1,0 +1,10 @@
+export const Q_QP = "q";
+export const PAGE_QP = "page";
+export const PER_PAGE_QP = "perPage";
+export const SORT_BY_QP = "sortBy";
+export const SORT_ORDER_QP = "sortOrder";
+export const STATUS_QP = "status";
+export const SLUG_QP = "slug";
+export const TAB_QP = "tab";
+export const REDIRECT_QP = "redirect";
+export const ACTION_QP = "action";

@@ -1,0 +1,96 @@
+{
+  "menu": {
+    "home": "Home",
+    "accountSettings": "Account settings",
+    "myPlan": "My plan",
+    "support": "Support",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Login or create\nyour account",
+    "continue": "Continue",
+    "email": {
+      "placeholder": "Enter your email",
+      "required": "Please enter the email address",
+      "invalid": "Please enter correct email address"
+    },
+    "terms": {
+      "agreeing": "By proceeding, you are agreeing to",
+      "service": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Notice"
+    },
+    "support": {
+      "questions": "Have any questions?",
+      "our": "Our",
+      "team": "support team",
+      "assist": "is here to assist you"
+    }
+  },
+  "verify": {
+    "enterCode": "Please enter code sent to",
+    "code": {
+      "required": "You need to enter the code",
+      "length": "Verification code must contain 4 digits",
+      "incorrect": "Please enter correct code"
+    },
+    "didntGetCode": "Didn't get your code?",
+    "sendNewCode": "Send a new code",
+    "or": "or",
+    "changeEmail": "change email"
+  },
+  "account": {
+    "title": "Account settings",
+    "subtitle": "Manage your profile",
+    "form": {
+      "fullName": {
+        "label": "Full name",
+        "placeholder": "Enter your name..."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email..."
+      },
+      "language": {
+        "label": "Language"
+      },
+      "validation": {
+        "required": "This field cannot be empty",
+        "different": "Enter a value that is different from the previous one"
+      },
+      "saveButton": "Save"
+    }
+  },
+  "billing": {
+    "page": {
+      "title": "My plan",
+      "subtitle": "Manage your subscription plan."
+    },
+    "change": {
+      "title": "Change plan"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "status": "Active",
+      "cancelButton": "Cancel subscription",
+      "emailSubject": "Cancel subscription",
+      "emailBody": "Hello, please cancel my subscription."
+    },
+    "plans": {
+      "currentPlan": "Current plan",
+      "month": "month",
+      "months": "months",
+      "willBeCharged": "Will be charged on {date}",
+      "chooseNewPlan": "Choose your new plan",
+      "perDay": "/ day",
+      "total": "total",
+      "changeButton": "Change plan",
+      "consent": "By clicking \"Change plan\" you consent to our",
+      "termsAndConditions": "Terms and Conditions",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+:root {
+  /* New neutral colors */
+  --neutral-1: #ffffff;
+  --neutral-2: #f2f2f2;
+  --neutral-3: #e5e5e5;
+  --neutral-4: #d4d4d4;
+  --neutral-5: #a4a4a4;
+  --neutral-6: #888888;
+  --neutral-7: #555555;
+  --neutral-8: #000000;
+
+  /* New negative colors */
+  --negative-1: #fee2e2;
+  --negative-2: #fecaca;
+  --negative-3: #fca5a5;
+  --negative-4: #f87171;
+  --negative-5: #ef4444;
+  --negative-6: #dc2626;
+  --negative-7: #b91c1c;
+  --negative-8: #991b1b;
+
+  /* New positive colors */
+  --positive-1: #dcfce7;
+  --positive-2: #bbf7d0;
+  --positive-3: #86efac;
+  --positive-4: #4ade80;
+  --positive-5: #22c55e;
+  --positive-6: #16a34a;
+  --positive-7: #15803d;
+  --positive-8: #166534;
+}
+
+.dark {
+  /* Dark neutral colors */
+  --neutral-1: #000000;
+  --neutral-2: #1a1a1a;
+  --neutral-3: #262626;
+  --neutral-4: #333333;
+  --neutral-5: #4d4d4d;
+  --neutral-6: #808080;
+  --neutral-7: #b3b3b3;
+  --neutral-8: #ffffff;
+
+  /* Dark negative colors */
+  --negative-1: #3b0a0a;
+  --negative-2: #5f1b1b;
+  --negative-3: #7f1d1d;
+  --negative-4: #b91c1c;
+  --negative-5: #dc2626;
+  --negative-6: #ef4444;
+  --negative-7: #f87171;
+  --negative-8: #fca5a5;
+
+  /* Dark positive colors */
+  --positive-1: #052e16;
+  --positive-2: #14532d;
+  --positive-3: #166534;
+  --positive-4: #15803d;
+  --positive-5: #20b958;
+  --positive-6: #46d179;
+  --positive-7: #86efac;
+  --positive-8: #bbf7d0;
+}

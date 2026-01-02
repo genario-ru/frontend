@@ -1,0 +1,59 @@
+"use client";
+
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentProps } from "react";
+
+import { cn } from "@/shared/utils/cn";
+
+const radioCardsGroupItemVariants = cva(
+  cn(
+    "flex w-full flex-col items-center font-medium border bg-neutral-1",
+    "hover:bg-neutral-2 active:bg-neutral-2 focus:bg-neutral-2",
+    "data-[state=checked]:bg-neutral-3 data-[state=checked]:border-neutral-6 [&_svg]:stroke-neutral-11 [&_svg]:shrink-0 [&_svg]:size-6 data-[state=checked]:[&_svg]:stroke-neutral-12",
+  ),
+  {
+    variants: {
+      size: {
+        base: "gap-1 rounded-2xl p-3.5",
+        lg: "gap-1.5 rounded-3xl p-5",
+      },
+    },
+    defaultVariants: {
+      size: "base",
+    },
+  },
+);
+
+type RadioCardsGroupItemProps = ComponentProps<
+  typeof RadioGroupPrimitive.Item
+> &
+  VariantProps<typeof radioCardsGroupItemVariants>;
+
+export const RadioCardsGroup = ({
+  className,
+  ...props
+}: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
+  return (
+    <RadioGroupPrimitive.Root
+      className={cn("flex items-center gap-3", className)}
+      {...props}
+    />
+  );
+};
+
+export const RadioCardsGroupItem = ({
+  className,
+  children,
+  size,
+  ...props
+}: RadioCardsGroupItemProps) => {
+  return (
+    <RadioGroupPrimitive.Item
+      className={cn(radioCardsGroupItemVariants({ size }), className)}
+      {...props}
+    >
+      {children}
+    </RadioGroupPrimitive.Item>
+  );
+};

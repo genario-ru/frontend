@@ -1,0 +1,18 @@
+{
+  "files.watcherExclude": {
+    "src/codegen/router/route-tree.gen.ts": true
+  },
+  "search.exclude": {
+    "src/codegen/router/route-tree.gen.ts": true
+  },
+  "files.readonlyInclude": {
+    "src/codegen/**": true
+  },
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.addMissingImports": "always"
+  },
+  "tailwindCSS.classFunctions": ["cva", "cx"]
+}

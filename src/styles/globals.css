@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./themes.css";
+
+body {
+  @apply text-neutral-12 border-neutral-5;
+  
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@theme {
+  /* Neutral colors */
+  --color-neutral-1: var(--neutral-1);
+  --color-neutral-2: var(--neutral-2);
+  --color-neutral-3: var(--neutral-3);
+  --color-neutral-4: var(--neutral-4);
+  --color-neutral-5: var(--neutral-5);
+  --color-neutral-6: var(--neutral-6);
+  --color-neutral-7: var(--neutral-7);
+  --color-neutral-8: var(--neutral-8);
+
+  /* Positive colors */
+  --color-positive-1: var(--positive-1);
+  --color-positive-2: var(--positive-2);
+  --color-positive-3: var(--positive-3);
+  --color-positive-4: var(--positive-4);
+  --color-positive-5: var(--positive-5);
+  --color-positive-6: var(--positive-6);
+  --color-positive-7: var(--positive-7);
+  --color-positive-8: var(--positive-8);
+
+  /* Negative colors */
+  --color-negative-1: var(--negative-1);
+  --color-negative-2: var(--negative-2);
+  --color-negative-3: var(--negative-3);
+  --color-negative-4: var(--negative-4);
+  --color-negative-5: var(--negative-5);
+  --color-negative-6: var(--negative-6);
+  --color-negative-7: var(--negative-7);
+  --color-negative-8: var(--negative-8);
+
+  /* Z-index */
+  ---z-index-1: -1;
+  --z-index-0: 0;
+  --z-index-1: 1;
+  --z-index-2: 2;
+
+  /* Animations */
+  --animate-caret-blink: caret-blink 1.2s ease-out infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Shadows */
+  --shadow-top-1: 0px -8px 12px 4px rgba(34, 60, 80, 0.05);
+
+  /* Border radius */
+  --radius-1: 4px;
+  --radius-1.5: 6px;
+  --radius-2: 8px;
+  --radius-2.5: 10px;
+  --radius-3: 12px;
+  --radius-3.5: 14px;
+  --radius-4: 16px;
+  --radius-5: 20px;
+  --radius-6: 24px;
+  --radius-7: 28px;
+  --radius-8: 32px;
+
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+.hide-scrollbar {
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* WebKit browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

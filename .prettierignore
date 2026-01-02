@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+src-tauri
+dist
+dist-ssr
+*.local
+count.txt
+.env
+.nitro
+.tanstack
+src/codegen/router
+deps
+configs
+pnpm-lock.yaml
