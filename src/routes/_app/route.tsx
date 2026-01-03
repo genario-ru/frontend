@@ -1,31 +1,25 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { getUserOptions } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { getGetSessionOptions } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { logoutUser } from "@/lib/auth/utils/logout-user";
 
 export const Route = createFileRoute("/_app")({
   beforeLoad: async ({ context, location }) => {
     try {
-      const userData =
-        await context.queryClient.ensureQueryData(getUserOptions());
+      const sessionData = await context.queryClient.ensureQueryData(
+        getGetSessionOptions(),
+      );
+
+      if (!sessionData) {
+        logoutUser({ redirectTo: location.pathname });
+      }
 
       return {
         ...context,
-        userData,
+        sessionData,
       };
     } catch {
-      // logoutUser({ queryClient: context.queryClient });
-
-      throw redirect({
-        replace: true,
-        reloadDocument: true,
-        to: "/sign-in",
-        search: {
-          redirect: location.pathname,
-        },
-        mask: {
-          to: "/sign-in",
-        },
-      });
+      logoutUser({ redirectTo: location.pathname });
     }
   },
   component: Outlet,

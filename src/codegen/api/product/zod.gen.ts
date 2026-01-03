@@ -13,327 +13,9 @@ export const zDeleteApiV1IdeasIdeaIdData = z.object({
 /**
  * Idea deleted successfully
  */
-export const zDeleteApiV1IdeasIdeaIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    ideasListId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    videoTypeId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    saved: z.boolean(),
-    liked: z.union([z.boolean(), z.null()]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zPatchApiV1IdeasIdeaIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideaId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Idea updated successfully
- */
-export const zPatchApiV1IdeasIdeaIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    ideasListId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    videoTypeId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    saved: z.boolean(),
-    liked: z.union([z.boolean(), z.null()]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zPostApiV1IdeasListsData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Ideas list created successfully
- */
-export const zPostApiV1IdeasListsResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zDeleteApiV1IdeasListsIdeasListIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideasListId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Ideas list deleted successfully
- */
-export const zDeleteApiV1IdeasListsIdeasListIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1IdeasListsIdeasListIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideasListId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Ideas list retrieved successfully
- */
-export const zGetApiV1IdeasListsIdeasListIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    profile: z.union([
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        userId: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        targetAudience: z.union([z.string(), z.null()]),
-        typeId: z.union([
-          z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          z.null(),
-        ]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-      z.null(),
-    ]),
-    tones: z.array(
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-    ),
-    videoTypes: z.array(
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-    ),
-  }),
-});
-
-export const zPatchApiV1IdeasListsIdeasListIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideasListId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Ideas list updated successfully
- */
-export const zPatchApiV1IdeasListsIdeasListIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1IdeasListsIdeasListIdIdeasData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideasListId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Ideas list retrieved successfully
- */
-export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z.object({
-  data: z.array(
-    z.object({
+export const zDeleteApiV1IdeasIdeaIdResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
@@ -355,24 +37,103 @@ export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z.object({
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Idea deleted successfully",
+  });
+
+export const zPatchApiV1IdeasIdeaIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    ideaId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Idea updated successfully
+ */
+export const zPatchApiV1IdeasIdeaIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      ideasListId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      videoTypeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      saved: z.boolean(),
+      liked: z.union([z.boolean(), z.null()]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Idea updated successfully",
+  });
+
+export const zPostApiV1IdeasListsData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Ideas list created successfully
+ */
+export const zPostApiV1IdeasListsResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      profileId: z.union([
+        z
           .uuid()
           .regex(
             /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
           ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
     }),
-  ),
-});
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list created successfully",
+  });
 
-export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({
+export const zDeleteApiV1IdeasListsIdeasListIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
     ideasListId: z.string(),
@@ -381,46 +142,62 @@ export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({
 });
 
 /**
- * Idea created successfully
+ * Ideas list deleted successfully
  */
-export const zPostApiV1IdeasListsIdeasListIdIdeasResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    ideasListId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    videoTypeId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    saved: z.boolean(),
-    liked: z.union([z.boolean(), z.null()]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+export const zDeleteApiV1IdeasListsIdeasListIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list deleted successfully",
+  });
 
-export const zGetApiV1IdeasListsMyData = z.object({
+export const zGetApiV1IdeasListsIdeasListIdData = z.object({
   body: z.optional(z.never()),
-  path: z.optional(z.never()),
+  path: z.object({
+    ideasListId: z.string(),
+  }),
   query: z.optional(z.never()),
 });
 
 /**
- * Ideas lists retrieved successfully
+ * Ideas list retrieved successfully
  */
-export const zGetApiV1IdeasListsMyResponse = z.object({
-  data: z.array(
-    z.object({
+export const zGetApiV1IdeasListsIdeasListIdResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
@@ -511,53 +288,99 @@ export const zGetApiV1IdeasListsMyResponse = z.object({
         }),
       ),
     }),
-  ),
-  meta: z.object({
-    previousPage: z.union([z.number(), z.null()]),
-    currentPage: z.number(),
-    nextPage: z.union([z.number(), z.null()]),
-    perPage: z.number(),
-    totalItems: z.number(),
-    totalPages: z.number(),
-    sortOrder: z.enum(["asc", "desc"]),
-    sortBy: z.enum(["createdAt", "updatedAt"]),
-    q: z.optional(z.string()),
-    profileId: z.optional(
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-    ),
-  }),
-});
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list retrieved successfully",
+  });
 
-export const zGetApiV1PlatformsData = z.object({
+export const zPatchApiV1IdeasListsIdeasListIdData = z.object({
   body: z.optional(z.never()),
-  path: z.optional(z.never()),
+  path: z.object({
+    ideasListId: z.string(),
+  }),
   query: z.optional(z.never()),
 });
 
 /**
- * Platforms retrieved successfully
+ * Ideas list updated successfully
  */
-export const zGetApiV1PlatformsResponse = z.object({
-  data: z.array(
-    z.object({
+export const zPatchApiV1IdeasListsIdeasListIdResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      slug: z.string(),
-      name: z.string(),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
-      logoUrl: z.union([z.string(), z.null()]),
-      baseUrl: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoTypes: z.array(
-        z.object({
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list updated successfully",
+  });
+
+export const zGetApiV1IdeasListsIdeasListIdIdeasData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    ideasListId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Ideas list retrieved successfully
+ */
+export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        ideasListId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        videoTypeId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        saved: z.boolean(),
+        liked: z.union([z.boolean(), z.null()]),
+        name: z.union([z.string(), z.null()]),
+        description: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        videoType: z.object({
           id: z
             .uuid()
             .regex(
@@ -570,10 +393,241 @@ export const zGetApiV1PlatformsResponse = z.object({
           createdAt: z.string(),
           updatedAt: z.string(),
         }),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list retrieved successfully",
+  });
+
+export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    ideasListId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Idea created successfully
+ */
+export const zPostApiV1IdeasListsIdeasListIdIdeasResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      ideasListId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      videoTypeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      saved: z.boolean(),
+      liked: z.union([z.boolean(), z.null()]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Idea created successfully",
+  });
+
+export const zGetApiV1IdeasListsMyData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Ideas lists retrieved successfully
+ */
+export const zGetApiV1IdeasListsMyResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        userId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        profileId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        templateId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        name: z.union([z.string(), z.null()]),
+        description: z.union([z.string(), z.null()]),
+        targetAudience: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        profile: z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            userId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            targetAudience: z.union([z.string(), z.null()]),
+            typeId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+        tones: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+        videoTypes: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+      }),
+    ),
+    meta: z.object({
+      previousPage: z.union([z.number(), z.null()]),
+      currentPage: z.number().register(z.globalRegistry, {
+        description: "Номер текущей страницы",
+      }),
+      nextPage: z.union([z.number(), z.null()]),
+      perPage: z.number().register(z.globalRegistry, {
+        description: "Количество элементов в одной странице ответа",
+      }),
+      totalItems: z.number().register(z.globalRegistry, {
+        description: "Общее количество элементов по запросу",
+      }),
+      totalPages: z.number().register(z.globalRegistry, {
+        description: "Общее количество страниц по запросу",
+      }),
+      sortOrder: z.enum(["asc", "desc"]).register(z.globalRegistry, {
+        description: "Вид сортировки",
+      }),
+      sortBy: z.enum(["createdAt", "updatedAt"]),
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      profileId: z.optional(
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
       ),
     }),
-  ),
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas lists retrieved successfully",
+  });
+
+export const zGetApiV1PlatformsData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
 });
+
+/**
+ * Platforms retrieved successfully
+ */
+export const zGetApiV1PlatformsResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        slug: z.string(),
+        name: z.string(),
+        description: z.union([z.string(), z.null()]),
+        logoUrl: z.union([z.string(), z.null()]),
+        baseUrl: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        videoTypes: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Platforms retrieved successfully",
+  });
 
 export const zGetApiV1ProfilesMyData = z.object({
   body: z.optional(z.never()),
@@ -584,9 +638,160 @@ export const zGetApiV1ProfilesMyData = z.object({
 /**
  * My profiles retrieved successfully
  */
-export const zGetApiV1ProfilesMyResponse = z.object({
-  data: z.array(
-    z.object({
+export const zGetApiV1ProfilesMyResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        userId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        name: z.string(),
+        description: z.union([z.string(), z.null()]),
+        targetAudience: z.union([z.string(), z.null()]),
+        typeId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        user: z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          email: z.string(),
+          emailVerified: z.boolean(),
+          phone: z.union([z.string(), z.null()]),
+          phoneVerified: z.boolean(),
+          name: z.string(),
+          image: z.union([z.string(), z.null()]),
+          role: z.enum(["user", "admin"]),
+          banned: z.boolean(),
+          banReason: z.union([z.string(), z.null()]),
+          banExpires: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        type: z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          slug: z.string(),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          icon: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        platforms: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            logoUrl: z.union([z.string(), z.null()]),
+            baseUrl: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+        tones: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "My profiles retrieved successfully",
+  });
+
+export const zDeleteApiV1ProfilesProfileIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    profileId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Profile deleted successfully
+ */
+export const zDeleteApiV1ProfilesProfileIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      typeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Profile deleted successfully",
+  });
+
+export const zGetApiV1ProfilesProfileIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    profileId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Profile retrieved successfully
+ */
+export const zGetApiV1ProfilesProfileIdResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
@@ -616,7 +821,6 @@ export const zGetApiV1ProfilesMyResponse = z.object({
           .regex(
             /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
           ),
-        username: z.union([z.string(), z.null()]),
         email: z.string(),
         emailVerified: z.boolean(),
         phone: z.union([z.string(), z.null()]),
@@ -675,10 +879,12 @@ export const zGetApiV1ProfilesMyResponse = z.object({
         }),
       ),
     }),
-  ),
-});
+  })
+  .register(z.globalRegistry, {
+    description: "Profile retrieved successfully",
+  });
 
-export const zDeleteApiV1ProfilesProfileIdData = z.object({
+export const zPatchApiV1ProfilesProfileIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
     profileId: z.string(),
@@ -687,122 +893,93 @@ export const zDeleteApiV1ProfilesProfileIdData = z.object({
 });
 
 /**
- * Profile deleted successfully
+ * Profile updated successfully
  */
-export const zDeleteApiV1ProfilesProfileIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1ProfilesProfileIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    profileId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Profile retrieved successfully
- */
-export const zGetApiV1ProfilesProfileIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    user: z.object({
+export const zPatchApiV1ProfilesProfileIdResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      username: z.union([z.string(), z.null()]),
-      email: z.string(),
-      emailVerified: z.boolean(),
-      phone: z.union([z.string(), z.null()]),
-      phoneVerified: z.boolean(),
-      name: z.string(),
-      image: z.union([z.string(), z.null()]),
-      role: z.enum(["user", "admin"]),
-      banned: z.boolean(),
-      banReason: z.union([z.string(), z.null()]),
-      banExpires: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-    type: z.object({
-      id: z
+      userId: z
         .uuid()
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      slug: z.string(),
       name: z.string(),
       description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-    platforms: z.array(
-      z.object({
-        id: z
+      targetAudience: z.union([z.string(), z.null()]),
+      typeId: z.union([
+        z
           .uuid()
           .regex(
             /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
           ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        logoUrl: z.union([z.string(), z.null()]),
-        baseUrl: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-    ),
-    tones: z.array(
+        z.null(),
+      ]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Profile updated successfully",
+  });
+
+export const zPostApiV1ProfilesData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Profile created successfully
+ */
+export const zPostApiV1ProfilesResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      typeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Profile created successfully",
+  });
+
+export const zGetApiV1ProfilesTypesData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Profile types retrieved successfully
+ */
+export const zGetApiV1ProfilesTypesResponse = z
+  .object({
+    data: z.array(
       z.object({
         id: z
           .uuid()
@@ -817,111 +994,10 @@ export const zGetApiV1ProfilesProfileIdResponse = z.object({
         updatedAt: z.string(),
       }),
     ),
-  }),
-});
-
-export const zPatchApiV1ProfilesProfileIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    profileId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Profile updated successfully
- */
-export const zPatchApiV1ProfilesProfileIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zPostApiV1ProfilesData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Profile created successfully
- */
-export const zPostApiV1ProfilesResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1ProfilesTypesData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Profile types retrieved successfully
- */
-export const zGetApiV1ProfilesTypesResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
+  })
+  .register(z.globalRegistry, {
+    description: "Profile types retrieved successfully",
+  });
 
 export const zPostApiV1ScenariosData = z.object({
   body: z.optional(z.never()),
@@ -932,594 +1008,9 @@ export const zPostApiV1ScenariosData = z.object({
 /**
  * Scenario created successfully
  */
-export const zPostApiV1ScenariosResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    currentVersionId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    platformId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoTypeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoDurationId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zDeleteApiV1ScenariosScenarioIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    scenarioId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario deleted successfully
- */
-export const zDeleteApiV1ScenariosScenarioIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    currentVersionId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    platformId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoTypeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoDurationId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1ScenariosScenarioIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    scenarioId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario retrieved successfully
- */
-export const zGetApiV1ScenariosScenarioIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    currentVersionId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    platformId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoTypeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoDurationId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    currentVersion: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          scenarioId: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          status: z.enum(["pending", "generation", "failed", "ready"]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-          profile: z.union([
-            z.object({
-              id: z
-                .uuid()
-                .regex(
-                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                ),
-              userId: z
-                .uuid()
-                .regex(
-                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                ),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              targetAudience: z.union([z.string(), z.null()]),
-              typeId: z.union([
-                z
-                  .uuid()
-                  .regex(
-                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                  ),
-                z.null(),
-              ]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          platform: z.union([
-            z.object({
-              id: z
-                .uuid()
-                .regex(
-                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                ),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              logoUrl: z.union([z.string(), z.null()]),
-              baseUrl: z.union([z.string(), z.null()]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          videoType: z.union([
-            z.object({
-              id: z
-                .uuid()
-                .regex(
-                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                ),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              icon: z.union([z.string(), z.null()]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          videoDuration: z.union([
-            z.object({
-              id: z
-                .uuid()
-                .regex(
-                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                ),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              minSeconds: z.int().gte(-9007199254740991).lte(9007199254740991),
-              maxSeconds: z.union([
-                z.int().gte(-9007199254740991).lte(9007199254740991),
-                z.null(),
-              ]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          tones: z.union([
-            z.array(
-              z.object({
-                id: z
-                  .uuid()
-                  .regex(
-                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                  ),
-                slug: z.string(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                icon: z.union([z.string(), z.null()]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-            ),
-            z.null(),
-          ]),
-          scenarioChapters: z.union([
-            z.array(
-              z.object({
-                id: z
-                  .uuid()
-                  .regex(
-                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                  ),
-                scenarioVersionId: z
-                  .uuid()
-                  .regex(
-                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-                  ),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                status: z.enum(["pending", "generation", "failed", "ready"]),
-                startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-                endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-            ),
-            z.null(),
-          ]),
-        }),
-        z.null(),
-      ]),
-    ),
-    profile: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          userId: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          targetAudience: z.union([z.string(), z.null()]),
-          typeId: z.union([
-            z
-              .uuid()
-              .regex(
-                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-              ),
-            z.null(),
-          ]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-    ),
-    template: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          color: z.string(),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-    ),
-    platform: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          logoUrl: z.union([z.string(), z.null()]),
-          baseUrl: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-    ),
-    videoType: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-    ),
-    videoDuration: z.optional(
-      z.union([
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          minSeconds: z.int().gte(-9007199254740991).lte(9007199254740991),
-          maxSeconds: z.union([
-            z.int().gte(-9007199254740991).lte(9007199254740991),
-            z.null(),
-          ]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-    ),
-    tones: z.optional(
-      z.union([
-        z.array(
-          z.object({
-            id: z
-              .uuid()
-              .regex(
-                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-              ),
-            slug: z.string(),
-            name: z.string(),
-            description: z.union([z.string(), z.null()]),
-            icon: z.union([z.string(), z.null()]),
-            createdAt: z.string(),
-            updatedAt: z.string(),
-          }),
-        ),
-        z.null(),
-      ]),
-    ),
-  }),
-});
-
-export const zPatchApiV1ScenariosScenarioIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    scenarioId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario updated successfully
- */
-export const zPatchApiV1ScenariosScenarioIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    currentVersionId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    profileId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    platformId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoTypeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoDurationId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1ScenariosMyData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * My scenarios retrieved successfully
- */
-export const zGetApiV1ScenariosMyResponse = z.object({
-  data: z.array(
-    z.object({
+export const zPostApiV1ScenariosResponse = z
+  .object({
+    data: z.object({
       id: z
         .uuid()
         .regex(
@@ -1584,8 +1075,619 @@ export const zGetApiV1ScenariosMyResponse = z.object({
       createdAt: z.string(),
       updatedAt: z.string(),
     }),
-  ),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario created successfully",
+  });
+
+export const zDeleteApiV1ScenariosScenarioIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    scenarioId: z.string(),
+  }),
+  query: z.optional(z.never()),
 });
+
+/**
+ * Scenario deleted successfully
+ */
+export const zDeleteApiV1ScenariosScenarioIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      currentVersionId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      platformId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoTypeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoDurationId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario deleted successfully",
+  });
+
+export const zGetApiV1ScenariosScenarioIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    scenarioId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario retrieved successfully
+ */
+export const zGetApiV1ScenariosScenarioIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      currentVersionId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      platformId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoTypeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoDurationId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      currentVersion: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            scenarioId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            status: z.enum(["pending", "generation", "failed", "ready"]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+            profile: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                userId: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                targetAudience: z.union([z.string(), z.null()]),
+                typeId: z.union([
+                  z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  z.null(),
+                ]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
+            platform: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                logoUrl: z.union([z.string(), z.null()]),
+                baseUrl: z.union([z.string(), z.null()]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
+            videoType: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                icon: z.union([z.string(), z.null()]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
+            videoDuration: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                minSeconds: z
+                  .int()
+                  .gte(-9007199254740991)
+                  .lte(9007199254740991),
+                maxSeconds: z.union([
+                  z.int().gte(-9007199254740991).lte(9007199254740991),
+                  z.null(),
+                ]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
+            tones: z.union([
+              z.array(
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  slug: z.string(),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  icon: z.union([z.string(), z.null()]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+              ),
+              z.null(),
+            ]),
+            scenarioChapters: z.union([
+              z.array(
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  scenarioVersionId: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  status: z.enum(["pending", "generation", "failed", "ready"]),
+                  startTime: z
+                    .int()
+                    .gte(-9007199254740991)
+                    .lte(9007199254740991),
+                  endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+              ),
+              z.null(),
+            ]),
+          }),
+          z.null(),
+        ]),
+      ),
+      profile: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            userId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            targetAudience: z.union([z.string(), z.null()]),
+            typeId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
+      template: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            color: z.string(),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
+      platform: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            logoUrl: z.union([z.string(), z.null()]),
+            baseUrl: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
+      videoType: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
+      videoDuration: z.optional(
+        z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            minSeconds: z.int().gte(-9007199254740991).lte(9007199254740991),
+            maxSeconds: z.union([
+              z.int().gte(-9007199254740991).lte(9007199254740991),
+              z.null(),
+            ]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
+      tones: z.optional(
+        z.union([
+          z.array(
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              slug: z.string(),
+              name: z.string(),
+              description: z.union([z.string(), z.null()]),
+              icon: z.union([z.string(), z.null()]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+          ),
+          z.null(),
+        ]),
+      ),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario retrieved successfully",
+  });
+
+export const zPatchApiV1ScenariosScenarioIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    scenarioId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario updated successfully
+ */
+export const zPatchApiV1ScenariosScenarioIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      currentVersionId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      platformId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoTypeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoDurationId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario updated successfully",
+  });
+
+export const zGetApiV1ScenariosMyData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * My scenarios retrieved successfully
+ */
+export const zGetApiV1ScenariosMyResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        userId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        currentVersionId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        profileId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        templateId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        platformId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        videoTypeId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        videoDurationId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        name: z.union([z.string(), z.null()]),
+        description: z.union([z.string(), z.null()]),
+        targetAudience: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "My scenarios retrieved successfully",
+  });
 
 export const zPatchApiV1ScenariosScenarioIdCurrentVersionData = z.object({
   body: z.optional(z.never()),
@@ -1598,73 +1700,77 @@ export const zPatchApiV1ScenariosScenarioIdCurrentVersionData = z.object({
 /**
  * Scenario current version updated successfully
  */
-export const zPatchApiV1ScenariosScenarioIdCurrentVersionResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    userId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    currentVersionId: z.union([
-      z
+export const zPatchApiV1ScenariosScenarioIdCurrentVersionResponse = z
+  .object({
+    data: z.object({
+      id: z
         .uuid()
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      z.null(),
-    ]),
-    profileId: z.union([
-      z
+      userId: z
         .uuid()
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      z.null(),
-    ]),
-    templateId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    platformId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoTypeId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    videoDurationId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+      currentVersionId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      platformId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoTypeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoDurationId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario current version updated successfully",
+  });
 
 export const zDeleteApiV1ScenariosVersionsVersionIdData = z.object({
   body: z.optional(z.never()),
@@ -1677,23 +1783,27 @@ export const zDeleteApiV1ScenariosVersionsVersionIdData = z.object({
 /**
  * Scenario version deleted successfully
  */
-export const zDeleteApiV1ScenariosVersionsVersionIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+export const zDeleteApiV1ScenariosVersionsVersionIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario version deleted successfully",
+  });
 
 export const zGetApiV1ScenariosVersionsVersionIdData = z.object({
   body: z.optional(z.never()),
@@ -1706,50 +1816,506 @@ export const zGetApiV1ScenariosVersionsVersionIdData = z.object({
 /**
  * Scenario version retrieved successfully
  */
-export const zGetApiV1ScenariosVersionsVersionIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    profile: z.union([
+export const zGetApiV1ScenariosVersionsVersionIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      profile: z.union([
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          userId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          targetAudience: z.union([z.string(), z.null()]),
+          typeId: z.union([
+            z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            z.null(),
+          ]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        z.null(),
+      ]),
+      platform: z.union([
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          slug: z.string(),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          logoUrl: z.union([z.string(), z.null()]),
+          baseUrl: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        z.null(),
+      ]),
+      videoType: z.union([
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          slug: z.string(),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          icon: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        z.null(),
+      ]),
+      videoDuration: z.union([
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          slug: z.string(),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          minSeconds: z.int().gte(-9007199254740991).lte(9007199254740991),
+          maxSeconds: z.union([
+            z.int().gte(-9007199254740991).lte(9007199254740991),
+            z.null(),
+          ]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        z.null(),
+      ]),
+      tones: z.union([
+        z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+        z.null(),
+      ]),
+      scenarioChapters: z.union([
+        z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            scenarioVersionId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            status: z.enum(["pending", "generation", "failed", "ready"]),
+            startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+            endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+        z.null(),
+      ]),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario version retrieved successfully",
+  });
+
+export const zGetApiV1ScenariosScenarioIdVersionsData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    scenarioId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario versions retrieved successfully
+ */
+export const zGetApiV1ScenariosScenarioIdVersionsResponse = z
+  .object({
+    data: z.array(
       z.object({
         id: z
           .uuid()
           .regex(
             /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
           ),
-        userId: z
+        scenarioId: z
           .uuid()
           .regex(
             /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
           ),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        targetAudience: z.union([z.string(), z.null()]),
-        typeId: z.union([
-          z
+        status: z.enum(["pending", "generation", "failed", "ready"]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario versions retrieved successfully",
+  });
+
+export const zDeleteApiV1ScenariosChaptersChapterIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    chapterId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario chapter deleted successfully
+ */
+export const zDeleteApiV1ScenariosChaptersChapterIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioVersionId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario chapter deleted successfully",
+  });
+
+export const zGetApiV1ScenariosChaptersChapterIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    chapterId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario chapter retrieved successfully
+ */
+export const zGetApiV1ScenariosChaptersChapterIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioVersionId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+      scenes: z.array(
+        z.object({
+          id: z
             .uuid()
             .regex(
               /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
             ),
-          z.null(),
-        ]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-      z.null(),
-    ]),
-    platform: z.union([
+          scenarioChapterId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          previewId: z.union([
+            z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            z.null(),
+          ]),
+          status: z.enum(["pending", "generation", "failed", "ready"]),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+          endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+          badges: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+      ),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario chapter retrieved successfully",
+  });
+
+export const zPatchApiV1ScenariosChaptersChapterIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    chapterId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario chapter updated successfully
+ */
+export const zPatchApiV1ScenariosChaptersChapterIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioVersionId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario chapter updated successfully",
+  });
+
+export const zDeleteApiV1ScenariosScenesSceneIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    sceneId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario scene deleted successfully
+ */
+export const zDeleteApiV1ScenariosScenesSceneIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioChapterId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      previewId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      badges: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario scene deleted successfully",
+  });
+
+export const zPatchApiV1ScenariosScenesSceneIdData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    sceneId: z.string(),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario scene updated successfully
+ */
+export const zPatchApiV1ScenariosScenesSceneIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioChapterId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      previewId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      name: z.string(),
+      description: z.union([z.string(), z.null()]),
+      startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
+      badges: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario scene updated successfully",
+  });
+
+export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdData =
+  z.object({
+    body: z.optional(z.never()),
+    path: z.object({
+      sceneComponentId: z.string(),
+    }),
+    query: z.optional(z.never()),
+  });
+
+/**
+ * Scenario scene component deleted successfully
+ */
+export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioSceneId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      content: z.union([z.string(), z.null()]),
+      icon: z.union([z.string(), z.null()]),
+      color: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario scene component deleted successfully",
+  });
+
+export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdData = z.object(
+  {
+    body: z.optional(z.never()),
+    path: z.object({
+      sceneComponentId: z.string(),
+    }),
+    query: z.optional(z.never()),
+  },
+);
+
+/**
+ * Scenario scene component updated successfully
+ */
+export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      scenarioSceneId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.string(),
+      content: z.union([z.string(), z.null()]),
+      icon: z.union([z.string(), z.null()]),
+      color: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario scene component updated successfully",
+  });
+
+export const zGetApiV1TemplatesData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Templates retrieved successfully
+ */
+export const zGetApiV1TemplatesResponse = z
+  .object({
+    data: z.array(
       z.object({
         id: z
           .uuid()
@@ -1759,14 +2325,29 @@ export const zGetApiV1ScenariosVersionsVersionIdResponse = z.object({
         slug: z.string(),
         name: z.string(),
         description: z.union([z.string(), z.null()]),
-        logoUrl: z.union([z.string(), z.null()]),
-        baseUrl: z.union([z.string(), z.null()]),
+        icon: z.union([z.string(), z.null()]),
+        color: z.string(),
         createdAt: z.string(),
         updatedAt: z.string(),
       }),
-      z.null(),
-    ]),
-    videoType: z.union([
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Templates retrieved successfully",
+  });
+
+export const zGetApiV1TonesData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Tones retrieved successfully
+ */
+export const zGetApiV1TonesResponse = z
+  .object({
+    data: z.array(
       z.object({
         id: z
           .uuid()
@@ -1780,9 +2361,24 @@ export const zGetApiV1ScenariosVersionsVersionIdResponse = z.object({
         createdAt: z.string(),
         updatedAt: z.string(),
       }),
-      z.null(),
-    ]),
-    videoDuration: z.union([
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Tones retrieved successfully",
+  });
+
+export const zGetApiV1VideoDurationsData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Video durations retrieved successfully
+ */
+export const zGetApiV1VideoDurationsResponse = z
+  .object({
+    data: z.array(
       z.object({
         id: z
           .uuid()
@@ -1800,451 +2396,11 @@ export const zGetApiV1ScenariosVersionsVersionIdResponse = z.object({
         createdAt: z.string(),
         updatedAt: z.string(),
       }),
-      z.null(),
-    ]),
-    tones: z.union([
-      z.array(
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      ),
-      z.null(),
-    ]),
-    scenarioChapters: z.union([
-      z.array(
-        z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          scenarioVersionId: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          status: z.enum(["pending", "generation", "failed", "ready"]),
-          startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-          endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      ),
-      z.null(),
-    ]),
-  }),
-});
-
-export const zGetApiV1ScenariosScenarioIdVersionsData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    scenarioId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario versions retrieved successfully
- */
-export const zGetApiV1ScenariosScenarioIdVersionsResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      scenarioId: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      status: z.enum(["pending", "generation", "failed", "ready"]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
-
-export const zDeleteApiV1ScenariosChaptersChapterIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    chapterId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario chapter deleted successfully
- */
-export const zDeleteApiV1ScenariosChaptersChapterIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioVersionId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zGetApiV1ScenariosChaptersChapterIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    chapterId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario chapter retrieved successfully
- */
-export const zGetApiV1ScenariosChaptersChapterIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioVersionId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    scenes: z.array(
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        scenarioChapterId: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        previewId: z.union([
-          z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          z.null(),
-        ]),
-        status: z.enum(["pending", "generation", "failed", "ready"]),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-        endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-        badges: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
     ),
-  }),
-});
-
-export const zPatchApiV1ScenariosChaptersChapterIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    chapterId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario chapter updated successfully
- */
-export const zPatchApiV1ScenariosChaptersChapterIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioVersionId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zDeleteApiV1ScenariosScenesSceneIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    sceneId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario scene deleted successfully
- */
-export const zDeleteApiV1ScenariosScenesSceneIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioChapterId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    previewId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    badges: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zPatchApiV1ScenariosScenesSceneIdData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    sceneId: z.string(),
-  }),
-  query: z.optional(z.never()),
-});
-
-/**
- * Scenario scene updated successfully
- */
-export const zPatchApiV1ScenariosScenesSceneIdResponse = z.object({
-  data: z.object({
-    id: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    scenarioChapterId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-    previewId: z.union([
-      z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      z.null(),
-    ]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-    badges: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
-
-export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdData =
-  z.object({
-    body: z.optional(z.never()),
-    path: z.object({
-      sceneComponentId: z.string(),
-    }),
-    query: z.optional(z.never()),
+  })
+  .register(z.globalRegistry, {
+    description: "Video durations retrieved successfully",
   });
-
-/**
- * Scenario scene component deleted successfully
- */
-export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse =
-  z.object({
-    data: z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      scenarioSceneId: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      name: z.string(),
-      content: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      color: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  });
-
-export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdData = z.object(
-  {
-    body: z.optional(z.never()),
-    path: z.object({
-      sceneComponentId: z.string(),
-    }),
-    query: z.optional(z.never()),
-  },
-);
-
-/**
- * Scenario scene component updated successfully
- */
-export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse =
-  z.object({
-    data: z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      scenarioSceneId: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      name: z.string(),
-      content: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      color: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  });
-
-export const zGetApiV1TemplatesData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Templates retrieved successfully
- */
-export const zGetApiV1TemplatesResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      color: z.string(),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
-
-export const zGetApiV1TonesData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Tones retrieved successfully
- */
-export const zGetApiV1TonesResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
-
-export const zGetApiV1VideoDurationsData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Video durations retrieved successfully
- */
-export const zGetApiV1VideoDurationsResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      minSeconds: z.int().gte(-9007199254740991).lte(9007199254740991),
-      maxSeconds: z.union([
-        z.int().gte(-9007199254740991).lte(9007199254740991),
-        z.null(),
-      ]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
 
 export const zGetApiV1VideoTypesData = z.object({
   body: z.optional(z.never()),
@@ -2255,20 +2411,24 @@ export const zGetApiV1VideoTypesData = z.object({
 /**
  * Video types retrieved successfully
  */
-export const zGetApiV1VideoTypesResponse = z.object({
-  data: z.array(
-    z.object({
-      id: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
+export const zGetApiV1VideoTypesResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        slug: z.string(),
+        name: z.string(),
+        description: z.union([z.string(), z.null()]),
+        icon: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Video types retrieved successfully",
+  });

@@ -836,7 +836,6 @@ export type GetApiV1ProfilesMyResponses = {
       updatedAt: string;
       user: {
         id: string;
-        username: string | null;
         email: string;
         emailVerified: boolean;
         phone: string | null;
@@ -1012,7 +1011,6 @@ export type GetApiV1ProfilesProfileIdResponses = {
       updatedAt: string;
       user: {
         id: string;
-        username: string | null;
         email: string;
         emailVerified: boolean;
         phone: string | null;

@@ -7,14 +7,13 @@ export const zUser = z.object({
   name: z.string(),
   email: z.string(),
   emailVerified: z.boolean().default(false),
-  image: z.optional(z.string()),
+  image: z.optional(z.union([z.string(), z.null()])),
   createdAt: z.string().default("Generated at runtime"),
   updatedAt: z.string().default("Generated at runtime"),
   role: z.optional(z.string().readonly()),
   banned: z.optional(z.boolean().readonly()).default(false),
-  banReason: z.optional(z.string().readonly()),
-  banExpires: z.optional(z.string().readonly()),
-  username: z.string(),
+  banReason: z.optional(z.union([z.string().readonly(), z.null()])),
+  banExpires: z.optional(z.union([z.string().readonly(), z.null()])),
 });
 
 export const zSession = z.object({
@@ -26,7 +25,7 @@ export const zSession = z.object({
   ipAddress: z.optional(z.string()),
   userAgent: z.optional(z.string()),
   userId: z.string(),
-  impersonatedBy: z.optional(z.string()),
+  impersonatedBy: z.optional(z.union([z.string(), z.null()])),
 });
 
 export const zAccount = z.object({
@@ -59,31 +58,77 @@ export const zUserWritable = z.object({
   name: z.string(),
   email: z.string(),
   emailVerified: z.boolean().default(false),
-  image: z.optional(z.string()),
+  image: z.optional(z.union([z.string(), z.null()])),
   createdAt: z.string().default("Generated at runtime"),
   updatedAt: z.string().default("Generated at runtime"),
-  username: z.string(),
+  banReason: z.optional(z.null()),
+  banExpires: z.optional(z.null()),
 });
 
 export const zSocialSignInData = z.object({
   body: z.object({
-    callbackURL: z.optional(z.string()),
-    newUserCallbackURL: z.optional(z.string()),
-    errorCallbackURL: z.optional(z.string()),
-    provider: z.string(),
-    disableRedirect: z.optional(z.boolean()),
-    idToken: z.optional(
-      z.object({
-        token: z.string(),
-        nonce: z.optional(z.string()),
-        accessToken: z.optional(z.string()),
-        refreshToken: z.optional(z.string()),
-        expiresAt: z.optional(z.number()),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "Callback URL to redirect to after the user has signed in",
       }),
     ),
-    scopes: z.optional(z.array(z.unknown())),
-    requestSignUp: z.optional(z.boolean()),
-    loginHint: z.optional(z.string()),
+    newUserCallbackURL: z.optional(z.string()),
+    errorCallbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "Callback URL to redirect to if an error happens",
+      }),
+    ),
+    provider: z.string(),
+    disableRedirect: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description:
+          "Disable automatic redirection to the provider. Useful for handling the redirection yourself",
+      }),
+    ),
+    idToken: z.optional(
+      z.object({
+        token: z.string().register(z.globalRegistry, {
+          description: "ID token from the provider",
+        }),
+        nonce: z.optional(
+          z.string().register(z.globalRegistry, {
+            description: "Nonce used to generate the token",
+          }),
+        ),
+        accessToken: z.optional(
+          z.string().register(z.globalRegistry, {
+            description: "Access token from the provider",
+          }),
+        ),
+        refreshToken: z.optional(
+          z.string().register(z.globalRegistry, {
+            description: "Refresh token from the provider",
+          }),
+        ),
+        expiresAt: z.optional(
+          z.number().register(z.globalRegistry, {
+            description: "Expiry date of the token",
+          }),
+        ),
+      }),
+    ),
+    scopes: z.optional(
+      z.array(z.unknown()).register(z.globalRegistry, {
+        description:
+          "Array of scopes to request from the provider. This will override the default scopes passed.",
+      }),
+    ),
+    requestSignUp: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description:
+          "Explicitly request sign-up. Useful when disableImplicitSignUp is true for this provider",
+      }),
+    ),
+    loginHint: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The login hint to use for the authorization code request",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -92,10 +137,16 @@ export const zSocialSignInData = z.object({
 /**
  * Session response when idToken is provided
  */
-export const zSocialSignInResponse = z.object({
-  redirect: z.literal(false),
-  token: z.string(),
-});
+export const zSocialSignInResponse = z
+  .object({
+    redirect: z.literal(false),
+    token: z.string().register(z.globalRegistry, {
+      description: "Session token",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Session response when idToken is provided",
+  });
 
 export const zGetGetSessionData = z.object({
   body: z.optional(z.never()),
@@ -106,10 +157,13 @@ export const zGetGetSessionData = z.object({
 /**
  * Success
  */
-export const zGetGetSessionResponse = z.object({
-  session: zSession,
-  user: zUser,
-});
+export const zGetGetSessionResponse = z.union([
+  z.object({
+    session: zSession,
+    user: zUser,
+  }),
+  z.null(),
+]);
 
 export const zPostSignOutData = z.object({
   body: z.optional(z.record(z.string(), z.unknown())),
@@ -120,19 +174,42 @@ export const zPostSignOutData = z.object({
 /**
  * Success
  */
-export const zPostSignOutResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zPostSignOutResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostSignUpEmailData = z.object({
   body: z.optional(
     z.object({
-      name: z.string(),
-      email: z.string(),
-      password: z.string(),
-      image: z.optional(z.string()),
-      callbackURL: z.optional(z.string()),
-      rememberMe: z.optional(z.boolean()),
+      name: z.string().register(z.globalRegistry, {
+        description: "The name of the user",
+      }),
+      email: z.string().register(z.globalRegistry, {
+        description: "The email of the user",
+      }),
+      password: z.string().register(z.globalRegistry, {
+        description: "The password of the user",
+      }),
+      image: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The profile image URL of the user",
+        }),
+      ),
+      callbackURL: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The URL to use for email verification callback",
+        }),
+      ),
+      rememberMe: z.optional(
+        z.boolean().register(z.globalRegistry, {
+          description:
+            "If this is false, the session will not be remembered. Default is `true`.",
+        }),
+      ),
     }),
   ),
   path: z.optional(z.never()),
@@ -142,24 +219,56 @@ export const zPostSignUpEmailData = z.object({
 /**
  * Successfully created user
  */
-export const zPostSignUpEmailResponse = z.object({
-  token: z.optional(z.string()),
-  user: z.object({
-    id: z.string(),
-    email: z.email(),
-    name: z.string(),
-    image: z.optional(z.url()),
-    emailVerified: z.boolean(),
-    createdAt: z.iso.datetime(),
-    updatedAt: z.iso.datetime(),
-  }),
-});
+export const zPostSignUpEmailResponse = z
+  .object({
+    token: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "Authentication token for the session",
+      }),
+    ),
+    user: z.object({
+      id: z.string().register(z.globalRegistry, {
+        description: "The unique identifier of the user",
+      }),
+      email: z.email().register(z.globalRegistry, {
+        description: "The email address of the user",
+      }),
+      name: z.string().register(z.globalRegistry, {
+        description: "The name of the user",
+      }),
+      image: z.optional(
+        z.url().register(z.globalRegistry, {
+          description: "The profile image URL of the user",
+        }),
+      ),
+      emailVerified: z.boolean().register(z.globalRegistry, {
+        description: "Whether the email has been verified",
+      }),
+      createdAt: z.iso.datetime().register(z.globalRegistry, {
+        description: "When the user was created",
+      }),
+      updatedAt: z.iso.datetime().register(z.globalRegistry, {
+        description: "When the user was last updated",
+      }),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Successfully created user",
+  });
 
 export const zPostSignInEmailData = z.object({
   body: z.object({
-    email: z.string(),
-    password: z.string(),
-    callbackURL: z.optional(z.string()),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email of the user",
+    }),
+    password: z.string().register(z.globalRegistry, {
+      description: "Password of the user",
+    }),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "Callback URL to use as a redirect for email verification",
+      }),
+    ),
     rememberMe: z.optional(z.string()),
   }),
   path: z.optional(z.never()),
@@ -169,25 +278,39 @@ export const zPostSignInEmailData = z.object({
 /**
  * Session response when idToken is provided
  */
-export const zPostSignInEmailResponse = z.object({
-  redirect: z.literal(false),
-  token: z.string(),
-  url: z.optional(z.null()),
-  user: z.object({
-    id: z.string(),
-    email: z.string(),
-    name: z.optional(z.string()),
-    image: z.optional(z.string()),
-    emailVerified: z.boolean(),
-    createdAt: z.iso.datetime(),
-    updatedAt: z.iso.datetime(),
-  }),
-});
+export const zPostSignInEmailResponse = z
+  .object({
+    redirect: z.literal(false),
+    token: z.string().register(z.globalRegistry, {
+      description: "Session token",
+    }),
+    url: z.optional(z.null()),
+    user: z.object({
+      id: z.string(),
+      email: z.string(),
+      name: z.optional(z.string()),
+      image: z.optional(z.string()),
+      emailVerified: z.boolean(),
+      createdAt: z.iso.datetime(),
+      updatedAt: z.iso.datetime(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Session response when idToken is provided",
+  });
 
 export const zPostForgetPasswordData = z.object({
   body: z.object({
-    email: z.string(),
-    redirectTo: z.optional(z.string()),
+    email: z.string().register(z.globalRegistry, {
+      description:
+        "The email address of the user to send a password reset email to",
+    }),
+    redirectTo: z.optional(
+      z.string().register(z.globalRegistry, {
+        description:
+          "The URL to redirect the user to reset their password. If the token isn't valid or expired, it'll be redirected with a query parameter `?error=INVALID_TOKEN`. If the token is valid, it'll be redirected with a query parameter `?token=VALID_TOKEN",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -196,15 +319,25 @@ export const zPostForgetPasswordData = z.object({
 /**
  * Success
  */
-export const zPostForgetPasswordResponse = z.object({
-  status: z.optional(z.boolean()),
-  message: z.optional(z.string()),
-});
+export const zPostForgetPasswordResponse = z
+  .object({
+    status: z.optional(z.boolean()),
+    message: z.optional(z.string()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostResetPasswordData = z.object({
   body: z.object({
-    newPassword: z.string(),
-    token: z.optional(z.string()),
+    newPassword: z.string().register(z.globalRegistry, {
+      description: "The new password to set",
+    }),
+    token: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The token to reset the password",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -213,40 +346,76 @@ export const zPostResetPasswordData = z.object({
 /**
  * Success
  */
-export const zPostResetPasswordResponse = z.object({
-  status: z.optional(z.boolean()),
-});
+export const zPostResetPasswordResponse = z
+  .object({
+    status: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zGetVerifyEmailData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),
   query: z.object({
-    token: z.string(),
-    callbackURL: z.optional(z.string()),
+    token: z.string().register(z.globalRegistry, {
+      description: "The token to verify the email",
+    }),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The URL to redirect to after email verification",
+      }),
+    ),
   }),
 });
 
 /**
  * Success
  */
-export const zGetVerifyEmailResponse = z.object({
-  user: z.object({
-    id: z.string(),
-    email: z.string(),
-    name: z.string(),
-    image: z.string(),
-    emailVerified: z.boolean(),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-  status: z.boolean(),
-});
+export const zGetVerifyEmailResponse = z
+  .object({
+    user: z.object({
+      id: z.string().register(z.globalRegistry, {
+        description: "User ID",
+      }),
+      email: z.string().register(z.globalRegistry, {
+        description: "User email",
+      }),
+      name: z.string().register(z.globalRegistry, {
+        description: "User name",
+      }),
+      image: z.string().register(z.globalRegistry, {
+        description: "User image URL",
+      }),
+      emailVerified: z.boolean().register(z.globalRegistry, {
+        description: "Indicates if the user email is verified",
+      }),
+      createdAt: z.string().register(z.globalRegistry, {
+        description: "User creation date",
+      }),
+      updatedAt: z.string().register(z.globalRegistry, {
+        description: "User update date",
+      }),
+    }),
+    status: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the email was verified successfully",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostSendVerificationEmailData = z.object({
   body: z.optional(
     z.object({
-      email: z.string(),
-      callbackURL: z.optional(z.string()),
+      email: z.string().register(z.globalRegistry, {
+        description: "The email to send the verification email to",
+      }),
+      callbackURL: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The URL to use for email verification callback",
+        }),
+      ),
     }),
   ),
   path: z.optional(z.never()),
@@ -256,14 +425,28 @@ export const zPostSendVerificationEmailData = z.object({
 /**
  * Success
  */
-export const zPostSendVerificationEmailResponse = z.object({
-  status: z.optional(z.boolean()),
-});
+export const zPostSendVerificationEmailResponse = z
+  .object({
+    status: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description: "Indicates if the email was sent successfully",
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostChangeEmailData = z.object({
   body: z.object({
-    newEmail: z.string(),
-    callbackURL: z.optional(z.string()),
+    newEmail: z.string().register(z.globalRegistry, {
+      description: "The new email address to set must be a valid email address",
+    }),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The URL to redirect to after email verification",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -272,16 +455,36 @@ export const zPostChangeEmailData = z.object({
 /**
  * Email change request processed successfully
  */
-export const zPostChangeEmailResponse = z.object({
-  status: z.boolean(),
-  message: z.optional(z.enum(["Email updated", "Verification email sent"])),
-});
+export const zPostChangeEmailResponse = z
+  .object({
+    status: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the request was successful",
+    }),
+    message: z.optional(
+      z
+        .enum(["Email updated", "Verification email sent"])
+        .register(z.globalRegistry, {
+          description: "Status message of the email change process",
+        }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Email change request processed successfully",
+  });
 
 export const zPostChangePasswordData = z.object({
   body: z.object({
-    newPassword: z.string(),
-    currentPassword: z.string(),
-    revokeOtherSessions: z.optional(z.boolean()),
+    newPassword: z.string().register(z.globalRegistry, {
+      description: "The new password to set",
+    }),
+    currentPassword: z.string().register(z.globalRegistry, {
+      description: "The current password is required",
+    }),
+    revokeOtherSessions: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description: "Must be a boolean value",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -290,24 +493,56 @@ export const zPostChangePasswordData = z.object({
 /**
  * Password successfully changed
  */
-export const zPostChangePasswordResponse = z.object({
-  token: z.optional(z.string()),
-  user: z.object({
-    id: z.string(),
-    email: z.email(),
-    name: z.string(),
-    image: z.optional(z.url()),
-    emailVerified: z.boolean(),
-    createdAt: z.iso.datetime(),
-    updatedAt: z.iso.datetime(),
-  }),
-});
+export const zPostChangePasswordResponse = z
+  .object({
+    token: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "New session token if other sessions were revoked",
+      }),
+    ),
+    user: z.object({
+      id: z.string().register(z.globalRegistry, {
+        description: "The unique identifier of the user",
+      }),
+      email: z.email().register(z.globalRegistry, {
+        description: "The email address of the user",
+      }),
+      name: z.string().register(z.globalRegistry, {
+        description: "The name of the user",
+      }),
+      image: z.optional(
+        z.url().register(z.globalRegistry, {
+          description: "The profile image URL of the user",
+        }),
+      ),
+      emailVerified: z.boolean().register(z.globalRegistry, {
+        description: "Whether the email has been verified",
+      }),
+      createdAt: z.iso.datetime().register(z.globalRegistry, {
+        description: "When the user was created",
+      }),
+      updatedAt: z.iso.datetime().register(z.globalRegistry, {
+        description: "When the user was last updated",
+      }),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Password successfully changed",
+  });
 
 export const zPostUpdateUserData = z.object({
   body: z.optional(
     z.object({
-      name: z.optional(z.string()),
-      image: z.optional(z.string()),
+      name: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The name of the user",
+        }),
+      ),
+      image: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The image of the user",
+        }),
+      ),
     }),
   ),
   path: z.optional(z.never()),
@@ -317,15 +552,36 @@ export const zPostUpdateUserData = z.object({
 /**
  * Success
  */
-export const zPostUpdateUserResponse = z.object({
-  status: z.optional(z.boolean()),
-});
+export const zPostUpdateUserResponse = z
+  .object({
+    status: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description: "Indicates if the update was successful",
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostDeleteUserData = z.object({
   body: z.object({
-    callbackURL: z.optional(z.string()),
-    password: z.optional(z.string()),
-    token: z.optional(z.string()),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description:
+          "The callback URL to redirect to after the user is deleted",
+      }),
+    ),
+    password: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The password of the user is required to delete the user",
+      }),
+    ),
+    token: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The token to delete the user is required",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -334,19 +590,35 @@ export const zPostDeleteUserData = z.object({
 /**
  * User deletion processed successfully
  */
-export const zPostDeleteUserResponse = z.object({
-  success: z.boolean(),
-  message: z.enum(["User deleted", "Verification email sent"]),
-});
+export const zPostDeleteUserResponse = z
+  .object({
+    success: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the operation was successful",
+    }),
+    message: z
+      .enum(["User deleted", "Verification email sent"])
+      .register(z.globalRegistry, {
+        description: "Status message of the deletion process",
+      }),
+  })
+  .register(z.globalRegistry, {
+    description: "User deletion processed successfully",
+  });
 
 export const zGetResetPasswordByTokenData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    token: z.string(),
+    token: z.string().register(z.globalRegistry, {
+      description: "The token to reset the password",
+    }),
   }),
   query: z.optional(
     z.object({
-      callbackURL: z.optional(z.string()),
+      callbackURL: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The URL to redirect the user to reset their password",
+        }),
+      ),
     }),
   ),
 });
@@ -354,14 +626,26 @@ export const zGetResetPasswordByTokenData = z.object({
 /**
  * Success
  */
-export const zGetResetPasswordByTokenResponse = z.object({
-  token: z.optional(z.string()),
-});
+export const zGetResetPasswordByTokenResponse = z
+  .object({
+    token: z.optional(z.string()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostRequestPasswordResetData = z.object({
   body: z.object({
-    email: z.string(),
-    redirectTo: z.optional(z.string()),
+    email: z.string().register(z.globalRegistry, {
+      description:
+        "The email address of the user to send a password reset email to",
+    }),
+    redirectTo: z.optional(
+      z.string().register(z.globalRegistry, {
+        description:
+          "The URL to redirect the user to reset their password. If the token isn't valid or expired, it'll be redirected with a query parameter `?error=INVALID_TOKEN`. If the token is valid, it'll be redirected with a query parameter `?token=VALID_TOKEN",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -370,10 +654,14 @@ export const zPostRequestPasswordResetData = z.object({
 /**
  * Success
  */
-export const zPostRequestPasswordResetResponse = z.object({
-  status: z.optional(z.boolean()),
-  message: z.optional(z.string()),
-});
+export const zPostRequestPasswordResetResponse = z
+  .object({
+    status: z.optional(z.boolean()),
+    message: z.optional(z.string()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zGetListSessionsData = z.object({
   body: z.optional(z.never()),
@@ -384,12 +672,18 @@ export const zGetListSessionsData = z.object({
 /**
  * Success
  */
-export const zGetListSessionsResponse = z.array(zSession);
+export const zGetListSessionsResponse = z
+  .array(zSession)
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostRevokeSessionData = z.object({
   body: z.optional(
     z.object({
-      token: z.string(),
+      token: z.string().register(z.globalRegistry, {
+        description: "The token to revoke",
+      }),
     }),
   ),
   path: z.optional(z.never()),
@@ -399,9 +693,15 @@ export const zPostRevokeSessionData = z.object({
 /**
  * Success
  */
-export const zPostRevokeSessionResponse = z.object({
-  status: z.boolean(),
-});
+export const zPostRevokeSessionResponse = z
+  .object({
+    status: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the session was revoked successfully",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostRevokeSessionsData = z.object({
   body: z.optional(z.record(z.string(), z.unknown())),
@@ -412,9 +712,15 @@ export const zPostRevokeSessionsData = z.object({
 /**
  * Success
  */
-export const zPostRevokeSessionsResponse = z.object({
-  status: z.boolean(),
-});
+export const zPostRevokeSessionsResponse = z
+  .object({
+    status: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if all sessions were revoked successfully",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostRevokeOtherSessionsData = z.object({
   body: z.optional(z.record(z.string(), z.unknown())),
@@ -425,13 +731,23 @@ export const zPostRevokeOtherSessionsData = z.object({
 /**
  * Success
  */
-export const zPostRevokeOtherSessionsResponse = z.object({
-  status: z.boolean(),
-});
+export const zPostRevokeOtherSessionsResponse = z
+  .object({
+    status: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if all other sessions were revoked successfully",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostLinkSocialData = z.object({
   body: z.object({
-    callbackURL: z.optional(z.string()),
+    callbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The URL to redirect to after the user has signed in",
+      }),
+    ),
     provider: z.string(),
     idToken: z.optional(
       z.object({
@@ -443,9 +759,23 @@ export const zPostLinkSocialData = z.object({
       }),
     ),
     requestSignUp: z.optional(z.boolean()),
-    scopes: z.optional(z.array(z.unknown())),
-    errorCallbackURL: z.optional(z.string()),
-    disableRedirect: z.optional(z.boolean()),
+    scopes: z.optional(
+      z.array(z.unknown()).register(z.globalRegistry, {
+        description: "Additional scopes to request from the provider",
+      }),
+    ),
+    errorCallbackURL: z.optional(
+      z.string().register(z.globalRegistry, {
+        description:
+          "The URL to redirect to if there is an error during the link process",
+      }),
+    ),
+    disableRedirect: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description:
+          "Disable automatic redirection to the provider. Useful for handling the redirection yourself",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -454,11 +784,22 @@ export const zPostLinkSocialData = z.object({
 /**
  * Success
  */
-export const zPostLinkSocialResponse = z.object({
-  url: z.optional(z.string()),
-  redirect: z.boolean(),
-  status: z.optional(z.boolean()),
-});
+export const zPostLinkSocialResponse = z
+  .object({
+    url: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The authorization URL to redirect the user to",
+      }),
+    ),
+    redirect: z.boolean().register(z.globalRegistry, {
+      description:
+        "Indicates if the user should be redirected to the authorization URL",
+    }),
+    status: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zGetListAccountsData = z.object({
   body: z.optional(z.never()),
@@ -469,24 +810,36 @@ export const zGetListAccountsData = z.object({
 /**
  * Success
  */
-export const zGetListAccountsResponse = z.array(
-  z.object({
-    id: z.string(),
-    providerId: z.string(),
-    createdAt: z.iso.datetime(),
-    updatedAt: z.iso.datetime(),
-    accountId: z.string(),
-    scopes: z.array(z.string()),
-  }),
-);
+export const zGetListAccountsResponse = z
+  .array(
+    z.object({
+      id: z.string(),
+      providerId: z.string(),
+      createdAt: z.iso.datetime(),
+      updatedAt: z.iso.datetime(),
+      accountId: z.string(),
+      scopes: z.array(z.string()),
+    }),
+  )
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zGetDeleteUserCallbackData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),
   query: z.optional(
     z.object({
-      token: z.optional(z.string()),
-      callbackURL: z.optional(z.string()),
+      token: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The token to verify the deletion request",
+        }),
+      ),
+      callbackURL: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The URL to redirect to after deletion",
+        }),
+      ),
     }),
   ),
 });
@@ -494,10 +847,18 @@ export const zGetDeleteUserCallbackData = z.object({
 /**
  * User successfully deleted
  */
-export const zGetDeleteUserCallbackResponse = z.object({
-  success: z.boolean(),
-  message: z.enum(["User deleted"]),
-});
+export const zGetDeleteUserCallbackResponse = z
+  .object({
+    success: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the deletion was successful",
+    }),
+    message: z.enum(["User deleted"]).register(z.globalRegistry, {
+      description: "Confirmation message",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "User successfully deleted",
+  });
 
 export const zPostUnlinkAccountData = z.object({
   body: z.object({
@@ -511,15 +872,29 @@ export const zPostUnlinkAccountData = z.object({
 /**
  * Success
  */
-export const zPostUnlinkAccountResponse = z.object({
-  status: z.optional(z.boolean()),
-});
+export const zPostUnlinkAccountResponse = z
+  .object({
+    status: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostRefreshTokenData = z.object({
   body: z.object({
-    providerId: z.string(),
-    accountId: z.optional(z.string()),
-    userId: z.optional(z.string()),
+    providerId: z.string().register(z.globalRegistry, {
+      description: "The provider ID for the OAuth provider",
+    }),
+    accountId: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The account ID associated with the refresh token",
+      }),
+    ),
+    userId: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The user ID associated with the account",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -528,20 +903,34 @@ export const zPostRefreshTokenData = z.object({
 /**
  * Access token refreshed successfully
  */
-export const zPostRefreshTokenResponse = z.object({
-  tokenType: z.optional(z.string()),
-  idToken: z.optional(z.string()),
-  accessToken: z.optional(z.string()),
-  refreshToken: z.optional(z.string()),
-  accessTokenExpiresAt: z.optional(z.iso.datetime()),
-  refreshTokenExpiresAt: z.optional(z.iso.datetime()),
-});
+export const zPostRefreshTokenResponse = z
+  .object({
+    tokenType: z.optional(z.string()),
+    idToken: z.optional(z.string()),
+    accessToken: z.optional(z.string()),
+    refreshToken: z.optional(z.string()),
+    accessTokenExpiresAt: z.optional(z.iso.datetime()),
+    refreshTokenExpiresAt: z.optional(z.iso.datetime()),
+  })
+  .register(z.globalRegistry, {
+    description: "Access token refreshed successfully",
+  });
 
 export const zPostGetAccessTokenData = z.object({
   body: z.object({
-    providerId: z.string(),
-    accountId: z.optional(z.string()),
-    userId: z.optional(z.string()),
+    providerId: z.string().register(z.globalRegistry, {
+      description: "The provider ID for the OAuth provider",
+    }),
+    accountId: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The account ID associated with the refresh token",
+      }),
+    ),
+    userId: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The user ID associated with the account",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -550,18 +939,25 @@ export const zPostGetAccessTokenData = z.object({
 /**
  * A Valid access token
  */
-export const zPostGetAccessTokenResponse = z.object({
-  tokenType: z.optional(z.string()),
-  idToken: z.optional(z.string()),
-  accessToken: z.optional(z.string()),
-  refreshToken: z.optional(z.string()),
-  accessTokenExpiresAt: z.optional(z.iso.datetime()),
-  refreshTokenExpiresAt: z.optional(z.iso.datetime()),
-});
+export const zPostGetAccessTokenResponse = z
+  .object({
+    tokenType: z.optional(z.string()),
+    idToken: z.optional(z.string()),
+    accessToken: z.optional(z.string()),
+    refreshToken: z.optional(z.string()),
+    accessTokenExpiresAt: z.optional(z.iso.datetime()),
+    refreshTokenExpiresAt: z.optional(z.iso.datetime()),
+  })
+  .register(z.globalRegistry, {
+    description: "A Valid access token",
+  });
 
 export const zPostAccountInfoData = z.object({
   body: z.object({
-    accountId: z.string(),
+    accountId: z.string().register(z.globalRegistry, {
+      description:
+        "The provider given account id for which to get the account info",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -570,16 +966,20 @@ export const zPostAccountInfoData = z.object({
 /**
  * Success
  */
-export const zPostAccountInfoResponse = z.object({
-  user: z.object({
-    id: z.string(),
-    name: z.optional(z.string()),
-    email: z.optional(z.string()),
-    image: z.optional(z.string()),
-    emailVerified: z.boolean(),
-  }),
-  data: z.record(z.string(), z.unknown()),
-});
+export const zPostAccountInfoResponse = z
+  .object({
+    user: z.object({
+      id: z.string(),
+      name: z.optional(z.string()),
+      email: z.optional(z.string()),
+      image: z.optional(z.string()),
+      emailVerified: z.boolean(),
+    }),
+    data: z.record(z.string(), z.unknown()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zGetOkData = z.object({
   body: z.optional(z.never()),
@@ -590,9 +990,15 @@ export const zGetOkData = z.object({
 /**
  * API is working
  */
-export const zGetOkResponse = z.object({
-  ok: z.boolean(),
-});
+export const zGetOkResponse = z
+  .object({
+    ok: z.boolean().register(z.globalRegistry, {
+      description: "Indicates if the API is working",
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "API is working",
+  });
 
 export const zGetErrorData = z.object({
   body: z.optional(z.never()),
@@ -603,12 +1009,18 @@ export const zGetErrorData = z.object({
 /**
  * The HTML content of the error page
  */
-export const zGetErrorResponse = z.string();
+export const zGetErrorResponse = z.string().register(z.globalRegistry, {
+  description: "The HTML content of the error page",
+});
 
 export const zPostEmailOtpSendVerificationOtpData = z.object({
   body: z.object({
-    email: z.string(),
-    type: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address to send the OTP",
+    }),
+    type: z.string().register(z.globalRegistry, {
+      description: "Type of the OTP",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -617,15 +1029,25 @@ export const zPostEmailOtpSendVerificationOtpData = z.object({
 /**
  * Success
  */
-export const zPostEmailOtpSendVerificationOtpResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zPostEmailOtpSendVerificationOtpResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostEmailOtpCheckVerificationOtpData = z.object({
   body: z.object({
-    email: z.string(),
-    type: z.string(),
-    otp: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address the OTP was sent to",
+    }),
+    type: z.string().register(z.globalRegistry, {
+      description: "Type of the OTP",
+    }),
+    otp: z.string().register(z.globalRegistry, {
+      description: "OTP to verify",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -634,14 +1056,22 @@ export const zPostEmailOtpCheckVerificationOtpData = z.object({
 /**
  * Success
  */
-export const zPostEmailOtpCheckVerificationOtpResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zPostEmailOtpCheckVerificationOtpResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostEmailOtpVerifyEmailData = z.object({
   body: z.object({
-    email: z.string(),
-    otp: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address to verify",
+    }),
+    otp: z.string().register(z.globalRegistry, {
+      description: "OTP to verify",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -650,17 +1080,34 @@ export const zPostEmailOtpVerifyEmailData = z.object({
 /**
  * Success
  */
-export const zPostEmailOtpVerifyEmailResponse = z.object({
-  status: z.optional(z.literal(true)),
-  token: z.optional(z.string()),
-  user: z.optional(zUser),
-  required: z.optional(z.unknown()),
-});
+export const zPostEmailOtpVerifyEmailResponse = z
+  .object({
+    status: z.optional(
+      z.literal(true).register(z.globalRegistry, {
+        description: "Indicates if the verification was successful",
+      }),
+    ),
+    token: z.optional(
+      z.string().register(z.globalRegistry, {
+        description:
+          "Session token if autoSignInAfterVerification is enabled, otherwise null",
+      }),
+    ),
+    user: z.optional(zUser),
+    required: z.optional(z.unknown()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostSignInEmailOtpData = z.object({
   body: z.object({
-    email: z.string(),
-    otp: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address to sign in",
+    }),
+    otp: z.string().register(z.globalRegistry, {
+      description: "OTP sent to the email",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -669,14 +1116,22 @@ export const zPostSignInEmailOtpData = z.object({
 /**
  * Success
  */
-export const zPostSignInEmailOtpResponse = z.object({
-  token: z.string(),
-  user: zUser,
-});
+export const zPostSignInEmailOtpResponse = z
+  .object({
+    token: z.string().register(z.globalRegistry, {
+      description: "Session token for the authenticated session",
+    }),
+    user: zUser,
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostForgetPasswordEmailOtpData = z.object({
   body: z.object({
-    email: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address to send the OTP",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -685,15 +1140,29 @@ export const zPostForgetPasswordEmailOtpData = z.object({
 /**
  * Success
  */
-export const zPostForgetPasswordEmailOtpResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zPostForgetPasswordEmailOtpResponse = z
+  .object({
+    success: z.optional(
+      z.boolean().register(z.globalRegistry, {
+        description: "Indicates if the OTP was sent successfully",
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zPostEmailOtpResetPasswordData = z.object({
   body: z.object({
-    email: z.string(),
-    otp: z.string(),
-    password: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "Email address to reset the password",
+    }),
+    otp: z.string().register(z.globalRegistry, {
+      description: "OTP sent to the email",
+    }),
+    password: z.string().register(z.globalRegistry, {
+      description: "New password",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -702,14 +1171,23 @@ export const zPostEmailOtpResetPasswordData = z.object({
 /**
  * Success
  */
-export const zPostEmailOtpResetPasswordResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zPostEmailOtpResetPasswordResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });
 
 export const zSetRoleData = z.object({
   body: z.object({
-    userId: z.string(),
-    role: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
+    role: z.string().register(z.globalRegistry, {
+      description:
+        "The role to set, this can be a string or an array of strings. Eg: `admin` or `[admin, user]`",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -718,16 +1196,24 @@ export const zSetRoleData = z.object({
 /**
  * User role updated
  */
-export const zSetRoleResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zSetRoleResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User role updated",
+  });
 
 export const zGetUserData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),
   query: z.optional(
     z.object({
-      id: z.optional(z.string()),
+      id: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The id of the User",
+        }),
+      ),
     }),
   ),
 });
@@ -735,15 +1221,25 @@ export const zGetUserData = z.object({
 /**
  * User
  */
-export const zGetUserResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zGetUserResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User",
+  });
 
 export const zCreateUserData = z.object({
   body: z.object({
-    email: z.string(),
-    password: z.string(),
-    name: z.string(),
+    email: z.string().register(z.globalRegistry, {
+      description: "The email of the user",
+    }),
+    password: z.string().register(z.globalRegistry, {
+      description: "The password of the user",
+    }),
+    name: z.string().register(z.globalRegistry, {
+      description: "The name of the user",
+    }),
     role: z.optional(z.string()),
     data: z.optional(z.string()),
   }),
@@ -754,14 +1250,22 @@ export const zCreateUserData = z.object({
 /**
  * User created
  */
-export const zCreateUserResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zCreateUserResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User created",
+  });
 
 export const zUpdateUserData = z.object({
   body: z.object({
-    userId: z.string(),
-    data: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
+    data: z.string().register(z.globalRegistry, {
+      description: "The user data to update",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -770,9 +1274,13 @@ export const zUpdateUserData = z.object({
 /**
  * User updated
  */
-export const zUpdateUserResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zUpdateUserResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User updated",
+  });
 
 export const zListUsersData = z.object({
   body: z.optional(z.never()),
@@ -780,15 +1288,41 @@ export const zListUsersData = z.object({
   query: z.optional(
     z.object({
       searchValue: z.optional(z.string()),
-      searchField: z.optional(z.string()),
-      searchOperator: z.optional(z.string()),
+      searchField: z.optional(
+        z.string().register(z.globalRegistry, {
+          description:
+            'The field to search in, defaults to email. Can be `email` or `name`. Eg: "name"',
+        }),
+      ),
+      searchOperator: z.optional(
+        z.string().register(z.globalRegistry, {
+          description:
+            'The operator to use for the search. Can be `contains`, `starts_with` or `ends_with`. Eg: "contains"',
+        }),
+      ),
       limit: z.optional(z.string()),
       offset: z.optional(z.string()),
-      sortBy: z.optional(z.string()),
-      sortDirection: z.optional(z.string()),
-      filterField: z.optional(z.string()),
+      sortBy: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The field to sort by",
+        }),
+      ),
+      sortDirection: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The direction to sort by",
+        }),
+      ),
+      filterField: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The field to filter by",
+        }),
+      ),
       filterValue: z.optional(z.string()),
-      filterOperator: z.optional(z.string()),
+      filterOperator: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "The operator to use for the filter",
+        }),
+      ),
     }),
   ),
 });
@@ -796,16 +1330,22 @@ export const zListUsersData = z.object({
 /**
  * List of users
  */
-export const zListUsersResponse = z.object({
-  users: z.array(zUser),
-  total: z.number(),
-  limit: z.optional(z.number()),
-  offset: z.optional(z.number()),
-});
+export const zListUsersResponse = z
+  .object({
+    users: z.array(zUser),
+    total: z.number(),
+    limit: z.optional(z.number()),
+    offset: z.optional(z.number()),
+  })
+  .register(z.globalRegistry, {
+    description: "List of users",
+  });
 
 export const zListUserSessionsData = z.object({
   body: z.object({
-    userId: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -814,13 +1354,19 @@ export const zListUserSessionsData = z.object({
 /**
  * List of user sessions
  */
-export const zListUserSessionsResponse = z.object({
-  sessions: z.optional(z.array(zSession)),
-});
+export const zListUserSessionsResponse = z
+  .object({
+    sessions: z.optional(z.array(zSession)),
+  })
+  .register(z.globalRegistry, {
+    description: "List of user sessions",
+  });
 
 export const zUnbanUserData = z.object({
   body: z.object({
-    userId: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -829,15 +1375,29 @@ export const zUnbanUserData = z.object({
 /**
  * User unbanned
  */
-export const zUnbanUserResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zUnbanUserResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User unbanned",
+  });
 
 export const zBanUserData = z.object({
   body: z.object({
-    userId: z.string(),
-    banReason: z.optional(z.string()),
-    banExpiresIn: z.optional(z.number()),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
+    banReason: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "The reason for the ban",
+      }),
+    ),
+    banExpiresIn: z.optional(
+      z.number().register(z.globalRegistry, {
+        description: "The number of seconds until the ban expires",
+      }),
+    ),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -846,13 +1406,19 @@ export const zBanUserData = z.object({
 /**
  * User banned
  */
-export const zBanUserResponse = z.object({
-  user: z.optional(zUser),
-});
+export const zBanUserResponse = z
+  .object({
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "User banned",
+  });
 
 export const zImpersonateUserData = z.object({
   body: z.object({
-    userId: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -861,10 +1427,14 @@ export const zImpersonateUserData = z.object({
 /**
  * Impersonation session created
  */
-export const zImpersonateUserResponse = z.object({
-  session: z.optional(zSession),
-  user: z.optional(zUser),
-});
+export const zImpersonateUserResponse = z
+  .object({
+    session: z.optional(zSession),
+    user: z.optional(zUser),
+  })
+  .register(z.globalRegistry, {
+    description: "Impersonation session created",
+  });
 
 export const zPostAdminStopImpersonatingData = z.object({
   body: z.optional(z.never()),
@@ -874,7 +1444,9 @@ export const zPostAdminStopImpersonatingData = z.object({
 
 export const zRevokeUserSessionData = z.object({
   body: z.object({
-    sessionToken: z.string(),
+    sessionToken: z.string().register(z.globalRegistry, {
+      description: "The session token",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -883,13 +1455,19 @@ export const zRevokeUserSessionData = z.object({
 /**
  * Session revoked
  */
-export const zRevokeUserSessionResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zRevokeUserSessionResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Session revoked",
+  });
 
 export const zRevokeUserSessionsData = z.object({
   body: z.object({
-    userId: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -898,13 +1476,19 @@ export const zRevokeUserSessionsData = z.object({
 /**
  * Sessions revoked
  */
-export const zRevokeUserSessionsResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zRevokeUserSessionsResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Sessions revoked",
+  });
 
 export const zRemoveUserData = z.object({
   body: z.object({
-    userId: z.string(),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -913,14 +1497,22 @@ export const zRemoveUserData = z.object({
 /**
  * User removed
  */
-export const zRemoveUserResponse = z.object({
-  success: z.optional(z.boolean()),
-});
+export const zRemoveUserResponse = z
+  .object({
+    success: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "User removed",
+  });
 
 export const zSetUserPasswordData = z.object({
   body: z.object({
-    newPassword: z.string(),
-    userId: z.string(),
+    newPassword: z.string().register(z.globalRegistry, {
+      description: "The new password",
+    }),
+    userId: z.string().register(z.globalRegistry, {
+      description: "The user id",
+    }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -929,15 +1521,27 @@ export const zSetUserPasswordData = z.object({
 /**
  * Password set
  */
-export const zSetUserPasswordResponse = z.object({
-  status: z.optional(z.boolean()),
-});
+export const zSetUserPasswordResponse = z
+  .object({
+    status: z.optional(z.boolean()),
+  })
+  .register(z.globalRegistry, {
+    description: "Password set",
+  });
 
 export const zPostAdminHasPermissionData = z.object({
   body: z.optional(
     z.object({
-      permission: z.optional(z.record(z.string(), z.unknown())),
-      permissions: z.record(z.string(), z.unknown()),
+      permission: z.optional(
+        z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+          description: "The permission to check",
+        }),
+      ),
+      permissions: z
+        .record(z.string(), z.unknown())
+        .register(z.globalRegistry, {
+          description: "The permission to check",
+        }),
     }),
   ),
   path: z.optional(z.never()),
@@ -947,7 +1551,11 @@ export const zPostAdminHasPermissionData = z.object({
 /**
  * Success
  */
-export const zPostAdminHasPermissionResponse = z.object({
-  error: z.optional(z.string()),
-  success: z.boolean(),
-});
+export const zPostAdminHasPermissionResponse = z
+  .object({
+    error: z.optional(z.string()),
+    success: z.boolean(),
+  })
+  .register(z.globalRegistry, {
+    description: "Success",
+  });

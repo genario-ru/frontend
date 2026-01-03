@@ -1,4 +1,5 @@
 import { useStore } from "@tanstack/react-form";
+import { useNavigate } from "@tanstack/react-router";
 import { isEmpty } from "es-toolkit/compat";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { ArrowLeftIcon } from "lucide-react";
@@ -24,6 +25,7 @@ import {
 type VerifyOTPFormProps = { email?: string };
 
 export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
+  const navigate = useNavigate();
   const { showErrorToast, showSuccessToast } = useToast();
 
   const [blockedSecondsLeft, { startCountdown, resetCountdown }] = useCountdown(
@@ -56,29 +58,33 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
     isSuccess: isSignInSuccess,
   } = useSignInEmailOtp({
     onError: (error) => {
-      if (error instanceof APIError) {
-        switch (error.cause.status) {
-          case 400:
-            form.setFieldMeta("code", (meta) => ({
-              ...meta,
-              errorMap: {
-                ...meta.errorMap,
-                onSubmit: "Неправильный код",
-              },
-            }));
-            break;
+      console.log(error);
 
-          default:
-            showErrorToast({
-              description:
-                "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
-            });
-        }
+      if (error instanceof APIError && error.cause.status === 400) {
+        form.setFieldMeta("code", (meta) => ({
+          ...meta,
+          errorMap: {
+            ...meta.errorMap,
+            onSubmit: "Неправильный код",
+          },
+        }));
+
+        showErrorToast({
+          description: "Неправильный код",
+        });
+      } else {
+        showErrorToast({
+          description:
+            "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
+        });
       }
     },
-    onSuccess: () => {
-      // Делаем hard переход, чтобы Next.js Cache не обломал нам всю малину
-      window.location.href = "/";
+    onSuccess: async () => {
+      navigate({
+        to: "/",
+        replace: true,
+        reloadDocument: true,
+      });
     },
   });
 

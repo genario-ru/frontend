@@ -11,8 +11,14 @@ createClient({
   input,
   output,
   plugins: [
-    { name: "zod" },
-    { name: "@hey-api/client-fetch" },
+    {
+      name: "zod",
+      metadata: true,
+    },
+    {
+      name: "@hey-api/client-fetch",
+      runtimeConfigPath: "src/lib/api/utils/api-client.ts",
+    },
     {
       name: "@hey-api/typescript",
       enums: "typescript",

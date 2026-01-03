@@ -9,14 +9,13 @@ export type User = {
   name: string;
   email: string;
   emailVerified: boolean;
-  image?: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
   readonly role?: string;
   readonly banned?: boolean;
-  readonly banReason?: string;
-  readonly banExpires?: string;
-  username: string;
+  banReason?: string | null;
+  banExpires?: string | null;
 };
 
 export type Session = {
@@ -28,7 +27,7 @@ export type Session = {
   ipAddress?: string;
   userAgent?: string;
   userId: string;
-  impersonatedBy?: string;
+  impersonatedBy?: string | null;
 };
 
 export type Account = {
@@ -61,10 +60,11 @@ export type UserWritable = {
   name: string;
   email: string;
   emailVerified: boolean;
-  image?: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
-  username: string;
+  banReason?: null;
+  banExpires?: null;
 };
 
 export type SocialSignInData = {
@@ -235,7 +235,7 @@ export type GetGetSessionResponses = {
   200: {
     session: Session;
     user: User;
-  };
+  } | null;
 };
 
 export type GetGetSessionResponse =
@@ -1184,6 +1184,9 @@ export type PostDeleteUserResponse =
 export type GetResetPasswordByTokenData = {
   body?: never;
   path: {
+    /**
+     * The token to reset the password
+     */
     token: string;
   };
   query?: {
