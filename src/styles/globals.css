@@ -1,23 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource-variable/inter";
 @import "./themes.css";
 
-body {
-  @apply text-neutral-8 border-neutral-5;
-  
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-@theme {
+@theme inline {
   /* Neutral colors */
   --color-neutral-1: var(--neutral-1);
   --color-neutral-2: var(--neutral-2);
@@ -47,6 +33,9 @@ code {
   --color-negative-6: var(--negative-6);
   --color-negative-7: var(--negative-7);
   --color-negative-8: var(--negative-8);
+
+  /* Font */
+  --font-sans: "Inter Variable", sans-serif;
 
   /* Z-index */
   ---z-index-1: -1;
@@ -106,13 +95,19 @@ code {
   }
 }
 
-.hide-scrollbar {
-  /* Firefox */
-  scrollbar-width: none;
+@layer base {
+  html, body {
+    @apply text-neutral-8 border-neutral-5 font-sans;
+  }
 
-  /* WebKit browsers (Chrome, Safari) */
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  .hide-scrollbar {
+    /* Firefox */
+    scrollbar-width: none;
+
+    /* WebKit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
 }
