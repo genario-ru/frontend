@@ -16,13 +16,13 @@ export const Progress = ({
       value={value}
       max={max}
       className={cn(
-        "bg-neutral-12/20 h-2 w-full overflow-hidden rounded-full",
+        "bg-neutral-8/20 h-2 w-full overflow-hidden rounded-full",
         className,
       )}
       {...props}
     >
       <ProgressPrimitive.Indicator
-        className="bg-neutral-12 h-full w-full flex-1 rounded-full"
+        className="bg-neutral-8 h-full w-full flex-1 rounded-full"
         style={{
           transform: `translateX(-${Math.ceil(100 - validValue * 100)}%)`,
         }}

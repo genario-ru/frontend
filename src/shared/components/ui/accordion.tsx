@@ -62,7 +62,7 @@ export const AccordionTrigger = ({
     {...props}
   >
     {children}
-    <ChevronDown className="text-neutral-11 h-4 w-4 shrink-0" />
+    <ChevronDown className="text-neutral-7 h-4 w-4 shrink-0" />
   </AccordionPrimitive.Trigger>
 );
 

@@ -32,7 +32,7 @@ export const AppSidebarLayout = ({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="bg-new-neutral-1 w-(--sidebar-width) p-0 [&>button]:hidden"
+          className="bg-neutral-1 w-(--sidebar-width) p-0 [&>button]:hidden"
           style={
             {
               "--sidebar-width": APP_SIDEBAR_WIDTH_MOBILE,

@@ -39,7 +39,7 @@ export const BlockDescription = ({
   children,
   ...props
 }: ComponentProps<"p">) => (
-  <p className={cn("text-neutral-10", className)} {...props}>
+  <p className={cn("text-neutral-6", className)} {...props}>
     {children}
   </p>
 );

@@ -52,7 +52,7 @@ export const CommandInput = ({
   >
     {isLoading ? <Spinner /> : <LucideIcon icon={SearchIcon} size="sm" />}
     <CommandPrimitive.Input
-      className="placeholder:text-new-neutral-6 flex h-12 w-full bg-transparent py-3 outline-none disabled:cursor-not-allowed disabled:opacity-50"
+      className="placeholder:text-neutral-6 flex h-12 w-full bg-transparent py-3 outline-none disabled:cursor-not-allowed disabled:opacity-50"
       {...props}
     />
   </div>
@@ -113,7 +113,7 @@ export const CommandGroup = ({
 }: ComponentProps<typeof CommandPrimitive.Group>) => (
   <CommandPrimitive.Group
     className={cn(
-      "[&_[cmdk-group-heading]]:text-new-neutral-7 [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5",
+      "[&_[cmdk-group-heading]]:text-neutral-7 [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5",
       "[&_[cmdk-group-items]]:flex [&_[cmdk-group-items]]:flex-col [&_[cmdk-group-items]]:gap-1",
       "overflow-hidden p-1.5 outline-none",
       className,
@@ -127,7 +127,7 @@ export const CommandSeparator = ({
   ...props
 }: ComponentProps<typeof CommandPrimitive.Separator>) => (
   <CommandPrimitive.Separator
-    className={cn("bg-new-neutral-5 h-px", className)}
+    className={cn("bg-neutral-5 h-px", className)}
     {...props}
   />
 );
@@ -143,8 +143,8 @@ const commandItemClassName = ({
     "flex cursor-default items-center gap-2 rounded-xl px-3 py-2 outline-none select-none",
     "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
     {
-      "data-[selected=true]:bg-new-neutral-2": !active,
-      "bg-new-neutral-2 data-[selected=true]:bg-new-neutral-3": active,
+      "data-[selected=true]:bg-neutral-2": !active,
+      "bg-neutral-2 data-[selected=true]:bg-neutral-3": active,
     },
     className,
   );
@@ -164,7 +164,7 @@ export const CommandItem = ({
   >
     {children}
     <CheckIcon
-      className={cn("stroke-new-neutral-8 ml-auto opacity-0", {
+      className={cn("stroke-neutral-8 ml-auto opacity-0", {
         "opacity-100": isActive,
       })}
     />
@@ -195,7 +195,7 @@ export const CommandShortcut = ({
 }: HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
-      className={cn("text-new-neutral-6 ml-auto text-xs", className)}
+      className={cn("text-neutral-6 ml-auto text-xs", className)}
       {...props}
     />
   );

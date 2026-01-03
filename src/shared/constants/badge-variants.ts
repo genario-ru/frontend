@@ -24,34 +24,34 @@ export const badgeVariants = cva(
       {
         color: "neutral",
         variant: "secondary",
-        className: "bg-new-neutral-2 text-new-neutral-8",
+        className: "bg-neutral-2 text-neutral-8",
       },
       {
         color: "neutral",
         variant: "tertiary",
-        className: "bg-new-neutral-1 text-new-neutral-8",
+        className: "bg-neutral-1 text-neutral-8",
       },
       // Positive
       {
         color: "positive",
         variant: "secondary",
-        className: "bg-new-positive-1 text-new-positive-8",
+        className: "bg-positive-1 text-positive-8",
       },
       {
         color: "positive",
         variant: "tertiary",
-        className: "bg-new-neutral-1 text-new-positive-8",
+        className: "bg-neutral-1 text-positive-8",
       },
       // Negative
       {
         color: "negative",
         variant: "secondary",
-        className: "bg-new-negative-1 text-new-negative-8",
+        className: "bg-negative-1 text-negative-8",
       },
       {
         color: "negative",
         variant: "tertiary",
-        className: "bg-new-neutral-1 text-new-negative-8",
+        className: "bg-neutral-1 text-negative-8",
       },
     ],
     defaultVariants: {

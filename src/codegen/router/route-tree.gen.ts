@@ -8,144 +8,144 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./../../routes/__root"
-import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route"
-import { Route as AppRouteRouteImport } from "./../../routes/_app/route"
-import { Route as AppIndexRouteImport } from "./../../routes/_app/index"
-import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp"
-import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in"
+import { Route as rootRouteImport } from "./../../routes/__root";
+import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route";
+import { Route as AppRouteRouteImport } from "./../../routes/_app/route";
+import { Route as AppIndexRouteImport } from "./../../routes/_app/index";
+import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
+import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: "/_auth",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const AppRouteRoute = AppRouteRouteImport.update({
   id: "/_app",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const AppIndexRoute = AppIndexRouteImport.update({
   id: "/",
   path: "/",
   getParentRoute: () => AppRouteRoute,
-} as any)
+} as any);
 const AuthVerifyOtpRoute = AuthVerifyOtpRouteImport.update({
   id: "/verify-otp",
   path: "/verify-otp",
   getParentRoute: () => AuthRouteRoute,
-} as any)
+} as any);
 const AuthSignInRoute = AuthSignInRouteImport.update({
   id: "/sign-in",
   path: "/sign-in",
   getParentRoute: () => AuthRouteRoute,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  "/sign-in": typeof AuthSignInRoute
-  "/verify-otp": typeof AuthVerifyOtpRoute
-  "/": typeof AppIndexRoute
+  "/sign-in": typeof AuthSignInRoute;
+  "/verify-otp": typeof AuthVerifyOtpRoute;
+  "/": typeof AppIndexRoute;
 }
 export interface FileRoutesByTo {
-  "/sign-in": typeof AuthSignInRoute
-  "/verify-otp": typeof AuthVerifyOtpRoute
-  "/": typeof AppIndexRoute
+  "/sign-in": typeof AuthSignInRoute;
+  "/verify-otp": typeof AuthVerifyOtpRoute;
+  "/": typeof AppIndexRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  "/_app": typeof AppRouteRouteWithChildren
-  "/_auth": typeof AuthRouteRouteWithChildren
-  "/_auth/sign-in": typeof AuthSignInRoute
-  "/_auth/verify-otp": typeof AuthVerifyOtpRoute
-  "/_app/": typeof AppIndexRoute
+  __root__: typeof rootRouteImport;
+  "/_app": typeof AppRouteRouteWithChildren;
+  "/_auth": typeof AuthRouteRouteWithChildren;
+  "/_auth/sign-in": typeof AuthSignInRoute;
+  "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
+  "/_app/": typeof AppIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/sign-in" | "/verify-otp" | "/"
-  fileRoutesByTo: FileRoutesByTo
-  to: "/sign-in" | "/verify-otp" | "/"
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/sign-in" | "/verify-otp" | "/";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/sign-in" | "/verify-otp" | "/";
   id:
     | "__root__"
     | "/_app"
     | "/_auth"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
-    | "/_app/"
-  fileRoutesById: FileRoutesById
+    | "/_app/";
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  AppRouteRoute: typeof AppRouteRouteWithChildren
-  AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  AppRouteRoute: typeof AppRouteRouteWithChildren;
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren;
 }
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
     "/_auth": {
-      id: "/_auth"
-      path: ""
-      fullPath: ""
-      preLoaderRoute: typeof AuthRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: "/_auth";
+      path: "";
+      fullPath: "";
+      preLoaderRoute: typeof AuthRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/_app": {
-      id: "/_app"
-      path: ""
-      fullPath: ""
-      preLoaderRoute: typeof AppRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: "/_app";
+      path: "";
+      fullPath: "";
+      preLoaderRoute: typeof AppRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/_app/": {
-      id: "/_app/"
-      path: "/"
-      fullPath: "/"
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRouteRoute
-    }
+      id: "/_app/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof AppIndexRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
     "/_auth/verify-otp": {
-      id: "/_auth/verify-otp"
-      path: "/verify-otp"
-      fullPath: "/verify-otp"
-      preLoaderRoute: typeof AuthVerifyOtpRouteImport
-      parentRoute: typeof AuthRouteRoute
-    }
+      id: "/_auth/verify-otp";
+      path: "/verify-otp";
+      fullPath: "/verify-otp";
+      preLoaderRoute: typeof AuthVerifyOtpRouteImport;
+      parentRoute: typeof AuthRouteRoute;
+    };
     "/_auth/sign-in": {
-      id: "/_auth/sign-in"
-      path: "/sign-in"
-      fullPath: "/sign-in"
-      preLoaderRoute: typeof AuthSignInRouteImport
-      parentRoute: typeof AuthRouteRoute
-    }
+      id: "/_auth/sign-in";
+      path: "/sign-in";
+      fullPath: "/sign-in";
+      preLoaderRoute: typeof AuthSignInRouteImport;
+      parentRoute: typeof AuthRouteRoute;
+    };
   }
 }
 
 interface AppRouteRouteChildren {
-  AppIndexRoute: typeof AppIndexRoute
+  AppIndexRoute: typeof AppIndexRoute;
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppIndexRoute: AppIndexRoute,
-}
+};
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
   AppRouteRouteChildren,
-)
+);
 
 interface AuthRouteRouteChildren {
-  AuthSignInRoute: typeof AuthSignInRoute
-  AuthVerifyOtpRoute: typeof AuthVerifyOtpRoute
+  AuthSignInRoute: typeof AuthSignInRoute;
+  AuthVerifyOtpRoute: typeof AuthVerifyOtpRoute;
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
   AuthSignInRoute: AuthSignInRoute,
   AuthVerifyOtpRoute: AuthVerifyOtpRoute,
-}
+};
 
 const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
-)
+);
 
 const rootRouteChildren: RootRouteChildren = {
   AppRouteRoute: AppRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();

@@ -58,7 +58,7 @@ export const ProfileInfo = ({
         <p className="font-semibole">{name}</p>
         <div className="flex items-center gap-2">
           <StarIcon className="size-4 fill-yellow-500 stroke-yellow-500" />
-          <p className="text-neutral-11 text-sm">
+          <p className="text-neutral-7 text-sm">
             5.0 ({reviewsAmount} отзыва)
           </p>
         </div>

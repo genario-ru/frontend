@@ -40,7 +40,7 @@ export const AppSidebarUserMenu = () => {
               />
               <div>
                 <p className="text-sm font-medium">{sessionData?.user.name}</p>
-                <p className="text-neutral-11 text-xs">
+                <p className="text-neutral-7 text-xs">
                   {sessionData?.user.email}
                 </p>
               </div>
@@ -51,12 +51,12 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <Link to="/">
-              <BoltIcon size={20} className="stroke-neutral-12" />
+              <BoltIcon size={20} className="stroke-neutral-8" />
               Настройки
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <WalletCardsIcon size={20} className="stroke-neutral-12" />
+            <WalletCardsIcon size={20} className="stroke-neutral-8" />
             Платежи
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -64,9 +64,9 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={signOut}
-            className="text-negative-9 hover:bg-negative-3 focus:bg-negative-3 active:bg-negative-3"
+            className="text-negative-6 hover:bg-negative-3 focus:bg-negative-3 active:bg-negative-3"
           >
-            <LogOutIcon size={20} className="stroke-negative-9" />
+            <LogOutIcon size={20} className="stroke-negative-6" />
             Выйти
           </DropdownMenuItem>
         </DropdownMenuGroup>

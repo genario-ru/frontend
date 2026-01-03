@@ -29,9 +29,9 @@ export const CheckboxChipsGroupItem = ({
     <CheckboxPrimitive.Root
       className={cn(
         "rounded-4 min-h-12 w-fit shrink-0 px-5 py-2.5 font-medium duration-200 outline-none",
-        "bg-new-neutral-2 hover:bg-new-neutral-3 active:bg-new-neutral-3",
-        "focus-visible:ring-new-neutral-8 focus-visible:ring-2",
-        "data-[state=checked]:ring-new-neutral-8 data-[state=checked]:ring-2",
+        "bg-neutral-2 hover:bg-neutral-3 active:bg-neutral-3",
+        "focus-visible:ring-neutral-8 focus-visible:ring-2",
+        "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}

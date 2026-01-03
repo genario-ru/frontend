@@ -54,7 +54,7 @@ export const SheetOverlay = ({
   <SheetPrimitive.Overlay
     ref={ref}
     className={cn(
-      "data-[state=open]:animate-in bg-neutral-11/30 dark:bg-neutral-1/60 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 backdrop-blur duration-200",
+      "data-[state=open]:animate-in bg-neutral-7/30 dark:bg-neutral-1/60 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 backdrop-blur duration-200",
       className,
     )}
     {...props}
@@ -109,7 +109,7 @@ export const SheetDescription = ({
 }: SheetDescriptionProps) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-neutral-11 text-sm", className)}
+    className={cn("text-neutral-7 text-sm", className)}
     {...props}
   />
 );

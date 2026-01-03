@@ -8,15 +8,15 @@ import {
 import { cn } from "@/shared/utils/cn";
 
 const otpSlotVariants = cva(
-  "relative flex text-xl bg-new-neutral-2 h-16 w-[50px] duration-200 border-transparent font-semibold select-none items-center justify-center rounded-2xl ring-2 ring-transparent",
+  "relative flex text-xl bg-neutral-2 h-16 w-[50px] duration-200 border-transparent font-semibold select-none items-center justify-center rounded-2xl ring-2 ring-transparent",
   {
     variants: {
       state: {
         default: "",
-        active: "ring-neutral-12",
+        active: "ring-neutral-8",
         loading: "opacity-50",
-        success: "ring-positive-9",
-        error: "ring-negative-9",
+        success: "ring-positive-6",
+        error: "ring-negative-6",
       },
     },
     defaultVariants: {
@@ -33,7 +33,7 @@ type OTPInputProps = VariantProps<typeof otpSlotVariants> &
 export const OTPFakeCaret = () => {
   return (
     <div className="animate-caret-blink pointer-events-none absolute inset-0 flex items-center justify-center select-none">
-      <div className="bg-neutral-12 h-7 w-0.5 rounded-full select-none" />
+      <div className="bg-neutral-8 h-7 w-0.5 rounded-full select-none" />
     </div>
   );
 };

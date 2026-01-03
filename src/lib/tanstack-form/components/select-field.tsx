@@ -58,7 +58,7 @@ const SelectFieldOptionData = ({
         {label}
       </div>
       {description && (
-        <p className="text-new-neutral-6 text-left text-sm">{description}</p>
+        <p className="text-neutral-6 text-left text-sm">{description}</p>
       )}
     </div>
   );
@@ -108,8 +108,8 @@ export const SelectField = ({
             variant="secondary"
             state={errors.length > 0 ? "error" : "default"}
             icon={<LucideIcon icon={ChevronDownIcon} />}
-            className={cn("text-new-neutral-6 w-full justify-between", {
-              "text-new-neutral-8": value && value.length > 0,
+            className={cn("text-neutral-6 w-full justify-between", {
+              "text-neutral-8": value && value.length > 0,
             })}
             {...buttonProps}
           >

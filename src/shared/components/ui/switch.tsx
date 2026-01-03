@@ -15,7 +15,7 @@ export const Switch = ({
       className={cn(
         "peer inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-transparent transition-all duration-200 outline-none",
         "data-[state=unchecked]:hover:bg-neutral-6 data-[state=unchecked]:bg-neutral-5",
-        "data-[state=checked]:bg-neutral-12",
+        "data-[state=checked]:bg-neutral-8",
         "focus-visible:border-neutral-6 focus-visible:ring-neutral-8 focus-visible:ring-[3px]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className,

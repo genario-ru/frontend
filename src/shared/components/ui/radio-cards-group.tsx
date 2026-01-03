@@ -10,7 +10,7 @@ const radioCardsGroupItemVariants = cva(
   cn(
     "flex w-full flex-col items-center font-medium border bg-neutral-1",
     "hover:bg-neutral-2 active:bg-neutral-2 focus:bg-neutral-2",
-    "data-[state=checked]:bg-neutral-3 data-[state=checked]:border-neutral-6 [&_svg]:stroke-neutral-11 [&_svg]:shrink-0 [&_svg]:size-6 data-[state=checked]:[&_svg]:stroke-neutral-12",
+    "data-[state=checked]:bg-neutral-3 data-[state=checked]:border-neutral-6 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 data-[state=checked]:[&_svg]:stroke-neutral-8",
   ),
   {
     variants: {

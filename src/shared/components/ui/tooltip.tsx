@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const tooltipContentVariants = cva(
-  "bg-neutral-12 text-neutral-1 max-w-80 overflow-hidden border font-medium animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1 origin-(--radix-tooltip-content-transform-origin)",
+  "bg-neutral-8 text-neutral-1 max-w-80 overflow-hidden border font-medium animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1 origin-(--radix-tooltip-content-transform-origin)",
   {
     variants: {
       size: {

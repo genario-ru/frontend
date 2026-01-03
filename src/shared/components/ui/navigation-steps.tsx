@@ -4,14 +4,14 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const navigationStep = cva(
-  "w-full h-fit duration-200 flex flex-col font-medium gap-1.5 text-new-neutral-8 items-center",
+  "w-full h-fit duration-200 flex flex-col font-medium gap-1.5 text-neutral-8 items-center",
   {
     variants: {
       state: {
         default:
-          "*:data-step-indicator:bg-new-neutral-3 hover:*:data-step-indicator:bg-new-neutral-4",
-        active: "*:data-step-indicator:bg-new-neutral-8",
-        disabled: "*:data-step-indicator:bg-new-neutral-2 text-new-neutral-6",
+          "*:data-step-indicator:bg-neutral-3 hover:*:data-step-indicator:bg-neutral-4",
+        active: "*:data-step-indicator:bg-neutral-8",
+        disabled: "*:data-step-indicator:bg-neutral-2 text-neutral-6",
       },
     },
     defaultVariants: {

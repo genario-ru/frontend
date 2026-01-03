@@ -35,7 +35,7 @@ export const CardDescription = ({
   ...props
 }: ComponentProps<"p">) => (
   <p
-    className={cn("text-new-neutral-7 line-clamp-4 text-sm", className)}
+    className={cn("text-neutral-7 line-clamp-4 text-sm", className)}
     {...props}
   />
 );

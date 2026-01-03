@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const textareaWrapperVariants = cva(
-  "w-full h-fit duration-200 overflow-hidden bg-new-neutral-2",
+  "w-full h-fit duration-200 overflow-hidden bg-neutral-2",
   {
     variants: {
       size: {
@@ -12,8 +12,8 @@ const textareaWrapperVariants = cva(
         sm: "rounded-3",
       },
       state: {
-        default: "focus-within:ring-2 focus-within:ring-new-neutral-8",
-        error: "ring-2 ring-new-negative-6",
+        default: "focus-within:ring-2 focus-within:ring-neutral-8",
+        error: "ring-2 ring-negative-6",
       },
     },
     defaultVariants: {
@@ -24,7 +24,7 @@ const textareaWrapperVariants = cva(
 );
 
 const textareaVariants = cva(
-  "h-full w-full resize-none truncate overflow-auto whitespace-normal outline-none placeholder:text-neutral-10",
+  "h-full w-full resize-none truncate overflow-auto whitespace-normal outline-none placeholder:text-neutral-6",
   {
     variants: {
       size: {

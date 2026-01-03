@@ -10,8 +10,8 @@ const checkboxVariants = cva(
   cn(
     "bg-neutral-1 border-neutral-6 shrink-0 border outline-none",
     "hover:bg-neutral-3",
-    "focus-visible:ring-neutral-12 focus-visible:ring-2",
-    "data-[state=checked]:border-neutral-12 data-[state=checked]:bg-neutral-12",
+    "focus-visible:ring-neutral-8 focus-visible:ring-2",
+    "data-[state=checked]:border-neutral-8 data-[state=checked]:bg-neutral-8",
     "disabled:cursor-not-allowed disabled:opacity-50",
   ),
   {

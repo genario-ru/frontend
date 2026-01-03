@@ -27,9 +27,9 @@ export const TabsTrigger = ({
   <TabsPrimitive.Trigger
     className={cn(
       tabsTriggerBasicClassName,
-      "data-[state=inactive]:text-new-neutral-7",
-      "data-[state=inactive]:hover:bg-new-neutral-2 data-[state=inactive]:active:bg-new-neutral-2 data-[state=inactive]:hover:text-new-neutral-8 data-[state=inactive]:active:text-new-neutral-8",
-      "data-[state=active]:text-new-neutral-8 data-[state=active]:bg-new-neutral-2",
+      "data-[state=inactive]:text-neutral-7",
+      "data-[state=inactive]:hover:bg-neutral-2 data-[state=inactive]:active:bg-neutral-2 data-[state=inactive]:hover:text-neutral-8 data-[state=inactive]:active:text-neutral-8",
+      "data-[state=active]:text-neutral-8 data-[state=active]:bg-neutral-2",
       className,
     )}
     {...props}

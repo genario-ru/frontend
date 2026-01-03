@@ -82,7 +82,7 @@ export const MultiSelectField = ({
             aria-expanded={open}
             icon={<ChevronDownIcon />}
             className={cn("w-full justify-between", {
-              "text-neutral-12": value.length > 0,
+              "text-neutral-8": value.length > 0,
             })}
           >
             <p className="w-fit truncate text-inherit">{triggerLabel}</p>

@@ -34,7 +34,7 @@ export const Island = ({
   return (
     <Comp
       className={cn(
-        "bg-new-neutral-1 flex w-full flex-col gap-5 p-5",
+        "bg-neutral-1 flex w-full flex-col gap-5 p-5",
         {
           "rounded-t-5": roundedTop,
           "rounded-b-5": roundedBottom,
@@ -48,10 +48,10 @@ export const Island = ({
       {withHeader && (
         <header className="flex flex-col gap-1">
           {title && (
-            <h2 className="text-new-neutral-8 text-lg font-medium">{title}</h2>
+            <h2 className="text-neutral-8 text-lg font-medium">{title}</h2>
           )}
           {description && (
-            <p className="text-new-neutral-7 text-sm">{description}</p>
+            <p className="text-neutral-7 text-sm">{description}</p>
           )}
         </header>
       )}
@@ -74,10 +74,10 @@ export const IslandSection = ({
       {withHeader && (
         <header className="flex flex-col gap-1">
           {title && (
-            <h3 className="text-new-neutral-8 text-lg font-medium">{title}</h3>
+            <h3 className="text-neutral-8 text-lg font-medium">{title}</h3>
           )}
           {description && (
-            <p className="text-new-neutral-7 text-sm">{description}</p>
+            <p className="text-neutral-7 text-sm">{description}</p>
           )}
         </header>
       )}

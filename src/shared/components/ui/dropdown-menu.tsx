@@ -28,7 +28,7 @@ export const DropdownMenuSubTrigger = ({
 }) => (
   <DropdownMenuPrimitive.SubTrigger
     className={cn(
-      "focus:bg-new-neutral-1 data-[state=open]:bg-new-neutral-1 flex items-center gap-2 rounded-lg p-1.5 text-sm font-medium outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "focus:bg-neutral-1 data-[state=open]:bg-neutral-1 flex items-center gap-2 rounded-lg p-1.5 text-sm font-medium outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       inset && "pl-7",
       className,
     )}
@@ -45,7 +45,7 @@ export const DropdownMenuSubContent = ({
 }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) => (
   <DropdownMenuPrimitive.SubContent
     className={cn(
-      "bg-new-neutral-1 min-w-32 overflow-hidden rounded-xl p-1 shadow-sm",
+      "bg-neutral-1 min-w-32 overflow-hidden rounded-xl p-1 shadow-sm",
       "origin-(--radix-dropdown-menu-content-transform-origin)",
       className,
     )}
@@ -62,7 +62,7 @@ export const DropdownMenuContent = ({
     <DropdownMenuPrimitive.Content
       sideOffset={sideOffset}
       className={cn(
-        "bg-new-neutral-1 rounded-3.5 flex min-w-40 flex-col overflow-x-hidden overflow-y-auto shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]",
+        "bg-neutral-1 rounded-3.5 flex min-w-40 flex-col overflow-x-hidden overflow-y-auto shadow-[0_4px_10px_0_rgba(0,0,0,0.15)]",
         "max-h-[var(--radix-dropdown-menu-content-available-height)] origin-(--radix-dropdown-menu-content-transform-origin)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
         className,
@@ -98,7 +98,7 @@ export const DropdownMenuItem = ({
     className={
       !unstyled
         ? cn(
-            "focus:bg-new-neutral-1 rounded-2.5 flex h-8 items-center gap-1.5 px-2 text-sm font-medium select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
+            "focus:bg-neutral-1 rounded-2.5 flex h-8 items-center gap-1.5 px-2 text-sm font-medium select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
             inset && "pl-8",
             className,
           )
@@ -115,14 +115,14 @@ export const DropdownMenuRadioItem = ({
 }: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) => (
   <DropdownMenuPrimitive.RadioItem
     className={cn(
-      "focus:bg-new-neutral-1 flex cursor-default items-center rounded-lg px-3 py-2 pl-7 text-sm font-medium outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
+      "focus:bg-neutral-1 flex cursor-default items-center rounded-lg px-3 py-2 pl-7 text-sm font-medium outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
       className,
     )}
     {...props}
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <CircleIcon className="fill-new-neutral-8 stroke-new-neutral-8 h-2 w-2" />
+        <CircleIcon className="fill-neutral-8 stroke-neutral-8 h-2 w-2" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

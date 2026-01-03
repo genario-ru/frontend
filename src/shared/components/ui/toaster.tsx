@@ -11,9 +11,9 @@ const toastIconVariants = cva(
   {
     variants: {
       variant: {
-        info: "bg-neutral-5 ring-neutral-3 [&_svg]:stroke-neutral-12",
-        success: "bg-positive-5 ring-positive-3 [&_svg]:stroke-positive-11",
-        error: "bg-negative-5 ring-negative-3 [&_svg]:stroke-negative-11",
+        info: "bg-neutral-5 ring-neutral-3 [&_svg]:stroke-neutral-8",
+        success: "bg-positive-5 ring-positive-3 [&_svg]:stroke-positive-7",
+        error: "bg-negative-5 ring-negative-3 [&_svg]:stroke-negative-7",
       },
     },
     defaultVariants: {
@@ -44,9 +44,9 @@ export const Toast = (props: ToastProps) => {
         {variant === "error" && <CircleXIcon />}
       </div>
       <div className="flex flex-col gap-0.5">
-        <p className="text-neutral-12 font-medium">{title}</p>
+        <p className="text-neutral-8 font-medium">{title}</p>
         {description && (
-          <p className="text-neutral-11 text-sm">{description}</p>
+          <p className="text-neutral-7 text-sm">{description}</p>
         )}
       </div>
     </div>

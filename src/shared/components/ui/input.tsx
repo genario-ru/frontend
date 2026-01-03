@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const inputVariants = cva(
-  "duration-200 bg-new-neutral-2 caret-neutral-new-8 placeholder:text-new-neutral-6 w-full truncate outline-none",
+  "duration-200 bg-neutral-2 caret-neutral-8 placeholder:text-neutral-6 w-full truncate outline-none",
   {
     variants: {
       size: {
@@ -14,8 +14,8 @@ const inputVariants = cva(
         sm: "px-3 h-8 rounded-2.5 text-sm",
       },
       state: {
-        default: "focus-within:ring-2 focus-within:ring-new-neutral-8",
-        error: "ring-2 ring-new-negative-6",
+        default: "focus-within:ring-2 focus-within:ring-neutral-8",
+        error: "ring-2 ring-negative-6",
       },
     },
     defaultVariants: {
@@ -26,7 +26,7 @@ const inputVariants = cva(
 );
 
 const inputIconVariants = cva(
-  "stroke-neutral-10 pointer-events-none absolute top-1/2 -translate-y-1/2 select-none",
+  "stroke-neutral-6 pointer-events-none absolute top-1/2 -translate-y-1/2 select-none",
   {
     variants: {
       size: {

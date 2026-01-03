@@ -54,7 +54,7 @@ export const AppMenubar = memo(
             )}
             {title && <h1 className="text-xl font-semibold">{title}</h1>}
           </div>
-          {description && <p className="text-new-neutral-7">{description}</p>}
+          {description && <p className="text-neutral-7">{description}</p>}
           {left}
         </section>
         <section className="flex flex-col gap-3">{right}</section>

@@ -6,7 +6,7 @@ const DocumentLink = ({ className, ...props }: LinkComponentProps) => {
   return (
     <Link
       className={cn(
-        "hover:text-neutral-12 active:text-neutral-12 focus:text-neutral-12 underline",
+        "hover:text-neutral-8 active:text-neutral-8 focus:text-neutral-8 underline",
         className,
       )}
       {...props}
@@ -16,7 +16,7 @@ const DocumentLink = ({ className, ...props }: LinkComponentProps) => {
 
 export const PoliciesAgreement = () => {
   return (
-    <div className="text-neutral-11 w-full text-center text-xs text-balance">
+    <div className="text-neutral-7 w-full text-center text-xs text-balance">
       Нажимая «Продолжить», вы соглашаетесь с нашими{" "}
       <DocumentLink href="/terms-of-service">
         Условиями пользования

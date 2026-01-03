@@ -29,7 +29,7 @@ export function FieldLayout({
       )}
       {children}
       {errorMessage && (
-        <p className="text-negative-9 w-full text-sm font-medium whitespace-pre-wrap">
+        <p className="text-negative-6 w-full text-sm font-medium whitespace-pre-wrap">
           {errorMessage}
         </p>
       )}

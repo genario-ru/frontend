@@ -40,7 +40,7 @@ export const DialogOverlay = ({
 }: ComponentProps<typeof DialogPrimitive.Overlay>) => (
   <DialogPrimitive.Overlay
     className={cn(
-      "bg-neutral-11/30 dark:bg-neutral-3/60 fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto p-10 backdrop-blur duration-200",
+      "bg-neutral-7/30 dark:bg-neutral-3/60 fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto p-10 backdrop-blur duration-200",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className,
     )}
@@ -66,7 +66,7 @@ export const DialogContent = ({
             }
           }}
           className={cn(
-            "bg-new-neutral-1 isolate m-auto flex w-full max-w-lg flex-col rounded-3xl duration-200",
+            "bg-neutral-1 isolate m-auto flex w-full max-w-lg flex-col rounded-3xl duration-200",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-[0.98] data-[state=open]:zoom-in-[0.98]",
             className,
           )}
@@ -104,7 +104,7 @@ export const DialogFooter = ({
 }: HTMLAttributes<HTMLDivElement>) => (
   <footer
     className={cn(
-      "bg-new-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-5",
+      "bg-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-5",
       className,
     )}
     {...props}
@@ -129,7 +129,7 @@ export const DialogDescription = ({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Description>) => (
   <DialogPrimitive.Description
-    className={cn("text-neutral-11 w-fit text-left", className)}
+    className={cn("text-neutral-7 w-fit text-left", className)}
     {...props}
   />
 );

@@ -38,11 +38,11 @@ export const UnderlineTabsTrigger = ({
     <Comp
       className={cn(
         underlineTabsTriggerClassName,
-        "text-neutral-10 [&_svg]:stroke-neutral-10",
-        "data-[state=inactive]:hover:text-neutral-11 data-[state=inactive]:active:text-neutral-11 data-[state=inactive]:hover:[&_svg]:stroke-neutral-11 data-[state=inactive]:active:[&_svg]:stroke-neutral-11",
-        "data-[state=active]:after:bg-neutral-12 data-[state=active]:after:absolute data-[state=active]:after:inset-x-0 data-[state=active]:after:bottom-0 data-[state=active]:after:block data-[state=active]:after:h-0.5 data-[state=active]:after:rounded-t-full",
-        "data-[state=active]:text-neutral-12 data-[state=active]:[&_svg]:stroke-neutral-12",
-        "focus-visible:ring-neutral-12 focus-visible:ring-2",
+        "text-neutral-6 [&_svg]:stroke-neutral-6",
+        "data-[state=inactive]:hover:text-neutral-7 data-[state=inactive]:active:text-neutral-7 data-[state=inactive]:hover:[&_svg]:stroke-neutral-7 data-[state=inactive]:active:[&_svg]:stroke-neutral-7",
+        "data-[state=active]:after:bg-neutral-8 data-[state=active]:after:absolute data-[state=active]:after:inset-x-0 data-[state=active]:after:bottom-0 data-[state=active]:after:block data-[state=active]:after:h-0.5 data-[state=active]:after:rounded-t-full",
+        "data-[state=active]:text-neutral-8 data-[state=active]:[&_svg]:stroke-neutral-8",
+        "focus-visible:ring-neutral-8 focus-visible:ring-2",
         className,
       )}
       {...props}

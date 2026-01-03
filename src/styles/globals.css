@@ -3,7 +3,7 @@
 @import "./themes.css";
 
 body {
-  @apply text-neutral-12 border-neutral-5;
+  @apply text-neutral-8 border-neutral-5;
   
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

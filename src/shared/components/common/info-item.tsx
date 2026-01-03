@@ -26,7 +26,7 @@ export const InfoItem = ({ Icon, iconClassName, label }: InfoItemProps) => {
   return (
     <div className="flex items-center gap-1.5">
       <Icon
-        className={cn("stroke-neutral-12 size-4 shrink-0", iconClassName)}
+        className={cn("stroke-neutral-8 size-4 shrink-0", iconClassName)}
       />
       <span className="text-sm">{label}</span>
     </div>
