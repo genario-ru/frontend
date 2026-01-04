@@ -239,6 +239,10 @@ export const patchApiV1IdeasIdeaId = <ThrowOnError extends boolean = false>(
     },
     url: "/api/v1/ideas/{ideaId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -258,6 +262,10 @@ export const postApiV1IdeasLists = <ThrowOnError extends boolean = false>(
     },
     url: "/api/v1/ideas-lists",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options?.headers,
+    },
   });
 };
 
@@ -321,6 +329,10 @@ export const patchApiV1IdeasListsIdeasListId = <
     },
     url: "/api/v1/ideas-lists/{ideasListId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -365,6 +377,10 @@ export const postApiV1IdeasListsIdeasListIdIdeas = <
     },
     url: "/api/v1/ideas-lists/{ideasListId}/ideas",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -483,6 +499,10 @@ export const patchApiV1ProfilesProfileId = <
     },
     url: "/api/v1/profiles/{profileId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -502,6 +522,10 @@ export const postApiV1Profiles = <ThrowOnError extends boolean = false>(
     },
     url: "/api/v1/profiles",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options?.headers,
+    },
   });
 };
 
@@ -540,6 +564,10 @@ export const postApiV1Scenarios = <ThrowOnError extends boolean = false>(
     },
     url: "/api/v1/scenarios",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options?.headers,
+    },
   });
 };
 
@@ -603,6 +631,10 @@ export const patchApiV1ScenariosScenarioId = <
     },
     url: "/api/v1/scenarios/{scenarioId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -650,6 +682,10 @@ export const patchApiV1ScenariosScenarioIdCurrentVersion = <
     },
     url: "/api/v1/scenarios/{scenarioId}/current-version",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -784,6 +820,10 @@ export const patchApiV1ScenariosChaptersChapterId = <
     },
     url: "/api/v1/scenarios/chapters/{chapterId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -826,6 +866,10 @@ export const patchApiV1ScenariosScenesSceneId = <
     },
     url: "/api/v1/scenarios/scenes/{sceneId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 
@@ -882,6 +926,10 @@ export const patchApiV1ScenariosSceneComponentsSceneComponentId = <
     },
     url: "/api/v1/scenarios/scene-components/{sceneComponentId}",
     ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
   });
 };
 

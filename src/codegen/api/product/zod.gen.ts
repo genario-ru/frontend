@@ -5,7 +5,11 @@ import { z } from "zod";
 export const zDeleteApiV1IdeasIdeaIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    ideaId: z.string(),
+    ideaId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -44,9 +48,25 @@ export const zDeleteApiV1IdeasIdeaIdResponse = z
   });
 
 export const zPatchApiV1IdeasIdeaIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+      saved: z.optional(z.boolean()),
+      liked: z.optional(z.union([z.boolean(), z.null()])),
+      ideaId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+    }),
+  ),
   path: z.object({
-    ideaId: z.string(),
+    ideaId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -85,7 +105,41 @@ export const zPatchApiV1IdeasIdeaIdResponse = z
   });
 
 export const zPostApiV1IdeasListsData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      profileId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+      targetAudience: z.optional(z.union([z.string(), z.null()])),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      videoTypeIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
 });
@@ -136,7 +190,11 @@ export const zPostApiV1IdeasListsResponse = z
 export const zDeleteApiV1IdeasListsIdeasListIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    ideasListId: z.string(),
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -187,7 +245,11 @@ export const zDeleteApiV1IdeasListsIdeasListIdResponse = z
 export const zGetApiV1IdeasListsIdeasListIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    ideasListId: z.string(),
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -294,9 +356,47 @@ export const zGetApiV1IdeasListsIdeasListIdResponse = z
   });
 
 export const zPatchApiV1IdeasListsIdeasListIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      profileId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+      targetAudience: z.optional(z.union([z.string(), z.null()])),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      videoTypeIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.object({
-    ideasListId: z.string(),
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -347,9 +447,17 @@ export const zPatchApiV1IdeasListsIdeasListIdResponse = z
 export const zGetApiV1IdeasListsIdeasListIdIdeasData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    ideasListId: z.string(),
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
-  query: z.optional(z.never()),
+  query: z.optional(
+    z.object({
+      saved: z.optional(z.boolean()),
+    }),
+  ),
 });
 
 /**
@@ -401,9 +509,23 @@ export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z
   });
 
 export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      videoTypeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+    }),
+  ),
   path: z.object({
-    ideasListId: z.string(),
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -444,7 +566,38 @@ export const zPostApiV1IdeasListsIdeasListIdIdeasResponse = z
 export const zGetApiV1IdeasListsMyData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),
-  query: z.optional(z.never()),
+  query: z.optional(
+    z.object({
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      page: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Номер страницы",
+        }),
+      ),
+      perPage: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Количество элементов в одной странице ответа",
+        }),
+      ),
+      sortOrder: z.optional(
+        z.enum(["asc", "desc"]).register(z.globalRegistry, {
+          description: "Вид сортировки",
+        }),
+      ),
+      sortBy: z.optional(z.enum(["createdAt", "updatedAt"])),
+      profileId: z.optional(
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+      ),
+    }),
+  ),
 });
 
 /**
@@ -738,7 +891,11 @@ export const zGetApiV1ProfilesMyResponse = z
 export const zDeleteApiV1ProfilesProfileIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    profileId: z.string(),
+    profileId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -781,7 +938,11 @@ export const zDeleteApiV1ProfilesProfileIdResponse = z
 export const zGetApiV1ProfilesProfileIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    profileId: z.string(),
+    profileId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -885,9 +1046,47 @@ export const zGetApiV1ProfilesProfileIdResponse = z
   });
 
 export const zPatchApiV1ProfilesProfileIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.optional(z.string()),
+      description: z.optional(z.union([z.string(), z.null()])),
+      targetAudience: z.optional(z.union([z.string(), z.null()])),
+      typeId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      platformIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.object({
-    profileId: z.string(),
+    profileId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -928,7 +1127,36 @@ export const zPatchApiV1ProfilesProfileIdResponse = z
   });
 
 export const zPostApiV1ProfilesData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.string().min(1).max(256),
+      description: z.string().min(64).max(8192),
+      targetAudience: z.optional(z.string().min(1).max(1024)),
+      typeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      platformIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
 });
@@ -1000,7 +1228,72 @@ export const zGetApiV1ProfilesTypesResponse = z
   });
 
 export const zPostApiV1ScenariosData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+      templateId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      videoTypeId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      videoDurationId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      platformId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      profileId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      targetAudience: z.optional(z.union([z.string(), z.null()])),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
 });
@@ -1083,7 +1376,11 @@ export const zPostApiV1ScenariosResponse = z
 export const zDeleteApiV1ScenariosScenarioIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    scenarioId: z.string(),
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1166,7 +1463,11 @@ export const zDeleteApiV1ScenariosScenarioIdResponse = z
 export const zGetApiV1ScenariosScenarioIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    scenarioId: z.string(),
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1524,9 +1825,78 @@ export const zGetApiV1ScenariosScenarioIdResponse = z
   });
 
 export const zPatchApiV1ScenariosScenarioIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.optional(z.union([z.string(), z.null()])),
+      description: z.optional(z.union([z.string(), z.null()])),
+      templateId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      videoTypeId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      videoDurationId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      platformId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      profileId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      targetAudience: z.optional(z.union([z.string(), z.null()])),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
   path: z.object({
-    scenarioId: z.string(),
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1690,9 +2060,21 @@ export const zGetApiV1ScenariosMyResponse = z
   });
 
 export const zPatchApiV1ScenariosScenarioIdCurrentVersionData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      currentVersionId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+    }),
+  ),
   path: z.object({
-    scenarioId: z.string(),
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1775,7 +2157,11 @@ export const zPatchApiV1ScenariosScenarioIdCurrentVersionResponse = z
 export const zDeleteApiV1ScenariosVersionsVersionIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    versionId: z.string(),
+    versionId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1808,7 +2194,11 @@ export const zDeleteApiV1ScenariosVersionsVersionIdResponse = z
 export const zGetApiV1ScenariosVersionsVersionIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    versionId: z.string(),
+    versionId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1964,7 +2354,11 @@ export const zGetApiV1ScenariosVersionsVersionIdResponse = z
 export const zGetApiV1ScenariosScenarioIdVersionsData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    scenarioId: z.string(),
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -1999,7 +2393,11 @@ export const zGetApiV1ScenariosScenarioIdVersionsResponse = z
 export const zDeleteApiV1ScenariosChaptersChapterIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    chapterId: z.string(),
+    chapterId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -2036,7 +2434,11 @@ export const zDeleteApiV1ScenariosChaptersChapterIdResponse = z
 export const zGetApiV1ScenariosChaptersChapterIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    chapterId: z.string(),
+    chapterId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -2101,9 +2503,23 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
   });
 
 export const zPatchApiV1ScenariosChaptersChapterIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      name: z.optional(z.string()),
+      description: z.optional(z.union([z.string(), z.null()])),
+      status: z.optional(z.enum(["pending", "generation", "failed", "ready"])),
+      startTime: z.optional(
+        z.int().gte(-9007199254740991).lte(9007199254740991),
+      ),
+      endTime: z.optional(z.int().gte(-9007199254740991).lte(9007199254740991)),
+    }),
+  ),
   path: z.object({
-    chapterId: z.string(),
+    chapterId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -2140,7 +2556,11 @@ export const zPatchApiV1ScenariosChaptersChapterIdResponse = z
 export const zDeleteApiV1ScenariosScenesSceneIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
-    sceneId: z.string(),
+    sceneId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -2184,9 +2604,34 @@ export const zDeleteApiV1ScenariosScenesSceneIdResponse = z
   });
 
 export const zPatchApiV1ScenariosScenesSceneIdData = z.object({
-  body: z.optional(z.never()),
+  body: z.optional(
+    z.object({
+      previewId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
+      status: z.optional(z.enum(["pending", "generation", "failed", "ready"])),
+      name: z.optional(z.string()),
+      description: z.optional(z.union([z.string(), z.null()])),
+      startTime: z.optional(
+        z.int().gte(-9007199254740991).lte(9007199254740991),
+      ),
+      endTime: z.optional(z.int().gte(-9007199254740991).lte(9007199254740991)),
+      badges: z.optional(z.union([z.string(), z.null()])),
+    }),
+  ),
   path: z.object({
-    sceneId: z.string(),
+    sceneId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
   }),
   query: z.optional(z.never()),
 });
@@ -2233,7 +2678,11 @@ export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdData =
   z.object({
     body: z.optional(z.never()),
     path: z.object({
-      sceneComponentId: z.string(),
+      sceneComponentId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
     }),
     query: z.optional(z.never()),
   });
@@ -2268,9 +2717,20 @@ export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
 
 export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdData = z.object(
   {
-    body: z.optional(z.never()),
+    body: z.optional(
+      z.object({
+        name: z.optional(z.string()),
+        content: z.optional(z.union([z.string(), z.null()])),
+        icon: z.optional(z.union([z.string(), z.null()])),
+        color: z.optional(z.union([z.string(), z.null()])),
+      }),
+    ),
     path: z.object({
-      sceneComponentId: z.string(),
+      sceneComponentId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
     }),
     query: z.optional(z.never()),
   },

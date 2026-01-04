@@ -72,7 +72,13 @@ export type DeleteApiV1IdeasIdeaIdResponse =
   DeleteApiV1IdeasIdeaIdResponses[keyof DeleteApiV1IdeasIdeaIdResponses];
 
 export type PatchApiV1IdeasIdeaIdData = {
-  body?: never;
+  body?: {
+    name?: string | null;
+    description?: string | null;
+    saved?: boolean;
+    liked?: boolean | null;
+    ideaId: string;
+  };
   path: {
     ideaId: string;
   };
@@ -139,7 +145,14 @@ export type PatchApiV1IdeasIdeaIdResponse =
   PatchApiV1IdeasIdeaIdResponses[keyof PatchApiV1IdeasIdeaIdResponses];
 
 export type PostApiV1IdeasListsData = {
-  body?: never;
+  body?: {
+    profileId?: string | null;
+    name?: string | null;
+    description?: string | null;
+    targetAudience?: string | null;
+    toneIds?: Array<string>;
+    videoTypeIds?: Array<string>;
+  };
   path?: never;
   query?: never;
   url: "/api/v1/ideas-lists";
@@ -366,7 +379,14 @@ export type GetApiV1IdeasListsIdeasListIdResponse =
   GetApiV1IdeasListsIdeasListIdResponses[keyof GetApiV1IdeasListsIdeasListIdResponses];
 
 export type PatchApiV1IdeasListsIdeasListIdData = {
-  body?: never;
+  body?: {
+    profileId?: string | null;
+    name?: string | null;
+    description?: string | null;
+    targetAudience?: string | null;
+    toneIds?: Array<string>;
+    videoTypeIds?: Array<string>;
+  };
   path: {
     ideasListId: string;
   };
@@ -437,7 +457,9 @@ export type GetApiV1IdeasListsIdeasListIdIdeasData = {
   path: {
     ideasListId: string;
   };
-  query?: never;
+  query?: {
+    saved?: boolean;
+  };
   url: "/api/v1/ideas-lists/{ideasListId}/ideas";
 };
 
@@ -509,7 +531,11 @@ export type GetApiV1IdeasListsIdeasListIdIdeasResponse =
   GetApiV1IdeasListsIdeasListIdIdeasResponses[keyof GetApiV1IdeasListsIdeasListIdIdeasResponses];
 
 export type PostApiV1IdeasListsIdeasListIdIdeasData = {
-  body?: never;
+  body?: {
+    videoTypeId: string;
+    name?: string | null;
+    description?: string | null;
+  };
   path: {
     ideasListId: string;
   };
@@ -578,7 +604,26 @@ export type PostApiV1IdeasListsIdeasListIdIdeasResponse =
 export type GetApiV1IdeasListsMyData = {
   body?: never;
   path?: never;
-  query?: never;
+  query?: {
+    /**
+     * Строка поиска
+     */
+    q?: string;
+    /**
+     * Номер страницы
+     */
+    page?: number;
+    /**
+     * Количество элементов в одной странице ответа
+     */
+    perPage?: number;
+    /**
+     * Вид сортировки
+     */
+    sortOrder?: "asc" | "desc";
+    sortBy?: "createdAt" | "updatedAt";
+    profileId?: string;
+  };
   url: "/api/v1/ideas-lists/my";
 };
 
@@ -1060,7 +1105,14 @@ export type GetApiV1ProfilesProfileIdResponse =
   GetApiV1ProfilesProfileIdResponses[keyof GetApiV1ProfilesProfileIdResponses];
 
 export type PatchApiV1ProfilesProfileIdData = {
-  body?: never;
+  body?: {
+    name?: string;
+    description?: string | null;
+    targetAudience?: string | null;
+    typeId?: string | null;
+    platformIds?: Array<string>;
+    toneIds?: Array<string>;
+  };
   path: {
     profileId: string;
   };
@@ -1126,7 +1178,14 @@ export type PatchApiV1ProfilesProfileIdResponse =
   PatchApiV1ProfilesProfileIdResponses[keyof PatchApiV1ProfilesProfileIdResponses];
 
 export type PostApiV1ProfilesData = {
-  body?: never;
+  body?: {
+    name: string;
+    description: string;
+    targetAudience?: string;
+    typeId: string;
+    toneIds?: Array<string>;
+    platformIds?: Array<string>;
+  };
   path?: never;
   query?: never;
   url: "/api/v1/profiles";
@@ -1253,7 +1312,17 @@ export type GetApiV1ProfilesTypesResponse =
   GetApiV1ProfilesTypesResponses[keyof GetApiV1ProfilesTypesResponses];
 
 export type PostApiV1ScenariosData = {
-  body?: never;
+  body?: {
+    name?: string | null;
+    description?: string | null;
+    templateId?: string | null;
+    videoTypeId?: string | null;
+    videoDurationId?: string | null;
+    platformId?: string | null;
+    profileId?: string | null;
+    targetAudience?: string | null;
+    toneIds?: Array<string>;
+  };
   path?: never;
   query?: never;
   url: "/api/v1/scenarios";
@@ -1588,7 +1657,17 @@ export type GetApiV1ScenariosScenarioIdResponse =
   GetApiV1ScenariosScenarioIdResponses[keyof GetApiV1ScenariosScenarioIdResponses];
 
 export type PatchApiV1ScenariosScenarioIdData = {
-  body?: never;
+  body?: {
+    name?: string | null;
+    description?: string | null;
+    templateId?: string | null;
+    videoTypeId?: string | null;
+    videoDurationId?: string | null;
+    platformId?: string | null;
+    profileId?: string | null;
+    targetAudience?: string | null;
+    toneIds?: Array<string>;
+  };
   path: {
     scenarioId: string;
   };
@@ -1728,7 +1807,9 @@ export type GetApiV1ScenariosMyResponse =
   GetApiV1ScenariosMyResponses[keyof GetApiV1ScenariosMyResponses];
 
 export type PatchApiV1ScenariosScenarioIdCurrentVersionData = {
-  body?: never;
+  body?: {
+    currentVersionId: string;
+  };
   path: {
     scenarioId: string;
   };
@@ -2194,7 +2275,13 @@ export type GetApiV1ScenariosChaptersChapterIdResponse =
   GetApiV1ScenariosChaptersChapterIdResponses[keyof GetApiV1ScenariosChaptersChapterIdResponses];
 
 export type PatchApiV1ScenariosChaptersChapterIdData = {
-  body?: never;
+  body?: {
+    name?: string;
+    description?: string | null;
+    status?: "pending" | "generation" | "failed" | "ready";
+    startTime?: number;
+    endTime?: number;
+  };
   path: {
     chapterId: string;
   };
@@ -2330,7 +2417,15 @@ export type DeleteApiV1ScenariosScenesSceneIdResponse =
   DeleteApiV1ScenariosScenesSceneIdResponses[keyof DeleteApiV1ScenariosScenesSceneIdResponses];
 
 export type PatchApiV1ScenariosScenesSceneIdData = {
-  body?: never;
+  body?: {
+    previewId?: string | null;
+    status?: "pending" | "generation" | "failed" | "ready";
+    name?: string;
+    description?: string | null;
+    startTime?: number;
+    endTime?: number;
+    badges?: string | null;
+  };
   path: {
     sceneId: string;
   };
@@ -2465,7 +2560,12 @@ export type DeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse =
   DeleteApiV1ScenariosSceneComponentsSceneComponentIdResponses[keyof DeleteApiV1ScenariosSceneComponentsSceneComponentIdResponses];
 
 export type PatchApiV1ScenariosSceneComponentsSceneComponentIdData = {
-  body?: never;
+  body?: {
+    name?: string;
+    content?: string | null;
+    icon?: string | null;
+    color?: string | null;
+  };
   path: {
     sceneComponentId: string;
   };
