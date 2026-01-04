@@ -24,6 +24,7 @@ export const Button = ({
   variant,
   size,
   state,
+  direction,
   children,
   className,
   ...props
@@ -50,6 +51,7 @@ export const Button = ({
           size,
           content: withChildren ? "mixed" : "icon",
           state,
+          direction,
         }),
         className,
       )}

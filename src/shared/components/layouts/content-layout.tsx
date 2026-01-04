@@ -7,9 +7,9 @@ const contentLayoutVariants = cva("flex w-full flex-col", {
   variants: {
     size: {
       max: "",
-      xl: "max-w-screen-xl",
-      lg: "max-w-screen-lg",
-      md: "max-w-screen-md",
+      xl: "max-w-7xl",
+      lg: "max-w-5xl",
+      md: "max-w-3xl",
       sm: "max-w-screen-sm",
       xs: "max-w-lg",
     },

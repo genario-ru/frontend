@@ -33,6 +33,10 @@ export const buttonVariants = cva(
         loading: "",
         error: "ring-2 ring-negative-5",
       },
+      direction: {
+        column: "flex-col",
+        row: "flex-row",
+      },
     },
     defaultVariants: {
       color: "neutral",

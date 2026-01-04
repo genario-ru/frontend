@@ -2,6 +2,8 @@ import type { ComponentProps, ElementType } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
+import { Heading } from "./heading";
+
 export type IslandProps = ComponentProps<"div"> & {
   title?: string;
   description?: string;
@@ -34,7 +36,7 @@ export const Island = ({
   return (
     <Comp
       className={cn(
-        "bg-neutral-1 flex w-full flex-col gap-5 p-5",
+        "bg-neutral-1 flex w-full flex-col gap-4 p-5",
         {
           "rounded-t-5": roundedTop,
           "rounded-b-5": roundedBottom,
@@ -48,7 +50,9 @@ export const Island = ({
       {withHeader && (
         <header className="flex flex-col gap-1">
           {title && (
-            <h2 className="text-neutral-8 text-lg font-medium">{title}</h2>
+            <Heading as="h2" variant="h4">
+              {title}
+            </Heading>
           )}
           {description && (
             <p className="text-neutral-7 text-sm">{description}</p>
