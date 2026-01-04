@@ -1,11 +1,11 @@
 import { BellIcon, MoonIcon, SunIcon } from "lucide-react";
 
-import { AppSidebarContent } from "@/features/navigation/components/app-sidebar-content";
-import { AppSidebarFooter } from "@/features/navigation/components/app-sidebar-footer";
-import { AppSidebarHeader } from "@/features/navigation/components/app-sidebar-header";
-import { AppSidebarMenu } from "@/features/navigation/components/app-sidebar-menu";
-import { AppSidebarMenuItem } from "@/features/navigation/components/app-sidebar-menu-item";
-import { AppSidebarMenuLink } from "@/features/navigation/components/app-sidebar-menu-link";
+import { AppSidebarContent } from "@/features/navigation/app-sidebar/components/app-sidebar-content";
+import { AppSidebarFooter } from "@/features/navigation/app-sidebar/components/app-sidebar-footer";
+import { AppSidebarHeader } from "@/features/navigation/app-sidebar/components/app-sidebar-header";
+import { AppSidebarMenu } from "@/features/navigation/app-sidebar/components/app-sidebar-menu";
+import { AppSidebarMenuItem } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-item";
+import { AppSidebarMenuLink } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-link";
 // import { useTheme } from "next-themes";
 import { Logo } from "@/shared/components/common/logo";
 import { Badge } from "@/shared/components/ui/badge";

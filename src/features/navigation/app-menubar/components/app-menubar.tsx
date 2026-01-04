@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { memo, type ReactNode } from "react";
 
-import { AppSidebarTrigger } from "@/features/navigation/components/app-sidebar-trigger";
+import { AppSidebarTrigger } from "@/features/navigation/app-sidebar/components/app-sidebar-trigger";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";

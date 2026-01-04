@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 
 import { Button } from "@/shared/components/ui/button";
 
-import { useAppSidebar } from "../../../widgets/navigation/app-sidebar/hooks/use-app-sidebar";
+import { useAppSidebar } from "../../../../widgets/navigation/app-sidebar/hooks/use-app-sidebar";
 
 type AppSidebarTriggerProps = ComponentProps<typeof Button>;
 
