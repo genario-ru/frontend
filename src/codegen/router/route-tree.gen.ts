@@ -14,6 +14,12 @@ import { Route as AppRouteRouteImport } from "./../../routes/_app/route";
 import { Route as AppIndexRouteImport } from "./../../routes/_app/index";
 import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
 import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
+import { Route as AppProfilesRouteImport } from "./../../routes/_app/profiles";
+import { Route as AppArchiveRouteImport } from "./../../routes/_app/archive";
+import { Route as AppSettingsBillingRouteImport } from "./../../routes/_app/settings/billing";
+import { Route as AppSettingsAccountRouteImport } from "./../../routes/_app/settings/account";
+import { Route as AppScenariosScenarioIdRouteImport } from "./../../routes/_app/scenarios/$scenarioId";
+import { Route as AppIdeasListsIdeasListIdRouteImport } from "./../../routes/_app/ideas-lists/$ideasListId";
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: "/_auth",
@@ -38,37 +44,110 @@ const AuthSignInRoute = AuthSignInRouteImport.update({
   path: "/sign-in",
   getParentRoute: () => AuthRouteRoute,
 } as any);
+const AppProfilesRoute = AppProfilesRouteImport.update({
+  id: "/profiles",
+  path: "/profiles",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppArchiveRoute = AppArchiveRouteImport.update({
+  id: "/archive",
+  path: "/archive",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppSettingsBillingRoute = AppSettingsBillingRouteImport.update({
+  id: "/settings/billing",
+  path: "/settings/billing",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppSettingsAccountRoute = AppSettingsAccountRouteImport.update({
+  id: "/settings/account",
+  path: "/settings/account",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppScenariosScenarioIdRoute = AppScenariosScenarioIdRouteImport.update({
+  id: "/scenarios/$scenarioId",
+  path: "/scenarios/$scenarioId",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppIdeasListsIdeasListIdRoute =
+  AppIdeasListsIdeasListIdRouteImport.update({
+    id: "/ideas-lists/$ideasListId",
+    path: "/ideas-lists/$ideasListId",
+    getParentRoute: () => AppRouteRoute,
+  } as any);
 
 export interface FileRoutesByFullPath {
+  "/archive": typeof AppArchiveRoute;
+  "/profiles": typeof AppProfilesRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/": typeof AppIndexRoute;
+  "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
+  "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
+  "/settings/account": typeof AppSettingsAccountRoute;
+  "/settings/billing": typeof AppSettingsBillingRoute;
 }
 export interface FileRoutesByTo {
+  "/archive": typeof AppArchiveRoute;
+  "/profiles": typeof AppProfilesRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/": typeof AppIndexRoute;
+  "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
+  "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
+  "/settings/account": typeof AppSettingsAccountRoute;
+  "/settings/billing": typeof AppSettingsBillingRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   "/_app": typeof AppRouteRouteWithChildren;
   "/_auth": typeof AuthRouteRouteWithChildren;
+  "/_app/archive": typeof AppArchiveRoute;
+  "/_app/profiles": typeof AppProfilesRoute;
   "/_auth/sign-in": typeof AuthSignInRoute;
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
   "/_app/": typeof AppIndexRoute;
+  "/_app/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
+  "/_app/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
+  "/_app/settings/account": typeof AppSettingsAccountRoute;
+  "/_app/settings/billing": typeof AppSettingsBillingRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/sign-in" | "/verify-otp" | "/";
+  fullPaths:
+    | "/archive"
+    | "/profiles"
+    | "/sign-in"
+    | "/verify-otp"
+    | "/"
+    | "/ideas-lists/$ideasListId"
+    | "/scenarios/$scenarioId"
+    | "/settings/account"
+    | "/settings/billing";
   fileRoutesByTo: FileRoutesByTo;
-  to: "/sign-in" | "/verify-otp" | "/";
+  to:
+    | "/archive"
+    | "/profiles"
+    | "/sign-in"
+    | "/verify-otp"
+    | "/"
+    | "/ideas-lists/$ideasListId"
+    | "/scenarios/$scenarioId"
+    | "/settings/account"
+    | "/settings/billing";
   id:
     | "__root__"
     | "/_app"
     | "/_auth"
+    | "/_app/archive"
+    | "/_app/profiles"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
-    | "/_app/";
+    | "/_app/"
+    | "/_app/ideas-lists/$ideasListId"
+    | "/_app/scenarios/$scenarioId"
+    | "/_app/settings/account"
+    | "/_app/settings/billing";
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -113,15 +192,69 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AuthSignInRouteImport;
       parentRoute: typeof AuthRouteRoute;
     };
+    "/_app/profiles": {
+      id: "/_app/profiles";
+      path: "/profiles";
+      fullPath: "/profiles";
+      preLoaderRoute: typeof AppProfilesRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/archive": {
+      id: "/_app/archive";
+      path: "/archive";
+      fullPath: "/archive";
+      preLoaderRoute: typeof AppArchiveRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/settings/billing": {
+      id: "/_app/settings/billing";
+      path: "/settings/billing";
+      fullPath: "/settings/billing";
+      preLoaderRoute: typeof AppSettingsBillingRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/settings/account": {
+      id: "/_app/settings/account";
+      path: "/settings/account";
+      fullPath: "/settings/account";
+      preLoaderRoute: typeof AppSettingsAccountRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/scenarios/$scenarioId": {
+      id: "/_app/scenarios/$scenarioId";
+      path: "/scenarios/$scenarioId";
+      fullPath: "/scenarios/$scenarioId";
+      preLoaderRoute: typeof AppScenariosScenarioIdRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/ideas-lists/$ideasListId": {
+      id: "/_app/ideas-lists/$ideasListId";
+      path: "/ideas-lists/$ideasListId";
+      fullPath: "/ideas-lists/$ideasListId";
+      preLoaderRoute: typeof AppIdeasListsIdeasListIdRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
   }
 }
 
 interface AppRouteRouteChildren {
+  AppArchiveRoute: typeof AppArchiveRoute;
+  AppProfilesRoute: typeof AppProfilesRoute;
   AppIndexRoute: typeof AppIndexRoute;
+  AppIdeasListsIdeasListIdRoute: typeof AppIdeasListsIdeasListIdRoute;
+  AppScenariosScenarioIdRoute: typeof AppScenariosScenarioIdRoute;
+  AppSettingsAccountRoute: typeof AppSettingsAccountRoute;
+  AppSettingsBillingRoute: typeof AppSettingsBillingRoute;
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppArchiveRoute: AppArchiveRoute,
+  AppProfilesRoute: AppProfilesRoute,
   AppIndexRoute: AppIndexRoute,
+  AppIdeasListsIdeasListIdRoute: AppIdeasListsIdeasListIdRoute,
+  AppScenariosScenarioIdRoute: AppScenariosScenarioIdRoute,
+  AppSettingsAccountRoute: AppSettingsAccountRoute,
+  AppSettingsBillingRoute: AppSettingsBillingRoute,
 };
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(

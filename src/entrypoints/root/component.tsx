@@ -10,7 +10,7 @@ export function RootComponent() {
     <>
       <HeadContent />
       <Scripts />
-      <div className="bg-neutral-2 relative isolate flex h-full min-h-dvh w-full">
+      <div className="bg-neutral-2 relative isolate flex h-full min-h-dvh w-full overflow-auto">
         <Outlet />
       </div>
       <Toaster />

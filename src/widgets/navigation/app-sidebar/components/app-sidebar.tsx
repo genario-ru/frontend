@@ -1,19 +1,17 @@
-"use client";
-
 import { BellIcon, MoonIcon, SunIcon } from "lucide-react";
 
+import { AppSidebarContent } from "@/features/navigation/components/app-sidebar-content";
+import { AppSidebarFooter } from "@/features/navigation/components/app-sidebar-footer";
+import { AppSidebarHeader } from "@/features/navigation/components/app-sidebar-header";
+import { AppSidebarMenu } from "@/features/navigation/components/app-sidebar-menu";
+import { AppSidebarMenuItem } from "@/features/navigation/components/app-sidebar-menu-item";
+import { AppSidebarMenuLink } from "@/features/navigation/components/app-sidebar-menu-link";
 // import { useTheme } from "next-themes";
 import { Logo } from "@/shared/components/common/logo";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/utils/cn";
 
-import { AppSidebarContent } from "../../../../features/navigation/components/app-sidebar-content";
-import { AppSidebarFooter } from "../../../../features/navigation/components/app-sidebar-footer";
-import { AppSidebarHeader } from "../../../../features/navigation/components/app-sidebar-header";
-import { AppSidebarMenu } from "../../../../features/navigation/components/app-sidebar-menu";
-import { AppSidebarMenuItem } from "../../../../features/navigation/components/app-sidebar-menu-item";
-import { AppSidebarMenuLink } from "../../../../features/navigation/components/app-sidebar-menu-link";
 import { appSidebarItems } from "../constants/items";
 import { AppSidebarLayout } from "./app-sidebar-layout";
 import { AppSidebarUserMenu } from "./app-sidebar-user-menu";
@@ -39,10 +37,10 @@ export const AppSidebar = () => {
       </AppSidebarHeader>
       <AppSidebarContent>
         <AppSidebarMenu>
-          {appSidebarItems.map(({ Icon, label, href, soon, active = true }) => (
-            <AppSidebarMenuItem key={href}>
+          {appSidebarItems.map(({ Icon, label, to, soon, active = true }) => (
+            <AppSidebarMenuItem key={to}>
               <AppSidebarMenuLink
-                href={href}
+                to={to}
                 className={cn({ "pointer-events-none": !active })}
               >
                 <Icon />

@@ -1,11 +1,4 @@
-import {
-  ArchiveIcon,
-  BoltIcon,
-  HouseIcon,
-  LightbulbIcon,
-  SwatchBookIcon,
-  UsersRoundIcon,
-} from "lucide-react";
+import { ArchiveIcon, BoltIcon, HouseIcon, UsersRoundIcon } from "lucide-react";
 
 import type { AppSidebarItem } from "../types";
 
@@ -13,31 +6,21 @@ export const appSidebarItems: AppSidebarItem[] = [
   {
     Icon: HouseIcon,
     label: "Главная",
-    href: "/",
+    to: "/",
   },
   {
     Icon: ArchiveIcon,
     label: "Архив",
-    href: "/archive",
-  },
-  {
-    Icon: LightbulbIcon,
-    label: "Идеи",
-    href: "/ideas-lists",
+    to: "/archive",
   },
   {
     Icon: UsersRoundIcon,
     label: "Профили",
-    href: "/profiles",
+    to: "/profiles",
   },
   {
     Icon: BoltIcon,
     label: "Настройки",
-    href: "/settings/account",
-  },
-  {
-    Icon: SwatchBookIcon,
-    label: "UI-kit",
-    href: "/ui",
+    to: "/settings/account",
   },
 ];

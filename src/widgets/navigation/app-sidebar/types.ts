@@ -1,3 +1,4 @@
+import type { NavigateOptions } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 
 export type AppSidebarContextProps = {
@@ -13,7 +14,7 @@ export type AppSidebarContextProps = {
 export type AppSidebarItem = {
   Icon: LucideIcon;
   label: string;
-  href: string;
+  to: NavigateOptions["to"];
   soon?: boolean;
   active?: boolean;
 };
