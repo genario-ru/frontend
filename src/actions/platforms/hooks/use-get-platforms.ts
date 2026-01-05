@@ -9,7 +9,6 @@ export function useGetPlatforms() {
     isError: isPlatformsError,
   } = useQuery({
     ...getApiV1PlatformsOptions(),
-    select: (data) => data.data,
   });
 
   return {

@@ -1,4 +1,4 @@
-import { type ReactNode, useRef } from "react";
+import type { ReactNode } from "react";
 
 import {
   Dialog,
@@ -8,31 +8,29 @@ import {
 } from "@/shared/components/ui/dialog";
 
 import { useProfileDialog } from "../hooks/use-profile-dialog";
+import { ProfileDialogForm } from "./profile-dialog-form";
 
 type ProfileDialogProps = {
   profileId?: string;
   trigger: ReactNode;
-  onDialogClose: () => void;
 };
 
-export function ProfileDialog({
-  profileId,
-  trigger,
-  onDialogClose,
-}: ProfileDialogProps) {
-  const overlayRef = useRef<HTMLDivElement>(null);
-
+export function ProfileDialog({ profileId, trigger }: ProfileDialogProps) {
   const {
+    overlayRef,
+    isDialogOpen,
     profileData,
     profileTypesData,
     tonesData,
     platformsData,
     isProfileDialogFormDataLoading,
     isProfileDialogFormDataError,
+    setIsDialogOpen,
+    onDialogClose,
   } = useProfileDialog({ profileId });
 
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent overlayRef={overlayRef} className="max-w-2xl">
         {isProfileDialogFormDataLoading ? (
@@ -45,14 +43,14 @@ export function ProfileDialog({
               title={profileData ? "Редактирование профиля" : "Новый профиль"}
               description="Введите всю релевантную информацию о вашем профиле / канале, которая будет полезна при генерации контента"
             />
-            {/* <Profile
-              profile={profileData}
-              profileTypes={profileTypesData}
-              tones={tonesData}
-              platforms={platformsData}
+            <ProfileDialogForm
+              profileData={profileData}
+              profileTypesData={profileTypesData}
+              tonesData={tonesData}
+              platformsData={platformsData}
               overlayRef={overlayRef}
               onDialogClose={onDialogClose}
-            /> */}
+            />
           </>
         ) : null}
       </DialogContent>

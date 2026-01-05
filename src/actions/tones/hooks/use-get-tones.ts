@@ -9,7 +9,6 @@ export function useGetTones() {
     isError: isTonesError,
   } = useQuery({
     ...getApiV1TonesOptions(),
-    select: (data) => data.data,
   });
 
   return {

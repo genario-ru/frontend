@@ -9,7 +9,6 @@ export function useGetProfileTypes() {
     isError: isProfileTypesError,
   } = useQuery({
     ...getApiV1ProfilesTypesOptions(),
-    select: (data) => data.data,
   });
 
   return {

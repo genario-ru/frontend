@@ -15,7 +15,6 @@ export function useGetProfile({ profileId }: UseGetProfileParams) {
     ...getApiV1ProfilesProfileIdOptions({
       path: { profileId: profileId as string },
     }),
-    select: (data) => data.data,
     enabled: Boolean(profileId),
   });
 

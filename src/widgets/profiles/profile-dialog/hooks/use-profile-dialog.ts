@@ -1,3 +1,5 @@
+import { useCallback, useRef, useState } from "react";
+
 import { useGetPlatforms } from "@/actions/platforms/hooks/use-get-platforms";
 import { useGetProfile } from "@/actions/profiles/hooks/use-get-profile";
 import { useGetProfileTypes } from "@/actions/profiles/hooks/use-get-profile-types";
@@ -8,6 +10,9 @@ type UseProfileDialogParams = {
 };
 
 export function useProfileDialog({ profileId }: UseProfileDialogParams) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const { profileData, isProfileLoading, isProfileError } = useGetProfile({
     profileId,
   });
@@ -20,7 +25,13 @@ export function useProfileDialog({ profileId }: UseProfileDialogParams) {
   const { platformsData, isPlatformsLoading, isPlatformsError } =
     useGetPlatforms();
 
+  const onDialogClose = useCallback(() => {
+    setIsDialogOpen(false);
+  }, []);
+
   return {
+    overlayRef,
+    isDialogOpen,
     profileData,
     profileTypesData,
     tonesData,
@@ -32,5 +43,7 @@ export function useProfileDialog({ profileId }: UseProfileDialogParams) {
       isProfileLoading,
     isProfileDialogFormDataError:
       isProfileTypesError || isTonesError || isPlatformsError || isProfileError,
+    setIsDialogOpen,
+    onDialogClose,
   };
 }
