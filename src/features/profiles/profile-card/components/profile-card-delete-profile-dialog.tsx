@@ -32,7 +32,6 @@ export function ProfileCardDeleteProfileDialog({
           variant="tertiary"
           color="negative"
           icon={<TrashIcon />}
-          onClick={onDeleteProfileButtonClick}
           className="w-full justify-start"
         >
           Удалить

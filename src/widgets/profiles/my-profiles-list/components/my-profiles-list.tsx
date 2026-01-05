@@ -9,14 +9,17 @@ import { MyProfileActions } from "./my-profile-actions";
 export function MyProfilesList() {
   const { profilesData, isLoadingProfiles } = useMyProfilesList();
 
-  if (isLoadingProfiles) {
-    <ItemsList count={3} gap={16} item={<ProfileCardSkeleton />} />;
-  }
-
-  if (profilesData) {
-    return (
-      <ContentLayout className="gap-6" size="md">
-        {profilesData.data.map((profile) => (
+  return (
+    <ContentLayout className="gap-6" size="md">
+      {isLoadingProfiles ? (
+        <ItemsList
+          count={3}
+          gap={24}
+          item={<ProfileCardSkeleton />}
+          className="w-full"
+        />
+      ) : profilesData ? (
+        profilesData.data.map((profile) => (
           <ProfileCard
             key={profile.id}
             id={profile.id}
@@ -27,10 +30,8 @@ export function MyProfilesList() {
             platforms={profile.platforms.map((platform) => platform.name)}
             actions={<MyProfileActions id={profile.id} name={profile.name} />}
           />
-        ))}
-      </ContentLayout>
-    );
-  }
-
-  return null;
+        ))
+      ) : null}
+    </ContentLayout>
+  );
 }

@@ -2,6 +2,7 @@ import { ProfileCardActions } from "@/features/profiles/profile-card/components/
 import { ProfileCardDeleteProfileDialog } from "@/features/profiles/profile-card/components/profile-card-delete-profile-dialog";
 
 import { useMyProfileActions } from "../hooks/use-my-profile-actions";
+import { MyProfileEditDialog } from "./my-profile-edit-dialog";
 
 type MyProfileProps = {
   id: string;
@@ -20,7 +21,7 @@ export function MyProfileActions({ id, name }: MyProfileProps) {
 
   return (
     <ProfileCardActions
-      editDialog={<div>Edit</div>}
+      editDialog={<MyProfileEditDialog profileId={id} />}
       deleteDialog={
         <ProfileCardDeleteProfileDialog
           profileName={name}
