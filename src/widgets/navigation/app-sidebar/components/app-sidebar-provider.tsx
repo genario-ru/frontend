@@ -1,5 +1,3 @@
-"use client";
-
 import cookies from "js-cookie";
 import { type PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { useEventListener, useMediaQuery } from "usehooks-ts";

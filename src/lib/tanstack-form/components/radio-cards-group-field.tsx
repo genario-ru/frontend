@@ -1,6 +1,7 @@
 import { useStore } from "@tanstack/react-form";
 
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
@@ -13,6 +14,7 @@ type SelectFieldProps = {
   items: {
     label: string;
     value: string;
+    icon?: string;
   }[];
   className?: string;
 };
@@ -47,6 +49,7 @@ export const RadioCardsGroupField = ({
         {items.map((item) => (
           <RadioCardsGroupItem key={item.value} value={item.value}>
             {item.label}
+            {item.icon && <LucideIcon icon={item.icon} />}
           </RadioCardsGroupItem>
         ))}
       </RadioCardsGroup>

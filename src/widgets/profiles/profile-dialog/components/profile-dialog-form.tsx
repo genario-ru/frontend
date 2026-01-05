@@ -12,6 +12,7 @@ import {
   DialogClose,
   DialogFooter,
 } from "@/shared/components/ui/dialog";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { cn } from "@/shared/utils/cn";
 
 import { useProfileDialogForm } from "../hooks/use-profile-dialog-form";
@@ -89,7 +90,12 @@ export const ProfileDialogForm = ({
               title="Тональность"
               items={tonesData.data.map((tone) => ({
                 value: tone.id,
-                children: tone.name,
+                children: (
+                  <>
+                    {tone.name}
+                    {tone.icon && <LucideIcon icon={tone.icon} />}
+                  </>
+                ),
               }))}
             />
           )}

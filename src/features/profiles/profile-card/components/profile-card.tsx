@@ -37,13 +37,15 @@ export const ProfileCard = ({
         <ProfileImage
           size="lg"
           uuid={id}
-          className="ring-new-neutral-1 absolute -bottom-2 left-5 ring-6"
+          className="ring-neutral-1 absolute -bottom-2 left-5 ring-6"
         />
       </header>
       <div className="flex w-full flex-col gap-2 px-4 pb-4">
-        <div className="flex w-full items-end gap-2">
-          <h2 className="text-xl font-semibold">{name}</h2>
-          <Badge size="sm">{typeName}</Badge>
+        <div className="flex w-full items-end justify-between gap-2">
+          <div className="flex items-end gap-2">
+            <h2 className="text-xl font-semibold">{name}</h2>
+            <Badge size="sm">{typeName}</Badge>
+          </div>
           {actions}
         </div>
         {description && (

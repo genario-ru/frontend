@@ -1,5 +1,3 @@
-"use client";
-
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
@@ -8,9 +6,10 @@ import { cn } from "@/shared/utils/cn";
 
 const radioCardsGroupItemVariants = cva(
   cn(
-    "flex w-full flex-col items-center font-medium border bg-neutral-1",
+    "flex w-full flex-col items-center font-medium ring ring-neutral-4 bg-neutral-1 duration-200",
+    "[&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 ",
     "hover:bg-neutral-2 active:bg-neutral-2 focus:bg-neutral-2",
-    "data-[state=checked]:bg-neutral-3 data-[state=checked]:border-neutral-6 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 data-[state=checked]:[&_svg]:stroke-neutral-8",
+    "data-[state=checked]:bg-neutral-2 data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
   ),
   {
     variants: {

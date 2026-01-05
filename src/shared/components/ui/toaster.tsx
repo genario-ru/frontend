@@ -1,5 +1,3 @@
-"use client";
-
 import { cva, type VariantProps } from "class-variance-authority";
 import { CircleCheckIcon, CircleXIcon, InfoIcon } from "lucide-react";
 // import { useTheme } from "next-themes";
@@ -45,9 +43,7 @@ export const Toast = (props: ToastProps) => {
       </div>
       <div className="flex flex-col gap-0.5">
         <p className="text-neutral-8 font-medium">{title}</p>
-        {description && (
-          <p className="text-neutral-7 text-sm">{description}</p>
-        )}
+        {description && <p className="text-neutral-7 text-sm">{description}</p>}
       </div>
     </div>
   );

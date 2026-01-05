@@ -1,5 +1,3 @@
-"use client";
-
 import type { CheckedState } from "@radix-ui/react-checkbox";
 import { isNil, noop } from "es-toolkit";
 import type { ComponentProps, ReactNode } from "react";
