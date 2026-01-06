@@ -576,6 +576,27 @@ export const patchApiV1ProfilesProfileIdMutation = (
   return mutationOptions;
 };
 
+export const getApiV1ProfilesTypesQueryKey = (
+  options?: Options<GetApiV1ProfilesTypesData>,
+) => createQueryKey("getApiV1ProfilesTypes", options, false, ["Profiles"]);
+
+export const getApiV1ProfilesTypesOptions = (
+  options?: Options<GetApiV1ProfilesTypesData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ProfilesTypes({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ProfilesTypesQueryKey(options),
+  });
+};
+
 export const postApiV1ProfilesMutation = (
   options?: Partial<Options<PostApiV1ProfilesData>>,
 ): UseMutationOptions<
@@ -598,27 +619,6 @@ export const postApiV1ProfilesMutation = (
     },
   };
   return mutationOptions;
-};
-
-export const getApiV1ProfilesTypesQueryKey = (
-  options?: Options<GetApiV1ProfilesTypesData>,
-) => createQueryKey("getApiV1ProfilesTypes", options, false, ["Profiles"]);
-
-export const getApiV1ProfilesTypesOptions = (
-  options?: Options<GetApiV1ProfilesTypesData>,
-) => {
-  return queryOptions({
-    queryFn: async ({ queryKey, signal }) => {
-      const { data } = await getApiV1ProfilesTypes({
-        ...options,
-        ...queryKey[0],
-        signal,
-        throwOnError: true,
-      });
-      return data;
-    },
-    queryKey: getApiV1ProfilesTypesQueryKey(options),
-  });
 };
 
 export const postApiV1ScenariosMutation = (

@@ -506,6 +506,25 @@ export const patchApiV1ProfilesProfileId = <
   });
 };
 
+export const getApiV1ProfilesTypes = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiV1ProfilesTypesData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetApiV1ProfilesTypesResponses,
+    GetApiV1ProfilesTypesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ProfilesTypesData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ProfilesTypesResponse.parseAsync(data);
+    },
+    url: "/api/v1/profiles/types",
+    ...options,
+  });
+};
+
 export const postApiV1Profiles = <ThrowOnError extends boolean = false>(
   options?: Options<PostApiV1ProfilesData, ThrowOnError>,
 ) => {
@@ -526,25 +545,6 @@ export const postApiV1Profiles = <ThrowOnError extends boolean = false>(
       "Content-Type": "application/json",
       ...options?.headers,
     },
-  });
-};
-
-export const getApiV1ProfilesTypes = <ThrowOnError extends boolean = false>(
-  options?: Options<GetApiV1ProfilesTypesData, ThrowOnError>,
-) => {
-  return (options?.client ?? client).get<
-    GetApiV1ProfilesTypesResponses,
-    GetApiV1ProfilesTypesErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await zGetApiV1ProfilesTypesData.parseAsync(data);
-    },
-    responseValidator: async (data) => {
-      return await zGetApiV1ProfilesTypesResponse.parseAsync(data);
-    },
-    url: "/api/v1/profiles/types",
-    ...options,
   });
 };
 

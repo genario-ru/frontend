@@ -107,6 +107,16 @@ export const zPatchApiV1IdeasIdeaIdResponse = z
 export const zPostApiV1IdeasListsData = z.object({
   body: z.optional(
     z.object({
+      templateId: z.optional(
+        z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+      ),
       profileId: z.optional(
         z.union([
           z
@@ -1126,6 +1136,37 @@ export const zPatchApiV1ProfilesProfileIdResponse = z
     description: "Profile updated successfully",
   });
 
+export const zGetApiV1ProfilesTypesData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Profile types retrieved successfully
+ */
+export const zGetApiV1ProfilesTypesResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        slug: z.string(),
+        name: z.string(),
+        description: z.union([z.string(), z.null()]),
+        icon: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Profile types retrieved successfully",
+  });
+
 export const zPostApiV1ProfilesData = z.object({
   body: z.optional(
     z.object({
@@ -1194,37 +1235,6 @@ export const zPostApiV1ProfilesResponse = z
   })
   .register(z.globalRegistry, {
     description: "Profile created successfully",
-  });
-
-export const zGetApiV1ProfilesTypesData = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-/**
- * Profile types retrieved successfully
- */
-export const zGetApiV1ProfilesTypesResponse = z
-  .object({
-    data: z.array(
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-    ),
-  })
-  .register(z.globalRegistry, {
-    description: "Profile types retrieved successfully",
   });
 
 export const zPostApiV1ScenariosData = z.object({

@@ -146,6 +146,7 @@ export type PatchApiV1IdeasIdeaIdResponse =
 
 export type PostApiV1IdeasListsData = {
   body?: {
+    templateId?: string | null;
     profileId?: string | null;
     name?: string | null;
     description?: string | null;
@@ -1177,6 +1178,69 @@ export type PatchApiV1ProfilesProfileIdResponses = {
 export type PatchApiV1ProfilesProfileIdResponse =
   PatchApiV1ProfilesProfileIdResponses[keyof PatchApiV1ProfilesProfileIdResponses];
 
+export type GetApiV1ProfilesTypesData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/api/v1/profiles/types";
+};
+
+export type GetApiV1ProfilesTypesErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ProfilesTypesError =
+  GetApiV1ProfilesTypesErrors[keyof GetApiV1ProfilesTypesErrors];
+
+export type GetApiV1ProfilesTypesResponses = {
+  /**
+   * Profile types retrieved successfully
+   */
+  200: {
+    data: Array<{
+      id: string;
+      slug: string;
+      name: string;
+      description: string | null;
+      icon: string | null;
+      createdAt: string;
+      updatedAt: string;
+    }>;
+  };
+};
+
+export type GetApiV1ProfilesTypesResponse =
+  GetApiV1ProfilesTypesResponses[keyof GetApiV1ProfilesTypesResponses];
+
 export type PostApiV1ProfilesData = {
   body?: {
     name: string;
@@ -1247,69 +1311,6 @@ export type PostApiV1ProfilesResponses = {
 
 export type PostApiV1ProfilesResponse =
   PostApiV1ProfilesResponses[keyof PostApiV1ProfilesResponses];
-
-export type GetApiV1ProfilesTypesData = {
-  body?: never;
-  path?: never;
-  query?: never;
-  url: "/api/v1/profiles/types";
-};
-
-export type GetApiV1ProfilesTypesErrors = {
-  /**
-   * Bad request response
-   *
-   * Bad request
-   */
-  400: string;
-  /**
-   * Unauthorized response
-   *
-   * Unauthorized
-   */
-  401: string;
-  /**
-   * Forbidden response
-   *
-   * Forbidden
-   */
-  403: string;
-  /**
-   * Not found response
-   *
-   * Not found
-   */
-  404: string;
-  /**
-   * Internal server error response
-   *
-   * Internal server error
-   */
-  500: string;
-};
-
-export type GetApiV1ProfilesTypesError =
-  GetApiV1ProfilesTypesErrors[keyof GetApiV1ProfilesTypesErrors];
-
-export type GetApiV1ProfilesTypesResponses = {
-  /**
-   * Profile types retrieved successfully
-   */
-  200: {
-    data: Array<{
-      id: string;
-      slug: string;
-      name: string;
-      description: string | null;
-      icon: string | null;
-      createdAt: string;
-      updatedAt: string;
-    }>;
-  };
-};
-
-export type GetApiV1ProfilesTypesResponse =
-  GetApiV1ProfilesTypesResponses[keyof GetApiV1ProfilesTypesResponses];
 
 export type PostApiV1ScenariosData = {
   body?: {
