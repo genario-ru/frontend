@@ -1,4 +1,4 @@
-import { LightbulbIcon } from "lucide-react";
+import { FilmIcon, LightbulbIcon } from "lucide-react";
 
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
@@ -7,6 +7,7 @@ import { HomeAppMenubarActions } from "@/widgets/home/home-app-menubar/component
 import { HomeAppMenubarActionsButton } from "@/widgets/home/home-app-menubar/components/home-app-menubar-actions-button";
 import { HomeTemplatesCarousel } from "@/widgets/home/home-templates-carousel/components/home-templates-carousel";
 import { IdeasListDialog } from "@/widgets/ideas-lists/ideas-list-dialog/components/ideas-list-dialog";
+import { ScenarioDialog } from "@/widgets/scenarios/scenario-dialog/components/scenario-dialog";
 
 export function HomeComponent() {
   return (
@@ -23,7 +24,15 @@ export function HomeComponent() {
                 }
               />
             }
-            newTemplateDialog={null}
+            newTemplateDialog={
+              <ScenarioDialog
+                trigger={
+                  <HomeAppMenubarActionsButton icon={<FilmIcon />}>
+                    Новый сценарий
+                  </HomeAppMenubarActionsButton>
+                }
+              />
+            }
           />
         }
       />
