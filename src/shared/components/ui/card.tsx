@@ -1,14 +1,10 @@
 import * as Slot from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
 import { type ComponentProps } from "react";
 
+import { cardVariants } from "@/shared/constants/card-variants";
 import { cn } from "@/shared/utils/cn";
 
 type CardProps = ComponentProps<"div"> & { asChild?: boolean };
-
-export const cardVariants = cva(
-  "bg-neutral-2 flex flex-col gap-4 rounded-4 border p-4 duration-200",
-);
 
 export const Card = ({ asChild, className, ...props }: CardProps) => {
   const Comp = asChild ? Slot.Root : "div";
