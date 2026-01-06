@@ -9,7 +9,7 @@ export function AppComponent() {
       <aside className="sticky top-0 bottom-0 flex h-full w-fit flex-col py-8 pl-8">
         <AppSidebar />
       </aside>
-      <div className="flex h-full w-full flex-col gap-5 overflow-auto pr-8 pb-8 pl-5">
+      <div className="flex h-full w-full max-w-6xl flex-col pr-8 pl-5">
         <Outlet />
       </div>
     </AppSidebarProvider>
