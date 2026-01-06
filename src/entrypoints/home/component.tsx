@@ -6,7 +6,7 @@ import { HomeTemplatesCarousel } from "@/widgets/home/home-templates-carousel/co
 export function HomeComponent() {
   return (
     <>
-      <HomeAppMenubar />
+      <HomeAppMenubar actions={null} />
       <PageLayout>
         <ContentLayout>
           <HomeTemplatesCarousel />

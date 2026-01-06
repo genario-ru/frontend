@@ -1,0 +1,48 @@
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import type { ComponentProps } from "react";
+
+import { cn } from "@/shared/utils/cn";
+
+import { TemplateCard } from "./template-card";
+
+type TemplateCardsRadioGroupItemProps = ComponentProps<
+  typeof RadioGroupPrimitive.Item
+> & {
+  icon?: string | null;
+  color?: string | null;
+  name: string;
+  description?: string | null;
+};
+
+export const TemplateCardsRadioGroup = ({
+  className,
+  ...props
+}: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
+  return (
+    <RadioGroupPrimitive.Root
+      className={cn("grid w-full grid-cols-2 gap-3", className)}
+      {...props}
+    />
+  );
+};
+
+export const TemplateCardsRadioGroupItem = ({
+  icon,
+  color,
+  name,
+  description,
+  ...props
+}: TemplateCardsRadioGroupItemProps) => {
+  return (
+    <RadioGroupPrimitive.Item {...props} asChild>
+      <TemplateCard
+        icon={icon}
+        title={name}
+        description={description}
+        color={color}
+        active={props.checked}
+        clickable={props.disabled}
+      />
+    </RadioGroupPrimitive.Item>
+  );
+};

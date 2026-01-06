@@ -7,19 +7,19 @@ import { useMyProfilesList } from "../hooks/use-my-profiles-list";
 import { MyProfileActions } from "./my-profile-actions";
 
 export function MyProfilesList() {
-  const { profilesData, isLoadingProfiles } = useMyProfilesList();
+  const { myProfilesData, isMyProfilesLoading } = useMyProfilesList();
 
   return (
     <ContentLayout className="gap-6" size="md">
-      {isLoadingProfiles ? (
+      {isMyProfilesLoading ? (
         <ItemsList
           count={3}
           gap={24}
           item={<ProfileCardSkeleton />}
           className="w-full"
         />
-      ) : profilesData ? (
-        profilesData.data.map((profile) => (
+      ) : myProfilesData ? (
+        myProfilesData.data.map((profile) => (
           <ProfileCard
             key={profile.id}
             id={profile.id}

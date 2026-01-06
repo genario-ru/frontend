@@ -1,5 +1,11 @@
+import type { ReactNode } from "react";
+
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 
-export function HomeAppMenubar() {
-  return <AppMenubar title="Главная" />;
+type HomeAppMenubarProps = {
+  actions: ReactNode;
+};
+
+export function HomeAppMenubar({ actions }: HomeAppMenubarProps) {
+  return <AppMenubar title="Главная" right={actions} />;
 }
