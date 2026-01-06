@@ -56,7 +56,6 @@ export const Toaster = ({ ...props }: ToasterProps) => {
     <ToasterRoot
       // theme={theme as ToasterProps["theme"]}
       position="top-center"
-      duration={10000000}
       toastOptions={{ unstyled: true, className: "w-full" }}
       className="toaster group w-full"
       {...props}
