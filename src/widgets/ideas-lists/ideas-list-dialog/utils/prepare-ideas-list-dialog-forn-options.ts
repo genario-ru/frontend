@@ -17,13 +17,13 @@ export const prepareIdeasListDialogFormOptions = ({
 }: PrepareScenarioFormOptionsParams) => {
   return formOptions({
     defaultValues: {
-      currentStep: IdeasListDialogFormSteps.PrimaryInfo,
+      currentStep: IdeasListDialogFormSteps.TemplateSelection,
+      [IdeasListDialogFormSteps.TemplateSelection]: {
+        templateId: ideasListData?.data.templateId ?? "",
+      },
       [IdeasListDialogFormSteps.PrimaryInfo]: {
         name: ideasListData?.data.name ?? "",
         description: ideasListData?.data.description ?? "",
-      },
-      [IdeasListDialogFormSteps.TemplateSelection]: {
-        templateId: ideasListData?.data.templateId ?? "",
       },
       [IdeasListDialogFormSteps.ParamsConfiguration]: {
         profileId: ideasListData?.data.profileId ?? "",

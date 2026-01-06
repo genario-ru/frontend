@@ -68,10 +68,10 @@ export type IdeasListDialogFormSchema = z.infer<
 export const ideasListDialogFormStepValidateFn =
   createFormStepValidationFn<IdeasListDialogFormSchema>(
     {
-      [IdeasListDialogFormSteps.PrimaryInfo]:
-        ideasListDialogPrimaryInfoSubformSchema,
       [IdeasListDialogFormSteps.TemplateSelection]:
         ideasListDialogTemplateSelectionSubformSchema,
+      [IdeasListDialogFormSteps.PrimaryInfo]:
+        ideasListDialogPrimaryInfoSubformSchema,
       [IdeasListDialogFormSteps.ParamsConfiguration]:
         ideasListDialogParamsConfigurationSubformSchema,
     },

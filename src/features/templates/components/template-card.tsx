@@ -32,7 +32,7 @@ export function TemplateCard({
       className={cn(
         "rounded-4 flex flex-col justify-between gap-4 bg-(--template-color)/10 p-4 duration-200",
         {
-          "hover:bg-(--template-color)/15": clickable,
+          "cursor-pointer hover:bg-(--template-color)/15": clickable,
           "ring-2 ring-(--template-color)": active,
         },
         className,

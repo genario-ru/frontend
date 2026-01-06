@@ -56,14 +56,14 @@ export function useIdeasListDialogForm({
         case IdeasListDialogFormSteps.TemplateSelection:
           formApi.setFieldValue(
             "currentStep",
-            IdeasListDialogFormSteps.ParamsConfiguration,
+            IdeasListDialogFormSteps.PrimaryInfo,
           );
           break;
 
         case IdeasListDialogFormSteps.PrimaryInfo:
           formApi.setFieldValue(
             "currentStep",
-            IdeasListDialogFormSteps.TemplateSelection,
+            IdeasListDialogFormSteps.ParamsConfiguration,
           );
           break;
 
@@ -76,9 +76,7 @@ export function useIdeasListDialogForm({
 
           if (ideasListData) {
             updateIdeasList({
-              path: {
-                ideasListId: ideasListData.data.id,
-              },
+              path: { ideasListId: ideasListData.data.id },
               body: commonIdeasListParams,
             });
           } else {

@@ -20,7 +20,7 @@ export const IdeasListDialogTemplatesSelectionSubform = withForm({
       return <div>Loading...</div>;
     }
 
-    if (!templatesData) {
+    if (!templatesData?.data.length) {
       return <></>;
     }
 
@@ -32,17 +32,11 @@ export const IdeasListDialogTemplatesSelectionSubform = withForm({
           {(field) => (
             <FieldLayout errorMessage={field.state.meta.errors[0]}>
               <TemplateCardsRadioGroup
-                defaultValue=""
-                value={field.state.value ?? undefined}
+                defaultValue={templatesData.data[0].id}
+                value={field.state.value}
                 onBlur={field.handleBlur}
                 onValueChange={(e) => field.handleChange(e)}
               >
-                <TemplateCardsRadioGroupItem
-                  value=""
-                  name="Без шаблона"
-                  icon="circle"
-                  description="Идеи видео любых типов на ваш вкус"
-                />
                 {templatesData.data.map((item) => (
                   <TemplateCardsRadioGroupItem
                     key={item.id}
@@ -51,6 +45,7 @@ export const IdeasListDialogTemplatesSelectionSubform = withForm({
                     icon={item.icon}
                     color={item.color}
                     description={item.description}
+                    checked={field.state.value === item.id}
                   />
                 ))}
               </TemplateCardsRadioGroup>

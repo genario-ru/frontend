@@ -41,24 +41,20 @@ export function IdeasListDialog({
       return <div>Error...</div>;
     }
 
-    if (ideasListData) {
-      return (
-        <>
-          <DialogPredefinedHeader
-            title={ideasListDialogTitle}
-            description={ideasListDialogDescription}
-          />
-          <IdeasListDialogForm
-            dialogContentRef={dialogContentRef}
-            dialogOverlayRef={dialogOverlayRef}
-            ideasListData={ideasListData}
-            onDialogClose={onDialogClose}
-          />
-        </>
-      );
-    }
-
-    return null;
+    return (
+      <>
+        <DialogPredefinedHeader
+          title={ideasListDialogTitle}
+          description={ideasListDialogDescription}
+        />
+        <IdeasListDialogForm
+          dialogContentRef={dialogContentRef}
+          dialogOverlayRef={dialogOverlayRef}
+          ideasListData={ideasListData}
+          onDialogClose={onDialogClose}
+        />
+      </>
+    );
   }, [
     dialogContentRef,
     dialogOverlayRef,

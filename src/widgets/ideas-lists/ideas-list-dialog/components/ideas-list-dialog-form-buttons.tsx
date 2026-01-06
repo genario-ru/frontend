@@ -37,13 +37,13 @@ export const IdeasListDialogFormButtons = withForm({
     const isLoading = isCreateIdeasListPending || isUpdateIdeasListPending;
 
     const onBackButtonClick = () => {
-      if (currentStep === IdeasListDialogFormSteps.TemplateSelection) {
-        form.setFieldValue("currentStep", IdeasListDialogFormSteps.PrimaryInfo);
-      } else if (currentStep === IdeasListDialogFormSteps.ParamsConfiguration) {
+      if (currentStep === IdeasListDialogFormSteps.PrimaryInfo) {
         form.setFieldValue(
           "currentStep",
           IdeasListDialogFormSteps.TemplateSelection,
         );
+      } else if (currentStep === IdeasListDialogFormSteps.ParamsConfiguration) {
+        form.setFieldValue("currentStep", IdeasListDialogFormSteps.PrimaryInfo);
       }
     };
 
@@ -54,7 +54,7 @@ export const IdeasListDialogFormButtons = withForm({
         })}
       >
         {/* Кнопка слева */}
-        {currentStep === IdeasListDialogFormSteps.PrimaryInfo ? (
+        {currentStep === IdeasListDialogFormSteps.TemplateSelection ? (
           <DialogClose asChild>
             <Button type="button" size="lg" disabled={isLoading}>
               Отмена

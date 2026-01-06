@@ -4,13 +4,10 @@ import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/produc
 import { DialogBody } from "@/shared/components/ui/dialog";
 
 import { useIdeasListDialogForm } from "../hooks/use-ideas-list-dialog-form";
-import { IdeasListDialogFormSteps } from "../utils/ideas-list-dialog-form-helpers";
+import { IdeasListDialogCurrentSubform } from "./ideas-list-dialog-current-subform";
 import { IdeasListDialogFormButtons } from "./ideas-list-dialog-form-buttons";
 import { IdeasListDialogFormNavigationSteps } from "./ideas-list-dialog-form-navigation-steps";
 import { IdeasListDialogFormNavigationStepsListener } from "./ideas-list-dialog-form-navigation-steps-listener";
-import { IdeasListDialogParamsConfigurationSubform } from "./ideas-list-dialog-params-configuration-subform";
-import { IdeasListDialogPrimaryInfoSubform } from "./ideas-list-dialog-primary-info-subform";
-import { IdeasListDialogTemplatesSelectionSubform } from "./ideas-list-dialog-templates-selection-subform";
 
 type IdeasListDialogFormProps = {
   dialogContentRef: RefObject<HTMLDivElement | null>;
@@ -41,18 +38,11 @@ export function IdeasListDialogForm({
       />
       <DialogBody className="gap-8">
         <IdeasListDialogFormNavigationSteps form={form} />
-        {currentStep === IdeasListDialogFormSteps.PrimaryInfo && (
-          <IdeasListDialogPrimaryInfoSubform form={form} />
-        )}
-        {currentStep === IdeasListDialogFormSteps.TemplateSelection && (
-          <IdeasListDialogTemplatesSelectionSubform form={form} />
-        )}
-        {currentStep === IdeasListDialogFormSteps.ParamsConfiguration && (
-          <IdeasListDialogParamsConfigurationSubform
-            form={form}
-            dialogContentRef={dialogContentRef}
-          />
-        )}
+        <IdeasListDialogCurrentSubform
+          form={form}
+          currentStep={currentStep}
+          dialogContentRef={dialogContentRef}
+        />
       </DialogBody>
       <IdeasListDialogFormButtons
         form={form}
