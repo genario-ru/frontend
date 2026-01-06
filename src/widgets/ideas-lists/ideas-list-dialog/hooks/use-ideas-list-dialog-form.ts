@@ -11,7 +11,7 @@ import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
 import { IdeasListDialogFormSteps } from "../utils/ideas-list-dialog-form-helpers";
 import { prepareIdeasListDialogFormOptions } from "../utils/prepare-ideas-list-dialog-forn-options";
-import { usePrefetchListDialogSubformsData } from "./use-prefetch-list-dialog-subforms-data";
+import { usePrefetchIdeasListDialogSubformsData } from "./use-prefetch-ideas-list-dialog-subforms-data";
 
 type UseIdeasListDialogFormParams = {
   ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
@@ -94,7 +94,7 @@ export function useIdeasListDialogForm({
   const currentStep = useStore(form.store, (state) => state.values.currentStep);
   const { onFormSubmit } = useFormHandlers({ form: form });
 
-  usePrefetchListDialogSubformsData();
+  usePrefetchIdeasListDialogSubformsData();
 
   return {
     form,

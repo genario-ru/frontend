@@ -49,7 +49,7 @@ export function HomeTemplatesCarousel() {
     <Island title="Шаблоны" className="overflow-hidden">
       <Swiper
         spaceBetween={8}
-        slidesPerView={3.6}
+        slidesPerView={4.2}
         style={{ overflow: "visible" }}
         className="h-[160px] w-full"
       >
