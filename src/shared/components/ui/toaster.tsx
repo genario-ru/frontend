@@ -1,17 +1,17 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { CircleCheckIcon, CircleXIcon, InfoIcon } from "lucide-react";
+import { CheckIcon, InfoIcon, XIcon } from "lucide-react";
 // import { useTheme } from "next-themes";
 import { type ComponentProps } from "react";
 import { Toaster as ToasterRoot } from "sonner";
 
 const toastIconVariants = cva(
-  "p-1 ring-4 w-fit h-fit rounded-full [&_svg]:size-4",
+  "p-1.5 w-fit h-fit rounded-full [&_svg]:stroke-neutral-1 [&_svg]:size-4 [&_svg]:stroke-3",
   {
     variants: {
       variant: {
-        info: "bg-neutral-5 ring-neutral-3 [&_svg]:stroke-neutral-8",
-        success: "bg-positive-5 ring-positive-3 [&_svg]:stroke-positive-7",
-        error: "bg-negative-5 ring-negative-3 [&_svg]:stroke-negative-7",
+        info: "bg-neutral-5",
+        success: "bg-positive-5",
+        error: "bg-negative-5",
       },
     },
     defaultVariants: {
@@ -34,16 +34,16 @@ export const Toast = (props: ToastProps) => {
   return (
     <div
       id={String(id)}
-      className="bg-neutral-2 flex gap-3 rounded-xl border p-4 shadow-xs"
+      className="bg-neutral-8 flex items-center gap-3 rounded-2xl border px-4 py-3 shadow-xs"
     >
       <div className={toastIconVariants({ variant })}>
         {variant === "info" && <InfoIcon />}
-        {variant === "success" && <CircleCheckIcon />}
-        {variant === "error" && <CircleXIcon />}
+        {variant === "success" && <CheckIcon />}
+        {variant === "error" && <XIcon />}
       </div>
       <div className="flex flex-col gap-0.5">
-        <p className="text-neutral-8 font-medium">{title}</p>
-        {description && <p className="text-neutral-7 text-sm">{description}</p>}
+        <p className="text-neutral-1 font-medium">{title}</p>
+        {description && <p className="text-neutral-2 text-sm">{description}</p>}
       </div>
     </div>
   );
@@ -56,6 +56,7 @@ export const Toaster = ({ ...props }: ToasterProps) => {
     <ToasterRoot
       // theme={theme as ToasterProps["theme"]}
       position="top-center"
+      duration={10000000}
       toastOptions={{ unstyled: true, className: "w-full" }}
       className="toaster group w-full"
       {...props}
