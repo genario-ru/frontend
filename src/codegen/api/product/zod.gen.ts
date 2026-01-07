@@ -745,6 +745,547 @@ export const zGetApiV1IdeasListsMyResponse = z
     description: "Ideas lists retrieved successfully",
   });
 
+export const zGetApiV1ArchiveItemsMyData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(
+    z.object({
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      page: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Номер страницы",
+        }),
+      ),
+      perPage: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Количество элементов в одной странице ответа",
+        }),
+      ),
+      sortOrder: z.optional(
+        z.enum(["asc", "desc"]).register(z.globalRegistry, {
+          description: "Вид сортировки",
+        }),
+      ),
+      sortBy: z.optional(z.enum(["createdAt", "updatedAt"])),
+      entity: z.optional(z.enum(["ideasList", "scenario"])),
+      templateIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      profileIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+    }),
+  ),
+});
+
+/**
+ * Archive items retrieved successfully
+ */
+export const zGetApiV1ArchiveItemsMyResponse = z
+  .object({
+    data: z.array(
+      z.union([
+        z.object({
+          entity: z.literal("ideasList"),
+          data: z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            userId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            profileId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            templateId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            name: z.union([z.string(), z.null()]),
+            description: z.union([z.string(), z.null()]),
+            targetAudience: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+            profile: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                userId: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                targetAudience: z.union([z.string(), z.null()]),
+                typeId: z.union([
+                  z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  z.null(),
+                ]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
+            tones: z.array(
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                icon: z.union([z.string(), z.null()]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+            ),
+            videoTypes: z.array(
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                icon: z.union([z.string(), z.null()]),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+            ),
+          }),
+        }),
+        z.object({
+          entity: z.literal("scenario"),
+          data: z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            userId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            currentVersionId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            profileId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            templateId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            platformId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            videoTypeId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            videoDurationId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            name: z.union([z.string(), z.null()]),
+            description: z.union([z.string(), z.null()]),
+            targetAudience: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+            currentVersion: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  scenarioId: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  status: z.enum(["pending", "generation", "failed", "ready"]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                  profile: z.union([
+                    z.object({
+                      id: z
+                        .uuid()
+                        .regex(
+                          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                        ),
+                      userId: z
+                        .uuid()
+                        .regex(
+                          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                        ),
+                      name: z.string(),
+                      description: z.union([z.string(), z.null()]),
+                      targetAudience: z.union([z.string(), z.null()]),
+                      typeId: z.union([
+                        z
+                          .uuid()
+                          .regex(
+                            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                          ),
+                        z.null(),
+                      ]),
+                      createdAt: z.string(),
+                      updatedAt: z.string(),
+                    }),
+                    z.null(),
+                  ]),
+                  platform: z.union([
+                    z.object({
+                      id: z
+                        .uuid()
+                        .regex(
+                          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                        ),
+                      slug: z.string(),
+                      name: z.string(),
+                      description: z.union([z.string(), z.null()]),
+                      logoUrl: z.union([z.string(), z.null()]),
+                      baseUrl: z.union([z.string(), z.null()]),
+                      createdAt: z.string(),
+                      updatedAt: z.string(),
+                    }),
+                    z.null(),
+                  ]),
+                  videoType: z.union([
+                    z.object({
+                      id: z
+                        .uuid()
+                        .regex(
+                          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                        ),
+                      slug: z.string(),
+                      name: z.string(),
+                      description: z.union([z.string(), z.null()]),
+                      icon: z.union([z.string(), z.null()]),
+                      createdAt: z.string(),
+                      updatedAt: z.string(),
+                    }),
+                    z.null(),
+                  ]),
+                  videoDuration: z.union([
+                    z.object({
+                      id: z
+                        .uuid()
+                        .regex(
+                          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                        ),
+                      slug: z.string(),
+                      name: z.string(),
+                      description: z.union([z.string(), z.null()]),
+                      minSeconds: z
+                        .int()
+                        .gte(-9007199254740991)
+                        .lte(9007199254740991),
+                      maxSeconds: z.union([
+                        z.int().gte(-9007199254740991).lte(9007199254740991),
+                        z.null(),
+                      ]),
+                      createdAt: z.string(),
+                      updatedAt: z.string(),
+                    }),
+                    z.null(),
+                  ]),
+                  tones: z.union([
+                    z.array(
+                      z.object({
+                        id: z
+                          .uuid()
+                          .regex(
+                            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                          ),
+                        slug: z.string(),
+                        name: z.string(),
+                        description: z.union([z.string(), z.null()]),
+                        icon: z.union([z.string(), z.null()]),
+                        createdAt: z.string(),
+                        updatedAt: z.string(),
+                      }),
+                    ),
+                    z.null(),
+                  ]),
+                  scenarioChapters: z.union([
+                    z.array(
+                      z.object({
+                        id: z
+                          .uuid()
+                          .regex(
+                            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                          ),
+                        scenarioVersionId: z
+                          .uuid()
+                          .regex(
+                            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                          ),
+                        name: z.string(),
+                        description: z.union([z.string(), z.null()]),
+                        status: z.enum([
+                          "pending",
+                          "generation",
+                          "failed",
+                          "ready",
+                        ]),
+                        startTime: z
+                          .int()
+                          .gte(-9007199254740991)
+                          .lte(9007199254740991),
+                        endTime: z
+                          .int()
+                          .gte(-9007199254740991)
+                          .lte(9007199254740991),
+                        createdAt: z.string(),
+                        updatedAt: z.string(),
+                      }),
+                    ),
+                    z.null(),
+                  ]),
+                }),
+                z.null(),
+              ]),
+            ),
+            profile: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  userId: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  targetAudience: z.union([z.string(), z.null()]),
+                  typeId: z.union([
+                    z
+                      .uuid()
+                      .regex(
+                        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                      ),
+                    z.null(),
+                  ]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+                z.null(),
+              ]),
+            ),
+            template: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  slug: z.string(),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  icon: z.union([z.string(), z.null()]),
+                  color: z.string(),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+                z.null(),
+              ]),
+            ),
+            platform: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  slug: z.string(),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  logoUrl: z.union([z.string(), z.null()]),
+                  baseUrl: z.union([z.string(), z.null()]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+                z.null(),
+              ]),
+            ),
+            videoType: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  slug: z.string(),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  icon: z.union([z.string(), z.null()]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+                z.null(),
+              ]),
+            ),
+            videoDuration: z.optional(
+              z.union([
+                z.object({
+                  id: z
+                    .uuid()
+                    .regex(
+                      /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                    ),
+                  slug: z.string(),
+                  name: z.string(),
+                  description: z.union([z.string(), z.null()]),
+                  minSeconds: z
+                    .int()
+                    .gte(-9007199254740991)
+                    .lte(9007199254740991),
+                  maxSeconds: z.union([
+                    z.int().gte(-9007199254740991).lte(9007199254740991),
+                    z.null(),
+                  ]),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
+                }),
+                z.null(),
+              ]),
+            ),
+            tones: z.optional(
+              z.union([
+                z.array(
+                  z.object({
+                    id: z
+                      .uuid()
+                      .regex(
+                        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                      ),
+                    slug: z.string(),
+                    name: z.string(),
+                    description: z.union([z.string(), z.null()]),
+                    icon: z.union([z.string(), z.null()]),
+                    createdAt: z.string(),
+                    updatedAt: z.string(),
+                  }),
+                ),
+                z.null(),
+              ]),
+            ),
+          }),
+        }),
+      ]),
+    ),
+    meta: z.object({
+      previousPage: z.union([z.number(), z.null()]),
+      currentPage: z.number().register(z.globalRegistry, {
+        description: "Номер текущей страницы",
+      }),
+      nextPage: z.union([z.number(), z.null()]),
+      perPage: z.number().register(z.globalRegistry, {
+        description: "Количество элементов в одной странице ответа",
+      }),
+      totalItems: z.number().register(z.globalRegistry, {
+        description: "Общее количество элементов по запросу",
+      }),
+      totalPages: z.number().register(z.globalRegistry, {
+        description: "Общее количество страниц по запросу",
+      }),
+      sortOrder: z.enum(["asc", "desc"]).register(z.globalRegistry, {
+        description: "Вид сортировки",
+      }),
+      sortBy: z.enum(["createdAt", "updatedAt"]),
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      entity: z.optional(z.enum(["ideasList", "scenario"])),
+      ideasListsTotalItems: z.number(),
+      scenariosTotalItems: z.number(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Archive items retrieved successfully",
+  });
+
 export const zGetApiV1PlatformsData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),

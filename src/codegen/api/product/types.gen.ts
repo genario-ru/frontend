@@ -750,6 +750,305 @@ export type GetApiV1IdeasListsMyResponses = {
 export type GetApiV1IdeasListsMyResponse =
   GetApiV1IdeasListsMyResponses[keyof GetApiV1IdeasListsMyResponses];
 
+export type GetApiV1ArchiveItemsMyData = {
+  body?: never;
+  path?: never;
+  query?: {
+    /**
+     * Строка поиска
+     */
+    q?: string;
+    /**
+     * Номер страницы
+     */
+    page?: number;
+    /**
+     * Количество элементов в одной странице ответа
+     */
+    perPage?: number;
+    /**
+     * Вид сортировки
+     */
+    sortOrder?: "asc" | "desc";
+    sortBy?: "createdAt" | "updatedAt";
+    entity?: "ideasList" | "scenario";
+    templateIds?: Array<string>;
+    profileIds?: Array<string>;
+  };
+  url: "/api/v1/archive/items/my";
+};
+
+export type GetApiV1ArchiveItemsMyErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ArchiveItemsMyError =
+  GetApiV1ArchiveItemsMyErrors[keyof GetApiV1ArchiveItemsMyErrors];
+
+export type GetApiV1ArchiveItemsMyResponses = {
+  /**
+   * Archive items retrieved successfully
+   */
+  200: {
+    data: Array<
+      | {
+          entity: "ideasList";
+          data: {
+            id: string;
+            userId: string;
+            profileId: string | null;
+            templateId: string | null;
+            name: string | null;
+            description: string | null;
+            targetAudience: string | null;
+            createdAt: string;
+            updatedAt: string;
+            profile: {
+              id: string;
+              userId: string;
+              name: string;
+              description: string | null;
+              targetAudience: string | null;
+              typeId: string | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            tones: Array<{
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              createdAt: string;
+              updatedAt: string;
+            }>;
+            videoTypes: Array<{
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              createdAt: string;
+              updatedAt: string;
+            }>;
+          };
+        }
+      | {
+          entity: "scenario";
+          data: {
+            id: string;
+            userId: string;
+            currentVersionId: string | null;
+            profileId: string | null;
+            templateId: string | null;
+            platformId: string | null;
+            videoTypeId: string | null;
+            videoDurationId: string | null;
+            name: string | null;
+            description: string | null;
+            targetAudience: string | null;
+            createdAt: string;
+            updatedAt: string;
+            currentVersion?: {
+              id: string;
+              scenarioId: string;
+              status: "pending" | "generation" | "failed" | "ready";
+              createdAt: string;
+              updatedAt: string;
+              profile: {
+                id: string;
+                userId: string;
+                name: string;
+                description: string | null;
+                targetAudience: string | null;
+                typeId: string | null;
+                createdAt: string;
+                updatedAt: string;
+              } | null;
+              platform: {
+                id: string;
+                slug: string;
+                name: string;
+                description: string | null;
+                logoUrl: string | null;
+                baseUrl: string | null;
+                createdAt: string;
+                updatedAt: string;
+              } | null;
+              videoType: {
+                id: string;
+                slug: string;
+                name: string;
+                description: string | null;
+                icon: string | null;
+                createdAt: string;
+                updatedAt: string;
+              } | null;
+              videoDuration: {
+                id: string;
+                slug: string;
+                name: string;
+                description: string | null;
+                minSeconds: number;
+                maxSeconds: number | null;
+                createdAt: string;
+                updatedAt: string;
+              } | null;
+              tones: Array<{
+                id: string;
+                slug: string;
+                name: string;
+                description: string | null;
+                icon: string | null;
+                createdAt: string;
+                updatedAt: string;
+              }> | null;
+              scenarioChapters: Array<{
+                id: string;
+                scenarioVersionId: string;
+                name: string;
+                description: string | null;
+                status: "pending" | "generation" | "failed" | "ready";
+                startTime: number;
+                endTime: number;
+                createdAt: string;
+                updatedAt: string;
+              }> | null;
+            } | null;
+            profile?: {
+              id: string;
+              userId: string;
+              name: string;
+              description: string | null;
+              targetAudience: string | null;
+              typeId: string | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            template?: {
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              color: string;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            platform?: {
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              logoUrl: string | null;
+              baseUrl: string | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            videoType?: {
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            videoDuration?: {
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              minSeconds: number;
+              maxSeconds: number | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+            tones?: Array<{
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              createdAt: string;
+              updatedAt: string;
+            }> | null;
+          };
+        }
+    >;
+    meta: {
+      /**
+       * Номер предыдущей страницы
+       */
+      previousPage: number | null;
+      /**
+       * Номер текущей страницы
+       */
+      currentPage: number;
+      /**
+       * Номер следующей страницы
+       */
+      nextPage: number | null;
+      /**
+       * Количество элементов в одной странице ответа
+       */
+      perPage: number;
+      /**
+       * Общее количество элементов по запросу
+       */
+      totalItems: number;
+      /**
+       * Общее количество страниц по запросу
+       */
+      totalPages: number;
+      /**
+       * Вид сортировки
+       */
+      sortOrder: "asc" | "desc";
+      sortBy: "createdAt" | "updatedAt";
+      /**
+       * Строка поиска
+       */
+      q?: string;
+      entity?: "ideasList" | "scenario";
+      ideasListsTotalItems: number;
+      scenariosTotalItems: number;
+    };
+  };
+};
+
+export type GetApiV1ArchiveItemsMyResponse =
+  GetApiV1ArchiveItemsMyResponses[keyof GetApiV1ArchiveItemsMyResponses];
+
 export type GetApiV1PlatformsData = {
   body?: never;
   path?: never;

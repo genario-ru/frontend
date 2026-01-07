@@ -17,6 +17,7 @@ import {
   deleteApiV1ScenariosSceneComponentsSceneComponentId,
   deleteApiV1ScenariosScenesSceneId,
   deleteApiV1ScenariosVersionsVersionId,
+  getApiV1ArchiveItemsMy,
   getApiV1IdeasListsIdeasListId,
   getApiV1IdeasListsIdeasListIdIdeas,
   getApiV1IdeasListsMy,
@@ -72,6 +73,9 @@ import type {
   DeleteApiV1ScenariosVersionsVersionIdData,
   DeleteApiV1ScenariosVersionsVersionIdError,
   DeleteApiV1ScenariosVersionsVersionIdResponse,
+  GetApiV1ArchiveItemsMyData,
+  GetApiV1ArchiveItemsMyError,
+  GetApiV1ArchiveItemsMyResponse,
   GetApiV1IdeasListsIdeasListIdData,
   GetApiV1IdeasListsIdeasListIdIdeasData,
   GetApiV1IdeasListsMyData,
@@ -461,6 +465,75 @@ export const getApiV1IdeasListsMyInfiniteOptions = (
         return data;
       },
       queryKey: getApiV1IdeasListsMyInfiniteQueryKey(options),
+    },
+  );
+};
+
+export const getApiV1ArchiveItemsMyQueryKey = (
+  options?: Options<GetApiV1ArchiveItemsMyData>,
+) => createQueryKey("getApiV1ArchiveItemsMy", options, false, ["Archive"]);
+
+export const getApiV1ArchiveItemsMyOptions = (
+  options?: Options<GetApiV1ArchiveItemsMyData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ArchiveItemsMy({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ArchiveItemsMyQueryKey(options),
+  });
+};
+
+export const getApiV1ArchiveItemsMyInfiniteQueryKey = (
+  options?: Options<GetApiV1ArchiveItemsMyData>,
+): QueryKey<Options<GetApiV1ArchiveItemsMyData>> =>
+  createQueryKey("getApiV1ArchiveItemsMy", options, true, ["Archive"]);
+
+export const getApiV1ArchiveItemsMyInfiniteOptions = (
+  options?: Options<GetApiV1ArchiveItemsMyData>,
+) => {
+  return infiniteQueryOptions<
+    GetApiV1ArchiveItemsMyResponse,
+    GetApiV1ArchiveItemsMyError,
+    InfiniteData<GetApiV1ArchiveItemsMyResponse>,
+    QueryKey<Options<GetApiV1ArchiveItemsMyData>>,
+    | number
+    | Pick<
+        QueryKey<Options<GetApiV1ArchiveItemsMyData>>[0],
+        "body" | "headers" | "path" | "query"
+      >
+  >(
+    // @ts-ignore
+    {
+      queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<
+          QueryKey<Options<GetApiV1ArchiveItemsMyData>>[0],
+          "body" | "headers" | "path" | "query"
+        > =
+          typeof pageParam === "object"
+            ? pageParam
+            : {
+                query: {
+                  page: pageParam,
+                },
+              };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getApiV1ArchiveItemsMy({
+          ...options,
+          ...params,
+          signal,
+          throwOnError: true,
+        });
+        return data;
+      },
+      queryKey: getApiV1ArchiveItemsMyInfiniteQueryKey(options),
     },
   );
 };

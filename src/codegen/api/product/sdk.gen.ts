@@ -27,6 +27,9 @@ import type {
   DeleteApiV1ScenariosVersionsVersionIdData,
   DeleteApiV1ScenariosVersionsVersionIdErrors,
   DeleteApiV1ScenariosVersionsVersionIdResponses,
+  GetApiV1ArchiveItemsMyData,
+  GetApiV1ArchiveItemsMyErrors,
+  GetApiV1ArchiveItemsMyResponses,
   GetApiV1IdeasListsIdeasListIdData,
   GetApiV1IdeasListsIdeasListIdErrors,
   GetApiV1IdeasListsIdeasListIdIdeasData,
@@ -129,6 +132,8 @@ import {
   zDeleteApiV1ScenariosScenesSceneIdResponse,
   zDeleteApiV1ScenariosVersionsVersionIdData,
   zDeleteApiV1ScenariosVersionsVersionIdResponse,
+  zGetApiV1ArchiveItemsMyData,
+  zGetApiV1ArchiveItemsMyResponse,
   zGetApiV1IdeasListsIdeasListIdData,
   zGetApiV1IdeasListsIdeasListIdIdeasData,
   zGetApiV1IdeasListsIdeasListIdIdeasResponse,
@@ -399,6 +404,25 @@ export const getApiV1IdeasListsMy = <ThrowOnError extends boolean = false>(
       return await zGetApiV1IdeasListsMyResponse.parseAsync(data);
     },
     url: "/api/v1/ideas-lists/my",
+    ...options,
+  });
+};
+
+export const getApiV1ArchiveItemsMy = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiV1ArchiveItemsMyData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetApiV1ArchiveItemsMyResponses,
+    GetApiV1ArchiveItemsMyErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ArchiveItemsMyData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ArchiveItemsMyResponse.parseAsync(data);
+    },
+    url: "/api/v1/archive/items/my",
     ...options,
   });
 };
