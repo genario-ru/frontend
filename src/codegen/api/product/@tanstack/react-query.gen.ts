@@ -17,6 +17,7 @@ import {
   deleteApiV1ScenariosSceneComponentsSceneComponentId,
   deleteApiV1ScenariosScenesSceneId,
   deleteApiV1ScenariosVersionsVersionId,
+  getApiV1ArchiveFilters,
   getApiV1ArchiveItemsMy,
   getApiV1IdeasListsIdeasListId,
   getApiV1IdeasListsIdeasListIdIdeas,
@@ -73,6 +74,7 @@ import type {
   DeleteApiV1ScenariosVersionsVersionIdData,
   DeleteApiV1ScenariosVersionsVersionIdError,
   DeleteApiV1ScenariosVersionsVersionIdResponse,
+  GetApiV1ArchiveFiltersData,
   GetApiV1ArchiveItemsMyData,
   GetApiV1ArchiveItemsMyError,
   GetApiV1ArchiveItemsMyResponse,
@@ -536,6 +538,27 @@ export const getApiV1ArchiveItemsMyInfiniteOptions = (
       queryKey: getApiV1ArchiveItemsMyInfiniteQueryKey(options),
     },
   );
+};
+
+export const getApiV1ArchiveFiltersQueryKey = (
+  options?: Options<GetApiV1ArchiveFiltersData>,
+) => createQueryKey("getApiV1ArchiveFilters", options, false, ["Archive"]);
+
+export const getApiV1ArchiveFiltersOptions = (
+  options?: Options<GetApiV1ArchiveFiltersData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ArchiveFilters({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ArchiveFiltersQueryKey(options),
+  });
 };
 
 export const getApiV1PlatformsQueryKey = (

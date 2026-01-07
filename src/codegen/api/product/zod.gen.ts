@@ -790,6 +790,42 @@ export const zGetApiV1ArchiveItemsMyData = z.object({
             ),
         ),
       ),
+      toneIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      videoTypeIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      platformIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
+      videoDurationIds: z.optional(
+        z.array(
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+        ),
+      ),
     }),
   ),
 });
@@ -1284,6 +1320,105 @@ export const zGetApiV1ArchiveItemsMyResponse = z
   })
   .register(z.globalRegistry, {
     description: "Archive items retrieved successfully",
+  });
+
+export const zGetApiV1ArchiveFiltersData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Archive filters retrieved successfully
+ */
+export const zGetApiV1ArchiveFiltersResponse = z
+  .object({
+    data: z.object({
+      entity: z.object({
+        type: z.literal("select"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      sortBy: z.object({
+        type: z.literal("select"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      sortOrder: z.object({
+        type: z.literal("select"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      templateIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      profileIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      toneIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      videoTypeIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      platformIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+      videoDurationIds: z.object({
+        type: z.literal("multiselect"),
+        options: z.array(
+          z.object({
+            label: z.string(),
+            value: z.string(),
+          }),
+        ),
+      }),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Archive filters retrieved successfully",
   });
 
 export const zGetApiV1PlatformsData = z.object({

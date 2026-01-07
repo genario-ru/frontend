@@ -774,6 +774,10 @@ export type GetApiV1ArchiveItemsMyData = {
     entity?: "ideasList" | "scenario";
     templateIds?: Array<string>;
     profileIds?: Array<string>;
+    toneIds?: Array<string>;
+    videoTypeIds?: Array<string>;
+    platformIds?: Array<string>;
+    videoDurationIds?: Array<string>;
   };
   url: "/api/v1/archive/items/my";
 };
@@ -1048,6 +1052,125 @@ export type GetApiV1ArchiveItemsMyResponses = {
 
 export type GetApiV1ArchiveItemsMyResponse =
   GetApiV1ArchiveItemsMyResponses[keyof GetApiV1ArchiveItemsMyResponses];
+
+export type GetApiV1ArchiveFiltersData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/api/v1/archive/filters";
+};
+
+export type GetApiV1ArchiveFiltersErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ArchiveFiltersError =
+  GetApiV1ArchiveFiltersErrors[keyof GetApiV1ArchiveFiltersErrors];
+
+export type GetApiV1ArchiveFiltersResponses = {
+  /**
+   * Archive filters retrieved successfully
+   */
+  200: {
+    data: {
+      entity: {
+        type: "select";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      sortBy: {
+        type: "select";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      sortOrder: {
+        type: "select";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      templateIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      profileIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      toneIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      videoTypeIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      platformIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+      videoDurationIds: {
+        type: "multiselect";
+        options: Array<{
+          label: string;
+          value: string;
+        }>;
+      };
+    };
+  };
+};
+
+export type GetApiV1ArchiveFiltersResponse =
+  GetApiV1ArchiveFiltersResponses[keyof GetApiV1ArchiveFiltersResponses];
 
 export type GetApiV1PlatformsData = {
   body?: never;
