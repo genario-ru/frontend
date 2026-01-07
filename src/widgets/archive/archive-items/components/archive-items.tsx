@@ -56,7 +56,7 @@ export const ArchiveItems = () => {
 
   return (
     <ContentLayout>
-      <Island className="grid auto-rows-fr grid-cols-4">{body}</Island>
+      <Island className="grid auto-rows-fr grid-cols-3">{body}</Island>
     </ContentLayout>
   );
 };

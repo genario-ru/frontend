@@ -50,7 +50,7 @@ export const ArchiveItem = ({
           </p>
           <p className="text-lg font-semibold">{title || "Без названия"}</p>
           {description && (
-            <p className="text-neutral-7 line-clamp-2 text-sm">{description}</p>
+            <p className="text-neutral-7 line-clamp-3 text-sm">{description}</p>
           )}
         </header>
         <footer className="flex w-full items-end justify-between gap-4">
