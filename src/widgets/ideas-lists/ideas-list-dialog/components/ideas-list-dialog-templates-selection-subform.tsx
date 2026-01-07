@@ -2,7 +2,7 @@ import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
 import {
   TemplateCardsRadioGroup,
   TemplateCardsRadioGroupItem,
-} from "@/features/templates/components/template-cards-radio-group";
+} from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
 

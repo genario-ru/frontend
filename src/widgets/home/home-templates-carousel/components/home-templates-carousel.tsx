@@ -3,7 +3,7 @@ import "swiper/swiper.css";
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { TemplateCard } from "@/features/templates/components/template-card";
+import { TemplateCard } from "@/features/templates/template-card/components/template-card";
 import { Island } from "@/shared/components/ui/island";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 

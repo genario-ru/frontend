@@ -1,4 +1,4 @@
-import { TemplateCardMenu } from "@/features/templates/components/template-card-menu";
+import { TemplateCardMenu } from "@/features/templates/template-card/components/template-card-menu";
 
 type HomeTemplatesCarouselSlideMenuProps = {
   templateId: string;

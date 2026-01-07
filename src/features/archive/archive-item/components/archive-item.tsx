@@ -53,7 +53,7 @@ export const ArchiveItem = ({
             <p className="text-neutral-7 line-clamp-2 text-sm">{description}</p>
           )}
         </header>
-        <footer className="flex w-full justify-between gap-4">
+        <footer className="flex w-full items-end justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">{badges}</div>
           {profileName && profileId && (
             <ProfileImage size="sm" alt={profileName} uuid={profileId} />

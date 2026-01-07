@@ -1,19 +1,20 @@
 import { useMemo } from "react";
 
 import { useGetMyArchiveItems } from "@/actions/archive/hooks/use-get-my-archive-items";
-import { ArchiveItem } from "@/features/archive/archive-card/components/archive-item";
+import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
 
 import { ArchiveItemActions } from "./archive-item-actions";
+import { ArchiveItemBadges } from "./archive-item-badges";
 
 export const ArchiveItems = () => {
   const {
     archiveItemsData,
-    hasNextArchiveItemsPage,
+    // hasNextArchiveItemsPage,
     isLoadingArchiveItems,
     isErrorArchiveItems,
-    fetchNextArchiveItemsPage,
+    // fetchNextArchiveItemsPage,
   } = useGetMyArchiveItems();
 
   console.log(archiveItemsData);
@@ -46,7 +47,7 @@ export const ArchiveItems = () => {
             actions={
               <ArchiveItemActions id={item.data.id} entity={item.entity} />
             }
-            badges={<div>Badges</div>}
+            badges={<ArchiveItemBadges archiveItem={item} />}
           />
         ))}
       </>

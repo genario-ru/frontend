@@ -1,6 +1,6 @@
 import { EllipsisIcon } from "lucide-react";
 
-import { ArchiveItemActionsDeleteDialog } from "@/features/archive/archive-card/components/archive-item-actions-delete-dialog";
+import { ArchiveItemActionsDeleteDialog } from "@/features/archive/archive-item/components/archive-item-actions-delete-dialog";
 import { Button } from "@/shared/components/ui/button";
 import {
   DropdownMenu,

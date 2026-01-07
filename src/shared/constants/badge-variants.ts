@@ -15,8 +15,8 @@ export const badgeVariants = cva(
         tertiary: "",
       },
       size: {
-        base: "text-sm rounded-2.5 px-2.5 py-1.5 gap-1.5",
-        sm: "text-xs rounded-2 px-1.5 py-1 gap-1",
+        base: "text-sm rounded-2.5 px-2.5 py-1.5 gap-1.5 [&_svg]:size-5",
+        sm: "text-xs rounded-2 px-1.5 py-1 gap-1 [&_svg]:size-4",
       },
     },
     compoundVariants: [
@@ -24,34 +24,34 @@ export const badgeVariants = cva(
       {
         color: "neutral",
         variant: "secondary",
-        className: "bg-neutral-2 text-neutral-8",
+        className: "bg-neutral-2 text-neutral-8 [&_svg]:stroke-neutral-8",
       },
       {
         color: "neutral",
         variant: "tertiary",
-        className: "bg-neutral-1 text-neutral-8",
+        className: "bg-neutral-1 text-neutral-8 [&_svg]:stroke-neutral-8",
       },
       // Positive
       {
         color: "positive",
         variant: "secondary",
-        className: "bg-positive-1 text-positive-8",
+        className: "bg-positive-1 text-positive-5 [&_svg]:stroke-positive-5",
       },
       {
         color: "positive",
         variant: "tertiary",
-        className: "bg-neutral-1 text-positive-8",
+        className: "bg-neutral-1 text-positive-5 [&_svg]:stroke-positive-5",
       },
       // Negative
       {
         color: "negative",
         variant: "secondary",
-        className: "bg-negative-1 text-negative-8",
+        className: "bg-negative-1 text-negative-5 [&_svg]:stroke-negative-5",
       },
       {
         color: "negative",
         variant: "tertiary",
-        className: "bg-neutral-1 text-negative-8",
+        className: "bg-neutral-1 text-negative-5 [&_svg]:stroke-negative-5",
       },
     ],
     defaultVariants: {
