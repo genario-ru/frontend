@@ -301,6 +301,23 @@ export const zGetApiV1IdeasListsIdeasListIdResponse = z
       targetAudience: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
+      template: z.union([
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          slug: z.string(),
+          name: z.string(),
+          description: z.union([z.string(), z.null()]),
+          icon: z.union([z.string(), z.null()]),
+          color: z.string(),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        z.null(),
+      ]),
       profile: z.union([
         z.object({
           id: z
@@ -648,6 +665,23 @@ export const zGetApiV1IdeasListsMyResponse = z
         targetAudience: z.union([z.string(), z.null()]),
         createdAt: z.string(),
         updatedAt: z.string(),
+        template: z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            color: z.string(),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
         profile: z.union([
           z.object({
             id: z
@@ -871,6 +905,23 @@ export const zGetApiV1ArchiveItemsMyResponse = z
             targetAudience: z.union([z.string(), z.null()]),
             createdAt: z.string(),
             updatedAt: z.string(),
+            template: z.union([
+              z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                slug: z.string(),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                icon: z.union([z.string(), z.null()]),
+                color: z.string(),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
+              z.null(),
+            ]),
             profile: z.union([
               z.object({
                 id: z

@@ -344,6 +344,16 @@ export type GetApiV1IdeasListsIdeasListIdResponses = {
       targetAudience: string | null;
       createdAt: string;
       updatedAt: string;
+      template: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        color: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       profile: {
         id: string;
         userId: string;
@@ -679,6 +689,16 @@ export type GetApiV1IdeasListsMyResponses = {
       targetAudience: string | null;
       createdAt: string;
       updatedAt: string;
+      template: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        color: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       profile: {
         id: string;
         userId: string;
@@ -836,6 +856,16 @@ export type GetApiV1ArchiveItemsMyResponses = {
             targetAudience: string | null;
             createdAt: string;
             updatedAt: string;
+            template: {
+              id: string;
+              slug: string;
+              name: string;
+              description: string | null;
+              icon: string | null;
+              color: string;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
             profile: {
               id: string;
               userId: string;
