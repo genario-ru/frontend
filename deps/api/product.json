@@ -3987,37 +3987,21 @@
                           "description": "Общее количество страниц по запросу",
                           "type": "number"
                         },
-                        "sortOrder": {
-                          "description": "Вид сортировки",
-                          "type": "string",
-                          "enum": [
-                            "asc",
-                            "desc"
-                          ]
-                        },
-                        "sortBy": {
-                          "type": "string",
-                          "enum": [
-                            "createdAt",
-                            "updatedAt"
-                          ]
-                        },
                         "q": {
                           "description": "Строка поиска",
                           "type": "string"
                         },
                         "entity": {
-                          "type": "string",
-                          "enum": [
-                            "ideasList",
-                            "scenario"
-                          ]
+                          "type": "string"
                         },
                         "ideasListsTotalItems": {
                           "type": "number"
                         },
                         "scenariosTotalItems": {
                           "type": "number"
+                        },
+                        "sort": {
+                          "type": "string"
                         }
                       },
                       "required": [
@@ -4027,10 +4011,9 @@
                         "perPage",
                         "totalItems",
                         "totalPages",
-                        "sortOrder",
-                        "sortBy",
                         "ideasListsTotalItems",
-                        "scenariosTotalItems"
+                        "scenariosTotalItems",
+                        "sort"
                       ]
                     }
                   },
@@ -4140,36 +4123,9 @@
           },
           {
             "in": "query",
-            "name": "sortOrder",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "description": "Вид сортировки"
-          },
-          {
-            "in": "query",
-            "name": "sortBy",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "createdAt",
-                "updatedAt"
-              ]
-            }
-          },
-          {
-            "in": "query",
             "name": "entity",
             "schema": {
-              "type": "string",
-              "enum": [
-                "ideasList",
-                "scenario"
-              ]
+              "type": "string"
             }
           },
           {
@@ -4178,9 +4134,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
             }
           },
@@ -4190,9 +4144,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
             }
           },
@@ -4202,9 +4154,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
             }
           },
@@ -4214,9 +4164,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
             }
           },
@@ -4226,9 +4174,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
             }
           },
@@ -4238,10 +4184,15 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                "type": "string"
               }
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
             }
           }
         ]
@@ -4262,299 +4213,70 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "entity": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "select"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "slug": {
+                            "type": "string",
+                            "enum": [
+                              "entity",
+                              "sort",
+                              "templateIds",
+                              "profileIds",
+                              "toneIds",
+                              "videoTypeIds",
+                              "platformIds",
+                              "videoDurationIds"
+                            ]
                           },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
+                          "name": {
+                            "type": "string"
+                          },
+                          "icon": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "select",
+                              "multiselect"
+                            ]
+                          },
+                          "options": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "label",
+                                "value"
+                              ]
+                            }
+                          }
                         },
-                        "sortBy": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "select"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "sortOrder": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "select"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "templateIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "profileIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "toneIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "videoTypeIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "platformIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        },
-                        "videoDurationIds": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "const": "multiselect"
-                            },
-                            "options": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "label": {
-                                    "type": "string"
-                                  },
-                                  "value": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "label",
-                                  "value"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "options"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "entity",
-                        "sortBy",
-                        "sortOrder",
-                        "templateIds",
-                        "profileIds",
-                        "toneIds",
-                        "videoTypeIds",
-                        "platformIds",
-                        "videoDurationIds"
-                      ]
+                        "required": [
+                          "slug",
+                          "name",
+                          "icon",
+                          "type",
+                          "options"
+                        ]
+                      }
                     }
                   },
                   "required": [

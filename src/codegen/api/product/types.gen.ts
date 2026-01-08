@@ -786,18 +786,14 @@ export type GetApiV1ArchiveItemsMyData = {
      * Количество элементов в одной странице ответа
      */
     perPage?: number;
-    /**
-     * Вид сортировки
-     */
-    sortOrder?: "asc" | "desc";
-    sortBy?: "createdAt" | "updatedAt";
-    entity?: "ideasList" | "scenario";
+    entity?: string;
     templateIds?: Array<string>;
     profileIds?: Array<string>;
     toneIds?: Array<string>;
     videoTypeIds?: Array<string>;
     platformIds?: Array<string>;
     videoDurationIds?: Array<string>;
+    sort?: string;
   };
   url: "/api/v1/archive/items/my";
 };
@@ -1065,17 +1061,13 @@ export type GetApiV1ArchiveItemsMyResponses = {
        */
       totalPages: number;
       /**
-       * Вид сортировки
-       */
-      sortOrder: "asc" | "desc";
-      sortBy: "createdAt" | "updatedAt";
-      /**
        * Строка поиска
        */
       q?: string;
-      entity?: "ideasList" | "scenario";
+      entity?: string;
       ideasListsTotalItems: number;
       scenariosTotalItems: number;
+      sort: string;
     };
   };
 };
@@ -1131,71 +1123,24 @@ export type GetApiV1ArchiveFiltersResponses = {
    * Archive filters retrieved successfully
    */
   200: {
-    data: {
-      entity: {
-        type: "select";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      sortBy: {
-        type: "select";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      sortOrder: {
-        type: "select";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      templateIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      profileIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      toneIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      videoTypeIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      platformIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-      videoDurationIds: {
-        type: "multiselect";
-        options: Array<{
-          label: string;
-          value: string;
-        }>;
-      };
-    };
+    data: Array<{
+      slug:
+        | "entity"
+        | "sort"
+        | "templateIds"
+        | "profileIds"
+        | "toneIds"
+        | "videoTypeIds"
+        | "platformIds"
+        | "videoDurationIds";
+      name: string;
+      icon: string | null;
+      type: "select" | "multiselect";
+      options: Array<{
+        label: string;
+        value: string;
+      }>;
+    }>;
   };
 };
 

@@ -4,7 +4,7 @@ import { cn } from "../utils/cn";
 
 export const buttonVariants = cva(
   cn(
-    "group flex items-center border border-transparent font-medium duration-200 gap-2 w-fit h-fit shrink-0 justify-center outline-none overflow-hidden select-none",
+    "group flex items-center font-medium duration-200 gap-2 w-fit h-fit shrink-0 justify-center outline-none overflow-hidden select-none",
     "focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:duration-200",
   ),
   {
@@ -22,7 +22,7 @@ export const buttonVariants = cva(
       size: {
         lg: "px-5 py-2.5 gap-2.5 min-h-12 rounded-4 [&_svg]:size-6",
         base: "px-4 py-2 gap-2 min-h-10 rounded-3 [&_svg]:size-6",
-        sm: "px-3 py-1.5 gap-1.5 min-h-8 text-sm rounded-2.5 [&_svg]:size-5",
+        sm: "px-3 py-1.5 gap-1.5 min-h-8 text-sm rounded-2.5 [&_svg]:size-4.5",
       },
       content: {
         mixed: "",

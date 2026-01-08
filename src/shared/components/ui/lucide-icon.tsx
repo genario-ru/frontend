@@ -16,6 +16,7 @@ export const LucideIcon = ({
   size,
   color,
   priority,
+  className,
   ...props
 }: LucideIconProps) => {
   if (typeof Icon === "string") {
@@ -24,7 +25,7 @@ export const LucideIcon = ({
         <DynamicIcon
           // @ts-expect-error TODO: Попробовать разобраться, почему тут TypeScript выделывается
           name={Icon as IconName}
-          className={cn(svgIconVariants({ size, color, priority }))}
+          className={cn(svgIconVariants({ size, color, priority }), className)}
           {...props}
         />
       );
@@ -35,5 +36,10 @@ export const LucideIcon = ({
     return null;
   }
 
-  return <Icon className={cn(svgIconVariants({ size }))} {...props} />;
+  return (
+    <Icon
+      className={cn(svgIconVariants({ size, color, priority }), className)}
+      {...props}
+    />
+  );
 };

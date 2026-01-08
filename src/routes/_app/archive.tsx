@@ -6,7 +6,10 @@ import { ArchiveComponent } from "@/entrypoints/archive/component";
 
 export const Route = createFileRoute("/_app/archive")({
   validateSearch: zodValidator(
-    zGetApiV1ArchiveItemsMyData.shape.query.unwrap(),
+    zGetApiV1ArchiveItemsMyData.shape.query.unwrap().omit({
+      page: true,
+      perPage: true,
+    }),
   ),
   component: ArchiveComponent,
 });

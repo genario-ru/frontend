@@ -30,9 +30,9 @@ const inputIconVariants = cva(
   {
     variants: {
       size: {
-        lg: "left-5 size-7",
-        base: "left-4 size-6",
-        sm: "left-3 size-5",
+        lg: "left-4 size-7",
+        base: "left-3 size-6",
+        sm: "left-2 size-5",
       },
     },
     defaultVariants: {
