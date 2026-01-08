@@ -9,10 +9,11 @@ export function useGetMyArchiveItems(params?: UseGetMyArchiveItemsProps) {
   const queryParams = params ?? {};
 
   const {
-    data: archiveItemsData,
+    data: archiveItemsData = [],
     hasNextPage: hasNextArchiveItemsPage,
     isLoading: isLoadingArchiveItems,
     isError: isErrorArchiveItems,
+    isFetchingNextPage: isFetchingNextArchiveItemsPage,
     fetchNextPage: fetchNextArchiveItemsPage,
   } = useInfiniteQuery({
     ...getApiV1ArchiveItemsMyInfiniteOptions({
@@ -35,6 +36,7 @@ export function useGetMyArchiveItems(params?: UseGetMyArchiveItemsProps) {
     hasNextArchiveItemsPage,
     isLoadingArchiveItems,
     isErrorArchiveItems,
+    isFetchingNextArchiveItemsPage,
     fetchNextArchiveItemsPage,
   };
 }

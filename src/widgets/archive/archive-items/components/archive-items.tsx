@@ -2,6 +2,9 @@ import { useMemo } from "react";
 
 import { useGetMyArchiveItems } from "@/actions/archive/hooks/use-get-my-archive-items";
 import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
+import { ArchiveItemSkeleton } from "@/features/archive/archive-item/components/archive-item-skeleton";
+import { InfiniteScroll } from "@/shared/components/common/infinite-scroll";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
 
@@ -11,17 +14,22 @@ import { ArchiveItemBadges } from "./archive-item-badges";
 export const ArchiveItems = () => {
   const {
     archiveItemsData,
-    // hasNextArchiveItemsPage,
+    hasNextArchiveItemsPage,
     isLoadingArchiveItems,
     isErrorArchiveItems,
-    // fetchNextArchiveItemsPage,
+    isFetchingNextArchiveItemsPage,
+    fetchNextArchiveItemsPage,
   } = useGetMyArchiveItems();
-
-  console.log(archiveItemsData);
 
   const body = useMemo(() => {
     if (isLoadingArchiveItems) {
-      return <div>Loading...</div>;
+      return (
+        <ItemsList
+          count={12}
+          item={<ArchiveItemSkeleton />}
+          className="grid w-full grid-cols-3 gap-4"
+        />
+      );
     }
 
     if (isErrorArchiveItems) {
@@ -33,7 +41,7 @@ export const ArchiveItems = () => {
     }
 
     return (
-      <>
+      <div className="grid w-full grid-cols-3 gap-4">
         {archiveItemsData.map((item) => (
           <ArchiveItem
             key={item.data.id}
@@ -48,15 +56,37 @@ export const ArchiveItems = () => {
               <ArchiveItemActions id={item.data.id} entity={item.entity} />
             }
             badges={<ArchiveItemBadges archiveItem={item} />}
+            className="row-span-1"
           />
         ))}
-      </>
+        {isFetchingNextArchiveItemsPage && (
+          <ItemsList
+            count={6}
+            item={<ArchiveItemSkeleton />}
+            className="col-span-3 grid w-full grid-cols-3 gap-4"
+          />
+        )}
+        <InfiniteScroll
+          signature={archiveItemsData.length}
+          isLoading={isLoadingArchiveItems}
+          hasNextPage={hasNextArchiveItemsPage}
+          fetchNextPage={fetchNextArchiveItemsPage}
+          className="col-span-3"
+        />
+      </div>
     );
-  }, [archiveItemsData, isLoadingArchiveItems, isErrorArchiveItems]);
+  }, [
+    archiveItemsData,
+    hasNextArchiveItemsPage,
+    isFetchingNextArchiveItemsPage,
+    isLoadingArchiveItems,
+    isErrorArchiveItems,
+    fetchNextArchiveItemsPage,
+  ]);
 
   return (
     <ContentLayout>
-      <Island className="grid auto-rows-fr grid-cols-3">{body}</Island>
+      <Island>{body}</Island>
     </ContentLayout>
   );
 };
