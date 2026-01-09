@@ -33,7 +33,7 @@ export const AppMenubar = memo(
         roundedTop={false}
         row
         className={cn(
-          "z-1 min-h-16 shrink-0 items-center gap-3 p-4",
+          "z-1 min-h-16 shrink-0 gap-3 p-4",
           {
             // TODO: add dynamic shadow
             "sticky top-0": sticky,
@@ -42,7 +42,7 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <section className="flex flex-1 flex-col gap-3">
+        <section className="flex flex-1 flex-col justify-center gap-3">
           <div className="flex items-center gap-2">
             <AppSidebarTrigger className="md:hidden" />
             {backButtonHref && (
@@ -52,7 +52,7 @@ export const AppMenubar = memo(
                 icon={<ArrowLeft />}
               />
             )}
-            {title && <h1 className="text-xl font-semibold">{title}</h1>}
+            {title && <h1 className="ьн text-xl font-semibold">{title}</h1>}
           </div>
           {description && <p className="text-neutral-7">{description}</p>}
           {left}

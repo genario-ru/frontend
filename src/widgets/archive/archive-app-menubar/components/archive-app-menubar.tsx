@@ -4,8 +4,12 @@ import { AppMenubar } from "@/features/navigation/app-menubar/components/app-men
 
 type ArchiveAppMenubarProps = {
   filters: ReactNode;
+  actions: ReactNode;
 };
 
-export function ArchiveAppMenubar({ filters }: ArchiveAppMenubarProps) {
-  return <AppMenubar title="Архив" left={filters} />;
+export function ArchiveAppMenubar({
+  filters,
+  actions,
+}: ArchiveAppMenubarProps) {
+  return <AppMenubar title="Архив" left={filters} right={actions} />;
 }
