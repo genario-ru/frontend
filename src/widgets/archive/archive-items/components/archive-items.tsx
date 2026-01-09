@@ -41,31 +41,33 @@ export const ArchiveItems = () => {
     }
 
     return (
-      <div className="grid w-full grid-cols-3 gap-4">
-        {archiveItemsData.map((item) => (
-          <ArchiveItem
-            key={item.data.id}
-            id={item.data.id}
-            entity={item.entity}
-            createdAt={item.data.createdAt}
-            title={item.data.name}
-            description={item.data.description}
-            profileName={item.data.profile?.name}
-            profileId={item.data.profile?.id}
-            actions={
-              <ArchiveItemActions id={item.data.id} entity={item.entity} />
-            }
-            badges={<ArchiveItemBadges archiveItem={item} />}
-            className="row-span-1"
-          />
-        ))}
-        {isFetchingNextArchiveItemsPage && (
-          <ItemsList
-            count={6}
-            item={<ArchiveItemSkeleton />}
-            className="col-span-3 grid w-full grid-cols-3 gap-4"
-          />
-        )}
+      <>
+        <div className="grid w-full grid-cols-3 gap-4">
+          {archiveItemsData.map((item) => (
+            <ArchiveItem
+              key={item.data.id}
+              id={item.data.id}
+              entity={item.entity}
+              createdAt={item.data.createdAt}
+              title={item.data.name}
+              description={item.data.description}
+              profileName={item.data.profile?.name}
+              profileId={item.data.profile?.id}
+              actions={
+                <ArchiveItemActions id={item.data.id} entity={item.entity} />
+              }
+              badges={<ArchiveItemBadges archiveItem={item} />}
+              className="row-span-1"
+            />
+          ))}
+          {isFetchingNextArchiveItemsPage && (
+            <ItemsList
+              noParent={true}
+              count={6}
+              item={<ArchiveItemSkeleton />}
+            />
+          )}
+        </div>
         <InfiniteScroll
           signature={archiveItemsData.length}
           isLoading={isLoadingArchiveItems}
@@ -73,7 +75,7 @@ export const ArchiveItems = () => {
           fetchNextPage={fetchNextArchiveItemsPage}
           className="col-span-3"
         />
-      </div>
+      </>
     );
   }, [
     archiveItemsData,
@@ -86,7 +88,7 @@ export const ArchiveItems = () => {
 
   return (
     <ContentLayout>
-      <Island>{body}</Island>
+      <Island className="gap-0">{body}</Island>
     </ContentLayout>
   );
 };
