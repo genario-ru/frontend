@@ -38,7 +38,7 @@ export function CheckboxGroupItem({
     >
       <CheckboxBase.Indicator
         keepMounted={true}
-        className="group border-neutral-4 data-checked:bg-neutral-8 data-checked:border-neutral-8 flex size-5 items-center justify-center rounded-md border duration-200"
+        className="group data-checked:bg-neutral-8 bg-neutral-3 flex size-5 items-center justify-center rounded-md duration-200"
       >
         <LucideIcon
           size="sm"

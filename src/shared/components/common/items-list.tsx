@@ -7,6 +7,7 @@ interface IProps extends ComponentProps<"div"> {
   count?: number;
   gap?: number;
   item: ReactNode;
+  noParent?: boolean;
 }
 
 const DEFAULT_ITEMS_COUNT = 3;
@@ -16,9 +17,20 @@ export function ItemsList({
   count = DEFAULT_ITEMS_COUNT,
   gap,
   item,
+  noParent,
   className,
   ...props
 }: IProps) {
+  const skeletons = Array.from({
+    length: count,
+  }).map((_, index) => (
+    <div key={`items-list-${item?.toString()}-${index.toString()}`}>{item}</div>
+  ));
+
+  if (noParent) {
+    return <>{skeletons}</>;
+  }
+
   return (
     <div
       style={{ gap }}
@@ -31,13 +43,7 @@ export function ItemsList({
       )}
       {...props}
     >
-      {Array.from({
-        length: count,
-      }).map((_, index) => (
-        <div key={`items-list-${item?.toString()}-${index.toString()}`}>
-          {item}
-        </div>
-      ))}
+      {skeletons}
     </div>
   );
 }

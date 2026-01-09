@@ -1,37 +1,44 @@
 import { SearchIcon, XIcon } from "lucide-react";
 import { useMemo } from "react";
 
+import { ArchiveFilterSkeleton } from "@/features/archive/archive-filters/components/archive-filter-skeleton";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 
 import { useArchiveFilters } from "../hooks/use-archive-filters";
 import { ArchiveMultiselectFilter } from "./archive-multiselect-filter";
+import { ArchiveSelectFilter } from "./archive-select-filter";
 
 export function ArchiveFilters() {
   const {
     activeFilters,
     archiveFiltersData,
     hasActiveFilters,
-    // isArchiveFiltersLoading,
-    // isArchiveFiltersError,
+    isArchiveFiltersLoading,
     handleApplyArchiveSearchDebounced,
     handleApplyArchiveFilter,
-    // handleDeleteArchiveFilter,
     handleResetArchiveFilters,
   } = useArchiveFilters();
 
   const filters = useMemo(() => {
+    if (isArchiveFiltersLoading) {
+      return (
+        <ItemsList count={8} noParent={true} item={<ArchiveFilterSkeleton />} />
+      );
+    }
+
     if (!archiveFiltersData) return null;
 
     return archiveFiltersData.data.map((filter) => {
-      if (filter.type === "multiselect") {
-        const handleChange = (value: string | string[]) => {
-          handleApplyArchiveFilter({
-            name: filter.slug,
-            value,
-          });
-        };
+      const handleChange = (value: string | string[]) => {
+        handleApplyArchiveFilter({
+          name: filter.slug,
+          value,
+        });
+      };
 
+      if (filter.type === "multiselect") {
         return (
           <ArchiveMultiselectFilter
             key={filter.slug}
@@ -44,8 +51,25 @@ export function ArchiveFilters() {
           />
         );
       }
+
+      return (
+        <ArchiveSelectFilter
+          key={filter.slug}
+          slug={filter.slug}
+          name={filter.name}
+          icon={filter.icon}
+          options={filter.options}
+          currentValue={activeFilters[filter.slug] as string | undefined}
+          handleChange={handleChange}
+        />
+      );
     });
-  }, [activeFilters, archiveFiltersData, handleApplyArchiveFilter]);
+  }, [
+    activeFilters,
+    archiveFiltersData,
+    isArchiveFiltersLoading,
+    handleApplyArchiveFilter,
+  ]);
 
   return (
     <div className="flex flex-wrap gap-2">
