@@ -21,7 +21,7 @@ import {
 
 export const AppSidebarUserMenu = () => {
   const signOut = useSignOut();
-  const { data: sessionData } = useGetSession();
+  const { sessionData } = useGetSession();
 
   return (
     <DropdownMenu modal={false}>
