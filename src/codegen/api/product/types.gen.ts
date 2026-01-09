@@ -786,14 +786,14 @@ export type GetApiV1ArchiveItemsMyData = {
      * Количество элементов в одной странице ответа
      */
     perPage?: number;
-    entity?: string;
-    templateIds?: Array<string>;
-    profileIds?: Array<string>;
-    toneIds?: Array<string>;
-    videoTypeIds?: Array<string>;
-    platformIds?: Array<string>;
-    videoDurationIds?: Array<string>;
     sort?: string;
+    entity?: string;
+    templateIds?: Array<string> | string;
+    profileIds?: Array<string> | string;
+    toneIds?: Array<string> | string;
+    videoTypeIds?: Array<string> | string;
+    platformIds?: Array<string> | string;
+    videoDurationIds?: Array<string> | string;
   };
   url: "/api/v1/archive/items/my";
 };

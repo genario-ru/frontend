@@ -48,12 +48,11 @@ export function useArchiveFilters() {
 
   const handleApplyArchiveFilter = useCallback(
     ({ name, value }: HandleApplyArchiveFilterParams) => {
-      debugger;
       navigate({
         to: "/archive",
         search: {
           ...activeFilters,
-          [name]: value,
+          [name]: value.length ? value : undefined,
         },
       });
     },
