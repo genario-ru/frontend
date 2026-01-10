@@ -14,25 +14,23 @@ export const SignInForm = () => {
   const navigate = useNavigate();
   const { showErrorToast } = useToast();
 
-  const {
-    mutate: sendVerificationOTP,
-    isPending: isSendVerificationOTPPending,
-  } = useSendVerificationOtp({
-    onError: () => {
-      showErrorToast({
-        description:
-          "Произошла ошибка при входе в аккаунт. Проверьте корректность введенных данных и попробуйте еще раз",
-      });
-    },
-    onSuccess: (_data, { body: { email } }) => {
-      navigate({
-        to: `/verify-otp`,
-        search: {
-          email,
-        },
-      });
-    },
-  });
+  const { sendVerificationOtp, isVerificationOtpSending } =
+    useSendVerificationOtp({
+      onError: () => {
+        showErrorToast({
+          description:
+            "Произошла ошибка при входе в аккаунт. Проверьте корректность введенных данных и попробуйте еще раз",
+        });
+      },
+      onSuccess: (_data, { body: { email } }) => {
+        navigate({
+          to: `/verify-otp`,
+          search: {
+            email,
+          },
+        });
+      },
+    });
 
   const form = useAppForm({
     ...signInFormOptions,
@@ -45,7 +43,7 @@ export const SignInForm = () => {
       onSubmit: signInFormValidateFn,
     },
     onSubmit: async ({ value }) => {
-      sendVerificationOTP({
+      sendVerificationOtp({
         body: {
           email: value.email,
           type: "sign-in",
@@ -66,7 +64,7 @@ export const SignInForm = () => {
       <form.AppForm>
         <form.SubmitButton
           size="lg"
-          state={isSendVerificationOTPPending ? "loading" : "default"}
+          state={isVerificationOtpSending ? "loading" : "default"}
           className="w-full"
         >
           Продолжить

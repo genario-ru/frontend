@@ -33,9 +33,9 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
   );
 
   const {
-    mutate: resendVerificationOTP,
-    isPending: isResentVerificationOTPPending,
-    isSuccess: isVerificationOTPSent,
+    sendVerificationOtp,
+    isVerificationOtpSending,
+    isVerificationOtpSent,
   } = useSendVerificationOtp({
     onMutate: () => resetCountdown(),
     onSuccess: () => {
@@ -58,8 +58,6 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
     isSuccess: isSignInSuccess,
   } = useSignInEmailOtp({
     onError: (error) => {
-      console.log(error);
-
       if (error instanceof APIError && error.cause.status === 400) {
         form.setFieldMeta("code", (meta) => ({
           ...meta,
@@ -118,29 +116,25 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
   }, [isSignInPending, isSignInSuccess, isValidationError]);
 
   const buttonState = useMemo(() => {
-    if (isResentVerificationOTPPending) return "loading";
+    if (isVerificationOtpSending) return "loading";
 
     return "default";
-  }, [isResentVerificationOTPPending]);
+  }, [isVerificationOtpSending]);
 
   const buttonDisabled = useMemo(() => {
-    if (isResentVerificationOTPPending) return true;
-    if (isVerificationOTPSent && blockedSecondsLeft > 0) return true;
+    if (isVerificationOtpSending) return true;
+    if (isVerificationOtpSent && blockedSecondsLeft > 0) return true;
 
     return false;
-  }, [
-    isResentVerificationOTPPending,
-    isVerificationOTPSent,
-    blockedSecondsLeft,
-  ]);
+  }, [isVerificationOtpSending, isVerificationOtpSent, blockedSecondsLeft]);
 
   const buttonText = useMemo(() => {
-    if (isVerificationOTPSent && blockedSecondsLeft > 0) {
+    if (isVerificationOtpSent && blockedSecondsLeft > 0) {
       return `Отправить снова (${blockedSecondsLeft})`;
     }
 
     return "Отправить снова";
-  }, [isVerificationOTPSent, blockedSecondsLeft]);
+  }, [isVerificationOtpSent, blockedSecondsLeft]);
 
   const onOTPInputComplete = useCallback(() => {
     form.handleSubmit();
@@ -148,15 +142,15 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
 
   const onResendVerificationEmailButtonClick = useCallback(() => {
     if (!email) return;
-    if (isVerificationOTPSent && blockedSecondsLeft <= 0) return;
+    if (isVerificationOtpSent && blockedSecondsLeft <= 0) return;
 
-    resendVerificationOTP({
+    sendVerificationOtp({
       body: {
         email,
         type: "sign-in",
       },
     });
-  }, [email, isVerificationOTPSent, blockedSecondsLeft, resendVerificationOTP]);
+  }, [email, isVerificationOtpSent, blockedSecondsLeft, sendVerificationOtp]);
 
   return (
     <form

@@ -15,8 +15,18 @@ type UseSendVerificationOtpParams = UseMutationOptions<
 >;
 
 export function useSendVerificationOtp(params: UseSendVerificationOtpParams) {
-  return useMutation({
+  const {
+    mutate: sendVerificationOtp,
+    isPending: isVerificationOtpSending,
+    isSuccess: isVerificationOtpSent,
+  } = useMutation({
     ...postEmailOtpSendVerificationOtpMutation(),
     ...params,
   });
+
+  return {
+    sendVerificationOtp,
+    isVerificationOtpSending,
+    isVerificationOtpSent,
+  };
 }

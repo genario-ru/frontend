@@ -1,7 +1,7 @@
 import * as z from "zod";
 
-import { accountSettingsChangeFormSchema } from "../schemas/account-settings-change-form-schema";
+import { accountSettingsChangeNameFormSchema } from "../schemas/account-settings-change-name-form-schema";
 
-export type AccountSettingsChangeFormSchema = z.infer<
-  typeof accountSettingsChangeFormSchema
+export type AccountSettingsChangeNameFormSchema = z.infer<
+  typeof accountSettingsChangeNameFormSchema
 >;

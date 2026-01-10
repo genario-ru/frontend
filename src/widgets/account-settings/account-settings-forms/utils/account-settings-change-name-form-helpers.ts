@@ -1,9 +1,9 @@
-import { createFieldMatchValidateFn } from "@/lib/tanstack-form/utils/create-field-match-validate-fn";
+import { createFormMatchValidateFn } from "@/lib/tanstack-form/utils/create-form-match-validate-fn";
 
-import { accountSettingsChangeFormSchema } from "../schemas/account-settings-change-form-schema";
-import type { AccountSettingsChangeFormSchema } from "../types/account-settings-change-form-types";
+import { accountSettingsChangeNameFormSchema } from "../schemas/account-settings-change-name-form-schema";
+import type { AccountSettingsChangeNameFormSchema } from "../types/account-settings-change-form-types";
 
-export const changeNameFieldValidateFn = createFieldMatchValidateFn<
-  AccountSettingsChangeFormSchema,
-  "name"
->(accountSettingsChangeFormSchema.shape.name);
+export const changeNameFormMatchFieldValidateFn =
+  createFormMatchValidateFn<AccountSettingsChangeNameFormSchema>(
+    accountSettingsChangeNameFormSchema,
+  );
