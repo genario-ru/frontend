@@ -14,5 +14,8 @@
     "source.fixAll": "always",
     "source.addMissingImports": "always"
   },
-  "tailwindCSS.classFunctions": ["cva", "cx"]
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx"
+  ]
 }
