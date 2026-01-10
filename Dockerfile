@@ -7,6 +7,10 @@ RUN npm install -g pnpm@9
 # Установка рабочей директории
 WORKDIR /app
 
+# Принимаем build аргументы для переменных окружения
+ARG VITE_BASE_URL
+ENV VITE_BASE_URL=$VITE_BASE_URL
+
 # Копирование файлов зависимостей
 COPY package.json pnpm-lock.yaml ./
 
