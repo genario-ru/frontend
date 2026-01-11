@@ -1,3 +1,59 @@
+import { Button } from "@/shared/components/ui/button";
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/shared/components/ui/dialog";
+import { IslandSection } from "@/shared/components/ui/island";
+
+import { useAccountSettingsDeleteAccountForm } from "../hooks/use-account-settings-delete-account-form";
+
+const ISLAND_SECTION_TITLE = "Удаление аккаунта";
+const ISLAND_SECTION_DESCRIPTION =
+  "При удалении вашего аккаунта все ваши данные будут безвозвратно удалены и не смогут быть восстановлены.";
+
 export function AccountSettingsDeleteAccountForm() {
-  return <div>AccountSettingsDeleteAccountForm</div>;
+  const { isDeleteUserPending, onConfirmDeleteAccountButtonClick } =
+    useAccountSettingsDeleteAccountForm();
+
+  return (
+    <IslandSection
+      title={ISLAND_SECTION_TITLE}
+      description={ISLAND_SECTION_DESCRIPTION}
+      className="gap-4"
+    >
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="secondary" color="negative">
+            Удалить аккаунт
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogBody>
+            <DialogTitle>Вы уверены?</DialogTitle>
+            <DialogDescription>{ISLAND_SECTION_DESCRIPTION}</DialogDescription>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button type="button">Отмена</Button>
+            </DialogClose>
+            <Button
+              variant="primary"
+              color="negative"
+              className="ml-auto"
+              state={isDeleteUserPending ? "loading" : "default"}
+              onClick={onConfirmDeleteAccountButtonClick}
+            >
+              Удалить аккаунт
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </IslandSection>
+  );
 }

@@ -10,7 +10,7 @@ export function MyProfilesList() {
   const { myProfilesData, isMyProfilesLoading } = useMyProfilesList();
 
   return (
-    <ContentLayout className="gap-6" size="md">
+    <ContentLayout className="gap-4" size="md">
       {isMyProfilesLoading ? (
         <ItemsList
           count={3}

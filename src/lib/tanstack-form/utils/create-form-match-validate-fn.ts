@@ -10,10 +10,6 @@ export const createFormMatchValidateFn = <T extends Record<string, unknown>>(
   schema: ZodSchema<T>,
 ): FormValidateFn<T> => {
   return ({ value, formApi }) => {
-    console.log({
-      value,
-    });
-
     // 1. Сначала выполняем Zod валидацию
     const basicValidateFn = createFormValidateFn(schema);
     const result = basicValidateFn({ value, formApi });

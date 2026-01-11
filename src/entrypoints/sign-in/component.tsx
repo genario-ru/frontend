@@ -4,8 +4,6 @@ import { PoliciesAgreement } from "@/features/auth/components/policies-agreement
 import { SignInForm } from "@/widgets/auth/components/sign-in-form";
 
 export const SignInComponent = () => {
-  console.log("SignInComponent");
-
   return (
     <AuthIsland>
       <FormHeader
