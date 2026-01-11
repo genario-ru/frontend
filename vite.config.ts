@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import { devtools } from "@tanstack/devtools-vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
@@ -13,6 +14,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      devtools(),
       tanstackRouter({
         target: "react",
         autoCodeSplitting: true,
@@ -46,7 +48,7 @@ export default defineConfig(({ mode }) => {
           related_applications: [
             {
               platform: "webapp",
-              url: "https://genario.ru/manifest.webmanifest",
+              url: "https://app.genario.ru/manifest.webmanifest",
             },
           ],
           icons: [

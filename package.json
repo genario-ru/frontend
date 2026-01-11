@@ -85,6 +85,7 @@
     "@kubb/plugin-ts": "^4.3.1",
     "@kubb/plugin-zod": "^4.3.1",
     "@kubb/react": "^4.3.1",
+    "@tanstack/devtools-vite": "^0.4.1",
     "@tanstack/eslint-plugin-query": "^5.83.1",
     "@tanstack/react-router-ssr-query": "^1.131.27",
     "@types/js-cookie": "^3.0.6",
