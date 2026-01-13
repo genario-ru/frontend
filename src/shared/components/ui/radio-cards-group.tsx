@@ -8,12 +8,13 @@ const radioCardsGroupItemVariants = cva(
   cn(
     "flex w-full flex-col items-center font-medium ring ring-neutral-4 bg-neutral-1 duration-200",
     "[&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 ",
-    "hover:bg-neutral-2 active:bg-neutral-2",
+    "hover:ring-neutral-5 active:ring-neutral-5",
     "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
   ),
   {
     variants: {
       size: {
+        sm: "gap-1 rounded-xl px-3 py-2",
         base: "gap-1 rounded-2xl p-3.5",
         lg: "gap-1.5 rounded-3xl p-5",
       },
@@ -35,7 +36,7 @@ export const RadioCardsGroup = ({
 }: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("flex items-center gap-3", className)}
+      className={cn("flex items-center gap-2", className)}
       {...props}
     />
   );

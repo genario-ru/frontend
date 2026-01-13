@@ -1,3 +1,4 @@
+import type { NavigateOptions } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { memo, type ReactNode } from "react";
 
@@ -9,8 +10,9 @@ import { cn } from "@/shared/utils/cn";
 
 export type AppMenubarProps = PropsWithClassName<{
   title: string;
+  firstLine?: ReactNode;
   description?: ReactNode;
-  backButtonHref?: string;
+  backButtonHref?: NavigateOptions["to"];
   sticky?: boolean;
   left?: ReactNode;
   right?: ReactNode;
@@ -19,6 +21,7 @@ export type AppMenubarProps = PropsWithClassName<{
 export const AppMenubar = memo(
   ({
     title,
+    firstLine,
     description,
     backButtonHref,
     sticky = true,
@@ -47,12 +50,13 @@ export const AppMenubar = memo(
             <AppSidebarTrigger className="md:hidden" />
             {backButtonHref && (
               <ButtonLink
-                href={backButtonHref}
+                to={backButtonHref}
                 variant="tertiary"
                 icon={<ArrowLeft />}
               />
             )}
-            {title && <h1 className="ьн text-xl font-semibold">{title}</h1>}
+            {title && <h1 className="text-xl font-semibold">{title}</h1>}
+            {firstLine}
           </div>
           {description && <p className="text-neutral-7">{description}</p>}
           {left}
