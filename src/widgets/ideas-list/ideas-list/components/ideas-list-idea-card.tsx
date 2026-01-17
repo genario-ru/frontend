@@ -9,12 +9,14 @@ type IdeasListCardProps = {
   id: string;
   name?: string | null;
   description?: string | null;
+  saved: boolean;
 };
 
 export function IdeasListIdeaCard({
   id,
   name,
   description,
+  saved,
 }: IdeasListCardProps) {
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -27,6 +29,7 @@ export function IdeasListIdeaCard({
       secondaryActions={
         <IdeasListIdeaCardSecondaryActions
           ideaId={id}
+          initialSaved={saved}
           copyElementRef={descriptionRef}
         />
       }

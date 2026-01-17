@@ -1,6 +1,8 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 
+import { ALL_TAB, SAVED_TAB } from "@/shared/constants/tab-names";
+
 type UseIdeasListAppMenubarTabsParams = {
   ideasListId: string;
 };
@@ -24,7 +26,7 @@ export function useIdeasListAppMenubarTabs({
         params: { ideasListId },
         search: {
           ...search,
-          tab: slug === "saved" ? "saved" : undefined,
+          tab: slug === SAVED_TAB ? SAVED_TAB : undefined,
         },
       });
     },
@@ -34,14 +36,14 @@ export function useIdeasListAppMenubarTabs({
   const tabs: IdeasListAppMenubarTab[] = useMemo(
     () => [
       {
-        slug: "all",
+        slug: ALL_TAB,
         name: "Все",
         active: search.tab === undefined,
       },
       {
-        slug: "saved",
+        slug: SAVED_TAB,
         name: "Сохраненные",
-        active: search.tab === "saved",
+        active: search.tab === SAVED_TAB,
       },
     ],
     [search.tab],

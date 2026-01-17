@@ -5,16 +5,18 @@ import { useUpdateIdea } from "@/actions/ideas/hooks/use-update-idea";
 
 type UseIdeasListIdeaCardSecondaryActionsParams = {
   ideaId: string;
+  initialSaved: boolean;
   copyElementRef: RefObject<HTMLParagraphElement | null>;
 };
 
 export function useIdeasListIdeaCardSecondaryActions({
   ideaId,
+  initialSaved,
 }: UseIdeasListIdeaCardSecondaryActionsParams) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [isOptimisticSaved, setIsOptimisticSaved] = useState(false);
+  const [isOptimisticSaved, setIsOptimisticSaved] = useState(initialSaved);
 
   const { deleteIdea, isDeleteIdeaPending } = useDeleteIdea({
     onSuccess: () => {

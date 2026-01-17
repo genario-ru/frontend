@@ -7,11 +7,13 @@ import { IdeasListIdeaCard } from "./ideas-list-idea-card";
 
 type IdeasListProps = {
   ideasListId: string;
+  tab: string | undefined;
 };
 
-export function IdeasList({ ideasListId }: IdeasListProps) {
+export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   const { ideasListIdeasData, isIdeasListIdeasLoading } = useIdeasList({
     ideasListId,
+    tab,
   });
 
   const body = useMemo(() => {
@@ -35,6 +37,7 @@ export function IdeasList({ ideasListId }: IdeasListProps) {
             id={idea.id}
             name={idea.name}
             description={idea.description}
+            saved={idea.saved}
           />
         ))}
       </>

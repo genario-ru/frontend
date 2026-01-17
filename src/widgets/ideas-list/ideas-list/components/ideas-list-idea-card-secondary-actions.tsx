@@ -11,11 +11,13 @@ import { IdeasListIdeaCardEditDialog } from "./ideas-list-idea-card-edit-dialog"
 
 type IdeasListIdeaCardSecondaryActionsProps = {
   ideaId: string;
+  initialSaved: boolean;
   copyElementRef: RefObject<HTMLParagraphElement | null>;
 };
 
 export function IdeasListIdeaCardSecondaryActions({
   ideaId,
+  initialSaved,
   copyElementRef,
 }: IdeasListIdeaCardSecondaryActionsProps) {
   const {
@@ -31,6 +33,7 @@ export function IdeasListIdeaCardSecondaryActions({
     handleConfirmDeleteButtonClick,
   } = useIdeasListIdeaCardSecondaryActions({
     ideaId,
+    initialSaved,
     copyElementRef,
   });
 
