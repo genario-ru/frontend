@@ -1,14 +1,17 @@
-import { Button, type ButtonProps } from "@/shared/components/ui/button";
+import {
+  ButtonLink,
+  type ButtonLinkProps,
+} from "@/shared/components/ui/button-link";
 import { cn } from "@/shared/utils/cn";
 
-type HomeAppMenubarActionsButtonProps = ButtonProps;
+type HomeAppMenubarActionsButtonLinkProps = ButtonLinkProps;
 
-export function HomeAppMenubarActionsButton({
+export function HomeAppMenubarActionsButtonLink({
   className,
   ...props
-}: HomeAppMenubarActionsButtonProps) {
+}: HomeAppMenubarActionsButtonLinkProps) {
   return (
-    <Button
+    <ButtonLink
       variant="tertiary"
       className={cn("w-full justify-start", className)}
       {...props}

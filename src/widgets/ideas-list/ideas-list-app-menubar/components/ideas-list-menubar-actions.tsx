@@ -1,7 +1,7 @@
-import { TrashIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { PencilIcon, TrashIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
+import { ButtonLink } from "@/shared/components/ui/button-link";
 import {
   Dialog,
   DialogClose,
@@ -15,12 +15,10 @@ import { useIdeasListMenubarActions } from "../hooks/use-ideas-list-menubar-acti
 
 type IdeasListMenubarActionsProps = {
   ideasListId: string;
-  changeParamsDialog: ReactNode;
 };
 
 export function IdeasListMenubarActions({
   ideasListId,
-  changeParamsDialog,
 }: IdeasListMenubarActionsProps) {
   const {
     isDeleteDialogOpen,
@@ -31,7 +29,15 @@ export function IdeasListMenubarActions({
 
   return (
     <div className="flex items-center gap-2">
-      {changeParamsDialog}
+      <ButtonLink
+        to="/ideas-lists/settings"
+        search={{
+          ideasListId,
+        }}
+        icon={<PencilIcon />}
+      >
+        Изменить параметры
+      </ButtonLink>
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <DialogTrigger asChild>
           <Button color="negative" icon={<TrashIcon />} />

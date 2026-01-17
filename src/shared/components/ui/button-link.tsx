@@ -8,7 +8,7 @@ import { cn } from "@/shared/utils/cn";
 
 import type { PublicButtonVariantsProps } from "./button";
 
-type ButtonLinkProps = LinkComponentProps &
+export type ButtonLinkProps = LinkComponentProps &
   PublicButtonVariantsProps & {
     icon?: ReactNode;
     iconPosition?: "left" | "right";
@@ -21,6 +21,7 @@ export const ButtonLink = ({
   color,
   variant,
   state,
+  direction,
   className,
   children,
   ...props
@@ -32,11 +33,12 @@ export const ButtonLink = ({
     <Link
       className={cn(
         buttonVariants({
-          size,
           color,
           variant,
+          size,
           content: withChildren ? "mixed" : "icon",
           state,
+          direction,
         }),
         className,
       )}

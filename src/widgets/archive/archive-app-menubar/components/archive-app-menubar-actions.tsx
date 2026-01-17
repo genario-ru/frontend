@@ -1,24 +1,16 @@
-import { ChevronDownIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { ChevronDownIcon, FilmIcon, LightbulbIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 
-type ArchiveAppMenubarActionsProps = {
-  newIdeasListDialog: ReactNode;
-  newTemplateDialog: ReactNode;
-};
+import { ArchiveAppMenubarActionsButtonLink } from "./archive-app-menubar-actions-button";
 
-export function ArchiveAppMenubarActions({
-  newIdeasListDialog,
-  newTemplateDialog,
-}: ArchiveAppMenubarActionsProps) {
+export function ArchiveAppMenubarActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
@@ -28,8 +20,20 @@ export function ArchiveAppMenubarActions({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>{newIdeasListDialog}</DropdownMenuItem>
-          <DropdownMenuItem asChild>{newTemplateDialog}</DropdownMenuItem>
+          <ArchiveAppMenubarActionsButtonLink
+            variant="tertiary"
+            icon={<LightbulbIcon />}
+            to="/ideas-lists/settings"
+          >
+            Новые идеи
+          </ArchiveAppMenubarActionsButtonLink>
+          <ArchiveAppMenubarActionsButtonLink
+            variant="tertiary"
+            icon={<FilmIcon />}
+            to="/scenarios/settings"
+          >
+            Новый сценарий
+          </ArchiveAppMenubarActionsButtonLink>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

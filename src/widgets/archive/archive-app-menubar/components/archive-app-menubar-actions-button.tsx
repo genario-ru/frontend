@@ -1,14 +1,17 @@
-import { Button, type ButtonProps } from "@/shared/components/ui/button";
+import {
+  ButtonLink,
+  type ButtonLinkProps,
+} from "@/shared/components/ui/button-link";
 import { cn } from "@/shared/utils/cn";
 
-type ArchiveAppMenubarActionsButtonProps = ButtonProps;
+type ArchiveAppMenubarActionsButtonLinkProps = ButtonLinkProps;
 
-export function ArchiveAppMenubarActionsButton({
+export function ArchiveAppMenubarActionsButtonLink({
   className,
   ...props
-}: ArchiveAppMenubarActionsButtonProps) {
+}: ArchiveAppMenubarActionsButtonLinkProps) {
   return (
-    <Button
+    <ButtonLink
       variant="tertiary"
       className={cn("w-full justify-start", className)}
       {...props}
