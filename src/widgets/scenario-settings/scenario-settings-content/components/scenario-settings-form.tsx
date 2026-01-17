@@ -23,13 +23,12 @@ export function ScenarioSettingsForm({
   } = useScenarioSettingsForm({ scenarioData });
 
   return (
-    <form onSubmit={onFormSubmit} className="flex w-full flex-col">
+    <form onSubmit={onFormSubmit} className="flex w-full flex-1 flex-col">
       <ScenarioSettingsFormNavigationStepsListener
         form={form}
         currentStep={currentStep}
       />
-
-      <Island roundedBottom={false} className="gap-6">
+      <Island roundedBottom={false} className="flex-1 gap-6">
         <ScenarioSettingsFormNavigationSteps form={form} />
         <ScenarioSettingsCurrentSubform form={form} currentStep={currentStep} />
       </Island>

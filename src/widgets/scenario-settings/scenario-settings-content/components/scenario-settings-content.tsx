@@ -28,5 +28,9 @@ export function ScenarioSettingsContent({
     return <ScenarioSettingsForm scenarioData={scenarioData} />;
   }, [scenarioData, isLoading, isError]);
 
-  return <ContentLayout size="md">{body}</ContentLayout>;
+  return (
+    <ContentLayout size="md" className="flex-1">
+      {body}
+    </ContentLayout>
+  );
 }
