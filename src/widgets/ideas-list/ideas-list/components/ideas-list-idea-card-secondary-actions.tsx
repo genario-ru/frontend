@@ -1,9 +1,8 @@
-import { BookmarkIcon } from "lucide-react";
+import { BookmarkIcon, BookmarkXIcon } from "lucide-react";
 import type { RefObject } from "react";
 
 import { IdeasListIdeaCardSecondaryActionsMenu } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu";
 import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
-import { cn } from "@/shared/utils/cn";
 
 import { useIdeasListIdeaCardSecondaryActions } from "../hooks/use-ideas-list-idea-card-secondary-actions";
 import { IdeasListIdeaCardDeleteDialog } from "./ideas-list-idea-card-delete-dialog";
@@ -47,14 +46,10 @@ export function IdeasListIdeaCardSecondaryActions({
         setIsOpened={setIsEditDialogOpen}
       />
       <IdeasListIdeaCardSecondaryActionsMenuButton
-        icon={<BookmarkIcon />}
+        icon={isOptimisticSaved ? <BookmarkXIcon /> : <BookmarkIcon />}
         onClick={handleSaveButtonClick}
-        className={cn({
-          "[&_svg]:fill-neutral-8 hover:[&_svg]:fill-neutral-8 focus-visible:[&_svg]:fill-neutral-8":
-            isOptimisticSaved,
-        })}
       >
-        Сохранить
+        {isOptimisticSaved ? "Убрать из сохраненных" : "Сохранить"}
       </IdeasListIdeaCardSecondaryActionsMenuButton>
       <IdeasListIdeaCardDeleteDialog
         isDeleteDialogOpen={isDeleteDialogOpen}
