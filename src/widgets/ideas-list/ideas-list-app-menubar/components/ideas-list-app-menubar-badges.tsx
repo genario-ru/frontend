@@ -13,7 +13,7 @@ export function IdeasListAppMenubarBadges({
   const { badges } = useIdeasListAppMenubarBadges({ ideasListData });
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex flex-wrap items-center gap-1">
       {badges.map((badgeText) => (
         <Badge key={`ideas-list-app-menubar-badge-${badgeText}`}>
           {badgeText}

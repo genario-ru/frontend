@@ -26,7 +26,7 @@ export function IdeasListIdeaCardLayout({
         {secondaryActions}
       </header>
       {description && (
-        <p ref={descriptionRef} className="text-sm">
+        <p ref={descriptionRef} className="flex-1 text-sm">
           {description}
         </p>
       )}

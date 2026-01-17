@@ -1,9 +1,16 @@
 import { Button, type ButtonProps } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 
-export function IdeasListIdeaCardSecondaryActionsMenuButton(
-  props: ButtonProps,
-) {
+export function IdeasListIdeaCardSecondaryActionsMenuButton({
+  className,
+  ...props
+}: ButtonProps) {
   return (
-    <Button variant="tertiary" className="w-full justify-start" {...props} />
+    <Button
+      size="sm"
+      variant="tertiary"
+      className={cn("w-full justify-start", className)}
+      {...props}
+    />
   );
 }

@@ -51,7 +51,6 @@ export function useIdeasListIdeaCardSecondaryActions({
         saved: newSaved,
       },
     });
-    setIsOptimisticSaved((prev) => !prev);
   }, [ideaId, isOptimisticSaved, updateIdea]);
 
   return {

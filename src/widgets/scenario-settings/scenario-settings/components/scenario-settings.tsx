@@ -5,13 +5,11 @@ import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { useScenarioSettings } from "../hooks/use-scenario-settings";
 import { ScenarioSettingsForm } from "./scenario-settings-form";
 
-type ScenarioSettingsContentProps = {
+type ScenarioSettingsProps = {
   scenarioId?: string;
 };
 
-export function ScenarioSettingsContent({
-  scenarioId,
-}: ScenarioSettingsContentProps) {
+export function ScenarioSettings({ scenarioId }: ScenarioSettingsProps) {
   const { scenarioData, isLoading, isError } = useScenarioSettings({
     scenarioId,
   });

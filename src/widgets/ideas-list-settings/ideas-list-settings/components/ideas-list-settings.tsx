@@ -5,13 +5,11 @@ import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { useIdeasListSettings } from "../hooks/use-ideas-list-settings";
 import { IdeasListSettingsForm } from "./ideas-list-settings-form";
 
-type IdeasListSettingsContentProps = {
+type IdeasListSettingsProps = {
   ideasListId?: string;
 };
 
-export function IdeasListSettingsContent({
-  ideasListId,
-}: IdeasListSettingsContentProps) {
+export function IdeasListSettings({ ideasListId }: IdeasListSettingsProps) {
   const { ideasListData, isIdeasListLoading, isIdeasListError } =
     useIdeasListSettings({ ideasListId });
 

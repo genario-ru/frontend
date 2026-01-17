@@ -24,7 +24,7 @@ export function IdeasListIdeaCardSecondaryActionsMenu({
       <DropdownMenuTrigger asChild>
         <Button size="sm" variant="tertiary" icon={<EllipsisIcon />} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end">
         <DropdownMenuGroup>{children}</DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

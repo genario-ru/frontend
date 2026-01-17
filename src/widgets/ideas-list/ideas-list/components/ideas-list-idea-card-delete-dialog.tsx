@@ -44,6 +44,7 @@ export function IdeasListIdeaCardDeleteDialog({
             <Button>Отмена</Button>
           </DialogClose>
           <Button
+            variant="primary"
             color="negative"
             state={isDeleteIdeaPending ? "loading" : "default"}
             onClick={handleConfirmDeleteButtonClick}
