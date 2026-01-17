@@ -5,6 +5,7 @@ import { memo, type ReactNode } from "react";
 import { AppSidebarTrigger } from "@/features/navigation/app-sidebar/components/app-sidebar-trigger";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
+import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
@@ -30,15 +31,17 @@ export const AppMenubar = memo(
     className,
     ...props
   }: AppMenubarProps) => {
+    const { isScrolled } = usePageCheckScroll();
+
     return (
       <Island
         as="header"
         roundedTop={false}
         row
         className={cn(
-          "z-1 min-h-16 shrink-0 gap-3 p-4",
+          "z-1 min-h-16 shrink-0 gap-3 p-4 duration-200",
           {
-            // TODO: add dynamic shadow
+            "shadow-bottom-1": isScrolled,
             "sticky top-0": sticky,
           },
           className,
