@@ -7,7 +7,7 @@ import { ArchiveAppMenubarActionsButton } from "@/widgets/archive/archive-app-me
 import { ArchiveFilters } from "@/widgets/archive/archive-filters/components/archive-filters";
 import { ArchiveItems } from "@/widgets/archive/archive-items/components/archive-items";
 import { IdeasListDialog } from "@/widgets/ideas-lists/ideas-list-dialog/components/ideas-list-dialog";
-import { ScenarioDialog } from "@/widgets/scenarios/scenario-dialog/components/scenario-dialog";
+import { ScenarioSettings } from "@/widgets/scenarios/scenario-dialog/components/scenario-dialog";
 
 export function ArchiveComponent() {
   return (
@@ -26,7 +26,7 @@ export function ArchiveComponent() {
               />
             }
             newTemplateDialog={
-              <ScenarioDialog
+              <ScenarioSettings
                 trigger={
                   <ArchiveAppMenubarActionsButton icon={<FilmIcon />}>
                     Новый сценарий

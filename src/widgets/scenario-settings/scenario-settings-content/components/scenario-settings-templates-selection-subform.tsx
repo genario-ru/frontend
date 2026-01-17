@@ -9,7 +9,7 @@ import { FieldLayout } from "@/shared/components/layouts/field-layout";
 import {
   type ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
+} from "../utils/scenario-settings-form-helpers";
 
 export const ScenarioSettingsTemplatesSelectionSubform = withForm({
   defaultValues: {} as ScenarioSettingsFormSchema,

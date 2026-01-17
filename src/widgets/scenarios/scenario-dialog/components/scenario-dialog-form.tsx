@@ -3,48 +3,48 @@ import type { RefObject } from "react";
 import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/types.gen";
 import { DialogBody } from "@/shared/components/ui/dialog";
 
-import { useScenarioDialogForm } from "../hooks/use-scenario-dialog-form";
-import { ScenarioDialogCurrentSubform } from "./scenario-dialog-current-subform";
-import { ScenarioDialogFormButtons } from "./scenario-dialog-form-buttons";
-import { ScenarioDialogFormNavigationSteps } from "./scenario-dialog-form-navigation-steps";
-import { ScenarioDialogFormNavigationStepsListener } from "./scenario-dialog-form-navigation-steps-listener";
+import { useScenarioSettingsForm } from "../hooks/use-scenario-dialog-form";
+import { ScenarioSettingsCurrentSubform } from "./scenario-dialog-current-subform";
+import { ScenarioSettingsFormButtons } from "./scenario-dialog-form-buttons";
+import { ScenarioSettingsFormNavigationSteps } from "./scenario-dialog-form-navigation-steps";
+import { ScenarioSettingsFormNavigationStepsListener } from "./scenario-dialog-form-navigation-steps-listener";
 
-type ScenarioDialogFormProps = {
+type ScenarioSettingsFormProps = {
   dialogContentRef: RefObject<HTMLDivElement | null>;
   dialogOverlayRef: RefObject<HTMLDivElement | null>;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
   onDialogClose: () => void;
 };
 
-export function ScenarioDialogForm({
+export function ScenarioSettingsForm({
   dialogContentRef,
   dialogOverlayRef,
   scenarioData,
   onDialogClose,
-}: ScenarioDialogFormProps) {
+}: ScenarioSettingsFormProps) {
   const {
     form,
     currentStep,
     onFormSubmit,
     isCreateScenarioPending,
     isUpdateScenarioPending,
-  } = useScenarioDialogForm({ scenarioData, onDialogClose });
+  } = useScenarioSettingsForm({ scenarioData, onDialogClose });
 
   return (
     <form onSubmit={onFormSubmit} className="flex w-full flex-col">
-      <ScenarioDialogFormNavigationStepsListener
+      <ScenarioSettingsFormNavigationStepsListener
         form={form}
         currentStep={currentStep}
       />
       <DialogBody className="gap-8">
-        <ScenarioDialogFormNavigationSteps form={form} />
-        <ScenarioDialogCurrentSubform
+        <ScenarioSettingsFormNavigationSteps form={form} />
+        <ScenarioSettingsCurrentSubform
           form={form}
           currentStep={currentStep}
           dialogContentRef={dialogContentRef}
         />
       </DialogBody>
-      <ScenarioDialogFormButtons
+      <ScenarioSettingsFormButtons
         form={form}
         currentStep={currentStep}
         isCreateScenarioPending={isCreateScenarioPending}

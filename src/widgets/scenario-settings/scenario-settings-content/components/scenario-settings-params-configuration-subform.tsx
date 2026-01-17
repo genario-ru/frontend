@@ -1,23 +1,16 @@
-import type { RefObject } from "react";
-
 import { withForm } from "@/lib/tanstack-form";
 import { ProfileImage } from "@/shared/components/common/profile-image";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 
-import { useScenarioSettingsParamsConfigurationData } from "../hooks/use-scenario-dialog-params-configuration-data";
+import { useScenarioSettingsParamsConfigurationData } from "../hooks/use-scenario-settings-params-configuration-data";
 import {
   type ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
-
-type ScenarioSettingsParamsConfigurationSubformProps = {
-  dialogContentRef: RefObject<HTMLDivElement | null>;
-};
+} from "../utils/scenario-settings-form-helpers";
 
 export const ScenarioSettingsParamsConfigurationSubform = withForm({
   defaultValues: {} as ScenarioSettingsFormSchema,
-  props: {} as ScenarioSettingsParamsConfigurationSubformProps,
-  render: ({ form, dialogContentRef }) => {
+  render: ({ form }) => {
     const {
       myProfilesData,
       videoTypesData,
@@ -54,7 +47,6 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
         >
           {(field) => (
             <field.SelectField
-              portalContainerRef={dialogContentRef}
               label="Тип видео"
               itemGroups={[
                 {
@@ -77,7 +69,6 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
         >
           {(field) => (
             <field.SelectField
-              portalContainerRef={dialogContentRef}
               label="Продолжительность видео"
               itemGroups={[
                 {
@@ -97,7 +88,6 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
         >
           {(field) => (
             <field.SelectField
-              portalContainerRef={dialogContentRef}
               label="Платформа"
               itemGroups={[
                 {
@@ -116,7 +106,6 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
         >
           {(field) => (
             <field.SelectField
-              portalContainerRef={dialogContentRef}
               label="Профиль"
               itemGroups={[
                 {

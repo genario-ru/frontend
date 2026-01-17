@@ -15,7 +15,7 @@ export function useIdeasListIdeaCardPrimaryActions({
 
   const createScenarioLinkOptions: CreateScenarioLinkOptions = useMemo(
     () => ({
-      to: "/scenarios/config",
+      to: "/scenarios/settings",
       search: {
         fromIdeaId: ideaId,
       },

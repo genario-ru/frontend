@@ -9,18 +9,16 @@ import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
-import { prepareScenarioSettingsFormOptions } from "../utils/prepare-scenario-dialog-forn-options";
-import { ScenarioSettingsFormSteps } from "../utils/scenario-dialog-form-helpers";
-import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario-dialog-subforms-data";
+import { prepareScenarioSettingsFormOptions } from "../utils/prepare-scenario-settings-forn-options";
+import { ScenarioSettingsFormSteps } from "../utils/scenario-settings-form-helpers";
+import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario-settings-subforms-data";
 
 type UseScenarioSettingsFormParams = {
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
-  onDialogClose: () => void;
 };
 
 export function useScenarioSettingsForm({
   scenarioData,
-  onDialogClose,
 }: UseScenarioSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -28,8 +26,6 @@ export function useScenarioSettingsForm({
 
   const { createScenario, isCreateScenarioPending } = useCreateScenario({
     onSuccess: (data) => {
-      onDialogClose();
-
       navigate({
         to: "/scenarios/$scenarioId",
         params: { scenarioId: data.data.id },
@@ -39,8 +35,6 @@ export function useScenarioSettingsForm({
 
   const { updateScenario, isUpdateScenarioPending } = useUpdateScenario({
     onSuccess: (data) => {
-      onDialogClose();
-
       queryClient.invalidateQueries({
         queryKey: getApiV1ScenariosScenarioIdQueryKey({
           path: { scenarioId: data.data.id },

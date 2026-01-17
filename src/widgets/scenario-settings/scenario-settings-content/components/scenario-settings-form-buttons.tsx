@@ -1,19 +1,17 @@
 import { ArrowLeftIcon, ArrowRightIcon, FilmIcon } from "lucide-react";
-import type { RefObject } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
 import { Button } from "@/shared/components/ui/button";
-import { DialogClose, DialogFooter } from "@/shared/components/ui/dialog";
-import { useCheckScroll } from "@/shared/hooks/use-check-scroll";
+import { Island } from "@/shared/components/ui/island";
+import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
 import {
   type ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
+} from "../utils/scenario-settings-form-helpers";
 
 type ScenarioSettingsFormButtonsProps = {
-  dialogOverlayRef: RefObject<HTMLDivElement | null>;
   currentStep: ScenarioSettingsFormSteps;
   isCreateScenarioPending: boolean;
   isUpdateScenarioPending: boolean;
@@ -24,16 +22,11 @@ export const ScenarioSettingsFormButtons = withForm({
   props: {} as ScenarioSettingsFormButtonsProps,
   render: ({
     form,
-    dialogOverlayRef,
     currentStep,
     isCreateScenarioPending,
     isUpdateScenarioPending,
   }) => {
-    const { isScrolledToBottom } = useCheckScroll({
-      elementRef: dialogOverlayRef,
-      scrollOffsetBottom: 40,
-    });
-
+    const { isScrolledToBottom } = usePageCheckScroll();
     const isLoading = isCreateScenarioPending || isUpdateScenarioPending;
 
     const onBackButtonClick = () => {
@@ -42,24 +35,30 @@ export const ScenarioSettingsFormButtons = withForm({
           "currentStep",
           ScenarioSettingsFormSteps.TemplateSelection,
         );
-      } else if (currentStep === ScenarioSettingsFormSteps.ParamsConfiguration) {
-        form.setFieldValue("currentStep", ScenarioSettingsFormSteps.PrimaryInfo);
+      } else if (
+        currentStep === ScenarioSettingsFormSteps.ParamsConfiguration
+      ) {
+        form.setFieldValue(
+          "currentStep",
+          ScenarioSettingsFormSteps.PrimaryInfo,
+        );
       }
     };
 
     return (
-      <DialogFooter
-        className={cn("sticky -bottom-10 z-1 duration-200", {
+      <Island
+        row
+        roundedTop={false}
+        roundedBottom={isScrolledToBottom}
+        className={cn("sticky bottom-0 z-1 justify-between duration-200", {
           "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
         })}
       >
         {/* Кнопка слева */}
         {currentStep === ScenarioSettingsFormSteps.TemplateSelection ? (
-          <DialogClose asChild>
-            <Button type="button" size="lg" disabled={isLoading}>
-              Отмена
-            </Button>
-          </DialogClose>
+          <Button type="button" size="lg" disabled={isLoading}>
+            Отмена
+          </Button>
         ) : (
           <Button
             size="lg"
@@ -94,7 +93,7 @@ export const ScenarioSettingsFormButtons = withForm({
             Далее
           </Button>
         )}
-      </DialogFooter>
+      </Island>
     );
   },
 });

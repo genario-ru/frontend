@@ -6,7 +6,7 @@ import {
   type ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
   scenarioSettingsFormStepValidateFn,
-} from "./scenario-dialog-form-helpers";
+} from "./scenario-settings-form-helpers";
 
 type PrepareScenarioSettingsFormOptionsParams = {
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;

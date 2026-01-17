@@ -7,11 +7,11 @@ import {
   NavigationSteps,
 } from "@/shared/components/ui/navigation-steps";
 
-import { SCENARIO_DIALOG_FORM_NAVIGATION_STEPS } from "../constants/scenario-dialog-form-navigation-steps";
+import { SCENARIO_DIALOG_FORM_NAVIGATION_STEPS } from "../constants/scenario-settings-form-navigation-steps";
 import type {
   ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
+} from "../utils/scenario-settings-form-helpers";
 
 export const ScenarioSettingsFormNavigationSteps = withForm({
   defaultValues: {} as ScenarioSettingsFormSchema,

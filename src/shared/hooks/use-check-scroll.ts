@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 
-type UseCheckScrollParams<T extends HTMLElement> = {
+export type UseCheckScrollParams<T extends HTMLElement> = {
   elementRef: RefObject<T | null>;
   throttleTimeout?: number;
   scrollOffsetTop?: number;

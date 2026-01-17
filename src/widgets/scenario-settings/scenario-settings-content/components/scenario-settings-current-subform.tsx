@@ -1,24 +1,21 @@
-import type { RefObject } from "react";
-
 import { withForm } from "@/lib/tanstack-form";
 
 import {
   type ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
-import { ScenarioSettingsParamsConfigurationSubform } from "./scenario-dialog-params-configuration-subform";
-import { ScenarioSettingsPrimaryInfoSubform } from "./scenario-dialog-primary-info-subform";
-import { ScenarioSettingsTemplatesSelectionSubform } from "./scenario-dialog-templates-selection-subform";
+} from "../utils/scenario-settings-form-helpers";
+import { ScenarioSettingsParamsConfigurationSubform } from "./scenario-settings-params-configuration-subform";
+import { ScenarioSettingsPrimaryInfoSubform } from "./scenario-settings-primary-info-subform";
+import { ScenarioSettingsTemplatesSelectionSubform } from "./scenario-settings-templates-selection-subform";
 
 type ScenarioSettingsCurrentSubformProps = {
   currentStep: ScenarioSettingsFormSteps;
-  dialogContentRef: RefObject<HTMLDivElement | null>;
 };
 
 export const ScenarioSettingsCurrentSubform = withForm({
   defaultValues: {} as ScenarioSettingsFormSchema,
   props: {} as ScenarioSettingsCurrentSubformProps,
-  render: ({ form, currentStep, dialogContentRef }) => {
+  render: ({ form, currentStep }) => {
     if (currentStep === ScenarioSettingsFormSteps.TemplateSelection) {
       return <ScenarioSettingsTemplatesSelectionSubform form={form} />;
     }
@@ -28,12 +25,7 @@ export const ScenarioSettingsCurrentSubform = withForm({
     }
 
     if (currentStep === ScenarioSettingsFormSteps.ParamsConfiguration) {
-      return (
-        <ScenarioSettingsParamsConfigurationSubform
-          form={form}
-          dialogContentRef={dialogContentRef}
-        />
-      );
+      return <ScenarioSettingsParamsConfigurationSubform form={form} />;
     }
 
     return null;

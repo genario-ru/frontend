@@ -1,22 +1,14 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 
 import { useGetScenario } from "@/actions/scenarios/hooks/use-get-scenario";
 
-import { SCENARIO_DIALOG_DESCRIPTION } from "../constants/scenario-dialog-texts";
+import { SCENARIO_DIALOG_DESCRIPTION } from "../constants/scenario-settings-texts";
 
 type UseScenarioSettingsParams = {
   scenarioId: string | undefined;
 };
 
 export function useScenarioSettings({ scenarioId }: UseScenarioSettingsParams) {
-  const dialogOverlayRef = useRef<HTMLDivElement>(null);
-  const dialogContentRef = useRef<HTMLDivElement>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const onDialogClose = useCallback(() => {
-    setIsDialogOpen(false);
-  }, []);
-
   const { scenarioData, isScenarioLoading, isScenarioError } = useGetScenario({
     scenarioId,
   });
@@ -26,15 +18,10 @@ export function useScenarioSettings({ scenarioId }: UseScenarioSettingsParams) {
   }, [scenarioData]);
 
   return {
-    dialogOverlayRef,
-    dialogContentRef,
     scenarioData,
     scenarioSettingsTitle,
     scenarioSettingsDescription: SCENARIO_DIALOG_DESCRIPTION,
     isLoading: isScenarioLoading,
     isError: isScenarioError,
-    isDialogOpen,
-    setIsDialogOpen,
-    onDialogClose,
   };
 }

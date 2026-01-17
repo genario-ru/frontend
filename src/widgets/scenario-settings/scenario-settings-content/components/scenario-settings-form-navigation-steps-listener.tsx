@@ -5,7 +5,7 @@ import { withForm } from "@/lib/tanstack-form";
 import type {
   ScenarioSettingsFormSchema,
   ScenarioSettingsFormSteps,
-} from "../utils/scenario-dialog-form-helpers";
+} from "../utils/scenario-settings-form-helpers";
 
 type ScenarioSettingsFormNavigationStepsListenerProps = {
   currentStep: ScenarioSettingsFormSteps;

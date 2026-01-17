@@ -7,27 +7,27 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useScenarioDialog } from "../hooks/use-scenario-dialog";
-import { ScenarioDialogForm } from "./scenario-dialog-form";
+import { useScenarioSettings } from "../hooks/use-scenario-dialog";
+import { ScenarioSettingsForm } from "./scenario-dialog-form";
 
-type ScenarioDialogProps = {
+type ScenarioSettingsProps = {
   scenarioId?: string;
   trigger: ReactNode;
 };
 
-export function ScenarioDialog({ scenarioId, trigger }: ScenarioDialogProps) {
+export function ScenarioSettings({ scenarioId, trigger }: ScenarioSettingsProps) {
   const {
     dialogOverlayRef,
     dialogContentRef,
     scenarioData,
-    scenarioDialogTitle,
-    scenarioDialogDescription,
+    scenarioSettingsTitle,
+    scenarioSettingsDescription,
     isLoading,
     isError,
     isDialogOpen,
     setIsDialogOpen,
     onDialogClose,
-  } = useScenarioDialog({ scenarioId });
+  } = useScenarioSettings({ scenarioId });
 
   const body = useMemo(() => {
     if (isLoading) {
@@ -41,10 +41,10 @@ export function ScenarioDialog({ scenarioId, trigger }: ScenarioDialogProps) {
     return (
       <>
         <DialogPredefinedHeader
-          title={scenarioDialogTitle}
-          description={scenarioDialogDescription}
+          title={scenarioSettingsTitle}
+          description={scenarioSettingsDescription}
         />
-        <ScenarioDialogForm
+        <ScenarioSettingsForm
           dialogContentRef={dialogContentRef}
           dialogOverlayRef={dialogOverlayRef}
           scenarioData={scenarioData}
@@ -56,8 +56,8 @@ export function ScenarioDialog({ scenarioId, trigger }: ScenarioDialogProps) {
     dialogContentRef,
     dialogOverlayRef,
     scenarioData,
-    scenarioDialogTitle,
-    scenarioDialogDescription,
+    scenarioSettingsTitle,
+    scenarioSettingsDescription,
 
     isLoading,
     isError,

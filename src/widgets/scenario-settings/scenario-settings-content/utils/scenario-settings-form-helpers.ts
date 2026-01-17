@@ -25,12 +25,11 @@ export type ScenarioSettingsTemplateSelectionSubformSchema = z.infer<
 >;
 
 // 2. Основная информация
-export const scenarioSettingsPrimaryInfoSubformSchema = createScenarioSchema.pick(
-  {
+export const scenarioSettingsPrimaryInfoSubformSchema =
+  createScenarioSchema.pick({
     name: true,
     description: true,
-  },
-);
+  });
 
 export type ScenarioSettingsPrimaryInfoSubformSchema = z.infer<
   typeof scenarioSettingsPrimaryInfoSubformSchema
@@ -54,14 +53,17 @@ export type ScenarioSettingsParamsConfigurationSubformSchema = z.infer<
 // Форма
 export const scenarioSettingsFormSchema = z.object({
   currentStep: z.enum(ScenarioSettingsFormSteps),
-  [ScenarioSettingsFormSteps.PrimaryInfo]: scenarioSettingsPrimaryInfoSubformSchema,
+  [ScenarioSettingsFormSteps.PrimaryInfo]:
+    scenarioSettingsPrimaryInfoSubformSchema,
   [ScenarioSettingsFormSteps.TemplateSelection]:
     scenarioSettingsTemplateSelectionSubformSchema,
   [ScenarioSettingsFormSteps.ParamsConfiguration]:
     scenarioSettingsParamsConfigurationSubformSchema,
 });
 
-export type ScenarioSettingsFormSchema = z.infer<typeof scenarioSettingsFormSchema>;
+export type ScenarioSettingsFormSchema = z.infer<
+  typeof scenarioSettingsFormSchema
+>;
 
 // Валидаторы формы
 
@@ -84,4 +86,6 @@ export const scenarioSettingsFormValidateFn =
   createFormValidateFn<ScenarioSettingsFormSchema>(scenarioSettingsFormSchema);
 
 export const scenarioSettingsFormMatchValidateFn =
-  createFormMatchValidateFn<ScenarioSettingsFormSchema>(scenarioSettingsFormSchema);
+  createFormMatchValidateFn<ScenarioSettingsFormSchema>(
+    scenarioSettingsFormSchema,
+  );

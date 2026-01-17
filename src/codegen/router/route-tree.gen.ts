@@ -18,9 +18,9 @@ import { Route as AppProfilesRouteImport } from "./../../routes/_app/profiles";
 import { Route as AppArchiveRouteImport } from "./../../routes/_app/archive";
 import { Route as AppSettingsBillingRouteImport } from "./../../routes/_app/settings/billing";
 import { Route as AppSettingsAccountRouteImport } from "./../../routes/_app/settings/account";
-import { Route as AppScenariosConfigRouteImport } from "./../../routes/_app/scenarios/config";
+import { Route as AppScenariosSettingsRouteImport } from "./../../routes/_app/scenarios/settings";
 import { Route as AppScenariosScenarioIdRouteImport } from "./../../routes/_app/scenarios/$scenarioId";
-import { Route as AppIdeasListsConfigRouteImport } from "./../../routes/_app/ideas-lists/config";
+import { Route as AppIdeasListsSettingsRouteImport } from "./../../routes/_app/ideas-lists/settings";
 import { Route as AppIdeasListsIdeasListIdRouteImport } from "./../../routes/_app/ideas-lists/$ideasListId";
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
@@ -66,9 +66,9 @@ const AppSettingsAccountRoute = AppSettingsAccountRouteImport.update({
   path: "/settings/account",
   getParentRoute: () => AppRouteRoute,
 } as any);
-const AppScenariosConfigRoute = AppScenariosConfigRouteImport.update({
-  id: "/scenarios/config",
-  path: "/scenarios/config",
+const AppScenariosSettingsRoute = AppScenariosSettingsRouteImport.update({
+  id: "/scenarios/settings",
+  path: "/scenarios/settings",
   getParentRoute: () => AppRouteRoute,
 } as any);
 const AppScenariosScenarioIdRoute = AppScenariosScenarioIdRouteImport.update({
@@ -76,9 +76,9 @@ const AppScenariosScenarioIdRoute = AppScenariosScenarioIdRouteImport.update({
   path: "/scenarios/$scenarioId",
   getParentRoute: () => AppRouteRoute,
 } as any);
-const AppIdeasListsConfigRoute = AppIdeasListsConfigRouteImport.update({
-  id: "/ideas-lists/config",
-  path: "/ideas-lists/config",
+const AppIdeasListsSettingsRoute = AppIdeasListsSettingsRouteImport.update({
+  id: "/ideas-lists/settings",
+  path: "/ideas-lists/settings",
   getParentRoute: () => AppRouteRoute,
 } as any);
 const AppIdeasListsIdeasListIdRoute =
@@ -95,9 +95,9 @@ export interface FileRoutesByFullPath {
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/": typeof AppIndexRoute;
   "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
-  "/ideas-lists/config": typeof AppIdeasListsConfigRoute;
+  "/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
-  "/scenarios/config": typeof AppScenariosConfigRoute;
+  "/scenarios/settings": typeof AppScenariosSettingsRoute;
   "/settings/account": typeof AppSettingsAccountRoute;
   "/settings/billing": typeof AppSettingsBillingRoute;
 }
@@ -108,9 +108,9 @@ export interface FileRoutesByTo {
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/": typeof AppIndexRoute;
   "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
-  "/ideas-lists/config": typeof AppIdeasListsConfigRoute;
+  "/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
-  "/scenarios/config": typeof AppScenariosConfigRoute;
+  "/scenarios/settings": typeof AppScenariosSettingsRoute;
   "/settings/account": typeof AppSettingsAccountRoute;
   "/settings/billing": typeof AppSettingsBillingRoute;
 }
@@ -124,9 +124,9 @@ export interface FileRoutesById {
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
   "/_app/": typeof AppIndexRoute;
   "/_app/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
-  "/_app/ideas-lists/config": typeof AppIdeasListsConfigRoute;
+  "/_app/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/_app/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
-  "/_app/scenarios/config": typeof AppScenariosConfigRoute;
+  "/_app/scenarios/settings": typeof AppScenariosSettingsRoute;
   "/_app/settings/account": typeof AppSettingsAccountRoute;
   "/_app/settings/billing": typeof AppSettingsBillingRoute;
 }
@@ -139,9 +139,9 @@ export interface FileRouteTypes {
     | "/verify-otp"
     | "/"
     | "/ideas-lists/$ideasListId"
-    | "/ideas-lists/config"
+    | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
-    | "/scenarios/config"
+    | "/scenarios/settings"
     | "/settings/account"
     | "/settings/billing";
   fileRoutesByTo: FileRoutesByTo;
@@ -152,9 +152,9 @@ export interface FileRouteTypes {
     | "/verify-otp"
     | "/"
     | "/ideas-lists/$ideasListId"
-    | "/ideas-lists/config"
+    | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
-    | "/scenarios/config"
+    | "/scenarios/settings"
     | "/settings/account"
     | "/settings/billing";
   id:
@@ -167,9 +167,9 @@ export interface FileRouteTypes {
     | "/_auth/verify-otp"
     | "/_app/"
     | "/_app/ideas-lists/$ideasListId"
-    | "/_app/ideas-lists/config"
+    | "/_app/ideas-lists/settings"
     | "/_app/scenarios/$scenarioId"
-    | "/_app/scenarios/config"
+    | "/_app/scenarios/settings"
     | "/_app/settings/account"
     | "/_app/settings/billing";
   fileRoutesById: FileRoutesById;
@@ -244,11 +244,11 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AppSettingsAccountRouteImport;
       parentRoute: typeof AppRouteRoute;
     };
-    "/_app/scenarios/config": {
-      id: "/_app/scenarios/config";
-      path: "/scenarios/config";
-      fullPath: "/scenarios/config";
-      preLoaderRoute: typeof AppScenariosConfigRouteImport;
+    "/_app/scenarios/settings": {
+      id: "/_app/scenarios/settings";
+      path: "/scenarios/settings";
+      fullPath: "/scenarios/settings";
+      preLoaderRoute: typeof AppScenariosSettingsRouteImport;
       parentRoute: typeof AppRouteRoute;
     };
     "/_app/scenarios/$scenarioId": {
@@ -258,11 +258,11 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AppScenariosScenarioIdRouteImport;
       parentRoute: typeof AppRouteRoute;
     };
-    "/_app/ideas-lists/config": {
-      id: "/_app/ideas-lists/config";
-      path: "/ideas-lists/config";
-      fullPath: "/ideas-lists/config";
-      preLoaderRoute: typeof AppIdeasListsConfigRouteImport;
+    "/_app/ideas-lists/settings": {
+      id: "/_app/ideas-lists/settings";
+      path: "/ideas-lists/settings";
+      fullPath: "/ideas-lists/settings";
+      preLoaderRoute: typeof AppIdeasListsSettingsRouteImport;
       parentRoute: typeof AppRouteRoute;
     };
     "/_app/ideas-lists/$ideasListId": {
@@ -280,9 +280,9 @@ interface AppRouteRouteChildren {
   AppProfilesRoute: typeof AppProfilesRoute;
   AppIndexRoute: typeof AppIndexRoute;
   AppIdeasListsIdeasListIdRoute: typeof AppIdeasListsIdeasListIdRoute;
-  AppIdeasListsConfigRoute: typeof AppIdeasListsConfigRoute;
+  AppIdeasListsSettingsRoute: typeof AppIdeasListsSettingsRoute;
   AppScenariosScenarioIdRoute: typeof AppScenariosScenarioIdRoute;
-  AppScenariosConfigRoute: typeof AppScenariosConfigRoute;
+  AppScenariosSettingsRoute: typeof AppScenariosSettingsRoute;
   AppSettingsAccountRoute: typeof AppSettingsAccountRoute;
   AppSettingsBillingRoute: typeof AppSettingsBillingRoute;
 }
@@ -292,9 +292,9 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppProfilesRoute: AppProfilesRoute,
   AppIndexRoute: AppIndexRoute,
   AppIdeasListsIdeasListIdRoute: AppIdeasListsIdeasListIdRoute,
-  AppIdeasListsConfigRoute: AppIdeasListsConfigRoute,
+  AppIdeasListsSettingsRoute: AppIdeasListsSettingsRoute,
   AppScenariosScenarioIdRoute: AppScenariosScenarioIdRoute,
-  AppScenariosConfigRoute: AppScenariosConfigRoute,
+  AppScenariosSettingsRoute: AppScenariosSettingsRoute,
   AppSettingsAccountRoute: AppSettingsAccountRoute,
   AppSettingsBillingRoute: AppSettingsBillingRoute,
 };

@@ -1,4 +1,4 @@
-import { ScenarioSettingsFormSteps } from "../utils/scenario-dialog-form-helpers";
+import { ScenarioSettingsFormSteps } from "../utils/scenario-settings-form-helpers";
 
 export const SCENARIO_DIALOG_FORM_NAVIGATION_STEPS = [
   {

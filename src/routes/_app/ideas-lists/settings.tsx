@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import * as z from "zod";
 
-import { IdeasListConfigComponent } from "@/entrypoints/ideas-list-config/component";
+import { IdeasListSettingsComponent } from "@/entrypoints/ideas-list-settings/component";
 
-export const Route = createFileRoute("/_app/ideas-lists/config")({
+export const Route = createFileRoute("/_app/ideas-lists/settings")({
   validateSearch: zodValidator(
     z.object({
       ideasListId: z.optional(z.string()),
     }),
   ),
-  component: IdeasListConfigComponent,
+  component: IdeasListSettingsComponent,
 });
