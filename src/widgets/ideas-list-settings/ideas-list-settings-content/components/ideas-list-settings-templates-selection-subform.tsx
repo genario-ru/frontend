@@ -1,0 +1,58 @@
+import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
+import {
+  TemplateCardsRadioGroup,
+  TemplateCardsRadioGroupItem,
+} from "@/features/templates/template-card/components/template-cards-radio-group";
+import { withForm } from "@/lib/tanstack-form";
+import { FieldLayout } from "@/shared/components/layouts/field-layout";
+
+import {
+  type IdeasListSettingsFormSchema,
+  IdeasListSettingsFormSteps,
+} from "../utils/ideas-list-settings-form-helpers";
+
+export const IdeasListSettingsTemplatesSelectionSubform = withForm({
+  defaultValues: {} as IdeasListSettingsFormSchema,
+  render: ({ form }) => {
+    const { templatesData, isTemplatesLoading } = useGetTemplates();
+
+    if (isTemplatesLoading) {
+      return <div>Loading...</div>;
+    }
+
+    if (!templatesData?.data.length) {
+      return <></>;
+    }
+
+    return (
+      <div className="flex flex-col gap-6">
+        <form.Field
+          name={`${IdeasListSettingsFormSteps.TemplateSelection}.templateId`}
+        >
+          {(field) => (
+            <FieldLayout errorMessage={field.state.meta.errors[0]}>
+              <TemplateCardsRadioGroup
+                defaultValue={templatesData.data[0].id}
+                value={field.state.value}
+                onBlur={field.handleBlur}
+                onValueChange={(e) => field.handleChange(e)}
+              >
+                {templatesData.data.map((item) => (
+                  <TemplateCardsRadioGroupItem
+                    key={item.id}
+                    value={item.id}
+                    name={item.name}
+                    icon={item.icon}
+                    color={item.color}
+                    description={item.description}
+                    checked={field.state.value === item.id}
+                  />
+                ))}
+              </TemplateCardsRadioGroup>
+            </FieldLayout>
+          )}
+        </form.Field>
+      </div>
+    );
+  },
+});

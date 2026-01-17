@@ -17,11 +17,7 @@ export function IdeasListComponent() {
         changeParamsDialog={
           <IdeasListDialog
             ideasListId={ideasListId}
-            trigger={
-              <Button size="sm" icon={<PencilIcon />}>
-                Изменить параметры
-              </Button>
-            }
+            trigger={<Button icon={<PencilIcon />}>Изменить параметры</Button>}
           />
         }
       />

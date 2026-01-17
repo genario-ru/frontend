@@ -34,7 +34,7 @@ export function IdeasListMenubarActions({
       {changeParamsDialog}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <DialogTrigger asChild>
-          <Button size="sm" color="negative" icon={<TrashIcon />} />
+          <Button color="negative" icon={<TrashIcon />} />
         </DialogTrigger>
         <DialogContent>
           <DialogPredefinedHeader
