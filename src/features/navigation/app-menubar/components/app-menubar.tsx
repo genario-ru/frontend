@@ -1,9 +1,8 @@
-import type { NavigateOptions } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { memo, type ReactNode } from "react";
+import { memo, type ReactNode, useCallback } from "react";
 
-import { AppSidebarTrigger } from "@/features/navigation/app-sidebar/components/app-sidebar-trigger";
-import { ButtonLink } from "@/shared/components/ui/button-link";
+import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
@@ -13,7 +12,7 @@ export type AppMenubarProps = PropsWithClassName<{
   title: string;
   firstLine?: ReactNode;
   description?: ReactNode;
-  backButtonHref?: NavigateOptions["to"];
+  backButton?: boolean;
   sticky?: boolean;
   left?: ReactNode;
   right?: ReactNode;
@@ -24,14 +23,19 @@ export const AppMenubar = memo(
     title,
     firstLine,
     description,
-    backButtonHref,
+    backButton = false,
     sticky = true,
     left,
     right,
     className,
     ...props
   }: AppMenubarProps) => {
+    const router = useRouter();
     const { isScrolled } = usePageCheckScroll();
+
+    const onBackButtonClick = useCallback(() => {
+      router.history.back();
+    }, [router]);
 
     return (
       <Island
@@ -50,12 +54,11 @@ export const AppMenubar = memo(
       >
         <section className="flex flex-1 flex-col justify-center gap-3">
           <div className="flex items-center gap-2">
-            <AppSidebarTrigger className="md:hidden" />
-            {backButtonHref && (
-              <ButtonLink
-                to={backButtonHref}
+            {backButton && (
+              <Button
                 variant="tertiary"
                 icon={<ArrowLeft />}
+                onClick={onBackButtonClick}
               />
             )}
             {title && <h1 className="text-xl font-semibold">{title}</h1>}

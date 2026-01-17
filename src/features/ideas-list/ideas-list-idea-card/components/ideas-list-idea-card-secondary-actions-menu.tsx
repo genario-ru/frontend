@@ -20,7 +20,7 @@ export function IdeasListIdeaCardSecondaryActionsMenu({
   children,
 }: IdeasListIdeaCardSecondaryActionsMenuProps) {
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+    <DropdownMenu modal={false} open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button size="sm" variant="tertiary" icon={<EllipsisIcon />} />
       </DropdownMenuTrigger>

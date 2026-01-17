@@ -17,7 +17,7 @@ export function IdeasListAppMenubar({
 
   return (
     <AppMenubar
-      backButtonHref="/archive"
+      backButton
       title={ideasListTitle}
       description={ideasListDescription}
       left={<IdeasListAppMenubarBadges ideasListData={ideasListData} />}

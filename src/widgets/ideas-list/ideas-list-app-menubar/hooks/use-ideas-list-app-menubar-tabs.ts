@@ -28,6 +28,7 @@ export function useIdeasListAppMenubarTabs({
           ...search,
           tab: slug === SAVED_TAB ? SAVED_TAB : undefined,
         },
+        replace: true,
       });
     },
     [ideasListId, search, navigate],
