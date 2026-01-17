@@ -3,9 +3,9 @@ import type { ReactNode, RefObject } from "react";
 import { Heading } from "@/shared/components/ui/heading";
 
 type IdeasListIdeaCardLayoutProps = {
-  name?: string | null;
-  description?: string | null;
-  descriptionRef: RefObject<HTMLParagraphElement | null>;
+  descriptionRef?: RefObject<HTMLParagraphElement | null>;
+  name: ReactNode;
+  description: ReactNode;
   secondaryActions: ReactNode;
   primaryActions: ReactNode;
 };

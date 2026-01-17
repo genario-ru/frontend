@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import { IdeasListIdeaCardSkeleton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-skeleton";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useIdeasList } from "../hooks/use-ideas-list";
@@ -18,7 +20,14 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
 
   const body = useMemo(() => {
     if (isIdeasListIdeasLoading) {
-      return <div>Loading...</div>;
+      return (
+        <ItemsList
+          noParent
+          count={4}
+          gap={16}
+          item={<IdeasListIdeaCardSkeleton />}
+        />
+      );
     }
 
     if (!ideasListIdeasData) {
@@ -45,7 +54,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   }, [ideasListIdeasData, isIdeasListIdeasLoading]);
 
   return (
-    <ContentLayout className="grid auto-rows-fr grid-cols-2 gap-4">
+    <ContentLayout className="grid flex-1 auto-rows-fr grid-cols-2 gap-4">
       {body}
     </ContentLayout>
   );
