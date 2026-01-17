@@ -15,11 +15,19 @@ export function useIdeasListAppMenubar({
     });
 
   const ideasListTitle = useMemo(() => {
-    return ideasListData?.data.name || "Без названия";
+    if (!ideasListData) {
+      return undefined;
+    }
+
+    return ideasListData.data.name || "Без названия";
   }, [ideasListData]);
 
   const ideasListDescription = useMemo(() => {
-    return ideasListData?.data.description;
+    if (!ideasListData) {
+      return undefined;
+    }
+
+    return ideasListData.data.description;
   }, [ideasListData]);
 
   return {

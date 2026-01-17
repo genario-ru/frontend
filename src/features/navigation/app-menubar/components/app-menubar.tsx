@@ -9,7 +9,7 @@ import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
 export type AppMenubarProps = PropsWithClassName<{
-  title: string;
+  title: ReactNode;
   firstLine?: ReactNode;
   description?: ReactNode;
   backButton?: boolean;
