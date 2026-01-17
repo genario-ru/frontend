@@ -3,6 +3,7 @@ import { PencilIcon } from "lucide-react";
 
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { Button } from "@/shared/components/ui/button";
+import { IdeasList } from "@/widgets/ideas-lists/ideas-list/components/ideas-list";
 import { IdeasListAppMenubar } from "@/widgets/ideas-lists/ideas-list-app-menubar/components/ideas-list-app-menubar";
 import { IdeasListDialog } from "@/widgets/ideas-lists/ideas-list-dialog/components/ideas-list-dialog";
 
@@ -24,7 +25,9 @@ export function IdeasListComponent() {
           />
         }
       />
-      <PageLayout></PageLayout>
+      <PageLayout>
+        <IdeasList ideasListId={ideasListId} />
+      </PageLayout>
     </>
   );
 }
