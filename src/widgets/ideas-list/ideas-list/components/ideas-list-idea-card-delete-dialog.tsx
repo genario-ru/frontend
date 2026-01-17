@@ -1,6 +1,6 @@
 import { TrashIcon } from "lucide-react";
 
-import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-lists/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
+import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,

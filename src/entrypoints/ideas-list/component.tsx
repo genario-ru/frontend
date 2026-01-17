@@ -3,9 +3,9 @@ import { PencilIcon } from "lucide-react";
 
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { Button } from "@/shared/components/ui/button";
-import { IdeasList } from "@/widgets/ideas-lists/ideas-list/components/ideas-list";
-import { IdeasListAppMenubar } from "@/widgets/ideas-lists/ideas-list-app-menubar/components/ideas-list-app-menubar";
-import { IdeasListDialog } from "@/widgets/ideas-lists/ideas-list-dialog/components/ideas-list-dialog";
+import { IdeasList } from "@/widgets/ideas-list/ideas-list/components/ideas-list";
+import { IdeasListAppMenubar } from "@/widgets/ideas-list/ideas-list-app-menubar/components/ideas-list-app-menubar";
+import { IdeasListDialog } from "@/widgets/ideas-list/ideas-list-dialog/components/ideas-list-dialog";
 
 export function IdeasListComponent() {
   const { ideasListId } = useParams({ from: "/_app/ideas-lists/$ideasListId" });

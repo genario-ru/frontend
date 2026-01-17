@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { IdeasListIdeaCardLayout } from "@/features/ideas-lists/ideas-list-idea-card/components/ideas-list-idea-card-layout";
+import { IdeasListIdeaCardLayout } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-layout";
 
 import { IdeasListIdeaCardPrimaryActions } from "./ideas-list-idea-card-primary-actions";
 import { IdeasListIdeaCardSecondaryActions } from "./ideas-list-idea-card-secondary-actions";

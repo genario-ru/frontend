@@ -6,7 +6,7 @@ import { ArchiveAppMenubarActions } from "@/widgets/archive/archive-app-menubar/
 import { ArchiveAppMenubarActionsButton } from "@/widgets/archive/archive-app-menubar/components/archive-app-menubar-actions-button";
 import { ArchiveFilters } from "@/widgets/archive/archive-filters/components/archive-filters";
 import { ArchiveItems } from "@/widgets/archive/archive-items/components/archive-items";
-import { IdeasListDialog } from "@/widgets/ideas-lists/ideas-list-dialog/components/ideas-list-dialog";
+import { IdeasListDialog } from "@/widgets/ideas-list/ideas-list-dialog/components/ideas-list-dialog";
 import { ScenarioSettings } from "@/widgets/scenarios/scenario-dialog/components/scenario-dialog";
 
 export function ArchiveComponent() {

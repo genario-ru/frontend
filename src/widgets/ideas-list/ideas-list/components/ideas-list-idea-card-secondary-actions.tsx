@@ -1,8 +1,8 @@
 import { BookmarkIcon } from "lucide-react";
 import type { RefObject } from "react";
 
-import { IdeasListIdeaCardSecondaryActionsMenu } from "@/features/ideas-lists/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu";
-import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-lists/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
+import { IdeasListIdeaCardSecondaryActionsMenu } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu";
+import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
 import { cn } from "@/shared/utils/cn";
 
 import { useIdeasListIdeaCardSecondaryActions } from "../hooks/use-ideas-list-idea-card-secondary-actions";
