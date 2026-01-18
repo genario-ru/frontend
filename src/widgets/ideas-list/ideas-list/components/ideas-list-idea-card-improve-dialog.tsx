@@ -35,7 +35,12 @@ export function IdeasListIdeaCardImproveDialog() {
         <form onSubmit={onFormSubmit} className="flex flex-col">
           <DialogBody>
             <form.AppField name="prompt">
-              {(field) => <field.TextareaField placeholder="Промпт" />}
+              {(field) => (
+                <field.TextareaField
+                  label="Промпт"
+                  placeholder="Опишите, что вам не понравилось или хотелось бы улучшить"
+                />
+              )}
             </form.AppField>
           </DialogBody>
           <DialogFooter>

@@ -56,11 +56,20 @@ export function IdeasListIdeaCardEditDialog({
           <DialogBody>
             <form.AppField name="name">
               {(field) => (
-                <field.InputField type="text" placeholder="Название идеи" />
+                <field.InputField
+                  label="Название идеи"
+                  type="text"
+                  placeholder="Название идеи"
+                />
               )}
             </form.AppField>
             <form.AppField name="description">
-              {(field) => <field.TextareaField placeholder="Описание идеи" />}
+              {(field) => (
+                <field.TextareaField
+                  label="Описание идеи"
+                  placeholder="Описание идеи"
+                />
+              )}
             </form.AppField>
           </DialogBody>
           <DialogFooter>
