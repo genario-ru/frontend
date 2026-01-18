@@ -11,17 +11,19 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-type IdeasListIdeaCardImproveDialogProps = {
-  isOpened: boolean;
-  setIsOpened: (isOpened: boolean) => void;
-};
+import { useIdeasListIdeaCardImproveDialog } from "../hooks/use-ideas-list-idea-card-improve-dialog";
 
-export function IdeasListIdeaCardImproveDialog({
-  isOpened,
-  setIsOpened,
-}: IdeasListIdeaCardImproveDialogProps) {
+export function IdeasListIdeaCardImproveDialog() {
+  const {
+    form,
+    isImproveDialogOpen,
+    isImproveDialogPending,
+    setIsImproveDialogOpen,
+    onFormSubmit,
+  } = useIdeasListIdeaCardImproveDialog();
+
   return (
-    <Dialog open={isOpened} onOpenChange={setIsOpened}>
+    <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
       <DialogTrigger asChild>
         <Button icon={<WandSparklesIcon />}>Улучшить</Button>
       </DialogTrigger>
@@ -30,13 +32,25 @@ export function IdeasListIdeaCardImproveDialog({
           title="Улучшить идею"
           description="Опишите, что бы вы хотели улучшить или что вас в ней не устраивает"
         />
-        <DialogBody>Тут будет форма для улучшения идеи</DialogBody>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button>Отмена</Button>
-          </DialogClose>
-          <Button>Улучшить</Button>
-        </DialogFooter>
+        <form onSubmit={onFormSubmit} className="flex flex-col">
+          <DialogBody>
+            <form.AppField name="prompt">
+              {(field) => <field.TextareaField placeholder="Промпт" />}
+            </form.AppField>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button>Отмена</Button>
+            </DialogClose>
+            <form.AppForm>
+              <form.SubmitButton
+                state={isImproveDialogPending ? "loading" : "default"}
+              >
+                Улучшить
+              </form.SubmitButton>
+            </form.AppForm>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

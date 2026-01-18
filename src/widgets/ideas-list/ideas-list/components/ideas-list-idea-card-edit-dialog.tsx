@@ -47,7 +47,7 @@ export function IdeasListIdeaCardEditDialog({
           Редактировать
         </IdeasListIdeaCardSecondaryActionsMenuButton>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-3xl">
         <DialogPredefinedHeader
           title="Редактировать идею"
           description="Измените название и контент идеи вручную"

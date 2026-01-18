@@ -12,20 +12,13 @@ type IdeasListIdeaCardPrimaryActionsProps = {
 export function IdeasListIdeaCardPrimaryActions({
   ideaId,
 }: IdeasListIdeaCardPrimaryActionsProps) {
-  const {
-    isImproveResultDialogOpened,
-    createScenarioLinkOptions,
-    setIsImproveResultDialogOpened,
-  } = useIdeasListIdeaCardPrimaryActions({
+  const { createScenarioLinkOptions } = useIdeasListIdeaCardPrimaryActions({
     ideaId,
   });
 
   return (
     <div className="flex items-center justify-between gap-4">
-      <IdeasListIdeaCardImproveDialog
-        isOpened={isImproveResultDialogOpened}
-        setIsOpened={setIsImproveResultDialogOpened}
-      />
+      <IdeasListIdeaCardImproveDialog />
       <ButtonLink
         variant="primary"
         {...createScenarioLinkOptions}
