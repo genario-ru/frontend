@@ -1,6 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { deleteApiV1IdeasIdeaIdMutation } from "@/codegen/api/product/@tanstack/react-query.gen";
+import {
+  deleteApiV1IdeasIdeaIdMutation,
+  getApiV1IdeasListsIdeasListIdIdeasQueryKey,
+} from "@/codegen/api/product/@tanstack/react-query.gen";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseDeleteIdeaParams = {
@@ -10,6 +13,7 @@ type UseDeleteIdeaParams = {
 
 export function useDeleteIdea(params?: UseDeleteIdeaParams) {
   const { onError, onSuccess } = params ?? {};
+  const queryClient = useQueryClient();
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteIdea, isPending: isDeleteIdeaPending } = useMutation({
@@ -22,9 +26,17 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
 
       onError?.();
     },
-    onSuccess: () => {
+    onSuccess: ({ data }) => {
       showSuccessToast({
         description: "Идея была успешно удалена",
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: getApiV1IdeasListsIdeasListIdIdeasQueryKey({
+          path: {
+            ideasListId: data.ideasListId,
+          },
+        }),
       });
 
       onSuccess?.();

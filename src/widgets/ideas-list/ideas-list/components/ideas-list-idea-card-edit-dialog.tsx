@@ -12,17 +12,36 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
+import { useIdeasListIdeaCardEditDialog } from "../hooks/use-ideas-list-idea-card-edit-dialog";
+
 type IdeasListIdeaCardEditDialogProps = {
-  isOpened: boolean;
-  setIsOpened: (isOpened: boolean) => void;
+  ideaId: string;
+  initialName?: string | null;
+  initialDescription?: string | null;
+  handleCloseMenu: () => void;
 };
 
 export function IdeasListIdeaCardEditDialog({
-  isOpened,
-  setIsOpened,
+  ideaId,
+  initialName,
+  initialDescription,
+  handleCloseMenu,
 }: IdeasListIdeaCardEditDialogProps) {
+  const {
+    form,
+    isUpdateIdeaPending,
+    isEditDialogOpen,
+    setIsEditDialogOpen,
+    onFormSubmit,
+  } = useIdeasListIdeaCardEditDialog({
+    ideaId,
+    initialName,
+    initialDescription,
+    handleCloseMenu,
+  });
+
   return (
-    <Dialog open={isOpened} onOpenChange={setIsOpened}>
+    <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
       <DialogTrigger asChild>
         <IdeasListIdeaCardSecondaryActionsMenuButton icon={<PencilIcon />}>
           Редактировать
@@ -33,13 +52,30 @@ export function IdeasListIdeaCardEditDialog({
           title="Редактировать идею"
           description="Измените название и контент идеи вручную"
         />
-        <DialogBody>Тут будет форма для редактирования идеи</DialogBody>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button>Отмена</Button>
-          </DialogClose>
-          <Button>Сохранить</Button>
-        </DialogFooter>
+        <form onSubmit={onFormSubmit} className="flex flex-col">
+          <DialogBody>
+            <form.AppField name="name">
+              {(field) => (
+                <field.InputField type="text" placeholder="Название идеи" />
+              )}
+            </form.AppField>
+            <form.AppField name="description">
+              {(field) => <field.TextareaField placeholder="Описание идеи" />}
+            </form.AppField>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button>Отмена</Button>
+            </DialogClose>
+            <form.AppForm>
+              <form.SubmitButton
+                state={isUpdateIdeaPending ? "loading" : "default"}
+              >
+                Сохранить
+              </form.SubmitButton>
+            </form.AppForm>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

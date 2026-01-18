@@ -30,6 +30,8 @@ export function IdeasListIdeaCard({
         <IdeasListIdeaCardSecondaryActions
           ideaId={id}
           initialSaved={saved}
+          initialName={name}
+          initialDescription={description}
           copyElementRef={descriptionRef}
         />
       }

@@ -108,11 +108,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -122,11 +122,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -136,11 +136,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -150,11 +150,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -164,11 +164,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -283,11 +283,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -297,11 +297,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -311,11 +311,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -325,11 +325,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -339,11 +339,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -399,16 +399,8 @@
                         "type": "null"
                       }
                     ]
-                  },
-                  "ideaId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                   }
-                },
-                "required": [
-                  "ideaId"
-                ]
+                }
               }
             }
           }
@@ -528,11 +520,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -542,11 +534,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -556,11 +548,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -570,11 +562,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -584,11 +576,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -790,11 +782,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -804,11 +796,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -818,11 +810,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -832,11 +824,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -846,11 +838,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1228,11 +1220,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1242,11 +1234,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1256,11 +1248,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1270,11 +1262,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1284,11 +1276,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1419,11 +1411,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1433,11 +1425,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1447,11 +1439,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1461,11 +1453,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1475,11 +1467,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1720,11 +1712,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1734,11 +1726,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1748,11 +1740,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1762,11 +1754,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1776,11 +1768,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1902,11 +1894,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1916,11 +1908,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1930,11 +1922,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1944,11 +1936,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -1958,11 +1950,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2375,7 +2367,6 @@
                       "type": "object",
                       "properties": {
                         "previousPage": {
-                          "description": "Номер предыдущей страницы",
                           "anyOf": [
                             {
                               "type": "number"
@@ -2383,14 +2374,14 @@
                             {
                               "type": "null"
                             }
-                          ]
+                          ],
+                          "description": "Номер предыдущей страницы"
                         },
                         "currentPage": {
-                          "description": "Номер текущей страницы",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Номер текущей страницы"
                         },
                         "nextPage": {
-                          "description": "Номер следующей страницы",
                           "anyOf": [
                             {
                               "type": "number"
@@ -2398,27 +2389,28 @@
                             {
                               "type": "null"
                             }
-                          ]
+                          ],
+                          "description": "Номер следующей страницы"
                         },
                         "perPage": {
-                          "description": "Количество элементов в одной странице ответа",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Количество элементов в одной странице ответа"
                         },
                         "totalItems": {
-                          "description": "Общее количество элементов по запросу",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Общее количество элементов по запросу"
                         },
                         "totalPages": {
-                          "description": "Общее количество страниц по запросу",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Общее количество страниц по запросу"
                         },
                         "sortOrder": {
-                          "description": "Вид сортировки",
                           "type": "string",
                           "enum": [
                             "asc",
                             "desc"
-                          ]
+                          ],
+                          "description": "Вид сортировки"
                         },
                         "sortBy": {
                           "type": "string",
@@ -2462,11 +2454,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2476,11 +2468,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2490,11 +2482,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2504,11 +2496,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2518,11 +2510,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -2605,7 +2597,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
+                        "oneOf": [
                           {
                             "type": "object",
                             "properties": {
@@ -3950,7 +3942,6 @@
                       "type": "object",
                       "properties": {
                         "previousPage": {
-                          "description": "Номер предыдущей страницы",
                           "anyOf": [
                             {
                               "type": "number"
@@ -3958,14 +3949,14 @@
                             {
                               "type": "null"
                             }
-                          ]
+                          ],
+                          "description": "Номер предыдущей страницы"
                         },
                         "currentPage": {
-                          "description": "Номер текущей страницы",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Номер текущей страницы"
                         },
                         "nextPage": {
-                          "description": "Номер следующей страницы",
                           "anyOf": [
                             {
                               "type": "number"
@@ -3973,19 +3964,20 @@
                             {
                               "type": "null"
                             }
-                          ]
+                          ],
+                          "description": "Номер следующей страницы"
                         },
                         "perPage": {
-                          "description": "Количество элементов в одной странице ответа",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Количество элементов в одной странице ответа"
                         },
                         "totalItems": {
-                          "description": "Общее количество элементов по запросу",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Общее количество элементов по запросу"
                         },
                         "totalPages": {
-                          "description": "Общее количество страниц по запросу",
-                          "type": "number"
+                          "type": "number",
+                          "description": "Общее количество страниц по запросу"
                         },
                         "q": {
                           "description": "Строка поиска",
@@ -4030,11 +4022,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4044,11 +4036,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4058,11 +4050,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4072,11 +4064,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4086,11 +4078,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4333,11 +4325,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4347,11 +4339,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4361,11 +4353,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4375,11 +4367,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4389,11 +4381,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4548,11 +4540,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4562,11 +4554,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4576,11 +4568,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4590,11 +4582,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4604,11 +4596,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4979,11 +4971,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -4993,11 +4985,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5007,11 +4999,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5021,11 +5013,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5035,11 +5027,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5140,11 +5132,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5154,11 +5146,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5168,11 +5160,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5182,11 +5174,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5196,11 +5188,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5578,11 +5570,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5592,11 +5584,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5606,11 +5598,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5620,11 +5612,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5634,11 +5626,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5749,11 +5741,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5763,11 +5755,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5777,11 +5769,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5791,11 +5783,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5805,11 +5797,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5972,11 +5964,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -5986,11 +5978,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6000,11 +5992,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6014,11 +6006,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6028,11 +6020,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6133,11 +6125,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6147,11 +6139,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6161,11 +6153,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6175,11 +6167,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6189,11 +6181,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6418,11 +6410,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6432,11 +6424,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6446,11 +6438,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6460,11 +6452,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6474,11 +6466,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6760,11 +6752,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6774,11 +6766,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6788,11 +6780,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6802,11 +6794,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -6816,11 +6808,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -7843,11 +7835,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -7857,11 +7849,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -7871,11 +7863,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -7885,11 +7877,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -7899,11 +7891,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8086,11 +8078,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8100,11 +8092,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8114,11 +8106,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8128,11 +8120,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8142,11 +8134,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8443,11 +8435,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8457,11 +8449,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8471,11 +8463,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8485,11 +8477,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8499,11 +8491,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8676,11 +8668,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8690,11 +8682,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8704,11 +8696,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8718,11 +8710,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8732,11 +8724,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8839,11 +8831,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8853,11 +8845,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8867,11 +8859,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8881,11 +8873,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -8895,11 +8887,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9388,11 +9380,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9402,11 +9394,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9416,11 +9408,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9430,11 +9422,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9444,11 +9436,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9535,11 +9527,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9549,11 +9541,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9563,11 +9555,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9577,11 +9569,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9591,11 +9583,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9706,11 +9698,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9720,11 +9712,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9734,11 +9726,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9748,11 +9740,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9762,11 +9754,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9967,11 +9959,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9981,11 +9973,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -9995,11 +9987,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10009,11 +10001,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10023,11 +10015,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10136,11 +10128,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10150,11 +10142,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10164,11 +10156,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10178,11 +10170,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10192,11 +10184,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10374,11 +10366,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10388,11 +10380,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10402,11 +10394,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10416,11 +10408,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10430,11 +10422,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10567,11 +10559,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10581,11 +10573,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10595,11 +10587,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10609,11 +10601,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10623,11 +10615,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10803,11 +10795,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10817,11 +10809,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10831,11 +10823,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10845,11 +10837,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10859,11 +10851,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10972,11 +10964,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -10986,11 +10978,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11000,11 +10992,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11014,11 +11006,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11028,11 +11020,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11181,11 +11173,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11195,11 +11187,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11209,11 +11201,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11223,11 +11215,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11237,11 +11229,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11330,11 +11322,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11344,11 +11336,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11358,11 +11350,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11372,11 +11364,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11386,11 +11378,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11487,11 +11479,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11501,11 +11493,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11515,11 +11507,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11529,11 +11521,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11543,11 +11535,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11636,11 +11628,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Bad request response",
                   "examples": [
                     "Invalid request data"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11650,11 +11642,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Unauthorized response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11664,11 +11656,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Forbidden response",
                   "examples": [
                     "You are not authorized to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11678,11 +11670,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Not found response",
                   "examples": [
                     "Resource not found"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }
@@ -11692,11 +11684,11 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
                   "title": "Internal server error response",
                   "examples": [
                     "You have to authenticate to access this resource"
-                  ],
-                  "type": "string"
+                  ]
                 }
               }
             }

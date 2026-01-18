@@ -77,7 +77,6 @@ export type PatchApiV1IdeasIdeaIdData = {
     description?: string | null;
     saved?: boolean;
     liked?: boolean | null;
-    ideaId: string;
   };
   path: {
     ideaId: string;

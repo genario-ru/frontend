@@ -11,25 +11,24 @@ import { IdeasListIdeaCardEditDialog } from "./ideas-list-idea-card-edit-dialog"
 type IdeasListIdeaCardSecondaryActionsProps = {
   ideaId: string;
   initialSaved: boolean;
+  initialName?: string | null;
+  initialDescription?: string | null;
   copyElementRef: RefObject<HTMLParagraphElement | null>;
 };
 
 export function IdeasListIdeaCardSecondaryActions({
   ideaId,
   initialSaved,
+  initialName,
+  initialDescription,
   copyElementRef,
 }: IdeasListIdeaCardSecondaryActionsProps) {
   const {
     isOptimisticSaved,
     isMenuOpen,
-    isEditDialogOpen,
-    isDeleteDialogOpen,
-    isDeleteIdeaPending,
     setIsMenuOpen,
-    setIsEditDialogOpen,
-    setIsDeleteDialogOpen,
+    handleCloseMenu,
     handleSaveButtonClick,
-    handleConfirmDeleteButtonClick,
   } = useIdeasListIdeaCardSecondaryActions({
     ideaId,
     initialSaved,
@@ -42,8 +41,10 @@ export function IdeasListIdeaCardSecondaryActions({
       setIsOpen={setIsMenuOpen}
     >
       <IdeasListIdeaCardEditDialog
-        isOpened={isEditDialogOpen}
-        setIsOpened={setIsEditDialogOpen}
+        ideaId={ideaId}
+        initialName={initialName}
+        initialDescription={initialDescription}
+        handleCloseMenu={handleCloseMenu}
       />
       <IdeasListIdeaCardSecondaryActionsMenuButton
         icon={isOptimisticSaved ? <BookmarkXIcon /> : <BookmarkIcon />}
@@ -52,10 +53,8 @@ export function IdeasListIdeaCardSecondaryActions({
         {isOptimisticSaved ? "Убрать из сохраненных" : "Сохранить"}
       </IdeasListIdeaCardSecondaryActionsMenuButton>
       <IdeasListIdeaCardDeleteDialog
-        isDeleteDialogOpen={isDeleteDialogOpen}
-        setIsDeleteDialogOpen={setIsDeleteDialogOpen}
-        isDeleteIdeaPending={isDeleteIdeaPending}
-        handleConfirmDeleteButtonClick={handleConfirmDeleteButtonClick}
+        ideaId={ideaId}
+        setIsMenuOpen={setIsMenuOpen}
       />
     </IdeasListIdeaCardSecondaryActionsMenu>
   );

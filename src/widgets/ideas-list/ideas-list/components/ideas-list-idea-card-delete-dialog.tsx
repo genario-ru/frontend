@@ -11,19 +11,27 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
+import { useIdeasListIdeaCardDeleteDialog } from "../hooks/use-ideas-list-idea-card-delete-dialog";
+
 type IdeasListIdeaCardDeleteDialogProps = {
-  isDeleteDialogOpen: boolean;
-  isDeleteIdeaPending: boolean;
-  setIsDeleteDialogOpen: (isDeleteDialogOpen: boolean) => void;
-  handleConfirmDeleteButtonClick: () => void;
+  ideaId: string;
+  setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
 export function IdeasListIdeaCardDeleteDialog({
-  isDeleteDialogOpen,
-  isDeleteIdeaPending,
-  setIsDeleteDialogOpen,
-  handleConfirmDeleteButtonClick,
+  ideaId,
+  setIsMenuOpen,
 }: IdeasListIdeaCardDeleteDialogProps) {
+  const {
+    isDeleteDialogOpen,
+    isDeleteIdeaPending,
+    setIsDeleteDialogOpen,
+    handleConfirmDeleteButtonClick,
+  } = useIdeasListIdeaCardDeleteDialog({
+    ideaId,
+    setIsMenuOpen,
+  });
+
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>

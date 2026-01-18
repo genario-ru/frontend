@@ -54,11 +54,6 @@ export const zPatchApiV1IdeasIdeaIdData = z.object({
       description: z.optional(z.union([z.string(), z.null()])),
       saved: z.optional(z.boolean()),
       liked: z.optional(z.union([z.boolean(), z.null()])),
-      ideaId: z
-        .uuid()
-        .regex(
-          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-        ),
     }),
   ),
   path: z.object({
