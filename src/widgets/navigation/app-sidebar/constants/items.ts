@@ -1,6 +1,6 @@
 import { ArchiveIcon, BoltIcon, HouseIcon, UsersRoundIcon } from "lucide-react";
 
-import type { AppSidebarItem } from "../types";
+import type { AppSidebarItem } from "../types/app-sidebar-types";
 
 export const appSidebarItems: AppSidebarItem[] = [
   {

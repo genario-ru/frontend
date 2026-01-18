@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import type { AppSidebarContextProps } from "../types";
+import type { AppSidebarContextProps } from "../types/app-sidebar-types";
 
 export const AppSidebarContext = createContext<AppSidebarContextProps | null>(
   null,

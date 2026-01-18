@@ -10,7 +10,7 @@ import {
   APP_SIDEBAR_KEYBOARD_SHORTCUT,
 } from "../constants/defaults";
 import { AppSidebarContext } from "../hooks/use-app-sidebar";
-import type { AppSidebarContextProps } from "../types";
+import type { AppSidebarContextProps } from "../types/app-sidebar-types";
 
 type AppSidebarProviderProps = PropsWithChildren<{
   defaultOpen?: boolean;

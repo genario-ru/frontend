@@ -8,7 +8,7 @@ export const useSignOut = () => {
   const navigate = useNavigate();
 
   const { mutate: signOutMutate } = useMutation({
-    ...postSignOutMutation,
+    ...postSignOutMutation(),
     onSuccess: () => {
       navigate({
         to: "/sign-in",
@@ -18,7 +18,7 @@ export const useSignOut = () => {
   });
 
   const signOut = useCallback(() => {
-    signOutMutate();
+    signOutMutate({ body: {} });
   }, [signOutMutate]);
 
   return signOut;
