@@ -1,7 +1,9 @@
 import { useMemo } from "react";
 
+import { BadgesList } from "@/features/badges/badges-list/badges-list";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { TemplateBadge } from "@/features/templates/template-badge/components/template-badge";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
@@ -55,11 +57,37 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
     return scenarioDescription;
   }, [scenarioDescription, isScenarioLoading]);
 
+  const left = useMemo(() => {
+    if (isScenarioLoading) {
+      return (
+        <ItemsList
+          row
+          count={6}
+          gap={4}
+          item={<Skeleton className="rounded-2.5 h-8 w-24" />}
+          className="flex-wrap"
+        />
+      );
+    }
+
+    return (
+      <BadgesList
+        badgesData={[
+          scenarioData?.data.platform,
+          scenarioData?.data.videoType,
+          scenarioData?.data.videoDuration,
+          scenarioData?.data.tones,
+        ]}
+      />
+    );
+  }, [scenarioData, isScenarioLoading]);
+
   return (
     <AppMenubar
       title={title}
       firstLine={firstLine}
       description={description}
+      left={left}
       right={<ScenarioAppMenubarTabs scenarioId={scenarioId} />}
     />
   );
