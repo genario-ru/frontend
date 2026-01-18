@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { BadgesList } from "@/features/badges/badges-list/badges-list";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { TemplateBadge } from "@/features/templates/template-badge/components/template-badge";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -7,7 +8,6 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useIdeasListAppMenubar } from "../hooks/use-ideas-list-app-menubar";
-import { IdeasListAppMenubarBadges } from "./ideas-list-app-menubar-badges";
 import { IdeasListAppMenubarTabs } from "./ideas-list-app-menubar-tabs";
 import { IdeasListMenubarActions } from "./ideas-list-menubar-actions";
 
@@ -73,7 +73,11 @@ export function IdeasListAppMenubar({
       );
     }
 
-    return <IdeasListAppMenubarBadges ideasListData={ideasListData} />;
+    return (
+      <BadgesList
+        badgesData={[ideasListData?.data.videoTypes, ideasListData?.data.tones]}
+      />
+    );
   }, [ideasListData, isIdeasListLoading]);
 
   return (
