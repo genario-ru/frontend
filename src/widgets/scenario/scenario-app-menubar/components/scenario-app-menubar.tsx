@@ -85,6 +85,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   return (
     <AppMenubar
+      backButton
       title={title}
       firstLine={firstLine}
       description={description}
