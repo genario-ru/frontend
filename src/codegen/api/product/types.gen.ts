@@ -913,7 +913,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
               status: "pending" | "generation" | "failed" | "ready";
               createdAt: string;
               updatedAt: string;
-              profile: {
+              profile?: {
                 id: string;
                 userId: string;
                 name: string;
@@ -923,7 +923,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
                 createdAt: string;
                 updatedAt: string;
               } | null;
-              platform: {
+              platform?: {
                 id: string;
                 slug: string;
                 name: string;
@@ -933,7 +933,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
                 createdAt: string;
                 updatedAt: string;
               } | null;
-              videoType: {
+              videoType?: {
                 id: string;
                 slug: string;
                 name: string;
@@ -942,7 +942,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
                 createdAt: string;
                 updatedAt: string;
               } | null;
-              videoDuration: {
+              videoDuration?: {
                 id: string;
                 slug: string;
                 name: string;
@@ -952,7 +952,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
                 createdAt: string;
                 updatedAt: string;
               } | null;
-              tones: Array<{
+              tones?: Array<{
                 id: string;
                 slug: string;
                 name: string;
@@ -961,7 +961,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
                 createdAt: string;
                 updatedAt: string;
               }> | null;
-              scenarioChapters: Array<{
+              scenarioChapters?: Array<{
                 id: string;
                 scenarioVersionId: string;
                 name: string;
@@ -1928,7 +1928,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
         status: "pending" | "generation" | "failed" | "ready";
         createdAt: string;
         updatedAt: string;
-        profile: {
+        profile?: {
           id: string;
           userId: string;
           name: string;
@@ -1938,7 +1938,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
           createdAt: string;
           updatedAt: string;
         } | null;
-        platform: {
+        platform?: {
           id: string;
           slug: string;
           name: string;
@@ -1948,7 +1948,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
           createdAt: string;
           updatedAt: string;
         } | null;
-        videoType: {
+        videoType?: {
           id: string;
           slug: string;
           name: string;
@@ -1957,7 +1957,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
           createdAt: string;
           updatedAt: string;
         } | null;
-        videoDuration: {
+        videoDuration?: {
           id: string;
           slug: string;
           name: string;
@@ -1967,7 +1967,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
           createdAt: string;
           updatedAt: string;
         } | null;
-        tones: Array<{
+        tones?: Array<{
           id: string;
           slug: string;
           name: string;
@@ -1976,7 +1976,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
           createdAt: string;
           updatedAt: string;
         }> | null;
-        scenarioChapters: Array<{
+        scenarioChapters?: Array<{
           id: string;
           scenarioVersionId: string;
           name: string;
@@ -2395,7 +2395,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
       status: "pending" | "generation" | "failed" | "ready";
       createdAt: string;
       updatedAt: string;
-      profile: {
+      profile?: {
         id: string;
         userId: string;
         name: string;
@@ -2405,7 +2405,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      platform: {
+      platform?: {
         id: string;
         slug: string;
         name: string;
@@ -2415,7 +2415,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      videoType: {
+      videoType?: {
         id: string;
         slug: string;
         name: string;
@@ -2424,7 +2424,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      videoDuration: {
+      videoDuration?: {
         id: string;
         slug: string;
         name: string;
@@ -2434,7 +2434,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      tones: Array<{
+      tones?: Array<{
         id: string;
         slug: string;
         name: string;
@@ -2443,7 +2443,7 @@ export type GetApiV1ScenariosVersionsVersionIdResponses = {
         createdAt: string;
         updatedAt: string;
       }> | null;
-      scenarioChapters: Array<{
+      scenarioChapters?: Array<{
         id: string;
         scenarioVersionId: string;
         name: string;

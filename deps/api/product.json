@@ -3509,13 +3509,7 @@
                                           "scenarioId",
                                           "status",
                                           "createdAt",
-                                          "updatedAt",
-                                          "profile",
-                                          "platform",
-                                          "videoType",
-                                          "videoDuration",
-                                          "tones",
-                                          "scenarioChapters"
+                                          "updatedAt"
                                         ]
                                       },
                                       {
@@ -7402,13 +7396,7 @@
                                 "scenarioId",
                                 "status",
                                 "createdAt",
-                                "updatedAt",
-                                "profile",
-                                "platform",
-                                "videoType",
-                                "videoDuration",
-                                "tones",
-                                "scenarioChapters"
+                                "updatedAt"
                               ]
                             },
                             {
@@ -9358,13 +9346,7 @@
                         "scenarioId",
                         "status",
                         "createdAt",
-                        "updatedAt",
-                        "profile",
-                        "platform",
-                        "videoType",
-                        "videoDuration",
-                        "tones",
-                        "scenarioChapters"
+                        "updatedAt"
                       ]
                     }
                   },
