@@ -24,7 +24,7 @@ export function useScenarioAppMenubarTabs({
       {
         slug: scenarioTabs.scenario,
         name: "Сценарий",
-        active: search.tab === scenarioTabs.scenario,
+        active: search.tab === undefined,
       },
       {
         slug: scenarioTabs.reference,
@@ -41,8 +41,7 @@ export function useScenarioAppMenubarTabs({
 
   const handleTabClick = useCallback(
     (slug: string) => {
-      const newTab =
-        slug === scenarioTabs.scenario ? scenarioTabs.scenario : undefined;
+      const newTab = slug === scenarioTabs.scenario ? undefined : slug;
 
       navigate({
         to: "/scenarios/$scenarioId",

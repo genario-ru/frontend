@@ -8,6 +8,7 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useScenarioAppMenubar } from "../hooks/use-scenario-app-menubar";
+import { ScenarioAppMenubarActions } from "./scenario-app-menubar-actions";
 import { ScenarioAppMenubarTabs } from "./scenario-app-menubar-tabs";
 
 type ScenarioAppMenubarParams = {
@@ -88,7 +89,16 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
       firstLine={firstLine}
       description={description}
       left={left}
-      right={<ScenarioAppMenubarTabs scenarioId={scenarioId} />}
+      right={
+        <div className="flex h-full flex-col items-end justify-between gap-4">
+          <ScenarioAppMenubarActions
+            scenarioId={scenarioId}
+            isScenarioLoading={isScenarioLoading}
+            initialSaved={scenarioData?.data.saved ?? false}
+          />
+          <ScenarioAppMenubarTabs scenarioId={scenarioId} />
+        </div>
+      }
     />
   );
 }

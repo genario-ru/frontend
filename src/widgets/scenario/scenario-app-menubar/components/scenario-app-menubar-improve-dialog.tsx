@@ -13,9 +13,20 @@ import {
 
 import { useScenarioAppMenubarImproveDialog } from "../hooks/use-scenario-app-menubar-improve-dialog";
 
-export function ScenarioAppMenubarImproveDialog() {
-  const { isImproveDialogOpen, setIsImproveDialogOpen } =
-    useScenarioAppMenubarImproveDialog();
+type ScenarioAppMenubarImproveDialogParams = {
+  scenarioId: string;
+};
+
+export function ScenarioAppMenubarImproveDialog({
+  scenarioId,
+}: ScenarioAppMenubarImproveDialogParams) {
+  const {
+    form,
+    isImproveDialogOpen,
+    isImproveDialogPending,
+    setIsImproveDialogOpen,
+    onFormSubmit,
+  } = useScenarioAppMenubarImproveDialog({ scenarioId });
 
   return (
     <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
@@ -27,20 +38,27 @@ export function ScenarioAppMenubarImproveDialog() {
           title="Улучшить сценарий"
           description="Опишите, что бы вы хотели улучшить или что вас в нем не устраивает"
         />
-        <DialogBody>
-          {/* <form onSubmit={onFormSubmit} className="flex flex-col">
+        <form onSubmit={onFormSubmit} className="flex flex-col">
+          <DialogBody>
             <form.AppField name="prompt">
               {(field) => (
                 <field.TextareaField placeholder="Опишите, что вам не понравилось или хотелось бы улучшить" />
               )}
             </form.AppField>
-          </form> */}
-        </DialogBody>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button>Отмена</Button>
-          </DialogClose>
-        </DialogFooter>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button>Отмена</Button>
+            </DialogClose>
+            <form.AppForm>
+              <form.SubmitButton
+                state={isImproveDialogPending ? "loading" : "default"}
+              >
+                Улучшить
+              </form.SubmitButton>
+            </form.AppForm>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

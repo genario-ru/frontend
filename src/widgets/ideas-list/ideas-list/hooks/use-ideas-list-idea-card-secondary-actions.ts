@@ -1,6 +1,6 @@
 import { type RefObject, useCallback, useState } from "react";
 
-import { useUpdateIdea } from "@/actions/ideas/hooks/use-update-idea";
+import { useSaveIdea } from "@/actions/ideas/hooks/use-save-idea";
 
 type UseIdeasListIdeaCardSecondaryActionsParams = {
   ideaId: string;
@@ -15,7 +15,7 @@ export function useIdeasListIdeaCardSecondaryActions({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOptimisticSaved, setIsOptimisticSaved] = useState(initialSaved);
 
-  const { updateIdea } = useUpdateIdea({
+  const { saveIdea } = useSaveIdea({
     onError: () => {
       setIsOptimisticSaved(isOptimisticSaved);
     },
@@ -26,7 +26,7 @@ export function useIdeasListIdeaCardSecondaryActions({
 
     setIsOptimisticSaved(newSaved);
 
-    updateIdea({
+    saveIdea({
       path: {
         ideaId,
       },
@@ -34,7 +34,7 @@ export function useIdeasListIdeaCardSecondaryActions({
         saved: newSaved,
       },
     });
-  }, [ideaId, isOptimisticSaved, updateIdea]);
+  }, [ideaId, isOptimisticSaved, saveIdea]);
 
   const handleCloseMenu = useCallback(() => {
     setIsMenuOpen(false);
