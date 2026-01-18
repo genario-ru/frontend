@@ -84,6 +84,9 @@ import type {
   PatchApiV1IdeasIdeaIdData,
   PatchApiV1IdeasIdeaIdErrors,
   PatchApiV1IdeasIdeaIdResponses,
+  PatchApiV1IdeasIdeaIdSaveData,
+  PatchApiV1IdeasIdeaIdSaveErrors,
+  PatchApiV1IdeasIdeaIdSaveResponses,
   PatchApiV1IdeasListsIdeasListIdData,
   PatchApiV1IdeasListsIdeasListIdErrors,
   PatchApiV1IdeasListsIdeasListIdResponses,
@@ -99,6 +102,9 @@ import type {
   PatchApiV1ScenariosScenarioIdData,
   PatchApiV1ScenariosScenarioIdErrors,
   PatchApiV1ScenariosScenarioIdResponses,
+  PatchApiV1ScenariosScenarioIdSaveData,
+  PatchApiV1ScenariosScenarioIdSaveErrors,
+  PatchApiV1ScenariosScenarioIdSaveResponses,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdData,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdErrors,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdResponses,
@@ -173,6 +179,8 @@ import {
   zGetApiV1VideoTypesResponse,
   zPatchApiV1IdeasIdeaIdData,
   zPatchApiV1IdeasIdeaIdResponse,
+  zPatchApiV1IdeasIdeaIdSaveData,
+  zPatchApiV1IdeasIdeaIdSaveResponse,
   zPatchApiV1IdeasListsIdeasListIdData,
   zPatchApiV1IdeasListsIdeasListIdResponse,
   zPatchApiV1ProfilesProfileIdData,
@@ -183,6 +191,8 @@ import {
   zPatchApiV1ScenariosScenarioIdCurrentVersionResponse,
   zPatchApiV1ScenariosScenarioIdData,
   zPatchApiV1ScenariosScenarioIdResponse,
+  zPatchApiV1ScenariosScenarioIdSaveData,
+  zPatchApiV1ScenariosScenarioIdSaveResponse,
   zPatchApiV1ScenariosSceneComponentsSceneComponentIdData,
   zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse,
   zPatchApiV1ScenariosScenesSceneIdData,
@@ -248,6 +258,29 @@ export const patchApiV1IdeasIdeaId = <ThrowOnError extends boolean = false>(
       return await zPatchApiV1IdeasIdeaIdResponse.parseAsync(data);
     },
     url: "/api/v1/ideas/{ideaId}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+};
+
+export const patchApiV1IdeasIdeaIdSave = <ThrowOnError extends boolean = false>(
+  options: Options<PatchApiV1IdeasIdeaIdSaveData, ThrowOnError>,
+) => {
+  return (options.client ?? client).patch<
+    PatchApiV1IdeasIdeaIdSaveResponses,
+    PatchApiV1IdeasIdeaIdSaveErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPatchApiV1IdeasIdeaIdSaveData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zPatchApiV1IdeasIdeaIdSaveResponse.parseAsync(data);
+    },
+    url: "/api/v1/ideas/{ideaId}/save",
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -729,6 +762,31 @@ export const patchApiV1ScenariosScenarioIdCurrentVersion = <
       );
     },
     url: "/api/v1/scenarios/{scenarioId}/current-version",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+};
+
+export const patchApiV1ScenariosScenarioIdSave = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<PatchApiV1ScenariosScenarioIdSaveData, ThrowOnError>,
+) => {
+  return (options.client ?? client).patch<
+    PatchApiV1ScenariosScenarioIdSaveResponses,
+    PatchApiV1ScenariosScenarioIdSaveErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPatchApiV1ScenariosScenarioIdSaveData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zPatchApiV1ScenariosScenarioIdSaveResponse.parseAsync(data);
+    },
+    url: "/api/v1/scenarios/{scenarioId}/save",
     ...options,
     headers: {
       "Content-Type": "application/json",

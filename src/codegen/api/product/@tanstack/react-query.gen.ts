@@ -37,11 +37,13 @@ import {
   getApiV1VideoTypes,
   type Options,
   patchApiV1IdeasIdeaId,
+  patchApiV1IdeasIdeaIdSave,
   patchApiV1IdeasListsIdeasListId,
   patchApiV1ProfilesProfileId,
   patchApiV1ScenariosChaptersChapterId,
   patchApiV1ScenariosScenarioId,
   patchApiV1ScenariosScenarioIdCurrentVersion,
+  patchApiV1ScenariosScenarioIdSave,
   patchApiV1ScenariosSceneComponentsSceneComponentId,
   patchApiV1ScenariosScenesSceneId,
   postApiV1IdeasLists,
@@ -99,6 +101,9 @@ import type {
   PatchApiV1IdeasIdeaIdData,
   PatchApiV1IdeasIdeaIdError,
   PatchApiV1IdeasIdeaIdResponse,
+  PatchApiV1IdeasIdeaIdSaveData,
+  PatchApiV1IdeasIdeaIdSaveError,
+  PatchApiV1IdeasIdeaIdSaveResponse,
   PatchApiV1IdeasListsIdeasListIdData,
   PatchApiV1IdeasListsIdeasListIdError,
   PatchApiV1IdeasListsIdeasListIdResponse,
@@ -114,6 +119,9 @@ import type {
   PatchApiV1ScenariosScenarioIdData,
   PatchApiV1ScenariosScenarioIdError,
   PatchApiV1ScenariosScenarioIdResponse,
+  PatchApiV1ScenariosScenarioIdSaveData,
+  PatchApiV1ScenariosScenarioIdSaveError,
+  PatchApiV1ScenariosScenarioIdSaveResponse,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdData,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdError,
   PatchApiV1ScenariosSceneComponentsSceneComponentIdResponse,
@@ -172,6 +180,30 @@ export const patchApiV1IdeasIdeaIdMutation = (
   > = {
     mutationFn: async (fnOptions) => {
       const { data } = await patchApiV1IdeasIdeaId({
+        ...options,
+        ...fnOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const patchApiV1IdeasIdeaIdSaveMutation = (
+  options?: Partial<Options<PatchApiV1IdeasIdeaIdSaveData>>,
+): UseMutationOptions<
+  PatchApiV1IdeasIdeaIdSaveResponse,
+  PatchApiV1IdeasIdeaIdSaveError,
+  Options<PatchApiV1IdeasIdeaIdSaveData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PatchApiV1IdeasIdeaIdSaveResponse,
+    PatchApiV1IdeasIdeaIdSaveError,
+    Options<PatchApiV1IdeasIdeaIdSaveData>
+  > = {
+    mutationFn: async (fnOptions) => {
+      const { data } = await patchApiV1IdeasIdeaIdSave({
         ...options,
         ...fnOptions,
         throwOnError: true,
@@ -846,6 +878,30 @@ export const patchApiV1ScenariosScenarioIdCurrentVersionMutation = (
   > = {
     mutationFn: async (fnOptions) => {
       const { data } = await patchApiV1ScenariosScenarioIdCurrentVersion({
+        ...options,
+        ...fnOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const patchApiV1ScenariosScenarioIdSaveMutation = (
+  options?: Partial<Options<PatchApiV1ScenariosScenarioIdSaveData>>,
+): UseMutationOptions<
+  PatchApiV1ScenariosScenarioIdSaveResponse,
+  PatchApiV1ScenariosScenarioIdSaveError,
+  Options<PatchApiV1ScenariosScenarioIdSaveData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PatchApiV1ScenariosScenarioIdSaveResponse,
+    PatchApiV1ScenariosScenarioIdSaveError,
+    Options<PatchApiV1ScenariosScenarioIdSaveData>
+  > = {
+    mutationFn: async (fnOptions) => {
+      const { data } = await patchApiV1ScenariosScenarioIdSave({
         ...options,
         ...fnOptions,
         throwOnError: true,

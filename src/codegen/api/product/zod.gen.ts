@@ -99,6 +99,55 @@ export const zPatchApiV1IdeasIdeaIdResponse = z
     description: "Idea updated successfully",
   });
 
+export const zPatchApiV1IdeasIdeaIdSaveData = z.object({
+  body: z.optional(
+    z.object({
+      saved: z.boolean(),
+    }),
+  ),
+  path: z.object({
+    ideaId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Idea saved/unsaved successfully
+ */
+export const zPatchApiV1IdeasIdeaIdSaveResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      ideasListId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      videoTypeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      saved: z.boolean(),
+      liked: z.union([z.boolean(), z.null()]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Idea saved/unsaved successfully",
+  });
+
 export const zPostApiV1IdeasListsData = z.object({
   body: z.optional(
     z.object({
@@ -985,6 +1034,7 @@ export const zGetApiV1ArchiveItemsMyResponse = z
                 ),
               z.null(),
             ]),
+            saved: z.boolean(),
             name: z.union([z.string(), z.null()]),
             description: z.union([z.string(), z.null()]),
             targetAudience: z.union([z.string(), z.null()]),
@@ -1990,6 +2040,7 @@ export const zPostApiV1ScenariosResponse = z
           ),
         z.null(),
       ]),
+      saved: z.boolean(),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -2077,6 +2128,7 @@ export const zDeleteApiV1ScenariosScenarioIdResponse = z
           ),
         z.null(),
       ]),
+      saved: z.boolean(),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -2164,6 +2216,7 @@ export const zGetApiV1ScenariosScenarioIdResponse = z
           ),
         z.null(),
       ]),
+      saved: z.boolean(),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -2613,6 +2666,7 @@ export const zPatchApiV1ScenariosScenarioIdResponse = z
           ),
         z.null(),
       ]),
+      saved: z.boolean(),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -2695,6 +2749,7 @@ export const zGetApiV1ScenariosMyResponse = z
             ),
           z.null(),
         ]),
+        saved: z.boolean(),
         name: z.union([z.string(), z.null()]),
         description: z.union([z.string(), z.null()]),
         targetAudience: z.union([z.string(), z.null()]),
@@ -2791,6 +2846,7 @@ export const zPatchApiV1ScenariosScenarioIdCurrentVersionResponse = z
           ),
         z.null(),
       ]),
+      saved: z.boolean(),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -2800,6 +2856,98 @@ export const zPatchApiV1ScenariosScenarioIdCurrentVersionResponse = z
   })
   .register(z.globalRegistry, {
     description: "Scenario current version updated successfully",
+  });
+
+export const zPatchApiV1ScenariosScenarioIdSaveData = z.object({
+  body: z.optional(
+    z.object({
+      saved: z.boolean(),
+    }),
+  ),
+  path: z.object({
+    scenarioId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Scenario saved/unsaved successfully
+ */
+export const zPatchApiV1ScenariosScenarioIdSaveResponse = z
+  .object({
+    data: z.object({
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      currentVersionId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      platformId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoTypeId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      videoDurationId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      saved: z.boolean(),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Scenario saved/unsaved successfully",
   });
 
 export const zDeleteApiV1ScenariosVersionsVersionIdData = z.object({

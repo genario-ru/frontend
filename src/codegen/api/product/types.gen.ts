@@ -143,6 +143,75 @@ export type PatchApiV1IdeasIdeaIdResponses = {
 export type PatchApiV1IdeasIdeaIdResponse =
   PatchApiV1IdeasIdeaIdResponses[keyof PatchApiV1IdeasIdeaIdResponses];
 
+export type PatchApiV1IdeasIdeaIdSaveData = {
+  body?: {
+    saved: boolean;
+  };
+  path: {
+    ideaId: string;
+  };
+  query?: never;
+  url: "/api/v1/ideas/{ideaId}/save";
+};
+
+export type PatchApiV1IdeasIdeaIdSaveErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type PatchApiV1IdeasIdeaIdSaveError =
+  PatchApiV1IdeasIdeaIdSaveErrors[keyof PatchApiV1IdeasIdeaIdSaveErrors];
+
+export type PatchApiV1IdeasIdeaIdSaveResponses = {
+  /**
+   * Idea saved/unsaved successfully
+   */
+  200: {
+    data: {
+      id: string;
+      ideasListId: string;
+      videoTypeId: string;
+      saved: boolean;
+      liked: boolean | null;
+      name: string | null;
+      description: string | null;
+      createdAt: string;
+      updatedAt: string;
+    };
+  };
+};
+
+export type PatchApiV1IdeasIdeaIdSaveResponse =
+  PatchApiV1IdeasIdeaIdSaveResponses[keyof PatchApiV1IdeasIdeaIdSaveResponses];
+
 export type PostApiV1IdeasListsData = {
   body?: {
     templateId?: string | null;
@@ -902,6 +971,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
             platformId: string | null;
             videoTypeId: string | null;
             videoDurationId: string | null;
+            saved: boolean;
             name: string | null;
             description: string | null;
             targetAudience: string | null;
@@ -1775,6 +1845,7 @@ export type PostApiV1ScenariosResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -1846,6 +1917,7 @@ export type DeleteApiV1ScenariosScenarioIdResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -1917,6 +1989,7 @@ export type GetApiV1ScenariosScenarioIdResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -2122,6 +2195,7 @@ export type PatchApiV1ScenariosScenarioIdResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -2191,6 +2265,7 @@ export type GetApiV1ScenariosMyResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -2264,6 +2339,7 @@ export type PatchApiV1ScenariosScenarioIdCurrentVersionResponses = {
       platformId: string | null;
       videoTypeId: string | null;
       videoDurationId: string | null;
+      saved: boolean;
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -2275,6 +2351,80 @@ export type PatchApiV1ScenariosScenarioIdCurrentVersionResponses = {
 
 export type PatchApiV1ScenariosScenarioIdCurrentVersionResponse =
   PatchApiV1ScenariosScenarioIdCurrentVersionResponses[keyof PatchApiV1ScenariosScenarioIdCurrentVersionResponses];
+
+export type PatchApiV1ScenariosScenarioIdSaveData = {
+  body?: {
+    saved: boolean;
+  };
+  path: {
+    scenarioId: string;
+  };
+  query?: never;
+  url: "/api/v1/scenarios/{scenarioId}/save";
+};
+
+export type PatchApiV1ScenariosScenarioIdSaveErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type PatchApiV1ScenariosScenarioIdSaveError =
+  PatchApiV1ScenariosScenarioIdSaveErrors[keyof PatchApiV1ScenariosScenarioIdSaveErrors];
+
+export type PatchApiV1ScenariosScenarioIdSaveResponses = {
+  /**
+   * Scenario saved/unsaved successfully
+   */
+  200: {
+    data: {
+      id: string;
+      userId: string;
+      currentVersionId: string | null;
+      profileId: string | null;
+      templateId: string | null;
+      platformId: string | null;
+      videoTypeId: string | null;
+      videoDurationId: string | null;
+      saved: boolean;
+      name: string | null;
+      description: string | null;
+      targetAudience: string | null;
+      createdAt: string;
+      updatedAt: string;
+    };
+  };
+};
+
+export type PatchApiV1ScenariosScenarioIdSaveResponse =
+  PatchApiV1ScenariosScenarioIdSaveResponses[keyof PatchApiV1ScenariosScenarioIdSaveResponses];
 
 export type DeleteApiV1ScenariosVersionsVersionIdData = {
   body?: never;
