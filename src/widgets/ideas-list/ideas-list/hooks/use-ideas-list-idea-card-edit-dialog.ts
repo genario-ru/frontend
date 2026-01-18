@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useUpdateIdea } from "@/actions/ideas/hooks/use-update-idea";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useToast } from "@/shared/hooks/use-toast";
 
 import type { IdeasListIdeaCardEditFormSchema } from "../types/ideas-list-idea-card-edit-form-types";
 import { ideasListIdeaCardEditFormMatchValidateFn } from "../utils/ideas-list-idea-card-edit-form-helpers";
@@ -20,6 +21,7 @@ export function useIdeasListIdeaCardEditDialog({
   initialDescription,
   handleCloseMenu,
 }: UseIdeasListIdeaCardEditDialogParams) {
+  const { showErrorToast } = useToast();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   const { updateIdea, isUpdateIdeaPending } = useUpdateIdea({
@@ -34,6 +36,12 @@ export function useIdeasListIdeaCardEditDialog({
       name: initialName ?? "",
       description: initialDescription ?? "",
     } as IdeasListIdeaCardEditFormSchema,
+    onSubmitInvalid: ({ formApi }) => {
+      showErrorToast({
+        description:
+          `${formApi.state.errors[0]}` || "Произошла ошибка при изменении идеи",
+      });
+    },
     validators: {
       onChange: (data) => {
         if (form.state.submissionAttempts > 0) {
