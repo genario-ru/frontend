@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
+import { TemplateBadge } from "@/features/templates/template-badge/components/template-badge";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
@@ -32,6 +33,25 @@ export function IdeasListAppMenubar({
     return ideasListTitle;
   }, [ideasListTitle, isIdeasListLoading]);
 
+  const firstLine = useMemo(() => {
+    if (isIdeasListLoading) {
+      return <Skeleton className="rounded-2.5 h-8 w-24" />;
+    }
+
+    if (ideasListData?.data.template) {
+      return (
+        <TemplateBadge
+          size="base"
+          name={ideasListData.data.template.name}
+          icon={ideasListData.data.template.icon}
+          color={ideasListData.data.template.color}
+        />
+      );
+    }
+
+    return null;
+  }, [ideasListData, isIdeasListLoading]);
+
   const description = useMemo(() => {
     if (isIdeasListLoading) {
       return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
@@ -60,6 +80,7 @@ export function IdeasListAppMenubar({
     <AppMenubar
       backButton
       title={title}
+      firstLine={firstLine}
       description={description}
       left={left}
       right={
