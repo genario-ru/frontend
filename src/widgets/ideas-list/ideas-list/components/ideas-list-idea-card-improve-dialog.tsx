@@ -36,10 +36,7 @@ export function IdeasListIdeaCardImproveDialog() {
           <DialogBody>
             <form.AppField name="prompt">
               {(field) => (
-                <field.TextareaField
-                  label="Промпт"
-                  placeholder="Опишите, что вам не понравилось или хотелось бы улучшить"
-                />
+                <field.TextareaField placeholder="Опишите, что вам не понравилось или хотелось бы улучшить" />
               )}
             </form.AppField>
           </DialogBody>

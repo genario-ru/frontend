@@ -51,6 +51,7 @@
   /* Shadows */
   --shadow-top-1: 0px -8px 12px 4px rgba(34, 60, 80, 0.05);
   --shadow-bottom-1: 0px 8px 12px 4px rgba(34, 60, 80, 0.05);
+  --shadow-bottom-2: 0px 16px 24px 8px rgba(34, 60, 80, 0.1);
 
   /* Border radius */
   --radius-1: 4px;

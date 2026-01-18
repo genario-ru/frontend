@@ -62,7 +62,7 @@ export const DropdownMenuContent = ({
     <DropdownMenuPrimitive.Content
       sideOffset={sideOffset}
       className={cn(
-        "bg-neutral-1 rounded-3.5 shadow-bottom-1 flex min-w-40 flex-col overflow-x-hidden overflow-y-auto",
+        "bg-neutral-1 rounded-3.5 shadow-bottom-2 flex min-w-40 flex-col overflow-x-hidden overflow-y-auto",
         "max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
         className,
