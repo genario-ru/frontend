@@ -6,23 +6,25 @@ import {
   RadioCardsGroup,
   RadioCardsGroupItem,
 } from "@/shared/components/ui/radio-cards-group";
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 
 import { useFieldContext } from "..";
 
-type SelectFieldProps = {
+type SelectFieldProps = PropsWithClassName<{
   label?: string | null;
   items: {
     label: string;
     value: string;
     icon?: string;
   }[];
-  className?: string;
-};
+  itemClassName?: string;
+}>;
 
 export const RadioCardsGroupField = ({
   label,
   items,
   className,
+  itemClassName,
 }: SelectFieldProps) => {
   const {
     options: { defaultValue },
@@ -47,7 +49,11 @@ export const RadioCardsGroupField = ({
         onValueChange={handleChange}
       >
         {items.map((item) => (
-          <RadioCardsGroupItem key={item.value} value={item.value}>
+          <RadioCardsGroupItem
+            key={item.value}
+            value={item.value}
+            className={itemClassName}
+          >
             {item.label}
             {item.icon && <LucideIcon icon={item.icon} />}
           </RadioCardsGroupItem>

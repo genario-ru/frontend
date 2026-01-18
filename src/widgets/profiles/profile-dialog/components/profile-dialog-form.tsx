@@ -81,6 +81,7 @@ export const ProfileDialogForm = ({
                 label: profileType.name,
                 value: profileType.id,
               }))}
+              itemClassName="flex-1"
             />
           )}
         </form.AppField>
