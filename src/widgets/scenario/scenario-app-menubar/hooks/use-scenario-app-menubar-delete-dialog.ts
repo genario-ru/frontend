@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 
-import { useDeleteScenario } from "@/actions/scenarios/hooks/use-delete-scenario";
+import { useDeleteScenario } from "@/actions/scenario/hooks/use-delete-scenario";
 
 type UseScenarioAppMenubarDeleteDialogParams = {
   scenarioId: string;

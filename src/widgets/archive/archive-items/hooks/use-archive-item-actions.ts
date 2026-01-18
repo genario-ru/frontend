@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useDeleteIdeasList } from "@/actions/ideas-lists/hooks/use-delete-ideas-list";
-import { useDeleteScenario } from "@/actions/scenarios/hooks/use-delete-scenario";
+import { useDeleteScenario } from "@/actions/scenario/hooks/use-delete-scenario";
 
 type UseArchiveItemActionsParams = {
   id: string;

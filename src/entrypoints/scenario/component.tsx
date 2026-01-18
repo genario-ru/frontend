@@ -40,17 +40,17 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout className="flex-row gap-4">
-        <ScenarioChaptersList />
+      <ContentLayout className="grid h-full grid-cols-4 flex-row gap-4">
+        <ScenarioChaptersList scenarioId={scenarioId} />
         <ScenarioScenes />
       </ContentLayout>
     );
-  }, [tab]);
+  }, [tab, scenarioId]);
 
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="grid h-full grid-cols-2">
+      <PageLayout className="h-full">
         <Suspense fallback={<div>Loading...</div>}>{body}</Suspense>
       </PageLayout>
     </>

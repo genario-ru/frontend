@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { useGetScenario } from "@/actions/scenarios/hooks/use-get-scenario";
+import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
 
 type UseScenarioAppMenubarParams = {
   scenarioId: string;

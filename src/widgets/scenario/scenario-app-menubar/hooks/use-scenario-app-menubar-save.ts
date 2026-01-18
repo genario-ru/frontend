@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { useSaveScenario } from "@/actions/scenarios/hooks/use-save-scenario";
+import { useSaveScenario } from "@/actions/scenario/hooks/use-save-scenario";
 
 type UseScenarioAppMenubarSaveParams = {
   scenarioId: string;

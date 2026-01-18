@@ -2,8 +2,8 @@ import { useStore } from "@tanstack/react-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { useCreateScenario } from "@/actions/scenarios/hooks/use-create-scenario";
-import { useUpdateScenario } from "@/actions/scenarios/hooks/use-update-scenario";
+import { useCreateScenario } from "@/actions/scenario/hooks/use-create-scenario";
+import { useUpdateScenario } from "@/actions/scenario/hooks/use-update-scenario";
 import { getApiV1ScenariosScenarioIdQueryKey } from "@/codegen/api/product/@tanstack/react-query.gen";
 import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/types.gen";
 import { useAppForm } from "@/lib/tanstack-form";
