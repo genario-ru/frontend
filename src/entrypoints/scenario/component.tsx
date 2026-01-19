@@ -1,9 +1,9 @@
 import { useParams, useSearch } from "@tanstack/react-router";
 import { lazy, Suspense, useMemo } from "react";
 
-import { scenarioTabs } from "@/features/scenario/constants/scenario-tabs";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
+import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 
 const ScenarioChaptersList = lazy(() =>
@@ -48,11 +48,11 @@ export function ScenarioComponent() {
   }, [tab, scenarioId]);
 
   return (
-    <>
+    <div className="flex h-dvh max-h-dvh flex-col">
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="h-full">
+      <PageLayout className="flex-1 overflow-hidden">
         <Suspense fallback={<div>Loading...</div>}>{body}</Suspense>
       </PageLayout>
-    </>
+    </div>
   );
 }

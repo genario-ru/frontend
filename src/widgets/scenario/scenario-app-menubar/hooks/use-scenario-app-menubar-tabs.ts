@@ -1,7 +1,7 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 
-import { scenarioTabs } from "@/features/scenario/constants/scenario-tabs";
+import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 
 type UseScenarioAppMenubarTabsParams = {
   scenarioId: string;

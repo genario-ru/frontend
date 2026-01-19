@@ -7,6 +7,8 @@ import { ScenarioComponent } from "@/entrypoints/scenario/component";
 export const Route = createFileRoute("/_app/scenarios/$scenarioId")({
   validateSearch: zodValidator(
     z.object({
+      chapterId: z.optional(z.string()),
+      sceneId: z.optional(z.string()),
       tab: z.optional(z.string()),
     }),
   ),
