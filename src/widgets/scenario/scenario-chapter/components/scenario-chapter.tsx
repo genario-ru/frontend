@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 
 import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
+import { Island } from "@/shared/components/ui/island";
 
 import { ScenarioChapterHeader } from "./scenario-chapter-header";
 
@@ -9,6 +10,8 @@ type ScenarioChapterProps = {
 };
 
 export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const { scenarioData, isScenarioLoading, isScenarioError } = useGetScenario({
     scenarioId,
   });
@@ -29,12 +32,25 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
     return (
       <>
         <ScenarioChapterHeader
+          containerRef={containerRef}
           scenarioId={scenarioId}
           scenarioVersionId={scenarioData.data.currentVersionId}
         />
       </>
     );
-  }, [scenarioId, scenarioData, isScenarioLoading, isScenarioError]);
+  }, [
+    scenarioId,
+    containerRef,
+    scenarioData,
+    isScenarioLoading,
+    isScenarioError,
+  ]);
 
-  return <div className="col-span-3 flex h-full w-full flex-col">{body}</div>;
+  return (
+    <Island className="col-span-3 flex h-full w-full flex-col overflow-hidden rounded-2xl p-0">
+      <div ref={containerRef} className="h-full overflow-auto">
+        {body}
+      </div>
+    </Island>
+  );
 }

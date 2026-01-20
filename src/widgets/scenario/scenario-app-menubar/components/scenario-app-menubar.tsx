@@ -73,6 +73,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
     return (
       <BadgesList
+        clamp={4}
         badgesData={[
           scenarioData?.data.platform,
           scenarioData?.data.videoType,

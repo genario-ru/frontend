@@ -1,21 +1,31 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { useCallback, useMemo } from "react";
+import { type RefObject, useCallback, useMemo } from "react";
 
 import { useGetScenarioChapter } from "@/actions/scenario/hooks/use-get-scenario-chapter";
 import { useGetScenarioVersion } from "@/actions/scenario/hooks/use-get-scenario-version";
+import { useCheckScroll } from "@/shared/hooks/use-check-scroll";
 import { formatTime } from "@/shared/utils/format-time";
 
 type UseScenarioChapterHeaderParams = {
+  containerRef: RefObject<HTMLDivElement | null>;
   scenarioId: string;
   scenarioVersionId: string;
 };
 
 export function useScenarioChapterHeader({
+  containerRef,
   scenarioId,
   scenarioVersionId,
 }: UseScenarioChapterHeaderParams) {
   const navigate = useNavigate();
-  const { sceneId } = useSearch({ from: "/_app/scenarios/$scenarioId" });
+
+  const { chapterId, sceneId } = useSearch({
+    from: "/_app/scenarios/$scenarioId",
+  });
+
+  const { isScrolled: isContainerScrolled } = useCheckScroll({
+    elementRef: containerRef,
+  });
 
   const {
     activeScenarioChapter,
@@ -31,7 +41,8 @@ export function useScenarioChapterHeader({
     isScenarioChapterLoading,
     isScenarioChapterError,
   } = useGetScenarioChapter({
-    chapterId: activeScenarioChapter?.id,
+    // Сначала смотрим на query параметры. Если chapterId там нет, то берется первый chapter
+    chapterId: chapterId ?? activeScenarioChapter?.id,
     sceneId,
   });
 
@@ -113,6 +124,7 @@ export function useScenarioChapterHeader({
     scenarioChapterScenes,
     hasPreviousScenarioChapter,
     hasNextScenarioChapter,
+    isContainerScrolled,
     isLoading: isScenarioVersionLoading || isScenarioChapterLoading,
     isError: isScenarioVersionError || isScenarioChapterError,
     handlePreviousChapterClick,

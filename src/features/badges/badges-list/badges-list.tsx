@@ -14,11 +14,13 @@ type BadgeData = {
 type BadgesListProps = PropsWithClassName<{
   badgesData: Array<BadgeData | BadgeData[] | null | undefined>;
   badgeProps?: BadgeProps;
+  clamp?: number;
 }>;
 
 export function BadgesList({
   badgesData,
   badgeProps,
+  clamp,
   className,
 }: BadgesListProps) {
   const badges: BadgeData[] = useMemo(() => {
@@ -37,9 +39,13 @@ export function BadgesList({
     return preparedBadges.filter((badge) => !isEmpty(badge));
   }, [badgesData]);
 
+  const clampedBadges = useMemo(() => {
+    return badges.slice(0, clamp ?? badges.length);
+  }, [badges, clamp]);
+
   return (
     <div className={cn("flex flex-wrap items-center gap-1", className)}>
-      {badges.map((badge) => (
+      {clampedBadges.map((badge) => (
         <Badge
           key={`badges-list-badge-${badge.name}`}
           icon={badge.icon && <LucideIcon icon={badge.icon} />}
@@ -48,6 +54,11 @@ export function BadgesList({
           {badge.name}
         </Badge>
       ))}
+      {clampedBadges.length < badges.length && (
+        <Badge variant="secondary">
+          +{badges.length - clampedBadges.length}
+        </Badge>
+      )}
     </div>
   );
 }
