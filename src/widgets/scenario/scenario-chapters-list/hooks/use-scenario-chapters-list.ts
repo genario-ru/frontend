@@ -1,4 +1,4 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 
 import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
@@ -13,9 +13,9 @@ export function useScenarioChaptersList({
 }: UseScenarioChaptersListParams) {
   const navigate = useNavigate();
   const { scenarioData } = useGetScenario({ scenarioId });
-  const { chapterId } = useSearch({ from: "/_app/scenarios/$scenarioId" });
 
   const {
+    activeScenarioChapter,
     scenarioVersionData,
     isScenarioVersionLoading,
     isScenarioVersionError,
@@ -26,18 +26,6 @@ export function useScenarioChaptersList({
   const scenarioChaptersList = useMemo(() => {
     return scenarioVersionData?.data.scenarioChapters;
   }, [scenarioVersionData]);
-
-  const activeChapter = useMemo(() => {
-    if (!scenarioChaptersList?.length) {
-      return undefined;
-    }
-
-    const selectedChapter = scenarioChaptersList.find(
-      (chapter) => chapter.id === chapterId,
-    );
-
-    return selectedChapter ?? scenarioChaptersList[0];
-  }, [scenarioChaptersList, chapterId]);
 
   const handleChapterClick = useCallback(
     (chapterId: string) => {
@@ -53,7 +41,7 @@ export function useScenarioChaptersList({
 
   return {
     scenarioChaptersList,
-    activeChapter,
+    activeScenarioChapter,
     isScenarioVersionLoading,
     isScenarioVersionError,
     handleChapterClick,

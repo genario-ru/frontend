@@ -31,7 +31,9 @@ export function ScenarioChaptersListItem({
         <Badge size="sm">{time}</Badge>
       </div>
       {description && (
-        <p className="text-neutral-7 text-left text-sm">{description}</p>
+        <p className="text-neutral-7 line-clamp-2 text-left text-sm">
+          {description}
+        </p>
       )}
     </div>
   );

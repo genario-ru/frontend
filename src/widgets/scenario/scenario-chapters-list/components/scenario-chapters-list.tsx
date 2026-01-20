@@ -17,7 +17,7 @@ export function ScenarioChaptersList({
   scenarioId,
 }: ScenarioChaptersListProps) {
   const {
-    activeChapter,
+    activeScenarioChapter,
     scenarioChaptersList,
     isScenarioVersionLoading,
     isScenarioVersionError,
@@ -41,7 +41,7 @@ export function ScenarioChaptersList({
 
     return (
       <RadioCardsGroup
-        value={activeChapter?.id}
+        value={activeScenarioChapter?.id}
         onValueChange={handleChapterClick}
         className="flex-col gap-4"
       >
@@ -60,7 +60,7 @@ export function ScenarioChaptersList({
       </RadioCardsGroup>
     );
   }, [
-    activeChapter,
+    activeScenarioChapter,
     scenarioChaptersList,
     isScenarioVersionLoading,
     isScenarioVersionError,

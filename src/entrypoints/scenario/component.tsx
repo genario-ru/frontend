@@ -14,10 +14,10 @@ const ScenarioChaptersList = lazy(() =>
   ),
 );
 
-const ScenarioScenes = lazy(() =>
-  import("@/widgets/scenario/scenarios-scenes/components/scenario-scenes").then(
-    ({ ScenarioScenes }) => ({
-      default: ScenarioScenes,
+const ScenarioChapter = lazy(() =>
+  import("@/widgets/scenario/scenario-chapter/components/scenario-chapter").then(
+    ({ ScenarioChapter }) => ({
+      default: ScenarioChapter,
     }),
   ),
 );
@@ -40,9 +40,9 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout className="grid h-full grid-cols-4 flex-row gap-4">
+      <ContentLayout className="grid h-full w-full grid-cols-4 flex-row gap-4">
         <ScenarioChaptersList scenarioId={scenarioId} />
-        <ScenarioScenes />
+        <ScenarioChapter scenarioId={scenarioId} />
       </ContentLayout>
     );
   }, [tab, scenarioId]);
