@@ -4,6 +4,7 @@ import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
 import { Island } from "@/shared/components/ui/island";
 
 import { ScenarioChapterHeader } from "./scenario-chapter-header";
+import { ScenarioChapterScenes } from "./scenario-chapter-scenes";
 
 type ScenarioChapterProps = {
   scenarioId: string;
@@ -36,6 +37,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
           scenarioId={scenarioId}
           scenarioVersionId={scenarioData.data.currentVersionId}
         />
+        <ScenarioChapterScenes />
       </>
     );
   }, [

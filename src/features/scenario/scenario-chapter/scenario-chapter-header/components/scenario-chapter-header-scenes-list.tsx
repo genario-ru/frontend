@@ -22,9 +22,13 @@ export function ScenarioChapterHeaderScenesList({
   activeSceneId,
   handleSceneClick,
 }: ScenarioChapterHeaderScenesListProps) {
+  if (!scenes?.length) {
+    return null;
+  }
+
   return (
     <RadioCardsGroup value={activeSceneId} onValueChange={handleSceneClick}>
-      {scenes?.map((scene) => (
+      {scenes.map((scene) => (
         <RadioCardsGroupItem size="sm" key={scene.id} value={scene.id}>
           <ScenarioChapterHeaderScenesListItem
             name={scene.name}

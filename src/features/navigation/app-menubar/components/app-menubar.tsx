@@ -65,7 +65,7 @@ export const AppMenubar = memo(
             {firstLine}
           </div>
           {description && (
-            <p className="text-neutral-7 line-clamp-2">{description}</p>
+            <div className="text-neutral-7 line-clamp-2">{description}</div>
           )}
           {left}
         </section>

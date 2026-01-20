@@ -46,6 +46,7 @@ export function ScenarioChapterHeader({
       })}
     >
       <ScenarioChapterHeaderInfo
+        isContainerScrolled={isContainerScrolled}
         hasPreviousChapter={hasPreviousScenarioChapter}
         hasNextChapter={hasNextScenarioChapter}
         title={scenarioChapterTitle}
