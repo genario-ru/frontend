@@ -17,11 +17,13 @@ export function ScenarioNavigationScenes({
   scenarioId,
 }: ScenarioNavigationScenesProps) {
   const {
+    containerRef,
     activeScenarioChapterScene,
     radioCardsScenesList,
     activeScenarioChapterPosition,
     isScenarioNavigationScenesLoading,
     isScenarioNavigationScenesError,
+    sceneRefCallback,
     handleScenarioChapterSceneClick,
   } = useScenarioNavigationScenes({ scenarioId });
 
@@ -39,7 +41,8 @@ export function ScenarioNavigationScenes({
 
   return (
     <div
-      className={cn("flex", {
+      ref={containerRef}
+      className={cn("hide-scrollbar flex w-full overflow-auto", {
         "p-4": size === "sm",
         "p-5": size === "base",
       })}
@@ -56,6 +59,7 @@ export function ScenarioNavigationScenes({
             className="items-start"
           >
             <ScenarioNavigationScene
+              ref={(el) => sceneRefCallback(el, scene.id)}
               chapterPosition={activeScenarioChapterPosition}
               position={scene.position}
               name={scene.name}

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes";
@@ -10,6 +10,9 @@ type UseScenarioNavigationScenesParams = {
 export function useScenarioNavigationScenes({
   scenarioId,
 }: UseScenarioNavigationScenesParams) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sceneRefsMap = useRef<Map<string, Element>>(new Map());
+
   const {
     activeScenarioChapter,
     activeScenarioChapterPosition,
@@ -35,7 +38,37 @@ export function useScenarioNavigationScenes({
     }));
   }, [scenarioChapterScenesList]);
 
+  const sceneRefCallback = useCallback(
+    (el: Element | null, sceneId: string) => {
+      if (el) {
+        sceneRefsMap.current.set(sceneId, el);
+      } else {
+        sceneRefsMap.current.delete(sceneId);
+      }
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (!activeScenarioChapterScene?.id) {
+      return;
+    }
+
+    const activeElement = sceneRefsMap.current.get(
+      activeScenarioChapterScene?.id,
+    );
+
+    if (activeElement) {
+      activeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeScenarioChapterScene?.id]);
+
   return {
+    containerRef,
     activeScenarioChapterScene,
     activeScenarioChapterPosition,
     radioCardsScenesList,
@@ -43,6 +76,7 @@ export function useScenarioNavigationScenes({
       isScenarioChaptersLoading || isScenarioChapterLoading,
     isScenarioNavigationScenesError:
       isScenarioChaptersError || isScenarioChapterError,
+    sceneRefCallback,
     handleScenarioChapterSceneClick,
   };
 }

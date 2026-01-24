@@ -1,8 +1,4 @@
-import {
-  Tabs as TabsBase,
-  type TabsListProps,
-  type TabsRootProps,
-} from "@base-ui/react/tabs";
+import { Tabs as TabsBase } from "@base-ui/react/tabs";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
@@ -28,15 +24,22 @@ const tabsUnderlineTriggerVariants = cva(
   },
 );
 
+type TabsUnderlineProps = ComponentProps<typeof TabsBase.Root>;
+
+type TabsUnderlineListProps = ComponentProps<typeof TabsBase.List>;
+
 type TabsUnderlineTriggerProps = ComponentProps<typeof TabsBase.Tab> &
   VariantProps<typeof tabsUnderlineTriggerVariants>;
 
-export function TabsUnderline({ className, ...props }: TabsRootProps) {
-  return <TabsBase.Root className={cn("flex w-full", className)} {...props} />;
+export function TabsUnderline({ className, ...props }: TabsUnderlineProps) {
+  return <TabsBase.Root className={cn("flex", className)} {...props} />;
 }
 
-export function TabsUnderlineList({ className, ...props }: TabsListProps) {
-  return <TabsBase.List className={cn("flex w-full", className)} {...props} />;
+export function TabsUnderlineList({
+  className,
+  ...props
+}: TabsUnderlineListProps) {
+  return <TabsBase.List className={cn("flex", className)} {...props} />;
 }
 
 export function TabsUnderlineTrigger({

@@ -22,7 +22,7 @@ export function ScenarioNavigationChapters({
     isScenarioChaptersError,
     scenarioChaptersList,
     activeScenarioChapter,
-    tabsUnderlineTriggerRefCallback,
+    chapterRefCallback,
     handleScenarioChapterClick,
   } = useScenarioNavigationChapters({ scenarioId });
 
@@ -39,31 +39,33 @@ export function ScenarioNavigationChapters({
   }
 
   return (
-    <div
-      ref={containerRef}
-      className={cn("hide-scrollbar flex overflow-auto", {
-        "px-4": size === "sm",
-        "px-5": size === "base",
-      })}
+    <TabsUnderline
+      value={activeScenarioChapter?.id}
+      onValueChange={handleScenarioChapterClick}
+      className="overflow-hidden"
     >
-      <TabsUnderline
-        value={activeScenarioChapter?.id}
-        onValueChange={handleScenarioChapterClick}
+      <TabsUnderlineList
+        ref={containerRef}
+        className={cn(
+          "border-neutral-3 hide-scrollbar overflow-auto border-b",
+          {
+            "px-4": size === "sm",
+            "px-5": size === "base",
+          },
+        )}
       >
-        <TabsUnderlineList>
-          {scenarioChaptersList.map((chapter, index) => (
-            <TabsUnderlineTrigger
-              key={chapter.id}
-              id={chapter.id}
-              size={size}
-              value={chapter.id}
-              ref={(el) => tabsUnderlineTriggerRefCallback(el, chapter.id)}
-            >
-              {index + 1}. {chapter.name}
-            </TabsUnderlineTrigger>
-          ))}
-        </TabsUnderlineList>
-      </TabsUnderline>
-    </div>
+        {scenarioChaptersList.map((chapter, index) => (
+          <TabsUnderlineTrigger
+            key={chapter.id}
+            id={chapter.id}
+            size={size}
+            value={chapter.id}
+            ref={(el) => chapterRefCallback(el, chapter.id)}
+          >
+            {index + 1}. {chapter.name}
+          </TabsUnderlineTrigger>
+        ))}
+      </TabsUnderlineList>
+    </TabsUnderline>
   );
 }

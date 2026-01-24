@@ -20,7 +20,7 @@ export function useScenarioNavigationChapters({
     handleScenarioChapterClick,
   } = useScenarioChapters({ scenarioId });
 
-  const tabsUnderlineTriggerRefCallback = useCallback(
+  const chapterRefCallback = useCallback(
     (el: Element | null, chapterId: string) => {
       if (el) {
         chapterRefsMap.current.set(chapterId, el);
@@ -53,7 +53,7 @@ export function useScenarioNavigationChapters({
     activeScenarioChapter,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
-    tabsUnderlineTriggerRefCallback,
+    chapterRefCallback,
     handleScenarioChapterClick,
   };
 }

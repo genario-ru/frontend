@@ -18,8 +18,8 @@ export function ScenarioNavigation({
   scenarioId,
 }: ScenarioNavigationProps) {
   return (
-    <Island ref={ref} noPadding noGap className="w-auto">
-      <div className="border-neutral-3 flex border-b">
+    <Island ref={ref} noPadding noGap>
+      <div className="flex w-full">
         <ScenarioNavigationChapters size={size} scenarioId={scenarioId} />
         <ScenarioNavigationChaptersArrows size={size} scenarioId={scenarioId} />
       </div>

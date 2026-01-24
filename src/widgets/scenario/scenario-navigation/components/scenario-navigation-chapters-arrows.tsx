@@ -22,10 +22,13 @@ export function ScenarioNavigationChaptersArrows({
 
   return (
     <div
-      className={cn("border-neutral-3 flex items-center gap-1 border-l", {
-        "px-4": size === "sm",
-        "px-5": size === "base",
-      })}
+      className={cn(
+        "border-neutral-3 flex shrink-0 items-center gap-1 border-b border-l",
+        {
+          "px-4 py-2.5": size === "sm",
+          "px-5 py-3": size === "base",
+        },
+      )}
     >
       <ScenarioNavigationChaptersArrowsButton
         size={size}
