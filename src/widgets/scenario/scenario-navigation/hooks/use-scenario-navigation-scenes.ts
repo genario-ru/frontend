@@ -5,10 +5,12 @@ import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes"
 
 type UseScenarioNavigationScenesParams = {
   scenarioId: string;
+  scrollToActiveScene: boolean;
 };
 
 export function useScenarioNavigationScenes({
   scenarioId,
+  scrollToActiveScene,
 }: UseScenarioNavigationScenesParams) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRefsMap = useRef<Map<string, Element>>(new Map());
@@ -50,7 +52,7 @@ export function useScenarioNavigationScenes({
   );
 
   useEffect(() => {
-    if (!activeScenarioChapterScene?.id) {
+    if (!activeScenarioChapterScene?.id || !scrollToActiveScene) {
       return;
     }
 
@@ -65,7 +67,7 @@ export function useScenarioNavigationScenes({
         inline: "center",
       });
     }
-  }, [activeScenarioChapterScene?.id]);
+  }, [activeScenarioChapterScene, scrollToActiveScene]);
 
   return {
     containerRef,

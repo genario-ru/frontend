@@ -6,10 +6,18 @@ import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 
-const ScenarioNavigation = lazy(() =>
-  import("@/widgets/scenario/scenario-navigation/components/scenario-navigation").then(
-    ({ ScenarioNavigation }) => ({
-      default: ScenarioNavigation,
+const ScenarioNavigationFloating = lazy(() =>
+  import("@/widgets/scenario/scenario-navigation/components/scenario-navigation-floating").then(
+    ({ ScenarioNavigationFloating }) => ({
+      default: ScenarioNavigationFloating,
+    }),
+  ),
+);
+
+const ScenarioNavigationStatic = lazy(() =>
+  import("@/widgets/scenario/scenario-navigation/components/scenario-navigation-static").then(
+    ({ ScenarioNavigationStatic }) => ({
+      default: ScenarioNavigationStatic,
     }),
   ),
 );
@@ -41,9 +49,16 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout className="">
-        <ScenarioNavigation ref={staticNavigationRef} scenarioId={scenarioId} />
+      <ContentLayout>
+        <ScenarioNavigationStatic
+          scenarioId={scenarioId}
+          ref={staticNavigationRef}
+        />
         <ScenarioChapters scenarioId={scenarioId} />
+        <ScenarioNavigationFloating
+          scenarioId={scenarioId}
+          staticNavigationRef={staticNavigationRef}
+        />
       </ContentLayout>
     );
   }, [tab, scenarioId]);
@@ -51,7 +66,7 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="flex-1 overflow-hidden">
+      <PageLayout className="relative flex-1 overflow-hidden">
         <Suspense fallback={<div>Loading...</div>}>{body}</Suspense>
       </PageLayout>
     </>

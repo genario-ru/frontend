@@ -4,10 +4,12 @@ import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapt
 
 type UseScenarioNavigationChaptersParams = {
   scenarioId: string;
+  scrollToActiveChapter: boolean;
 };
 
 export function useScenarioNavigationChapters({
   scenarioId,
+  scrollToActiveChapter,
 }: UseScenarioNavigationChaptersParams) {
   const containerRef = useRef<HTMLDivElement>(null);
   const chapterRefsMap = useRef<Map<string, Element>>(new Map());
@@ -32,7 +34,7 @@ export function useScenarioNavigationChapters({
   );
 
   useEffect(() => {
-    if (!activeScenarioChapter?.id) {
+    if (!activeScenarioChapter?.id || !scrollToActiveChapter) {
       return;
     }
 
@@ -45,7 +47,7 @@ export function useScenarioNavigationChapters({
         inline: "center",
       });
     }
-  }, [activeScenarioChapter?.id]);
+  }, [activeScenarioChapter, scrollToActiveChapter]);
 
   return {
     containerRef,

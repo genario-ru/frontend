@@ -10,11 +10,13 @@ import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-
 type ScenarioNavigationChaptersProps = {
   size?: "sm" | "base";
   scenarioId: string;
+  scrollToActiveChapter: boolean;
 };
 
 export function ScenarioNavigationChapters({
   size = "base",
   scenarioId,
+  scrollToActiveChapter,
 }: ScenarioNavigationChaptersProps) {
   const {
     containerRef,
@@ -24,7 +26,7 @@ export function ScenarioNavigationChapters({
     activeScenarioChapter,
     chapterRefCallback,
     handleScenarioChapterClick,
-  } = useScenarioNavigationChapters({ scenarioId });
+  } = useScenarioNavigationChapters({ scenarioId, scrollToActiveChapter });
 
   if (isScenarioChaptersLoading) {
     return <div className="flex flex-1 px-4">Loading...</div>;

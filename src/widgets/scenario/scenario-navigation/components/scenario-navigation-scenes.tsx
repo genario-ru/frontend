@@ -10,11 +10,13 @@ import { useScenarioNavigationScenes } from "../hooks/use-scenario-navigation-sc
 type ScenarioNavigationScenesProps = {
   size?: "sm" | "base";
   scenarioId: string;
+  scrollToActiveScene: boolean;
 };
 
 export function ScenarioNavigationScenes({
   size = "base",
   scenarioId,
+  scrollToActiveScene,
 }: ScenarioNavigationScenesProps) {
   const {
     containerRef,
@@ -25,7 +27,7 @@ export function ScenarioNavigationScenes({
     isScenarioNavigationScenesError,
     sceneRefCallback,
     handleScenarioChapterSceneClick,
-  } = useScenarioNavigationScenes({ scenarioId });
+  } = useScenarioNavigationScenes({ scenarioId, scrollToActiveScene });
 
   if (isScenarioNavigationScenesLoading) {
     return <div>Loading...</div>;
@@ -54,11 +56,12 @@ export function ScenarioNavigationScenes({
         {radioCardsScenesList?.map((scene) => (
           <RadioCardsGroupItem
             key={scene.id}
-            size="sm"
             value={scene.id}
+            size="sm"
             className="items-start"
           >
             <ScenarioNavigationScene
+              size={size}
               ref={(el) => sceneRefCallback(el, scene.id)}
               chapterPosition={activeScenarioChapterPosition}
               position={scene.position}
