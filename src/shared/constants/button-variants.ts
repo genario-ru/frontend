@@ -5,7 +5,7 @@ import { cn } from "../utils/cn";
 export const buttonVariants = cva(
   cn(
     "group flex items-center font-medium duration-200 gap-2 w-fit h-fit shrink-0 justify-center outline-none overflow-hidden select-none",
-    "focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:duration-200",
+    "focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:duration-200",
   ),
   {
     variants: {

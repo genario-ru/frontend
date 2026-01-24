@@ -11,6 +11,8 @@ export type IslandProps = ComponentProps<"div"> & {
   roundedBottom?: boolean;
   grow?: boolean;
   row?: boolean;
+  noGap?: boolean;
+  noPadding?: boolean;
   as?: ElementType;
 };
 
@@ -26,6 +28,8 @@ export const Island = ({
   roundedBottom = true,
   grow = false,
   row = false,
+  noGap = false,
+  noPadding = false,
   as: Comp = "div",
   className,
   children,
@@ -36,12 +40,14 @@ export const Island = ({
   return (
     <Comp
       className={cn(
-        "bg-neutral-1 flex w-full flex-col gap-4 p-5",
+        "bg-neutral-1 flex w-full flex-col",
         {
           "rounded-t-5": roundedTop,
           "rounded-b-5": roundedBottom,
           "grow": grow,
           "flex-row": row,
+          "p-5": !noPadding,
+          "gap-4": !noGap,
         },
         className,
       )}
