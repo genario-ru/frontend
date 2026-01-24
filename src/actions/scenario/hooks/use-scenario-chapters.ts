@@ -88,7 +88,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     return scenarioChaptersList[currentChapterIndex + 1];
   }, [scenarioChaptersList, activeScenarioChapter]);
 
-  const handleScenarioChapterClick = useCallback(
+  const handleSetActiveScenarioChapter = useCallback(
     (chapterId: string) => {
       navigate({
         to: "/scenarios/$scenarioId",
@@ -105,15 +105,15 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
       return;
     }
 
-    handleScenarioChapterClick(previousScenarioChapter.id);
-  }, [previousScenarioChapter, handleScenarioChapterClick]);
+    handleSetActiveScenarioChapter(previousScenarioChapter.id);
+  }, [previousScenarioChapter, handleSetActiveScenarioChapter]);
 
   const handleNextScenarioChapterClick = useCallback(() => {
     if (!nextScenarioChapter) {
       return;
     }
-    handleScenarioChapterClick(nextScenarioChapter.id);
-  }, [nextScenarioChapter, handleScenarioChapterClick]);
+    handleSetActiveScenarioChapter(nextScenarioChapter.id);
+  }, [nextScenarioChapter, handleSetActiveScenarioChapter]);
 
   return {
     scenarioChaptersList,
@@ -123,7 +123,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     nextScenarioChapter,
     isScenarioChaptersLoading: isScenarioLoading || isScenarioVersionLoading,
     isScenarioChaptersError: isScenarioError || isScenarioVersionError,
-    handleScenarioChapterClick,
+    handleSetActiveScenarioChapter,
     handlePreviousScenarioChapterClick,
     handleNextScenarioChapterClick,
   };

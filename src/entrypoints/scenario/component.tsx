@@ -22,10 +22,10 @@ const ScenarioNavigationStatic = lazy(() =>
   ),
 );
 
-const ScenarioChapters = lazy(() =>
-  import("@/widgets/scenario/scenario-chapters/components/scenario-chapters").then(
-    ({ ScenarioChapters }) => ({
-      default: ScenarioChapters,
+const ScenarioChapter = lazy(() =>
+  import("@/widgets/scenario/scenario-chapter/components/scenario-chapter").then(
+    ({ ScenarioChapter }) => ({
+      default: ScenarioChapter,
     }),
   ),
 );
@@ -49,12 +49,12 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout>
+      <ContentLayout className="gap-4">
+        <ScenarioChapter scenarioId={scenarioId} />
         <ScenarioNavigationStatic
           scenarioId={scenarioId}
           ref={staticNavigationRef}
         />
-        <ScenarioChapters scenarioId={scenarioId} />
         <ScenarioNavigationFloating
           scenarioId={scenarioId}
           staticNavigationRef={staticNavigationRef}
@@ -66,7 +66,7 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="relative flex-1 overflow-hidden">
+      <PageLayout>
         <Suspense fallback={<div>Loading...</div>}>{body}</Suspense>
       </PageLayout>
     </>

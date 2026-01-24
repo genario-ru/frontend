@@ -29,7 +29,8 @@ export const badgeVariants = cva(
       {
         color: "neutral",
         variant: "tertiary",
-        className: "bg-neutral-1 text-neutral-8 [&_svg]:stroke-neutral-8",
+        className:
+          "bg-neutral-1 text-neutral-8 [&_svg]:stroke-neutral-8 border border-neutral-3",
       },
       // Positive
       {
@@ -40,7 +41,8 @@ export const badgeVariants = cva(
       {
         color: "positive",
         variant: "tertiary",
-        className: "bg-neutral-1 text-positive-5 [&_svg]:stroke-positive-5",
+        className:
+          "bg-neutral-1 text-positive-5 [&_svg]:stroke-positive-5 border border-positive-5",
       },
       // Negative
       {
@@ -51,7 +53,8 @@ export const badgeVariants = cva(
       {
         color: "negative",
         variant: "tertiary",
-        className: "bg-neutral-1 text-negative-5 [&_svg]:stroke-negative-5",
+        className:
+          "bg-neutral-1 text-negative-5 [&_svg]:stroke-negative-5 border border-negative-5",
       },
     ],
     defaultVariants: {

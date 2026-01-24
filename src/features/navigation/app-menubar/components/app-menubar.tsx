@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { memo, type ReactNode, useCallback } from "react";
 
 import { Button } from "@/shared/components/ui/button";
+import { Heading } from "@/shared/components/ui/heading";
 import { Island } from "@/shared/components/ui/island";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
@@ -61,7 +62,7 @@ export const AppMenubar = memo(
                 onClick={onBackButtonClick}
               />
             )}
-            {title && <h1 className="text-xl font-semibold">{title}</h1>}
+            <Heading variant="h2">{title}</Heading>
             {firstLine}
           </div>
           {description && (

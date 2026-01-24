@@ -1,6 +1,5 @@
 import type { RefObject } from "react";
 
-import { useScenarioNavigationStaticHidden } from "../hooks/use-scenario-navigation-static-hidden";
 import { ScenarioNavigation } from "./scenario-navigation";
 
 type ScenarioNavigationStaticProps = {
@@ -12,14 +11,5 @@ export function ScenarioNavigationStatic({
   ref,
   scenarioId,
 }: ScenarioNavigationStaticProps) {
-  const { isScenarioNavigationStaticHidden } =
-    useScenarioNavigationStaticHidden({ staticNavigationRef: ref });
-
-  return (
-    <ScenarioNavigation
-      ref={ref}
-      scenarioId={scenarioId}
-      scrollToActiveElement={!isScenarioNavigationStaticHidden}
-    />
-  );
+  return <ScenarioNavigation ref={ref} scenarioId={scenarioId} />;
 }

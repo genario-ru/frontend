@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
-import { ScenarioChapterHeader } from "@/features/scenario/scenario-chapters/components/scenario-chapter-header";
+import { ScenarioChapterHeader } from "@/features/scenario/scenario-chapter/components/scenario-chapter-header";
 import { Island } from "@/shared/components/ui/island";
 
 type ScenarioChaptersProps = {

@@ -15,8 +15,9 @@ export function ScenarioNavigationFloating({
   scenarioId,
   staticNavigationRef,
 }: ScenarioNavigationFloatingProps) {
-  const { animatedStyles, isScenarioNavigationStaticHidden } =
-    useScenarioNavigationFloating({ staticNavigationRef });
+  const { animatedStyles } = useScenarioNavigationFloating({
+    staticNavigationRef,
+  });
 
   return (
     <AnimatedDiv
@@ -26,7 +27,6 @@ export function ScenarioNavigationFloating({
       <ScenarioNavigation
         size="sm"
         scenarioId={scenarioId}
-        scrollToActiveElement={isScenarioNavigationStaticHidden}
         className="shadow-bottom-2"
       />
     </AnimatedDiv>

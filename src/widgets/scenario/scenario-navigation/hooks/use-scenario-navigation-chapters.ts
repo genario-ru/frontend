@@ -1,15 +1,13 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 
 type UseScenarioNavigationChaptersParams = {
   scenarioId: string;
-  scrollToActiveChapter: boolean;
 };
 
 export function useScenarioNavigationChapters({
   scenarioId,
-  scrollToActiveChapter,
 }: UseScenarioNavigationChaptersParams) {
   const containerRef = useRef<HTMLDivElement>(null);
   const chapterRefsMap = useRef<Map<string, Element>>(new Map());
@@ -19,7 +17,7 @@ export function useScenarioNavigationChapters({
     activeScenarioChapter,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
-    handleScenarioChapterClick,
+    handleSetActiveScenarioChapter,
   } = useScenarioChapters({ scenarioId });
 
   const chapterRefCallback = useCallback(
@@ -33,21 +31,22 @@ export function useScenarioNavigationChapters({
     [],
   );
 
-  useEffect(() => {
-    if (!activeScenarioChapter?.id || !scrollToActiveChapter) {
-      return;
-    }
+  const handleScenarioValueChange = useCallback(
+    (chapterId: string) => {
+      handleSetActiveScenarioChapter(chapterId);
 
-    const activeElement = chapterRefsMap.current.get(activeScenarioChapter.id);
+      const activeElement = chapterRefsMap.current.get(chapterId);
 
-    if (activeElement) {
-      activeElement.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  }, [activeScenarioChapter, scrollToActiveChapter]);
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    },
+    [handleSetActiveScenarioChapter],
+  );
 
   return {
     containerRef,
@@ -56,6 +55,6 @@ export function useScenarioNavigationChapters({
     isScenarioChaptersLoading,
     isScenarioChaptersError,
     chapterRefCallback,
-    handleScenarioChapterClick,
+    handleScenarioValueChange,
   };
 }

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import { Badge } from "@/shared/components/ui/badge";
 import { Heading } from "@/shared/components/ui/heading";
+import { Island } from "@/shared/components/ui/island";
 import { formatTime } from "@/shared/utils/format-time";
 
 type ScenarioChapterHeaderProps = {
@@ -22,12 +23,12 @@ export function ScenarioChapterHeader({
   }, [startTime, endTime]);
 
   return (
-    <header className="w-full gap-2">
+    <Island roundedBottom={false} className="w-full gap-2 pb-0">
       <div className="flex items-center gap-2">
         {name && <Heading variant="h2">{name}</Heading>}
         <Badge>{time}</Badge>
       </div>
       {description && <p className="text-neutral-7 text-sm">{description}</p>}
-    </header>
+    </Island>
   );
 }

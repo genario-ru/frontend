@@ -10,13 +10,11 @@ import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-
 type ScenarioNavigationChaptersProps = {
   size?: "sm" | "base";
   scenarioId: string;
-  scrollToActiveChapter: boolean;
 };
 
 export function ScenarioNavigationChapters({
   size = "base",
   scenarioId,
-  scrollToActiveChapter,
 }: ScenarioNavigationChaptersProps) {
   const {
     containerRef,
@@ -25,8 +23,8 @@ export function ScenarioNavigationChapters({
     scenarioChaptersList,
     activeScenarioChapter,
     chapterRefCallback,
-    handleScenarioChapterClick,
-  } = useScenarioNavigationChapters({ scenarioId, scrollToActiveChapter });
+    handleScenarioValueChange,
+  } = useScenarioNavigationChapters({ scenarioId });
 
   if (isScenarioChaptersLoading) {
     return <div className="flex flex-1 px-4">Loading...</div>;
@@ -43,7 +41,7 @@ export function ScenarioNavigationChapters({
   return (
     <TabsUnderline
       value={activeScenarioChapter?.id}
-      onValueChange={handleScenarioChapterClick}
+      onValueChange={handleScenarioValueChange}
       className="overflow-hidden"
     >
       <TabsUnderlineList

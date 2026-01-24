@@ -1,16 +1,14 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes";
 
 type UseScenarioNavigationScenesParams = {
   scenarioId: string;
-  scrollToActiveScene: boolean;
 };
 
 export function useScenarioNavigationScenes({
   scenarioId,
-  scrollToActiveScene,
 }: UseScenarioNavigationScenesParams) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRefsMap = useRef<Map<string, Element>>(new Map());
@@ -51,23 +49,22 @@ export function useScenarioNavigationScenes({
     [],
   );
 
-  useEffect(() => {
-    if (!activeScenarioChapterScene?.id || !scrollToActiveScene) {
-      return;
-    }
+  const handleScenarioValueChange = useCallback(
+    (sceneId: string) => {
+      handleScenarioChapterSceneClick(sceneId);
 
-    const activeElement = sceneRefsMap.current.get(
-      activeScenarioChapterScene?.id,
-    );
+      const activeElement = sceneRefsMap.current.get(sceneId);
 
-    if (activeElement) {
-      activeElement.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
-  }, [activeScenarioChapterScene, scrollToActiveScene]);
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    },
+    [handleScenarioChapterSceneClick],
+  );
 
   return {
     containerRef,
@@ -79,6 +76,6 @@ export function useScenarioNavigationScenes({
     isScenarioNavigationScenesError:
       isScenarioChaptersError || isScenarioChapterError,
     sceneRefCallback,
-    handleScenarioChapterSceneClick,
+    handleScenarioValueChange,
   };
 }
