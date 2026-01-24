@@ -18,7 +18,7 @@ export function ScenarioChapterScenes({
   } = useScenarioScenes({ scenarioId, chapterId });
 
   if (isScenarioChapterLoading) {
-    return <div className="h-[1000px]">Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   if (isScenarioChapterError) {
