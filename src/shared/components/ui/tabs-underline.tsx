@@ -2,9 +2,9 @@ import {
   Tabs as TabsBase,
   type TabsListProps,
   type TabsRootProps,
-  type TabsTabProps,
 } from "@base-ui/react/tabs";
 import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
@@ -28,7 +28,7 @@ const tabsUnderlineTriggerVariants = cva(
   },
 );
 
-type TabsUnderlineTriggerProps = TabsTabProps &
+type TabsUnderlineTriggerProps = ComponentProps<typeof TabsBase.Tab> &
   VariantProps<typeof tabsUnderlineTriggerVariants>;
 
 export function TabsUnderline({ className, ...props }: TabsRootProps) {

@@ -1,10 +1,11 @@
-import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import {
   TabsUnderline,
   TabsUnderlineList,
   TabsUnderlineTrigger,
 } from "@/shared/components/ui/tabs-underline";
 import { cn } from "@/shared/utils/cn";
+
+import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-chapters";
 
 type ScenarioNavigationChaptersProps = {
   size?: "sm" | "base";
@@ -16,12 +17,14 @@ export function ScenarioNavigationChapters({
   scenarioId,
 }: ScenarioNavigationChaptersProps) {
   const {
-    scenarioChaptersList,
-    activeScenarioChapter,
+    containerRef,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
+    scenarioChaptersList,
+    activeScenarioChapter,
+    tabsUnderlineTriggerRefCallback,
     handleScenarioChapterClick,
-  } = useScenarioChapters({ scenarioId });
+  } = useScenarioNavigationChapters({ scenarioId });
 
   if (isScenarioChaptersLoading) {
     return <div className="flex flex-1 px-4">Loading...</div>;
@@ -37,6 +40,7 @@ export function ScenarioNavigationChapters({
 
   return (
     <div
+      ref={containerRef}
       className={cn("hide-scrollbar flex overflow-auto", {
         "px-4": size === "sm",
         "px-5": size === "base",
@@ -50,8 +54,10 @@ export function ScenarioNavigationChapters({
           {scenarioChaptersList.map((chapter, index) => (
             <TabsUnderlineTrigger
               key={chapter.id}
+              id={chapter.id}
               size={size}
               value={chapter.id}
+              ref={(el) => tabsUnderlineTriggerRefCallback(el, chapter.id)}
             >
               {index + 1}. {chapter.name}
             </TabsUnderlineTrigger>
