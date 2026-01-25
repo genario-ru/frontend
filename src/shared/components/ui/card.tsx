@@ -20,7 +20,7 @@ export function CardHeader({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="card-header"
       className={cn(
-        "group/card-header border-neutral-3 @container/card-header flex items-center gap-2 border-b p-3",
+        "group/card-header border-neutral-3 @container/card-header flex min-h-[52px] items-center gap-2 border-b px-3",
         className,
       )}
       {...props}
@@ -46,6 +46,16 @@ export function CardDescription({
     <div
       data-slot="card-description"
       className={cn("text-neutral-6 text-sm", className)}
+      {...props}
+    />
+  );
+}
+
+export function CardActions({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-actions"
+      className={cn("ml-auto flex items-center gap-2", className)}
       {...props}
     />
   );

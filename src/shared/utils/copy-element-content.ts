@@ -1,27 +1,25 @@
-export const copyElementContent = (
+export function copyElementContent(
   element: HTMLElement,
   callback?: (status: "error" | "success") => void,
-) => {
-  // Create a range and a selection
-  const range = document.createRange();
-  const selection = window.getSelection();
-
-  // Select the text inside the element
-  range.selectNodeContents(element);
-  selection?.removeAllRanges();
-  selection?.addRange(range);
+) {
+  const plainText = element.innerText;
+  const html = element.innerHTML;
 
   try {
-    // Copy the text to the clipboard
-    document.execCommand("copy");
+    const item = new ClipboardItem({
+      "text/html": new Blob([html], { type: "text/html" }),
+      "text/plain": new Blob([plainText], { type: "text/plain" }),
+    });
 
-    if (typeof callback === "function") callback("success");
-  } catch (err) {
-    console.error("Failed to copy text: ", err);
-
-    if (typeof callback === "function") callback("error");
+    navigator.clipboard
+      .write([item])
+      .then(() => {
+        callback?.("success");
+      })
+      .catch(() => {
+        callback?.("error");
+      });
+  } catch {
+    callback?.("error");
   }
-
-  // Deselect the text
-  selection?.removeAllRanges();
-};
+}

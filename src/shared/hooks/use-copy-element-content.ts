@@ -12,10 +12,10 @@ type IUseCopyElementContentReturn = {
   isCopied: boolean;
 };
 
-export const useCopyElementContent = ({
+export function useCopyElementContent({
   element,
   freshCopyTimeout = 3000,
-}: IUseCopyElementContent): IUseCopyElementContentReturn => {
+}: IUseCopyElementContent): IUseCopyElementContentReturn {
   const [isCopied, setIsCopied] = useState(false);
 
   const copy = (callback?: (status: "error" | "success") => void) => {
@@ -30,4 +30,4 @@ export const useCopyElementContent = ({
     copy,
     isCopied,
   };
-};
+}
