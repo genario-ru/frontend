@@ -1,5 +1,5 @@
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
-import { ScenarioChapterHeader } from "@/features/scenario/scenario-chapter/components/scenario-chapter-header";
+import { ScenarioChapterHeader } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 
 import { ScenarioChapterScenes } from "./scenario-chapter-scenes";
 
@@ -9,6 +9,7 @@ type ScenarioChapterProps = {
 
 export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   const {
+    scenarioVideoType,
     activeScenarioChapter,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
@@ -37,6 +38,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
       <ScenarioChapterScenes
         scenarioId={scenarioId}
         chapterId={activeScenarioChapter.id}
+        videoTypeSlug={scenarioVideoType?.slug}
       />
     </div>
   );

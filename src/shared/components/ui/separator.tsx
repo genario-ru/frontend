@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
-type SeparatorProps = ComponentProps<typeof SeparatorPrimitive.Root>;
+export type SeparatorProps = ComponentProps<typeof SeparatorPrimitive.Root>;
 
 export const Separator = ({
   ref,

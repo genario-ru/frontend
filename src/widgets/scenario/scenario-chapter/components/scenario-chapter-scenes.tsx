@@ -1,15 +1,19 @@
 import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes";
-import { ScenarioChapterSceneHeader } from "@/features/scenario/scenario-chapter/components/scenario-chapter-scene-header";
+import { ScenarioChapterSceneHeader } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { Island } from "@/shared/components/ui/island";
+
+import { ScenarioChapterSceneComponents } from "./scenario-chapter-scene-components";
 
 type ScenarioChapterScenesProps = {
   scenarioId: string;
   chapterId?: string;
+  videoTypeSlug?: string;
 };
 
 export function ScenarioChapterScenes({
   scenarioId,
   chapterId,
+  videoTypeSlug,
 }: ScenarioChapterScenesProps) {
   const {
     scenarioChapterScenesList,
@@ -38,6 +42,10 @@ export function ScenarioChapterScenes({
             name={scene.name}
             startTime={scene.startTime}
             endTime={scene.endTime}
+          />
+          <ScenarioChapterSceneComponents
+            videoTypeSlug={videoTypeSlug}
+            components={scene.components}
           />
         </section>
       ))}

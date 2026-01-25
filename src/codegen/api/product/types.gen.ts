@@ -2813,6 +2813,16 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
         badges: string | null;
         createdAt: string;
         updatedAt: string;
+        components: Array<{
+          id: string;
+          scenarioSceneId: string;
+          name: string;
+          content: string | null;
+          icon: string | null;
+          color: string | null;
+          createdAt: string;
+          updatedAt: string;
+        }>;
       }>;
     };
   };

@@ -24,6 +24,10 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     scenarioVersionId: scenarioData?.data.currentVersionId,
   });
 
+  const scenarioVideoType = useMemo(() => {
+    return scenarioVersionData?.data.videoType;
+  }, [scenarioVersionData]);
+
   const scenarioChaptersList = useMemo(() => {
     return scenarioVersionData?.data.scenarioChapters;
   }, [scenarioVersionData]);
@@ -116,6 +120,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
   }, [nextScenarioChapter, handleSetActiveScenarioChapter]);
 
   return {
+    scenarioVideoType,
     scenarioChaptersList,
     activeScenarioChapter,
     activeScenarioChapterPosition,
