@@ -36,6 +36,7 @@ export function useArchiveFilters() {
           ...activeFilters,
           q: event.target.value,
         },
+        replace: true,
       });
     },
     [navigate, activeFilters],
@@ -54,6 +55,7 @@ export function useArchiveFilters() {
           ...activeFilters,
           [name]: value.length ? value : undefined,
         },
+        replace: true,
       });
     },
     [navigate, activeFilters],
@@ -67,6 +69,7 @@ export function useArchiveFilters() {
           ...activeFilters,
           [name]: undefined,
         },
+        replace: true,
       });
     },
     [navigate, activeFilters],
@@ -76,6 +79,7 @@ export function useArchiveFilters() {
     navigate({
       to: "/archive",
       search: {},
+      replace: true,
     });
   }, [navigate]);
 
