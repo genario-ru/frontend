@@ -3,6 +3,13 @@ import {
   ScenarioChapterHeader,
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
+import { Island } from "@/shared/components/ui/island";
 
 import {
   ScenarioChapterScenes,
@@ -26,11 +33,11 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   }
 
   if (isScenarioChaptersError) {
-    return <div>Error</div>;
+    return <ScenarioChapterErrorPlug />;
   }
 
   if (!activeScenarioChapter) {
-    return <div>No chapter</div>;
+    return null;
   }
 
   return (
@@ -56,5 +63,19 @@ export function ScenarioChapterSkeleton() {
       <ScenarioChapterHeaderSkeleton />
       <ScenarioChapterScenesSkeleton />
     </div>
+  );
+}
+
+export function ScenarioChapterErrorPlug() {
+  return (
+    <Island noPadding>
+      <ErrorPlug className="h-[40dvh]">
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке сценария
+        </ErrorPlugDescription>
+      </ErrorPlug>
+    </Island>
   );
 }

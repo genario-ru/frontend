@@ -59,7 +59,7 @@ export function EmptyPlugHeader({
     <div
       data-slot="empty-plug-header"
       className={cn(
-        "flex max-w-sm flex-col items-center gap-1 group-[data-size=sm]/empty-plug:gap-2",
+        "flex max-w-sm flex-col items-center gap-1 group-data-[size=sm]/empty-plug:gap-2",
         className,
       )}
       {...props}
@@ -72,7 +72,7 @@ export function EmptyPlugTitle({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="empty-plug-title"
       className={cn(
-        "font-medium group-[data-size=base]/empty-plug:text-lg",
+        "font-medium group-data-[size=base]/empty-plug:text-lg",
         className,
       )}
       {...props}
@@ -88,7 +88,7 @@ export function EmptyPlugDescription({
     <div
       data-slot="empty-plug-description"
       className={cn(
-        "text-neutral-6 group-[data-size=base]/empty-plug:text-sm",
+        "text-neutral-6 group-data-[size=base]/empty-plug:text-sm",
         className,
       )}
       {...props}
@@ -101,7 +101,7 @@ export function EmptyContent({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="empty-content"
       className={cn(
-        "flex w-full max-w-sm items-center group-[data-size=sm]/empty-plug:text-sm",
+        "flex w-full max-w-sm items-center group-data-[size=sm]/empty-plug:text-sm",
         className,
       )}
       {...props}

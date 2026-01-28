@@ -4,6 +4,12 @@ import {
   ScenarioChapterSceneHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { ItemsList } from "@/shared/components/common/items-list";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
 import {
@@ -33,7 +39,7 @@ export function ScenarioChapterScenes({
   }
 
   if (isScenarioChapterError) {
-    return <div>Error</div>;
+    return <ScenarioChapterScenesErrorPlug />;
   }
 
   if (!scenarioChapterScenesList?.length) {
@@ -73,6 +79,20 @@ export function ScenarioChapterScenesSkeleton() {
           </section>
         }
       />
+    </Island>
+  );
+}
+
+export function ScenarioChapterScenesErrorPlug() {
+  return (
+    <Island roundedTop={false}>
+      <ErrorPlug variant="outlined" className="h-[30dvh]">
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке сцен
+        </ErrorPlugDescription>
+      </ErrorPlug>
     </Island>
   );
 }
