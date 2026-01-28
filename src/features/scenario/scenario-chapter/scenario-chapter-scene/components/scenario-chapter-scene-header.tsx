@@ -35,7 +35,7 @@ export function ScenarioChapterSceneHeaderSkeleton() {
   return (
     <header className="flex items-center gap-2">
       <TextSkeleton fontSize={18} lineHeight={28} className="w-32" />
-      <Skeleton className="h-7 w-20 rounded-xl" />
+      <Skeleton className="rounded-2 h-6 w-20" />
     </header>
   );
 }

@@ -45,7 +45,7 @@ export function ScenarioChapterHeaderSkeleton() {
           linesCount={1}
           className="w-32"
         />
-        <Skeleton className="h-7 w-20 rounded-xl" />
+        <Skeleton className="rounded-2.5 h-[30px] w-20" />
       </div>
       <TextSkeleton
         fontSize={14}
