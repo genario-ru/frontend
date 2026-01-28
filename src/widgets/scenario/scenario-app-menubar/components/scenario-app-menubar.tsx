@@ -25,7 +25,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   const title = useMemo(() => {
     if (isScenarioLoading) {
-      return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
+      return <ScenarioAppMenubarTitleSkeleton />;
     }
 
     return scenarioTitle;
@@ -33,7 +33,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   const firstLine = useMemo(() => {
     if (isScenarioLoading) {
-      return <Skeleton className="rounded-2.5 h-8 w-24" />;
+      return <ScenarioAppMenubarFirstLineSkeleton />;
     }
 
     if (scenarioData?.data.template) {
@@ -52,7 +52,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   const description = useMemo(() => {
     if (isScenarioLoading) {
-      return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
+      return <ScenarioAppMenubarDescriptionSkeleton />;
     }
 
     return scenarioDescription;
@@ -60,15 +60,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   const left = useMemo(() => {
     if (isScenarioLoading) {
-      return (
-        <ItemsList
-          row
-          count={6}
-          gap={4}
-          item={<Skeleton className="rounded-2.5 h-8 w-24" />}
-          className="flex-wrap"
-        />
-      );
+      return <ScenarioAppMenubarLeftSkeleton />;
     }
 
     return (
@@ -101,6 +93,30 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
           <ScenarioAppMenubarTabs scenarioId={scenarioId} />
         </div>
       }
+    />
+  );
+}
+
+function ScenarioAppMenubarTitleSkeleton() {
+  return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
+}
+
+function ScenarioAppMenubarFirstLineSkeleton() {
+  return <Skeleton className="rounded-2.5 h-[30px] w-24" />;
+}
+
+function ScenarioAppMenubarDescriptionSkeleton() {
+  return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
+}
+
+function ScenarioAppMenubarLeftSkeleton() {
+  return (
+    <ItemsList
+      row
+      count={6}
+      gap={4}
+      item={<Skeleton className="rounded-2.5 h-[30px] w-24" />}
+      className="flex-wrap"
     />
   );
 }
