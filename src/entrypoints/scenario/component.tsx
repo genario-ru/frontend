@@ -1,42 +1,14 @@
 import { useParams, useSearch } from "@tanstack/react-router";
-import { lazy, Suspense, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
-
-const ScenarioNavigationFloating = lazy(() =>
-  import("@/widgets/scenario/scenario-navigation/components/scenario-navigation-floating").then(
-    ({ ScenarioNavigationFloating }) => ({
-      default: ScenarioNavigationFloating,
-    }),
-  ),
-);
-
-const ScenarioNavigationStatic = lazy(() =>
-  import("@/widgets/scenario/scenario-navigation/components/scenario-navigation-static").then(
-    ({ ScenarioNavigationStatic }) => ({
-      default: ScenarioNavigationStatic,
-    }),
-  ),
-);
-
-const ScenarioChapter = lazy(() =>
-  import("@/widgets/scenario/scenario-chapter/components/scenario-chapter").then(
-    ({ ScenarioChapter }) => ({
-      default: ScenarioChapter,
-    }),
-  ),
-);
-
-const ScenarioReferences = lazy(() =>
-  import("@/widgets/scenario/scenario-references/components/scenario-references").then(
-    ({ ScenarioReferences }) => ({
-      default: ScenarioReferences,
-    }),
-  ),
-);
+import { ScenarioChapter } from "@/widgets/scenario/scenario-chapter/components/scenario-chapter";
+import { ScenarioNavigationFloating } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation-floating";
+import { ScenarioNavigationStatic } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation-static";
+import { ScenarioReferences } from "@/widgets/scenario/scenario-references/components/scenario-references";
 
 export function ScenarioComponent() {
   const { scenarioId } = useParams({ from: "/_app/scenarios/$scenarioId" });
@@ -66,9 +38,7 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout>
-        <Suspense fallback={<div>Loading...</div>}>{body}</Suspense>
-      </PageLayout>
+      <PageLayout>{body}</PageLayout>
     </>
   );
 }

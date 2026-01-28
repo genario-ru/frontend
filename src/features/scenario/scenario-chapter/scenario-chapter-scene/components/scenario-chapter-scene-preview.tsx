@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
@@ -37,6 +38,22 @@ export function ScenarioChapterScenePreview({
           alt="Preview"
           className="h-full w-full object-cover"
         />
+      </CardContent>
+    </Card>
+  );
+}
+
+export function ScenarioChapterScenePreviewSkeleton({
+  className,
+}: PropsWithClassName) {
+  return (
+    <Card className={cn("shrink-0", className)}>
+      <CardHeader>
+        <LucideIcon icon={ImagePlayIcon} />
+        <CardTitle>Пример сцены</CardTitle>
+      </CardHeader>
+      <CardContent className="aspect-9/16 p-0">
+        <Skeleton className="h-full w-full" />
       </CardContent>
     </Card>
   );

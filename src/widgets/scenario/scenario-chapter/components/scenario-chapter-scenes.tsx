@@ -1,8 +1,15 @@
 import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes";
-import { ScenarioChapterSceneHeader } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
+import {
+  ScenarioChapterSceneHeader,
+  ScenarioChapterSceneHeaderSkeleton,
+} from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Island } from "@/shared/components/ui/island";
 
-import { ScenarioChapterSceneComponents } from "./scenario-chapter-scene-components";
+import {
+  ScenarioChapterSceneComponents,
+  ScenarioChapterSceneComponentsSkeleton,
+} from "./scenario-chapter-scene-components";
 
 type ScenarioChapterScenesProps = {
   scenarioId: string;
@@ -22,7 +29,7 @@ export function ScenarioChapterScenes({
   } = useScenarioScenes({ scenarioId, chapterId });
 
   if (isScenarioChapterLoading) {
-    return <div>Loading...</div>;
+    return <ScenarioChapterScenesSkeleton />;
   }
 
   if (isScenarioChapterError) {
@@ -49,6 +56,23 @@ export function ScenarioChapterScenes({
           />
         </section>
       ))}
+    </Island>
+  );
+}
+
+export function ScenarioChapterScenesSkeleton() {
+  return (
+    <Island roundedTop={false} className="gap-8 py-8">
+      <ItemsList
+        noParent
+        count={2}
+        item={
+          <section className="flex flex-col gap-4">
+            <ScenarioChapterSceneHeaderSkeleton />
+            <ScenarioChapterSceneComponentsSkeleton />
+          </section>
+        }
+      />
     </Island>
   );
 }

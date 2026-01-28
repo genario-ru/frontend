@@ -1,5 +1,12 @@
-import { ScenarioChapterSceneComponent } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-component";
-import { ScenarioChapterScenePreview } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview";
+import {
+  ScenarioChapterSceneComponent,
+  ScenarioChapterSceneComponentSkeleton,
+} from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-component";
+import {
+  ScenarioChapterScenePreview,
+  ScenarioChapterScenePreviewSkeleton,
+} from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
@@ -51,6 +58,23 @@ export function ScenarioChapterSceneComponents({
             color={component.color}
           />
         ))}
+      </div>
+    </div>
+  );
+}
+
+export function ScenarioChapterSceneComponentsSkeleton() {
+  return (
+    <div className="grid w-full grid-cols-8 gap-4">
+      <div className="col-span-2 flex h-full flex-col">
+        <ScenarioChapterScenePreviewSkeleton className="sticky top-[200px]" />
+      </div>
+      <div className="col-span-6 grid flex-1 grid-cols-2 gap-4">
+        <ItemsList
+          noParent
+          count={5}
+          item={<ScenarioChapterSceneComponentSkeleton />}
+        />
       </div>
     </div>
   );

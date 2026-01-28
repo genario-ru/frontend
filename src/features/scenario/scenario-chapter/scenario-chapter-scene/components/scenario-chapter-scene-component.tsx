@@ -1,6 +1,7 @@
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { type CSSProperties } from "react";
 
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import {
   Card,
@@ -10,6 +11,8 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
@@ -59,6 +62,24 @@ export function ScenarioChapterSceneComponent({
           <ScenarioChapterSceneComponentMarkdown content={content} />
         </CardContent>
       )}
+    </Card>
+  );
+}
+
+export function ScenarioChapterSceneComponentSkeleton() {
+  return (
+    <Card className="group/scenario-chapter-scene">
+      <CardHeader>
+        <Skeleton className="size-6 rounded-md" />
+        <TextSkeleton fontSize={16} lineHeight={24} className="w-32" />
+      </CardHeader>
+      <CardContent>
+        <ItemsList
+          count={3}
+          gap={12}
+          item={<TextSkeleton fontSize={14} lineHeight={20} linesCount={4} />}
+        />
+      </CardContent>
     </Card>
   );
 }

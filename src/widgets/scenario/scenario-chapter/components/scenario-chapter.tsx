@@ -1,7 +1,13 @@
 import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
-import { ScenarioChapterHeader } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
+import {
+  ScenarioChapterHeader,
+  ScenarioChapterHeaderSkeleton,
+} from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 
-import { ScenarioChapterScenes } from "./scenario-chapter-scenes";
+import {
+  ScenarioChapterScenes,
+  ScenarioChapterScenesSkeleton,
+} from "./scenario-chapter-scenes";
 
 type ScenarioChapterProps = {
   scenarioId: string;
@@ -16,7 +22,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   } = useScenarioChapters({ scenarioId });
 
   if (isScenarioChaptersLoading) {
-    return <div>Loading...</div>;
+    return <ScenarioChapterSkeleton />;
   }
 
   if (isScenarioChaptersError) {
@@ -40,6 +46,15 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         chapterId={activeScenarioChapter.id}
         videoTypeSlug={scenarioVideoType?.slug}
       />
+    </div>
+  );
+}
+
+export function ScenarioChapterSkeleton() {
+  return (
+    <div className="flex flex-col">
+      <ScenarioChapterHeaderSkeleton />
+      <ScenarioChapterScenesSkeleton />
     </div>
   );
 }
