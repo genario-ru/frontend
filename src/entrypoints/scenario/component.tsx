@@ -21,7 +21,7 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout className="gap-4">
+      <ContentLayout className="flex-1 gap-4">
         <ScenarioChapter scenarioId={scenarioId} />
         <ScenarioNavigationStatic
           scenarioId={scenarioId}
@@ -38,7 +38,7 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout>{body}</PageLayout>
+      <PageLayout className="flex-1">{body}</PageLayout>
     </>
   );
 }

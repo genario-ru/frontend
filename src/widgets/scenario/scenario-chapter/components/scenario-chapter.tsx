@@ -5,6 +5,7 @@ import {
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 import {
   EmptyPlugDescription,
+  EmptyPlugIcon,
   EmptyPlugTitle,
 } from "@/shared/components/ui/empty-plug";
 import {
@@ -45,7 +46,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-1 flex-col">
       <ScenarioChapterHeader
         name={activeScenarioChapter.name}
         description={activeScenarioChapter.description}
@@ -72,8 +73,8 @@ export function ScenarioChapterSkeleton() {
 
 export function ScenarioChapterErrorPlug() {
   return (
-    <Island noPadding>
-      <ErrorPlug className="h-[40dvh]">
+    <Island noPadding className="flex-1">
+      <ErrorPlug className="flex-1">
         <ErrorPlugIcon />
         <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
         <ErrorPlugDescription>
@@ -86,8 +87,9 @@ export function ScenarioChapterErrorPlug() {
 
 export function ScenarioChapterEmptyPlug() {
   return (
-    <Island noPadding className="h-[50dvh]">
-      <ErrorPlug className="h-full">
+    <Island noPadding className="flex-1">
+      <ErrorPlug className="flex-1">
+        <EmptyPlugIcon />
         <EmptyPlugTitle>Нет разделов</EmptyPlugTitle>
         <EmptyPlugDescription>
           В сценарии пока нет разделов

@@ -92,8 +92,8 @@ export function ScenarioChapterScenesSkeleton() {
 
 export function ScenarioChapterScenesErrorPlug() {
   return (
-    <Island roundedTop={false}>
-      <ErrorPlug variant="outlined" className="h-[30dvh]">
+    <Island roundedTop={false} className="flex-1">
+      <ErrorPlug variant="outlined" className="flex-1">
         <ErrorPlugIcon />
         <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
         <ErrorPlugDescription>
@@ -106,8 +106,8 @@ export function ScenarioChapterScenesErrorPlug() {
 
 export function ScenarioChapterScenesEmptyPlug() {
   return (
-    <Island noPadding roundedTop={false} className="h-[35dvh]">
-      <EmptyPlug className="h-full">
+    <Island noPadding roundedTop={false} className="flex-1">
+      <EmptyPlug className="flex-1">
         <EmptyPlugHeader>
           <EmptyPlugIcon />
           <EmptyPlugTitle>Нет сцен</EmptyPlugTitle>
