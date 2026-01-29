@@ -55,7 +55,7 @@ export function EmptyPlugTitle({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="empty-plug-title"
-      className={cn("text-lg font-medium", className)}
+      className={cn("font-medium", className)}
       {...props}
     />
   );
@@ -82,7 +82,7 @@ export function EmptyPlugDescription({
   return (
     <div
       data-slot="empty-plug-description"
-      className={cn("text-neutral-6", className)}
+      className={cn("text-neutral-6 text-sm", className)}
       {...props}
     />
   );
