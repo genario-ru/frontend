@@ -4,6 +4,10 @@ import {
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 import {
+  EmptyPlugDescription,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
   ErrorPlug,
   ErrorPlugDescription,
   ErrorPlugIcon,
@@ -37,7 +41,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   }
 
   if (!activeScenarioChapter) {
-    return null;
+    return <ScenarioChapterEmptyPlug />;
   }
 
   return (
@@ -75,6 +79,19 @@ export function ScenarioChapterErrorPlug() {
         <ErrorPlugDescription>
           Произошла ошибка при загрузке сценария
         </ErrorPlugDescription>
+      </ErrorPlug>
+    </Island>
+  );
+}
+
+export function ScenarioChapterEmptyPlug() {
+  return (
+    <Island noPadding className="h-[50dvh]">
+      <ErrorPlug className="h-full">
+        <EmptyPlugTitle>Нет разделов</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          В сценарии пока нет разделов
+        </EmptyPlugDescription>
       </ErrorPlug>
     </Island>
   );

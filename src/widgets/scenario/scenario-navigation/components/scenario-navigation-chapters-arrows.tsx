@@ -25,8 +25,8 @@ export function ScenarioNavigationChaptersArrows({
       className={cn(
         "border-neutral-3 flex shrink-0 items-center gap-1 border-b border-l",
         {
-          "px-4 py-2.5": size === "sm",
-          "px-5 py-3": size === "base",
+          "h-[52px] px-4": size === "sm",
+          "h-[64px] px-5": size === "base",
         },
       )}
     >

@@ -1,11 +1,6 @@
 import { ScenarioNavigationScene } from "@/features/scenario/scenario-navigation/components/scenario-navigation-scene";
 import { ItemsList } from "@/shared/components/common/items-list";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
+import { EmptyPlug, EmptyPlugTitle } from "@/shared/components/ui/empty-plug";
 import {
   ErrorPlug,
   ErrorPlugDescription,
@@ -149,12 +144,7 @@ export function ScenarioNavigationScenesEmptyPlug({
         "h-[98px]": size === "base",
       })}
     >
-      <EmptyPlugHeader>
-        <EmptyPlugTitle>Нет сцен</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          В данном разделе пока нет сцен.
-        </EmptyPlugDescription>
-      </EmptyPlugHeader>
+      <EmptyPlugTitle>В данном разделе пока нет сцен</EmptyPlugTitle>
     </EmptyPlug>
   );
 }

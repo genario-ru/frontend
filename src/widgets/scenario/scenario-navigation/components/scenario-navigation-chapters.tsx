@@ -1,10 +1,5 @@
 import { ItemsList } from "@/shared/components/common/items-list";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
+import { EmptyPlug, EmptyPlugTitle } from "@/shared/components/ui/empty-plug";
 import {
   ErrorPlug,
   ErrorPlugDescription,
@@ -49,7 +44,7 @@ export function ScenarioNavigationChapters({
   }
 
   if (!scenarioChaptersList?.length) {
-    return <div className="flex flex-1 px-4">No chapters found</div>;
+    return <ScenarioNavigationChaptersEmptyPlug />;
   }
 
   return (
@@ -143,14 +138,12 @@ export function ScenarioNavigationChaptersEmptyPlug({
 }: Pick<ScenarioNavigationChaptersProps, "size">) {
   return (
     <EmptyPlug
-      className={cn({ "h-[52px]": size === "sm", "h-[64px]": size === "base" })}
+      className={cn("border-neutral-3 border-b", {
+        "h-[52px]": size === "sm",
+        "h-[64px]": size === "base",
+      })}
     >
-      <EmptyPlugHeader>
-        <EmptyPlugTitle>Нет разделов</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          В данном сценарии пока нет разделов.
-        </EmptyPlugDescription>
-      </EmptyPlugHeader>
+      <EmptyPlugTitle>В данном сценарии пока нет разделов</EmptyPlugTitle>
     </EmptyPlug>
   );
 }
