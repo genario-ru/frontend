@@ -41,10 +41,12 @@ export const useCheckScroll = <T extends HTMLElement>({
 
     const { scrollTop, scrollHeight, clientHeight } = element;
 
-    setIsScrolled(scrollTop > scrollOffsetTop);
-    setIsScrolledToBottom(
-      Math.abs(scrollHeight - scrollTop - clientHeight) < scrollOffsetBottom,
-    );
+    const isScrolled = scrollTop > scrollOffsetTop;
+    const isScrolledToBottom =
+      Math.abs(scrollHeight - scrollTop - clientHeight) < scrollOffsetBottom;
+
+    setIsScrolled(isScrolled);
+    setIsScrolledToBottom(isScrolledToBottom);
   }, [elementRef, scrollOffsetTop, scrollOffsetBottom]);
 
   const throttledCheckScrollState = useMemo(

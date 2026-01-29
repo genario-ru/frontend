@@ -1,6 +1,12 @@
 import { ScenarioNavigationScene } from "@/features/scenario/scenario-navigation/components/scenario-navigation-scene";
 import { ItemsList } from "@/shared/components/common/items-list";
 import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
   ErrorPlug,
   ErrorPlugDescription,
   ErrorPlugIcon,
@@ -39,12 +45,12 @@ export function ScenarioNavigationScenes({
     return <ScenarioNavigationScenesSkeleton size={size} />;
   }
 
-  if (!isScenarioNavigationScenesError) {
+  if (isScenarioNavigationScenesError) {
     return <ScenarioNavigationScenesErrorPlug size={size} />;
   }
 
   if (!radioCardsScenesList?.length || !activeScenarioChapterPosition) {
-    return <div>No scenes</div>;
+    return <ScenarioNavigationScenesEmptyPlug size={size} />;
   }
 
   return (
@@ -130,5 +136,25 @@ export function ScenarioNavigationScenesErrorPlug({
         )}
       </div>
     </ErrorPlug>
+  );
+}
+
+export function ScenarioNavigationScenesEmptyPlug({
+  size = "base",
+}: Pick<ScenarioNavigationScenesProps, "size">) {
+  return (
+    <EmptyPlug
+      className={cn({
+        "h-[68px]": size === "sm",
+        "h-[98px]": size === "base",
+      })}
+    >
+      <EmptyPlugHeader>
+        <EmptyPlugTitle>Нет сцен</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          В данном разделе пока нет сцен.
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
   );
 }
