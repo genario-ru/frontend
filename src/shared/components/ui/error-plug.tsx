@@ -7,21 +7,27 @@ import { cn } from "@/shared/utils/cn";
 import { LucideIcon, type LucideIconProps } from "./lucide-icon";
 
 const errorPlugVariants = cva(
-  "group/error-plug flex gap-1 justify-center items-center flex-col",
+  "group/error-plug flex justify-center items-center",
   {
     variants: {
       variant: {
         default: "",
-        outlined: "border border-neutral-3",
+        outlined: "border border-neutral-3 rounded-4",
       },
-      size: {
-        sm: "p-6 rounded-4",
-        base: "p-8 rounded-6",
+      direction: {
+        column: "flex-col gap-1",
+        row: "flex-row gap-2",
       },
     },
+    compoundVariants: [
+      {
+        direction: "row",
+        className: "py-0",
+      },
+    ],
     defaultVariants: {
       variant: "default",
-      size: "base",
+      direction: "column",
     },
   },
 );
@@ -39,15 +45,15 @@ type ErrorPlugDescriptionProps = ComponentProps<"div">;
 
 export function ErrorPlug({
   variant,
-  size = "base",
+  direction,
   className,
   ...props
 }: ErrorPlugProps) {
   return (
     <div
       data-slot="error-plug"
-      data-size={size}
-      className={cn(errorPlugVariants({ variant, size, className }))}
+      data-direction={direction}
+      className={cn(errorPlugVariants({ variant, direction }), className)}
       {...props}
     />
   );
@@ -62,10 +68,7 @@ export function ErrorPlugIcon({
     <LucideIcon
       data-slot="error-plug-icon"
       icon={icon}
-      className={cn(
-        "stroke-negative-5 group-data-[size=base]/error-plug:size-10 group-data-[size=sm]/error-plug:size-8",
-        className,
-      )}
+      className={cn("stroke-negative-5 size-8", className)}
       {...props}
     />
   );
@@ -75,10 +78,7 @@ export function ErrorPlugTitle({ className, ...props }: ErrorPlugTitleProps) {
   return (
     <div
       data-slot="error-plug-title"
-      className={cn(
-        "font-medium group-data-[size=base]/error-plug:text-xl group-data-[size=base]/error-plug:font-semibold",
-        className,
-      )}
+      className={cn("font-medium", className)}
       {...props}
     />
   );
@@ -91,10 +91,7 @@ export function ErrorPlugDescription({
   return (
     <div
       data-slot="error-plug-description"
-      className={cn(
-        "text-neutral-6 group-data-[size=sm]/error-plug:text-sm",
-        className,
-      )}
+      className={cn("text-neutral-6 text-sm leading-tight", className)}
       {...props}
     />
   );

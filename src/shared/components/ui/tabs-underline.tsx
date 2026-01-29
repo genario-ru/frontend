@@ -14,8 +14,8 @@ const tabsUnderlineTriggerVariants = cva(
   {
     variants: {
       size: {
-        sm: "p-4 text-sm [&_svg]:size-5",
-        base: "p-5 text-base [&_svg]:size-6",
+        sm: "px-4 h-[52px] text-sm [&_svg]:size-5",
+        base: "px-5 h-[64px] text-base [&_svg]:size-6",
       },
     },
     defaultVariants: {

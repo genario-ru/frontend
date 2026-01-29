@@ -5,6 +5,13 @@ import {
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { ItemsList } from "@/shared/components/common/items-list";
 import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugIcon,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
   ErrorPlug,
   ErrorPlugDescription,
   ErrorPlugIcon,
@@ -43,7 +50,7 @@ export function ScenarioChapterScenes({
   }
 
   if (!scenarioChapterScenesList?.length) {
-    return <div>No scenes</div>;
+    return <ScenarioChapterScenesEmptyPlug />;
   }
 
   return (
@@ -93,6 +100,22 @@ export function ScenarioChapterScenesErrorPlug() {
           Произошла ошибка при загрузке сцен
         </ErrorPlugDescription>
       </ErrorPlug>
+    </Island>
+  );
+}
+
+export function ScenarioChapterScenesEmptyPlug() {
+  return (
+    <Island noPadding roundedTop={false} className="h-[35dvh]">
+      <EmptyPlug className="h-full">
+        <EmptyPlugHeader>
+          <EmptyPlugIcon />
+          <EmptyPlugTitle>Нет сцен</EmptyPlugTitle>
+          <EmptyPlugDescription>
+            В данном разделе пока нет сцен.
+          </EmptyPlugDescription>
+        </EmptyPlugHeader>
+      </EmptyPlug>
     </Island>
   );
 }

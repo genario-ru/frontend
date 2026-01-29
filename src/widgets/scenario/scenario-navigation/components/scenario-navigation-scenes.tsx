@@ -1,8 +1,16 @@
 import { ScenarioNavigationScene } from "@/features/scenario/scenario-navigation/components/scenario-navigation-scene";
+import { ItemsList } from "@/shared/components/common/items-list";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
 } from "@/shared/components/ui/radio-cards-group";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/utils/cn";
 
 import { useScenarioNavigationScenes } from "../hooks/use-scenario-navigation-scenes";
@@ -28,11 +36,11 @@ export function ScenarioNavigationScenes({
   } = useScenarioNavigationScenes({ scenarioId });
 
   if (isScenarioNavigationScenesLoading) {
-    return <div>Loading...</div>;
+    return <ScenarioNavigationScenesSkeleton size={size} />;
   }
 
-  if (isScenarioNavigationScenesError) {
-    return <div>Error</div>;
+  if (!isScenarioNavigationScenesError) {
+    return <ScenarioNavigationScenesErrorPlug size={size} />;
   }
 
   if (!radioCardsScenesList?.length || !activeScenarioChapterPosition) {
@@ -71,5 +79,56 @@ export function ScenarioNavigationScenes({
         ))}
       </RadioCardsGroup>
     </div>
+  );
+}
+
+export function ScenarioNavigationScenesSkeleton({
+  size = "base",
+}: Pick<ScenarioNavigationScenesProps, "size">) {
+  return (
+    <ItemsList
+      row
+      gap={8}
+      count={8}
+      item={
+        <Skeleton
+          className={cn("w-28", {
+            "h-9 rounded-xl": size === "sm",
+            "h-[58px] rounded-2xl": size === "base",
+          })}
+        />
+      }
+      className={cn("flex flex-1 overflow-hidden", {
+        "p-4": size === "sm",
+        "p-5": size === "base",
+      })}
+    />
+  );
+}
+
+export function ScenarioNavigationScenesErrorPlug({
+  size = "base",
+}: Pick<ScenarioNavigationScenesProps, "size">) {
+  const title =
+    size === "base" ? "Ошибка" : "Произошла ошибка при загрузке сцен";
+
+  return (
+    <ErrorPlug
+      direction="row"
+      className={cn({
+        "h-[68px]": size === "sm",
+        "h-[98px]": size === "base",
+      })}
+    >
+      <ErrorPlugIcon className={cn({ "size-6": size === "sm" })} />
+      <div className="flex flex-col">
+        <ErrorPlugTitle>{title}</ErrorPlugTitle>
+        {size === "base" && (
+          <ErrorPlugDescription>
+            Произошла ошибка при загрузке сцен
+          </ErrorPlugDescription>
+        )}
+      </div>
+    </ErrorPlug>
   );
 }

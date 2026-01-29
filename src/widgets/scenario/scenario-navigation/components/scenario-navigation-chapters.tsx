@@ -1,8 +1,22 @@
+import { ItemsList } from "@/shared/components/common/items-list";
+import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import {
   TabsUnderline,
   TabsUnderlineList,
   TabsUnderlineTrigger,
 } from "@/shared/components/ui/tabs-underline";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 import { cn } from "@/shared/utils/cn";
 
 import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-chapters";
@@ -27,11 +41,11 @@ export function ScenarioNavigationChapters({
   } = useScenarioNavigationChapters({ scenarioId });
 
   if (isScenarioChaptersLoading) {
-    return <div className="flex flex-1 px-4">Loading...</div>;
+    return <ScenarioNavigationChaptersSkeleton size={size} />;
   }
 
   if (isScenarioChaptersError) {
-    return <div className="flex flex-1 px-4">Error</div>;
+    return <ScenarioNavigationChaptersError size={size} />;
   }
 
   if (!scenarioChaptersList?.length) {
@@ -42,7 +56,7 @@ export function ScenarioNavigationChapters({
     <TabsUnderline
       value={activeScenarioChapter?.id}
       onValueChange={handleScenarioValueChange}
-      className="overflow-hidden"
+      className="flex-1 overflow-hidden"
     >
       <TabsUnderlineList
         ref={containerRef}
@@ -67,5 +81,76 @@ export function ScenarioNavigationChapters({
         ))}
       </TabsUnderlineList>
     </TabsUnderline>
+  );
+}
+
+export function ScenarioNavigationChaptersSkeleton({
+  size = "base",
+}: Pick<ScenarioNavigationChaptersProps, "size">) {
+  return (
+    <ItemsList
+      row
+      count={6}
+      item={
+        <div
+          className={cn("rounded-2.5 flex flex-1 items-center justify-center", {
+            "h-[52px] px-4": size === "sm",
+            "h-[64px] px-5": size === "base",
+          })}
+        >
+          <TextSkeleton
+            fontSize={size === "sm" ? 14 : 16}
+            lineHeight={size === "sm" ? 20 : 24}
+            linesCount={1}
+            className="w-24"
+          />
+        </div>
+      }
+      className="border-neutral-3 flex overflow-hidden border-b"
+    />
+  );
+}
+
+export function ScenarioNavigationChaptersError({
+  size = "base",
+}: Pick<ScenarioNavigationChaptersProps, "size">) {
+  const title =
+    size === "base" ? "Ошибка" : "Произошла ошибка при загрузке разделов";
+
+  return (
+    <ErrorPlug
+      direction="row"
+      className={cn("border-neutral-3 flex-1 border-b", {
+        "h-[52px]": size === "sm",
+        "h-[64px]": size === "base",
+      })}
+    >
+      <ErrorPlugIcon className={cn({ "size-6": size === "sm" })} />
+      <div className="flex flex-col">
+        <ErrorPlugTitle>{title}</ErrorPlugTitle>
+        {size === "base" && (
+          <ErrorPlugDescription>
+            Произошла ошибка при загрузке разделов
+          </ErrorPlugDescription>
+        )}
+      </div>
+    </ErrorPlug>
+  );
+}
+
+export function ScenarioNavigationChaptersEmptyPlug({
+  size = "base",
+}: Pick<ScenarioNavigationChaptersProps, "size">) {
+  return (
+    <EmptyPlug
+      className={cn({ "h-[52px]": size === "sm", "h-[64px]": size === "base" })}
+    >
+      <EmptyPlugHeader>
+        <EmptyPlugTitle>Нет разделов</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          В данном сценарии пока нет разделов.
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
   );
 }
