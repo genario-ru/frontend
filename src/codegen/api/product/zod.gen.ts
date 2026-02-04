@@ -3863,6 +3863,26 @@ export const zGetApiV1ReferralInvitesMyResponse = z
     description: "My referral invites retrieved successfully",
   });
 
+export const zGetApiV1ReferralInfoData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Referral info retrieved successfully
+ */
+export const zGetApiV1ReferralInfoResponse = z
+  .object({
+    data: z.object({
+      referralBasicInfo: z.string(),
+      referralDocumentLink: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Referral info retrieved successfully",
+  });
+
 export const zGetApiV1TemplatesData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),

@@ -3429,6 +3429,64 @@ export type GetApiV1ReferralInvitesMyResponses = {
 export type GetApiV1ReferralInvitesMyResponse =
   GetApiV1ReferralInvitesMyResponses[keyof GetApiV1ReferralInvitesMyResponses];
 
+export type GetApiV1ReferralInfoData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/api/v1/referral/info";
+};
+
+export type GetApiV1ReferralInfoErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ReferralInfoError =
+  GetApiV1ReferralInfoErrors[keyof GetApiV1ReferralInfoErrors];
+
+export type GetApiV1ReferralInfoResponses = {
+  /**
+   * Referral info retrieved successfully
+   */
+  200: {
+    data: {
+      referralBasicInfo: string;
+      referralDocumentLink: string;
+    };
+  };
+};
+
+export type GetApiV1ReferralInfoResponse =
+  GetApiV1ReferralInfoResponses[keyof GetApiV1ReferralInfoResponses];
+
 export type GetApiV1TemplatesData = {
   body?: never;
   path?: never;

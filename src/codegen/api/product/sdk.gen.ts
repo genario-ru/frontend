@@ -57,6 +57,9 @@ import type {
   GetApiV1ReferralCodesMyData,
   GetApiV1ReferralCodesMyErrors,
   GetApiV1ReferralCodesMyResponses,
+  GetApiV1ReferralInfoData,
+  GetApiV1ReferralInfoErrors,
+  GetApiV1ReferralInfoResponses,
   GetApiV1ReferralInvitesMyData,
   GetApiV1ReferralInvitesMyErrors,
   GetApiV1ReferralInvitesMyResponses,
@@ -167,6 +170,8 @@ import {
   zGetApiV1ProfilesTypesResponse,
   zGetApiV1ReferralCodesMyData,
   zGetApiV1ReferralCodesMyResponse,
+  zGetApiV1ReferralInfoData,
+  zGetApiV1ReferralInfoResponse,
   zGetApiV1ReferralInvitesMyData,
   zGetApiV1ReferralInvitesMyResponse,
   zGetApiV1ScenariosChaptersChapterIdData,
@@ -1083,6 +1088,25 @@ export const getApiV1ReferralInvitesMy = <ThrowOnError extends boolean = false>(
       return await zGetApiV1ReferralInvitesMyResponse.parseAsync(data);
     },
     url: "/api/v1/referral/invites/my",
+    ...options,
+  });
+};
+
+export const getApiV1ReferralInfo = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiV1ReferralInfoData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetApiV1ReferralInfoResponses,
+    GetApiV1ReferralInfoErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ReferralInfoData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ReferralInfoResponse.parseAsync(data);
+    },
+    url: "/api/v1/referral/info",
     ...options,
   });
 };

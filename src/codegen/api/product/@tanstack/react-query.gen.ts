@@ -27,6 +27,7 @@ import {
   getApiV1ProfilesProfileId,
   getApiV1ProfilesTypes,
   getApiV1ReferralCodesMy,
+  getApiV1ReferralInfo,
   getApiV1ReferralInvitesMy,
   getApiV1ScenariosChaptersChapterId,
   getApiV1ScenariosMy,
@@ -92,6 +93,7 @@ import type {
   GetApiV1ProfilesProfileIdData,
   GetApiV1ProfilesTypesData,
   GetApiV1ReferralCodesMyData,
+  GetApiV1ReferralInfoData,
   GetApiV1ReferralInvitesMyData,
   GetApiV1ReferralInvitesMyError,
   GetApiV1ReferralInvitesMyResponse,
@@ -1253,6 +1255,27 @@ export const getApiV1ReferralInvitesMyInfiniteOptions = (
       queryKey: getApiV1ReferralInvitesMyInfiniteQueryKey(options),
     },
   );
+};
+
+export const getApiV1ReferralInfoQueryKey = (
+  options?: Options<GetApiV1ReferralInfoData>,
+) => createQueryKey("getApiV1ReferralInfo", options, false, ["Referral"]);
+
+export const getApiV1ReferralInfoOptions = (
+  options?: Options<GetApiV1ReferralInfoData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ReferralInfo({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ReferralInfoQueryKey(options),
+  });
 };
 
 export const getApiV1TemplatesQueryKey = (
