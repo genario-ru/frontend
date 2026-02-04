@@ -54,6 +54,12 @@ import type {
   GetApiV1ProfilesTypesData,
   GetApiV1ProfilesTypesErrors,
   GetApiV1ProfilesTypesResponses,
+  GetApiV1ReferralCodesMyData,
+  GetApiV1ReferralCodesMyErrors,
+  GetApiV1ReferralCodesMyResponses,
+  GetApiV1ReferralInvitesMyData,
+  GetApiV1ReferralInvitesMyErrors,
+  GetApiV1ReferralInvitesMyResponses,
   GetApiV1ScenariosChaptersChapterIdData,
   GetApiV1ScenariosChaptersChapterIdErrors,
   GetApiV1ScenariosChaptersChapterIdResponses,
@@ -159,6 +165,10 @@ import {
   zGetApiV1ProfilesProfileIdResponse,
   zGetApiV1ProfilesTypesData,
   zGetApiV1ProfilesTypesResponse,
+  zGetApiV1ReferralCodesMyData,
+  zGetApiV1ReferralCodesMyResponse,
+  zGetApiV1ReferralInvitesMyData,
+  zGetApiV1ReferralInvitesMyResponse,
   zGetApiV1ScenariosChaptersChapterIdData,
   zGetApiV1ScenariosChaptersChapterIdResponse,
   zGetApiV1ScenariosMyData,
@@ -1036,6 +1046,44 @@ export const patchApiV1ScenariosSceneComponentsSceneComponentId = <
       "Content-Type": "application/json",
       ...options.headers,
     },
+  });
+};
+
+export const getApiV1ReferralCodesMy = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiV1ReferralCodesMyData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetApiV1ReferralCodesMyResponses,
+    GetApiV1ReferralCodesMyErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ReferralCodesMyData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ReferralCodesMyResponse.parseAsync(data);
+    },
+    url: "/api/v1/referral/codes/my",
+    ...options,
+  });
+};
+
+export const getApiV1ReferralInvitesMy = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiV1ReferralInvitesMyData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetApiV1ReferralInvitesMyResponses,
+    GetApiV1ReferralInvitesMyErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ReferralInvitesMyData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ReferralInvitesMyResponse.parseAsync(data);
+    },
+    url: "/api/v1/referral/invites/my",
+    ...options,
   });
 };
 

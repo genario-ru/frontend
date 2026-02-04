@@ -3592,6 +3592,277 @@ export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
     description: "Scenario scene component updated successfully",
   });
 
+export const zGetApiV1ReferralCodesMyData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(z.never()),
+});
+
+/**
+ * My referral codes retrieved successfully
+ */
+export const zGetApiV1ReferralCodesMyResponse = z
+  .object({
+    data: z.object({
+      referralCodes: z.array(
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          userId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          referralRewardId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          code: z.string().max(8),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+          referralReward: z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            type: z.enum(["credits", "plan_discount"]),
+            userType: z.enum(["referral_source", "referral_target"]),
+            value: z.int().gte(-9007199254740991).lte(9007199254740991),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        }),
+      ),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "My referral codes retrieved successfully",
+  });
+
+export const zGetApiV1ReferralInvitesMyData = z.object({
+  body: z.optional(z.never()),
+  path: z.optional(z.never()),
+  query: z.optional(
+    z.object({
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      page: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Номер страницы",
+        }),
+      ),
+      perPage: z.optional(
+        z.number().register(z.globalRegistry, {
+          description: "Количество элементов в одной странице ответа",
+        }),
+      ),
+      sort: z.optional(z.string()),
+    }),
+  ),
+});
+
+/**
+ * My referral invites retrieved successfully
+ */
+export const zGetApiV1ReferralInvitesMyResponse = z
+  .object({
+    data: z.array(
+      z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        rewardStatus: z.enum(["registered", "rewarded", "cancelled"]),
+        referralSourceUserId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        referralTargetUserId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        referralCodeId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        creditsBatchId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        planDiscountId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        referralSourceUser: z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          email: z.string(),
+          emailVerified: z.boolean(),
+          phone: z.union([z.string(), z.null()]),
+          phoneVerified: z.boolean(),
+          name: z.string(),
+          image: z.union([z.string(), z.null()]),
+          role: z.enum(["user", "admin"]),
+          banned: z.boolean(),
+          banReason: z.union([z.string(), z.null()]),
+          banExpires: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        referralTargetUser: z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          email: z.string(),
+          emailVerified: z.boolean(),
+          phone: z.union([z.string(), z.null()]),
+          phoneVerified: z.boolean(),
+          name: z.string(),
+          image: z.union([z.string(), z.null()]),
+          role: z.enum(["user", "admin"]),
+          banned: z.boolean(),
+          banReason: z.union([z.string(), z.null()]),
+          banExpires: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        referralCode: z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          userId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          referralRewardId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          code: z.string().max(8),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+        creditsBatch: z.optional(
+          z.union([
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              userId: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              initialAmount: z
+                .int()
+                .gte(-9007199254740991)
+                .lte(9007199254740991),
+              remainingAmount: z
+                .int()
+                .gte(-9007199254740991)
+                .lte(9007199254740991),
+              expiresAt: z.union([z.string(), z.null()]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+            z.null(),
+          ]),
+        ),
+        planDiscount: z.optional(
+          z.union([
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              userId: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              planId: z.union([
+                z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                z.null(),
+              ]),
+              type: z.enum(["fixed", "percentage"]),
+              value: z.int().gte(-9007199254740991).lte(9007199254740991),
+              expiresAt: z.union([z.string(), z.null()]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+            z.null(),
+          ]),
+        ),
+      }),
+    ),
+    meta: z.object({
+      previousPage: z.union([z.number(), z.null()]),
+      currentPage: z.number().register(z.globalRegistry, {
+        description: "Номер текущей страницы",
+      }),
+      nextPage: z.union([z.number(), z.null()]),
+      perPage: z.number().register(z.globalRegistry, {
+        description: "Количество элементов в одной странице ответа",
+      }),
+      totalItems: z.number().register(z.globalRegistry, {
+        description: "Общее количество элементов по запросу",
+      }),
+      totalPages: z.number().register(z.globalRegistry, {
+        description: "Общее количество страниц по запросу",
+      }),
+      q: z.optional(
+        z.string().register(z.globalRegistry, {
+          description: "Строка поиска",
+        }),
+      ),
+      sort: z.string(),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "My referral invites retrieved successfully",
+  });
+
 export const zGetApiV1TemplatesData = z.object({
   body: z.optional(z.never()),
   path: z.optional(z.never()),

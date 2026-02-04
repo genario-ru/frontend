@@ -26,6 +26,8 @@ import {
   getApiV1ProfilesMy,
   getApiV1ProfilesProfileId,
   getApiV1ProfilesTypes,
+  getApiV1ReferralCodesMy,
+  getApiV1ReferralInvitesMy,
   getApiV1ScenariosChaptersChapterId,
   getApiV1ScenariosMy,
   getApiV1ScenariosScenarioId,
@@ -89,6 +91,10 @@ import type {
   GetApiV1ProfilesMyData,
   GetApiV1ProfilesProfileIdData,
   GetApiV1ProfilesTypesData,
+  GetApiV1ReferralCodesMyData,
+  GetApiV1ReferralInvitesMyData,
+  GetApiV1ReferralInvitesMyError,
+  GetApiV1ReferralInvitesMyResponse,
   GetApiV1ScenariosChaptersChapterIdData,
   GetApiV1ScenariosMyData,
   GetApiV1ScenariosScenarioIdData,
@@ -1157,6 +1163,96 @@ export const patchApiV1ScenariosSceneComponentsSceneComponentIdMutation = (
     },
   };
   return mutationOptions;
+};
+
+export const getApiV1ReferralCodesMyQueryKey = (
+  options?: Options<GetApiV1ReferralCodesMyData>,
+) => createQueryKey("getApiV1ReferralCodesMy", options, false, ["Referral"]);
+
+export const getApiV1ReferralCodesMyOptions = (
+  options?: Options<GetApiV1ReferralCodesMyData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ReferralCodesMy({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ReferralCodesMyQueryKey(options),
+  });
+};
+
+export const getApiV1ReferralInvitesMyQueryKey = (
+  options?: Options<GetApiV1ReferralInvitesMyData>,
+) => createQueryKey("getApiV1ReferralInvitesMy", options, false, ["Referral"]);
+
+export const getApiV1ReferralInvitesMyOptions = (
+  options?: Options<GetApiV1ReferralInvitesMyData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ReferralInvitesMy({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ReferralInvitesMyQueryKey(options),
+  });
+};
+
+export const getApiV1ReferralInvitesMyInfiniteQueryKey = (
+  options?: Options<GetApiV1ReferralInvitesMyData>,
+): QueryKey<Options<GetApiV1ReferralInvitesMyData>> =>
+  createQueryKey("getApiV1ReferralInvitesMy", options, true, ["Referral"]);
+
+export const getApiV1ReferralInvitesMyInfiniteOptions = (
+  options?: Options<GetApiV1ReferralInvitesMyData>,
+) => {
+  return infiniteQueryOptions<
+    GetApiV1ReferralInvitesMyResponse,
+    GetApiV1ReferralInvitesMyError,
+    InfiniteData<GetApiV1ReferralInvitesMyResponse>,
+    QueryKey<Options<GetApiV1ReferralInvitesMyData>>,
+    | number
+    | Pick<
+        QueryKey<Options<GetApiV1ReferralInvitesMyData>>[0],
+        "body" | "headers" | "path" | "query"
+      >
+  >(
+    // @ts-ignore
+    {
+      queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<
+          QueryKey<Options<GetApiV1ReferralInvitesMyData>>[0],
+          "body" | "headers" | "path" | "query"
+        > =
+          typeof pageParam === "object"
+            ? pageParam
+            : {
+                query: {
+                  page: pageParam,
+                },
+              };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getApiV1ReferralInvitesMy({
+          ...options,
+          ...params,
+          signal,
+          throwOnError: true,
+        });
+        return data;
+      },
+      queryKey: getApiV1ReferralInvitesMyInfiniteQueryKey(options),
+    },
+  );
 };
 
 export const getApiV1TemplatesQueryKey = (

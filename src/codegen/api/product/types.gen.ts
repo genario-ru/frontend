@@ -3187,6 +3187,248 @@ export type PatchApiV1ScenariosSceneComponentsSceneComponentIdResponses = {
 export type PatchApiV1ScenariosSceneComponentsSceneComponentIdResponse =
   PatchApiV1ScenariosSceneComponentsSceneComponentIdResponses[keyof PatchApiV1ScenariosSceneComponentsSceneComponentIdResponses];
 
+export type GetApiV1ReferralCodesMyData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: "/api/v1/referral/codes/my";
+};
+
+export type GetApiV1ReferralCodesMyErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ReferralCodesMyError =
+  GetApiV1ReferralCodesMyErrors[keyof GetApiV1ReferralCodesMyErrors];
+
+export type GetApiV1ReferralCodesMyResponses = {
+  /**
+   * My referral codes retrieved successfully
+   */
+  200: {
+    data: {
+      referralCodes: Array<{
+        id: string;
+        userId: string;
+        referralRewardId: string;
+        code: string;
+        createdAt: string;
+        updatedAt: string;
+        referralReward: {
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          type: "credits" | "plan_discount";
+          userType: "referral_source" | "referral_target";
+          value: number;
+          createdAt: string;
+          updatedAt: string;
+        };
+      }>;
+    };
+  };
+};
+
+export type GetApiV1ReferralCodesMyResponse =
+  GetApiV1ReferralCodesMyResponses[keyof GetApiV1ReferralCodesMyResponses];
+
+export type GetApiV1ReferralInvitesMyData = {
+  body?: never;
+  path?: never;
+  query?: {
+    /**
+     * Строка поиска
+     */
+    q?: string;
+    /**
+     * Номер страницы
+     */
+    page?: number;
+    /**
+     * Количество элементов в одной странице ответа
+     */
+    perPage?: number;
+    sort?: string;
+  };
+  url: "/api/v1/referral/invites/my";
+};
+
+export type GetApiV1ReferralInvitesMyErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ReferralInvitesMyError =
+  GetApiV1ReferralInvitesMyErrors[keyof GetApiV1ReferralInvitesMyErrors];
+
+export type GetApiV1ReferralInvitesMyResponses = {
+  /**
+   * My referral invites retrieved successfully
+   */
+  200: {
+    data: Array<{
+      id: string;
+      rewardStatus: "registered" | "rewarded" | "cancelled";
+      referralSourceUserId: string;
+      referralTargetUserId: string;
+      referralCodeId: string;
+      creditsBatchId: string | null;
+      planDiscountId: string | null;
+      createdAt: string;
+      updatedAt: string;
+      referralSourceUser: {
+        id: string;
+        email: string;
+        emailVerified: boolean;
+        phone: string | null;
+        phoneVerified: boolean;
+        name: string;
+        image: string | null;
+        role: "user" | "admin";
+        banned: boolean;
+        banReason: string | null;
+        banExpires: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
+      referralTargetUser: {
+        id: string;
+        email: string;
+        emailVerified: boolean;
+        phone: string | null;
+        phoneVerified: boolean;
+        name: string;
+        image: string | null;
+        role: "user" | "admin";
+        banned: boolean;
+        banReason: string | null;
+        banExpires: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
+      referralCode: {
+        id: string;
+        userId: string;
+        referralRewardId: string;
+        code: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      creditsBatch?: {
+        id: string;
+        userId: string;
+        initialAmount: number;
+        remainingAmount: number;
+        expiresAt: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      planDiscount?: {
+        id: string;
+        userId: string;
+        planId: string | null;
+        type: "fixed" | "percentage";
+        value: number;
+        expiresAt: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+    }>;
+    meta: {
+      /**
+       * Номер предыдущей страницы
+       */
+      previousPage: number | null;
+      /**
+       * Номер текущей страницы
+       */
+      currentPage: number;
+      /**
+       * Номер следующей страницы
+       */
+      nextPage: number | null;
+      /**
+       * Количество элементов в одной странице ответа
+       */
+      perPage: number;
+      /**
+       * Общее количество элементов по запросу
+       */
+      totalItems: number;
+      /**
+       * Общее количество страниц по запросу
+       */
+      totalPages: number;
+      /**
+       * Строка поиска
+       */
+      q?: string;
+      sort: string;
+    };
+  };
+};
+
+export type GetApiV1ReferralInvitesMyResponse =
+  GetApiV1ReferralInvitesMyResponses[keyof GetApiV1ReferralInvitesMyResponses];
+
 export type GetApiV1TemplatesData = {
   body?: never;
   path?: never;
