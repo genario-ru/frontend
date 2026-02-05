@@ -4,7 +4,10 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { useCreateScenario } from "@/actions/scenario/hooks/use-create-scenario";
 import { useUpdateScenario } from "@/actions/scenario/hooks/use-update-scenario";
-import { getApiV1ScenariosScenarioIdQueryKey } from "@/codegen/api/product/@tanstack/react-query.gen";
+import {
+  getApiV1ArchiveItemsMyQueryKey,
+  getApiV1ScenariosScenarioIdQueryKey,
+} from "@/codegen/api/product/@tanstack/react-query.gen";
 import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/types.gen";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
@@ -26,6 +29,10 @@ export function useScenarioSettingsForm({
 
   const { createScenario, isCreateScenarioPending } = useCreateScenario({
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: getApiV1ArchiveItemsMyQueryKey(),
+      });
+
       navigate({
         to: "/scenarios/$scenarioId",
         params: { scenarioId: data.data.id },
@@ -35,6 +42,16 @@ export function useScenarioSettingsForm({
 
   const { updateScenario, isUpdateScenarioPending } = useUpdateScenario({
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: getApiV1ArchiveItemsMyQueryKey(),
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: getApiV1ScenariosScenarioIdQueryKey({
+          path: { scenarioId: data.data.id },
+        }),
+      });
+
       queryClient.invalidateQueries({
         queryKey: getApiV1ScenariosScenarioIdQueryKey({
           path: { scenarioId: data.data.id },

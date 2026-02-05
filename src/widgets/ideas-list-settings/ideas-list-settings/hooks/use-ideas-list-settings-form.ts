@@ -4,7 +4,10 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { useCreateIdeasList } from "@/actions/ideas-lists/hooks/use-create-ideas-list";
 import { useUpdateIdeasList } from "@/actions/ideas-lists/hooks/use-update-ideas-list";
-import { getApiV1IdeasListsIdeasListIdQueryKey } from "@/codegen/api/product/@tanstack/react-query.gen";
+import {
+  getApiV1ArchiveItemsMyQueryKey,
+  getApiV1IdeasListsIdeasListIdQueryKey,
+} from "@/codegen/api/product/@tanstack/react-query.gen";
 import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/product/types.gen";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
@@ -26,6 +29,10 @@ export function useIdeasListSettingsForm({
 
   const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList({
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: getApiV1ArchiveItemsMyQueryKey(),
+      });
+
       navigate({
         to: "/ideas-lists/$ideasListId",
         params: { ideasListId: data.data.id },
@@ -35,6 +42,16 @@ export function useIdeasListSettingsForm({
 
   const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList({
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: getApiV1ArchiveItemsMyQueryKey(),
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
+          path: { ideasListId: data.data.id },
+        }),
+      });
+
       queryClient.invalidateQueries({
         queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
           path: { ideasListId: data.data.id },

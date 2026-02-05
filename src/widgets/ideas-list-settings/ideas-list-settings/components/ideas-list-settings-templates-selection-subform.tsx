@@ -32,7 +32,6 @@ export const IdeasListSettingsTemplatesSelectionSubform = withForm({
           {(field) => (
             <FieldLayout errorMessage={field.state.meta.errors[0]}>
               <TemplateCardsRadioGroup
-                defaultValue={templatesData.data[0].id}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onValueChange={(e) => field.handleChange(e)}
