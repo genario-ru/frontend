@@ -19,15 +19,15 @@ export const prepareIdeasListSettingsFormOptions = ({
     defaultValues: {
       currentStep: IdeasListSettingsFormSteps.TemplateSelection,
       [IdeasListSettingsFormSteps.TemplateSelection]: {
-        templateId: ideasListData?.data.templateId ?? "",
+        templateId: ideasListData?.data.templateId,
       },
       [IdeasListSettingsFormSteps.PrimaryInfo]: {
         name: ideasListData?.data.name ?? "",
         description: ideasListData?.data.description ?? "",
       },
       [IdeasListSettingsFormSteps.ParamsConfiguration]: {
-        profileId: ideasListData?.data.profileId ?? "",
-        targetAudience: ideasListData?.data.targetAudience ?? "",
+        profileId: ideasListData?.data.profileId,
+        targetAudience: ideasListData?.data.targetAudience,
         toneIds: ideasListData?.data.tones?.map((tone) => tone.id) ?? [],
         videoTypeIds:
           ideasListData?.data.videoTypes.map((videoType) => videoType.id) ?? [],

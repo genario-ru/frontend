@@ -19,18 +19,18 @@ export const prepareScenarioSettingsFormOptions = ({
     defaultValues: {
       currentStep: ScenarioSettingsFormSteps.TemplateSelection,
       [ScenarioSettingsFormSteps.TemplateSelection]: {
-        templateId: scenarioData?.data.templateId ?? "",
+        templateId: scenarioData?.data.templateId,
       },
       [ScenarioSettingsFormSteps.PrimaryInfo]: {
         name: scenarioData?.data.name ?? "",
         description: scenarioData?.data.description ?? "",
       },
       [ScenarioSettingsFormSteps.ParamsConfiguration]: {
-        videoTypeId: scenarioData?.data.videoTypeId ?? "",
-        videoDurationId: scenarioData?.data.videoDurationId ?? "",
-        platformId: scenarioData?.data.platformId ?? "",
-        profileId: scenarioData?.data.profileId ?? "",
-        targetAudience: scenarioData?.data.targetAudience ?? "",
+        videoTypeId: scenarioData?.data.videoTypeId,
+        videoDurationId: scenarioData?.data.videoDurationId,
+        platformId: scenarioData?.data.platformId,
+        profileId: scenarioData?.data.profileId,
+        targetAudience: scenarioData?.data.targetAudience,
         toneIds: scenarioData?.data.tones?.map((tone) => tone.id) ?? [],
       },
     } as ScenarioSettingsFormSchema,
