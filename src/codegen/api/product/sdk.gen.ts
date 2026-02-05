@@ -33,6 +33,9 @@ import type {
   GetApiV1ArchiveItemsMyData,
   GetApiV1ArchiveItemsMyErrors,
   GetApiV1ArchiveItemsMyResponses,
+  GetApiV1IdeasIdeaIdData,
+  GetApiV1IdeasIdeaIdErrors,
+  GetApiV1IdeasIdeaIdResponses,
   GetApiV1IdeasListsIdeasListIdData,
   GetApiV1IdeasListsIdeasListIdErrors,
   GetApiV1IdeasListsIdeasListIdIdeasData,
@@ -154,6 +157,8 @@ import {
   zGetApiV1ArchiveFiltersResponse,
   zGetApiV1ArchiveItemsMyData,
   zGetApiV1ArchiveItemsMyResponse,
+  zGetApiV1IdeasIdeaIdData,
+  zGetApiV1IdeasIdeaIdResponse,
   zGetApiV1IdeasListsIdeasListIdData,
   zGetApiV1IdeasListsIdeasListIdIdeasData,
   zGetApiV1IdeasListsIdeasListIdIdeasResponse,
@@ -252,6 +257,25 @@ export const deleteApiV1IdeasIdeaId = <ThrowOnError extends boolean = false>(
     },
     responseValidator: async (data) => {
       return await zDeleteApiV1IdeasIdeaIdResponse.parseAsync(data);
+    },
+    url: "/api/v1/ideas/{ideaId}",
+    ...options,
+  });
+};
+
+export const getApiV1IdeasIdeaId = <ThrowOnError extends boolean = false>(
+  options: Options<GetApiV1IdeasIdeaIdData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    GetApiV1IdeasIdeaIdResponses,
+    GetApiV1IdeasIdeaIdErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1IdeasIdeaIdData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1IdeasIdeaIdResponse.parseAsync(data);
     },
     url: "/api/v1/ideas/{ideaId}",
     ...options,

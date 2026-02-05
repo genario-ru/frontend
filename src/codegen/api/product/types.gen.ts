@@ -71,6 +71,93 @@ export type DeleteApiV1IdeasIdeaIdResponses = {
 export type DeleteApiV1IdeasIdeaIdResponse =
   DeleteApiV1IdeasIdeaIdResponses[keyof DeleteApiV1IdeasIdeaIdResponses];
 
+export type GetApiV1IdeasIdeaIdData = {
+  body?: never;
+  path: {
+    ideaId: string;
+  };
+  query?: never;
+  url: "/api/v1/ideas/{ideaId}";
+};
+
+export type GetApiV1IdeasIdeaIdErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1IdeasIdeaIdError =
+  GetApiV1IdeasIdeaIdErrors[keyof GetApiV1IdeasIdeaIdErrors];
+
+export type GetApiV1IdeasIdeaIdResponses = {
+  /**
+   * Idea retrieved successfully
+   */
+  200: {
+    data: {
+      id: string;
+      ideasListId: string;
+      videoTypeId: string;
+      saved: boolean;
+      liked: boolean | null;
+      name: string | null;
+      description: string | null;
+      createdAt: string;
+      updatedAt: string;
+      ideasList: {
+        id: string;
+        userId: string;
+        profileId: string | null;
+        templateId: string | null;
+        name: string | null;
+        description: string | null;
+        targetAudience: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
+    };
+  };
+};
+
+export type GetApiV1IdeasIdeaIdResponse =
+  GetApiV1IdeasIdeaIdResponses[keyof GetApiV1IdeasIdeaIdResponses];
+
 export type PatchApiV1IdeasIdeaIdData = {
   body?: {
     name?: string | null;
@@ -593,6 +680,17 @@ export type GetApiV1IdeasListsIdeasListIdIdeasResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      ideasList: {
+        id: string;
+        userId: string;
+        profileId: string | null;
+        templateId: string | null;
+        name: string | null;
+        description: string | null;
+        targetAudience: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
       videoType: {
         id: string;
         slug: string;

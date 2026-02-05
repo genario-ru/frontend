@@ -19,6 +19,7 @@ import {
   deleteApiV1ScenariosVersionsVersionId,
   getApiV1ArchiveFilters,
   getApiV1ArchiveItemsMy,
+  getApiV1IdeasIdeaId,
   getApiV1IdeasListsIdeasListId,
   getApiV1IdeasListsIdeasListIdIdeas,
   getApiV1IdeasListsMy,
@@ -83,6 +84,7 @@ import type {
   GetApiV1ArchiveItemsMyData,
   GetApiV1ArchiveItemsMyError,
   GetApiV1ArchiveItemsMyResponse,
+  GetApiV1IdeasIdeaIdData,
   GetApiV1IdeasListsIdeasListIdData,
   GetApiV1IdeasListsIdeasListIdIdeasData,
   GetApiV1IdeasListsMyData,
@@ -172,6 +174,67 @@ export const deleteApiV1IdeasIdeaIdMutation = (
     },
   };
   return mutationOptions;
+};
+
+export type QueryKey<TOptions extends Options> = [
+  Pick<TOptions, "baseUrl" | "body" | "headers" | "path" | "query"> & {
+    _id: string;
+    _infinite?: boolean;
+    tags?: ReadonlyArray<string>;
+  },
+];
+
+const createQueryKey = <TOptions extends Options>(
+  id: string,
+  options?: TOptions,
+  infinite?: boolean,
+  tags?: ReadonlyArray<string>,
+): [QueryKey<TOptions>[0]] => {
+  const params: QueryKey<TOptions>[0] = {
+    _id: id,
+    baseUrl:
+      options?.baseUrl || (options?.client ?? client).getConfig().baseUrl,
+  } as QueryKey<TOptions>[0];
+  if (infinite) {
+    params._infinite = infinite;
+  }
+  if (tags) {
+    params.tags = tags;
+  }
+  if (options?.body) {
+    params.body = options.body;
+  }
+  if (options?.headers) {
+    params.headers = options.headers;
+  }
+  if (options?.path) {
+    params.path = options.path;
+  }
+  if (options?.query) {
+    params.query = options.query;
+  }
+  return [params];
+};
+
+export const getApiV1IdeasIdeaIdQueryKey = (
+  options: Options<GetApiV1IdeasIdeaIdData>,
+) => createQueryKey("getApiV1IdeasIdeaId", options, false, ["Ideas"]);
+
+export const getApiV1IdeasIdeaIdOptions = (
+  options: Options<GetApiV1IdeasIdeaIdData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1IdeasIdeaId({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1IdeasIdeaIdQueryKey(options),
+  });
 };
 
 export const patchApiV1IdeasIdeaIdMutation = (
@@ -268,46 +331,6 @@ export const deleteApiV1IdeasListsIdeasListIdMutation = (
     },
   };
   return mutationOptions;
-};
-
-export type QueryKey<TOptions extends Options> = [
-  Pick<TOptions, "baseUrl" | "body" | "headers" | "path" | "query"> & {
-    _id: string;
-    _infinite?: boolean;
-    tags?: ReadonlyArray<string>;
-  },
-];
-
-const createQueryKey = <TOptions extends Options>(
-  id: string,
-  options?: TOptions,
-  infinite?: boolean,
-  tags?: ReadonlyArray<string>,
-): [QueryKey<TOptions>[0]] => {
-  const params: QueryKey<TOptions>[0] = {
-    _id: id,
-    baseUrl:
-      options?.baseUrl || (options?.client ?? client).getConfig().baseUrl,
-  } as QueryKey<TOptions>[0];
-  if (infinite) {
-    params._infinite = infinite;
-  }
-  if (tags) {
-    params.tags = tags;
-  }
-  if (options?.body) {
-    params.body = options.body;
-  }
-  if (options?.headers) {
-    params.headers = options.headers;
-  }
-  if (options?.path) {
-    params.path = options.path;
-  }
-  if (options?.query) {
-    params.query = options.query;
-  }
-  return [params];
 };
 
 export const getApiV1IdeasListsIdeasListIdQueryKey = (
