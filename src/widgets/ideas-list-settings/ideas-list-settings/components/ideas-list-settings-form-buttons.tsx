@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon, FilmIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, LightbulbIcon } from "lucide-react";
 
 import { withForm } from "@/lib/tanstack-form";
 import { Button } from "@/shared/components/ui/button";
@@ -13,6 +13,7 @@ import {
 
 type IdeasListSettingsFormButtonsProps = {
   currentStep: IdeasListSettingsFormSteps;
+  editMode: boolean;
   isCreateIdeasListPending: boolean;
   isUpdateIdeasListPending: boolean;
 };
@@ -23,6 +24,7 @@ export const IdeasListSettingsFormButtons = withForm({
   render: ({
     form,
     currentStep,
+    editMode,
     isCreateIdeasListPending,
     isUpdateIdeasListPending,
   }) => {
@@ -79,9 +81,9 @@ export const IdeasListSettingsFormButtons = withForm({
             size="lg"
             disabled={isLoading}
             state={isLoading ? "loading" : "default"}
-            icon={<FilmIcon />}
+            icon={editMode ? undefined : <LightbulbIcon />}
           >
-            Создать список идей
+            {editMode ? "Сохранить" : "Сгенерировать идеи"}
           </Button>
         ) : (
           <Button

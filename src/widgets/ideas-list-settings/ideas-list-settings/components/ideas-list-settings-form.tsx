@@ -39,6 +39,7 @@ export function IdeasListSettingsForm({
       </Island>
       <IdeasListSettingsFormButtons
         form={form}
+        editMode={Boolean(ideasListData)}
         currentStep={currentStep}
         isCreateIdeasListPending={isCreateIdeasListPending}
         isUpdateIdeasListPending={isUpdateIdeasListPending}

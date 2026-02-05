@@ -12,6 +12,7 @@ import {
 } from "../utils/scenario-settings-form-helpers";
 
 type ScenarioSettingsFormButtonsProps = {
+  editMode: boolean;
   currentStep: ScenarioSettingsFormSteps;
   isCreateScenarioPending: boolean;
   isUpdateScenarioPending: boolean;
@@ -22,6 +23,7 @@ export const ScenarioSettingsFormButtons = withForm({
   props: {} as ScenarioSettingsFormButtonsProps,
   render: ({
     form,
+    editMode,
     currentStep,
     isCreateScenarioPending,
     isUpdateScenarioPending,
@@ -79,9 +81,9 @@ export const ScenarioSettingsFormButtons = withForm({
             size="lg"
             disabled={isLoading}
             state={isLoading ? "loading" : "default"}
-            icon={<FilmIcon />}
+            icon={editMode ? undefined : <FilmIcon />}
           >
-            Создать сценарий
+            {editMode ? "Сохранить" : "Сгенерировать сценарий"}
           </Button>
         ) : (
           <Button

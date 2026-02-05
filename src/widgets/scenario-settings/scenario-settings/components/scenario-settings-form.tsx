@@ -36,6 +36,7 @@ export function ScenarioSettingsForm({
       </Island>
       <ScenarioSettingsFormButtons
         form={form}
+        editMode={Boolean(scenarioData)}
         currentStep={currentStep}
         isCreateScenarioPending={isCreateScenarioPending}
         isUpdateScenarioPending={isUpdateScenarioPending}
