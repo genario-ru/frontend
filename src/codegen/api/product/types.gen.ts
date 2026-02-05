@@ -64,6 +64,15 @@ export type DeleteApiV1IdeasIdeaIdResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
     };
   };
 };
@@ -131,6 +140,15 @@ export type GetApiV1IdeasIdeaIdResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
       ideasList: {
         id: string;
         userId: string;
@@ -179,15 +197,6 @@ export type GetApiV1IdeasIdeaIdResponses = {
           createdAt: string;
           updatedAt: string;
         }>;
-      };
-      videoType: {
-        id: string;
-        slug: string;
-        name: string;
-        description: string | null;
-        icon: string | null;
-        createdAt: string;
-        updatedAt: string;
       };
     };
   };
@@ -261,6 +270,15 @@ export type PatchApiV1IdeasIdeaIdResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
     };
   };
 };
@@ -330,6 +348,15 @@ export type PatchApiV1IdeasIdeaIdSaveResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
     };
   };
 };
@@ -718,55 +745,6 @@ export type GetApiV1IdeasListsIdeasListIdIdeasResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
-      ideasList: {
-        id: string;
-        userId: string;
-        profileId: string | null;
-        templateId: string | null;
-        name: string | null;
-        description: string | null;
-        targetAudience: string | null;
-        createdAt: string;
-        updatedAt: string;
-        template: {
-          id: string;
-          slug: string;
-          name: string;
-          description: string | null;
-          icon: string | null;
-          color: string;
-          createdAt: string;
-          updatedAt: string;
-        } | null;
-        profile: {
-          id: string;
-          userId: string;
-          name: string;
-          description: string | null;
-          targetAudience: string | null;
-          typeId: string | null;
-          createdAt: string;
-          updatedAt: string;
-        } | null;
-        tones: Array<{
-          id: string;
-          slug: string;
-          name: string;
-          description: string | null;
-          icon: string | null;
-          createdAt: string;
-          updatedAt: string;
-        }>;
-        videoTypes: Array<{
-          id: string;
-          slug: string;
-          name: string;
-          description: string | null;
-          icon: string | null;
-          createdAt: string;
-          updatedAt: string;
-        }>;
-      };
       videoType: {
         id: string;
         slug: string;
@@ -847,6 +825,15 @@ export type PostApiV1IdeasListsIdeasListIdIdeasResponses = {
       description: string | null;
       createdAt: string;
       updatedAt: string;
+      videoType: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      };
     };
   };
 };
