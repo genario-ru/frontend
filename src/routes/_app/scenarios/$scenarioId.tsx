@@ -4,13 +4,15 @@ import * as z from "zod";
 
 import { ScenarioComponent } from "@/entrypoints/scenario/component";
 
+const scenarioSearchSchema = z.object({
+  chapterId: z.string().optional(),
+  sceneId: z.string().optional(),
+  tab: z.string().optional(),
+});
+
+export type ScenarioSearch = z.infer<typeof scenarioSearchSchema>;
+
 export const Route = createFileRoute("/_app/scenarios/$scenarioId")({
-  validateSearch: zodValidator(
-    z.object({
-      chapterId: z.optional(z.string()),
-      sceneId: z.optional(z.string()),
-      tab: z.optional(z.string()),
-    }),
-  ),
+  validateSearch: zodValidator(scenarioSearchSchema),
   component: ScenarioComponent,
 });

@@ -1,15 +1,17 @@
 import { useMemo } from "react";
 
+import type { IdeasListSettingsSearch } from "@/routes/_app/ideas-lists/settings";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useIdeasListSettings } from "../hooks/use-ideas-list-settings";
 import { IdeasListSettingsForm } from "./ideas-list-settings-form";
 
-type IdeasListSettingsProps = {
-  ideasListId?: string;
-};
+type IdeasListSettingsProps = IdeasListSettingsSearch;
 
-export function IdeasListSettings({ ideasListId }: IdeasListSettingsProps) {
+export function IdeasListSettings({
+  templateId,
+  ideasListId,
+}: IdeasListSettingsProps) {
   const { ideasListData, isIdeasListLoading, isIdeasListError } =
     useIdeasListSettings({ ideasListId });
 

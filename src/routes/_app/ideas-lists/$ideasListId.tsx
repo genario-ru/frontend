@@ -4,11 +4,13 @@ import * as z from "zod";
 
 import { IdeasListComponent } from "@/entrypoints/ideas-list/component";
 
+const ideasListSearchSchema = z.object({
+  tab: z.string().optional(),
+});
+
+export type IdeasListSearch = z.infer<typeof ideasListSearchSchema>;
+
 export const Route = createFileRoute("/_app/ideas-lists/$ideasListId")({
-  validateSearch: zodValidator(
-    z.object({
-      tab: z.optional(z.string()),
-    }),
-  ),
+  validateSearch: zodValidator(ideasListSearchSchema),
   component: IdeasListComponent,
 });

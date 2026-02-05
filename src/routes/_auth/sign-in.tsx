@@ -1,16 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { boolean, email, object, string } from "zod";
+import * as z from "zod";
 
 import { SignInComponent } from "@/entrypoints/sign-in/component";
 
+const signInSearchSchema = z.object({
+  email: z.email().optional(),
+  redirect: z.string().optional(),
+  signOut: z.boolean().optional(),
+});
+
+export type SignInSearch = z.infer<typeof signInSearchSchema>;
+
 export const Route = createFileRoute("/_auth/sign-in")({
-  validateSearch: zodValidator(
-    object({
-      email: email().optional(),
-      redirect: string().optional(),
-      signOut: boolean().optional(),
-    }),
-  ),
+  validateSearch: zodValidator(signInSearchSchema),
   component: SignInComponent,
 });

@@ -5,13 +5,15 @@ import { IdeasListSettings } from "@/widgets/ideas-list-settings/ideas-list-sett
 import { IdeasListSettingsAppMenubar } from "@/widgets/ideas-list-settings/ideas-list-settings-app-menubar/components/ideas-list-settings-app-menubar";
 
 export function IdeasListSettingsComponent() {
-  const { ideasListId } = useSearch({ from: "/_app/ideas-lists/settings" });
+  const { templateId, ideasListId } = useSearch({
+    from: "/_app/ideas-lists/settings",
+  });
 
   return (
     <>
       <IdeasListSettingsAppMenubar />
       <PageLayout className="flex-1">
-        <IdeasListSettings ideasListId={ideasListId} />
+        <IdeasListSettings templateId={templateId} ideasListId={ideasListId} />
       </PageLayout>
     </>
   );
