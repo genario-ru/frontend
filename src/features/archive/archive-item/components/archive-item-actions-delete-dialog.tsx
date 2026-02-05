@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { getArchiveCardActionsDeleteDialogTexts } from "../utils/get-archive-card-actions-delete-dialog-texts";
+import { getArchiveItemActionsDeleteDialogTexts } from "../utils/get-archive-item-actions-delete-dialog-texts";
 import { ArchiveItemActionsButton } from "./archive-item-actions-button";
 
 type ArchiveItemActionsDeleteDialogProps = {
@@ -28,16 +28,12 @@ export function ArchiveItemActionsDeleteDialog({
   setIsDialogOpened,
   onConfirmDeleteArchiveItem,
 }: ArchiveItemActionsDeleteDialogProps) {
-  const { title, description } = getArchiveCardActionsDeleteDialogTexts(entity);
+  const { title, description } = getArchiveItemActionsDeleteDialogTexts(entity);
 
   return (
     <Dialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
       <DialogTrigger asChild>
-        <ArchiveItemActionsButton
-          size="sm"
-          color="negative"
-          icon={<TrashIcon />}
-        >
+        <ArchiveItemActionsButton color="negative" icon={<TrashIcon />}>
           Удалить
         </ArchiveItemActionsButton>
       </DialogTrigger>

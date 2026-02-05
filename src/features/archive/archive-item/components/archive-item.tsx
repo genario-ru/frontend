@@ -5,7 +5,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { ProfileImage } from "@/shared/components/common/profile-image";
 import { cn } from "@/shared/utils/cn";
 
-import { getArchiveCardLinkOptions } from "../utils/get-archive-card-link-options";
+import { getArchiveItemLinkOptions } from "../utils/get-archive-item-link-options";
 
 type ArchiveItemProps = Omit<ComponentProps<"div">, "title"> & {
   id: string;
@@ -41,7 +41,7 @@ export const ArchiveItem = ({
         {actions}
       </div>
       <Link
-        {...getArchiveCardLinkOptions({ id, entity })}
+        {...getArchiveItemLinkOptions({ id, entity })}
         className="flex h-full w-full flex-col justify-between gap-4 p-4"
       >
         <header className="flex w-full flex-col gap-1">

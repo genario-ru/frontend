@@ -4,6 +4,11 @@ type ArchiveItemActionsButtonProps = ButtonProps;
 
 export function ArchiveItemActionsButton(props: ArchiveItemActionsButtonProps) {
   return (
-    <Button variant="tertiary" className="w-full justify-start" {...props} />
+    <Button
+      size="sm"
+      variant="tertiary"
+      className="w-full justify-start"
+      {...props}
+    />
   );
 }

@@ -1,4 +1,4 @@
-export function getArchiveCardActionsDeleteDialogTexts(
+export function getArchiveItemActionsDeleteDialogTexts(
   entity: "ideasList" | "scenario",
 ) {
   const title =

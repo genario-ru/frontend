@@ -1,6 +1,7 @@
 import { EllipsisIcon } from "lucide-react";
 
 import { ArchiveItemActionsDeleteDialog } from "@/features/archive/archive-item/components/archive-item-actions-delete-dialog";
+import { ArchiveItemEditLink } from "@/features/archive/archive-item/components/archive-item-edit-link";
 import { Button } from "@/shared/components/ui/button";
 import {
   DropdownMenu,
@@ -37,6 +38,7 @@ export function ArchiveItemActions({ id, entity }: ArchiveItemActionsProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
+          <ArchiveItemEditLink id={id} entity={entity} />
           <ArchiveItemActionsDeleteDialog
             entity={entity}
             isDialogOpened={isDeleteArchiveItemDialogOpen}
