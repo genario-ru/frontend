@@ -4,16 +4,14 @@ import type { ComponentProps } from "react";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { cn } from "@/shared/utils/cn";
 
-import { TemplateCardMenuButton } from "./template-card-menu-button";
+import { TemplateCardMenuButtonLink } from "./template-card-menu-button-link";
 
 type TemplateCardMenuProps = ComponentProps<"div"> & {
-  onCreateIdeasButtonClick: () => void;
-  onCreateScenarioButtonClick: () => void;
+  templateId: string;
 };
 
 export function TemplateCardMenu({
-  onCreateIdeasButtonClick,
-  onCreateScenarioButtonClick,
+  templateId,
   className,
   ...props
 }: TemplateCardMenuProps) {
@@ -25,18 +23,20 @@ export function TemplateCardMenu({
       )}
       {...props}
     >
-      <TemplateCardMenuButton
+      <TemplateCardMenuButtonLink
+        to="/ideas-lists/settings"
+        search={{ templateId }}
         icon={<LucideIcon icon={LightbulbIcon} />}
-        onClick={onCreateIdeasButtonClick}
       >
         Новые идеи
-      </TemplateCardMenuButton>
-      <TemplateCardMenuButton
+      </TemplateCardMenuButtonLink>
+      <TemplateCardMenuButtonLink
+        to="/scenarios/settings"
+        search={{ templateId }}
         icon={<LucideIcon icon={FilmIcon} />}
-        onClick={onCreateScenarioButtonClick}
       >
         Новый сценарий
-      </TemplateCardMenuButton>
+      </TemplateCardMenuButtonLink>
     </div>
   );
 }

@@ -5,12 +5,11 @@ type HomeTemplatesCarouselSlideMenuProps = {
 };
 
 export function HomeTemplatesCarouselSlideMenu({
-  templateId: _templateId,
+  templateId,
 }: HomeTemplatesCarouselSlideMenuProps) {
   return (
     <TemplateCardMenu
-      onCreateIdeasButtonClick={() => {}}
-      onCreateScenarioButtonClick={() => {}}
+      templateId={templateId}
       className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100"
     />
   );

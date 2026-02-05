@@ -24,8 +24,13 @@ export function IdeasListSettings({
       return <div>Error...</div>;
     }
 
-    return <IdeasListSettingsForm ideasListData={ideasListData} />;
-  }, [ideasListData, isIdeasListLoading, isIdeasListError]);
+    return (
+      <IdeasListSettingsForm
+        templateId={templateId}
+        ideasListData={ideasListData}
+      />
+    );
+  }, [templateId, ideasListData, isIdeasListLoading, isIdeasListError]);
 
   return (
     <ContentLayout size="md" className="flex-1">

@@ -8,10 +8,12 @@ import { IdeasListSettingsFormNavigationSteps } from "./ideas-list-settings-form
 import { IdeasListSettingsFormNavigationStepsListener } from "./ideas-list-settings-form-navigation-steps-listener";
 
 type IdeasListSettingsFormProps = {
+  templateId: string | undefined;
   ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
 };
 
 export function IdeasListSettingsForm({
+  templateId,
   ideasListData,
 }: IdeasListSettingsFormProps) {
   const {
@@ -20,7 +22,7 @@ export function IdeasListSettingsForm({
     onFormSubmit,
     isCreateIdeasListPending,
     isUpdateIdeasListPending,
-  } = useIdeasListSettingsForm({ ideasListData });
+  } = useIdeasListSettingsForm({ templateId, ideasListData });
 
   return (
     <form onSubmit={onFormSubmit} className="flex flex-1 flex-col">

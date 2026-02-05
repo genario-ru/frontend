@@ -9,17 +9,23 @@ import {
 } from "./ideas-list-settings-form-helpers";
 
 type PrepareScenarioFormOptionsParams = {
+  templateId: string | undefined;
   ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
 };
 
 export const prepareIdeasListSettingsFormOptions = ({
+  templateId,
   ideasListData,
 }: PrepareScenarioFormOptionsParams) => {
+  const currentStep = templateId
+    ? IdeasListSettingsFormSteps.PrimaryInfo
+    : IdeasListSettingsFormSteps.TemplateSelection;
+
   return formOptions({
     defaultValues: {
-      currentStep: IdeasListSettingsFormSteps.TemplateSelection,
+      currentStep,
       [IdeasListSettingsFormSteps.TemplateSelection]: {
-        templateId: ideasListData?.data.templateId,
+        templateId: templateId ?? ideasListData?.data.templateId,
       },
       [IdeasListSettingsFormSteps.PrimaryInfo]: {
         name: ideasListData?.data.name ?? "",

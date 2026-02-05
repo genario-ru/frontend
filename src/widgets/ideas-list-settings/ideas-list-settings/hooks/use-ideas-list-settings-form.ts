@@ -17,15 +17,21 @@ import { prepareIdeasListSettingsFormOptions } from "../utils/prepare-ideas-list
 import { usePrefetchIdeasListSettingsSubformsData } from "./use-prefetch-ideas-list-settings-subforms-data";
 
 type UseIdeasListSettingsFormParams = {
+  templateId: string | undefined;
   ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
 };
 
 export function useIdeasListSettingsForm({
+  templateId,
   ideasListData,
 }: UseIdeasListSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const formOptions = prepareIdeasListSettingsFormOptions({ ideasListData });
+
+  const formOptions = prepareIdeasListSettingsFormOptions({
+    templateId,
+    ideasListData,
+  });
 
   const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList({
     onSuccess: (data) => {

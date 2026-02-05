@@ -17,15 +17,21 @@ import { ScenarioSettingsFormSteps } from "../utils/scenario-settings-form-helpe
 import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario-settings-subforms-data";
 
 type UseScenarioSettingsFormParams = {
+  templateId: string | undefined;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
 };
 
 export function useScenarioSettingsForm({
+  templateId,
   scenarioData,
 }: UseScenarioSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const formOptions = prepareScenarioSettingsFormOptions({ scenarioData });
+
+  const formOptions = prepareScenarioSettingsFormOptions({
+    templateId,
+    scenarioData,
+  });
 
   const { createScenario, isCreateScenarioPending } = useCreateScenario({
     onSuccess: (data) => {

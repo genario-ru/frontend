@@ -9,17 +9,23 @@ import {
 } from "./scenario-settings-form-helpers";
 
 type PrepareScenarioSettingsFormOptionsParams = {
+  templateId: string | undefined;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
 };
 
 export const prepareScenarioSettingsFormOptions = ({
+  templateId,
   scenarioData,
 }: PrepareScenarioSettingsFormOptionsParams) => {
+  const currentStep = templateId
+    ? ScenarioSettingsFormSteps.PrimaryInfo
+    : ScenarioSettingsFormSteps.TemplateSelection;
+
   return formOptions({
     defaultValues: {
-      currentStep: ScenarioSettingsFormSteps.TemplateSelection,
+      currentStep,
       [ScenarioSettingsFormSteps.TemplateSelection]: {
-        templateId: scenarioData?.data.templateId,
+        templateId: templateId ?? scenarioData?.data.templateId,
       },
       [ScenarioSettingsFormSteps.PrimaryInfo]: {
         name: scenarioData?.data.name ?? "",

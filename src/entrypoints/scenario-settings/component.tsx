@@ -5,13 +5,15 @@ import { ScenarioSettings } from "@/widgets/scenario-settings/scenario-settings/
 import { ScenarioSettingsAppMenubar } from "@/widgets/scenario-settings/scenario-settings-app-menubar/components/scenario-settings-app-menubar";
 
 export function ScenarioSettingsComponent() {
-  const { scenarioId } = useSearch({ from: "/_app/scenarios/settings" });
+  const { templateId, scenarioId } = useSearch({
+    from: "/_app/scenarios/settings",
+  });
 
   return (
     <>
       <ScenarioSettingsAppMenubar />
       <PageLayout className="flex-1">
-        <ScenarioSettings scenarioId={scenarioId} />
+        <ScenarioSettings templateId={templateId} scenarioId={scenarioId} />
       </PageLayout>
     </>
   );

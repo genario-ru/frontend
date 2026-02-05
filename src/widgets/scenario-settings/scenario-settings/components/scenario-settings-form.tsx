@@ -8,10 +8,12 @@ import { ScenarioSettingsFormNavigationSteps } from "./scenario-settings-form-na
 import { ScenarioSettingsFormNavigationStepsListener } from "./scenario-settings-form-navigation-steps-listener";
 
 type ScenarioSettingsFormProps = {
+  templateId: string | undefined;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
 };
 
 export function ScenarioSettingsForm({
+  templateId,
   scenarioData,
 }: ScenarioSettingsFormProps) {
   const {
@@ -20,7 +22,7 @@ export function ScenarioSettingsForm({
     onFormSubmit,
     isCreateScenarioPending,
     isUpdateScenarioPending,
-  } = useScenarioSettingsForm({ scenarioData });
+  } = useScenarioSettingsForm({ templateId, scenarioData });
 
   return (
     <form onSubmit={onFormSubmit} className="flex w-full flex-1 flex-col">
