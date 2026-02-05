@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import type { ComponentProps, ReactNode } from "react";
 
 import { ProfileImage } from "@/shared/components/common/profile-image";
+import { DOT } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
 import { getArchiveItemLinkOptions } from "../utils/get-archive-item-link-options";
@@ -47,6 +48,8 @@ export const ArchiveItem = ({
         <header className="flex w-full flex-col gap-1">
           <p className="text-neutral-7 text-xs font-medium">
             {format(createdAt, "dd.MM.yyyy")}
+            <span className="px-1">{DOT}</span>
+            {entity === "ideasList" ? "Список идей" : "Сценарий"}
           </p>
           <p className="text-lg font-semibold">{title || "Без названия"}</p>
           {description && (
