@@ -41,12 +41,9 @@ export function TemplateCard({
     >
       <header className="flex gap-2">
         {icon && (
-          <LucideIcon
-            icon={icon}
-            className="mt-0.5 stroke-(--template-color)"
-          />
+          <LucideIcon icon={icon} className="stroke-(--template-color)" />
         )}
-        <Heading variant="h4">{title}</Heading>
+        <Heading variant="h3">{title}</Heading>
       </header>
       {description && (
         <p className="text-neutral-7 line-clamp-4 text-sm">{description}</p>

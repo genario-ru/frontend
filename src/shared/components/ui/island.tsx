@@ -55,11 +55,7 @@ export const Island = ({
     >
       {withHeader && (
         <header className="flex flex-col gap-1">
-          {title && (
-            <Heading as="h2" variant="h4">
-              {title}
-            </Heading>
-          )}
+          {title && <Heading variant="h2">{title}</Heading>}
           {description && (
             <p className="text-neutral-7 text-sm">{description}</p>
           )}

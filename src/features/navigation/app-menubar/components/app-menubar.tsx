@@ -62,7 +62,7 @@ export const AppMenubar = memo(
                 onClick={onBackButtonClick}
               />
             )}
-            <Heading variant="h2">{title}</Heading>
+            <Heading variant="h1">{title}</Heading>
             {firstLine}
           </div>
           {description && (
