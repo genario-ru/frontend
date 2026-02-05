@@ -8,7 +8,10 @@ import {
   getApiV1ArchiveItemsMyQueryKey,
   getApiV1ScenariosScenarioIdQueryKey,
 } from "@/codegen/api/product/@tanstack/react-query.gen";
-import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/types.gen";
+import type {
+  GetApiV1IdeasIdeaIdResponse,
+  GetApiV1ScenariosScenarioIdResponse,
+} from "@/codegen/api/product/types.gen";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
@@ -19,11 +22,13 @@ import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario
 type UseScenarioSettingsFormParams = {
   templateId: string | undefined;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
+  ideaData: GetApiV1IdeasIdeaIdResponse | undefined;
 };
 
 export function useScenarioSettingsForm({
   templateId,
   scenarioData,
+  ideaData,
 }: UseScenarioSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -31,6 +36,7 @@ export function useScenarioSettingsForm({
   const formOptions = prepareScenarioSettingsFormOptions({
     templateId,
     scenarioData,
+    ideaData,
   });
 
   const { createScenario, isCreateScenarioPending } = useCreateScenario({

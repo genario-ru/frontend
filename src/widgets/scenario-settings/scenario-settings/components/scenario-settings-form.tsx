@@ -1,4 +1,7 @@
-import type { GetApiV1ScenariosScenarioIdResponse } from "@/codegen/api/product/types.gen";
+import type {
+  GetApiV1IdeasIdeaIdResponse,
+  GetApiV1ScenariosScenarioIdResponse,
+} from "@/codegen/api/product/types.gen";
 import { Island } from "@/shared/components/ui/island";
 
 import { useScenarioSettingsForm } from "../hooks/use-scenario-settings-form";
@@ -10,19 +13,21 @@ import { ScenarioSettingsFormNavigationStepsListener } from "./scenario-settings
 type ScenarioSettingsFormProps = {
   templateId: string | undefined;
   scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
+  ideaData: GetApiV1IdeasIdeaIdResponse | undefined;
 };
 
 export function ScenarioSettingsForm({
   templateId,
   scenarioData,
+  ideaData,
 }: ScenarioSettingsFormProps) {
   const {
     form,
     currentStep,
-    onFormSubmit,
     isCreateScenarioPending,
     isUpdateScenarioPending,
-  } = useScenarioSettingsForm({ templateId, scenarioData });
+    onFormSubmit,
+  } = useScenarioSettingsForm({ templateId, scenarioData, ideaData });
 
   return (
     <form onSubmit={onFormSubmit} className="flex w-full flex-1 flex-col">

@@ -11,9 +11,11 @@ type ScenarioSettingsProps = ScenarioSettingsSearch;
 export function ScenarioSettings({
   templateId,
   scenarioId,
+  fromIdeaId,
 }: ScenarioSettingsProps) {
-  const { scenarioData, isLoading, isError } = useScenarioSettings({
+  const { scenarioData, ideaData, isLoading, isError } = useScenarioSettings({
     scenarioId,
+    fromIdeaId,
   });
 
   const body = useMemo(() => {
@@ -29,9 +31,10 @@ export function ScenarioSettings({
       <ScenarioSettingsForm
         templateId={templateId}
         scenarioData={scenarioData}
+        ideaData={ideaData}
       />
     );
-  }, [templateId, scenarioData, isLoading, isError]);
+  }, [templateId, scenarioData, ideaData, isLoading, isError]);
 
   return (
     <ContentLayout size="md" className="flex-1">
