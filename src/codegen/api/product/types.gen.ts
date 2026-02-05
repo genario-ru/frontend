@@ -141,6 +141,44 @@ export type GetApiV1IdeasIdeaIdResponses = {
         targetAudience: string | null;
         createdAt: string;
         updatedAt: string;
+        template: {
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          color: string;
+          createdAt: string;
+          updatedAt: string;
+        } | null;
+        profile: {
+          id: string;
+          userId: string;
+          name: string;
+          description: string | null;
+          targetAudience: string | null;
+          typeId: string | null;
+          createdAt: string;
+          updatedAt: string;
+        } | null;
+        tones: Array<{
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          createdAt: string;
+          updatedAt: string;
+        }>;
+        videoTypes: Array<{
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          createdAt: string;
+          updatedAt: string;
+        }>;
       };
       videoType: {
         id: string;
@@ -690,6 +728,44 @@ export type GetApiV1IdeasListsIdeasListIdIdeasResponses = {
         targetAudience: string | null;
         createdAt: string;
         updatedAt: string;
+        template: {
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          color: string;
+          createdAt: string;
+          updatedAt: string;
+        } | null;
+        profile: {
+          id: string;
+          userId: string;
+          name: string;
+          description: string | null;
+          targetAudience: string | null;
+          typeId: string | null;
+          createdAt: string;
+          updatedAt: string;
+        } | null;
+        tones: Array<{
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          createdAt: string;
+          updatedAt: string;
+        }>;
+        videoTypes: Array<{
+          id: string;
+          slug: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          createdAt: string;
+          updatedAt: string;
+        }>;
       };
       videoType: {
         id: string;

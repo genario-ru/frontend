@@ -118,6 +118,81 @@ export const zGetApiV1IdeasIdeaIdResponse = z
         targetAudience: z.union([z.string(), z.null()]),
         createdAt: z.string(),
         updatedAt: z.string(),
+        template: z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            color: z.string(),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+        profile: z.union([
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            userId: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            targetAudience: z.union([z.string(), z.null()]),
+            typeId: z.union([
+              z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              z.null(),
+            ]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+        tones: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
+        videoTypes: z.array(
+          z.object({
+            id: z
+              .uuid()
+              .regex(
+                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+              ),
+            slug: z.string(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
+            icon: z.union([z.string(), z.null()]),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+        ),
       }),
       videoType: z.object({
         id: z
@@ -682,6 +757,81 @@ export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z
           targetAudience: z.union([z.string(), z.null()]),
           createdAt: z.string(),
           updatedAt: z.string(),
+          template: z.union([
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              slug: z.string(),
+              name: z.string(),
+              description: z.union([z.string(), z.null()]),
+              icon: z.union([z.string(), z.null()]),
+              color: z.string(),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+            z.null(),
+          ]),
+          profile: z.union([
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              userId: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              name: z.string(),
+              description: z.union([z.string(), z.null()]),
+              targetAudience: z.union([z.string(), z.null()]),
+              typeId: z.union([
+                z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                z.null(),
+              ]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+            z.null(),
+          ]),
+          tones: z.array(
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              slug: z.string(),
+              name: z.string(),
+              description: z.union([z.string(), z.null()]),
+              icon: z.union([z.string(), z.null()]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+          ),
+          videoTypes: z.array(
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              slug: z.string(),
+              name: z.string(),
+              description: z.union([z.string(), z.null()]),
+              icon: z.union([z.string(), z.null()]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+            }),
+          ),
         }),
         videoType: z.object({
           id: z
