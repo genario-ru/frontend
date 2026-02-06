@@ -22,12 +22,7 @@ export const prepareScenarioSettingsFormOptions = ({
   scenarioData,
   ideaData,
 }: PrepareScenarioSettingsFormOptionsParams) => {
-  const templateId =
-    templateIdParam ??
-    scenarioData?.data.templateId ??
-    ideaData?.data.ideasList.templateId;
-
-  const currentStep = templateId
+  const currentStep = templateIdParam
     ? ScenarioSettingsFormSteps.PrimaryInfo
     : ScenarioSettingsFormSteps.TemplateSelection;
 
@@ -35,7 +30,10 @@ export const prepareScenarioSettingsFormOptions = ({
     defaultValues: {
       currentStep,
       [ScenarioSettingsFormSteps.TemplateSelection]: {
-        templateId,
+        templateId:
+          templateIdParam ??
+          scenarioData?.data.templateId ??
+          ideaData?.data.ideasList.templateId,
       },
       [ScenarioSettingsFormSteps.PrimaryInfo]: {
         name: scenarioData?.data.name ?? ideaData?.data.name ?? "",
