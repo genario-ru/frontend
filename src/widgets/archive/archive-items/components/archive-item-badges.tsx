@@ -32,7 +32,7 @@ export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {
   }, [archiveItem]);
 
   return (
-    <footer className="flex flex-wrap items-center gap-2">
+    <footer className="flex flex-wrap items-center gap-1">
       {archiveItem.data.template && (
         <TemplateBadge
           name={archiveItem.data.template.name}

@@ -49,7 +49,7 @@ export const ArchiveItem = ({
           <p className="text-neutral-7 text-xs font-medium">
             {format(createdAt, "dd.MM.yyyy")}
             <span className="px-1">{DOT}</span>
-            {entity === "ideasList" ? "Список идей" : "Сценарий"}
+            {entity === "ideasList" ? "Идеи" : "Сценарий"}
           </p>
           <p className="text-lg font-semibold">{title || "Без названия"}</p>
           {description && (
