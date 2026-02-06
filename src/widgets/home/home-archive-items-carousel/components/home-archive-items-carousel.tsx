@@ -10,6 +10,7 @@ import { Island } from "@/shared/components/ui/island";
 import { ArchiveItemBadges } from "@/widgets/archive/archive-items/components/archive-item-badges";
 
 import { useHomeArchiveItemsCarousel } from "../hooks/use-home-archive-items-carousel";
+import { HomeArchiveItemsSeeAll } from "./home-archive-items-see-all";
 
 export function HomeArchiveItemsCarousel() {
   const {
@@ -79,6 +80,9 @@ export function HomeArchiveItemsCarousel() {
         wrapperClass="grid w-full auto-cols-fr auto-rows-fr"
       >
         {slides}
+        <SwiperSlide style={{ height: "auto" }} className="w-full">
+          <HomeArchiveItemsSeeAll />
+        </SwiperSlide>
       </Swiper>
     </Island>
   );
