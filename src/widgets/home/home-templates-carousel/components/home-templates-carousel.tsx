@@ -3,6 +3,7 @@ import "swiper/swiper.css";
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
 import { TemplateCard } from "@/features/templates/template-card/components/template-card";
 import { Island } from "@/shared/components/ui/island";
 import { Skeleton } from "@/shared/components/ui/skeleton";
@@ -11,7 +12,16 @@ import { useHomeTemplatesCarousel } from "../hooks/use-home-templates-carousel";
 import { HomeTemplatesCarouselSlideMenu } from "./home-templates-carousel-slide-menu";
 
 export function HomeTemplatesCarousel() {
-  const { templatesData, isTemplatesLoading } = useHomeTemplatesCarousel();
+  const {
+    templatesData,
+    isTemplatesLoading,
+    hasPreviousSlide,
+    hasNextSlide,
+    onSwiper,
+    onSlideChange,
+    onPreviousButtonClick,
+    onNextButtonClick,
+  } = useHomeTemplatesCarousel();
 
   const slides = useMemo(() => {
     if (isTemplatesLoading) {
@@ -46,8 +56,21 @@ export function HomeTemplatesCarousel() {
   }, [templatesData, isTemplatesLoading]);
 
   return (
-    <Island title="Шаблоны" className="overflow-hidden">
+    <Island
+      title="Шаблоны"
+      actions={
+        <HomeCarouselArrows
+          hasPrevious={hasPreviousSlide}
+          hasNext={hasNextSlide}
+          onPreviousClick={onPreviousButtonClick}
+          onNextClick={onNextButtonClick}
+        />
+      }
+      className="gap-3 overflow-hidden"
+    >
       <Swiper
+        onSwiper={onSwiper}
+        onSlideChange={onSlideChange}
         spaceBetween={8}
         slidesPerView={4.2}
         style={{ overflow: "visible" }}

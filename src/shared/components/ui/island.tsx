@@ -1,4 +1,4 @@
-import type { ComponentProps, ElementType } from "react";
+import type { ComponentProps, ElementType, ReactNode } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
@@ -14,6 +14,7 @@ export type IslandProps = ComponentProps<"div"> & {
   noGap?: boolean;
   noPadding?: boolean;
   as?: ElementType;
+  actions?: ReactNode;
 };
 
 export type IslandSectionProps = ComponentProps<"section"> & {
@@ -31,11 +32,12 @@ export const Island = ({
   noGap = false,
   noPadding = false,
   as: Comp = "div",
+  actions,
   className,
   children,
   ...props
 }: IslandProps) => {
-  const withHeader = Boolean(title || description);
+  const withHeader = Boolean(title || description || actions);
 
   return (
     <Comp
@@ -54,11 +56,14 @@ export const Island = ({
       {...props}
     >
       {withHeader && (
-        <header className="flex flex-col gap-1">
-          {title && <Heading variant="h2">{title}</Heading>}
-          {description && (
-            <p className="text-neutral-7 text-sm">{description}</p>
-          )}
+        <header className="flex justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            {title && <Heading variant="h2">{title}</Heading>}
+            {description && (
+              <p className="text-neutral-7 text-sm">{description}</p>
+            )}
+          </div>
+          {actions}
         </header>
       )}
       {children}

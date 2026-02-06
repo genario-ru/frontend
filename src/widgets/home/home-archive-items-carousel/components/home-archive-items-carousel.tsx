@@ -5,14 +5,23 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
 import { ArchiveItemSkeleton } from "@/features/archive/archive-item/components/archive-item-skeleton";
+import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
 import { Island } from "@/shared/components/ui/island";
 import { ArchiveItemBadges } from "@/widgets/archive/archive-items/components/archive-item-badges";
 
 import { useHomeArchiveItemsCarousel } from "../hooks/use-home-archive-items-carousel";
 
 export function HomeArchiveItemsCarousel() {
-  const { archiveItemsData, isLoadingArchiveItems } =
-    useHomeArchiveItemsCarousel();
+  const {
+    archiveItemsData,
+    isLoadingArchiveItems,
+    hasPreviousSlide,
+    hasNextSlide,
+    onSwiper,
+    onSlideChange,
+    onPreviousButtonClick,
+    onNextButtonClick,
+  } = useHomeArchiveItemsCarousel();
 
   const slides = useMemo(() => {
     if (isLoadingArchiveItems) {
@@ -48,8 +57,21 @@ export function HomeArchiveItemsCarousel() {
   }, [archiveItemsData, isLoadingArchiveItems]);
 
   return (
-    <Island title="Последнее" className="overflow-hidden">
+    <Island
+      title="Последнее"
+      actions={
+        <HomeCarouselArrows
+          hasPrevious={hasPreviousSlide}
+          hasNext={hasNextSlide}
+          onPreviousClick={onPreviousButtonClick}
+          onNextClick={onNextButtonClick}
+        />
+      }
+      className="gap-3 overflow-hidden"
+    >
       <Swiper
+        onSwiper={onSwiper}
+        onSlideChange={onSlideChange}
         spaceBetween={8}
         slidesPerView={3.2}
         style={{ overflow: "visible" }}
