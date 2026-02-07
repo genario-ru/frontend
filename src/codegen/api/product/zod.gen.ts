@@ -139,6 +139,7 @@ export const zGetApiV1IdeasIdeaIdResponse = z
             ),
           z.null(),
         ]),
+        status: z.enum(["pending", "generation", "failed", "ready"]),
         name: z.union([z.string(), z.null()]),
         description: z.union([z.string(), z.null()]),
         targetAudience: z.union([z.string(), z.null()]),
@@ -435,6 +436,7 @@ export const zPostApiV1IdeasListsResponse = z
           ),
         z.null(),
       ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -490,6 +492,7 @@ export const zDeleteApiV1IdeasListsIdeasListIdResponse = z
           ),
         z.null(),
       ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -545,6 +548,7 @@ export const zGetApiV1IdeasListsIdeasListIdResponse = z
           ),
         z.null(),
       ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -709,6 +713,7 @@ export const zPatchApiV1IdeasListsIdeasListIdResponse = z
           ),
         z.null(),
       ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.union([z.string(), z.null()]),
       description: z.union([z.string(), z.null()]),
       targetAudience: z.union([z.string(), z.null()]),
@@ -718,6 +723,36 @@ export const zPatchApiV1IdeasListsIdeasListIdResponse = z
   })
   .register(z.globalRegistry, {
     description: "Ideas list updated successfully",
+  });
+
+export const zPostApiV1IdeasListsIdeasListIdGenerateData = z.object({
+  body: z.optional(
+    z.object({
+      count: z.optional(z.int().gte(1).lte(20)),
+    }),
+  ),
+  path: z.object({
+    ideasListId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
+  }),
+  query: z.optional(z.never()),
+});
+
+/**
+ * Ideas list generation queued successfully
+ */
+export const zPostApiV1IdeasListsIdeasListIdGenerateResponse = z
+  .object({
+    data: z.object({
+      jobId: z.string(),
+      status: z.literal("queued"),
+    }),
+  })
+  .register(z.globalRegistry, {
+    description: "Ideas list generation queued successfully",
   });
 
 export const zGetApiV1IdeasListsIdeasListIdIdeasData = z.object({
@@ -922,6 +957,7 @@ export const zGetApiV1IdeasListsMyResponse = z
             ),
           z.null(),
         ]),
+        status: z.enum(["pending", "generation", "failed", "ready"]),
         name: z.union([z.string(), z.null()]),
         description: z.union([z.string(), z.null()]),
         targetAudience: z.union([z.string(), z.null()]),
@@ -1109,6 +1145,7 @@ export const zGetApiV1ArchiveItemsMyResponse = z
                 ),
               z.null(),
             ]),
+            status: z.enum(["pending", "generation", "failed", "ready"]),
             name: z.union([z.string(), z.null()]),
             description: z.union([z.string(), z.null()]),
             targetAudience: z.union([z.string(), z.null()]),

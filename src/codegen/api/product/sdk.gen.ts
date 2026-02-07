@@ -125,6 +125,9 @@ import type {
   PatchApiV1ScenariosScenesSceneIdResponses,
   PostApiV1IdeasListsData,
   PostApiV1IdeasListsErrors,
+  PostApiV1IdeasListsIdeasListIdGenerateData,
+  PostApiV1IdeasListsIdeasListIdGenerateErrors,
+  PostApiV1IdeasListsIdeasListIdGenerateResponses,
   PostApiV1IdeasListsIdeasListIdIdeasData,
   PostApiV1IdeasListsIdeasListIdIdeasErrors,
   PostApiV1IdeasListsIdeasListIdIdeasResponses,
@@ -218,6 +221,8 @@ import {
   zPatchApiV1ScenariosScenesSceneIdData,
   zPatchApiV1ScenariosScenesSceneIdResponse,
   zPostApiV1IdeasListsData,
+  zPostApiV1IdeasListsIdeasListIdGenerateData,
+  zPostApiV1IdeasListsIdeasListIdGenerateResponse,
   zPostApiV1IdeasListsIdeasListIdIdeasData,
   zPostApiV1IdeasListsIdeasListIdIdeasResponse,
   zPostApiV1IdeasListsResponse,
@@ -410,6 +415,33 @@ export const patchApiV1IdeasListsIdeasListId = <
       return await zPatchApiV1IdeasListsIdeasListIdResponse.parseAsync(data);
     },
     url: "/api/v1/ideas-lists/{ideasListId}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+};
+
+export const postApiV1IdeasListsIdeasListIdGenerate = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<PostApiV1IdeasListsIdeasListIdGenerateData, ThrowOnError>,
+) => {
+  return (options.client ?? client).post<
+    PostApiV1IdeasListsIdeasListIdGenerateResponses,
+    PostApiV1IdeasListsIdeasListIdGenerateErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPostApiV1IdeasListsIdeasListIdGenerateData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zPostApiV1IdeasListsIdeasListIdGenerateResponse.parseAsync(
+        data,
+      );
+    },
+    url: "/api/v1/ideas-lists/{ideasListId}/generate",
     ...options,
     headers: {
       "Content-Type": "application/json",

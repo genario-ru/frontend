@@ -51,6 +51,7 @@ import {
   patchApiV1ScenariosSceneComponentsSceneComponentId,
   patchApiV1ScenariosScenesSceneId,
   postApiV1IdeasLists,
+  postApiV1IdeasListsIdeasListIdGenerate,
   postApiV1IdeasListsIdeasListIdIdeas,
   postApiV1Profiles,
   postApiV1Scenarios,
@@ -140,6 +141,9 @@ import type {
   PatchApiV1ScenariosScenesSceneIdResponse,
   PostApiV1IdeasListsData,
   PostApiV1IdeasListsError,
+  PostApiV1IdeasListsIdeasListIdGenerateData,
+  PostApiV1IdeasListsIdeasListIdGenerateError,
+  PostApiV1IdeasListsIdeasListIdGenerateResponse,
   PostApiV1IdeasListsIdeasListIdIdeasData,
   PostApiV1IdeasListsIdeasListIdIdeasError,
   PostApiV1IdeasListsIdeasListIdIdeasResponse,
@@ -371,6 +375,30 @@ export const patchApiV1IdeasListsIdeasListIdMutation = (
   > = {
     mutationFn: async (fnOptions) => {
       const { data } = await patchApiV1IdeasListsIdeasListId({
+        ...options,
+        ...fnOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const postApiV1IdeasListsIdeasListIdGenerateMutation = (
+  options?: Partial<Options<PostApiV1IdeasListsIdeasListIdGenerateData>>,
+): UseMutationOptions<
+  PostApiV1IdeasListsIdeasListIdGenerateResponse,
+  PostApiV1IdeasListsIdeasListIdGenerateError,
+  Options<PostApiV1IdeasListsIdeasListIdGenerateData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PostApiV1IdeasListsIdeasListIdGenerateResponse,
+    PostApiV1IdeasListsIdeasListIdGenerateError,
+    Options<PostApiV1IdeasListsIdeasListIdGenerateData>
+  > = {
+    mutationFn: async (fnOptions) => {
+      const { data } = await postApiV1IdeasListsIdeasListIdGenerate({
         ...options,
         ...fnOptions,
         throwOnError: true,

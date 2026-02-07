@@ -154,6 +154,7 @@ export type GetApiV1IdeasIdeaIdResponses = {
         userId: string;
         profileId: string | null;
         templateId: string | null;
+        status: "pending" | "generation" | "failed" | "ready";
         name: string | null;
         description: string | null;
         targetAudience: string | null;
@@ -425,6 +426,7 @@ export type PostApiV1IdeasListsResponses = {
       userId: string;
       profileId: string | null;
       templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -492,6 +494,7 @@ export type DeleteApiV1IdeasListsIdeasListIdResponses = {
       userId: string;
       profileId: string | null;
       templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -559,6 +562,7 @@ export type GetApiV1IdeasListsIdeasListIdResponses = {
       userId: string;
       profileId: string | null;
       templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -671,6 +675,7 @@ export type PatchApiV1IdeasListsIdeasListIdResponses = {
       userId: string;
       profileId: string | null;
       templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -682,6 +687,68 @@ export type PatchApiV1IdeasListsIdeasListIdResponses = {
 
 export type PatchApiV1IdeasListsIdeasListIdResponse =
   PatchApiV1IdeasListsIdeasListIdResponses[keyof PatchApiV1IdeasListsIdeasListIdResponses];
+
+export type PostApiV1IdeasListsIdeasListIdGenerateData = {
+  body?: {
+    count?: number;
+  };
+  path: {
+    ideasListId: string;
+  };
+  query?: never;
+  url: "/api/v1/ideas-lists/{ideasListId}/generate";
+};
+
+export type PostApiV1IdeasListsIdeasListIdGenerateErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type PostApiV1IdeasListsIdeasListIdGenerateError =
+  PostApiV1IdeasListsIdeasListIdGenerateErrors[keyof PostApiV1IdeasListsIdeasListIdGenerateErrors];
+
+export type PostApiV1IdeasListsIdeasListIdGenerateResponses = {
+  /**
+   * Ideas list generation queued successfully
+   */
+  202: {
+    data: {
+      jobId: string;
+      status: "queued";
+    };
+  };
+};
+
+export type PostApiV1IdeasListsIdeasListIdGenerateResponse =
+  PostApiV1IdeasListsIdeasListIdGenerateResponses[keyof PostApiV1IdeasListsIdeasListIdGenerateResponses];
 
 export type GetApiV1IdeasListsIdeasListIdIdeasData = {
   body?: never;
@@ -913,6 +980,7 @@ export type GetApiV1IdeasListsMyResponses = {
       userId: string;
       profileId: string | null;
       templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
       name: string | null;
       description: string | null;
       targetAudience: string | null;
@@ -1076,6 +1144,7 @@ export type GetApiV1ArchiveItemsMyResponses = {
             userId: string;
             profileId: string | null;
             templateId: string | null;
+            status: "pending" | "generation" | "failed" | "ready";
             name: string | null;
             description: string | null;
             targetAudience: string | null;
