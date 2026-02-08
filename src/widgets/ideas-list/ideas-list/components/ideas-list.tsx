@@ -27,7 +27,7 @@ type IdeasListProps = {
 };
 
 export function IdeasList({ ideasListId, tab }: IdeasListProps) {
-  const { ideasListData, isLoading, isError } = useIdeasList({
+  const { ideasListData, isIdeasListLoading, isIdeasListError } = useIdeasList({
     ideasListId,
     tab,
   });
@@ -46,15 +46,21 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   }, [ideasListData]);
 
   const body = useMemo(() => {
-    if (isError || ideasListData?.data.status === "failed") {
+    if (isIdeasListError || ideasListData?.data.status === "failed") {
       return <IdeasListErrorPlug />;
     }
 
-    if (isLoading || ideasListData?.data.status === "generation") {
+    if (isIdeasListLoading) {
       return <IdeasListSkeleton />;
     }
 
-    if (!ideasListData?.data.ideas.length) {
+    const ideasListDataLength = ideasListData?.data.ideas.length;
+
+    if (ideasListData?.data.status === "generation" && !ideasListDataLength) {
+      return <IdeasListSkeleton />;
+    }
+
+    if (!ideasListDataLength) {
       return <IdeasListEmptyPlug />;
     }
 
@@ -71,7 +77,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
         ))}
       </IdeasListBodyLayout>
     );
-  }, [ideasListData, isLoading, isError]);
+  }, [ideasListData, isIdeasListLoading, isIdeasListError]);
 
   return (
     <ContentLayout className="flex-1 gap-4">

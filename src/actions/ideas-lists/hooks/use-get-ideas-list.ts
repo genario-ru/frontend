@@ -13,7 +13,6 @@ export function useGetIdeasList({ ideasListId, saved }: UseGetIdeasListParams) {
   const {
     data: ideasListData,
     isLoading: isIdeasListLoading,
-    isRefetching: isIdeasListRefetching,
     isError: isIdeasListError,
   } = useQuery({
     ...getApiV1IdeasListsIdeasListIdOptions({
@@ -37,7 +36,6 @@ export function useGetIdeasList({ ideasListId, saved }: UseGetIdeasListParams) {
   return {
     ideasListData,
     isIdeasListLoading,
-    isIdeasListRefetching,
     isIdeasListError,
   };
 }

@@ -7,19 +7,15 @@ type UseIdeasListParams = {
 };
 
 export function useIdeasList({ ideasListId, tab }: UseIdeasListParams) {
-  const {
-    ideasListData,
-    isIdeasListLoading,
-    isIdeasListRefetching,
-    isIdeasListError,
-  } = useGetIdeasList({
-    ideasListId,
-    saved: tab ? tab === SAVED_TAB : undefined,
-  });
+  const { ideasListData, isIdeasListLoading, isIdeasListError } =
+    useGetIdeasList({
+      ideasListId,
+      saved: tab ? tab === SAVED_TAB : undefined,
+    });
 
   return {
     ideasListData,
-    isLoading: isIdeasListLoading || isIdeasListRefetching,
-    isError: isIdeasListError,
+    isIdeasListLoading,
+    isIdeasListError,
   };
 }

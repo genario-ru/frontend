@@ -33,7 +33,7 @@ export const prepareIdeasListSettingsFormOptions = ({
       },
       [IdeasListSettingsFormSteps.ParamsConfiguration]: {
         profileId: ideasListData?.data.profileId,
-        targetAudience: ideasListData?.data.targetAudience,
+        targetAudience: ideasListData?.data.targetAudience ?? "",
         toneIds: ideasListData?.data.tones?.map((tone) => tone.id) ?? [],
         videoTypeIds:
           ideasListData?.data.videoTypes.map((videoType) => videoType.id) ?? [],

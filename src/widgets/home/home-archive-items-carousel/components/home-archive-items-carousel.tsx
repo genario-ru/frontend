@@ -77,7 +77,7 @@ export function HomeArchiveItemsCarousel() {
         slidesPerView={3.2}
         style={{ overflow: "visible" }}
         className="w-full"
-        wrapperClass="grid w-full auto-cols-fr auto-rows-fr"
+        wrapperClass="grid min-h-[176px] w-full auto-cols-fr auto-rows-fr"
       >
         {slides}
         <SwiperSlide style={{ height: "auto" }} className="w-full">

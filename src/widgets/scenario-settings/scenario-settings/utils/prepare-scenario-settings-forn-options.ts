@@ -49,7 +49,8 @@ export const prepareScenarioSettingsFormOptions = ({
           scenarioData?.data.profileId ?? ideaData?.data.ideasList.profileId,
         targetAudience:
           scenarioData?.data.targetAudience ??
-          ideaData?.data.ideasList.targetAudience,
+          ideaData?.data.ideasList.targetAudience ??
+          "",
         toneIds:
           scenarioData?.data.tones?.map((tone) => tone.id) ??
           ideaData?.data.ideasList.tones?.map((tone) => tone.id) ??

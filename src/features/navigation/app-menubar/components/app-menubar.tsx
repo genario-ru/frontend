@@ -53,21 +53,23 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <section className="flex flex-1 flex-col justify-center gap-3">
-          <div className="flex items-center gap-2">
-            {backButton && (
-              <Button
-                variant="tertiary"
-                icon={<ArrowLeft />}
-                onClick={onBackButtonClick}
-              />
+        <section className="flex flex-1 flex-col justify-between gap-4">
+          <div className="flex flex-1 flex-col gap-1">
+            <div className="flex items-center gap-2">
+              {backButton && (
+                <Button
+                  variant="tertiary"
+                  icon={<ArrowLeft />}
+                  onClick={onBackButtonClick}
+                />
+              )}
+              <Heading variant="h1">{title}</Heading>
+              {firstLine}
+            </div>
+            {description && (
+              <div className="text-neutral-7 line-clamp-2">{description}</div>
             )}
-            <Heading variant="h1">{title}</Heading>
-            {firstLine}
           </div>
-          {description && (
-            <div className="text-neutral-7 line-clamp-2">{description}</div>
-          )}
           {left}
         </section>
         <section className="flex flex-col gap-3">{right}</section>

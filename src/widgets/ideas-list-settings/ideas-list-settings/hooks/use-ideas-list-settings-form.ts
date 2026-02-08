@@ -63,6 +63,11 @@ export function useIdeasListSettingsForm({
           path: { ideasListId: data.data.id },
         }),
       });
+
+      navigate({
+        to: "/ideas-lists/$ideasListId",
+        params: { ideasListId: data.data.id },
+      });
     },
   });
 
