@@ -474,7 +474,11 @@ export const zGetApiV1IdeasListsIdeasListIdData = z.object({
         /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
       ),
   }),
-  query: z.optional(z.never()),
+  query: z.optional(
+    z.object({
+      saved: z.optional(z.boolean()),
+    }),
+  ),
 });
 
 /**
@@ -586,6 +590,31 @@ export const zGetApiV1IdeasListsIdeasListIdResponse = z
           name: z.string(),
           description: z.union([z.string(), z.null()]),
           icon: z.union([z.string(), z.null()]),
+          createdAt: z.string(),
+          updatedAt: z.string(),
+        }),
+      ),
+      ideas: z.array(
+        z.object({
+          id: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          ideasListId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          videoTypeId: z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          saved: z.boolean(),
+          liked: z.union([z.boolean(), z.null()]),
+          name: z.union([z.string(), z.null()]),
+          description: z.union([z.string(), z.null()]),
           createdAt: z.string(),
           updatedAt: z.string(),
         }),
@@ -714,57 +743,6 @@ export const zPostApiV1IdeasListsIdeasListIdGenerateResponse = z
   })
   .register(z.globalRegistry, {
     description: "Ideas list generation queued successfully",
-  });
-
-export const zGetApiV1IdeasListsIdeasListIdIdeasData = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    ideasListId: z
-      .uuid()
-      .regex(
-        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-      ),
-  }),
-  query: z.optional(
-    z.object({
-      saved: z.optional(z.boolean()),
-    }),
-  ),
-});
-
-/**
- * Ideas list retrieved successfully
- */
-export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z
-  .object({
-    data: z.array(
-      z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        ideasListId: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        videoTypeId: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        saved: z.boolean(),
-        liked: z.union([z.boolean(), z.null()]),
-        name: z.union([z.string(), z.null()]),
-        description: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
-    ),
-  })
-  .register(z.globalRegistry, {
-    description: "Ideas list retrieved successfully",
   });
 
 export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({

@@ -21,7 +21,6 @@ import {
   getApiV1ArchiveItemsMy,
   getApiV1IdeasIdeaId,
   getApiV1IdeasListsIdeasListId,
-  getApiV1IdeasListsIdeasListIdIdeas,
   getApiV1IdeasListsMy,
   getApiV1Platforms,
   getApiV1ProfilesMy,
@@ -87,7 +86,6 @@ import type {
   GetApiV1ArchiveItemsMyResponse,
   GetApiV1IdeasIdeaIdData,
   GetApiV1IdeasListsIdeasListIdData,
-  GetApiV1IdeasListsIdeasListIdIdeasData,
   GetApiV1IdeasListsMyData,
   GetApiV1IdeasListsMyError,
   GetApiV1IdeasListsMyResponse,
@@ -407,30 +405,6 @@ export const postApiV1IdeasListsIdeasListIdGenerateMutation = (
     },
   };
   return mutationOptions;
-};
-
-export const getApiV1IdeasListsIdeasListIdIdeasQueryKey = (
-  options: Options<GetApiV1IdeasListsIdeasListIdIdeasData>,
-) =>
-  createQueryKey("getApiV1IdeasListsIdeasListIdIdeas", options, false, [
-    "Ideas lists",
-  ]);
-
-export const getApiV1IdeasListsIdeasListIdIdeasOptions = (
-  options: Options<GetApiV1IdeasListsIdeasListIdIdeasData>,
-) => {
-  return queryOptions({
-    queryFn: async ({ queryKey, signal }) => {
-      const { data } = await getApiV1IdeasListsIdeasListIdIdeas({
-        ...options,
-        ...queryKey[0],
-        signal,
-        throwOnError: true,
-      });
-      return data;
-    },
-    queryKey: getApiV1IdeasListsIdeasListIdIdeasQueryKey(options),
-  });
 };
 
 export const postApiV1IdeasListsIdeasListIdIdeasMutation = (

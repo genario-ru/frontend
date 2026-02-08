@@ -485,7 +485,9 @@ export type GetApiV1IdeasListsIdeasListIdData = {
   path: {
     ideasListId: string;
   };
-  query?: never;
+  query?: {
+    saved?: boolean;
+  };
   url: "/api/v1/ideas-lists/{ideasListId}";
 };
 
@@ -576,6 +578,17 @@ export type GetApiV1IdeasListsIdeasListIdResponses = {
         name: string;
         description: string | null;
         icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      }>;
+      ideas: Array<{
+        id: string;
+        ideasListId: string;
+        videoTypeId: string;
+        saved: boolean;
+        liked: boolean | null;
+        name: string | null;
+        description: string | null;
         createdAt: string;
         updatedAt: string;
       }>;
@@ -722,75 +735,6 @@ export type PostApiV1IdeasListsIdeasListIdGenerateResponses = {
 
 export type PostApiV1IdeasListsIdeasListIdGenerateResponse =
   PostApiV1IdeasListsIdeasListIdGenerateResponses[keyof PostApiV1IdeasListsIdeasListIdGenerateResponses];
-
-export type GetApiV1IdeasListsIdeasListIdIdeasData = {
-  body?: never;
-  path: {
-    ideasListId: string;
-  };
-  query?: {
-    saved?: boolean;
-  };
-  url: "/api/v1/ideas-lists/{ideasListId}/ideas";
-};
-
-export type GetApiV1IdeasListsIdeasListIdIdeasErrors = {
-  /**
-   * Bad request response
-   *
-   * Bad request
-   */
-  400: string;
-  /**
-   * Unauthorized response
-   *
-   * Unauthorized
-   */
-  401: string;
-  /**
-   * Forbidden response
-   *
-   * Forbidden
-   */
-  403: string;
-  /**
-   * Not found response
-   *
-   * Not found
-   */
-  404: string;
-  /**
-   * Internal server error response
-   *
-   * Internal server error
-   */
-  500: string;
-};
-
-export type GetApiV1IdeasListsIdeasListIdIdeasError =
-  GetApiV1IdeasListsIdeasListIdIdeasErrors[keyof GetApiV1IdeasListsIdeasListIdIdeasErrors];
-
-export type GetApiV1IdeasListsIdeasListIdIdeasResponses = {
-  /**
-   * Ideas list retrieved successfully
-   */
-  200: {
-    data: Array<{
-      id: string;
-      ideasListId: string;
-      videoTypeId: string;
-      saved: boolean;
-      liked: boolean | null;
-      name: string | null;
-      description: string | null;
-      createdAt: string;
-      updatedAt: string;
-    }>;
-  };
-};
-
-export type GetApiV1IdeasListsIdeasListIdIdeasResponse =
-  GetApiV1IdeasListsIdeasListIdIdeasResponses[keyof GetApiV1IdeasListsIdeasListIdIdeasResponses];
 
 export type PostApiV1IdeasListsIdeasListIdIdeasData = {
   body?: {

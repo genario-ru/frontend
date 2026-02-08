@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import {
   deleteApiV1IdeasIdeaIdMutation,
-  getApiV1IdeasListsIdeasListIdIdeasQueryKey,
+  getApiV1IdeasListsIdeasListIdQueryKey,
 } from "@/codegen/api/product/@tanstack/react-query.gen";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -32,7 +32,7 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
       });
 
       queryClient.invalidateQueries({
-        queryKey: getApiV1IdeasListsIdeasListIdIdeasQueryKey({
+        queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
           path: {
             ideasListId: data.ideasListId,
           },

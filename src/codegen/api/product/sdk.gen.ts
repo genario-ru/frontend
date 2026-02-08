@@ -38,9 +38,6 @@ import type {
   GetApiV1IdeasIdeaIdResponses,
   GetApiV1IdeasListsIdeasListIdData,
   GetApiV1IdeasListsIdeasListIdErrors,
-  GetApiV1IdeasListsIdeasListIdIdeasData,
-  GetApiV1IdeasListsIdeasListIdIdeasErrors,
-  GetApiV1IdeasListsIdeasListIdIdeasResponses,
   GetApiV1IdeasListsIdeasListIdResponses,
   GetApiV1IdeasListsMyData,
   GetApiV1IdeasListsMyErrors,
@@ -163,8 +160,6 @@ import {
   zGetApiV1IdeasIdeaIdData,
   zGetApiV1IdeasIdeaIdResponse,
   zGetApiV1IdeasListsIdeasListIdData,
-  zGetApiV1IdeasListsIdeasListIdIdeasData,
-  zGetApiV1IdeasListsIdeasListIdIdeasResponse,
   zGetApiV1IdeasListsIdeasListIdResponse,
   zGetApiV1IdeasListsMyData,
   zGetApiV1IdeasListsMyResponse,
@@ -447,27 +442,6 @@ export const postApiV1IdeasListsIdeasListIdGenerate = <
       "Content-Type": "application/json",
       ...options.headers,
     },
-  });
-};
-
-export const getApiV1IdeasListsIdeasListIdIdeas = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<GetApiV1IdeasListsIdeasListIdIdeasData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    GetApiV1IdeasListsIdeasListIdIdeasResponses,
-    GetApiV1IdeasListsIdeasListIdIdeasErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await zGetApiV1IdeasListsIdeasListIdIdeasData.parseAsync(data);
-    },
-    responseValidator: async (data) => {
-      return await zGetApiV1IdeasListsIdeasListIdIdeasResponse.parseAsync(data);
-    },
-    url: "/api/v1/ideas-lists/{ideasListId}/ideas",
-    ...options,
   });
 };
 

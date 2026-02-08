@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1IdeasListsIdeasListIdIdeasQueryKey,
+  getApiV1IdeasListsIdeasListIdQueryKey,
   patchApiV1IdeasIdeaIdSaveMutation,
 } from "@/codegen/api/product/@tanstack/react-query.gen";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -27,7 +27,7 @@ export function useSaveIdea({ onError, onSuccess }: UseSaveIdeaParams) {
     },
     onSuccess: ({ data }) => {
       queryClient.invalidateQueries({
-        queryKey: getApiV1IdeasListsIdeasListIdIdeasQueryKey({
+        queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
           path: {
             ideasListId: data.ideasListId,
           },
