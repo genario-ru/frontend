@@ -1,3 +1,4 @@
+import { useGetIdeasList } from "@/actions/ideas-lists/hooks/use-get-ideas-list";
 import { useGetIdeasListIdeas } from "@/actions/ideas-lists/hooks/use-get-ideas-list-ideas";
 import { SAVED_TAB } from "@/shared/constants/tab-names";
 
@@ -7,13 +8,19 @@ type UseIdeasListParams = {
 };
 
 export function useIdeasList({ ideasListId, tab }: UseIdeasListParams) {
-  const { ideasListIdeasData, isIdeasListIdeasLoading } = useGetIdeasListIdeas({
-    ideasListId,
-    saved: tab ? tab === SAVED_TAB : undefined,
-  });
+  const { ideasListData, isIdeasListLoading, isIdeasListError } =
+    useGetIdeasList({ ideasListId });
+
+  const { ideasListIdeasData, isIdeasListIdeasLoading, isIdeasListIdeasError } =
+    useGetIdeasListIdeas({
+      ideasListId,
+      saved: tab ? tab === SAVED_TAB : undefined,
+    });
 
   return {
+    ideasListData,
     ideasListIdeasData,
-    isIdeasListIdeasLoading,
+    isLoading: isIdeasListLoading || isIdeasListIdeasLoading,
+    isError: isIdeasListError || isIdeasListIdeasError,
   };
 }
