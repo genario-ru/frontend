@@ -41,19 +41,6 @@ export const zDeleteApiV1IdeasIdeaIdResponse = z
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
     }),
   })
   .register(z.globalRegistry, {
@@ -99,19 +86,6 @@ export const zGetApiV1IdeasIdeaIdResponse = z
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
       ideasList: z.object({
         id: z
           .uuid()
@@ -221,6 +195,19 @@ export const zGetApiV1IdeasIdeaIdResponse = z
           }),
         ),
       }),
+      videoType: z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        slug: z.string(),
+        name: z.string(),
+        description: z.union([z.string(), z.null()]),
+        icon: z.union([z.string(), z.null()]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
     }),
   })
   .register(z.globalRegistry, {
@@ -273,19 +260,6 @@ export const zPatchApiV1IdeasIdeaIdResponse = z
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
     }),
   })
   .register(z.globalRegistry, {
@@ -335,19 +309,6 @@ export const zPatchApiV1IdeasIdeaIdSaveResponse = z
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
     }),
   })
   .register(z.globalRegistry, {
@@ -799,19 +760,6 @@ export const zGetApiV1IdeasListsIdeasListIdIdeasResponse = z
         description: z.union([z.string(), z.null()]),
         createdAt: z.string(),
         updatedAt: z.string(),
-        videoType: z.object({
-          id: z
-            .uuid()
-            .regex(
-              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-            ),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
       }),
     ),
   })
@@ -868,19 +816,6 @@ export const zPostApiV1IdeasListsIdeasListIdIdeasResponse = z
       description: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
-      videoType: z.object({
-        id: z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        slug: z.string(),
-        name: z.string(),
-        description: z.union([z.string(), z.null()]),
-        icon: z.union([z.string(), z.null()]),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-      }),
     }),
   })
   .register(z.globalRegistry, {
