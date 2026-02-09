@@ -3,13 +3,13 @@ import { useCallback, useState } from "react";
 
 import { useDeleteIdeasList } from "@/actions/ideas-lists/hooks/use-delete-ideas-list";
 
-type UseIdeasListMenubarActionsParams = {
+type UseIdeasListAppMenubarDeleteIdeaDialogParams = {
   ideasListId: string;
 };
 
-export function useIdeasListMenubarActions({
+export function useIdeasListAppMenubarDeleteIdeaDialog({
   ideasListId,
-}: UseIdeasListMenubarActionsParams) {
+}: UseIdeasListAppMenubarDeleteIdeaDialogParams) {
   const navigate = useNavigate();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 

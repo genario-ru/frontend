@@ -3,7 +3,7 @@ import { FilmIcon } from "lucide-react";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 
 import { useIdeasListIdeaCardPrimaryActions } from "../hooks/use-ideas-list-idea-card-primary-actions";
-import { IdeasListIdeaCardImproveDialog } from "./ideas-list-idea-card-improve-dialog";
+// import { IdeasListIdeaCardImproveDialog } from "./ideas-list-idea-card-improve-dialog";
 
 type IdeasListIdeaCardPrimaryActionsProps = {
   ideaId: string;
@@ -17,9 +17,10 @@ export function IdeasListIdeaCardPrimaryActions({
   });
 
   return (
-    <div className="flex items-center justify-between gap-4">
-      <IdeasListIdeaCardImproveDialog />
+    <div className="flex items-center justify-end gap-4">
+      {/* <IdeasListIdeaCardImproveDialog /> */}
       <ButtonLink
+        size="sm"
         variant="primary"
         {...createScenarioLinkOptions}
         icon={<FilmIcon />}

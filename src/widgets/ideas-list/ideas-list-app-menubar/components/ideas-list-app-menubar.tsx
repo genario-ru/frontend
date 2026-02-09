@@ -8,8 +8,8 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useIdeasListAppMenubar } from "../hooks/use-ideas-list-app-menubar";
+import { IdeasListAppMenubarActions } from "./ideas-list-app-menubar-actions";
 import { IdeasListAppMenubarTabs } from "./ideas-list-app-menubar-tabs";
-import { IdeasListMenubarActions } from "./ideas-list-menubar-actions";
 
 type IdeasListAppMenubarParams = {
   ideasListId: string;
@@ -89,7 +89,7 @@ export function IdeasListAppMenubar({
       left={left}
       right={
         <div className="flex h-full flex-col items-end justify-between gap-8">
-          <IdeasListMenubarActions ideasListId={ideasListId} />
+          <IdeasListAppMenubarActions ideasListId={ideasListId} />
           <IdeasListAppMenubarTabs ideasListId={ideasListId} />
         </div>
       }

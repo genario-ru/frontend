@@ -25,7 +25,9 @@ export function IdeasListIdeaCardImproveDialog() {
   return (
     <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
       <DialogTrigger asChild>
-        <Button icon={<WandSparklesIcon />}>Улучшить</Button>
+        <Button size="sm" icon={<WandSparklesIcon />}>
+          Улучшить
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
