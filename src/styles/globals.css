@@ -3,6 +3,8 @@
 @import "@fontsource-variable/inter";
 @import "./themes.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   /* Neutral colors */
   --color-neutral-1: var(--neutral-1);

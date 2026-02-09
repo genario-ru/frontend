@@ -13,8 +13,8 @@ export function MyProfilesList() {
     <ContentLayout className="gap-4" size="md">
       {isMyProfilesLoading ? (
         <ItemsList
+          noParent
           count={3}
-          gap={24}
           item={<ProfileCardSkeleton />}
           className="w-full"
         />
