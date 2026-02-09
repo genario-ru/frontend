@@ -674,18 +674,18 @@ export type PatchApiV1IdeasListsIdeasListIdResponses = {
 export type PatchApiV1IdeasListsIdeasListIdResponse =
   PatchApiV1IdeasListsIdeasListIdResponses[keyof PatchApiV1IdeasListsIdeasListIdResponses];
 
-export type PostApiV1IdeasListsIdeasListIdGenerateData = {
+export type PostApiV1IdeasListsIdeasListIdMoreIdeasData = {
   body?: {
-    count?: number;
+    userPrompt?: string | null;
   };
   path: {
     ideasListId: string;
   };
   query?: never;
-  url: "/api/v1/ideas-lists/{ideasListId}/generate";
+  url: "/api/v1/ideas-lists/{ideasListId}/more-ideas";
 };
 
-export type PostApiV1IdeasListsIdeasListIdGenerateErrors = {
+export type PostApiV1IdeasListsIdeasListIdMoreIdeasErrors = {
   /**
    * Bad request response
    *
@@ -718,23 +718,31 @@ export type PostApiV1IdeasListsIdeasListIdGenerateErrors = {
   500: string;
 };
 
-export type PostApiV1IdeasListsIdeasListIdGenerateError =
-  PostApiV1IdeasListsIdeasListIdGenerateErrors[keyof PostApiV1IdeasListsIdeasListIdGenerateErrors];
+export type PostApiV1IdeasListsIdeasListIdMoreIdeasError =
+  PostApiV1IdeasListsIdeasListIdMoreIdeasErrors[keyof PostApiV1IdeasListsIdeasListIdMoreIdeasErrors];
 
-export type PostApiV1IdeasListsIdeasListIdGenerateResponses = {
+export type PostApiV1IdeasListsIdeasListIdMoreIdeasResponses = {
   /**
-   * Ideas list generation queued successfully
+   * More ideas generation queued successfully
    */
   202: {
     data: {
-      jobId: string;
-      status: "queued";
+      id: string;
+      userId: string;
+      profileId: string | null;
+      templateId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
+      name: string | null;
+      description: string | null;
+      targetAudience: string | null;
+      createdAt: string;
+      updatedAt: string;
     };
   };
 };
 
-export type PostApiV1IdeasListsIdeasListIdGenerateResponse =
-  PostApiV1IdeasListsIdeasListIdGenerateResponses[keyof PostApiV1IdeasListsIdeasListIdGenerateResponses];
+export type PostApiV1IdeasListsIdeasListIdMoreIdeasResponse =
+  PostApiV1IdeasListsIdeasListIdMoreIdeasResponses[keyof PostApiV1IdeasListsIdeasListIdMoreIdeasResponses];
 
 export type PostApiV1IdeasListsIdeasListIdIdeasData = {
   body?: {

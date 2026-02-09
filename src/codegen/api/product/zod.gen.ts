@@ -715,10 +715,10 @@ export const zPatchApiV1IdeasListsIdeasListIdResponse = z
     description: "Ideas list updated successfully",
   });
 
-export const zPostApiV1IdeasListsIdeasListIdGenerateData = z.object({
+export const zPostApiV1IdeasListsIdeasListIdMoreIdeasData = z.object({
   body: z.optional(
     z.object({
-      count: z.optional(z.int().gte(1).lte(20)),
+      userPrompt: z.optional(z.union([z.string(), z.null()])),
     }),
   ),
   path: z.object({
@@ -732,17 +732,47 @@ export const zPostApiV1IdeasListsIdeasListIdGenerateData = z.object({
 });
 
 /**
- * Ideas list generation queued successfully
+ * More ideas generation queued successfully
  */
-export const zPostApiV1IdeasListsIdeasListIdGenerateResponse = z
+export const zPostApiV1IdeasListsIdeasListIdMoreIdeasResponse = z
   .object({
     data: z.object({
-      jobId: z.string(),
-      status: z.literal("queued"),
+      id: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      userId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
+      profileId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      templateId: z.union([
+        z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        z.null(),
+      ]),
+      status: z.enum(["pending", "generation", "failed", "ready"]),
+      name: z.union([z.string(), z.null()]),
+      description: z.union([z.string(), z.null()]),
+      targetAudience: z.union([z.string(), z.null()]),
+      createdAt: z.string(),
+      updatedAt: z.string(),
     }),
   })
   .register(z.globalRegistry, {
-    description: "Ideas list generation queued successfully",
+    description: "More ideas generation queued successfully",
   });
 
 export const zPostApiV1IdeasListsIdeasListIdIdeasData = z.object({

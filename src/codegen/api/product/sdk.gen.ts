@@ -122,12 +122,12 @@ import type {
   PatchApiV1ScenariosScenesSceneIdResponses,
   PostApiV1IdeasListsData,
   PostApiV1IdeasListsErrors,
-  PostApiV1IdeasListsIdeasListIdGenerateData,
-  PostApiV1IdeasListsIdeasListIdGenerateErrors,
-  PostApiV1IdeasListsIdeasListIdGenerateResponses,
   PostApiV1IdeasListsIdeasListIdIdeasData,
   PostApiV1IdeasListsIdeasListIdIdeasErrors,
   PostApiV1IdeasListsIdeasListIdIdeasResponses,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasData,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasErrors,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasResponses,
   PostApiV1IdeasListsResponses,
   PostApiV1ProfilesData,
   PostApiV1ProfilesErrors,
@@ -216,10 +216,10 @@ import {
   zPatchApiV1ScenariosScenesSceneIdData,
   zPatchApiV1ScenariosScenesSceneIdResponse,
   zPostApiV1IdeasListsData,
-  zPostApiV1IdeasListsIdeasListIdGenerateData,
-  zPostApiV1IdeasListsIdeasListIdGenerateResponse,
   zPostApiV1IdeasListsIdeasListIdIdeasData,
   zPostApiV1IdeasListsIdeasListIdIdeasResponse,
+  zPostApiV1IdeasListsIdeasListIdMoreIdeasData,
+  zPostApiV1IdeasListsIdeasListIdMoreIdeasResponse,
   zPostApiV1IdeasListsResponse,
   zPostApiV1ProfilesData,
   zPostApiV1ProfilesResponse,
@@ -418,25 +418,27 @@ export const patchApiV1IdeasListsIdeasListId = <
   });
 };
 
-export const postApiV1IdeasListsIdeasListIdGenerate = <
+export const postApiV1IdeasListsIdeasListIdMoreIdeas = <
   ThrowOnError extends boolean = false,
 >(
-  options: Options<PostApiV1IdeasListsIdeasListIdGenerateData, ThrowOnError>,
+  options: Options<PostApiV1IdeasListsIdeasListIdMoreIdeasData, ThrowOnError>,
 ) => {
   return (options.client ?? client).post<
-    PostApiV1IdeasListsIdeasListIdGenerateResponses,
-    PostApiV1IdeasListsIdeasListIdGenerateErrors,
+    PostApiV1IdeasListsIdeasListIdMoreIdeasResponses,
+    PostApiV1IdeasListsIdeasListIdMoreIdeasErrors,
     ThrowOnError
   >({
     requestValidator: async (data) => {
-      return await zPostApiV1IdeasListsIdeasListIdGenerateData.parseAsync(data);
-    },
-    responseValidator: async (data) => {
-      return await zPostApiV1IdeasListsIdeasListIdGenerateResponse.parseAsync(
+      return await zPostApiV1IdeasListsIdeasListIdMoreIdeasData.parseAsync(
         data,
       );
     },
-    url: "/api/v1/ideas-lists/{ideasListId}/generate",
+    responseValidator: async (data) => {
+      return await zPostApiV1IdeasListsIdeasListIdMoreIdeasResponse.parseAsync(
+        data,
+      );
+    },
+    url: "/api/v1/ideas-lists/{ideasListId}/more-ideas",
     ...options,
     headers: {
       "Content-Type": "application/json",

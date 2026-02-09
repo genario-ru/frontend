@@ -2446,15 +2446,15 @@
         }
       }
     },
-    "/api/v1/ideas-lists/{ideasListId}/generate": {
+    "/api/v1/ideas-lists/{ideasListId}/more-ideas": {
       "post": {
-        "operationId": "postApiV1Ideas-lists:ideasListIdGenerate",
+        "operationId": "postApiV1Ideas-lists:ideasListIdMore-ideas",
         "tags": [
           "Ideas lists"
         ],
         "responses": {
           "202": {
-            "description": "Ideas list generation queued successfully",
+            "description": "More ideas generation queued successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2463,17 +2463,97 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "jobId": {
-                          "type": "string"
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "userId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "profileId": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "format": "uuid",
+                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "templateId": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "format": "uuid",
+                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
                         },
                         "status": {
                           "type": "string",
-                          "const": "queued"
+                          "enum": [
+                            "pending",
+                            "generation",
+                            "failed",
+                            "ready"
+                          ]
+                        },
+                        "name": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "targetAudience": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
                         }
                       },
                       "required": [
-                        "jobId",
-                        "status"
+                        "id",
+                        "userId",
+                        "profileId",
+                        "templateId",
+                        "status",
+                        "name",
+                        "description",
+                        "targetAudience",
+                        "createdAt",
+                        "updatedAt"
                       ]
                     }
                   },
@@ -2573,10 +2653,15 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "count": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 20
+                  "userPrompt": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
                   }
                 }
               }

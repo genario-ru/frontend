@@ -50,8 +50,8 @@ import {
   patchApiV1ScenariosSceneComponentsSceneComponentId,
   patchApiV1ScenariosScenesSceneId,
   postApiV1IdeasLists,
-  postApiV1IdeasListsIdeasListIdGenerate,
   postApiV1IdeasListsIdeasListIdIdeas,
+  postApiV1IdeasListsIdeasListIdMoreIdeas,
   postApiV1Profiles,
   postApiV1Scenarios,
 } from "../sdk.gen";
@@ -139,12 +139,12 @@ import type {
   PatchApiV1ScenariosScenesSceneIdResponse,
   PostApiV1IdeasListsData,
   PostApiV1IdeasListsError,
-  PostApiV1IdeasListsIdeasListIdGenerateData,
-  PostApiV1IdeasListsIdeasListIdGenerateError,
-  PostApiV1IdeasListsIdeasListIdGenerateResponse,
   PostApiV1IdeasListsIdeasListIdIdeasData,
   PostApiV1IdeasListsIdeasListIdIdeasError,
   PostApiV1IdeasListsIdeasListIdIdeasResponse,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasData,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasError,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasResponse,
   PostApiV1IdeasListsResponse,
   PostApiV1ProfilesData,
   PostApiV1ProfilesError,
@@ -383,20 +383,20 @@ export const patchApiV1IdeasListsIdeasListIdMutation = (
   return mutationOptions;
 };
 
-export const postApiV1IdeasListsIdeasListIdGenerateMutation = (
-  options?: Partial<Options<PostApiV1IdeasListsIdeasListIdGenerateData>>,
+export const postApiV1IdeasListsIdeasListIdMoreIdeasMutation = (
+  options?: Partial<Options<PostApiV1IdeasListsIdeasListIdMoreIdeasData>>,
 ): UseMutationOptions<
-  PostApiV1IdeasListsIdeasListIdGenerateResponse,
-  PostApiV1IdeasListsIdeasListIdGenerateError,
-  Options<PostApiV1IdeasListsIdeasListIdGenerateData>
+  PostApiV1IdeasListsIdeasListIdMoreIdeasResponse,
+  PostApiV1IdeasListsIdeasListIdMoreIdeasError,
+  Options<PostApiV1IdeasListsIdeasListIdMoreIdeasData>
 > => {
   const mutationOptions: UseMutationOptions<
-    PostApiV1IdeasListsIdeasListIdGenerateResponse,
-    PostApiV1IdeasListsIdeasListIdGenerateError,
-    Options<PostApiV1IdeasListsIdeasListIdGenerateData>
+    PostApiV1IdeasListsIdeasListIdMoreIdeasResponse,
+    PostApiV1IdeasListsIdeasListIdMoreIdeasError,
+    Options<PostApiV1IdeasListsIdeasListIdMoreIdeasData>
   > = {
     mutationFn: async (fnOptions) => {
-      const { data } = await postApiV1IdeasListsIdeasListIdGenerate({
+      const { data } = await postApiV1IdeasListsIdeasListIdMoreIdeas({
         ...options,
         ...fnOptions,
         throwOnError: true,
