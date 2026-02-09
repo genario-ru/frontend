@@ -30,9 +30,9 @@ export function TemplateCard({
     <div
       style={{ "--template-color": templateColor } as CSSProperties}
       className={cn(
-        "rounded-4 flex flex-col justify-between gap-4 bg-(--template-color)/10 p-4 duration-200",
+        "rounded-4 flex flex-col justify-between gap-4 bg-(--template-color)/10 p-4 duration-200 dark:bg-(--template-color)/20",
         {
-          "cursor-pointer hover:bg-(--template-color)/15": clickable,
+          "cursor-pointer": clickable,
           "ring-2 ring-(--template-color)": active,
         },
         className,

@@ -16,7 +16,7 @@ export function HomeCarouselArrows({
   onNextClick,
 }: HomeCarouselArrowsProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 select-none">
       <Button
         size="sm"
         variant="secondary"
