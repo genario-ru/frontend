@@ -6,6 +6,7 @@ import { RouterProvider } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "tanstack-theme-kit";
 
 import { createQueryClient } from "@/lib/tanstack-query/create-query-client.ts";
 import { createRouter } from "@/lib/tanstack-router/create-router.ts";
@@ -29,7 +30,9 @@ function mount() {
     root.render(
       <StrictMode>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
+          <ThemeProvider disableTransitionOnChange attribute="class">
+            <RouterProvider router={router} />
+          </ThemeProvider>
         </QueryClientProvider>
       </StrictMode>,
     );

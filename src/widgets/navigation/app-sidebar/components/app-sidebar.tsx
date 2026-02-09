@@ -1,4 +1,5 @@
 import { BellIcon, MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "tanstack-theme-kit";
 
 import { AppSidebarContent } from "@/features/navigation/app-sidebar/components/app-sidebar-content";
 import { AppSidebarFooter } from "@/features/navigation/app-sidebar/components/app-sidebar-footer";
@@ -6,7 +7,6 @@ import { AppSidebarHeader } from "@/features/navigation/app-sidebar/components/a
 import { AppSidebarMenu } from "@/features/navigation/app-sidebar/components/app-sidebar-menu";
 import { AppSidebarMenuItem } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-item";
 import { AppSidebarMenuLink } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-link";
-// import { useTheme } from "next-themes";
 import { Logo } from "@/shared/components/common/logo";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
@@ -17,10 +17,10 @@ import { AppSidebarLayout } from "./app-sidebar-layout";
 import { AppSidebarUserMenu } from "./app-sidebar-user-menu";
 
 export const AppSidebar = () => {
-  // const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    // setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
