@@ -29,6 +29,7 @@ export function ProfileCardDeleteProfileDialog({
     <Dialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
       <DialogTrigger asChild>
         <Button
+          size="sm"
           variant="tertiary"
           color="negative"
           icon={<TrashIcon />}

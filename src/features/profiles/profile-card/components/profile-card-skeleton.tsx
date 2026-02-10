@@ -13,8 +13,8 @@ export const ProfileCardSkeleton = () => {
         </div>
       </header>
       <div className="flex w-full flex-col gap-2 px-4 pb-4">
-        <div className="flex w-full items-end justify-between gap-2">
-          <div className="flex items-center gap-2">
+        <div className="flex w-full justify-between gap-2">
+          <div className="mt-auto flex items-center gap-2 pt-3">
             <TextSkeleton
               fontSize={20}
               lineHeight={28}
@@ -23,7 +23,7 @@ export const ProfileCardSkeleton = () => {
             />
             <Skeleton className="h-6 w-16 rounded-lg" />
           </div>
-          <Skeleton className="size-10 rounded-xl" />
+          <Skeleton className="size-8 rounded-xl" />
         </div>
         <TextSkeleton
           fontSize={16}

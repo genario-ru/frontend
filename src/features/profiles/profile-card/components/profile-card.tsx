@@ -41,8 +41,8 @@ export const ProfileCard = ({
         />
       </header>
       <div className="flex w-full flex-col gap-2 px-4 pb-4">
-        <div className="flex w-full items-end justify-between gap-2">
-          <div className="flex items-center gap-2">
+        <div className="flex w-full justify-between gap-2">
+          <div className="mt-auto flex items-center gap-2 pt-3">
             <h2 className="text-xl font-semibold">{name}</h2>
             <Badge size="sm">{typeName}</Badge>
           </div>

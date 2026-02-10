@@ -14,6 +14,7 @@ export function MyProfileEditDialog({ profileId }: MyProfileEditDialogProps) {
       profileId={profileId}
       trigger={
         <Button
+          size="sm"
           variant="tertiary"
           className="w-full justify-start"
           icon={<PencilIcon />}
