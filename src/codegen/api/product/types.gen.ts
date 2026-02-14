@@ -2952,13 +2952,22 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
         updatedAt: string;
         components: Array<{
           id: string;
+          typeId: string;
           scenarioSceneId: string;
           name: string;
           content: string | null;
-          icon: string | null;
-          color: string | null;
           createdAt: string;
           updatedAt: string;
+          type: {
+            id: string;
+            name: string;
+            description: string | null;
+            icon: string | null;
+            color: string | null;
+            optional: boolean;
+            createdAt: string;
+            updatedAt: string;
+          };
         }>;
       }>;
     };
@@ -3239,11 +3248,10 @@ export type DeleteApiV1ScenariosSceneComponentsSceneComponentIdResponses = {
   200: {
     data: {
       id: string;
+      typeId: string;
       scenarioSceneId: string;
       name: string;
       content: string | null;
-      icon: string | null;
-      color: string | null;
       createdAt: string;
       updatedAt: string;
     };
@@ -3310,11 +3318,10 @@ export type PatchApiV1ScenariosSceneComponentsSceneComponentIdResponses = {
   200: {
     data: {
       id: string;
+      typeId: string;
       scenarioSceneId: string;
       name: string;
       content: string | null;
-      icon: string | null;
-      color: string | null;
       createdAt: string;
       updatedAt: string;
     };

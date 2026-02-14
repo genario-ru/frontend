@@ -3507,6 +3507,11 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
                 .regex(
                   /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
                 ),
+              typeId: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
               scenarioSceneId: z
                 .uuid()
                 .regex(
@@ -3514,10 +3519,22 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
                 ),
               name: z.string(),
               content: z.union([z.string(), z.null()]),
-              icon: z.union([z.string(), z.null()]),
-              color: z.union([z.string(), z.null()]),
               createdAt: z.string(),
               updatedAt: z.string(),
+              type: z.object({
+                id: z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                name: z.string(),
+                description: z.union([z.string(), z.null()]),
+                icon: z.union([z.string(), z.null()]),
+                color: z.union([z.string(), z.null()]),
+                optional: z.boolean(),
+                createdAt: z.string(),
+                updatedAt: z.string(),
+              }),
             }),
           ),
         }),
@@ -3724,6 +3741,11 @@ export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
+      typeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
       scenarioSceneId: z
         .uuid()
         .regex(
@@ -3731,8 +3753,6 @@ export const zDeleteApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
         ),
       name: z.string(),
       content: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      color: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
     }),
@@ -3773,6 +3793,11 @@ export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
+      typeId: z
+        .uuid()
+        .regex(
+          /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+        ),
       scenarioSceneId: z
         .uuid()
         .regex(
@@ -3780,8 +3805,6 @@ export const zPatchApiV1ScenariosSceneComponentsSceneComponentIdResponse = z
         ),
       name: z.string(),
       content: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      color: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
     }),

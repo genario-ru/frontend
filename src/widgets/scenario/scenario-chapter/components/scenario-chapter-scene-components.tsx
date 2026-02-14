@@ -1,3 +1,4 @@
+import type { GetApiV1ScenariosChaptersChapterIdResponse } from "@/codegen/api/product/types.gen";
 import {
   ScenarioChapterSceneComponent,
   ScenarioChapterSceneComponentSkeleton,
@@ -11,13 +12,7 @@ import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
   videoTypeSlug?: string;
-  components: {
-    id: string;
-    name: string;
-    content?: string | null;
-    icon?: string | null;
-    color?: string | null;
-  }[];
+  components: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number]["components"];
 };
 
 export function ScenarioChapterSceneComponents({
@@ -54,8 +49,8 @@ export function ScenarioChapterSceneComponents({
             key={component.id}
             name={component.name}
             content={component.content}
-            icon={component.icon}
-            color={component.color}
+            icon={component.type.icon}
+            color={component.type.color}
           />
         ))}
       </div>
