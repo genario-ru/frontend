@@ -32,6 +32,7 @@ import {
   getApiV1ScenariosChaptersChapterId,
   getApiV1ScenariosMy,
   getApiV1ScenariosScenarioId,
+  getApiV1ScenariosScenarioIdCurrentVersion,
   getApiV1ScenariosScenarioIdVersions,
   getApiV1ScenariosVersionsVersionId,
   getApiV1Templates,
@@ -100,6 +101,7 @@ import type {
   GetApiV1ReferralInvitesMyResponse,
   GetApiV1ScenariosChaptersChapterIdData,
   GetApiV1ScenariosMyData,
+  GetApiV1ScenariosScenarioIdCurrentVersionData,
   GetApiV1ScenariosScenarioIdData,
   GetApiV1ScenariosScenarioIdVersionsData,
   GetApiV1ScenariosVersionsVersionIdData,
@@ -894,6 +896,30 @@ export const getApiV1ScenariosMyOptions = (
       return data;
     },
     queryKey: getApiV1ScenariosMyQueryKey(options),
+  });
+};
+
+export const getApiV1ScenariosScenarioIdCurrentVersionQueryKey = (
+  options: Options<GetApiV1ScenariosScenarioIdCurrentVersionData>,
+) =>
+  createQueryKey("getApiV1ScenariosScenarioIdCurrentVersion", options, false, [
+    "Scenarios",
+  ]);
+
+export const getApiV1ScenariosScenarioIdCurrentVersionOptions = (
+  options: Options<GetApiV1ScenariosScenarioIdCurrentVersionData>,
+) => {
+  return queryOptions({
+    queryFn: async ({ queryKey, signal }) => {
+      const { data } = await getApiV1ScenariosScenarioIdCurrentVersion({
+        ...options,
+        ...queryKey[0],
+        signal,
+        throwOnError: true,
+      });
+      return data;
+    },
+    queryKey: getApiV1ScenariosScenarioIdCurrentVersionQueryKey(options),
   });
 };
 

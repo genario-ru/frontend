@@ -2415,6 +2415,128 @@ export type GetApiV1ScenariosMyResponses = {
 export type GetApiV1ScenariosMyResponse =
   GetApiV1ScenariosMyResponses[keyof GetApiV1ScenariosMyResponses];
 
+export type GetApiV1ScenariosScenarioIdCurrentVersionData = {
+  body?: never;
+  path: {
+    scenarioId: string;
+  };
+  query?: never;
+  url: "/api/v1/scenarios/{scenarioId}/current-version";
+};
+
+export type GetApiV1ScenariosScenarioIdCurrentVersionErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type GetApiV1ScenariosScenarioIdCurrentVersionError =
+  GetApiV1ScenariosScenarioIdCurrentVersionErrors[keyof GetApiV1ScenariosScenarioIdCurrentVersionErrors];
+
+export type GetApiV1ScenariosScenarioIdCurrentVersionResponses = {
+  /**
+   * Scenario current version retrieved successfully
+   */
+  200: {
+    data: {
+      id: string;
+      scenarioId: string;
+      status: "pending" | "generation" | "failed" | "ready";
+      createdAt: string;
+      updatedAt: string;
+      profile?: {
+        id: string;
+        userId: string;
+        name: string;
+        description: string | null;
+        targetAudience: string | null;
+        typeId: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      platform?: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        logoUrl: string | null;
+        baseUrl: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      videoType?: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      videoDuration?: {
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        minSeconds: number;
+        maxSeconds: number | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      tones?: Array<{
+        id: string;
+        slug: string;
+        name: string;
+        description: string | null;
+        icon: string | null;
+        createdAt: string;
+        updatedAt: string;
+      }> | null;
+      scenarioChapters?: Array<{
+        id: string;
+        scenarioVersionId: string;
+        name: string;
+        description: string | null;
+        status: "pending" | "generation" | "failed" | "ready";
+        startTime: number;
+        endTime: number;
+        createdAt: string;
+        updatedAt: string;
+      }> | null;
+    };
+  };
+};
+
+export type GetApiV1ScenariosScenarioIdCurrentVersionResponse =
+  GetApiV1ScenariosScenarioIdCurrentVersionResponses[keyof GetApiV1ScenariosScenarioIdCurrentVersionResponses];
+
 export type PatchApiV1ScenariosScenarioIdCurrentVersionData = {
   body?: {
     currentVersionId: string;

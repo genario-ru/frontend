@@ -69,6 +69,9 @@ import type {
   GetApiV1ScenariosMyData,
   GetApiV1ScenariosMyErrors,
   GetApiV1ScenariosMyResponses,
+  GetApiV1ScenariosScenarioIdCurrentVersionData,
+  GetApiV1ScenariosScenarioIdCurrentVersionErrors,
+  GetApiV1ScenariosScenarioIdCurrentVersionResponses,
   GetApiV1ScenariosScenarioIdData,
   GetApiV1ScenariosScenarioIdErrors,
   GetApiV1ScenariosScenarioIdResponses,
@@ -181,6 +184,8 @@ import {
   zGetApiV1ScenariosChaptersChapterIdResponse,
   zGetApiV1ScenariosMyData,
   zGetApiV1ScenariosMyResponse,
+  zGetApiV1ScenariosScenarioIdCurrentVersionData,
+  zGetApiV1ScenariosScenarioIdCurrentVersionResponse,
   zGetApiV1ScenariosScenarioIdData,
   zGetApiV1ScenariosScenarioIdResponse,
   zGetApiV1ScenariosScenarioIdVersionsData,
@@ -781,6 +786,31 @@ export const getApiV1ScenariosMy = <ThrowOnError extends boolean = false>(
       return await zGetApiV1ScenariosMyResponse.parseAsync(data);
     },
     url: "/api/v1/scenarios/my",
+    ...options,
+  });
+};
+
+export const getApiV1ScenariosScenarioIdCurrentVersion = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<GetApiV1ScenariosScenarioIdCurrentVersionData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    GetApiV1ScenariosScenarioIdCurrentVersionResponses,
+    GetApiV1ScenariosScenarioIdCurrentVersionErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiV1ScenariosScenarioIdCurrentVersionData.parseAsync(
+        data,
+      );
+    },
+    responseValidator: async (data) => {
+      return await zGetApiV1ScenariosScenarioIdCurrentVersionResponse.parseAsync(
+        data,
+      );
+    },
+    url: "/api/v1/scenarios/{scenarioId}/current-version",
     ...options,
   });
 };
