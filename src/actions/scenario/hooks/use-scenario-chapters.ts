@@ -1,6 +1,8 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
+
 import { useGetCurrentScenarioVersion } from "./use-get-current-scenario-version";
 
 type UseScenarioChaptersParams = {
@@ -88,7 +90,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
   }, [scenarioChaptersList, activeScenarioChapter]);
 
   const isScenarioChaptersGenerating = useMemo(() => {
-    return scenarioCurrentVersionData?.data.status === "generation";
+    return checkIsGenerationStatus(scenarioCurrentVersionData?.data.status);
   }, [scenarioCurrentVersionData]);
 
   const handleSetActiveScenarioChapter = useCallback(

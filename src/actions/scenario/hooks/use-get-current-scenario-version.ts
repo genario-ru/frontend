@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getApiV1ScenariosScenarioIdCurrentVersionOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
 
@@ -22,7 +23,7 @@ export function useGetCurrentScenarioVersion({
       },
     }),
     refetchInterval: (query) => {
-      if (query.state.data?.data.status === "generation") {
+      if (checkIsGenerationStatus(query.state.data?.data.status)) {
         return REFRESH_INTERVAL;
       }
 

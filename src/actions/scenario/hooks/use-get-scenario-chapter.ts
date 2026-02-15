@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getApiV1ScenariosChaptersChapterIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
 
@@ -22,13 +23,13 @@ export function useGetScenarioChapter({
       },
     }),
     refetchInterval: (query) => {
-      if (query.state.data?.data.status === "generation") {
+      if (checkIsGenerationStatus(query.state.data?.data.status)) {
         return REFRESH_INTERVAL;
       }
 
       if (
-        query.state.data?.data.scenes.some(
-          (scene) => scene.status === "generation",
+        query.state.data?.data.scenes.some((scene) =>
+          checkIsGenerationStatus(scene.status),
         )
       ) {
         return REFRESH_INTERVAL;

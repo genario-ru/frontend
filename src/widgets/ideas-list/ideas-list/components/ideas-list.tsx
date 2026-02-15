@@ -17,6 +17,7 @@ import {
   ErrorPlugTitle,
 } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 import { useIdeasList } from "../hooks/use-ideas-list";
 import { IdeasListIdeaCard } from "./ideas-list-idea-card";
@@ -33,7 +34,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   });
 
   const alert = useMemo(() => {
-    if (ideasListData?.data.status === "generation") {
+    if (checkIsGenerationStatus(ideasListData?.data.status)) {
       return (
         <GenerationAlert
           title="Генерируем идеи"
@@ -56,7 +57,10 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
 
     const ideasListDataLength = ideasListData?.data.ideas.length;
 
-    if (ideasListData?.data.status === "generation" && !ideasListDataLength) {
+    if (
+      checkIsGenerationStatus(ideasListData?.data.status) &&
+      !ideasListDataLength
+    ) {
       return <IdeasListSkeleton />;
     }
 

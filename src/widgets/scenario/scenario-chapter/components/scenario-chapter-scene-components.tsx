@@ -9,6 +9,7 @@ import {
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
@@ -22,7 +23,7 @@ export function ScenarioChapterSceneComponents({
   status,
   components,
 }: ScenarioChapterSceneComponentsProps) {
-  if (status === "generation") {
+  if (checkIsGenerationStatus(status)) {
     return <ScenarioChapterSceneComponentsGeneratingAlert />;
   }
 
