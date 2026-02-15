@@ -87,6 +87,10 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     return scenarioChaptersList[currentChapterIndex + 1];
   }, [scenarioChaptersList, activeScenarioChapter]);
 
+  const isScenarioChaptersGenerating = useMemo(() => {
+    return scenarioCurrentVersionData?.data.status === "generation";
+  }, [scenarioCurrentVersionData]);
+
   const handleSetActiveScenarioChapter = useCallback(
     (chapterId: string) => {
       navigate({
@@ -121,6 +125,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     activeScenarioChapterPosition,
     previousScenarioChapter,
     nextScenarioChapter,
+    isScenarioChaptersGenerating,
     isScenarioChaptersLoading: isScenarioCurrentVersionLoading,
     isScenarioChaptersError: isScenarioCurrentVersionError,
     handleSetActiveScenarioChapter,

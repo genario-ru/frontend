@@ -3,6 +3,7 @@ import {
   ScenarioChapterSceneHeader,
   ScenarioChapterSceneHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
+import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import {
   EmptyPlug,
@@ -37,9 +38,14 @@ export function ScenarioChapterScenes({
 }: ScenarioChapterScenesProps) {
   const {
     scenarioChapterScenesList,
+    isScenarioChapterGenerating,
     isScenarioChapterLoading,
     isScenarioChapterError,
   } = useScenarioScenes({ scenarioId, chapterId });
+
+  if (isScenarioChapterGenerating) {
+    return <ScenarioChapterScenesGeneratingAlert />;
+  }
 
   if (isScenarioChapterLoading) {
     return <ScenarioChapterScenesSkeleton />;
@@ -64,11 +70,25 @@ export function ScenarioChapterScenes({
             endTime={scene.endTime}
           />
           <ScenarioChapterSceneComponents
+            status={scene.status}
             videoTypeSlug={videoTypeSlug}
             components={scene.components}
           />
         </section>
       ))}
+    </Island>
+  );
+}
+
+export function ScenarioChapterScenesGeneratingAlert() {
+  return (
+    <Island roundedTop={false} className="flex-1">
+      <GenerationAlert
+        title="Генерируем сцены"
+        description="Генерируем для вас сцены, подождите несколько секунд..."
+        className="border-neutral-3 flex-1 border"
+        hasGradient={false}
+      />
     </Island>
   );
 }

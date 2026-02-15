@@ -23,6 +23,10 @@ export function useScenarioScenes({
     chapterId,
   });
 
+  const isScenarioChapterGenerating = useMemo(() => {
+    return scenarioChapterData?.data.status === "generation";
+  }, [scenarioChapterData]);
+
   const scenarioChapterScenesList = useMemo(() => {
     return scenarioChapterData?.data.scenes;
   }, [scenarioChapterData]);
@@ -88,6 +92,7 @@ export function useScenarioScenes({
     activeScenarioChapterScene,
     previousScenarioChapterScene,
     nextScenarioChapterScene,
+    isScenarioChapterGenerating,
     isScenarioChapterLoading,
     isScenarioChapterError,
     handleScenarioChapterSceneClick,

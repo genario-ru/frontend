@@ -3,6 +3,7 @@ import {
   ScenarioChapterHeader,
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
+import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import {
   EmptyPlugDescription,
   EmptyPlugIcon,
@@ -29,9 +30,14 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   const {
     scenarioVideoType,
     activeScenarioChapter,
+    isScenarioChaptersGenerating,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
   } = useScenarioChapters({ scenarioId });
+
+  if (isScenarioChaptersGenerating) {
+    return null;
+  }
 
   if (isScenarioChaptersLoading) {
     return <ScenarioChapterSkeleton />;
@@ -59,6 +65,16 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         videoTypeSlug={scenarioVideoType?.slug}
       />
     </div>
+  );
+}
+
+export function ScenarioChapterGeneratingAlert() {
+  return (
+    <GenerationAlert
+      title="Генерируем сценарий"
+      description="Генерируем для вас сценарий, подождите несколько секунд..."
+      className="flex-1"
+    />
   );
 }
 

@@ -1,5 +1,6 @@
 import type { RefObject } from "react";
 
+import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import { Island } from "@/shared/components/ui/island";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 
@@ -19,6 +20,12 @@ export function ScenarioNavigation({
   scenarioId,
   className,
 }: ScenarioNavigationProps) {
+  const { isScenarioChaptersGenerating } = useScenarioChapters({ scenarioId });
+
+  if (isScenarioChaptersGenerating) {
+    return null;
+  }
+
   return (
     <Island ref={ref} noPadding noGap className={className}>
       <div className="flex w-full">

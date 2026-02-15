@@ -7,18 +7,25 @@ import {
   ScenarioChapterScenePreview,
   ScenarioChapterScenePreviewSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview";
+import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
   videoTypeSlug?: string;
+  status: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number]["status"];
   components: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number]["components"];
 };
 
 export function ScenarioChapterSceneComponents({
   videoTypeSlug,
+  status,
   components,
 }: ScenarioChapterSceneComponentsProps) {
+  if (status === "generation") {
+    return <ScenarioChapterSceneComponentsGeneratingAlert />;
+  }
+
   return (
     <div
       className={cn("grid w-full gap-4", {
@@ -55,6 +62,17 @@ export function ScenarioChapterSceneComponents({
         ))}
       </div>
     </div>
+  );
+}
+
+export function ScenarioChapterSceneComponentsGeneratingAlert() {
+  return (
+    <GenerationAlert
+      title="Генерируем компоненты сцены"
+      description="Генерируем для вас компоненты сцены, подождите несколько секунд..."
+      className="border-neutral-3 flex-1 border"
+      hasGradient={false}
+    />
   );
 }
 
