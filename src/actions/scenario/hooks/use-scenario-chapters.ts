@@ -1,8 +1,7 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 
-import { useGetScenario } from "./use-get-scenario";
-import { useGetScenarioVersion } from "./use-get-scenario-version";
+import { useGetCurrentScenarioVersion } from "./use-get-current-scenario-version";
 
 type UseScenarioChaptersParams = {
   scenarioId: string;
@@ -12,25 +11,21 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
   const navigate = useNavigate();
   const { chapterId } = useSearch({ from: "/_app/scenarios/$scenarioId" });
 
-  const { scenarioData, isScenarioLoading, isScenarioError } = useGetScenario({
+  const {
+    scenarioCurrentVersionData,
+    isScenarioCurrentVersionLoading,
+    isScenarioCurrentVersionError,
+  } = useGetCurrentScenarioVersion({
     scenarioId,
   });
 
-  const {
-    scenarioVersionData,
-    isScenarioVersionLoading,
-    isScenarioVersionError,
-  } = useGetScenarioVersion({
-    scenarioVersionId: scenarioData?.data.currentVersionId,
-  });
-
   const scenarioVideoType = useMemo(() => {
-    return scenarioVersionData?.data.videoType;
-  }, [scenarioVersionData]);
+    return scenarioCurrentVersionData?.data.videoType;
+  }, [scenarioCurrentVersionData]);
 
   const scenarioChaptersList = useMemo(() => {
-    return scenarioVersionData?.data.scenarioChapters;
-  }, [scenarioVersionData]);
+    return scenarioCurrentVersionData?.data.scenarioChapters;
+  }, [scenarioCurrentVersionData]);
 
   const activeScenarioChapter = useMemo(() => {
     if (!scenarioChaptersList?.length) {
@@ -126,8 +121,8 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     activeScenarioChapterPosition,
     previousScenarioChapter,
     nextScenarioChapter,
-    isScenarioChaptersLoading: isScenarioLoading || isScenarioVersionLoading,
-    isScenarioChaptersError: isScenarioError || isScenarioVersionError,
+    isScenarioChaptersLoading: isScenarioCurrentVersionLoading,
+    isScenarioChaptersError: isScenarioCurrentVersionError,
     handleSetActiveScenarioChapter,
     handlePreviousScenarioChapterClick,
     handleNextScenarioChapterClick,
