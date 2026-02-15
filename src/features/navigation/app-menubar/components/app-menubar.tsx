@@ -11,7 +11,6 @@ import { cn } from "@/shared/utils/cn";
 
 export type AppMenubarProps = PropsWithClassName<{
   title: ReactNode;
-  firstLine?: ReactNode;
   description?: ReactNode;
   backButton?: boolean;
   sticky?: boolean;
@@ -22,7 +21,6 @@ export type AppMenubarProps = PropsWithClassName<{
 export const AppMenubar = memo(
   ({
     title,
-    firstLine,
     description,
     backButton = false,
     sticky = true,
@@ -44,7 +42,7 @@ export const AppMenubar = memo(
         roundedTop={false}
         row
         className={cn(
-          "z-1 min-h-16 shrink-0 gap-3 p-4 duration-200",
+          "z-1 min-h-16 w-full shrink-0 gap-3 p-4 duration-200",
           {
             "shadow-bottom-1": isScrolled,
             "sticky top-0": sticky,
@@ -53,9 +51,9 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <section className="flex flex-1 flex-col justify-between gap-4">
+        <section className="flex flex-1 flex-col justify-between gap-4 overflow-hidden">
           <div className="flex flex-1 flex-col gap-1">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-1 items-center gap-2">
               {backButton && (
                 <Button
                   variant="tertiary"
@@ -63,8 +61,9 @@ export const AppMenubar = memo(
                   onClick={onBackButtonClick}
                 />
               )}
-              <Heading variant="h1">{title}</Heading>
-              {firstLine}
+              <Heading variant="h1" className="truncate">
+                {title}
+              </Heading>
             </div>
             {description && (
               <div className="text-neutral-7 line-clamp-2">{description}</div>

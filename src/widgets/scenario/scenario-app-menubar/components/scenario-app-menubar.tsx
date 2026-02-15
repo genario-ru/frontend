@@ -2,7 +2,6 @@ import { useMemo } from "react";
 
 import { BadgesList } from "@/features/badges/badges-list/badges-list";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
-import { TemplateBadge } from "@/features/templates/template-badge/components/template-badge";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
@@ -31,25 +30,6 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
     return scenarioTitle;
   }, [scenarioTitle, isScenarioLoading]);
 
-  const firstLine = useMemo(() => {
-    if (isScenarioLoading) {
-      return <ScenarioAppMenubarFirstLineSkeleton />;
-    }
-
-    if (scenarioData?.data.template) {
-      return (
-        <TemplateBadge
-          size="base"
-          name={scenarioData.data.template.name}
-          icon={scenarioData.data.template.icon}
-          color={scenarioData.data.template.color}
-        />
-      );
-    }
-
-    return null;
-  }, [scenarioData, isScenarioLoading]);
-
   const description = useMemo(() => {
     if (isScenarioLoading) {
       return <ScenarioAppMenubarDescriptionSkeleton />;
@@ -67,6 +47,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
       <BadgesList
         clamp={4}
         badgesData={[
+          scenarioData?.data.template,
           scenarioData?.data.platform,
           scenarioData?.data.videoType,
           scenarioData?.data.videoDuration,
@@ -80,7 +61,6 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
     <AppMenubar
       backButton
       title={title}
-      firstLine={firstLine}
       description={description}
       left={left}
       right={
@@ -99,10 +79,6 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
 function ScenarioAppMenubarTitleSkeleton() {
   return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
-}
-
-function ScenarioAppMenubarFirstLineSkeleton() {
-  return <Skeleton className="rounded-2.5 h-[30px] w-24" />;
 }
 
 function ScenarioAppMenubarDescriptionSkeleton() {

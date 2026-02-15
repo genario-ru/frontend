@@ -2,7 +2,6 @@ import { useMemo } from "react";
 
 import type { GetApiV1ArchiveItemsMyResponse } from "@/codegen/api/product/types.gen";
 import { BadgesList } from "@/features/badges/badges-list/badges-list";
-import { TemplateBadge } from "@/features/templates/template-badge/components/template-badge";
 
 type ArchiveItemBadgesProps = {
   archiveItem: GetApiV1ArchiveItemsMyResponse["data"][number];
@@ -13,7 +12,7 @@ export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {
     if (archiveItem.entity === "ideasList") {
       return (
         <BadgesList
-          badgesData={archiveItem.data.videoTypes}
+          badgesData={[archiveItem.data.template, archiveItem.data.videoTypes]}
           badgeProps={{ size: "sm", variant: "tertiary" }}
         />
       );
@@ -22,6 +21,7 @@ export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {
     return (
       <BadgesList
         badgesData={[
+          archiveItem.data.template,
           archiveItem.data.videoType,
           archiveItem.data.videoDuration,
           archiveItem.data.platform,
@@ -31,16 +31,5 @@ export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {
     );
   }, [archiveItem]);
 
-  return (
-    <footer className="flex flex-wrap items-center gap-1">
-      {archiveItem.data.template && (
-        <TemplateBadge
-          name={archiveItem.data.template.name}
-          icon={archiveItem.data.template.icon}
-          color={archiveItem.data.template.color}
-        />
-      )}
-      {body}
-    </footer>
-  );
+  return <footer className="flex flex-wrap items-center gap-1">{body}</footer>;
 }

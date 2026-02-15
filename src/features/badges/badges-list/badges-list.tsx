@@ -9,6 +9,7 @@ import { cn } from "@/shared/utils/cn";
 type BadgeData = {
   name: string;
   icon?: string | null;
+  color?: string;
 };
 
 type BadgesListProps = PropsWithClassName<{
@@ -48,6 +49,8 @@ export function BadgesList({
       {clampedBadges.map((badge) => (
         <Badge
           key={`badges-list-badge-${badge.name}`}
+          color={badge.color ? "custom" : "neutral"}
+          customColor={badge.color}
           icon={badge.icon && <LucideIcon icon={badge.icon} />}
           {...badgeProps}
         >
