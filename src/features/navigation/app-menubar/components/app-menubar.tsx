@@ -53,7 +53,7 @@ export const AppMenubar = memo(
       >
         <section className="flex flex-1 flex-col justify-between gap-4 overflow-hidden">
           <div className="flex flex-1 flex-col gap-1">
-            <div className="flex flex-1 items-center gap-2">
+            <div className="flex items-center gap-2">
               {backButton && (
                 <Button
                   variant="tertiary"
