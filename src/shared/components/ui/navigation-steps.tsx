@@ -3,6 +3,10 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
+import { ItemsList } from "../common/items-list";
+import { Skeleton } from "./skeleton";
+import { TextSkeleton } from "./text-skeleton";
+
 const navigationStep = cva(
   "w-full h-fit duration-200 flex flex-col font-medium gap-1.5 text-neutral-8 items-center",
   {
@@ -32,6 +36,10 @@ export type NavigationStep<T extends string> = {
 type NavigationStepsProps<T extends string> = ComponentProps<"nav"> & {
   steps: NavigationStep<T>[];
   onStepClick: (step: NavigationStep<T>) => void;
+};
+
+type NavigationStepsSkeletonProps = {
+  count?: number;
 };
 
 export const NavigationSteps = <T extends string>({
@@ -70,3 +78,22 @@ export const NavigationSteps = <T extends string>({
     </nav>
   );
 };
+
+export function NavigationStepsSkeleton({
+  count = 3,
+}: NavigationStepsSkeletonProps) {
+  return (
+    <ItemsList
+      row
+      count={count}
+      item={
+        <div className="flex flex-1 flex-col items-center gap-1.5">
+          <TextSkeleton fontSize={16} lineHeight={24} className="w-48" />
+          <Skeleton className="h-1.5 w-full rounded-full" />
+        </div>
+      }
+      itemClassName="flex-1"
+      className="flex w-full items-center gap-2"
+    />
+  );
+}

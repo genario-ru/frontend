@@ -1,11 +1,25 @@
 import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/product/types.gen";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugHeader,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
 import { useIdeasListSettingsForm } from "../hooks/use-ideas-list-settings-form";
 import { IdeasListSettingsCurrentSubform } from "./ideas-list-settings-current-subform";
-import { IdeasListSettingsFormButtons } from "./ideas-list-settings-form-buttons";
-import { IdeasListSettingsFormNavigationSteps } from "./ideas-list-settings-form-navigation-steps";
+import {
+  IdeasListSettingsFormButtons,
+  IdeasListSettingsFormButtonsSkeleton,
+} from "./ideas-list-settings-form-buttons";
+import {
+  IdeasListSettingsFormNavigationSteps,
+  IdeasListSettingsFormNavigationStepsSkeleton,
+} from "./ideas-list-settings-form-navigation-steps";
 import { IdeasListSettingsFormNavigationStepsListener } from "./ideas-list-settings-form-navigation-steps-listener";
+import { IdeasListSettingsTemplatesSelectionSubformSkeleton } from "./ideas-list-settings-templates-selection-subform";
 
 type IdeasListSettingsFormProps = {
   templateId: string | undefined;
@@ -45,5 +59,33 @@ export function IdeasListSettingsForm({
         isUpdateIdeasListPending={isUpdateIdeasListPending}
       />
     </form>
+  );
+}
+
+export function IdeasListSettingsFormSkeleton() {
+  return (
+    <div className="flex w-full flex-1 flex-col">
+      <Island roundedBottom={false} className="flex-1 gap-6">
+        <IdeasListSettingsFormNavigationStepsSkeleton />
+        <IdeasListSettingsTemplatesSelectionSubformSkeleton />
+      </Island>
+      <IdeasListSettingsFormButtonsSkeleton />
+    </div>
+  );
+}
+
+export function IdeasListSettingsFormErrorPlug() {
+  return (
+    <Island className="flex-1">
+      <ErrorPlug className="flex-1">
+        <ErrorPlugHeader>
+          <ErrorPlugIcon />
+          <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
+          <ErrorPlugDescription>
+            Произошла ошибка при загрузке формы. Попробуйте обновить страницу
+          </ErrorPlugDescription>
+        </ErrorPlugHeader>
+      </ErrorPlug>
+    </Island>
   );
 }

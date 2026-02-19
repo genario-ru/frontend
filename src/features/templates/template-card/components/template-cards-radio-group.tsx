@@ -16,6 +16,10 @@ type TemplateCardsRadioGroupItemProps = ComponentProps<
   description?: string | null;
 };
 
+type TemplateCardsRadioGroupSkeletonProps = {
+  count?: number;
+};
+
 export const TemplateCardsRadioGroup = ({
   className,
   ...props
@@ -51,10 +55,12 @@ export const TemplateCardsRadioGroupItem = ({
   );
 };
 
-export function TemplateCardsRadioGroupSkeleton() {
+export function TemplateCardsRadioGroupSkeleton({
+  count = 6,
+}: TemplateCardsRadioGroupSkeletonProps) {
   return (
     <ItemsList
-      count={6}
+      count={count}
       item={<TemplateCardsRadioGroupItemSkeleton />}
       className="grid w-full auto-rows-fr grid-cols-2 gap-3"
     />

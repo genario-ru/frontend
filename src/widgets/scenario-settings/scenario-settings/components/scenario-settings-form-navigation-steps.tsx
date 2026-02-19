@@ -5,6 +5,7 @@ import { withForm } from "@/lib/tanstack-form";
 import {
   type NavigationStep,
   NavigationSteps,
+  NavigationStepsSkeleton,
 } from "@/shared/components/ui/navigation-steps";
 
 import { SCENARIO_DIALOG_FORM_NAVIGATION_STEPS } from "../constants/scenario-settings-form-navigation-steps";
@@ -40,3 +41,7 @@ export const ScenarioSettingsFormNavigationSteps = withForm({
     );
   },
 });
+
+export function ScenarioSettingsFormNavigationStepsSkeleton() {
+  return <NavigationStepsSkeleton />;
+}

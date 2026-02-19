@@ -33,7 +33,7 @@ export const ScenarioSettingsTemplatesSelectionSubform = withForm({
       useGetTemplates();
 
     if (isTemplatesLoading) {
-      return <TemplateCardsRadioGroupSkeleton />;
+      return <ScenarioSettingsTemplatesSelectionSubformSkeleton />;
     }
 
     if (isTemplatesError) {
@@ -73,6 +73,10 @@ export const ScenarioSettingsTemplatesSelectionSubform = withForm({
     );
   },
 });
+
+export function ScenarioSettingsTemplatesSelectionSubformSkeleton() {
+  return <TemplateCardsRadioGroupSkeleton />;
+}
 
 export function ScenarioSettingsTemplatesSelectionSubformEmptyPlug() {
   return (

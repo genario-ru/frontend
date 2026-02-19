@@ -33,7 +33,7 @@ export const IdeasListSettingsTemplatesSelectionSubform = withForm({
       useGetTemplates();
 
     if (isTemplatesLoading) {
-      return <TemplateCardsRadioGroupSkeleton />;
+      return <IdeasListSettingsTemplatesSelectionSubformSkeleton />;
     }
 
     if (isTemplatesError) {
@@ -73,6 +73,10 @@ export const IdeasListSettingsTemplatesSelectionSubform = withForm({
     );
   },
 });
+
+export function IdeasListSettingsTemplatesSelectionSubformSkeleton() {
+  return <TemplateCardsRadioGroupSkeleton />;
+}
 
 export function IdeasListSettingsTemplatesSelectionSubformEmptyPlug() {
   return (

@@ -5,6 +5,7 @@ import { withForm } from "@/lib/tanstack-form";
 import {
   type NavigationStep,
   NavigationSteps,
+  NavigationStepsSkeleton,
 } from "@/shared/components/ui/navigation-steps";
 
 import { IDEAS_LIST_DIALOG_FORM_NAVIGATION_STEPS } from "../constants/ideas-list-settings-form-navigation-steps";
@@ -40,3 +41,7 @@ export const IdeasListSettingsFormNavigationSteps = withForm({
     );
   },
 });
+
+export function IdeasListSettingsFormNavigationStepsSkeleton() {
+  return <NavigationStepsSkeleton />;
+}

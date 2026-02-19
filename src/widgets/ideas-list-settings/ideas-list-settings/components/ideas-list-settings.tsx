@@ -4,7 +4,11 @@ import type { IdeasListSettingsSearch } from "@/routes/_app/ideas-lists/settings
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useIdeasListSettings } from "../hooks/use-ideas-list-settings";
-import { IdeasListSettingsForm } from "./ideas-list-settings-form";
+import {
+  IdeasListSettingsForm,
+  IdeasListSettingsFormErrorPlug,
+  IdeasListSettingsFormSkeleton,
+} from "./ideas-list-settings-form";
 
 type IdeasListSettingsProps = IdeasListSettingsSearch;
 
@@ -17,11 +21,11 @@ export function IdeasListSettings({
 
   const body = useMemo(() => {
     if (isIdeasListLoading) {
-      return <div>Loading...</div>;
+      return <IdeasListSettingsFormSkeleton />;
     }
 
     if (isIdeasListError) {
-      return <div>Error...</div>;
+      return <IdeasListSettingsFormErrorPlug />;
     }
 
     return (

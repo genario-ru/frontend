@@ -3,8 +3,10 @@ import { ArrowLeftIcon, ArrowRightIcon, LightbulbIcon } from "lucide-react";
 import { useCallback } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
@@ -111,3 +113,16 @@ export const IdeasListSettingsFormButtons = withForm({
     );
   },
 });
+
+export function IdeasListSettingsFormButtonsSkeleton() {
+  return (
+    <Island row roundedTop={false}>
+      <ItemsList
+        row
+        count={2}
+        item={<Skeleton className="rounded-4 h-10 w-32" />}
+        className="w-full items-center justify-between"
+      />
+    </Island>
+  );
+}

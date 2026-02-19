@@ -8,6 +8,7 @@ interface IProps extends ComponentProps<"div"> {
   gap?: number;
   item: ReactNode;
   noParent?: boolean;
+  itemClassName?: string;
 }
 
 const DEFAULT_ITEMS_COUNT = 3;
@@ -18,13 +19,19 @@ export function ItemsList({
   gap,
   item,
   noParent,
+  itemClassName,
   className,
   ...props
 }: IProps) {
   const skeletons = Array.from({
     length: count,
   }).map((_, index) => (
-    <div key={`items-list-${item?.toString()}-${index.toString()}`}>{item}</div>
+    <div
+      key={`items-list-${item?.toString()}-${index.toString()}`}
+      className={itemClassName}
+    >
+      {item}
+    </div>
   ));
 
   if (noParent) {

@@ -4,7 +4,11 @@ import type { ScenarioSettingsSearch } from "@/routes/_app/scenarios/settings";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useScenarioSettings } from "../hooks/use-scenario-settings";
-import { ScenarioSettingsForm } from "./scenario-settings-form";
+import {
+  ScenarioSettingsForm,
+  ScenarioSettingsFormErrorPlug,
+  ScenarioSettingsFormSkeleton,
+} from "./scenario-settings-form";
 
 type ScenarioSettingsProps = ScenarioSettingsSearch;
 
@@ -20,11 +24,11 @@ export function ScenarioSettings({
 
   const body = useMemo(() => {
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <ScenarioSettingsFormSkeleton />;
     }
 
     if (isError) {
-      return <div>Error...</div>;
+      return <ScenarioSettingsFormErrorPlug />;
     }
 
     return (
