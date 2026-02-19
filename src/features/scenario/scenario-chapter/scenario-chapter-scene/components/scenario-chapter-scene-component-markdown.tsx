@@ -80,7 +80,7 @@ function ScenarioChapterSceneComponentMarkdownH6(props: HeadingProps) {
 }
 
 function ScenarioChapterSceneComponentMarkdownP(props: ComponentProps<"p">) {
-  return <p className="my-1 first:mt-0 last:mb-0" {...props} />;
+  return <p className="my-2 first:mt-0 last:mb-0" {...props} />;
 }
 
 function ScenarioChapterSceneComponentMarkdownUl(props: ComponentProps<"ul">) {
@@ -102,7 +102,7 @@ function ScenarioChapterSceneComponentMarkdownOl(props: ComponentProps<"ol">) {
 }
 
 function ScenarioChapterSceneComponentMarkdownLi(props: ComponentProps<"li">) {
-  return <li className="my-0.5 first:mt-0 last:mb-0" {...props} />;
+  return <li className="my-1 first:mt-0 last:mb-0" {...props} />;
 }
 
 function ScenarioChapterSceneComponentMarkdownBlockquote(
