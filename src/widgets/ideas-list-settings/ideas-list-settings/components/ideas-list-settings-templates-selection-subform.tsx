@@ -25,33 +25,31 @@ export const IdeasListSettingsTemplatesSelectionSubform = withForm({
     }
 
     return (
-      <div className="flex flex-col gap-6">
-        <form.Field
-          name={`${IdeasListSettingsFormSteps.TemplateSelection}.templateId`}
-        >
-          {(field) => (
-            <FieldLayout errorMessage={field.state.meta.errors[0]}>
-              <TemplateCardsRadioGroup
-                value={field.state.value}
-                onBlur={field.handleBlur}
-                onValueChange={(e) => field.handleChange(e)}
-              >
-                {templatesData.data.map((item) => (
-                  <TemplateCardsRadioGroupItem
-                    key={item.id}
-                    value={item.id}
-                    name={item.name}
-                    icon={item.icon}
-                    color={item.color}
-                    description={item.description}
-                    checked={field.state.value === item.id}
-                  />
-                ))}
-              </TemplateCardsRadioGroup>
-            </FieldLayout>
-          )}
-        </form.Field>
-      </div>
+      <form.Field
+        name={`${IdeasListSettingsFormSteps.TemplateSelection}.templateId`}
+      >
+        {(field) => (
+          <FieldLayout errorMessage={field.state.meta.errors[0]}>
+            <TemplateCardsRadioGroup
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onValueChange={(e) => field.handleChange(e)}
+            >
+              {templatesData.data.map((item) => (
+                <TemplateCardsRadioGroupItem
+                  key={item.id}
+                  value={item.id}
+                  name={item.name}
+                  icon={item.icon}
+                  color={item.color}
+                  description={item.description}
+                  checked={field.state.value === item.id}
+                />
+              ))}
+            </TemplateCardsRadioGroup>
+          </FieldLayout>
+        )}
+      </form.Field>
     );
   },
 });

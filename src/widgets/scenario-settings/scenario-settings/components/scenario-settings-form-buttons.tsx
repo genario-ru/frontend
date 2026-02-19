@@ -1,4 +1,6 @@
+import { useRouter } from "@tanstack/react-router";
 import { ArrowLeftIcon, ArrowRightIcon, FilmIcon } from "lucide-react";
+import { useCallback } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
 import { Button } from "@/shared/components/ui/button";
@@ -28,10 +30,15 @@ export const ScenarioSettingsFormButtons = withForm({
     isCreateScenarioPending,
     isUpdateScenarioPending,
   }) => {
+    const router = useRouter();
     const { isScrolledToBottom } = usePageCheckScroll();
     const isLoading = isCreateScenarioPending || isUpdateScenarioPending;
 
-    const onBackButtonClick = () => {
+    const onCancelButtonClick = useCallback(() => {
+      router.history.back();
+    }, [router]);
+
+    const onBackButtonClick = useCallback(() => {
       if (currentStep === ScenarioSettingsFormSteps.PrimaryInfo) {
         form.setFieldValue(
           "currentStep",
@@ -45,7 +52,7 @@ export const ScenarioSettingsFormButtons = withForm({
           ScenarioSettingsFormSteps.PrimaryInfo,
         );
       }
-    };
+    }, [currentStep, form]);
 
     return (
       <Island
@@ -58,7 +65,12 @@ export const ScenarioSettingsFormButtons = withForm({
       >
         {/* Кнопка слева */}
         {currentStep === ScenarioSettingsFormSteps.TemplateSelection ? (
-          <Button type="button" size="lg" disabled={isLoading}>
+          <Button
+            type="button"
+            size="lg"
+            disabled={isLoading}
+            onClick={onCancelButtonClick}
+          >
             Отмена
           </Button>
         ) : (
@@ -74,7 +86,7 @@ export const ScenarioSettingsFormButtons = withForm({
           </Button>
         )}
 
-        {/* Кнопка справа */}
+        {/* Кнопка справа (submit) */}
         {currentStep === ScenarioSettingsFormSteps.ParamsConfiguration ? (
           <Button
             variant="primary"
