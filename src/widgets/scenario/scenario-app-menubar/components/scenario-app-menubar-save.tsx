@@ -18,6 +18,7 @@ export function ScenarioAppMenubarSave({
 
   return (
     <Button
+      variant="tertiary"
       onClick={handleSaveButtonClick}
       disabled={isSaveScenarioPending}
       icon={isOptimisticSaved ? <BookmarkXIcon /> : <BookmarkIcon />}

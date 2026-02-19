@@ -19,13 +19,17 @@ type ScenarioAppMenubarDeleteDialogProps = {
 export function ScenarioAppMenubarDeleteDialog({
   scenarioId,
 }: ScenarioAppMenubarDeleteDialogProps) {
-  const { isDeleteDialogOpen, setIsDeleteDialogOpen } =
-    useScenarioAppMenubarDeleteDialog({ scenarioId });
+  const {
+    isDeleteDialogOpen,
+    isDeleteScenarioPending,
+    setIsDeleteDialogOpen,
+    handleConfirmDeleteButtonClick,
+  } = useScenarioAppMenubarDeleteDialog({ scenarioId });
 
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <Button color="negative" icon={<TrashIcon />} />
+        <Button variant="tertiary" color="negative" icon={<TrashIcon />} />
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
@@ -36,7 +40,12 @@ export function ScenarioAppMenubarDeleteDialog({
           <DialogClose asChild>
             <Button>Отмена</Button>
           </DialogClose>
-          <Button color="negative" variant="primary">
+          <Button
+            color="negative"
+            variant="primary"
+            state={isDeleteScenarioPending ? "loading" : "default"}
+            onClick={handleConfirmDeleteButtonClick}
+          >
             Удалить
           </Button>
         </DialogFooter>
