@@ -2,9 +2,24 @@ import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
 import {
   TemplateCardsRadioGroup,
   TemplateCardsRadioGroupItem,
+  TemplateCardsRadioGroupSkeleton,
 } from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
+import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugIcon,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugHeader,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 
 import {
   type IdeasListSettingsFormSchema,
@@ -14,14 +29,19 @@ import {
 export const IdeasListSettingsTemplatesSelectionSubform = withForm({
   defaultValues: {} as IdeasListSettingsFormSchema,
   render: ({ form }) => {
-    const { templatesData, isTemplatesLoading } = useGetTemplates();
+    const { templatesData, isTemplatesLoading, isTemplatesError } =
+      useGetTemplates();
 
     if (isTemplatesLoading) {
-      return <div>Loading...</div>;
+      return <TemplateCardsRadioGroupSkeleton />;
+    }
+
+    if (isTemplatesError) {
+      return <IdeasListSettingsTemplatesSelectionSubformErrorPlug />;
     }
 
     if (!templatesData?.data.length) {
-      return <></>;
+      return <IdeasListSettingsTemplatesSelectionSubformEmptyPlug />;
     }
 
     return (
@@ -53,3 +73,31 @@ export const IdeasListSettingsTemplatesSelectionSubform = withForm({
     );
   },
 });
+
+export function IdeasListSettingsTemplatesSelectionSubformEmptyPlug() {
+  return (
+    <EmptyPlug className="flex-1">
+      <EmptyPlugHeader>
+        <EmptyPlugIcon />
+        <EmptyPlugTitle>Нет шаблонов</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          На данный момент нет доступных шаблонов для выбора
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
+  );
+}
+
+export function IdeasListSettingsTemplatesSelectionSubformErrorPlug() {
+  return (
+    <ErrorPlug className="flex-1">
+      <ErrorPlugHeader>
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу
+        </ErrorPlugDescription>
+      </ErrorPlugHeader>
+    </ErrorPlug>
+  );
+}

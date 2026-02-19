@@ -59,6 +59,19 @@ export function ErrorPlug({
   );
 }
 
+export function ErrorPlugHeader({
+  className,
+  ...props
+}: ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="error-plug-header"
+      className={cn("flex max-w-sm flex-col items-center", className)}
+      {...props}
+    />
+  );
+}
+
 export function ErrorPlugIcon({
   icon = CircleXIcon,
   className,
@@ -91,7 +104,23 @@ export function ErrorPlugDescription({
   return (
     <div
       data-slot="error-plug-description"
-      className={cn("text-neutral-6 text-sm leading-tight", className)}
+      className={cn(
+        "text-neutral-6 text-center text-sm leading-tight",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function ErrorPlugContent({
+  className,
+  ...props
+}: ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="error-plug-content"
+      className={cn("flex w-full max-w-sm items-center", className)}
       {...props}
     />
   );

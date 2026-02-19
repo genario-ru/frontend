@@ -2,9 +2,24 @@ import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
 import {
   TemplateCardsRadioGroup,
   TemplateCardsRadioGroupItem,
+  TemplateCardsRadioGroupSkeleton,
 } from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
+import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugIcon,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugHeader,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 
 import {
   type ScenarioSettingsFormSchema,
@@ -14,14 +29,19 @@ import {
 export const ScenarioSettingsTemplatesSelectionSubform = withForm({
   defaultValues: {} as ScenarioSettingsFormSchema,
   render: ({ form }) => {
-    const { templatesData, isTemplatesLoading } = useGetTemplates();
+    const { templatesData, isTemplatesLoading, isTemplatesError } =
+      useGetTemplates();
 
     if (isTemplatesLoading) {
-      return <div>Loading...</div>;
+      return <TemplateCardsRadioGroupSkeleton />;
+    }
+
+    if (isTemplatesError) {
+      return <ScenarioSettingsTemplatesSelectionSubformErrorPlug />;
     }
 
     if (!templatesData?.data.length) {
-      return <></>;
+      return <ScenarioSettingsTemplatesSelectionSubformEmptyPlug />;
     }
 
     return (
@@ -53,3 +73,31 @@ export const ScenarioSettingsTemplatesSelectionSubform = withForm({
     );
   },
 });
+
+export function ScenarioSettingsTemplatesSelectionSubformEmptyPlug() {
+  return (
+    <EmptyPlug className="flex-1">
+      <EmptyPlugHeader>
+        <EmptyPlugIcon />
+        <EmptyPlugTitle>Нет шаблонов</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          На данный момент нет доступных шаблонов для выбора
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
+  );
+}
+
+export function ScenarioSettingsTemplatesSelectionSubformErrorPlug() {
+  return (
+    <ErrorPlug className="flex-1">
+      <ErrorPlugHeader>
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу
+        </ErrorPlugDescription>
+      </ErrorPlugHeader>
+    </ErrorPlug>
+  );
+}

@@ -1,6 +1,8 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import type { ComponentProps } from "react";
 
+import { ItemsList } from "@/shared/components/common/items-list";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/utils/cn";
 
 import { TemplateCard } from "./template-card";
@@ -48,3 +50,17 @@ export const TemplateCardsRadioGroupItem = ({
     </RadioGroupPrimitive.Item>
   );
 };
+
+export function TemplateCardsRadioGroupSkeleton() {
+  return (
+    <ItemsList
+      count={6}
+      item={<TemplateCardsRadioGroupItemSkeleton />}
+      className="grid w-full auto-rows-fr grid-cols-2 gap-3"
+    />
+  );
+}
+
+export function TemplateCardsRadioGroupItemSkeleton() {
+  return <Skeleton className="rounded-4 h-[132px] flex-1" />;
+}

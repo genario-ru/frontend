@@ -7,7 +7,7 @@ import { cn } from "@/shared/utils/cn";
 import { LucideIcon, type LucideIconProps } from "./lucide-icon";
 
 const emptyPlugVariants = cva(
-  "group/empty-plug w-full flex items-center p-4 justify-center flex-col",
+  "group/empty-plug w-full flex items-center max p-4 justify-center flex-col",
   {
     variants: {
       variant: {
@@ -82,16 +82,19 @@ export function EmptyPlugDescription({
   return (
     <div
       data-slot="empty-plug-description"
-      className={cn("text-neutral-6 text-sm", className)}
+      className={cn("text-neutral-6 text-center text-sm", className)}
       {...props}
     />
   );
 }
 
-export function EmptyContent({ className, ...props }: ComponentProps<"div">) {
+export function EmptyPlugContent({
+  className,
+  ...props
+}: ComponentProps<"div">) {
   return (
     <div
-      data-slot="empty-content"
+      data-slot="empty-plug-content"
       className={cn("flex w-full max-w-sm items-center", className)}
       {...props}
     />
