@@ -30,6 +30,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   const {
     scenarioVideoType,
     activeScenarioChapter,
+    activeScenarioChapterPosition,
     isScenarioChaptersGenerating,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
@@ -47,13 +48,14 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
     return <ScenarioChapterErrorPlug />;
   }
 
-  if (!activeScenarioChapter) {
+  if (!activeScenarioChapter || !activeScenarioChapterPosition) {
     return <ScenarioChapterEmptyPlug />;
   }
 
   return (
     <div className="flex flex-1 flex-col">
       <ScenarioChapterHeader
+        position={activeScenarioChapterPosition}
         name={activeScenarioChapter.name}
         description={activeScenarioChapter.description}
         startTime={activeScenarioChapter.startTime}
@@ -61,6 +63,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
       />
       <ScenarioChapterScenes
         scenarioId={scenarioId}
+        chapterPosition={activeScenarioChapterPosition}
         chapterId={activeScenarioChapter.id}
         videoTypeSlug={scenarioVideoType?.slug}
       />

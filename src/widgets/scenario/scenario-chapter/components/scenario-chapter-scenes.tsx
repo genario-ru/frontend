@@ -27,12 +27,14 @@ import {
 
 type ScenarioChapterScenesProps = {
   scenarioId: string;
+  chapterPosition: number;
   chapterId?: string;
   videoTypeSlug?: string;
 };
 
 export function ScenarioChapterScenes({
   scenarioId,
+  chapterPosition,
   chapterId,
   videoTypeSlug,
 }: ScenarioChapterScenesProps) {
@@ -61,10 +63,12 @@ export function ScenarioChapterScenes({
 
   return (
     <Island roundedTop={false} className="gap-8 py-8">
-      {scenarioChapterScenesList.map((scene) => (
+      {scenarioChapterScenesList.map((scene, index) => (
         <section key={scene.id} className="flex flex-col gap-4">
           <ScenarioChapterSceneHeader
             key={scene.id}
+            chapterPosition={chapterPosition}
+            position={index + 1}
             name={scene.name}
             startTime={scene.startTime}
             endTime={scene.endTime}

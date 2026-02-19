@@ -7,12 +7,16 @@ import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 import { formatTime } from "@/shared/utils/format-time";
 
 type ScenarioChapterSceneHeaderProps = {
+  chapterPosition: number;
+  position: number;
   name: string;
   startTime: number;
   endTime: number;
 };
 
 export function ScenarioChapterSceneHeader({
+  chapterPosition,
+  position,
   name,
   startTime,
   endTime,
@@ -23,7 +27,9 @@ export function ScenarioChapterSceneHeader({
 
   return (
     <header className="flex items-center gap-2">
-      <Heading variant="h3">{name}</Heading>
+      <Heading variant="h3">
+        {chapterPosition}.{position}. {name}
+      </Heading>
       <Badge size="sm" variant="tertiary">
         {time}
       </Badge>
@@ -34,8 +40,8 @@ export function ScenarioChapterSceneHeader({
 export function ScenarioChapterSceneHeaderSkeleton() {
   return (
     <header className="flex items-center gap-2">
-      <TextSkeleton fontSize={18} lineHeight={28} className="w-32" />
-      <Skeleton className="rounded-2 h-6 w-20" />
+      <TextSkeleton fontSize={16} lineHeight={24} className="w-64" />
+      <Skeleton className="rounded-2 h-6 w-24" />
     </header>
   );
 }

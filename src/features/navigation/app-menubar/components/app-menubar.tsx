@@ -30,6 +30,8 @@ export const AppMenubar = memo(
     ...props
   }: AppMenubarProps) => {
     const router = useRouter();
+    const hasDescription = Boolean(description);
+    const hasLeft = Boolean(left);
     const { isScrolled } = usePageCheckScroll();
 
     const onBackButtonClick = useCallback(() => {
@@ -39,8 +41,8 @@ export const AppMenubar = memo(
     return (
       <Island
         as="header"
-        roundedTop={false}
         row
+        roundedTop={false}
         className={cn(
           "z-1 min-h-16 w-full shrink-0 gap-3 p-4 duration-200",
           {
@@ -51,8 +53,21 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <section className="flex flex-1 flex-col justify-between gap-4 overflow-hidden">
-          <div className="flex flex-1 flex-col gap-1">
+        <section
+          className={cn(
+            "flex flex-1 flex-col justify-between gap-4 overflow-hidden",
+            {
+              "justify-between": hasLeft,
+              "justify-center": !hasLeft,
+            },
+          )}
+        >
+          <div
+            className={cn("flex flex-1 flex-col gap-1", {
+              "justify-between": hasDescription,
+              "justify-center": !hasDescription,
+            })}
+          >
             <div className="flex items-center gap-2">
               {backButton && (
                 <Button
