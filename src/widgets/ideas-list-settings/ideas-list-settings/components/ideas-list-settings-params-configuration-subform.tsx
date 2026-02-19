@@ -1,6 +1,23 @@
 import { withForm } from "@/lib/tanstack-form";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { ProfileImage } from "@/shared/components/common/profile-image";
+import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugIcon,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugHeader,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useIdeasListSettingsParamsConfigurationData } from "../hooks/use-ideas-list-settings-params-configuration-data";
 import {
@@ -14,18 +31,18 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
     const { myProfilesData, videoTypesData, tonesData, isLoading, isError } =
       useIdeasListSettingsParamsConfigurationData();
 
-    const dataNotAvailable = !myProfilesData || !videoTypesData || !tonesData;
+    const isDataAvailable = myProfilesData && videoTypesData && tonesData;
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <IdeasListSettingsParamsConfigurationSubformSkeleton />;
     }
 
     if (isError) {
-      return <div>Error</div>;
+      return <IdeasListSettingsParamsConfigurationSubformErrorPlug />;
     }
 
-    if (dataNotAvailable) {
-      return <></>;
+    if (!isDataAvailable) {
+      return <IdeasListSettingsParamsConfigurationSubformEmptyPlug />;
     }
 
     return (
@@ -101,3 +118,46 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
     );
   },
 });
+
+export function IdeasListSettingsParamsConfigurationSubformSkeleton() {
+  return (
+    <ItemsList
+      className="gap-6"
+      count={5}
+      item={
+        <div className="flex flex-col gap-2">
+          <TextSkeleton fontSize={16} lineHeight={24} className="w-20" />
+          <Skeleton className="rounded-4 h-12 w-full" />
+        </div>
+      }
+    />
+  );
+}
+
+export function IdeasListSettingsParamsConfigurationSubformEmptyPlug() {
+  return (
+    <EmptyPlug className="flex-1">
+      <EmptyPlugHeader>
+        <EmptyPlugIcon />
+        <EmptyPlugTitle>Нет данных</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          Недостаточно данных для отображения формы
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
+  );
+}
+
+export function IdeasListSettingsParamsConfigurationSubformErrorPlug() {
+  return (
+    <ErrorPlug className="flex-1">
+      <ErrorPlugHeader>
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке данных. Попробуйте обновить страницу
+        </ErrorPlugDescription>
+      </ErrorPlugHeader>
+    </ErrorPlug>
+  );
+}

@@ -1,6 +1,23 @@
 import { withForm } from "@/lib/tanstack-form";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { ProfileImage } from "@/shared/components/common/profile-image";
+import {
+  EmptyPlug,
+  EmptyPlugDescription,
+  EmptyPlugHeader,
+  EmptyPlugIcon,
+  EmptyPlugTitle,
+} from "@/shared/components/ui/empty-plug";
+import {
+  ErrorPlug,
+  ErrorPlugDescription,
+  ErrorPlugHeader,
+  ErrorPlugIcon,
+  ErrorPlugTitle,
+} from "@/shared/components/ui/error-plug";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useScenarioSettingsParamsConfigurationData } from "../hooks/use-scenario-settings-params-configuration-data";
 import {
@@ -21,23 +38,23 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
       isError,
     } = useScenarioSettingsParamsConfigurationData();
 
-    const dataNotAvailable =
-      !myProfilesData ||
-      !videoTypesData ||
-      !videoDurationsData ||
-      !platformsData ||
-      !tonesData;
+    const isDataAvailable =
+      myProfilesData &&
+      videoTypesData &&
+      videoDurationsData &&
+      platformsData &&
+      tonesData;
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <ScenarioSettingsParamsConfigurationSubformSkeleton />;
     }
 
     if (isError) {
-      return <div>Error</div>;
+      return <ScenarioSettingsParamsConfigurationSubformErrorPlug />;
     }
 
-    if (dataNotAvailable) {
-      return <></>;
+    if (!isDataAvailable) {
+      return <ScenarioSettingsParamsConfigurationSubformEmptyPlug />;
     }
 
     return (
@@ -159,3 +176,46 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
     );
   },
 });
+
+export function ScenarioSettingsParamsConfigurationSubformSkeleton() {
+  return (
+    <ItemsList
+      className="gap-6"
+      count={5}
+      item={
+        <div className="flex flex-col gap-2">
+          <TextSkeleton fontSize={16} lineHeight={24} className="w-20" />
+          <Skeleton className="rounded-4 h-12 w-full" />
+        </div>
+      }
+    />
+  );
+}
+
+export function ScenarioSettingsParamsConfigurationSubformEmptyPlug() {
+  return (
+    <EmptyPlug className="flex-1">
+      <EmptyPlugHeader>
+        <EmptyPlugIcon />
+        <EmptyPlugTitle>Нет данных</EmptyPlugTitle>
+        <EmptyPlugDescription>
+          Недостаточно данных для отображения формы
+        </EmptyPlugDescription>
+      </EmptyPlugHeader>
+    </EmptyPlug>
+  );
+}
+
+export function ScenarioSettingsParamsConfigurationSubformErrorPlug() {
+  return (
+    <ErrorPlug className="flex-1">
+      <ErrorPlugHeader>
+        <ErrorPlugIcon />
+        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
+        <ErrorPlugDescription>
+          Произошла ошибка при загрузке данных. Попробуйте обновить страницу
+        </ErrorPlugDescription>
+      </ErrorPlugHeader>
+    </ErrorPlug>
+  );
+}
