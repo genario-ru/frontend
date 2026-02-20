@@ -55,6 +55,7 @@ import {
   postApiV1IdeasListsIdeasListIdMoreIdeas,
   postApiV1Profiles,
   postApiV1Scenarios,
+  postApiV1ScenariosScenesSceneIdPreview,
 } from "../sdk.gen";
 import type {
   DeleteApiV1IdeasIdeaIdData,
@@ -154,6 +155,9 @@ import type {
   PostApiV1ScenariosData,
   PostApiV1ScenariosError,
   PostApiV1ScenariosResponse,
+  PostApiV1ScenariosScenesSceneIdPreviewData,
+  PostApiV1ScenariosScenesSceneIdPreviewError,
+  PostApiV1ScenariosScenesSceneIdPreviewResponse,
 } from "../types.gen";
 
 export const deleteApiV1IdeasIdeaIdMutation = (
@@ -1105,6 +1109,30 @@ export const patchApiV1ScenariosChaptersChapterIdMutation = (
   > = {
     mutationFn: async (fnOptions) => {
       const { data } = await patchApiV1ScenariosChaptersChapterId({
+        ...options,
+        ...fnOptions,
+        throwOnError: true,
+      });
+      return data;
+    },
+  };
+  return mutationOptions;
+};
+
+export const postApiV1ScenariosScenesSceneIdPreviewMutation = (
+  options?: Partial<Options<PostApiV1ScenariosScenesSceneIdPreviewData>>,
+): UseMutationOptions<
+  PostApiV1ScenariosScenesSceneIdPreviewResponse,
+  PostApiV1ScenariosScenesSceneIdPreviewError,
+  Options<PostApiV1ScenariosScenesSceneIdPreviewData>
+> => {
+  const mutationOptions: UseMutationOptions<
+    PostApiV1ScenariosScenesSceneIdPreviewResponse,
+    PostApiV1ScenariosScenesSceneIdPreviewError,
+    Options<PostApiV1ScenariosScenesSceneIdPreviewData>
+  > = {
+    mutationFn: async (fnOptions) => {
+      const { data } = await postApiV1ScenariosScenesSceneIdPreview({
         ...options,
         ...fnOptions,
         throwOnError: true,

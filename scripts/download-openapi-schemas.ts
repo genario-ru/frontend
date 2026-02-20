@@ -10,10 +10,11 @@ const SCHEMAS = [
     url: "https://api.genario.ru/api/open-api",
     filename: "product.json",
   },
-  {
-    url: "https://api.genario.ru/api/auth/open-api/generate-schema",
-    filename: "auth.json",
-  },
+  // Не загружаем Auth схему, потому что в ней есть проблемы, которые мы пофиксили вручную уже в этом репозитории
+  // {
+  //   url: "https://api.genario.ru/api/auth/open-api/generate-schema",
+  //   filename: "auth.json",
+  // },
 ];
 
 // Директория для сохранения схем

@@ -138,6 +138,9 @@ import type {
   PostApiV1ScenariosData,
   PostApiV1ScenariosErrors,
   PostApiV1ScenariosResponses,
+  PostApiV1ScenariosScenesSceneIdPreviewData,
+  PostApiV1ScenariosScenesSceneIdPreviewErrors,
+  PostApiV1ScenariosScenesSceneIdPreviewResponses,
 } from "./types.gen";
 import {
   zDeleteApiV1IdeasIdeaIdData,
@@ -230,6 +233,8 @@ import {
   zPostApiV1ProfilesResponse,
   zPostApiV1ScenariosData,
   zPostApiV1ScenariosResponse,
+  zPostApiV1ScenariosScenesSceneIdPreviewData,
+  zPostApiV1ScenariosScenesSceneIdPreviewResponse,
 } from "./zod.gen";
 
 export type Options<
@@ -1007,6 +1012,29 @@ export const patchApiV1ScenariosChaptersChapterId = <
       "Content-Type": "application/json",
       ...options.headers,
     },
+  });
+};
+
+export const postApiV1ScenariosScenesSceneIdPreview = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<PostApiV1ScenariosScenesSceneIdPreviewData, ThrowOnError>,
+) => {
+  return (options.client ?? client).post<
+    PostApiV1ScenariosScenesSceneIdPreviewResponses,
+    PostApiV1ScenariosScenesSceneIdPreviewErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPostApiV1ScenariosScenesSceneIdPreviewData.parseAsync(data);
+    },
+    responseValidator: async (data) => {
+      return await zPostApiV1ScenariosScenesSceneIdPreviewResponse.parseAsync(
+        data,
+      );
+    },
+    url: "/api/v1/scenarios/scenes/{sceneId}/preview",
+    ...options,
   });
 };
 

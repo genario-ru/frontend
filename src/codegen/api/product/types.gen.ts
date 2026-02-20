@@ -3063,7 +3063,6 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
       scenes: Array<{
         id: string;
         scenarioChapterId: string;
-        previewId: string | null;
         status: "pending" | "generation" | "failed" | "ready";
         name: string;
         description: string | null;
@@ -3072,6 +3071,15 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
         badges: string | null;
         createdAt: string;
         updatedAt: string;
+        preview: {
+          id: string;
+          scenarioSceneId: string;
+          attachmentId: string | null;
+          status: "pending" | "generation" | "failed" | "ready";
+          createdAt: string;
+          updatedAt: string;
+          url: string | null;
+        } | null;
         components: Array<{
           id: string;
           typeId: string;
@@ -3082,6 +3090,7 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
           updatedAt: string;
           type: {
             id: string;
+            slug: string;
             name: string;
             description: string | null;
             icon: string | null;
@@ -3172,6 +3181,85 @@ export type PatchApiV1ScenariosChaptersChapterIdResponses = {
 export type PatchApiV1ScenariosChaptersChapterIdResponse =
   PatchApiV1ScenariosChaptersChapterIdResponses[keyof PatchApiV1ScenariosChaptersChapterIdResponses];
 
+export type PostApiV1ScenariosScenesSceneIdPreviewData = {
+  body?: never;
+  path: {
+    sceneId: string;
+  };
+  query?: never;
+  url: "/api/v1/scenarios/scenes/{sceneId}/preview";
+};
+
+export type PostApiV1ScenariosScenesSceneIdPreviewErrors = {
+  /**
+   * Bad request response
+   *
+   * Bad request
+   */
+  400: string;
+  /**
+   * Unauthorized response
+   *
+   * Unauthorized
+   */
+  401: string;
+  /**
+   * Forbidden response
+   *
+   * Forbidden
+   */
+  403: string;
+  /**
+   * Not found response
+   *
+   * Not found
+   */
+  404: string;
+  /**
+   * Internal server error response
+   *
+   * Internal server error
+   */
+  500: string;
+};
+
+export type PostApiV1ScenariosScenesSceneIdPreviewError =
+  PostApiV1ScenariosScenesSceneIdPreviewErrors[keyof PostApiV1ScenariosScenesSceneIdPreviewErrors];
+
+export type PostApiV1ScenariosScenesSceneIdPreviewResponses = {
+  /**
+   * Scenario scene preview already exists
+   */
+  200: {
+    data: {
+      id: string;
+      scenarioSceneId: string;
+      attachmentId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
+      createdAt: string;
+      updatedAt: string;
+      url: string | null;
+    };
+  };
+  /**
+   * Scenario scene preview generation started
+   */
+  201: {
+    data: {
+      id: string;
+      scenarioSceneId: string;
+      attachmentId: string | null;
+      status: "pending" | "generation" | "failed" | "ready";
+      createdAt: string;
+      updatedAt: string;
+      url: string | null;
+    };
+  };
+};
+
+export type PostApiV1ScenariosScenesSceneIdPreviewResponse =
+  PostApiV1ScenariosScenesSceneIdPreviewResponses[keyof PostApiV1ScenariosScenesSceneIdPreviewResponses];
+
 export type DeleteApiV1ScenariosScenesSceneIdData = {
   body?: never;
   path: {
@@ -3225,7 +3313,6 @@ export type DeleteApiV1ScenariosScenesSceneIdResponses = {
     data: {
       id: string;
       scenarioChapterId: string;
-      previewId: string | null;
       status: "pending" | "generation" | "failed" | "ready";
       name: string;
       description: string | null;
@@ -3302,7 +3389,6 @@ export type PatchApiV1ScenariosScenesSceneIdResponses = {
     data: {
       id: string;
       scenarioChapterId: string;
-      previewId: string | null;
       status: "pending" | "generation" | "failed" | "ready";
       name: string;
       description: string | null;

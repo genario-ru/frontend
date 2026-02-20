@@ -3656,14 +3656,6 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
             .regex(
               /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
             ),
-          previewId: z.union([
-            z
-              .uuid()
-              .regex(
-                /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-              ),
-            z.null(),
-          ]),
           status: z.enum(["pending", "generation", "failed", "ready"]),
           name: z.string(),
           description: z.union([z.string(), z.null()]),
@@ -3672,6 +3664,33 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
           badges: z.union([z.string(), z.null()]),
           createdAt: z.string(),
           updatedAt: z.string(),
+          preview: z.union([
+            z.object({
+              id: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              scenarioSceneId: z
+                .uuid()
+                .regex(
+                  /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                ),
+              attachmentId: z.union([
+                z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                z.null(),
+              ]),
+              status: z.enum(["pending", "generation", "failed", "ready"]),
+              createdAt: z.string(),
+              updatedAt: z.string(),
+              url: z.union([z.string(), z.null()]),
+            }),
+            z.null(),
+          ]),
           components: z.array(
             z.object({
               id: z
@@ -3699,6 +3718,7 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
                   .regex(
                     /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
                   ),
+                slug: z.string(),
                 name: z.string(),
                 description: z.union([z.string(), z.null()]),
                 icon: z.union([z.string(), z.null()]),
@@ -3768,6 +3788,81 @@ export const zPatchApiV1ScenariosChaptersChapterIdResponse = z
     description: "Scenario chapter updated successfully",
   });
 
+export const zPostApiV1ScenariosScenesSceneIdPreviewData = z.object({
+  body: z.optional(z.never()),
+  path: z.object({
+    sceneId: z
+      .uuid()
+      .regex(
+        /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+      ),
+  }),
+  query: z.optional(z.never()),
+});
+
+export const zPostApiV1ScenariosScenesSceneIdPreviewResponse = z.union([
+  z
+    .object({
+      data: z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        scenarioSceneId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        attachmentId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        status: z.enum(["pending", "generation", "failed", "ready"]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        url: z.union([z.string(), z.null()]),
+      }),
+    })
+    .register(z.globalRegistry, {
+      description: "Scenario scene preview already exists",
+    }),
+  z
+    .object({
+      data: z.object({
+        id: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        scenarioSceneId: z
+          .uuid()
+          .regex(
+            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+          ),
+        attachmentId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
+        status: z.enum(["pending", "generation", "failed", "ready"]),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+        url: z.union([z.string(), z.null()]),
+      }),
+    })
+    .register(z.globalRegistry, {
+      description: "Scenario scene preview generation started",
+    }),
+]);
+
 export const zDeleteApiV1ScenariosScenesSceneIdData = z.object({
   body: z.optional(z.never()),
   path: z.object({
@@ -3796,14 +3891,6 @@ export const zDeleteApiV1ScenariosScenesSceneIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      previewId: z.union([
-        z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        z.null(),
-      ]),
       status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.string(),
       description: z.union([z.string(), z.null()]),
@@ -3867,14 +3954,6 @@ export const zPatchApiV1ScenariosScenesSceneIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      previewId: z.union([
-        z
-          .uuid()
-          .regex(
-            /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
-          ),
-        z.null(),
-      ]),
       status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.string(),
       description: z.union([z.string(), z.null()]),
