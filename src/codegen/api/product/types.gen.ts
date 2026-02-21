@@ -3075,10 +3075,12 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
           id: string;
           scenarioSceneId: string;
           attachmentId: string | null;
+          compressedAttachmentId: string | null;
           status: "pending" | "generation" | "failed" | "ready";
           createdAt: string;
           updatedAt: string;
           url: string | null;
+          urlCompressed: string | null;
         } | null;
         components: Array<{
           id: string;
@@ -3235,10 +3237,12 @@ export type PostApiV1ScenariosScenesSceneIdPreviewResponses = {
       id: string;
       scenarioSceneId: string;
       attachmentId: string | null;
+      compressedAttachmentId: string | null;
       status: "pending" | "generation" | "failed" | "ready";
       createdAt: string;
       updatedAt: string;
       url: string | null;
+      urlCompressed: string | null;
     };
   };
   /**
@@ -3249,10 +3253,12 @@ export type PostApiV1ScenariosScenesSceneIdPreviewResponses = {
       id: string;
       scenarioSceneId: string;
       attachmentId: string | null;
+      compressedAttachmentId: string | null;
       status: "pending" | "generation" | "failed" | "ready";
       createdAt: string;
       updatedAt: string;
       url: string | null;
+      urlCompressed: string | null;
     };
   };
 };

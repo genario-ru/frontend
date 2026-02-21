@@ -3684,10 +3684,19 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
                   ),
                 z.null(),
               ]),
+              compressedAttachmentId: z.union([
+                z
+                  .uuid()
+                  .regex(
+                    /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+                  ),
+                z.null(),
+              ]),
               status: z.enum(["pending", "generation", "failed", "ready"]),
               createdAt: z.string(),
               updatedAt: z.string(),
               url: z.union([z.string(), z.null()]),
+              urlCompressed: z.union([z.string(), z.null()]),
             }),
             z.null(),
           ]),
@@ -3822,10 +3831,19 @@ export const zPostApiV1ScenariosScenesSceneIdPreviewResponse = z.union([
             ),
           z.null(),
         ]),
+        compressedAttachmentId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
         status: z.enum(["pending", "generation", "failed", "ready"]),
         createdAt: z.string(),
         updatedAt: z.string(),
         url: z.union([z.string(), z.null()]),
+        urlCompressed: z.union([z.string(), z.null()]),
       }),
     })
     .register(z.globalRegistry, {
@@ -3852,10 +3870,19 @@ export const zPostApiV1ScenariosScenesSceneIdPreviewResponse = z.union([
             ),
           z.null(),
         ]),
+        compressedAttachmentId: z.union([
+          z
+            .uuid()
+            .regex(
+              /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
+            ),
+          z.null(),
+        ]),
         status: z.enum(["pending", "generation", "failed", "ready"]),
         createdAt: z.string(),
         updatedAt: z.string(),
         url: z.union([z.string(), z.null()]),
+        urlCompressed: z.union([z.string(), z.null()]),
       }),
     })
     .register(z.globalRegistry, {
