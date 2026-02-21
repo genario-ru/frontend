@@ -19,6 +19,7 @@ import {
   ErrorPlugIcon,
   ErrorPlugTitle,
 } from "@/shared/components/ui/error-plug";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 import { cn } from "@/shared/utils/cn";
 
 import { useScenarioChapterScenePreview } from "../hooks/use-scenario-chapter-scene-preview";
@@ -73,7 +74,7 @@ export function ScenarioChapterScenePreview({
       );
     }
 
-    if (scene.preview?.status === "generation") {
+    if (checkIsGenerationStatus(scene.preview?.status)) {
       return <ScenarioChapterScenePreviewGeneratingAlert />;
     }
 
@@ -106,8 +107,10 @@ export function ScenarioChapterScenePreview({
 function ScenarioChapterScenePreviewGeneratingAlert() {
   return (
     <GenerationAlert
-      title="Генерируем превью сцены"
-      description="Генерируем для вас превью сцены, подождите несколько секунд..."
+      hasGradient={false}
+      title="Генерация превью"
+      description="Генерируем для вас превью сцены, подождите несколько секунд"
+      className="h-full w-full flex-1"
     />
   );
 }
@@ -119,7 +122,8 @@ function ScenarioChapterScenePreviewErrorPlug() {
         <ErrorPlugIcon />
         <ErrorPlugTitle>Ошибка генерации</ErrorPlugTitle>
         <ErrorPlugDescription>
-          Не удалось сгенерировать превью сцены, попробуйте позже...
+          Не удалось сгенерировать превью сцены, попробуйте еще раз, нажав на
+          кнопку повторной генерации
         </ErrorPlugDescription>
       </ErrorPlugHeader>
     </ErrorPlug>

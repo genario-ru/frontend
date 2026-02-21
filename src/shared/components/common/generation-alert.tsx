@@ -21,6 +21,8 @@ export function GenerationAlert({
 }: GenerationAlertProps) {
   return (
     <Island
+      roundedTop={false}
+      roundedBottom={false}
       className={cn(
         "items-center justify-center gap-1",
         {
@@ -37,7 +39,9 @@ export function GenerationAlert({
         />
         <Heading variant="h3">{title}</Heading>
       </header>
-      {description && <p className="text-neutral-7">{description}</p>}
+      {description && (
+        <p className="text-neutral-7 max-w-sm text-center">{description}</p>
+      )}
     </Island>
   );
 }
