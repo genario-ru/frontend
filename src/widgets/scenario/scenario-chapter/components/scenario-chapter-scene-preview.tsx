@@ -2,6 +2,7 @@ import { WandSparklesIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import type { GetApiV1ScenariosChaptersChapterIdResponse } from "@/codegen/api/product/types.gen";
+import { ScenarioChapterScenePreviewImage } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-image";
 import { ScenarioChapterScenePreviewLayout } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { Button } from "@/shared/components/ui/button";
@@ -68,12 +69,11 @@ export function ScenarioChapterScenePreview({
   ]);
 
   const body = useMemo(() => {
-    if (scene.preview?.url) {
+    if (scene.preview?.urlCompressed && scene.preview.url) {
       return (
-        <img
-          src={scene.preview.url}
-          alt="Preview"
-          className="h-full w-full object-cover"
+        <ScenarioChapterScenePreviewImage
+          urlCompressed={scene.preview.urlCompressed}
+          url={scene.preview.url}
         />
       );
     }
