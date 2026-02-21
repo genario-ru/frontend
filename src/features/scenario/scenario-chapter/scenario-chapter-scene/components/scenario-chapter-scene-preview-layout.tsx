@@ -36,7 +36,7 @@ export function ScenarioChapterScenePreviewLayout({
       </CardHeader>
       <CardContent
         className={cn(
-          "p-0",
+          "overflow-hidden p-0",
           {
             "aspect-video": videoTypeSlug === "long",
             "aspect-9/16": videoTypeSlug === "short",
