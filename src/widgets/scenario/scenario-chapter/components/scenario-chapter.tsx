@@ -62,9 +62,9 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         endTime={activeScenarioChapter.endTime}
       />
       <ScenarioChapterScenes
+        chapterId={activeScenarioChapter.id}
         scenarioId={scenarioId}
         chapterPosition={activeScenarioChapterPosition}
-        chapterId={activeScenarioChapter.id}
         videoTypeSlug={scenarioVideoType?.slug}
       />
     </div>

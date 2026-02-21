@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { type LucideIcon as LucideIconType, WindIcon } from "lucide-react";
+import { type LucideIcon as LucideIconType, ShredderIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
@@ -62,18 +62,10 @@ export function EmptyPlugTitle({ className, ...props }: ComponentProps<"div">) {
 }
 
 export function EmptyPlugIcon({
-  icon = WindIcon,
-  className,
+  icon = ShredderIcon,
   ...props
 }: EmptyPlugIconProps) {
-  return (
-    <LucideIcon
-      data-slot="empty-plug-icon"
-      icon={icon}
-      className={cn("size-8", className)}
-      {...props}
-    />
-  );
+  return <LucideIcon data-slot="empty-plug-icon" icon={icon} {...props} />;
 }
 export function EmptyPlugDescription({
   className,

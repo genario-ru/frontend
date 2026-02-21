@@ -35,6 +35,14 @@ export function useGetScenarioChapter({
         return REFRESH_INTERVAL;
       }
 
+      if (
+        query.state.data?.data.scenes.some((scene) =>
+          checkIsGenerationStatus(scene.preview?.status),
+        )
+      ) {
+        return REFRESH_INTERVAL;
+      }
+
       return false;
     },
     enabled: Boolean(chapterId),

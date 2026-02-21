@@ -19,23 +19,25 @@ import {
   ErrorPlugTitle,
 } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { cn } from "@/shared/utils/cn";
 
 import {
   ScenarioChapterSceneComponents,
   ScenarioChapterSceneComponentsSkeleton,
 } from "./scenario-chapter-scene-components";
+import { ScenarioChapterScenePreview } from "./scenario-chapter-scene-preview";
 
 type ScenarioChapterScenesProps = {
+  chapterId: string;
   scenarioId: string;
   chapterPosition: number;
-  chapterId?: string;
   videoTypeSlug?: string;
 };
 
 export function ScenarioChapterScenes({
+  chapterId,
   scenarioId,
   chapterPosition,
-  chapterId,
   videoTypeSlug,
 }: ScenarioChapterScenesProps) {
   const {
@@ -73,11 +75,23 @@ export function ScenarioChapterScenes({
             startTime={scene.startTime}
             endTime={scene.endTime}
           />
-          <ScenarioChapterSceneComponents
-            status={scene.status}
-            videoTypeSlug={videoTypeSlug}
-            components={scene.components}
-          />
+          <div
+            className={cn("grid w-full gap-4", {
+              "grid-cols-8": videoTypeSlug === "short",
+              "grid-cols-2": videoTypeSlug === "long",
+            })}
+          >
+            <ScenarioChapterScenePreview
+              chapterId={chapterId}
+              sceneId={scene.id}
+              videoTypeSlug={videoTypeSlug}
+              scene={scene}
+            />
+            <ScenarioChapterSceneComponents
+              videoTypeSlug={videoTypeSlug}
+              scene={scene}
+            />
+          </div>
         </section>
       ))}
     </Island>
