@@ -19,7 +19,12 @@ export function ProgressiveImage({
   className,
   ...imgProps
 }: ProgressiveImageProps) {
+  const [isCompressedLoaded, setIsCompressedLoaded] = useState(false);
   const [isHighQualityLoaded, setIsHighQualityLoaded] = useState(false);
+
+  const handleCompressedLoad = useCallback(() => {
+    setIsCompressedLoaded(true);
+  }, []);
 
   const handleHighQualityLoad = useCallback(() => {
     setIsHighQualityLoaded(true);
@@ -34,14 +39,21 @@ export function ProgressiveImage({
         containerClassName,
       )}
     >
-      {/* Сжатое изображение — показывается первым, размыто пока грузится полноразмерное */}
+      {/* Сжатое изображение — плавно появляется при загрузке, размыто пока грузится полноразмерное */}
       <img
+        {...imgProps}
         src={urlCompressed}
         alt={alt}
+        onLoad={(e) => {
+          handleCompressedLoad();
+          imgProps.onLoad?.(e);
+        }}
         className={cn(
-          "absolute inset-0 h-full w-full object-cover transition-[filter] duration-300",
+          "absolute inset-0 h-full w-full object-cover transition-[opacity_100ms,filter_200ms]",
           {
             "blur-sm": hasHighQuality && !isHighQualityLoaded,
+            "opacity-100": isCompressedLoaded,
+            "opacity-0": !isCompressedLoaded,
           },
           className,
         )}
@@ -59,7 +71,7 @@ export function ProgressiveImage({
             imgProps.onLoad?.(e);
           }}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-300",
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-200",
             {
               "opacity-100": isHighQualityLoaded,
               "opacity-0": !isHighQualityLoaded,
