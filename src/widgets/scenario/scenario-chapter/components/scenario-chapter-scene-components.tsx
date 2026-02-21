@@ -9,8 +9,12 @@ import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-stat
 import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
-  videoTypeSlug?: string;
+  videoTypeSlug: string;
   scene: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number];
+};
+
+type ScenarioChapterSceneComponentsSkeletonProps = {
+  videoTypeSlug: string;
 };
 
 export function ScenarioChapterSceneComponents({
@@ -45,19 +49,24 @@ export function ScenarioChapterSceneComponentsGeneratingAlert() {
   return (
     <GenerationAlert
       title="Генерируем компоненты сцены"
-      description="Генерируем для вас компоненты сцены, подождите несколько секунд..."
+      description="Генерируем для вас компоненты сцены, подождите несколько секунд"
       className="border-neutral-3 flex-1 border"
       hasGradient={false}
     />
   );
 }
 
-export function ScenarioChapterSceneComponentsSkeleton() {
+export function ScenarioChapterSceneComponentsSkeleton({
+  videoTypeSlug,
+}: ScenarioChapterSceneComponentsSkeletonProps) {
   return (
     <ItemsList
-      count={5}
+      count={videoTypeSlug === "long" ? 3 : 4}
       item={<ScenarioChapterSceneComponentSkeleton />}
-      className="col-span-6 grid flex-1 grid-cols-2 gap-4"
+      className={cn("grid flex-1 gap-4", {
+        "col-span-6 grid-cols-2": videoTypeSlug === "short",
+        "col-span-1": videoTypeSlug === "long",
+      })}
     />
   );
 }

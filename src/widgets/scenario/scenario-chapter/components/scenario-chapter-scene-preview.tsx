@@ -19,6 +19,7 @@ import {
   ErrorPlugIcon,
   ErrorPlugTitle,
 } from "@/shared/components/ui/error-plug";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 import { cn } from "@/shared/utils/cn";
 
@@ -27,8 +28,12 @@ import { useScenarioChapterScenePreview } from "../hooks/use-scenario-chapter-sc
 type ScenarioChapterScenePreviewProps = {
   chapterId: string;
   sceneId: string;
-  videoTypeSlug?: string;
+  videoTypeSlug: string;
   scene: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number];
+};
+
+type ScenarioChapterScenePreviewSkeletonProps = {
+  videoTypeSlug: string;
 };
 
 export function ScenarioChapterScenePreview({
@@ -47,12 +52,11 @@ export function ScenarioChapterScenePreview({
       return (
         <Button
           size="sm"
+          variant="tertiary"
           icon={<WandSparklesIcon />}
           state={isCreateScenarioScenePreviewPending ? "loading" : "default"}
           onClick={handleCreateScenarioScenePreview}
-        >
-          Сгенерировать превью
-        </Button>
+        />
       );
     }
 
@@ -104,6 +108,27 @@ export function ScenarioChapterScenePreview({
   );
 }
 
+export function ScenarioChapterScenePreviewSkeleton({
+  videoTypeSlug,
+}: ScenarioChapterScenePreviewSkeletonProps) {
+  return (
+    <div
+      className={cn("flex h-full flex-col", {
+        "col-span-2": videoTypeSlug === "short",
+        "col-span-1": videoTypeSlug === "long",
+      })}
+    >
+      <ScenarioChapterScenePreviewLayout
+        videoTypeSlug={videoTypeSlug}
+        className="sticky top-[200px]"
+        contentClassName="flex justify-center items-center"
+      >
+        <Skeleton className="h-full w-full" />
+      </ScenarioChapterScenePreviewLayout>
+    </div>
+  );
+}
+
 function ScenarioChapterScenePreviewGeneratingAlert() {
   return (
     <GenerationAlert
@@ -139,7 +164,7 @@ function ScenarioChapterScenePreviewEmptyPlug() {
         <EmptyPlugIcon />
         <EmptyPlugTitle>Превью пока нет</EmptyPlugTitle>
         <EmptyPlugDescription>
-          Если вы хотите, то можете сгенерировать превью сцены по кнопке выше
+          Вы можете сгенерировать превью сцены по кнопке выше
         </EmptyPlugDescription>
       </EmptyPlugHeader>
     </EmptyPlug>

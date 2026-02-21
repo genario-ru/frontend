@@ -25,13 +25,20 @@ import {
   ScenarioChapterSceneComponents,
   ScenarioChapterSceneComponentsSkeleton,
 } from "./scenario-chapter-scene-components";
-import { ScenarioChapterScenePreview } from "./scenario-chapter-scene-preview";
+import {
+  ScenarioChapterScenePreview,
+  ScenarioChapterScenePreviewSkeleton,
+} from "./scenario-chapter-scene-preview";
 
 type ScenarioChapterScenesProps = {
   chapterId: string;
   scenarioId: string;
   chapterPosition: number;
-  videoTypeSlug?: string;
+  videoTypeSlug: string;
+};
+
+type ScenarioChapterScenesSkeletonProps = {
+  videoTypeSlug: string;
 };
 
 export function ScenarioChapterScenes({
@@ -52,7 +59,7 @@ export function ScenarioChapterScenes({
   }
 
   if (isScenarioChapterLoading) {
-    return <ScenarioChapterScenesSkeleton />;
+    return <ScenarioChapterScenesSkeleton videoTypeSlug={videoTypeSlug} />;
   }
 
   if (isScenarioChapterError) {
@@ -103,7 +110,7 @@ export function ScenarioChapterScenesGeneratingAlert() {
     <Island roundedTop={false} className="flex-1">
       <GenerationAlert
         title="Генерируем сцены"
-        description="Генерируем для вас сцены, подождите несколько секунд..."
+        description="Генерируем для вас сцены, подождите несколько секунд"
         className="border-neutral-3 flex-1 border"
         hasGradient={false}
       />
@@ -111,7 +118,9 @@ export function ScenarioChapterScenesGeneratingAlert() {
   );
 }
 
-export function ScenarioChapterScenesSkeleton() {
+export function ScenarioChapterScenesSkeleton({
+  videoTypeSlug,
+}: ScenarioChapterScenesSkeletonProps) {
   return (
     <Island roundedTop={false} className="gap-8 py-8">
       <ItemsList
@@ -120,7 +129,19 @@ export function ScenarioChapterScenesSkeleton() {
         item={
           <section className="flex flex-col gap-4">
             <ScenarioChapterSceneHeaderSkeleton />
-            <ScenarioChapterSceneComponentsSkeleton />
+            <div
+              className={cn("grid w-full gap-4", {
+                "grid-cols-8": videoTypeSlug === "short",
+                "grid-cols-2": videoTypeSlug === "long",
+              })}
+            >
+              <ScenarioChapterScenePreviewSkeleton
+                videoTypeSlug={videoTypeSlug}
+              />
+              <ScenarioChapterSceneComponentsSkeleton
+                videoTypeSlug={videoTypeSlug}
+              />
+            </div>
           </section>
         }
       />

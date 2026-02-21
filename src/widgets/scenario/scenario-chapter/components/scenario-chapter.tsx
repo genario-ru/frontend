@@ -26,6 +26,10 @@ type ScenarioChapterProps = {
   scenarioId: string;
 };
 
+type ScenarioChapterSkeletonProps = {
+  videoTypeSlug: string;
+};
+
 export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   const {
     scenarioVideoType,
@@ -41,7 +45,11 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
   }
 
   if (isScenarioChaptersLoading) {
-    return <ScenarioChapterSkeleton />;
+    return (
+      <ScenarioChapterSkeleton
+        videoTypeSlug={scenarioVideoType?.slug ?? "long"}
+      />
+    );
   }
 
   if (isScenarioChaptersError) {
@@ -65,7 +73,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         chapterId={activeScenarioChapter.id}
         scenarioId={scenarioId}
         chapterPosition={activeScenarioChapterPosition}
-        videoTypeSlug={scenarioVideoType?.slug}
+        videoTypeSlug={scenarioVideoType?.slug ?? "long"}
       />
     </div>
   );
@@ -75,17 +83,19 @@ export function ScenarioChapterGeneratingAlert() {
   return (
     <GenerationAlert
       title="Генерируем сценарий"
-      description="Генерируем для вас сценарий, подождите несколько секунд..."
+      description="Генерируем для вас сценарий, подождите несколько секунд"
       className="flex-1"
     />
   );
 }
 
-export function ScenarioChapterSkeleton() {
+export function ScenarioChapterSkeleton({
+  videoTypeSlug,
+}: ScenarioChapterSkeletonProps) {
   return (
     <div className="flex flex-col">
       <ScenarioChapterHeaderSkeleton />
-      <ScenarioChapterScenesSkeleton />
+      <ScenarioChapterScenesSkeleton videoTypeSlug={videoTypeSlug} />
     </div>
   );
 }

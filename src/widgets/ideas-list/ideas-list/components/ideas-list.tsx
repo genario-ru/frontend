@@ -38,7 +38,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
       return (
         <GenerationAlert
           title="Генерируем идеи"
-          description="Генерируем для вас идеи видео, подождите несколько секунд..."
+          description="Генерируем для вас идеи видео, подождите несколько секунд"
         />
       );
     }
