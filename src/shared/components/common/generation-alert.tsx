@@ -21,8 +21,6 @@ export function GenerationAlert({
 }: GenerationAlertProps) {
   return (
     <Island
-      roundedTop={false}
-      roundedBottom={false}
       className={cn(
         "items-center justify-center gap-1",
         {

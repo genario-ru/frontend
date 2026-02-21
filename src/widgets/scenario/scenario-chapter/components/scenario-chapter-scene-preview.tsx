@@ -107,6 +107,8 @@ export function ScenarioChapterScenePreview({
 function ScenarioChapterScenePreviewGeneratingAlert() {
   return (
     <GenerationAlert
+      roundedTop={false}
+      roundedBottom={false}
       hasGradient={false}
       title="Генерация превью"
       description="Генерируем для вас превью сцены, подождите несколько секунд"
