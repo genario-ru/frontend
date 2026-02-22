@@ -30,7 +30,7 @@ export const AppSidebar = () => {
           <AppSidebarMenuItem>
             <Logo
               href="/"
-              className="rounded-t-5 flex h-full w-full items-center justify-center p-6"
+              className="rounded-t-5 flex h-full w-full items-center justify-center p-5"
             />
           </AppSidebarMenuItem>
         </AppSidebarMenu>
