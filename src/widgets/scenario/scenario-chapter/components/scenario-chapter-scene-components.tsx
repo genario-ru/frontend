@@ -25,7 +25,7 @@ export function ScenarioChapterSceneComponents({
   videoTypeSlug,
   scene,
 }: ScenarioChapterSceneComponentsProps) {
-  if (!checkIsGenerationStatus(scene.status)) {
+  if (checkIsGenerationStatus(scene.status)) {
     return (
       <ScenarioChapterSceneComponentsGeneratingAlert
         videoTypeSlug={videoTypeSlug}
