@@ -24,7 +24,7 @@ export function GenerationAlert({
       className={cn(
         "items-center justify-center gap-1",
         {
-          "from-neutral-1 bg-linear-to-r to-violet-300": hasGradient,
+          "from-neutral-1 to-accent-3 bg-linear-to-r": hasGradient,
         },
         className,
       )}
@@ -33,7 +33,7 @@ export function GenerationAlert({
       <header className="flex items-center gap-2">
         <LucideIcon
           icon={LoaderPinwheelIcon}
-          className="animate-spin stroke-violet-500"
+          className="stroke-accent-6 animate-spin"
         />
         <Heading variant="h3">{title}</Heading>
       </header>
