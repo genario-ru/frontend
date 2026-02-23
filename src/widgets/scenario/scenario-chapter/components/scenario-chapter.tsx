@@ -4,17 +4,8 @@ import {
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
-import {
-  EmptyPlugDescription,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
 import {
@@ -103,13 +94,11 @@ export function ScenarioChapterSkeleton({
 export function ScenarioChapterErrorPlug() {
   return (
     <Island noPadding className="flex-1">
-      <ErrorPlug className="flex-1">
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Произошла ошибка при загрузке сценария
-        </ErrorPlugDescription>
-      </ErrorPlug>
+      <ErrorPlug
+        className="flex-1"
+        title="Ошибка"
+        description="Произошла ошибка при загрузке сценария"
+      />
     </Island>
   );
 }
@@ -117,13 +106,11 @@ export function ScenarioChapterErrorPlug() {
 export function ScenarioChapterEmptyPlug() {
   return (
     <Island noPadding className="flex-1">
-      <ErrorPlug className="flex-1">
-        <EmptyPlugIcon />
-        <EmptyPlugTitle>Нет разделов</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          В сценарии пока нет разделов
-        </EmptyPlugDescription>
-      </ErrorPlug>
+      <EmptyPlug
+        className="flex-1"
+        title="Нет разделов"
+        description="В сценарии пока нет разделов"
+      />
     </Island>
   );
 }

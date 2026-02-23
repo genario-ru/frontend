@@ -1,11 +1,6 @@
 import { ItemsList } from "@/shared/components/common/items-list";
-import { EmptyPlug, EmptyPlugTitle } from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import {
   TabsUnderline,
   TabsUnderlineList,
@@ -44,7 +39,7 @@ export function ScenarioNavigationChapters({
   }
 
   if (!scenarioChaptersList?.length) {
-    return <ScenarioNavigationChaptersEmptyPlug />;
+    return <ScenarioNavigationChaptersEmptyPlug size={size} />;
   }
 
   return (
@@ -112,24 +107,19 @@ export function ScenarioNavigationChaptersError({
   const title =
     size === "base" ? "Ошибка" : "Произошла ошибка при загрузке разделов";
 
+  const description =
+    size === "base" ? "Произошла ошибка при загрузке разделов" : undefined;
+
   return (
     <ErrorPlug
       direction="row"
+      title={title}
+      description={description}
       className={cn("border-neutral-3 flex-1 border-b", {
         "h-[52px]": size === "sm",
         "h-[64px]": size === "base",
       })}
-    >
-      <ErrorPlugIcon className={cn({ "size-6": size === "sm" })} />
-      <div className="flex flex-col">
-        <ErrorPlugTitle>{title}</ErrorPlugTitle>
-        {size === "base" && (
-          <ErrorPlugDescription>
-            Произошла ошибка при загрузке разделов
-          </ErrorPlugDescription>
-        )}
-      </div>
-    </ErrorPlug>
+    />
   );
 }
 
@@ -138,12 +128,12 @@ export function ScenarioNavigationChaptersEmptyPlug({
 }: Pick<ScenarioNavigationChaptersProps, "size">) {
   return (
     <EmptyPlug
+      direction="row"
+      title="В данном сценарии пока нет разделов"
       className={cn("border-neutral-3 border-b", {
         "h-[52px]": size === "sm",
         "h-[64px]": size === "base",
       })}
-    >
-      <EmptyPlugTitle>В данном сценарии пока нет разделов</EmptyPlugTitle>
-    </EmptyPlug>
+    />
   );
 }

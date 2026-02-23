@@ -4,18 +4,8 @@ import { IdeasListIdeaCardSkeleton } from "@/features/ideas-list/ideas-list-idea
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
@@ -55,16 +45,14 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
       return <IdeasListSkeleton />;
     }
 
-    const ideasListDataLength = ideasListData?.data.ideas.length;
+    const ideasListStatus = ideasListData?.data.status;
+    const ideasListLength = ideasListData?.data.ideas.length;
 
-    if (
-      checkIsGenerationStatus(ideasListData?.data.status) &&
-      !ideasListDataLength
-    ) {
+    if (checkIsGenerationStatus(ideasListStatus) && !ideasListLength) {
       return <IdeasListSkeleton />;
     }
 
-    if (!ideasListDataLength) {
+    if (!ideasListLength) {
       return <IdeasListEmptyPlug />;
     }
 
@@ -115,13 +103,10 @@ export function IdeasListSkeleton() {
 export function IdeasListErrorPlug() {
   return (
     <Island className="w-full flex-1 items-center justify-center">
-      <ErrorPlug>
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Произошла ошибка при загрузке списка идей
-        </ErrorPlugDescription>
-      </ErrorPlug>
+      <ErrorPlug
+        title="Ошибка"
+        description="Произошла ошибка при загрузке списка идей"
+      />
     </Island>
   );
 }
@@ -129,11 +114,7 @@ export function IdeasListErrorPlug() {
 export function IdeasListEmptyPlug() {
   return (
     <Island className="w-full flex-1 items-center justify-center">
-      <EmptyPlug>
-        <EmptyPlugIcon />
-        <EmptyPlugTitle>Нет идей</EmptyPlugTitle>
-        <EmptyPlugDescription>В списке идей пока нет идей</EmptyPlugDescription>
-      </EmptyPlug>
+      <EmptyPlug title="Нет идей" description="В списке идей пока нет идей" />
     </Island>
   );
 }

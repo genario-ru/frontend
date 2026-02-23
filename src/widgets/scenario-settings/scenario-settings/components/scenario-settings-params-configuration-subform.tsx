@@ -1,20 +1,8 @@
 import { withForm } from "@/lib/tanstack-form";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ProfileImage } from "@/shared/components/common/profile-image";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugHeader,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
@@ -194,28 +182,20 @@ export function ScenarioSettingsParamsConfigurationSubformSkeleton() {
 
 export function ScenarioSettingsParamsConfigurationSubformEmptyPlug() {
   return (
-    <EmptyPlug className="flex-1">
-      <EmptyPlugHeader>
-        <EmptyPlugIcon />
-        <EmptyPlugTitle>Нет данных</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          Недостаточно данных для отображения формы
-        </EmptyPlugDescription>
-      </EmptyPlugHeader>
-    </EmptyPlug>
+    <EmptyPlug
+      className="flex-1"
+      title="Нет данных"
+      description="Недостаточно данных для отображения формы"
+    />
   );
 }
 
 export function ScenarioSettingsParamsConfigurationSubformErrorPlug() {
   return (
-    <ErrorPlug className="flex-1">
-      <ErrorPlugHeader>
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Произошла ошибка при загрузке данных. Попробуйте обновить страницу
-        </ErrorPlugDescription>
-      </ErrorPlugHeader>
-    </ErrorPlug>
+    <ErrorPlug
+      className="flex-1"
+      title="Ошибка загрузки"
+      description="Произошла ошибка при загрузке данных. Попробуйте обновить страницу"
+    />
   );
 }

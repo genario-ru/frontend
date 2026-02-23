@@ -1,11 +1,5 @@
 import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/product/types.gen";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugHeader,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
 import { useIdeasListSettingsForm } from "../hooks/use-ideas-list-settings-form";
@@ -77,15 +71,11 @@ export function IdeasListSettingsFormSkeleton() {
 export function IdeasListSettingsFormErrorPlug() {
   return (
     <Island className="flex-1">
-      <ErrorPlug className="flex-1">
-        <ErrorPlugHeader>
-          <ErrorPlugIcon />
-          <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
-          <ErrorPlugDescription>
-            Произошла ошибка при загрузке формы. Попробуйте обновить страницу
-          </ErrorPlugDescription>
-        </ErrorPlugHeader>
-      </ErrorPlug>
+      <ErrorPlug
+        className="flex-1"
+        title="Ошибка загрузки"
+        description="Произошла ошибка при загрузке формы. Попробуйте обновить страницу"
+      />
     </Island>
   );
 }

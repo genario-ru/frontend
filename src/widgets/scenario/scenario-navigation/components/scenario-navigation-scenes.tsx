@@ -1,12 +1,7 @@
 import { ScenarioNavigationScene } from "@/features/scenario/scenario-navigation/components/scenario-navigation-scene";
 import { ItemsList } from "@/shared/components/common/items-list";
-import { EmptyPlug, EmptyPlugTitle } from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
@@ -113,24 +108,19 @@ export function ScenarioNavigationScenesErrorPlug({
   const title =
     size === "base" ? "Ошибка" : "Произошла ошибка при загрузке сцен";
 
+  const description =
+    size === "base" ? "Произошла ошибка при загрузке сцен" : undefined;
+
   return (
     <ErrorPlug
       direction="row"
+      title={title}
+      description={description}
       className={cn({
         "h-[68px]": size === "sm",
         "h-[98px]": size === "base",
       })}
-    >
-      <ErrorPlugIcon className={cn({ "size-6": size === "sm" })} />
-      <div className="flex flex-col">
-        <ErrorPlugTitle>{title}</ErrorPlugTitle>
-        {size === "base" && (
-          <ErrorPlugDescription>
-            Произошла ошибка при загрузке сцен
-          </ErrorPlugDescription>
-        )}
-      </div>
-    </ErrorPlug>
+    />
   );
 }
 
@@ -139,12 +129,12 @@ export function ScenarioNavigationScenesEmptyPlug({
 }: Pick<ScenarioNavigationScenesProps, "size">) {
   return (
     <EmptyPlug
+      direction="row"
+      title="В данном разделе пока нет сцен"
       className={cn({
         "h-[68px]": size === "sm",
         "h-[98px]": size === "base",
       })}
-    >
-      <EmptyPlugTitle>В данном разделе пока нет сцен</EmptyPlugTitle>
-    </EmptyPlug>
+    />
   );
 }

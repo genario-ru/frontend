@@ -5,19 +5,8 @@ import {
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 import { cn } from "@/shared/utils/cn";
 
@@ -152,29 +141,25 @@ export function ScenarioChapterScenesSkeleton({
 export function ScenarioChapterScenesErrorPlug() {
   return (
     <Island roundedTop={false} className="flex-1">
-      <ErrorPlug variant="outlined" className="flex-1">
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Произошла ошибка при загрузке сцен
-        </ErrorPlugDescription>
-      </ErrorPlug>
+      <ErrorPlug
+        variant="outlined"
+        className="flex-1"
+        title="Ошибка"
+        description="Произошла ошибка при загрузке сцен"
+      />
     </Island>
   );
 }
 
 export function ScenarioChapterScenesEmptyPlug() {
   return (
-    <Island noPadding roundedTop={false} className="flex-1">
-      <EmptyPlug className="flex-1">
-        <EmptyPlugHeader>
-          <EmptyPlugIcon />
-          <EmptyPlugTitle>Нет сцен</EmptyPlugTitle>
-          <EmptyPlugDescription>
-            В данном разделе пока нет сцен.
-          </EmptyPlugDescription>
-        </EmptyPlugHeader>
-      </EmptyPlug>
+    <Island roundedTop={false} className="flex-1">
+      <EmptyPlug
+        variant="outlined"
+        title="Нет сцен"
+        description="В данном разделе пока нет сцен."
+        className="flex-1"
+      />
     </Island>
   );
 }

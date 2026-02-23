@@ -6,20 +6,8 @@ import { ScenarioChapterScenePreviewImage } from "@/features/scenario/scenario-c
 import { ScenarioChapterScenePreviewLayout } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { Button } from "@/shared/components/ui/button";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugHeader,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 import { cn } from "@/shared/utils/cn";
@@ -136,7 +124,7 @@ function ScenarioChapterScenePreviewGeneratingAlert() {
       roundedBottom={false}
       hasGradient={false}
       title="Генерация превью"
-      description="Генерируем для вас превью сцены, подождите несколько секунд"
+      description="Генерируем для вас превью, подождите несколько секунд"
       className="h-full w-full flex-1"
     />
   );
@@ -144,29 +132,18 @@ function ScenarioChapterScenePreviewGeneratingAlert() {
 
 function ScenarioChapterScenePreviewErrorPlug() {
   return (
-    <ErrorPlug>
-      <ErrorPlugHeader>
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка генерации</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Не удалось сгенерировать превью сцены, попробуйте еще раз, нажав на
-          кнопку повторной генерации
-        </ErrorPlugDescription>
-      </ErrorPlugHeader>
-    </ErrorPlug>
+    <ErrorPlug
+      title="Ошибка генерации"
+      description="Не удалось сгенерировать превью. Попробуйте еще раз по кнопке выше"
+    />
   );
 }
 
 function ScenarioChapterScenePreviewEmptyPlug() {
   return (
-    <EmptyPlug>
-      <EmptyPlugHeader>
-        <EmptyPlugIcon />
-        <EmptyPlugTitle>Превью пока нет</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          Вы можете сгенерировать превью сцены по кнопке выше
-        </EmptyPlugDescription>
-      </EmptyPlugHeader>
-    </EmptyPlug>
+    <EmptyPlug
+      title="Превью пока нет"
+      description="Вы можете сгенерировать превью сцены по кнопке выше"
+    />
   );
 }

@@ -4,91 +4,90 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
-import { LucideIcon, type LucideIconProps } from "./lucide-icon";
+import { LucideIcon } from "./lucide-icon";
 
 const emptyPlugVariants = cva(
-  "group/empty-plug w-full flex items-center max p-4 justify-center flex-col",
+  "group/empty-plug w-full flex items-center justify-center",
   {
     variants: {
       variant: {
         default: "",
         outlined: "border border-neutral-3 rounded-4",
       },
+      direction: {
+        column: "flex-col gap-1",
+        row: "flex-row gap-2 py-0",
+      },
     },
     defaultVariants: {
       variant: "default",
+      direction: "column",
     },
   },
 );
 
-type EmptyPlugProps = ComponentProps<"div"> &
-  VariantProps<typeof emptyPlugVariants>;
+export type EmptyPlugProps = ComponentProps<"div"> &
+  VariantProps<typeof emptyPlugVariants> & {
+    title: string;
+    description?: string;
+    icon?: LucideIconType;
+  };
 
-type EmptyPlugIconProps = Omit<LucideIconProps, "icon"> & {
-  icon?: LucideIconType;
-};
+export function EmptyPlug({
+  title,
+  description,
+  icon = ShredderIcon,
+  variant,
+  direction,
+  className,
+  ...props
+}: EmptyPlugProps) {
+  const Icon = icon === undefined ? ShredderIcon : icon;
 
-export function EmptyPlug({ variant, className, ...props }: EmptyPlugProps) {
+  const iconEl = (
+    <LucideIcon data-slot="empty-plug-icon" icon={Icon} className="size-6" />
+  );
+
+  const titleEl = (
+    <div data-slot="empty-plug-title" className="font-medium">
+      {title}
+    </div>
+  );
+
+  const descriptionEl = description && (
+    <div
+      data-slot="empty-plug-description"
+      className="text-neutral-6 text-center text-sm"
+    >
+      {description}
+    </div>
+  );
+
+  const content =
+    direction === "row" ? (
+      <>
+        {iconEl}
+        <div className="flex flex-col">
+          {titleEl}
+          {descriptionEl}
+        </div>
+      </>
+    ) : (
+      <>
+        {iconEl}
+        {titleEl}
+        {descriptionEl}
+      </>
+    );
+
   return (
     <div
       data-slot="empty-plug"
-      className={cn(emptyPlugVariants({ variant }), className)}
+      data-direction={direction}
+      className={cn(emptyPlugVariants({ variant, direction }), className)}
       {...props}
-    />
-  );
-}
-
-export function EmptyPlugHeader({
-  className,
-  ...props
-}: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="empty-plug-header"
-      className={cn("flex max-w-sm flex-col items-center", className)}
-      {...props}
-    />
-  );
-}
-
-export function EmptyPlugTitle({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="empty-plug-title"
-      className={cn("font-medium", className)}
-      {...props}
-    />
-  );
-}
-
-export function EmptyPlugIcon({
-  icon = ShredderIcon,
-  ...props
-}: EmptyPlugIconProps) {
-  return <LucideIcon data-slot="empty-plug-icon" icon={icon} {...props} />;
-}
-export function EmptyPlugDescription({
-  className,
-  ...props
-}: ComponentProps<"p">) {
-  return (
-    <div
-      data-slot="empty-plug-description"
-      className={cn("text-neutral-6 text-center text-sm", className)}
-      {...props}
-    />
-  );
-}
-
-export function EmptyPlugContent({
-  className,
-  ...props
-}: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="empty-plug-content"
-      className={cn("flex w-full max-w-sm items-center", className)}
-      {...props}
-    />
+    >
+      {content}
+    </div>
   );
 }

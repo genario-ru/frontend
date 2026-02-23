@@ -6,20 +6,8 @@ import {
 } from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
-import {
-  EmptyPlug,
-  EmptyPlugDescription,
-  EmptyPlugHeader,
-  EmptyPlugIcon,
-  EmptyPlugTitle,
-} from "@/shared/components/ui/empty-plug";
-import {
-  ErrorPlug,
-  ErrorPlugDescription,
-  ErrorPlugHeader,
-  ErrorPlugIcon,
-  ErrorPlugTitle,
-} from "@/shared/components/ui/error-plug";
+import { EmptyPlug } from "@/shared/components/ui/empty-plug";
+import { ErrorPlug } from "@/shared/components/ui/error-plug";
 
 import {
   type ScenarioSettingsFormSchema,
@@ -80,28 +68,20 @@ export function ScenarioSettingsTemplatesSelectionSubformSkeleton() {
 
 export function ScenarioSettingsTemplatesSelectionSubformEmptyPlug() {
   return (
-    <EmptyPlug className="flex-1">
-      <EmptyPlugHeader>
-        <EmptyPlugIcon />
-        <EmptyPlugTitle>Нет шаблонов</EmptyPlugTitle>
-        <EmptyPlugDescription>
-          На данный момент нет доступных шаблонов для выбора
-        </EmptyPlugDescription>
-      </EmptyPlugHeader>
-    </EmptyPlug>
+    <EmptyPlug
+      className="flex-1"
+      title="Нет шаблонов"
+      description="На данный момент нет доступных шаблонов для выбора"
+    />
   );
 }
 
 export function ScenarioSettingsTemplatesSelectionSubformErrorPlug() {
   return (
-    <ErrorPlug className="flex-1">
-      <ErrorPlugHeader>
-        <ErrorPlugIcon />
-        <ErrorPlugTitle>Ошибка загрузки</ErrorPlugTitle>
-        <ErrorPlugDescription>
-          Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу
-        </ErrorPlugDescription>
-      </ErrorPlugHeader>
-    </ErrorPlug>
+    <ErrorPlug
+      className="flex-1"
+      title="Ошибка загрузки"
+      description="Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу"
+    />
   );
 }
