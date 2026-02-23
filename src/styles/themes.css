@@ -1,5 +1,5 @@
 :root {
-  /* New neutral colors */
+  /* Neutral colors */
   --neutral-1: #ffffff;
   --neutral-2: #f2f2f2;
   --neutral-3: #e5e5e5;
@@ -9,7 +9,7 @@
   --neutral-7: #555555;
   --neutral-8: #000000;
 
-  /* New negative colors */
+  /* Negative colors */
   --negative-1: #fee2e2;
   --negative-2: #fecaca;
   --negative-3: #fca5a5;
@@ -19,7 +19,7 @@
   --negative-7: #b91c1c;
   --negative-8: #991b1b;
 
-  /* New positive colors */
+  /* Positive colors */
   --positive-1: #dcfce7;
   --positive-2: #bbf7d0;
   --positive-3: #86efac;
@@ -28,10 +28,20 @@
   --positive-6: #16a34a;
   --positive-7: #15803d;
   --positive-8: #166534;
+
+  /* Accent colors */
+  --accent-1: #eef2ff;
+  --accent-2: #e0e7ff;
+  --accent-3: #c7d2fe;
+  --accent-4: #a5b4fc;
+  --accent-5: #818cf8;
+  --accent-6: #6366f1;
+  --accent-7: #4338ca;
+  --accent-8: #1e1b4b;
 }
 
 .dark {
-  /* Dark neutral colors */
+  /* Neutral colors */
   --neutral-1: #000000;
   --neutral-2: #1a1a1a;
   --neutral-3: #262626;
@@ -41,7 +51,7 @@
   --neutral-7: #b3b3b3;
   --neutral-8: #ffffff;
 
-  /* Dark negative colors */
+  /* Negative colors */
   --negative-1: #3b0a0a;
   --negative-2: #5f1b1b;
   --negative-3: #7f1d1d;
@@ -51,7 +61,7 @@
   --negative-7: #f87171;
   --negative-8: #fca5a5;
 
-  /* Dark positive colors */
+  /* Positive colors */
   --positive-1: #052e16;
   --positive-2: #14532d;
   --positive-3: #166534;
@@ -60,4 +70,14 @@
   --positive-6: #46d179;
   --positive-7: #86efac;
   --positive-8: #bbf7d0;
+
+  /* Accent colors */
+  --accent-1: #1e1b4b;
+  --accent-2: #272274;
+  --accent-3: #3f36a5;
+  --accent-4: #5746d4;
+  --accent-5: #7352e7;
+  --accent-6: #9364e6;
+  --accent-7: #b882e7;
+  --accent-8: #d8a8e9;
 }

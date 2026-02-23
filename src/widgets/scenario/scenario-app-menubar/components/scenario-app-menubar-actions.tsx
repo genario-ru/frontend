@@ -18,7 +18,7 @@ export function ScenarioAppMenubarActions({
     <div className="flex items-center gap-1">
       <ScenarioAppMenubarImproveDialog scenarioId={scenarioId} />
       <ButtonLink
-        variant="tertiary"
+        priority="tertiary"
         to="/scenarios/settings"
         search={{
           scenarioId,

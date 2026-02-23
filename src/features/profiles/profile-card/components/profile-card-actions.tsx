@@ -28,7 +28,7 @@ export const ProfileCardActions = ({
       onOpenChange={setIsDropdownMenuOpened}
     >
       <DropdownMenuTrigger asChild>
-        <Button size="sm" variant="tertiary" icon={<EllipsisIcon />} />
+        <Button size="sm" priority="tertiary" icon={<EllipsisIcon />} />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>

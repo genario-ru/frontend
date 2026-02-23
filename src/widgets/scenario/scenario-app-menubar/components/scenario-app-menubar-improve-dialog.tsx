@@ -31,7 +31,7 @@ export function ScenarioAppMenubarImproveDialog({
   return (
     <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="tertiary" icon={<WandSparklesIcon />}>
+        <Button priority="tertiary" icon={<WandSparklesIcon />}>
           Улучшить
         </Button>
       </DialogTrigger>

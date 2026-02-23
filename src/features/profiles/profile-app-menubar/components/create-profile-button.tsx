@@ -6,7 +6,7 @@ type CreateProfileButtonProps = ButtonProps;
 
 export function CreateProfileButton(props: CreateProfileButtonProps) {
   return (
-    <Button variant="primary" icon={<PlusIcon />} {...props}>
+    <Button priority="primary" icon={<PlusIcon />} {...props}>
       Новый профиль
     </Button>
   );

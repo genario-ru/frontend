@@ -34,7 +34,7 @@ export function IdeasListAppMenubarMoreIdeasDialog({
       onOpenChange={setIsMoreIdeasDialogOpen}
     >
       <DialogTrigger asChild>
-        <Button variant="tertiary" icon={<WandSparklesIcon />}>
+        <Button priority="tertiary" icon={<WandSparklesIcon />}>
           Больше идей
         </Button>
       </DialogTrigger>

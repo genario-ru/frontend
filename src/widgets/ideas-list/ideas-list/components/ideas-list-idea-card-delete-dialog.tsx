@@ -36,7 +36,7 @@ export function IdeasListIdeaCardDeleteDialog({
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
         <IdeasListIdeaCardSecondaryActionsMenuButton
-          color="negative"
+          variant="negative"
           icon={<TrashIcon />}
         >
           Удалить
@@ -52,8 +52,8 @@ export function IdeasListIdeaCardDeleteDialog({
             <Button>Отмена</Button>
           </DialogClose>
           <Button
-            variant="primary"
-            color="negative"
+            priority="primary"
+            variant="negative"
             state={isDeleteIdeaPending ? "loading" : "default"}
             onClick={handleConfirmDeleteButtonClick}
           >

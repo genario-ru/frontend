@@ -16,7 +16,7 @@ export const AppSidebarTrigger = ({
   return (
     <Button
       icon={<PanelLeftIcon />}
-      variant="tertiary"
+      priority="tertiary"
       onClick={toggleSidebar}
       className={className}
       {...props}

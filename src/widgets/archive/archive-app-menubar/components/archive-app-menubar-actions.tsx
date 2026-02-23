@@ -14,21 +14,21 @@ export function ArchiveAppMenubarActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="primary" icon={<ChevronDownIcon />}>
+        <Button priority="primary" icon={<ChevronDownIcon />}>
           Создать
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <ArchiveAppMenubarActionsButtonLink
-            variant="tertiary"
+            priority="tertiary"
             icon={<LightbulbIcon />}
             to="/ideas-lists/settings"
           >
             Новые идеи
           </ArchiveAppMenubarActionsButtonLink>
           <ArchiveAppMenubarActionsButtonLink
-            variant="tertiary"
+            priority="tertiary"
             icon={<FilmIcon />}
             to="/scenarios/settings"
           >

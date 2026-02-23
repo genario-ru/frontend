@@ -29,7 +29,7 @@ export function ScenarioAppMenubarDeleteDialog({
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="tertiary" color="negative" icon={<TrashIcon />} />
+        <Button priority="tertiary" variant="negative" icon={<TrashIcon />} />
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
@@ -41,8 +41,8 @@ export function ScenarioAppMenubarDeleteDialog({
             <Button>Отмена</Button>
           </DialogClose>
           <Button
-            color="negative"
-            variant="primary"
+            variant="negative"
+            priority="primary"
             state={isDeleteScenarioPending ? "loading" : "default"}
             onClick={handleConfirmDeleteButtonClick}
           >

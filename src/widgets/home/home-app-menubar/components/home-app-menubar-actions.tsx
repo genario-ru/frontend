@@ -14,7 +14,7 @@ export function HomeAppMenubarActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="primary" icon={<ChevronDownIcon />}>
+        <Button priority="primary" icon={<ChevronDownIcon />}>
           Создать
         </Button>
       </DropdownMenuTrigger>

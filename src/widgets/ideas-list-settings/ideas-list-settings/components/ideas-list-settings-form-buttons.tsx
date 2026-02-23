@@ -91,7 +91,7 @@ export const IdeasListSettingsFormButtons = withForm({
         {/* Кнопка справа (submit) */}
         {currentStep === IdeasListSettingsFormSteps.ParamsConfiguration ? (
           <Button
-            variant="primary"
+            priority="primary"
             size="lg"
             disabled={isLoading}
             state={isLoading ? "loading" : "default"}
@@ -101,7 +101,7 @@ export const IdeasListSettingsFormButtons = withForm({
           </Button>
         ) : (
           <Button
-            variant="primary"
+            priority="primary"
             size="lg"
             disabled={isLoading}
             icon={<ArrowRightIcon />}

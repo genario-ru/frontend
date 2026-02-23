@@ -181,7 +181,7 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
         <ButtonLink
           size="lg"
           href="/sign-in"
-          variant="secondary"
+          priority="secondary"
           icon={<ArrowLeftIcon />}
           iconPosition="left"
         >
@@ -190,7 +190,7 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
         <Button
           type="button"
           size="lg"
-          variant="secondary"
+          priority="secondary"
           state={buttonState}
           disabled={buttonDisabled}
           onClick={onResendVerificationEmailButtonClick}

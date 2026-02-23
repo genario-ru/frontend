@@ -9,20 +9,25 @@ export const buttonVariants = cva(
   ),
   {
     variants: {
-      color: {
+      rounding: {
+        full: "rounded-full",
+        base: "",
+      },
+      variant: {
         neutral: "",
         positive: "",
         negative: "",
+        accent: "",
       },
-      variant: {
+      priority: {
         primary: "",
         secondary: "",
         tertiary: "",
       },
       size: {
-        lg: "px-5 py-2.5 gap-2.5 min-h-12 rounded-4 [&_svg]:size-6",
-        base: "px-4 py-2 gap-2 min-h-10 rounded-3 [&_svg]:size-6",
-        sm: "px-3 py-1.5 gap-1.5 min-h-8 text-sm rounded-2.5 [&_svg]:size-4.5",
+        lg: "px-5 py-2.5 gap-2.5 min-h-12 [&_svg]:size-6",
+        base: "px-4 py-2 gap-2 min-h-10 [&_svg]:size-6",
+        sm: "px-3 py-1.5 gap-1.5 min-h-8 text-sm [&_svg]:size-4.5",
       },
       content: {
         mixed: "",
@@ -39,13 +44,30 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      color: "neutral",
-      variant: "secondary",
+      variant: "neutral",
+      priority: "secondary",
       size: "base",
+      rounding: "full",
       content: "mixed",
       state: "default",
     },
     compoundVariants: [
+      // Rounding base (size-dependent)
+      {
+        rounding: "base",
+        size: "lg",
+        className: "rounded-4",
+      },
+      {
+        rounding: "base",
+        size: "base",
+        className: "rounded-3",
+      },
+      {
+        rounding: "base",
+        size: "sm",
+        className: "rounded-2.5",
+      },
       // Icon
       {
         size: "base",
@@ -59,24 +81,24 @@ export const buttonVariants = cva(
       },
       // Neutral
       {
-        color: "neutral",
-        variant: "primary",
+        variant: "neutral",
+        priority: "primary",
         className: cn(
           "bg-neutral-8 text-neutral-1 [&_svg]:stroke-neutral-1",
           "hover:bg-neutral-8/80 active:bg-neutral-8/80 focus-visible:ring-neutral-8",
         ),
       },
       {
-        color: "neutral",
-        variant: "secondary",
+        variant: "neutral",
+        priority: "secondary",
         className: cn(
           "bg-neutral-2 text-neutral-8 [&_svg]:stroke-neutral-8",
           "hover:bg-neutral-3 active:bg-neutral-3 focus-visible:ring-neutral-8",
         ),
       },
       {
-        color: "neutral",
-        variant: "tertiary",
+        variant: "neutral",
+        priority: "tertiary",
         className: cn(
           "text-neutral-8 [&_svg]:stroke-neutral-8",
           "hover:bg-neutral-2 active:bg-neutral-2",
@@ -85,8 +107,8 @@ export const buttonVariants = cva(
       },
       // Positive
       {
-        color: "positive",
-        variant: "primary",
+        variant: "positive",
+        priority: "primary",
         className: cn(
           "bg-positive-6 text-neutral-1 [&_svg]:stroke-neutral-1",
           "dark:bg-positive-5 dark:text-neutral-8 dark:[&_svg]:stroke-neutral-8",
@@ -96,8 +118,8 @@ export const buttonVariants = cva(
         ),
       },
       {
-        color: "positive",
-        variant: "secondary",
+        variant: "positive",
+        priority: "secondary",
         className: cn(
           "bg-positive-1 text-positive-7 [&_svg]:stroke-positive-7",
           "hover:bg-positive-2 hover:text-positive-8 hover:[&_svg]:stroke-positive-8 active:bg-positive-2 active:text-positive-8 active:[&_svg]:stroke-positive-8",
@@ -105,8 +127,8 @@ export const buttonVariants = cva(
         ),
       },
       {
-        color: "positive",
-        variant: "tertiary",
+        variant: "positive",
+        priority: "tertiary",
         className: cn(
           "text-positive-7 [&_svg]:stroke-positive-7",
           "hover:bg-positive-1 hover:text-positive-8 hover:[&_svg]:stroke-positive-8 active:bg-positive-1 active:text-positive-8 active:[&_svg]:stroke-positive-8",
@@ -115,8 +137,8 @@ export const buttonVariants = cva(
       },
       // Negative
       {
-        color: "negative",
-        variant: "primary",
+        variant: "negative",
+        priority: "primary",
         className: cn(
           "bg-negative-6 text-neutral-1 [&_svg]:stroke-neutral-1",
           "dark:bg-negative-5 dark:text-neutral-8 dark:[&_svg]:stroke-neutral-8",
@@ -126,8 +148,8 @@ export const buttonVariants = cva(
         ),
       },
       {
-        color: "negative",
-        variant: "secondary",
+        variant: "negative",
+        priority: "secondary",
         className: cn(
           "bg-negative-1 text-negative-7 [&_svg]:stroke-negative-7",
           "hover:bg-negative-2 hover:text-negative-8 hover:[&_svg]:stroke-negative-8 active:bg-negative-2 active:text-negative-8 active:[&_svg]:stroke-negative-8",
@@ -135,12 +157,42 @@ export const buttonVariants = cva(
         ),
       },
       {
-        color: "negative",
-        variant: "tertiary",
+        variant: "negative",
+        priority: "tertiary",
         className: cn(
           "text-negative-7 [&_svg]:stroke-negative-7",
           "hover:bg-negative-1 hover:text-negative-8 hover:[&_svg]:stroke-negative-8 active:bg-negative-1 active:text-negative-8 active:[&_svg]:stroke-negative-8",
           "focus-visible:ring-negative-8",
+        ),
+      },
+      // Accent
+      {
+        variant: "accent",
+        priority: "primary",
+        className: cn(
+          "bg-accent-6 text-neutral-1 [&_svg]:stroke-neutral-1",
+          "dark:bg-accent-5 dark:text-neutral-8 dark:[&_svg]:stroke-neutral-8",
+          "hover:bg-accent-6/80 active:bg-accent-6/80",
+          "dark:hover:bg-accent-5/80 dark:active:bg-accent-5/80",
+          "focus-visible:ring-accent-6",
+        ),
+      },
+      {
+        variant: "accent",
+        priority: "secondary",
+        className: cn(
+          "bg-accent-1 text-accent-7 [&_svg]:stroke-accent-7",
+          "hover:bg-accent-2 hover:text-accent-8 hover:[&_svg]:stroke-accent-8 active:bg-accent-2 active:text-accent-8 active:[&_svg]:stroke-accent-8",
+          "focus-visible:ring-accent-6",
+        ),
+      },
+      {
+        variant: "accent",
+        priority: "tertiary",
+        className: cn(
+          "text-accent-7 [&_svg]:stroke-accent-7",
+          "hover:bg-accent-1 hover:text-accent-8 hover:[&_svg]:stroke-accent-8 active:bg-accent-1 active:text-accent-8 active:[&_svg]:stroke-accent-8",
+          "focus-visible:ring-accent-6",
         ),
       },
     ],

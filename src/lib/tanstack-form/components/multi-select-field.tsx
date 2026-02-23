@@ -78,7 +78,7 @@ export const MultiSelectField = ({
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="secondary"
+            priority="secondary"
             aria-expanded={open}
             icon={<ChevronDownIcon />}
             className={cn("w-full justify-between", {

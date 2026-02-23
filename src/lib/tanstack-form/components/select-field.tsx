@@ -105,7 +105,7 @@ export const SelectField = ({
         <PopoverTrigger asChild>
           <Button
             aria-expanded={open}
-            variant="secondary"
+            priority="secondary"
             state={errors.length > 0 ? "error" : "default"}
             icon={<LucideIcon icon={ChevronDownIcon} />}
             className={cn("text-neutral-6 w-full justify-between", {
@@ -113,7 +113,11 @@ export const SelectField = ({
             })}
             {...buttonProps}
           >
-            <SelectFieldOptionData {...triggerItem} />
+            <SelectFieldOptionData
+              icon={triggerItem.icon}
+              label={triggerItem.label}
+              value={triggerItem.value}
+            />
           </Button>
         </PopoverTrigger>
         <PopoverContent

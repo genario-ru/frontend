@@ -80,7 +80,7 @@ export const DialogContent = ({
 export const DialogCloseButton = (props: ButtonProps) => {
   return (
     <DialogClose asChild>
-      <Button variant="tertiary" icon={<XIcon />} {...props} />
+      <Button priority="tertiary" icon={<XIcon />} {...props} />
     </DialogClose>
   );
 };

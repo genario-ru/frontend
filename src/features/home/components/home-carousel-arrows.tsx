@@ -19,13 +19,13 @@ export function HomeCarouselArrows({
     <div className="flex items-center gap-2 select-none">
       <Button
         size="sm"
-        variant="secondary"
+        priority="secondary"
         disabled={!hasPrevious}
         icon={<ArrowLeftIcon />}
         onClick={onPreviousClick}
       />
       <Button
-        variant="secondary"
+        priority="secondary"
         size="sm"
         disabled={!hasNext}
         icon={<ArrowRightIcon />}

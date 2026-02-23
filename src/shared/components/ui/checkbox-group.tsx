@@ -11,7 +11,10 @@ import { CheckIcon } from "lucide-react";
 import { buttonVariants } from "@/shared/constants/button-variants";
 import { cn } from "@/shared/utils/cn";
 
+import type { ButtonProps } from "./button";
 import { LucideIcon } from "./lucide-icon";
+
+type CheckboxGroupItemProps = CheckboxRootProps & Pick<ButtonProps, "rounding">;
 
 export function CheckboxGroup({ className, ...props }: CheckboxGroupProps) {
   return (
@@ -23,14 +26,15 @@ export function CheckboxGroup({ className, ...props }: CheckboxGroupProps) {
 }
 
 export function CheckboxGroupItem({
+  rounding,
   className,
   children,
   ...props
-}: CheckboxRootProps) {
+}: CheckboxGroupItemProps) {
   return (
     <CheckboxBase.Root
       className={cn(
-        buttonVariants({ size: "sm", variant: "tertiary" }),
+        buttonVariants({ size: "sm", priority: "tertiary", rounding }),
         "[&_svg]:stroke-neutral-1 w-full justify-start px-2 [&_svg]:size-3",
         className,
       )}

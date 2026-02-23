@@ -21,7 +21,7 @@ export function IdeasListIdeaCardPrimaryActions({
       {/* <IdeasListIdeaCardImproveDialog /> */}
       <ButtonLink
         size="sm"
-        variant="primary"
+        priority="primary"
         {...createScenarioLinkOptions}
         icon={<FilmIcon />}
       >

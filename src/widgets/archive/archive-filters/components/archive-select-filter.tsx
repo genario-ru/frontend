@@ -48,7 +48,11 @@ export function ArchiveSelectFilter({
             onValueChange={(value) => handleChange(value as string)}
           >
             {options.map((option) => (
-              <RadioGroupItem key={option.value} value={option.value}>
+              <RadioGroupItem
+                key={option.value}
+                value={option.value}
+                rounding="base"
+              >
                 {option.label}
               </RadioGroupItem>
             ))}

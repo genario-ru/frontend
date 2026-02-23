@@ -36,6 +36,16 @@
   --color-negative-7: var(--negative-7);
   --color-negative-8: var(--negative-8);
 
+  /* Accent colors */
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-accent-4: var(--accent-4);
+  --color-accent-5: var(--accent-5);
+  --color-accent-6: var(--accent-6);
+  --color-accent-7: var(--accent-7);
+  --color-accent-8: var(--accent-8);
+
   /* Font */
   --font-sans: "Inter Variable", sans-serif;
 

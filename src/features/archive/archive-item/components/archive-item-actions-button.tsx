@@ -6,7 +6,8 @@ export function ArchiveItemActionsButton(props: ArchiveItemActionsButtonProps) {
   return (
     <Button
       size="sm"
-      variant="tertiary"
+      priority="tertiary"
+      rounding="base"
       className="w-full justify-start"
       {...props}
     />

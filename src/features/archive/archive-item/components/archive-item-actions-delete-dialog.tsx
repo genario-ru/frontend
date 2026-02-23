@@ -33,7 +33,7 @@ export function ArchiveItemActionsDeleteDialog({
   return (
     <Dialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
       <DialogTrigger asChild>
-        <ArchiveItemActionsButton color="negative" icon={<TrashIcon />}>
+        <ArchiveItemActionsButton variant="negative" icon={<TrashIcon />}>
           Удалить
         </ArchiveItemActionsButton>
       </DialogTrigger>
@@ -44,8 +44,8 @@ export function ArchiveItemActionsDeleteDialog({
             <Button>Отмена</Button>
           </DialogClose>
           <Button
-            color="negative"
-            variant="primary"
+            variant="negative"
+            priority="primary"
             state={isDeleteArchiveItemPending ? "loading" : "default"}
             onClick={onConfirmDeleteArchiveItem}
           >

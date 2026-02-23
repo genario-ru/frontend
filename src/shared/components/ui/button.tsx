@@ -20,9 +20,10 @@ export type ButtonProps = ComponentProps<"button"> &
 export const Button = ({
   icon,
   iconPosition = "right",
-  color,
   variant,
+  priority,
   size,
+  rounding,
   state,
   direction,
   children,
@@ -46,9 +47,10 @@ export const Button = ({
       disabled={state === "loading"}
       className={cn(
         buttonVariants({
-          color,
           variant,
+          priority,
           size,
+          rounding,
           content: withChildren ? "mixed" : "icon",
           state,
           direction,

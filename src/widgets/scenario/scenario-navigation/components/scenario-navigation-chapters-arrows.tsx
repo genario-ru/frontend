@@ -50,5 +50,5 @@ function ScenarioNavigationChaptersArrowsButton({
   size = "base",
   ...props
 }: ButtonProps) {
-  return <Button size={size} variant="tertiary" {...props} />;
+  return <Button size={size} priority="tertiary" {...props} />;
 }

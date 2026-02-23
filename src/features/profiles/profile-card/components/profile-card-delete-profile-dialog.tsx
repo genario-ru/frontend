@@ -30,8 +30,9 @@ export function ProfileCardDeleteProfileDialog({
       <DialogTrigger asChild>
         <Button
           size="sm"
-          variant="tertiary"
-          color="negative"
+          priority="tertiary"
+          variant="negative"
+          rounding="base"
           icon={<TrashIcon />}
           className="w-full justify-start"
         >
@@ -50,8 +51,8 @@ export function ProfileCardDeleteProfileDialog({
           <DialogClose asChild>
             <Button
               size="lg"
-              color="negative"
-              variant="primary"
+              variant="negative"
+              priority="primary"
               state={isDeleteProfilePending ? "loading" : "default"}
               onClick={onDeleteProfileButtonClick}
             >

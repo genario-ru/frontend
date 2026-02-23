@@ -21,7 +21,7 @@ export const SubmitButton = ({
         return (
           <Button
             type="submit"
-            variant="primary"
+            priority="primary"
             state={finalState}
             disabled={finalDisabled}
             {...props}

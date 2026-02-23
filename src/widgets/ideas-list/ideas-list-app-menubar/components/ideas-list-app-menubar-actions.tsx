@@ -16,7 +16,7 @@ export function IdeasListAppMenubarActions({
     <div className="flex items-center gap-2">
       <IdeasListAppMenubarMoreIdeasDialog ideasListId={ideasListId} />
       <ButtonLink
-        variant="tertiary"
+        priority="tertiary"
         to="/ideas-lists/settings"
         search={{
           ideasListId,

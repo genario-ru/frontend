@@ -30,7 +30,7 @@ export function ScenarioChapterSceneHeader({
       <Heading variant="h3">
         {chapterPosition}.{position}. {name}
       </Heading>
-      <Badge size="sm" variant="tertiary">
+      <Badge size="sm" variant="tertiary" className="border-neutral-3 border">
         {time}
       </Badge>
     </header>

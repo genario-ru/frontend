@@ -7,6 +7,10 @@ import {
 import { buttonVariants } from "@/shared/constants/button-variants";
 import { cn } from "@/shared/utils/cn";
 
+import type { ButtonProps } from "./button";
+
+type RadioGroupItemProps = RadioRootProps & Pick<ButtonProps, "rounding">;
+
 export function RadioGroup({ className, ...props }: RadioGroupProps) {
   return (
     <RadioGroupBase
@@ -17,14 +21,15 @@ export function RadioGroup({ className, ...props }: RadioGroupProps) {
 }
 
 export function RadioGroupItem({
+  rounding,
   className,
   children,
   ...props
-}: RadioRootProps) {
+}: RadioGroupItemProps) {
   return (
     <RadioBase.Root
       className={cn(
-        buttonVariants({ size: "sm", variant: "tertiary" }),
+        buttonVariants({ size: "sm", priority: "tertiary", rounding }),
         "w-full justify-start px-2",
         className,
       )}

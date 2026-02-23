@@ -53,7 +53,7 @@ export function ScenarioChapterScenePreview({
       return (
         <Button
           size="sm"
-          variant="tertiary"
+          priority="tertiary"
           icon={<WandSparklesIcon />}
           state={isCreateScenarioScenePreviewPending ? "loading" : "default"}
           onClick={handleCreateScenarioScenePreview}

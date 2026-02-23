@@ -29,7 +29,7 @@ export function IdeasListAppMenubarDeleteIdeaDialog({
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="tertiary" color="negative" icon={<TrashIcon />} />
+        <Button priority="tertiary" variant="negative" icon={<TrashIcon />} />
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
@@ -41,8 +41,8 @@ export function IdeasListAppMenubarDeleteIdeaDialog({
             <Button>Отмена</Button>
           </DialogClose>
           <Button
-            variant="primary"
-            color="negative"
+            priority="primary"
+            variant="negative"
             state={isDeleteIdeasListPending ? "loading" : "default"}
             onClick={handleDeleteConfirmButtonClick}
           >

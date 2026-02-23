@@ -5,7 +5,7 @@ import {
 
 type ArchiveItemActionsButtonLinkProps = Omit<
   ButtonLinkProps,
-  "state" | "color"
+  "state" | "variant"
 >;
 
 export function ArchiveItemActionsButtonLink(
@@ -14,7 +14,8 @@ export function ArchiveItemActionsButtonLink(
   return (
     <ButtonLink
       size="sm"
-      variant="tertiary"
+      priority="tertiary"
+      rounding="base"
       className="w-full justify-start"
       {...props}
     />

@@ -29,7 +29,7 @@ export function AccountSettingsDeleteAccountForm() {
     >
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="secondary" color="negative">
+          <Button priority="secondary" variant="negative">
             Удалить аккаунт
           </Button>
         </DialogTrigger>
@@ -43,8 +43,8 @@ export function AccountSettingsDeleteAccountForm() {
               <Button type="button">Отмена</Button>
             </DialogClose>
             <Button
-              variant="primary"
-              color="negative"
+              priority="primary"
+              variant="negative"
               className="ml-auto"
               state={isDeleteUserPending ? "loading" : "default"}
               onClick={onConfirmDeleteAccountButtonClick}

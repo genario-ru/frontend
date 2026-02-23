@@ -48,7 +48,7 @@ export function AccountSettingsChangeEmailForm() {
             <DialogTitle>{DIALOG_TITLE}</DialogTitle>
             <DialogDescription>{DIALOG_DESCRIPTION}</DialogDescription>
             <DialogClose asChild>
-              <Button variant="primary" className="ml-auto">
+              <Button priority="primary" className="ml-auto">
                 {DIALOG_CLOSE_BUTTON_TEXT}
               </Button>
             </DialogClose>

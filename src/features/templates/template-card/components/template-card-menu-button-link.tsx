@@ -10,7 +10,7 @@ export function TemplateCardMenuButtonLink(
 ) {
   return (
     <ButtonLink
-      variant="tertiary"
+      priority="tertiary"
       className="bg-neutral-1 relative"
       {...props}
     />

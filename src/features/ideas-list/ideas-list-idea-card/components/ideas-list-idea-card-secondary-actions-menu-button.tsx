@@ -8,7 +8,8 @@ export function IdeasListIdeaCardSecondaryActionsMenuButton({
   return (
     <Button
       size="sm"
-      variant="tertiary"
+      priority="tertiary"
+      rounding="base"
       className={cn("w-full justify-start", className)}
       {...props}
     />

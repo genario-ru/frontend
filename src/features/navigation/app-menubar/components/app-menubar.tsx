@@ -71,7 +71,7 @@ export const AppMenubar = memo(
             <div className="flex items-center gap-2">
               {backButton && (
                 <Button
-                  variant="tertiary"
+                  priority="tertiary"
                   icon={<ArrowLeft />}
                   onClick={onBackButtonClick}
                 />

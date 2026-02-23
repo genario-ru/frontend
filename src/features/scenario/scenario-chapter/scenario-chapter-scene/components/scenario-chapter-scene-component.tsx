@@ -49,7 +49,7 @@ export function ScenarioChapterSceneComponent({
           <CardActions className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100">
             <Button
               size="sm"
-              variant="tertiary"
+              priority="tertiary"
               icon={isCopied ? <CheckIcon /> : <CopyIcon />}
               disabled={isCopied}
               onClick={handleCopyButtonClick}

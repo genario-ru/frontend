@@ -26,7 +26,7 @@ export const AppSidebarUserMenu = () => {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button icon={<UserRoundIcon />} variant="tertiary" />
+        <Button icon={<UserRoundIcon />} priority="tertiary" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="min-w-64">
         <DropdownMenuGroup>
@@ -69,8 +69,9 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={signOut} asChild>
             <Button
-              variant="tertiary"
-              color="negative"
+              priority="tertiary"
+              variant="negative"
+              rounding="base"
               icon={<LogOutIcon />}
               className="w-full justify-start"
             >

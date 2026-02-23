@@ -18,8 +18,9 @@ export const ButtonLink = ({
   icon,
   iconPosition = "right",
   size,
-  color,
   variant,
+  priority,
+  rounding,
   state,
   direction,
   className,
@@ -33,9 +34,10 @@ export const ButtonLink = ({
     <Link
       className={cn(
         buttonVariants({
-          color,
           variant,
+          priority,
           size,
+          rounding,
           content: withChildren ? "mixed" : "icon",
           state,
           direction,

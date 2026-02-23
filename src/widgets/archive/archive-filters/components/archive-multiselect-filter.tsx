@@ -51,7 +51,11 @@ export function ArchiveMultiselectFilter({
             onValueChange={handleChange}
           >
             {options.map((option) => (
-              <CheckboxGroupItem key={option.value} value={option.value}>
+              <CheckboxGroupItem
+                key={option.value}
+                value={option.value}
+                rounding="base"
+              >
                 {option.label}
               </CheckboxGroupItem>
             ))}

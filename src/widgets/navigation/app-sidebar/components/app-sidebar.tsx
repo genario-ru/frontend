@@ -62,7 +62,7 @@ export const AppSidebar = () => {
           </AppSidebarMenuItem>
           <AppSidebarMenuItem>
             <Button
-              variant="tertiary"
+              priority="tertiary"
               onClick={toggleTheme}
               icon={
                 <>
@@ -73,7 +73,7 @@ export const AppSidebar = () => {
             />
           </AppSidebarMenuItem>
           <AppSidebarMenuItem>
-            <Button variant="tertiary" icon={<BellIcon />} />
+            <Button priority="tertiary" icon={<BellIcon />} />
           </AppSidebarMenuItem>
         </AppSidebarMenu>
       </AppSidebarFooter>
