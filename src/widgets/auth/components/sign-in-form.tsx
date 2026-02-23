@@ -64,6 +64,7 @@ export const SignInForm = () => {
       <form.AppForm>
         <form.SubmitButton
           size="lg"
+          variant="accent"
           state={isVerificationOtpSending ? "loading" : "default"}
           className="w-full"
         >

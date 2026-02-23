@@ -13,15 +13,32 @@ const inputVariants = cva(
         base: "px-4 h-10",
         sm: "px-3 h-8 text-sm",
       },
+      variant: {
+        neutral: "",
+        accent: "",
+      },
       state: {
-        default: "focus-within:ring-2 focus-within:ring-neutral-8",
+        default: "",
         error: "ring-2 ring-negative-6",
       },
     },
     defaultVariants: {
       size: "base",
+      variant: "neutral",
       state: "default",
     },
+    compoundVariants: [
+      {
+        variant: "neutral",
+        state: "default",
+        className: "focus-within:ring-2 focus-within:ring-neutral-8",
+      },
+      {
+        variant: "accent",
+        state: "default",
+        className: "focus-within:ring-2 focus-within:ring-accent-6",
+      },
+    ],
   },
 );
 
@@ -51,6 +68,7 @@ export const Input = ({
   id,
   name,
   size,
+  variant,
   state,
   Icon,
   className,
@@ -69,7 +87,7 @@ export const Input = ({
         id={validId}
         name={name}
         className={cn(
-          inputVariants({ size, state }),
+          inputVariants({ size, variant, state }),
           {
             "pl-12": Boolean(Icon) && size === "lg",
             "pl-10": Boolean(Icon) && size === "base",

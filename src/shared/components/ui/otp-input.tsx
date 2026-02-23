@@ -8,20 +8,37 @@ import {
 import { cn } from "@/shared/utils/cn";
 
 const otpSlotVariants = cva(
-  "relative flex text-xl bg-neutral-2 h-16 w-[50px] duration-200 border-transparent font-semibold select-none items-center justify-center rounded-2xl ring-2 ring-transparent",
+  "relative flex text-xl bg-neutral-2 h-16 w-[50px] duration-200 border-transparent font-semibold select-none items-center justify-center rounded-5 ring-2 ring-transparent",
   {
     variants: {
+      variant: {
+        neutral: "",
+        accent: "",
+      },
       state: {
         default: "",
-        active: "ring-neutral-8",
+        active: "",
         loading: "opacity-50",
         success: "ring-positive-6",
         error: "ring-negative-6",
       },
     },
     defaultVariants: {
+      variant: "neutral",
       state: "default",
     },
+    compoundVariants: [
+      {
+        variant: "neutral",
+        state: "active",
+        className: "ring-neutral-8",
+      },
+      {
+        variant: "accent",
+        state: "active",
+        className: "ring-accent-6",
+      },
+    ],
   },
 );
 
@@ -42,19 +59,25 @@ export const OTPSlot = ({
   char,
   hasFakeCaret,
   isActive,
+  variant,
   state,
 }: OTPSlotProps) => {
   const slotState = state === "default" && isActive ? "active" : state;
 
   return (
-    <div className={cn(otpSlotVariants({ state: slotState }))}>
+    <div className={cn(otpSlotVariants({ variant, state: slotState }))}>
       {char !== null && <div className="select-none">{char}</div>}
       {hasFakeCaret && <OTPFakeCaret />}
     </div>
   );
 };
 
-export const OTPInput = ({ state, className, ...props }: OTPInputProps) => {
+export const OTPInput = ({
+  variant,
+  state,
+  className,
+  ...props
+}: OTPInputProps) => {
   return (
     <OTPInputBasic
       className={cn(
@@ -65,7 +88,7 @@ export const OTPInput = ({ state, className, ...props }: OTPInputProps) => {
       render={({ slots }) => (
         <div className="flex items-center gap-2 select-none">
           {slots.map((slot, index) => (
-            <OTPSlot key={index} state={state} {...slot} />
+            <OTPSlot key={index} variant={variant} state={state} {...slot} />
           ))}
         </div>
       )}
