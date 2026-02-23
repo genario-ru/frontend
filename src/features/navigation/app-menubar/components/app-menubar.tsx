@@ -57,15 +57,13 @@ export const AppMenubar = memo(
           className={cn(
             "flex flex-1 flex-col justify-between gap-4 overflow-hidden",
             {
-              "justify-between": hasLeft,
               "justify-center": !hasLeft,
             },
           )}
         >
           <div
-            className={cn("flex flex-1 flex-col gap-1", {
-              "justify-between": hasDescription,
-              "justify-center": !hasDescription,
+            className={cn("flex flex-1 flex-col justify-between gap-1", {
+              "justify-center": !hasDescription && !hasLeft,
             })}
           >
             <div className="flex items-center gap-2">
