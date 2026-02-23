@@ -15,7 +15,9 @@ export function HomeArchiveItemsSeeAll({
   return (
     <ButtonLink
       to="/archive"
+      size="lg"
       priority="tertiary"
+      rounding="base"
       className={cn("border-neutral-3 h-full w-full border", className)}
       icon={<ArrowRightIcon />}
       {...props}

@@ -14,7 +14,7 @@ export function ArchiveAppMenubarActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button priority="primary" icon={<ChevronDownIcon />}>
+        <Button variant="accent" priority="primary" icon={<ChevronDownIcon />}>
           Создать
         </Button>
       </DropdownMenuTrigger>

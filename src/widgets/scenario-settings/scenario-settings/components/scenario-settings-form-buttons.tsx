@@ -91,6 +91,7 @@ export const ScenarioSettingsFormButtons = withForm({
         {/* Кнопка справа (submit) */}
         {currentStep === ScenarioSettingsFormSteps.ParamsConfiguration ? (
           <Button
+            variant={editMode ? "neutral" : "accent"}
             priority="primary"
             size="lg"
             disabled={isLoading}

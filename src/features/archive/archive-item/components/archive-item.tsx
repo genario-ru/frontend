@@ -38,7 +38,7 @@ export const ArchiveItem = ({
       className={cn("group bg-neutral-2 relative rounded-2xl", className)}
       {...props}
     >
-      <div className="pointer-events-none absolute top-2.5 right-2.5 flex gap-2 opacity-0 group-hover:pointer-events-auto group-hover:opacity-100">
+      <div className="pointer-events-none absolute top-2.5 right-2.5 flex gap-2 opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100">
         {actions}
       </div>
       <Link
