@@ -30,10 +30,10 @@ export const Logo = ({ size, className, ...props }: LogoProps) => {
       {...props}
     >
       <LogoDarkIcon
-        className={cn(logoVariantProps({ size }), "block dark:hidden")}
+        className={cn(logoVariantProps({ size }), "hidden dark:block")}
       />
       <LogoLightIcon
-        className={cn(logoVariantProps({ size }), "hidden dark:block")}
+        className={cn(logoVariantProps({ size }), "block dark:hidden")}
       />
     </Link>
   );

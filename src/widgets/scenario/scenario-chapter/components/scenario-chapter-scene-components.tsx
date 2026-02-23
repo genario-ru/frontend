@@ -13,6 +13,10 @@ type ScenarioChapterSceneComponentsProps = {
   scene: GetApiV1ScenariosChaptersChapterIdResponse["data"]["scenes"][number];
 };
 
+type ScenarioChapterSceneComponentsGenerationAlertProps = {
+  videoTypeSlug: string;
+};
+
 type ScenarioChapterSceneComponentsSkeletonProps = {
   videoTypeSlug: string;
 };
@@ -21,8 +25,12 @@ export function ScenarioChapterSceneComponents({
   videoTypeSlug,
   scene,
 }: ScenarioChapterSceneComponentsProps) {
-  if (checkIsGenerationStatus(scene.status)) {
-    return <ScenarioChapterSceneComponentsGeneratingAlert />;
+  if (!checkIsGenerationStatus(scene.status)) {
+    return (
+      <ScenarioChapterSceneComponentsGeneratingAlert
+        videoTypeSlug={videoTypeSlug}
+      />
+    );
   }
 
   return (
@@ -45,13 +53,18 @@ export function ScenarioChapterSceneComponents({
   );
 }
 
-export function ScenarioChapterSceneComponentsGeneratingAlert() {
+export function ScenarioChapterSceneComponentsGeneratingAlert({
+  videoTypeSlug,
+}: ScenarioChapterSceneComponentsGenerationAlertProps) {
   return (
     <GenerationAlert
       title="Генерируем компоненты сцены"
       description="Генерируем для вас компоненты сцены, подождите несколько секунд"
-      className="border-neutral-3 flex-1 border"
       hasGradient={false}
+      className={cn("border-neutral-3 flex-1 border", {
+        "col-span-6 grid-cols-2": videoTypeSlug === "short",
+        "col-span-1": videoTypeSlug === "long",
+      })}
     />
   );
 }
