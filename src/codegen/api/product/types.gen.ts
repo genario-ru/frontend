@@ -62,6 +62,7 @@ export type DeleteApiV1IdeasIdeaIdResponses = {
       liked: boolean | null;
       name: string | null;
       description: string | null;
+      reason: string | null;
       createdAt: string;
       updatedAt: string;
     };
@@ -129,6 +130,7 @@ export type GetApiV1IdeasIdeaIdResponses = {
       liked: boolean | null;
       name: string | null;
       description: string | null;
+      reason: string | null;
       createdAt: string;
       updatedAt: string;
       ideasList: {
@@ -260,6 +262,7 @@ export type PatchApiV1IdeasIdeaIdResponses = {
       liked: boolean | null;
       name: string | null;
       description: string | null;
+      reason: string | null;
       createdAt: string;
       updatedAt: string;
     };
@@ -329,6 +332,7 @@ export type PatchApiV1IdeasIdeaIdSaveResponses = {
       liked: boolean | null;
       name: string | null;
       description: string | null;
+      reason: string | null;
       createdAt: string;
       updatedAt: string;
     };
@@ -589,6 +593,7 @@ export type GetApiV1IdeasListsIdeasListIdResponses = {
         liked: boolean | null;
         name: string | null;
         description: string | null;
+        reason: string | null;
         createdAt: string;
         updatedAt: string;
       }>;
@@ -806,6 +811,7 @@ export type PostApiV1IdeasListsIdeasListIdIdeasResponses = {
       liked: boolean | null;
       name: string | null;
       description: string | null;
+      reason: string | null;
       createdAt: string;
       updatedAt: string;
     };

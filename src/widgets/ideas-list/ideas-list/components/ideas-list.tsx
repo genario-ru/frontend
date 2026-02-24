@@ -1,6 +1,6 @@
 import { type PropsWithChildren, useMemo } from "react";
 
-import { IdeasListIdeaCardSkeleton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-skeleton";
+import { IdeasListIdeaCardLayoutSkeleton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
@@ -64,6 +64,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
             id={idea.id}
             name={idea.name}
             description={idea.description}
+            reason={idea.reason}
             saved={idea.saved}
           />
         ))}
@@ -93,8 +94,7 @@ export function IdeasListSkeleton() {
       <ItemsList
         noParent
         count={4}
-        gap={16}
-        item={<IdeasListIdeaCardSkeleton />}
+        item={<IdeasListIdeaCardLayoutSkeleton />}
       />
     </IdeasListBodyLayout>
   );

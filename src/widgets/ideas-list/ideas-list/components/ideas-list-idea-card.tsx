@@ -9,6 +9,7 @@ type IdeasListCardProps = {
   id: string;
   name?: string | null;
   description?: string | null;
+  reason?: string | null;
   saved: boolean;
 };
 
@@ -16,6 +17,7 @@ export function IdeasListIdeaCard({
   id,
   name,
   description,
+  reason,
   saved,
 }: IdeasListCardProps) {
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
@@ -24,6 +26,7 @@ export function IdeasListIdeaCard({
     <IdeasListIdeaCardLayout
       name={name}
       description={description}
+      reason={reason}
       descriptionRef={descriptionRef}
       primaryActions={<IdeasListIdeaCardPrimaryActions ideaId={id} />}
       secondaryActions={

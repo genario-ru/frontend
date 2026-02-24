@@ -76,6 +76,16 @@
                             }
                           ]
                         },
+                        "reason": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -91,6 +101,7 @@
                         "liked",
                         "name",
                         "description",
+                        "reason",
                         "createdAt",
                         "updatedAt"
                       ]
@@ -242,6 +253,16 @@
                           ]
                         },
                         "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reason": {
                           "anyOf": [
                             {
                               "type": "string"
@@ -660,6 +681,7 @@
                         "liked",
                         "name",
                         "description",
+                        "reason",
                         "createdAt",
                         "updatedAt",
                         "ideasList",
@@ -822,6 +844,16 @@
                             }
                           ]
                         },
+                        "reason": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -837,6 +869,7 @@
                         "liked",
                         "name",
                         "description",
+                        "reason",
                         "createdAt",
                         "updatedAt"
                       ]
@@ -1043,6 +1076,16 @@
                             }
                           ]
                         },
+                        "reason": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -1058,6 +1101,7 @@
                         "liked",
                         "name",
                         "description",
+                        "reason",
                         "createdAt",
                         "updatedAt"
                       ]
@@ -2037,6 +2081,16 @@
                                   }
                                 ]
                               },
+                              "reason": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
                               "createdAt": {
                                 "type": "string"
                               },
@@ -2052,6 +2106,7 @@
                               "liked",
                               "name",
                               "description",
+                              "reason",
                               "createdAt",
                               "updatedAt"
                             ]
@@ -2735,6 +2790,16 @@
                             }
                           ]
                         },
+                        "reason": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -2750,6 +2815,7 @@
                         "liked",
                         "name",
                         "description",
+                        "reason",
                         "createdAt",
                         "updatedAt"
                       ]

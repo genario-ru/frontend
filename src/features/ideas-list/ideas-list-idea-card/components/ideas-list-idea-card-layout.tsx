@@ -1,11 +1,18 @@
+import { FlameIcon, ScrollTextIcon } from "lucide-react";
 import type { ReactNode, RefObject } from "react";
 
+import { Card } from "@/shared/components/ui/card";
 import { Heading } from "@/shared/components/ui/heading";
+import { Island } from "@/shared/components/ui/island";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 type IdeasListIdeaCardLayoutProps = {
   descriptionRef?: RefObject<HTMLParagraphElement | null>;
-  name: ReactNode;
-  description: ReactNode;
+  name?: string | null;
+  description?: string | null;
+  reason?: string | null;
   secondaryActions: ReactNode;
   primaryActions: ReactNode;
 };
@@ -14,23 +21,67 @@ export function IdeasListIdeaCardLayout({
   name,
   description,
   descriptionRef,
+  reason,
   secondaryActions,
   primaryActions,
 }: IdeasListIdeaCardLayoutProps) {
   const computedName = name ?? "Без названия";
 
   return (
-    <div className="bg-neutral-1 flex flex-col gap-4 rounded-2xl p-4">
+    <Island>
       <header className="flex justify-between gap-4">
-        <Heading variant="h3">{computedName}</Heading>
+        <Heading variant="h2">{computedName}</Heading>
         {secondaryActions}
       </header>
       {description && (
-        <div ref={descriptionRef} className="line-clamp-10 flex-1 text-sm">
+        <Card
+          title="Описание"
+          headerIcon={<LucideIcon icon={ScrollTextIcon} className="size-5" />}
+          contentRef={descriptionRef}
+          className="flex-1"
+        >
           {description}
-        </div>
+        </Card>
+      )}
+      {reason && (
+        <Card
+          title="Почему зайдет"
+          headerIcon={
+            <LucideIcon icon={FlameIcon} className="size-5 stroke-orange-500" />
+          }
+        >
+          {reason}
+        </Card>
       )}
       {primaryActions}
-    </div>
+    </Island>
+  );
+}
+
+export function IdeasListIdeaCardLayoutSkeleton() {
+  return (
+    <Island>
+      <header className="flex justify-between gap-4">
+        <TextSkeleton fontSize={20} lineHeight={28} className="h-8 w-40" />
+        <Skeleton className="h-8 w-8 rounded-full" />
+      </header>
+      <Card
+        title="Описание"
+        headerIcon={<LucideIcon icon={ScrollTextIcon} className="size-5" />}
+      >
+        <TextSkeleton fontSize={14} lineHeight={20} linesCount={10} />
+      </Card>
+      <Card
+        title="Почему зайдет"
+        headerIcon={
+          <LucideIcon icon={FlameIcon} className="size-5 stroke-orange-500" />
+        }
+      >
+        <TextSkeleton fontSize={14} lineHeight={20} linesCount={4} />
+      </Card>
+      <div className="flex items-center justify-end">
+        <Skeleton className="h-8 w-32 rounded-full" />
+      </div>
+    </Island>
   );
 }

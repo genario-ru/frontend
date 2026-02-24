@@ -1,8 +1,33 @@
-import type { ComponentProps } from "react";
+import type { ReactNode, RefObject } from "react";
 
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
-export function Card({ className, ...props }: ComponentProps<"div">) {
+export type CardProps = PropsWithClassName & {
+  title: ReactNode;
+  description?: ReactNode;
+  headerIcon?: ReactNode;
+  headerActions?: ReactNode;
+  children?: ReactNode;
+  contentRef?: RefObject<HTMLDivElement | null>;
+  footer?: ReactNode;
+  headerClassName?: string;
+  contentClassName?: string;
+};
+
+export function Card({
+  title,
+  description,
+  headerIcon,
+  headerActions,
+  children,
+  contentRef,
+  footer,
+  headerClassName,
+  contentClassName,
+  className,
+  ...props
+}: CardProps) {
   return (
     <div
       data-slot="card"
@@ -11,72 +36,49 @@ export function Card({ className, ...props }: ComponentProps<"div">) {
         className,
       )}
       {...props}
-    />
-  );
-}
-
-export function CardHeader({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-header"
-      className={cn(
-        "group/card-header border-neutral-3 @container/card-header flex min-h-[52px] items-center gap-2 border-b px-3",
-        className,
+    >
+      <div
+        data-slot="card-header"
+        className={cn(
+          "group/card-header border-neutral-3 @container/card-header flex min-h-[52px] items-center gap-2 border-b px-3",
+          headerClassName,
+        )}
+      >
+        {headerIcon}
+        <div data-slot="card-title" className="font-medium">
+          {title}
+        </div>
+        {headerActions && (
+          <div
+            data-slot="card-actions"
+            className="ml-auto flex items-center gap-2"
+          >
+            {headerActions}
+          </div>
+        )}
+      </div>
+      {description && (
+        <div
+          data-slot="card-description"
+          className="text-neutral-6 px-3 py-2 text-sm"
+        >
+          {description}
+        </div>
       )}
-      {...props}
-    />
-  );
-}
-
-export function CardTitle({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-title"
-      className={cn("font-medium", className)}
-      {...props}
-    />
-  );
-}
-
-export function CardDescription({
-  className,
-  ...props
-}: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-description"
-      className={cn("text-neutral-6 text-sm", className)}
-      {...props}
-    />
-  );
-}
-
-export function CardActions({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-actions"
-      className={cn("ml-auto flex items-center gap-2", className)}
-      {...props}
-    />
-  );
-}
-
-export function CardContent({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn("px-4 py-3", className)}
-      {...props}
-    />
-  );
-}
-
-export function CardFooter({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-footer"
-      className={cn("flex items-center p-3", className)}
-      {...props}
-    />
+      {children && (
+        <div
+          ref={contentRef}
+          data-slot="card-content"
+          className={cn("px-4 py-3", contentClassName)}
+        >
+          {children}
+        </div>
+      )}
+      {footer && (
+        <div data-slot="card-footer" className="flex items-center p-3">
+          {footer}
+        </div>
+      )}
+    </div>
   );
 }
