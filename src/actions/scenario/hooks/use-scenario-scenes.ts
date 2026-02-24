@@ -29,6 +29,10 @@ export function useScenarioScenes({
     return checkIsGenerationStatus(scenarioChapterData?.data.status);
   }, [scenarioChapterData]);
 
+  const isScenarioChapterGenerationFailed = useMemo(() => {
+    return scenarioChapterData?.data.status === "failed";
+  }, [scenarioChapterData]);
+
   const scenarioChapterScenesList = useMemo(() => {
     return scenarioChapterData?.data.scenes;
   }, [scenarioChapterData]);
@@ -95,6 +99,7 @@ export function useScenarioScenes({
     previousScenarioChapterScene,
     nextScenarioChapterScene,
     isScenarioChapterGenerating,
+    isScenarioChapterGenerationFailed,
     isScenarioChapterLoading,
     isScenarioChapterError,
     handleScenarioChapterSceneClick,

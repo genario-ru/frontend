@@ -3662,12 +3662,10 @@ export const zGetApiV1ScenariosChaptersChapterIdResponse = z
             .regex(
               /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
             ),
-          status: z.enum(["pending", "generation", "failed", "ready"]),
           name: z.string(),
           description: z.union([z.string(), z.null()]),
           startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
           endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-          badges: z.union([z.string(), z.null()]),
           createdAt: z.string(),
           updatedAt: z.string(),
           preview: z.union([
@@ -3924,12 +3922,10 @@ export const zDeleteApiV1ScenariosScenesSceneIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.string(),
       description: z.union([z.string(), z.null()]),
       startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
       endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-      badges: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
     }),
@@ -3987,12 +3983,10 @@ export const zPatchApiV1ScenariosScenesSceneIdResponse = z
         .regex(
           /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/,
         ),
-      status: z.enum(["pending", "generation", "failed", "ready"]),
       name: z.string(),
       description: z.union([z.string(), z.null()]),
       startTime: z.int().gte(-9007199254740991).lte(9007199254740991),
       endTime: z.int().gte(-9007199254740991).lte(9007199254740991),
-      badges: z.union([z.string(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
     }),

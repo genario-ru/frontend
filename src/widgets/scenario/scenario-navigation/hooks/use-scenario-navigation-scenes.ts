@@ -23,6 +23,7 @@ export function useScenarioNavigationScenes({
   const {
     activeScenarioChapterScene,
     scenarioChapterScenesList,
+    isScenarioChapterGenerationFailed,
     isScenarioChapterLoading,
     isScenarioChapterError,
     handleScenarioChapterSceneClick,
@@ -74,7 +75,9 @@ export function useScenarioNavigationScenes({
     isScenarioNavigationScenesLoading:
       isScenarioChaptersLoading || isScenarioChapterLoading,
     isScenarioNavigationScenesError:
-      isScenarioChaptersError || isScenarioChapterError,
+      isScenarioChaptersError ||
+      isScenarioChapterError ||
+      isScenarioChapterGenerationFailed,
     sceneRefCallback,
     handleScenarioValueChange,
   };

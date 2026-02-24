@@ -11634,15 +11634,6 @@
                                 "format": "uuid",
                                 "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                               },
-                              "status": {
-                                "type": "string",
-                                "enum": [
-                                  "pending",
-                                  "generation",
-                                  "failed",
-                                  "ready"
-                                ]
-                              },
                               "name": {
                                 "type": "string"
                               },
@@ -11665,16 +11656,6 @@
                                 "type": "integer",
                                 "minimum": -9007199254740991,
                                 "maximum": 9007199254740991
-                              },
-                              "badges": {
-                                "anyOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "null"
-                                  }
-                                ]
                               },
                               "createdAt": {
                                 "type": "string"
@@ -11896,12 +11877,10 @@
                             "required": [
                               "id",
                               "scenarioChapterId",
-                              "status",
                               "name",
                               "description",
                               "startTime",
                               "endTime",
-                              "badges",
                               "createdAt",
                               "updatedAt",
                               "preview",
@@ -12547,15 +12526,6 @@
                           "format": "uuid",
                           "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                         },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "pending",
-                            "generation",
-                            "failed",
-                            "ready"
-                          ]
-                        },
                         "name": {
                           "type": "string"
                         },
@@ -12579,16 +12549,6 @@
                           "minimum": -9007199254740991,
                           "maximum": 9007199254740991
                         },
-                        "badges": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -12599,12 +12559,10 @@
                       "required": [
                         "id",
                         "scenarioChapterId",
-                        "status",
                         "name",
                         "description",
                         "startTime",
                         "endTime",
-                        "badges",
                         "createdAt",
                         "updatedAt"
                       ]
@@ -12727,15 +12685,6 @@
                           "format": "uuid",
                           "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                         },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "pending",
-                            "generation",
-                            "failed",
-                            "ready"
-                          ]
-                        },
                         "name": {
                           "type": "string"
                         },
@@ -12759,16 +12708,6 @@
                           "minimum": -9007199254740991,
                           "maximum": 9007199254740991
                         },
-                        "badges": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
                         "createdAt": {
                           "type": "string"
                         },
@@ -12779,12 +12718,10 @@
                       "required": [
                         "id",
                         "scenarioChapterId",
-                        "status",
                         "name",
                         "description",
                         "startTime",
                         "endTime",
-                        "badges",
                         "createdAt",
                         "updatedAt"
                       ]

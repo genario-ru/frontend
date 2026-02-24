@@ -3069,12 +3069,10 @@ export type GetApiV1ScenariosChaptersChapterIdResponses = {
       scenes: Array<{
         id: string;
         scenarioChapterId: string;
-        status: "pending" | "generation" | "failed" | "ready";
         name: string;
         description: string | null;
         startTime: number;
         endTime: number;
-        badges: string | null;
         createdAt: string;
         updatedAt: string;
         preview: {
@@ -3325,12 +3323,10 @@ export type DeleteApiV1ScenariosScenesSceneIdResponses = {
     data: {
       id: string;
       scenarioChapterId: string;
-      status: "pending" | "generation" | "failed" | "ready";
       name: string;
       description: string | null;
       startTime: number;
       endTime: number;
-      badges: string | null;
       createdAt: string;
       updatedAt: string;
     };
@@ -3401,12 +3397,10 @@ export type PatchApiV1ScenariosScenesSceneIdResponses = {
     data: {
       id: string;
       scenarioChapterId: string;
-      status: "pending" | "generation" | "failed" | "ready";
       name: string;
       description: string | null;
       startTime: number;
       endTime: number;
-      badges: string | null;
       createdAt: string;
       updatedAt: string;
     };

@@ -39,6 +39,7 @@ export function ScenarioChapterScenes({
   const {
     scenarioChapterScenesList,
     isScenarioChapterGenerating,
+    isScenarioChapterGenerationFailed,
     isScenarioChapterLoading,
     isScenarioChapterError,
   } = useScenarioScenes({ scenarioId, chapterId });
@@ -51,7 +52,7 @@ export function ScenarioChapterScenes({
     return <ScenarioChapterScenesSkeleton videoTypeSlug={videoTypeSlug} />;
   }
 
-  if (isScenarioChapterError) {
+  if (isScenarioChapterError || isScenarioChapterGenerationFailed) {
     return <ScenarioChapterScenesErrorPlug />;
   }
 
