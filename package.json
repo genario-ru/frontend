@@ -13,7 +13,8 @@
     "api:download": "tsx scripts/download-openapi-schemas.ts",
     "api:generate": "tsx scripts/generate-api.ts",
     "api:generate:kubb": "kubb generate",
-    "router:generate": "tsr generate"
+    "router:generate": "tsr generate",
+    "router:watch": "tsr watch"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -92,6 +93,7 @@
     "@tanstack/devtools-vite": "^0.4.1",
     "@tanstack/eslint-plugin-query": "^5.83.1",
     "@tanstack/react-router-ssr-query": "^1.131.27",
+    "@tanstack/router-cli": "^1.163.2",
     "@types/js-cookie": "^3.0.6",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.3.0",

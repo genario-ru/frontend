@@ -6,7 +6,7 @@ export const appSidebarItems: AppSidebarItem[] = [
   {
     Icon: HouseIcon,
     label: "Главная",
-    to: "/",
+    to: "/home",
   },
   {
     Icon: ArchiveIcon,

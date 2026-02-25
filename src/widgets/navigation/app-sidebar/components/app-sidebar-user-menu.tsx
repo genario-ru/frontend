@@ -60,7 +60,7 @@ export const AppSidebarUserMenu = () => {
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink to="/" icon={<WalletCardsIcon />}>
+            <AppSidebarUserMenuButtonLink to="/home" icon={<WalletCardsIcon />}>
               Платежи
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>

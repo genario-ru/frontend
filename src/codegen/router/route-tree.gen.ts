@@ -11,10 +11,11 @@
 import { Route as rootRouteImport } from "./../../routes/__root";
 import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route";
 import { Route as AppRouteRouteImport } from "./../../routes/_app/route";
-import { Route as AppIndexRouteImport } from "./../../routes/_app/index";
+import { Route as LandingIndexRouteImport } from "./../../routes/_landing/index";
 import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
 import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
 import { Route as AppProfilesRouteImport } from "./../../routes/_app/profiles";
+import { Route as AppHomeRouteImport } from "./../../routes/_app/home";
 import { Route as AppArchiveRouteImport } from "./../../routes/_app/archive";
 import { Route as AppSettingsBillingRouteImport } from "./../../routes/_app/settings/billing";
 import { Route as AppSettingsAccountRouteImport } from "./../../routes/_app/settings/account";
@@ -31,10 +32,10 @@ const AppRouteRoute = AppRouteRouteImport.update({
   id: "/_app",
   getParentRoute: () => rootRouteImport,
 } as any);
-const AppIndexRoute = AppIndexRouteImport.update({
-  id: "/",
+const LandingIndexRoute = LandingIndexRouteImport.update({
+  id: "/_landing/",
   path: "/",
-  getParentRoute: () => AppRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any);
 const AuthVerifyOtpRoute = AuthVerifyOtpRouteImport.update({
   id: "/verify-otp",
@@ -49,6 +50,11 @@ const AuthSignInRoute = AuthSignInRouteImport.update({
 const AppProfilesRoute = AppProfilesRouteImport.update({
   id: "/profiles",
   path: "/profiles",
+  getParentRoute: () => AppRouteRoute,
+} as any);
+const AppHomeRoute = AppHomeRouteImport.update({
+  id: "/home",
+  path: "/home",
   getParentRoute: () => AppRouteRoute,
 } as any);
 const AppArchiveRoute = AppArchiveRouteImport.update({
@@ -90,10 +96,11 @@ const AppIdeasListsIdeasListIdRoute =
 
 export interface FileRoutesByFullPath {
   "/archive": typeof AppArchiveRoute;
+  "/home": typeof AppHomeRoute;
   "/profiles": typeof AppProfilesRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
-  "/": typeof AppIndexRoute;
+  "/": typeof LandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
@@ -103,10 +110,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   "/archive": typeof AppArchiveRoute;
+  "/home": typeof AppHomeRoute;
   "/profiles": typeof AppProfilesRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
-  "/": typeof AppIndexRoute;
+  "/": typeof LandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
@@ -119,10 +127,11 @@ export interface FileRoutesById {
   "/_app": typeof AppRouteRouteWithChildren;
   "/_auth": typeof AuthRouteRouteWithChildren;
   "/_app/archive": typeof AppArchiveRoute;
+  "/_app/home": typeof AppHomeRoute;
   "/_app/profiles": typeof AppProfilesRoute;
   "/_auth/sign-in": typeof AuthSignInRoute;
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
-  "/_app/": typeof AppIndexRoute;
+  "/_landing/": typeof LandingIndexRoute;
   "/_app/ideas-lists/$ideasListId": typeof AppIdeasListsIdeasListIdRoute;
   "/_app/ideas-lists/settings": typeof AppIdeasListsSettingsRoute;
   "/_app/scenarios/$scenarioId": typeof AppScenariosScenarioIdRoute;
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | "/archive"
+    | "/home"
     | "/profiles"
     | "/sign-in"
     | "/verify-otp"
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo;
   to:
     | "/archive"
+    | "/home"
     | "/profiles"
     | "/sign-in"
     | "/verify-otp"
@@ -162,10 +173,11 @@ export interface FileRouteTypes {
     | "/_app"
     | "/_auth"
     | "/_app/archive"
+    | "/_app/home"
     | "/_app/profiles"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
-    | "/_app/"
+    | "/_landing/"
     | "/_app/ideas-lists/$ideasListId"
     | "/_app/ideas-lists/settings"
     | "/_app/scenarios/$scenarioId"
@@ -177,6 +189,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AppRouteRoute: typeof AppRouteRouteWithChildren;
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
+  LandingIndexRoute: typeof LandingIndexRoute;
 }
 
 declare module "@tanstack/react-router" {
@@ -195,12 +208,12 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AppRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    "/_app/": {
-      id: "/_app/";
+    "/_landing/": {
+      id: "/_landing/";
       path: "/";
       fullPath: "/";
-      preLoaderRoute: typeof AppIndexRouteImport;
-      parentRoute: typeof AppRouteRoute;
+      preLoaderRoute: typeof LandingIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
     "/_auth/verify-otp": {
       id: "/_auth/verify-otp";
@@ -221,6 +234,13 @@ declare module "@tanstack/react-router" {
       path: "/profiles";
       fullPath: "/profiles";
       preLoaderRoute: typeof AppProfilesRouteImport;
+      parentRoute: typeof AppRouteRoute;
+    };
+    "/_app/home": {
+      id: "/_app/home";
+      path: "/home";
+      fullPath: "/home";
+      preLoaderRoute: typeof AppHomeRouteImport;
       parentRoute: typeof AppRouteRoute;
     };
     "/_app/archive": {
@@ -277,8 +297,8 @@ declare module "@tanstack/react-router" {
 
 interface AppRouteRouteChildren {
   AppArchiveRoute: typeof AppArchiveRoute;
+  AppHomeRoute: typeof AppHomeRoute;
   AppProfilesRoute: typeof AppProfilesRoute;
-  AppIndexRoute: typeof AppIndexRoute;
   AppIdeasListsIdeasListIdRoute: typeof AppIdeasListsIdeasListIdRoute;
   AppIdeasListsSettingsRoute: typeof AppIdeasListsSettingsRoute;
   AppScenariosScenarioIdRoute: typeof AppScenariosScenarioIdRoute;
@@ -289,8 +309,8 @@ interface AppRouteRouteChildren {
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppArchiveRoute: AppArchiveRoute,
+  AppHomeRoute: AppHomeRoute,
   AppProfilesRoute: AppProfilesRoute,
-  AppIndexRoute: AppIndexRoute,
   AppIdeasListsIdeasListIdRoute: AppIdeasListsIdeasListIdRoute,
   AppIdeasListsSettingsRoute: AppIdeasListsSettingsRoute,
   AppScenariosScenarioIdRoute: AppScenariosScenarioIdRoute,
@@ -320,6 +340,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   AppRouteRoute: AppRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
+  LandingIndexRoute: LandingIndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

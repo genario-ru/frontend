@@ -79,7 +79,7 @@ export const VerifyOTPForm = ({ email }: VerifyOTPFormProps) => {
     },
     onSuccess: async () => {
       navigate({
-        to: "/",
+        to: "/home",
         replace: true,
         reloadDocument: true,
       });
