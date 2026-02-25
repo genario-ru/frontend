@@ -1,6 +1,8 @@
 import { config, useSpring } from "@react-spring/web";
 import { type RefObject } from "react";
 
+import { usePageScrollDirection } from "@/shared/hooks/use-page-scroll-direction";
+
 import { useScenarioNavigationStaticVisible } from "./use-scenario-navigation-static-visible";
 
 type UseScenarioNavigationFloatingParams = {
@@ -13,9 +15,12 @@ export function useScenarioNavigationFloating({
   const { isScenarioNavigationStaticVisible } =
     useScenarioNavigationStaticVisible({ staticNavigationRef });
 
+  const { isScrollingUp } = usePageScrollDirection();
+  const isFloatingVisible = isScrollingUp && !isScenarioNavigationStaticVisible;
+
   const animatedStyles = useSpring({
-    bottom: isScenarioNavigationStaticVisible ? -200 : 32,
-    opacity: isScenarioNavigationStaticVisible ? 0 : 1,
+    bottom: isFloatingVisible ? 32 : -200,
+    opacity: isFloatingVisible ? 1 : 0,
     config: config.default,
   });
 

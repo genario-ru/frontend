@@ -23,12 +23,12 @@ export function ScenarioComponent() {
 
     return (
       <ContentLayout className="flex-1 gap-4">
-        <ScenarioChapter scenarioId={scenarioId} />
         <ScenarioGenerationAlert scenarioId={scenarioId} />
         <ScenarioNavigationStatic
           scenarioId={scenarioId}
           ref={staticNavigationRef}
         />
+        <ScenarioChapter scenarioId={scenarioId} />
         <ScenarioNavigationFloating
           scenarioId={scenarioId}
           staticNavigationRef={staticNavigationRef}

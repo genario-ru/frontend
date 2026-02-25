@@ -88,7 +88,7 @@ export function ScenarioNavigationScenesSkeleton({
       count={8}
       item={
         <Skeleton
-          className={cn("w-28", {
+          className={cn("w-48", {
             "h-9 rounded-xl": size === "sm",
             "h-[58px] rounded-2xl": size === "base",
           })}

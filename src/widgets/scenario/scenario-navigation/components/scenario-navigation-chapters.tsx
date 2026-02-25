@@ -51,7 +51,7 @@ export function ScenarioNavigationChapters({
       <TabsUnderlineList
         ref={containerRef}
         className={cn(
-          "border-neutral-3 hide-scrollbar overflow-auto border-b",
+          "border-neutral-3 hide-scrollbar flex-1 overflow-auto border-b",
           {
             "px-4": size === "sm",
             "px-5": size === "base",
@@ -92,11 +92,11 @@ export function ScenarioNavigationChaptersSkeleton({
             fontSize={size === "sm" ? 14 : 16}
             lineHeight={size === "sm" ? 20 : 24}
             linesCount={1}
-            className="w-24"
+            className="w-48"
           />
         </div>
       }
-      className="border-neutral-3 flex overflow-hidden border-b"
+      className="border-neutral-3 flex flex-1 overflow-hidden border-b"
     />
   );
 }
