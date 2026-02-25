@@ -28,7 +28,7 @@ export function ScenarioNavigationScenes({
     isScenarioNavigationScenesLoading,
     isScenarioNavigationScenesError,
     sceneRefCallback,
-    handleScenarioValueChange,
+    handleSceneValueChange,
   } = useScenarioNavigationScenes({ scenarioId });
 
   if (isScenarioNavigationScenesLoading) {
@@ -53,7 +53,7 @@ export function ScenarioNavigationScenes({
     >
       <RadioCardsGroup
         value={activeScenarioChapterScene?.id}
-        onValueChange={handleScenarioValueChange}
+        onValueChange={handleSceneValueChange}
       >
         {radioCardsScenesList?.map((scene) => (
           <RadioCardsGroupItem

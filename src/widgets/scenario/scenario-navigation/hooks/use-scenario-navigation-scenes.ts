@@ -50,7 +50,7 @@ export function useScenarioNavigationScenes({
     [],
   );
 
-  const handleScenarioValueChange = useCallback(
+  const handleSceneValueChange = useCallback(
     (sceneId: string) => {
       handleScenarioChapterSceneClick(sceneId);
 
@@ -79,6 +79,6 @@ export function useScenarioNavigationScenes({
       isScenarioChapterError ||
       isScenarioChapterGenerationFailed,
     sceneRefCallback,
-    handleScenarioValueChange,
+    handleSceneValueChange,
   };
 }
