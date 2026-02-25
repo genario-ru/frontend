@@ -4,13 +4,14 @@ import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapt
 
 type UseScenarioNavigationChaptersParams = {
   scenarioId: string;
+  handleChapterScrollIntoView: (chapterId: string) => void;
 };
 
 export function useScenarioNavigationChapters({
   scenarioId,
+  handleChapterScrollIntoView,
 }: UseScenarioNavigationChaptersParams) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const chapterRefsMap = useRef<Map<string, Element>>(new Map());
 
   const {
     scenarioChaptersList,
@@ -20,32 +21,12 @@ export function useScenarioNavigationChapters({
     handleSetActiveScenarioChapter,
   } = useScenarioChapters({ scenarioId });
 
-  const chapterRefCallback = useCallback(
-    (el: Element | null, chapterId: string) => {
-      if (el) {
-        chapterRefsMap.current.set(chapterId, el);
-      } else {
-        chapterRefsMap.current.delete(chapterId);
-      }
-    },
-    [],
-  );
-
   const handleScenarioValueChange = useCallback(
     (chapterId: string) => {
       handleSetActiveScenarioChapter(chapterId);
-
-      const activeElement = chapterRefsMap.current.get(chapterId);
-
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        });
-      }
+      handleChapterScrollIntoView(chapterId);
     },
-    [handleSetActiveScenarioChapter],
+    [handleSetActiveScenarioChapter, handleChapterScrollIntoView],
   );
 
   return {
@@ -54,7 +35,6 @@ export function useScenarioNavigationChapters({
     activeScenarioChapter,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
-    chapterRefCallback,
     handleScenarioValueChange,
   };
 }

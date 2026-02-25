@@ -1,24 +1,30 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
-import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import { Button, type ButtonProps } from "@/shared/components/ui/button";
 import { cn } from "@/shared/utils/cn";
+
+import { useScenarioNavigationChaptersArrows } from "../hooks/use-scenario-navigation-chapters-arrows";
 
 type ScenarioNavigationChaptersArrowsProps = {
   size?: "sm" | "base";
   scenarioId: string;
+  handleChapterScrollIntoView: (chapterId: string) => void;
 };
 
 export function ScenarioNavigationChaptersArrows({
   size = "base",
   scenarioId,
+  handleChapterScrollIntoView,
 }: ScenarioNavigationChaptersArrowsProps) {
   const {
     previousScenarioChapter,
     nextScenarioChapter,
     handlePreviousScenarioChapterClick,
     handleNextScenarioChapterClick,
-  } = useScenarioChapters({ scenarioId });
+  } = useScenarioNavigationChaptersArrows({
+    scenarioId,
+    handleChapterScrollIntoView,
+  });
 
   return (
     <div

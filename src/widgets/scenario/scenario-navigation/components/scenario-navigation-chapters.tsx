@@ -14,11 +14,15 @@ import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-
 type ScenarioNavigationChaptersProps = {
   size?: "sm" | "base";
   scenarioId: string;
+  chapterRefCallback: (el: Element | null, chapterId: string) => void;
+  handleChapterScrollIntoView: (chapterId: string) => void;
 };
 
 export function ScenarioNavigationChapters({
   size = "base",
   scenarioId,
+  chapterRefCallback,
+  handleChapterScrollIntoView,
 }: ScenarioNavigationChaptersProps) {
   const {
     containerRef,
@@ -26,9 +30,11 @@ export function ScenarioNavigationChapters({
     isScenarioChaptersError,
     scenarioChaptersList,
     activeScenarioChapter,
-    chapterRefCallback,
     handleScenarioValueChange,
-  } = useScenarioNavigationChapters({ scenarioId });
+  } = useScenarioNavigationChapters({
+    scenarioId,
+    handleChapterScrollIntoView,
+  });
 
   if (isScenarioChaptersLoading) {
     return <ScenarioNavigationChaptersSkeleton size={size} />;
