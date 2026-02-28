@@ -11,6 +11,9 @@ WORKDIR /app
 ARG VITE_BASE_URL
 ENV VITE_BASE_URL=$VITE_BASE_URL
 
+ARG VITE_BASE_API_URL
+ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
+
 # Копирование файлов зависимостей
 COPY package.json pnpm-lock.yaml ./
 

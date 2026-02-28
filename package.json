@@ -11,8 +11,8 @@
     "lint:prettier": "prettier",
     "lint:fix": "eslint --fix && prettier --write .",
     "api:download": "tsx scripts/download-openapi-schemas.ts",
-    "api:generate": "tsx scripts/generate-api.ts",
-    "api:generate:kubb": "kubb generate",
+    "api:generate": "kubb generate",
+    "api:generate:hey-api": "tsx scripts/generate-api.ts",
     "router:generate": "tsr generate",
     "router:watch": "tsr watch"
   },
