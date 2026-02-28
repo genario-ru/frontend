@@ -11,10 +11,6 @@ export function logoutUser({ redirectTo }: LogoutUserParams) {
     to: "/sign-in",
     search: {
       redirect: redirectTo,
-      signOut: true,
-    },
-    mask: {
-      to: "/sign-in",
     },
   });
 }
