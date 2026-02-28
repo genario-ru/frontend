@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1ProfilesMyOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1ProfilesMy } from "@/codegen/api/product";
 
 export function useGetMyProfiles() {
   const {
     data: myProfilesData,
     isLoading: isMyProfilesLoading,
     isError: isMyProfilesError,
-  } = useQuery({
-    ...getApiV1ProfilesMyOptions(),
-  });
+  } = useGetApiV1ProfilesMy();
 
   return {
     myProfilesData,

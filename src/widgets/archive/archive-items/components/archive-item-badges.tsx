@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import type { GetApiV1ArchiveItemsMyResponse } from "@/codegen/api/product/types.gen";
+import type { GetApiV1ArchiveItemsMyQueryResponse } from "@/codegen/api/product";
 import { BadgesList } from "@/features/badges/badges-list/badges-list";
 
 type ArchiveItemBadgesProps = {
-  archiveItem: GetApiV1ArchiveItemsMyResponse["data"][number];
+  archiveItem: GetApiV1ArchiveItemsMyQueryResponse["data"][number];
 };
 
 export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {

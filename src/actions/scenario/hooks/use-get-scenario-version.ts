@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1ScenariosVersionsVersionIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1ScenariosVersionsVersionId } from "@/codegen/api/product";
 
 type UseGetScenarioVersionParams = {
   scenarioVersionId?: string | null;
@@ -13,14 +11,16 @@ export function useGetScenarioVersion({
     data: scenarioVersionData,
     isLoading: isScenarioVersionLoading,
     isError: isScenarioVersionError,
-  } = useQuery({
-    ...getApiV1ScenariosVersionsVersionIdOptions({
-      path: {
-        versionId: scenarioVersionId as string,
+  } = useGetApiV1ScenariosVersionsVersionId(
+    {
+      versionId: scenarioVersionId as string,
+    },
+    {
+      query: {
+        enabled: Boolean(scenarioVersionId),
       },
-    }),
-    enabled: Boolean(scenarioVersionId),
-  });
+    },
+  );
 
   return {
     scenarioVersionData,

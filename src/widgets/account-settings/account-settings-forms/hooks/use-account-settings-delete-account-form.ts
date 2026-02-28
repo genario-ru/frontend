@@ -10,7 +10,7 @@ export function useAccountSettingsDeleteAccountForm() {
     const callbackURL = composeFullUrl("/sign-in");
 
     deleteUser({
-      body: {
+      data: {
         callbackURL,
       },
     });

@@ -23,7 +23,7 @@ type UseVerificationOTPFormParams = VerifyOTPSearch;
 
 export function useVerifyOTPForm({
   email,
-  redirect,
+  redirect = "/home",
 }: UseVerificationOTPFormParams) {
   const navigate = useNavigate();
   const { showErrorToast, showSuccessToast } = useToast();
@@ -37,18 +37,56 @@ export function useVerifyOTPForm({
     isVerificationOtpSending,
     isVerificationOtpSent,
   } = useSendVerificationOtp({
-    onMutate: () => resetCountdown(),
-    onSuccess: () => {
-      startCountdown();
-      showSuccessToast({
-        title: "Код отправлен",
-        description: "Код подтверждения был повторно отправлен на вашу почту",
-      });
+    mutation: {
+      onMutate: () => resetCountdown(),
+      onSuccess: () => {
+        startCountdown();
+        showSuccessToast({
+          title: "Код отправлен",
+          description: "Код подтверждения был повторно отправлен на вашу почту",
+        });
+      },
+      onError: () => {
+        showErrorToast({
+          description: "Произошла ошибка при повторной отправке кода. ",
+        });
+      },
     },
-    onError: () => {
-      showErrorToast({
-        description: "Произошла ошибка при повторной отправке кода. ",
-      });
+  });
+
+  const {
+    mutate: signIn,
+    isPending: isSignInPending,
+    isSuccess: isSignInSuccess,
+  } = useSignInEmailOtp({
+    mutation: {
+      onError: (error) => {
+        if (error instanceof APIError && error.cause.status === 400) {
+          form.setFieldMeta("code", (meta) => ({
+            ...meta,
+            errorMap: {
+              ...meta.errorMap,
+              onSubmit: "Неправильный код",
+            },
+          }));
+
+          showErrorToast({
+            description: "Неправильный код",
+          });
+        } else {
+          showErrorToast({
+            description:
+              "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
+          });
+        }
+      },
+      onSuccess: async () => {
+        navigate({
+          to: redirect,
+          replace: true,
+          reloadDocument: true,
+        });
+      },
     },
   });
 
@@ -59,44 +97,10 @@ export function useVerifyOTPForm({
       if (!email) return;
 
       signIn({
-        body: {
+        data: {
           email,
           otp: value.code,
         },
-      });
-    },
-  });
-
-  const {
-    mutate: signIn,
-    isPending: isSignInPending,
-    isSuccess: isSignInSuccess,
-  } = useSignInEmailOtp({
-    onError: (error) => {
-      if (error instanceof APIError && error.cause.status === 400) {
-        form.setFieldMeta("code", (meta) => ({
-          ...meta,
-          errorMap: {
-            ...meta.errorMap,
-            onSubmit: "Неправильный код",
-          },
-        }));
-
-        showErrorToast({
-          description: "Неправильный код",
-        });
-      } else {
-        showErrorToast({
-          description:
-            "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
-        });
-      }
-    },
-    onSuccess: async () => {
-      navigate({
-        to: redirect,
-        replace: true,
-        reloadDocument: true,
       });
     },
   });
@@ -145,7 +149,7 @@ export function useVerifyOTPForm({
     if (isVerificationOtpSent && blockedSecondsLeft <= 0) return;
 
     sendVerificationOtp({
-      body: {
+      data: {
         email,
         type: "sign-in",
       },

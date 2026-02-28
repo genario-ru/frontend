@@ -1,12 +1,16 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { isEmpty } from "es-toolkit/compat";
 
-import { getApiV1ArchiveItemsMyInfiniteOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
-import type { GetApiV1ArchiveItemsMyData } from "@/codegen/api/product/types.gen";
+import {
+  type GetApiV1ArchiveItemsMyQueryParams,
+  useGetApiV1ArchiveItemsMyInfinite,
+} from "@/codegen/api/product";
+import { removeUndefinedFields } from "@/shared/utils/remove-undefined-fields";
 
-type UseGetMyArchiveItemsProps = GetApiV1ArchiveItemsMyData["query"] & {};
+type UseGetMyArchiveItemsProps = GetApiV1ArchiveItemsMyQueryParams;
 
-export function useGetMyArchiveItems(params?: UseGetMyArchiveItemsProps) {
-  const queryParams = params ?? {};
+export function useGetMyArchiveItems(params: UseGetMyArchiveItemsProps = {}) {
+  const cleanedParams = removeUndefinedFields(params);
+  const query = isEmpty(cleanedParams) ? undefined : cleanedParams;
 
   const {
     data: archiveItemsData = [],
@@ -15,21 +19,18 @@ export function useGetMyArchiveItems(params?: UseGetMyArchiveItemsProps) {
     isError: isErrorArchiveItems,
     isFetchingNextPage: isFetchingNextArchiveItemsPage,
     fetchNextPage: fetchNextArchiveItemsPage,
-  } = useInfiniteQuery({
-    ...getApiV1ArchiveItemsMyInfiniteOptions({
-      query: queryParams,
-    }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.meta.nextPage;
+  } = useGetApiV1ArchiveItemsMyInfinite(
+    {
+      params: query,
     },
-    getPreviousPageParam: (firstPage) => {
-      return firstPage.meta.previousPage;
+    {
+      query: {
+        select: (data) => {
+          return data.pages.flatMap((page) => page.data);
+        },
+      },
     },
-    select: (data) => {
-      return data.pages.flatMap((page) => page.data);
-    },
-  });
+  );
 
   return {
     archiveItemsData,

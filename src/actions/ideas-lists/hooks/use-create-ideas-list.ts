@@ -1,11 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
-
-import { postApiV1IdeasListsMutation } from "@/codegen/api/product/@tanstack/react-query.gen";
-import type { PostApiV1IdeasListsResponse } from "@/codegen/api/product/types.gen";
+import {
+  type PostApiV1IdeasListsMutationResponse,
+  usePostApiV1IdeasLists,
+} from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateIdeasListParams = {
-  onSuccess?: (data: PostApiV1IdeasListsResponse) => void;
+  onSuccess?: (data: PostApiV1IdeasListsMutationResponse) => void;
   onError?: () => void;
 };
 
@@ -14,18 +14,19 @@ export function useCreateIdeasList(params?: UseCreateIdeasListParams) {
   const { onSuccess, onError } = params ?? {};
 
   const { mutate: createIdeasList, isPending: isCreateIdeasListPending } =
-    useMutation({
-      ...postApiV1IdeasListsMutation(),
-      onSuccess: (data) => {
-        onSuccess?.(data);
-      },
-      onError: () => {
-        showErrorToast({
-          title: "Произошла ошибка при создании сценария",
-          description: "Попробуйте еще раз немного позже",
-        });
+    usePostApiV1IdeasLists({
+      mutation: {
+        onSuccess: (data) => {
+          onSuccess?.(data);
+        },
+        onError: () => {
+          showErrorToast({
+            title: "Произошла ошибка при создании сценария",
+            description: "Попробуйте еще раз немного позже",
+          });
 
-        onError?.();
+          onError?.();
+        },
       },
     });
 

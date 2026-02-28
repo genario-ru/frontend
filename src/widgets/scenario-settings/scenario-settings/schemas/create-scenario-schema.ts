@@ -1,3 +1,3 @@
-import { zPostApiV1ScenariosData } from "@/codegen/api/product/zod.gen";
+import { postApiV1ScenariosMutationRequestSchema } from "@/codegen/api/product";
 
-export const createScenarioSchema = zPostApiV1ScenariosData.shape.body.unwrap();
+export const createScenarioSchema = postApiV1ScenariosMutationRequestSchema;

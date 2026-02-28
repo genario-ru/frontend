@@ -3,38 +3,71 @@ import { pluginClient } from "@kubb/plugin-client";
 import { pluginOas } from "@kubb/plugin-oas";
 import { pluginReactQuery } from "@kubb/plugin-react-query";
 import { pluginTs } from "@kubb/plugin-ts";
-import { readdirSync } from "fs";
-import { basename, extname, join } from "path";
+import { pluginZod } from "@kubb/plugin-zod";
 import { kebabCase } from "text-case";
 
 const API_DIR = "deps/api";
 const API_OUTPUT_DIR = "src/codegen/api";
 
-export default defineConfig(() => {
-  const apiSchemas = discoverApiSchemas();
+type CreateConfigParams = {
+  input: string;
+  output: string;
+  prefixUrl?: string;
+  infiniteQuries?: boolean;
+};
 
-  return apiSchemas.map(({ input, output }) => createConfig(input, output));
+export default defineConfig(() => {
+  return [
+    createConfig({
+      input: `${API_DIR}/auth.json`,
+      output: `${API_OUTPUT_DIR}/auth`,
+      prefixUrl: "/api/auth",
+      infiniteQuries: false,
+    }),
+    createConfig({
+      input: `${API_DIR}/product.json`,
+      output: `${API_OUTPUT_DIR}/product`,
+    }),
+  ];
 });
 
-const kebabCaseTransformer = (
+function removeUsePrefix(name: string): string {
+  return name.replace(/^use-/, "");
+}
+
+function kebabCaseTransformer(
   name: string,
   type?: "file" | "function" | "type" | "const",
-) => {
+): string {
   if (type === "file") {
-    return kebabCase(name);
+    return removeUsePrefix(kebabCase(name));
   }
 
   return name;
-};
+}
 
-function createConfig(input: string, output: string): UserConfig {
+function createConfig({
+  input,
+  output,
+  prefixUrl,
+  infiniteQuries = true,
+}: CreateConfigParams): UserConfig {
   const clientConfig: Parameters<typeof pluginClient>[0] = {
+    baseURL: prefixUrl,
+    parser: "zod",
     pathParamsType: "object",
     paramsType: "object",
     importPath: "@/lib/api/utils/client.ts",
     transformers: {
       name: kebabCaseTransformer,
     },
+  };
+
+  const infiniteConfig = {
+    queryParam: "page",
+    previousParam: "meta.previousPage",
+    nextParam: "meta.nextPage",
+    initialPageParam: 1,
   };
 
   return {
@@ -57,42 +90,29 @@ function createConfig(input: string, output: string): UserConfig {
           name: kebabCaseTransformer,
         },
       }),
+      pluginZod({
+        output: {
+          path: "zod",
+        },
+        transformers: {
+          name: kebabCaseTransformer,
+        },
+      }),
       pluginClient(clientConfig),
       pluginReactQuery({
+        output: {
+          path: "tanstack",
+        },
+        parser: "zod",
         pathParamsType: "object",
         paramsType: "object",
         client: clientConfig,
-        infinite: {
-          queryParam: "page",
-          initialPageParam: 1,
-        },
+        suspense: false,
+        infinite: infiniteQuries ? infiniteConfig : undefined,
         transformers: {
           name: kebabCaseTransformer,
         },
       }),
     ],
   };
-}
-
-function discoverApiSchemas(): {
-  input: string;
-  output: string;
-}[] {
-  const files = readdirSync(API_DIR);
-  const input = files.map((file) => join(API_DIR, file));
-
-  const outputFolders = files.map((file) => {
-    const nameWithoutExt = basename(file, extname(file));
-
-    return `${API_OUTPUT_DIR}/${nameWithoutExt}`;
-  });
-
-  console.log(`🔍 Found schemas: ${files.length}`);
-  console.log(`📁 Input files: ${input.join(", ")}`);
-  console.log(`📂 Output files: ${outputFolders.join(", ")}`);
-
-  return outputFolders.map((output, index) => ({
-    input: input[index],
-    output: output,
-  }));
 }

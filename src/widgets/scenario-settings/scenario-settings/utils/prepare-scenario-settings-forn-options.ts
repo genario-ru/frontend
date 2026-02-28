@@ -1,9 +1,9 @@
 import { formOptions, revalidateLogic } from "@tanstack/react-form";
 
 import type {
-  GetApiV1IdeasIdeaIdResponse,
-  GetApiV1ScenariosScenarioIdResponse,
-} from "@/codegen/api/product/types.gen";
+  GetApiV1IdeasIdeaIdQueryResponse,
+  GetApiV1ScenariosScenarioIdQueryResponse,
+} from "@/codegen/api/product";
 
 import {
   type ScenarioSettingsFormSchema,
@@ -13,8 +13,8 @@ import {
 
 type PrepareScenarioSettingsFormOptionsParams = {
   templateId: string | undefined;
-  scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
-  ideaData: GetApiV1IdeasIdeaIdResponse | undefined;
+  scenarioData: GetApiV1ScenariosScenarioIdQueryResponse | undefined;
+  ideaData: GetApiV1IdeasIdeaIdQueryResponse | undefined;
 };
 
 export const prepareScenarioSettingsFormOptions = ({

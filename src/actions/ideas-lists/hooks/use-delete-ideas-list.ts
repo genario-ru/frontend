@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  deleteApiV1IdeasListsIdeasListIdMutation,
   getApiV1ArchiveItemsMyQueryKey,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
+  useDeleteApiV1IdeasListsIdeasListId,
+} from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseDeleteIdeasListParams = {
@@ -17,27 +17,28 @@ export function useDeleteIdeasList(params?: UseDeleteIdeasListParams) {
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteIdeasList, isPending: isDeleteIdeasListPending } =
-    useMutation({
-      ...deleteApiV1IdeasListsIdeasListIdMutation(),
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: getApiV1ArchiveItemsMyQueryKey(),
-        });
+    useDeleteApiV1IdeasListsIdeasListId({
+      mutation: {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: getApiV1ArchiveItemsMyQueryKey(),
+          });
 
-        showSuccessToast({
-          title: "Список идей удален",
-          description: "Список идей был успешно удален",
-        });
+          showSuccessToast({
+            title: "Список идей удален",
+            description: "Список идей был успешно удален",
+          });
 
-        onSuccess?.();
-      },
-      onError: () => {
-        showErrorToast({
-          title: "Ошибка",
-          description: "Произошла ошибка при удалении списка идей",
-        });
+          onSuccess?.();
+        },
+        onError: () => {
+          showErrorToast({
+            title: "Ошибка",
+            description: "Произошла ошибка при удалении списка идей",
+          });
 
-        onError?.();
+          onError?.();
+        },
       },
     });
 

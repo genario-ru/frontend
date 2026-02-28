@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getGetSessionOptions } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { useGetGetSession } from "@/codegen/api/auth";
 
 export function useGetSession() {
   const {
@@ -8,9 +6,7 @@ export function useGetSession() {
     isLoading: isSessionLoading,
     isError: isSessionError,
     refetch: refetchSession,
-  } = useQuery({
-    ...getGetSessionOptions(),
-  });
+  } = useGetGetSession();
 
   return { sessionData, isSessionLoading, isSessionError, refetchSession };
 }

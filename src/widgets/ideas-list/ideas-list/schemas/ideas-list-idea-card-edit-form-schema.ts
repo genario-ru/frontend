@@ -1,7 +1,7 @@
-import { zPatchApiV1IdeasIdeaIdData } from "@/codegen/api/product/zod.gen";
+import { patchApiV1IdeasIdeaIdMutationRequestSchema } from "@/codegen/api/product";
 
 export const ideasListIdeaCardEditFormSchema =
-  zPatchApiV1IdeasIdeaIdData.shape.body.unwrap().pick({
+  patchApiV1IdeasIdeaIdMutationRequestSchema.pick({
     name: true,
     description: true,
   });

@@ -1,17 +1,17 @@
 import { usePrefetchQuery } from "@tanstack/react-query";
 
 import {
-  getApiV1PlatformsOptions,
-  getApiV1ProfilesMyOptions,
-  getApiV1TonesOptions,
-  getApiV1VideoDurationsOptions,
-  getApiV1VideoTypesOptions,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
+  getApiV1PlatformsQueryOptions,
+  getApiV1ProfilesMyQueryOptions,
+  getApiV1TonesQueryOptions,
+  getApiV1VideoDurationsQueryOptions,
+  getApiV1VideoTypesQueryOptions,
+} from "@/codegen/api/product";
 
 export function usePrefetchScenarioSettingsSubformsData() {
-  usePrefetchQuery(getApiV1ProfilesMyOptions());
-  usePrefetchQuery(getApiV1PlatformsOptions());
-  usePrefetchQuery(getApiV1VideoTypesOptions());
-  usePrefetchQuery(getApiV1VideoDurationsOptions());
-  usePrefetchQuery(getApiV1TonesOptions());
+  usePrefetchQuery(getApiV1ProfilesMyQueryOptions());
+  usePrefetchQuery(getApiV1PlatformsQueryOptions());
+  usePrefetchQuery(getApiV1VideoTypesQueryOptions());
+  usePrefetchQuery(getApiV1VideoDurationsQueryOptions());
+  usePrefetchQuery(getApiV1TonesQueryOptions());
 }

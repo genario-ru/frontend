@@ -1,7 +1,7 @@
 import type {
-  GetApiV1IdeasIdeaIdResponse,
-  GetApiV1ScenariosScenarioIdResponse,
-} from "@/codegen/api/product/types.gen";
+  GetApiV1IdeasIdeaIdQueryResponse,
+  GetApiV1ScenariosScenarioIdQueryResponse,
+} from "@/codegen/api/product";
 import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
@@ -20,8 +20,8 @@ import { ScenarioSettingsTemplatesSelectionSubformSkeleton } from "./scenario-se
 
 type ScenarioSettingsFormProps = {
   templateId: string | undefined;
-  scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
-  ideaData: GetApiV1IdeasIdeaIdResponse | undefined;
+  scenarioData: GetApiV1ScenariosScenarioIdQueryResponse | undefined;
+  ideaData: GetApiV1IdeasIdeaIdQueryResponse | undefined;
 };
 
 export function ScenarioSettingsForm({

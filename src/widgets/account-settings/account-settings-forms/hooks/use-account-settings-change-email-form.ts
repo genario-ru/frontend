@@ -44,7 +44,7 @@ export function useAccountSettingsChangeEmailForm() {
       const callbackURL = composeFullUrl("/settings/account");
 
       await changeEmailAsync({
-        body: {
+        data: {
           newEmail,
           callbackURL,
         },

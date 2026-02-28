@@ -25,10 +25,8 @@ export function useScenarioAppMenubarSave({
     setIsOptimisticSaved(newSaved);
 
     saveScenario({
-      path: {
-        scenarioId,
-      },
-      body: {
+      scenarioId,
+      data: {
         saved: newSaved,
       },
     });

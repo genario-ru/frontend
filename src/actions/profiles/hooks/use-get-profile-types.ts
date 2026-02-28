@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1ProfilesTypesOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1ProfilesTypes } from "@/codegen/api/product";
 
 export function useGetProfileTypes() {
   const {
     data: profileTypesData,
     isLoading: isProfileTypesLoading,
     isError: isProfileTypesError,
-  } = useQuery({
-    ...getApiV1ProfilesTypesOptions(),
-  });
+  } = useGetApiV1ProfilesTypes();
 
   return {
     profileTypesData,

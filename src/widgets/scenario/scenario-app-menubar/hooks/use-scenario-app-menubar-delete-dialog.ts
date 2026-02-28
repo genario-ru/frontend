@@ -21,7 +21,7 @@ export function useScenarioAppMenubarDeleteDialog({
   });
 
   const handleConfirmDeleteButtonClick = useCallback(() => {
-    deleteScenario({ path: { scenarioId } });
+    deleteScenario({ scenarioId });
   }, [scenarioId, deleteScenario]);
 
   return {

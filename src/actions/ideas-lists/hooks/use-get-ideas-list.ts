@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1IdeasListsIdeasListIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1IdeasListsIdeasListId } from "@/codegen/api/product";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
@@ -15,24 +13,26 @@ export function useGetIdeasList({ ideasListId, saved }: UseGetIdeasListParams) {
     data: ideasListData,
     isLoading: isIdeasListLoading,
     isError: isIdeasListError,
-  } = useQuery({
-    ...getApiV1IdeasListsIdeasListIdOptions({
-      path: {
-        ideasListId: ideasListId as string,
-      },
-      query: {
+  } = useGetApiV1IdeasListsIdeasListId(
+    {
+      ideasListId: ideasListId as string,
+      params: {
         saved,
       },
-    }),
-    refetchInterval: (query) => {
-      if (checkIsGenerationStatus(query.state.data?.data.status)) {
-        return REFRESH_INTERVAL;
-      }
-
-      return false;
     },
-    enabled: Boolean(ideasListId),
-  });
+    {
+      query: {
+        refetchInterval: (query) => {
+          if (checkIsGenerationStatus(query.state.data?.data.status)) {
+            return REFRESH_INTERVAL;
+          }
+
+          return false;
+        },
+        enabled: Boolean(ideasListId),
+      },
+    },
+  );
 
   return {
     ideasListData,

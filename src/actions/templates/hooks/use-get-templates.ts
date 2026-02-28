@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1TemplatesOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1Templates } from "@/codegen/api/product";
 
 export function useGetTemplates() {
   const {
     data: templatesData,
     isLoading: isTemplatesLoading,
     isError: isTemplatesError,
-  } = useQuery({
-    ...getApiV1TemplatesOptions(),
-  });
+  } = useGetApiV1Templates();
 
   return {
     templatesData,

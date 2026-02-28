@@ -1,6 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
-
-import { postApiV1IdeasListsIdeasListIdMoreIdeasMutation } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { usePostApiV1IdeasListsIdeasListIdMoreIdeas } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseGenerateMoreIdeasParams = {
@@ -13,17 +11,18 @@ export function useGenerateMoreIdeas(params?: UseGenerateMoreIdeasParams) {
   const { showErrorToast } = useToast();
 
   const { mutate: generateMoreIdeas, isPending: isGenerateMoreIdeasPending } =
-    useMutation({
-      ...postApiV1IdeasListsIdeasListIdMoreIdeasMutation(),
-      onSuccess: () => {
-        onSuccess?.();
-      },
-      onError: () => {
-        showErrorToast({
-          description: "Произошла ошибка при генерации больше идей",
-        });
+    usePostApiV1IdeasListsIdeasListIdMoreIdeas({
+      mutation: {
+        onSuccess: () => {
+          onSuccess?.();
+        },
+        onError: () => {
+          showErrorToast({
+            description: "Произошла ошибка при генерации больше идей",
+          });
 
-        onError?.();
+          onError?.();
+        },
       },
     });
 

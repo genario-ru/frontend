@@ -1,4 +1,4 @@
-import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/product/types.gen";
+import type { GetApiV1IdeasListsIdeasListIdQueryResponse } from "@/codegen/api/product";
 import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
 
@@ -17,7 +17,7 @@ import { IdeasListSettingsTemplatesSelectionSubformSkeleton } from "./ideas-list
 
 type IdeasListSettingsFormProps = {
   templateId: string | undefined;
-  ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
+  ideasListData: GetApiV1IdeasListsIdeasListIdQueryResponse | undefined;
 };
 
 export function IdeasListSettingsForm({

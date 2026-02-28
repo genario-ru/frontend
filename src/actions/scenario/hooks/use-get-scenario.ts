@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1ScenariosScenarioIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1ScenariosScenarioId } from "@/codegen/api/product";
 
 type UseGetScenarioParams = {
   scenarioId: string | undefined;
@@ -11,12 +9,16 @@ export function useGetScenario({ scenarioId }: UseGetScenarioParams) {
     data: scenarioData,
     isLoading: isScenarioLoading,
     isError: isScenarioError,
-  } = useQuery({
-    ...getApiV1ScenariosScenarioIdOptions({
-      path: { scenarioId: scenarioId as string },
-    }),
-    enabled: Boolean(scenarioId),
-  });
+  } = useGetApiV1ScenariosScenarioId(
+    {
+      scenarioId: scenarioId as string,
+    },
+    {
+      query: {
+        enabled: Boolean(scenarioId),
+      },
+    },
+  );
 
   return {
     scenarioData,

@@ -1,4 +1,3 @@
-import { zPostApiV1IdeasListsData } from "@/codegen/api/product/zod.gen";
+import { postApiV1IdeasListsMutationRequestSchema } from "@/codegen/api/product";
 
-export const createIdeasListSchema =
-  zPostApiV1IdeasListsData.shape.body.unwrap();
+export const createIdeasListSchema = postApiV1IdeasListsMutationRequestSchema;

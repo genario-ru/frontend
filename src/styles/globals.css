@@ -111,8 +111,10 @@
 }
 
 @layer base {
-  html, body, #root {
-    @apply text-neutral-8 w-full h-full border-neutral-5 font-sans;
+  html,
+  body,
+  #root {
+    @apply text-neutral-8 border-neutral-5 h-full w-full font-sans;
   }
 
   .hide-scrollbar {

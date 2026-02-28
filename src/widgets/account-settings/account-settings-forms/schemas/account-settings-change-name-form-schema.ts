@@ -1,4 +1,4 @@
-import { zPostUpdateUserData } from "@/codegen/api/auth/zod.gen";
+import { postUpdateUserMutationRequestSchema } from "@/codegen/api/auth";
 
 export const accountSettingsChangeNameFormSchema =
-  zPostUpdateUserData.shape.body.unwrap().pick({ name: true });
+  postUpdateUserMutationRequestSchema.pick({ name: true });

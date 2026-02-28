@@ -4,14 +4,14 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { useCreateScenario } from "@/actions/scenario/hooks/use-create-scenario";
 import { useUpdateScenario } from "@/actions/scenario/hooks/use-update-scenario";
+import type {
+  GetApiV1IdeasIdeaIdQueryResponse,
+  GetApiV1ScenariosScenarioIdQueryResponse,
+} from "@/codegen/api/product";
 import {
   getApiV1ArchiveItemsMyQueryKey,
   getApiV1ScenariosScenarioIdQueryKey,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
-import type {
-  GetApiV1IdeasIdeaIdResponse,
-  GetApiV1ScenariosScenarioIdResponse,
-} from "@/codegen/api/product/types.gen";
+} from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
@@ -21,8 +21,8 @@ import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario
 
 type UseScenarioSettingsFormParams = {
   templateId: string | undefined;
-  scenarioData: GetApiV1ScenariosScenarioIdResponse | undefined;
-  ideaData: GetApiV1IdeasIdeaIdResponse | undefined;
+  scenarioData: GetApiV1ScenariosScenarioIdQueryResponse | undefined;
+  ideaData: GetApiV1IdeasIdeaIdQueryResponse | undefined;
 };
 
 export function useScenarioSettingsForm({
@@ -60,13 +60,13 @@ export function useScenarioSettingsForm({
 
       queryClient.invalidateQueries({
         queryKey: getApiV1ScenariosScenarioIdQueryKey({
-          path: { scenarioId: data.data.id },
+          scenarioId: data.data.id,
         }),
       });
 
       queryClient.invalidateQueries({
         queryKey: getApiV1ScenariosScenarioIdQueryKey({
-          path: { scenarioId: data.data.id },
+          scenarioId: data.data.id,
         }),
       });
     },
@@ -99,11 +99,11 @@ export function useScenarioSettingsForm({
 
           if (scenarioData) {
             updateScenario({
-              path: { scenarioId: scenarioData.data.id },
-              body: commonScenarioParams,
+              scenarioId: scenarioData.data.id,
+              data: commonScenarioParams,
             });
           } else {
-            createScenario({ body: commonScenarioParams });
+            createScenario({ data: commonScenarioParams });
           }
 
           break;

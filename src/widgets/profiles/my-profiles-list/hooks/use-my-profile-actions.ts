@@ -19,11 +19,7 @@ export function useMyProfileActions(params: UseMyProfileActionsParams) {
   });
 
   const handleDeleteProfile = () => {
-    deleteProfile({
-      path: {
-        profileId,
-      },
-    });
+    deleteProfile({ profileId });
   };
 
   return {

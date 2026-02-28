@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1VideoDurationsOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1VideoDurations } from "@/codegen/api/product";
 
 export function useGetVideoDurations() {
   const {
     data: videoDurationsData,
     isLoading: isVideoDurationsLoading,
     isError: isVideoDurationsError,
-  } = useQuery({
-    ...getApiV1VideoDurationsOptions(),
-  });
+  } = useGetApiV1VideoDurations();
 
   return {
     videoDurationsData,

@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1IdeasIdeaIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1IdeasIdeaId } from "@/codegen/api/product";
 
 type UseGetIdeaParams = {
   ideaId: string | undefined;
@@ -11,12 +9,14 @@ export function useGetIdea({ ideaId }: UseGetIdeaParams) {
     data: ideaData,
     isLoading: isIdeaLoading,
     isError: isIdeaError,
-  } = useQuery({
-    ...getApiV1IdeasIdeaIdOptions({
-      path: { ideaId: ideaId as string },
-    }),
-    enabled: Boolean(ideaId),
-  });
+  } = useGetApiV1IdeasIdeaId(
+    { ideaId: ideaId as string },
+    {
+      query: {
+        enabled: Boolean(ideaId),
+      },
+    },
+  );
 
   return {
     ideaData,

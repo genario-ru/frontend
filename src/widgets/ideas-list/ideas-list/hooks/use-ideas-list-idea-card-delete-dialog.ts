@@ -21,11 +21,7 @@ export function useIdeasListIdeaCardDeleteDialog({
   });
 
   const handleConfirmDeleteButtonClick = useCallback(() => {
-    deleteIdea({
-      path: {
-        ideaId,
-      },
-    });
+    deleteIdea({ ideaId });
   }, [ideaId, deleteIdea]);
 
   return {

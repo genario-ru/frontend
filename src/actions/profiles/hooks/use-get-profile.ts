@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1ProfilesProfileIdOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1ProfilesProfileId } from "@/codegen/api/product";
 
 type UseGetProfileParams = {
   profileId: string | undefined;
@@ -11,12 +9,16 @@ export function useGetProfile({ profileId }: UseGetProfileParams) {
     data: profileData,
     isLoading: isProfileLoading,
     isError: isProfileError,
-  } = useQuery({
-    ...getApiV1ProfilesProfileIdOptions({
-      path: { profileId: profileId as string },
-    }),
-    enabled: Boolean(profileId),
-  });
+  } = useGetApiV1ProfilesProfileId(
+    {
+      profileId: profileId as string,
+    },
+    {
+      query: {
+        enabled: Boolean(profileId),
+      },
+    },
+  );
 
   return {
     profileData,

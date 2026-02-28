@@ -21,7 +21,7 @@ export function useIdeasListAppMenubarDeleteIdeaDialog({
   });
 
   const handleDeleteConfirmButtonClick = useCallback(() => {
-    deleteIdeasList({ path: { ideasListId } });
+    deleteIdeasList({ ideasListId });
   }, [deleteIdeasList, ideasListId]);
 
   return {

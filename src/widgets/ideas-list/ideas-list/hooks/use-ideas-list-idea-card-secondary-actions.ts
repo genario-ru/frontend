@@ -27,10 +27,8 @@ export function useIdeasListIdeaCardSecondaryActions({
     setIsOptimisticSaved(newSaved);
 
     saveIdea({
-      path: {
-        ideaId,
-      },
-      body: {
+      ideaId,
+      data: {
         saved: newSaved,
       },
     });

@@ -1,6 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
-
-import { postSendVerificationEmailMutation } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { usePostSendVerificationEmail } from "@/codegen/api/auth";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseSendVerificationEmailParams = {
@@ -19,21 +17,22 @@ export function useSendVerificationEmail(
     mutate: sendVerificationEmail,
     isPending: isVerificationEmailSending,
     isSuccess: isVerificationEmailSent,
-  } = useMutation({
-    ...postSendVerificationEmailMutation(),
-    onMutate: () => {
-      onMutate?.();
-    },
-    onSuccess: () => {
-      onSuccess?.();
-    },
-    onError: () => {
-      showErrorToast({
-        description:
-          "Произошла ошибка при отправке письма для подтверждения Email. Попробуйте немного позже",
-      });
+  } = usePostSendVerificationEmail({
+    mutation: {
+      onMutate: () => {
+        onMutate?.();
+      },
+      onSuccess: () => {
+        onSuccess?.();
+      },
+      onError: () => {
+        showErrorToast({
+          description:
+            "Произошла ошибка при отправке письма для подтверждения Email. Попробуйте немного позже",
+        });
 
-      onError?.();
+        onError?.();
+      },
     },
   });
 

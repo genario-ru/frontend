@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { postDeleteUserMutation } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { usePostDeleteUser } from "@/codegen/api/auth";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useDeleteUser() {
@@ -9,24 +9,26 @@ export function useDeleteUser() {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
 
-  const { mutate: deleteUser, isPending: isDeleteUserPending } = useMutation({
-    ...postDeleteUserMutation(),
-    onSuccess: () => {
-      queryClient.clear();
+  const { mutate: deleteUser, isPending: isDeleteUserPending } =
+    usePostDeleteUser({
+      mutation: {
+        onSuccess: () => {
+          queryClient.clear();
 
-      navigate({
-        to: "/sign-in",
-        replace: true,
-        reloadDocument: true,
-      });
-    },
-    onError: () => {
-      showErrorToast({
-        description:
-          "Произошла ошибка при удалении вашего аккаунта. Проверьте корректность ввденного пароля и попробуйте еще раз",
-      });
-    },
-  });
+          navigate({
+            to: "/sign-in",
+            replace: true,
+            reloadDocument: true,
+          });
+        },
+        onError: () => {
+          showErrorToast({
+            description:
+              "Произошла ошибка при удалении вашего аккаунта. Проверьте корректность ввденного пароля и попробуйте еще раз",
+          });
+        },
+      },
+    });
 
   return {
     deleteUser,

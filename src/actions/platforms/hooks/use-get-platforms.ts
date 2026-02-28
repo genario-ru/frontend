@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1PlatformsOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1Platforms } from "@/codegen/api/product";
 
 export function useGetPlatforms() {
   const {
     data: platformsData,
     isLoading: isPlatformsLoading,
     isError: isPlatformsError,
-  } = useQuery({
-    ...getApiV1PlatformsOptions(),
-  });
+  } = useGetApiV1Platforms();
 
   return {
     platformsData,

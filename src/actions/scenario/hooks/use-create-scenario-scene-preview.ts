@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
   getApiV1ScenariosChaptersChapterIdQueryKey,
-  postApiV1ScenariosScenesSceneIdPreviewMutation,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
+  usePostApiV1ScenariosScenesSceneIdPreview,
+} from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateScenarioScenePreviewParams = {
@@ -23,26 +23,25 @@ export function useCreateScenarioScenePreview({
   const {
     mutate: createScenarioScenePreview,
     isPending: isCreateScenarioScenePreviewPending,
-  } = useMutation({
-    ...postApiV1ScenariosScenesSceneIdPreviewMutation(),
-    onError: () => {
-      onError?.();
+  } = usePostApiV1ScenariosScenesSceneIdPreview({
+    mutation: {
+      onError: () => {
+        onError?.();
 
-      showErrorToast({
-        title: "Произошла ошибка при создании превью сцены",
-        description: "Попробуйте еще раз немного позже",
-      });
-    },
-    onSuccess: () => {
-      onSuccess?.();
+        showErrorToast({
+          title: "Произошла ошибка при создании превью сцены",
+          description: "Попробуйте еще раз немного позже",
+        });
+      },
+      onSuccess: () => {
+        onSuccess?.();
 
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ScenariosChaptersChapterIdQueryKey({
-          path: {
+        queryClient.invalidateQueries({
+          queryKey: getApiV1ScenariosChaptersChapterIdQueryKey({
             chapterId,
-          },
-        }),
-      });
+          }),
+        });
+      },
     },
   });
 

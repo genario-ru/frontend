@@ -17,7 +17,7 @@ export function useScenarioChapterScenePreview({
     });
 
   const handleCreateScenarioScenePreview = useCallback(() => {
-    createScenarioScenePreview({ path: { sceneId } });
+    createScenarioScenePreview({ sceneId });
   }, [sceneId, createScenarioScenePreview]);
 
   return {

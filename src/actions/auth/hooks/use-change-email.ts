@@ -1,6 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
-
-import { postChangeEmailMutation } from "@/codegen/api/auth/@tanstack/react-query.gen";
+import { usePostChangeEmail } from "@/codegen/api/auth";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseChangeEmailProps = {
@@ -11,16 +9,17 @@ export function useChangeEmail(params?: UseChangeEmailProps) {
   const { onSuccess } = params ?? {};
   const { showErrorToast } = useToast();
 
-  const { mutateAsync: changeEmailAsync } = useMutation({
-    ...postChangeEmailMutation(),
-    onError: () => {
-      showErrorToast({
-        description:
-          "Произошла ошибка во время отправки письма для подтверждения смены Email",
-      });
-    },
-    onSuccess: () => {
-      onSuccess?.();
+  const { mutateAsync: changeEmailAsync } = usePostChangeEmail({
+    mutation: {
+      onError: () => {
+        showErrorToast({
+          description:
+            "Произошла ошибка во время отправки письма для подтверждения смены Email",
+        });
+      },
+      onSuccess: () => {
+        onSuccess?.();
+      },
     },
   });
 

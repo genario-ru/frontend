@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  deleteApiV1ProfilesProfileIdMutation,
   getApiV1ProfilesMyQueryKey,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
+  useDeleteApiV1ProfilesProfileId,
+} from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseDeleteProfileParams = {
@@ -16,25 +16,26 @@ export function useDeleteProfile(params?: UseDeleteProfileParams) {
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteProfile, isPending: isDeleteProfilePending } =
-    useMutation({
-      ...deleteApiV1ProfilesProfileIdMutation(),
-      onError: () => {
-        showErrorToast({
-          title: "Ошибка",
-          description: "Не удалось удалить профиль",
-        });
-      },
-      onSuccess: ({ data }) => {
-        queryClient.invalidateQueries({
-          queryKey: getApiV1ProfilesMyQueryKey(),
-        });
+    useDeleteApiV1ProfilesProfileId({
+      mutation: {
+        onError: () => {
+          showErrorToast({
+            title: "Ошибка",
+            description: "Не удалось удалить профиль",
+          });
+        },
+        onSuccess: ({ data }) => {
+          queryClient.invalidateQueries({
+            queryKey: getApiV1ProfilesMyQueryKey(),
+          });
 
-        showSuccessToast({
-          title: "Профиль удален",
-          description: `Профиль "${data.name}" был успешно удален`,
-        });
+          showSuccessToast({
+            title: "Профиль удален",
+            description: `Профиль "${data.name}" был успешно удален`,
+          });
 
-        onSuccess?.();
+          onSuccess?.();
+        },
       },
     });
 

@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
   getApiV1ProfilesMyQueryKey,
-  postApiV1ProfilesMutation,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
+  usePostApiV1Profiles,
+} from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateProfileParams = {
@@ -16,24 +16,25 @@ export function useCreateProfile(params?: UseCreateProfileParams) {
   const { showSuccessToast, showErrorToast } = useToast();
 
   const { mutate: createProfile, isPending: isCreateProfilePending } =
-    useMutation({
-      ...postApiV1ProfilesMutation(),
-      onSuccess: ({ data }) => {
-        queryClient.invalidateQueries({
-          queryKey: getApiV1ProfilesMyQueryKey(),
-        });
+    usePostApiV1Profiles({
+      mutation: {
+        onSuccess: ({ data }) => {
+          queryClient.invalidateQueries({
+            queryKey: getApiV1ProfilesMyQueryKey(),
+          });
 
-        showSuccessToast({
-          title: "Профиль создан",
-          description: `Профиль "${data.name}" успешно создан`,
-        });
+          showSuccessToast({
+            title: "Профиль создан",
+            description: `Профиль "${data.name}" успешно создан`,
+          });
 
-        onSuccess?.();
-      },
-      onError: () => {
-        showErrorToast({
-          description: `Произошла ошибка при создании профиля. Попробуйте еще раз немного позже`,
-        });
+          onSuccess?.();
+        },
+        onError: () => {
+          showErrorToast({
+            description: `Произошла ошибка при создании профиля. Попробуйте еще раз немного позже`,
+          });
+        },
       },
     });
 

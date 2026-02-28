@@ -32,9 +32,9 @@ export function useArchiveItemActions({
 
   const handleDeleteArchiveItem = () => {
     if (entity === "ideasList") {
-      deleteIdeasList({ path: { ideasListId: id } });
+      deleteIdeasList({ ideasListId: id });
     } else if (entity === "scenario") {
-      deleteScenario({ path: { scenarioId: id } });
+      deleteScenario({ scenarioId: id });
     }
   };
 

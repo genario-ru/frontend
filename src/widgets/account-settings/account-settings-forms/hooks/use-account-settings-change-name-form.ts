@@ -32,7 +32,7 @@ export function useAccountSettingsChangeNameForm() {
       });
     },
     onSubmit: async ({ value, formApi }) => {
-      await updateUserAsync({ body: value });
+      await updateUserAsync({ data: value });
       await refetchSession();
       formApi.reset();
     },

@@ -52,10 +52,8 @@ export function useIdeasListIdeaCardEditDialog({
     },
     onSubmit: ({ value }) => {
       updateIdea({
-        path: {
-          ideaId: ideaId,
-        },
-        body: value,
+        ideaId: ideaId,
+        data: value,
       });
     },
   });

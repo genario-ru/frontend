@@ -1,11 +1,11 @@
 import type { RefObject } from "react";
 
 import type {
-  GetApiV1PlatformsResponse,
-  GetApiV1ProfilesProfileIdResponse,
-  GetApiV1ProfilesTypesResponse,
-  GetApiV1TonesResponse,
-} from "@/codegen/api/product/types.gen";
+  GetApiV1PlatformsQueryResponse,
+  GetApiV1ProfilesProfileIdQueryResponse,
+  GetApiV1ProfilesTypesQueryResponse,
+  GetApiV1TonesQueryResponse,
+} from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
 import {
   DialogBody,
@@ -18,10 +18,10 @@ import { cn } from "@/shared/utils/cn";
 import { useProfileDialogForm } from "../hooks/use-profile-dialog-form";
 
 type ProfileFormProps = {
-  profileData: GetApiV1ProfilesProfileIdResponse | undefined;
-  profileTypesData: GetApiV1ProfilesTypesResponse;
-  tonesData: GetApiV1TonesResponse;
-  platformsData: GetApiV1PlatformsResponse;
+  profileData: GetApiV1ProfilesProfileIdQueryResponse | undefined;
+  profileTypesData: GetApiV1ProfilesTypesQueryResponse;
+  tonesData: GetApiV1TonesQueryResponse;
+  platformsData: GetApiV1PlatformsQueryResponse;
   overlayRef: RefObject<HTMLDivElement | null>;
   onDialogClose: () => void;
 };

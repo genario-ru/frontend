@@ -1,4 +1,3 @@
-import { zPostApiV1ProfilesData } from "@/codegen/api/product/zod.gen";
+import { postApiV1ProfilesMutationRequestSchema } from "@/codegen/api/product";
 
-export const profileDialogFormSchema =
-  zPostApiV1ProfilesData.shape.body.unwrap();
+export const profileDialogFormSchema = postApiV1ProfilesMutationRequestSchema;

@@ -1,4 +1,4 @@
-import { zPostApiV1IdeasListsIdeasListIdMoreIdeasData } from "@/codegen/api/product/zod.gen";
+import { postApiV1IdeasListsIdeasListIdMoreIdeasMutationRequestSchema } from "@/codegen/api/product";
 
 export const ideasListAppMenubarMoreIdeasFormSchema =
-  zPostApiV1IdeasListsIdeasListIdMoreIdeasData.shape.body.unwrap();
+  postApiV1IdeasListsIdeasListIdMoreIdeasMutationRequestSchema;

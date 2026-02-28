@@ -1,4 +1,4 @@
-import { zPostChangeEmailData } from "@/codegen/api/auth/zod.gen";
+import { postChangeEmailMutationRequestSchema } from "@/codegen/api/auth";
 
 export const accountSettingsChangeEmailFormSchema =
-  zPostChangeEmailData.shape.body.pick({ newEmail: true });
+  postChangeEmailMutationRequestSchema.pick({ newEmail: true });

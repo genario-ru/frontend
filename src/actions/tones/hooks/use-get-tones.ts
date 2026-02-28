@@ -1,15 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-
-import { getApiV1TonesOptions } from "@/codegen/api/product/@tanstack/react-query.gen";
+import { useGetApiV1Tones } from "@/codegen/api/product";
 
 export function useGetTones() {
   const {
     data: tonesData,
     isLoading: isTonesLoading,
     isError: isTonesError,
-  } = useQuery({
-    ...getApiV1TonesOptions(),
-  });
+  } = useGetApiV1Tones();
 
   return {
     tonesData,

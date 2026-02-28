@@ -7,8 +7,8 @@ import { useUpdateIdeasList } from "@/actions/ideas-lists/hooks/use-update-ideas
 import {
   getApiV1ArchiveItemsMyQueryKey,
   getApiV1IdeasListsIdeasListIdQueryKey,
-} from "@/codegen/api/product/@tanstack/react-query.gen";
-import type { GetApiV1IdeasListsIdeasListIdResponse } from "@/codegen/api/product/types.gen";
+  type GetApiV1IdeasListsIdeasListIdQueryResponse,
+} from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
@@ -18,7 +18,7 @@ import { usePrefetchIdeasListSettingsSubformsData } from "./use-prefetch-ideas-l
 
 type UseIdeasListSettingsFormParams = {
   templateId: string | undefined;
-  ideasListData: GetApiV1IdeasListsIdeasListIdResponse | undefined;
+  ideasListData: GetApiV1IdeasListsIdeasListIdQueryResponse | undefined;
 };
 
 export function useIdeasListSettingsForm({
@@ -54,13 +54,13 @@ export function useIdeasListSettingsForm({
 
       queryClient.invalidateQueries({
         queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
-          path: { ideasListId: data.data.id },
+          ideasListId: data.data.id,
         }),
       });
 
       queryClient.invalidateQueries({
         queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
-          path: { ideasListId: data.data.id },
+          ideasListId: data.data.id,
         }),
       });
 
@@ -98,11 +98,11 @@ export function useIdeasListSettingsForm({
 
           if (ideasListData) {
             updateIdeasList({
-              path: { ideasListId: ideasListData.data.id },
-              body: commonIdeasListParams,
+              ideasListId: ideasListData.data.id,
+              data: commonIdeasListParams,
             });
           } else {
-            createIdeasList({ body: commonIdeasListParams });
+            createIdeasList({ data: commonIdeasListParams });
           }
 
           break;

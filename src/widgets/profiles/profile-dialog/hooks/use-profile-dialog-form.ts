@@ -3,9 +3,9 @@ import type { RefObject } from "react";
 import { useCreateProfile } from "@/actions/profiles/hooks/use-create-profile";
 import { useUpdateProfile } from "@/actions/profiles/hooks/use-update-profile";
 import type {
-  GetApiV1ProfilesProfileIdResponse,
-  GetApiV1ProfilesTypesResponse,
-} from "@/codegen/api/product/types.gen";
+  GetApiV1ProfilesProfileIdQueryResponse,
+  GetApiV1ProfilesTypesQueryResponse,
+} from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 import { useCheckScroll } from "@/shared/hooks/use-check-scroll";
@@ -18,8 +18,8 @@ import {
 
 type UseProfileDialogFormParams = {
   overlayRef: RefObject<HTMLDivElement | null>;
-  profileData: GetApiV1ProfilesProfileIdResponse | undefined;
-  profileTypesData: GetApiV1ProfilesTypesResponse;
+  profileData: GetApiV1ProfilesProfileIdQueryResponse | undefined;
+  profileTypesData: GetApiV1ProfilesTypesQueryResponse;
   onDialogClose: () => void;
 };
 
@@ -59,13 +59,11 @@ export function useProfileDialogForm({
     onSubmit: ({ value }) => {
       if (profileData) {
         updateProfile({
-          path: {
-            profileId: profileData.data.id,
-          },
-          body: value,
+          profileId: profileData.data.id,
+          data: value,
         });
       } else {
-        createProfile({ body: value });
+        createProfile({ data: value });
       }
     },
   });
