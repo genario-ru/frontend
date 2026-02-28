@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { getGetSessionOptions } from "@/codegen/api/auth/@tanstack/react-query.gen";
 import { AppComponent } from "@/entrypoints/app/component";
-import { logoutUser } from "@/lib/auth/utils/logout-user";
+import { signOutUser } from "@/lib/auth/utils/logout-user";
 
 export const Route = createFileRoute("/_app")({
   beforeLoad: async ({ context, location }) => {
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/_app")({
       );
 
       if (!sessionData) {
-        logoutUser({ redirectTo: location.pathname });
+        signOutUser({ redirect: location.pathname });
       }
 
       return {
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/_app")({
         sessionData,
       };
     } catch {
-      logoutUser({ redirectTo: location.pathname });
+      signOutUser({ redirect: location.pathname });
     }
   },
   component: AppComponent,

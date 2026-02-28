@@ -1,22 +1,19 @@
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 
 import { postSignOutMutation } from "@/codegen/api/auth/@tanstack/react-query.gen";
 
-export const useSignOut = () => {
-  const router = useRouter();
+export function useSignOut() {
+  const navigate = useNavigate();
 
   const { mutate: signOutMutate } = useMutation({
     ...postSignOutMutation(),
     onSuccess: () => {
-      router.navigate({
+      navigate({
         to: "/sign-in",
         reloadDocument: true,
         replace: true,
-        search: {
-          redirect: router.state.location.pathname,
-        },
       });
     },
   });
@@ -26,4 +23,4 @@ export const useSignOut = () => {
   }, [signOutMutate]);
 
   return signOut;
-};
+}
