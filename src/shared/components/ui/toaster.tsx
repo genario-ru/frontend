@@ -1,11 +1,15 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, InfoIcon, XIcon } from "lucide-react";
-// import { useTheme } from "next-themes";
 import { type ComponentProps } from "react";
 import { Toaster as ToasterRoot } from "sonner";
 
+import { cn } from "@/shared/utils/cn";
+
 const toastIconVariants = cva(
-  "p-1.5 w-fit h-fit rounded-full [&_svg]:stroke-neutral-1 [&_svg]:size-4 [&_svg]:stroke-3",
+  cn(
+    "p-1.5 w-fit h-fit rounded-full",
+    "[&_svg]:stroke-neutral-1 dark:[&_svg]:stroke-neutral-8 [&_svg]:size-4 [&_svg]:stroke-3",
+  ),
   {
     variants: {
       variant: {
@@ -50,11 +54,8 @@ export const Toast = (props: ToastProps) => {
 };
 
 export const Toaster = ({ ...props }: ToasterProps) => {
-  // const { theme = "system" } = useTheme();
-
   return (
     <ToasterRoot
-      // theme={theme as ToasterProps["theme"]}
       position="top-center"
       toastOptions={{ unstyled: true, className: "w-full" }}
       className="toaster group w-full"

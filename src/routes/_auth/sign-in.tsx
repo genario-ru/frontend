@@ -7,7 +7,6 @@ import { SignInComponent } from "@/entrypoints/sign-in/component";
 const signInSearchSchema = z.object({
   email: z.email().optional(),
   redirect: z.string().optional(),
-  signOut: z.boolean().optional(),
 });
 
 export type SignInSearch = z.infer<typeof signInSearchSchema>;

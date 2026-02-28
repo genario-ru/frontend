@@ -5,7 +5,7 @@ import { FormHeader } from "@/features/auth/components/form-header";
 import { VerifyOTPForm } from "@/widgets/auth/components/verify-otp-form";
 
 export function VerifyOTPComponent() {
-  const { email } = useSearch({ from: "/_auth/verify-otp" });
+  const { email, redirect } = useSearch({ from: "/_auth/verify-otp" });
 
   return (
     <AuthIsland>
@@ -20,7 +20,7 @@ export function VerifyOTPComponent() {
           </>
         }
       />
-      <VerifyOTPForm email={email} />
+      <VerifyOTPForm email={email} redirect={redirect} />
     </AuthIsland>
   );
 }

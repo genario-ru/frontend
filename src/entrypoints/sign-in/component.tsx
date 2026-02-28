@@ -1,17 +1,23 @@
+import { useSearch } from "@tanstack/react-router";
+
 import { AuthIsland } from "@/features/auth/components/auth-island";
 import { FormHeader } from "@/features/auth/components/form-header";
 import { PoliciesAgreement } from "@/features/auth/components/policies-agreement";
 import { SignInForm } from "@/widgets/auth/components/sign-in-form";
 
-export const SignInComponent = () => {
+export function SignInComponent() {
+  const { email, redirect } = useSearch({
+    from: "/_auth/sign-in",
+  });
+
   return (
     <AuthIsland>
       <FormHeader
         title="Добро пожаловать!"
         description={`Для входа / регистрации введите ваш\nадрес электронной почты`}
       />
-      <SignInForm />
+      <SignInForm email={email} redirect={redirect} />
       <PoliciesAgreement />
     </AuthIsland>
   );
-};
+}

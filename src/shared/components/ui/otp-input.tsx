@@ -44,7 +44,7 @@ const otpSlotVariants = cva(
 
 type OTPSlotProps = VariantProps<typeof otpSlotVariants> & SlotProps;
 
-type OTPInputProps = VariantProps<typeof otpSlotVariants> &
+export type OTPInputProps = VariantProps<typeof otpSlotVariants> &
   Omit<OTPInputPropsBasic, "children">;
 
 export const OTPFakeCaret = () => {
