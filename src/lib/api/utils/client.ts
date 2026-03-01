@@ -3,6 +3,7 @@ import { envs } from "@/shared/constants/envs";
 import { APIError } from "../classes/api-error";
 import { documentTypes } from "../constants/document-types";
 import type { APIErrorInfo } from "../types";
+import { prepareQueryString } from "./prepare-query-string";
 
 type Method = "GET" | "PUT" | "PATCH" | "POST" | "DELETE" | "OPTIONS" | "HEAD";
 
@@ -43,6 +44,7 @@ export default async function client<
 >({
   url,
   method,
+  params,
   data: body,
   signal,
   headers: initialHeaders,
@@ -52,7 +54,14 @@ export default async function client<
     ...initialHeaders,
   });
 
-  const fullUrl = `${envs.VITE_BASE_API_URL}${url}`;
+  const urlWithBase = `${envs.VITE_BASE_API_URL}${url}`;
+
+  const queryString = prepareQueryString({
+    queryParams: params,
+    includeQuestionmark: true,
+  });
+
+  const fullUrl = `${urlWithBase}${queryString}`;
 
   try {
     const response = await fetch(fullUrl, {

@@ -15,9 +15,7 @@ export type RemoveUndefinedFields<T extends object> = {
   [K in FieldsWithUndefined<T>]?: Exclude<T[K], undefined>;
 };
 
-export function removeUndefinedFields<T extends Record<string, unknown>>(
-  obj: T,
-) {
+export function removeUndefinedFields<T extends object>(obj: T) {
   const undefinedKeys = Object.keys(obj).filter(
     (key) => obj[key as keyof T] === undefined,
   ) as Array<keyof T>;
