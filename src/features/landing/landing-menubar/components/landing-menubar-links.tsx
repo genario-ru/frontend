@@ -17,7 +17,7 @@ export function LandingMenubarLinks({
       row
       roundedTop={false}
       className={cn("w-fit items-center gap-6 duration-200", {
-        "shadow-bottom-1": withShadow,
+        "shadow-bottom-2": withShadow,
       })}
     >
       <Logo />

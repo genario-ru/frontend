@@ -14,7 +14,7 @@ export function LandingMenubarActions({
       row
       roundedTop={false}
       className={cn("w-fit gap-2 duration-200", {
-        "shadow-bottom-1": withShadow,
+        "shadow-bottom-2": withShadow,
       })}
     >
       <ButtonLink priority="tertiary" to="/sign-in">

@@ -15,8 +15,8 @@ export const badgeVariants = cva(
         tertiary: "",
       },
       size: {
-        base: "text-sm px-2.5 h-[30px] gap-1.5 [&_svg]:size-5",
-        sm: "text-xs px-1.5 h-6 gap-1 [&_svg]:size-4",
+        base: "text-sm px-2.5 h-[30px] gap-1 [&_svg]:size-4.5",
+        sm: "text-xs px-1.5 h-6 gap-0.5 [&_svg]:size-3.5",
       },
     },
     compoundVariants: [
