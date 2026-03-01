@@ -6,8 +6,7 @@ import {
 } from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
+import { Plug } from "@/shared/components/ui/plug";
 
 import {
   type IdeasListSettingsFormSchema,
@@ -68,7 +67,7 @@ export function IdeasListSettingsTemplatesSelectionSubformSkeleton() {
 
 export function IdeasListSettingsTemplatesSelectionSubformEmptyPlug() {
   return (
-    <EmptyPlug
+    <Plug
       className="flex-1"
       title="Нет шаблонов"
       description="На данный момент нет доступных шаблонов для выбора"
@@ -78,7 +77,8 @@ export function IdeasListSettingsTemplatesSelectionSubformEmptyPlug() {
 
 export function IdeasListSettingsTemplatesSelectionSubformErrorPlug() {
   return (
-    <ErrorPlug
+    <Plug
+      variant="negative"
       className="flex-1"
       title="Ошибка загрузки"
       description="Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу"

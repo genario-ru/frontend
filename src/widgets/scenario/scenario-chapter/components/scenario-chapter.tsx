@@ -4,9 +4,8 @@ import {
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 
 import {
   ScenarioChapterScenes,
@@ -94,7 +93,8 @@ export function ScenarioChapterSkeleton({
 export function ScenarioChapterErrorPlug() {
   return (
     <Island noPadding className="flex-1">
-      <ErrorPlug
+      <Plug
+        variant="negative"
         className="flex-1"
         title="Ошибка"
         description="Произошла ошибка при загрузке сценария"
@@ -106,7 +106,7 @@ export function ScenarioChapterErrorPlug() {
 export function ScenarioChapterEmptyPlug() {
   return (
     <Island noPadding className="flex-1">
-      <EmptyPlug
+      <Plug
         className="flex-1"
         title="Нет разделов"
         description="В сценарии пока нет разделов"

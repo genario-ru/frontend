@@ -1,6 +1,5 @@
 import { ItemsList } from "@/shared/components/common/items-list";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
+import { Plug } from "@/shared/components/ui/plug";
 import {
   TabsUnderline,
   TabsUnderlineList,
@@ -117,7 +116,8 @@ export function ScenarioNavigationChaptersError({
     size === "base" ? "Произошла ошибка при загрузке разделов" : undefined;
 
   return (
-    <ErrorPlug
+    <Plug
+      variant="negative"
       direction="row"
       title={title}
       description={description}
@@ -133,7 +133,7 @@ export function ScenarioNavigationChaptersEmptyPlug({
   size = "base",
 }: Pick<ScenarioNavigationChaptersProps, "size">) {
   return (
-    <EmptyPlug
+    <Plug
       direction="row"
       title="В данном сценарии пока нет разделов"
       className={cn("border-neutral-3 border-b", {

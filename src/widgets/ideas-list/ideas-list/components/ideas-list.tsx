@@ -4,9 +4,8 @@ import { IdeasListIdeaCardLayoutSkeleton } from "@/features/ideas-list/ideas-lis
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 import { useIdeasList } from "../hooks/use-ideas-list";
@@ -103,7 +102,8 @@ export function IdeasListSkeleton() {
 export function IdeasListErrorPlug() {
   return (
     <Island className="w-full flex-1 items-center justify-center">
-      <ErrorPlug
+      <Plug
+        variant="negative"
         title="Ошибка"
         description="Произошла ошибка при загрузке списка идей"
       />
@@ -114,7 +114,7 @@ export function IdeasListErrorPlug() {
 export function IdeasListEmptyPlug() {
   return (
     <Island className="w-full flex-1 items-center justify-center">
-      <EmptyPlug title="Нет идей" description="В списке идей пока нет идей" />
+      <Plug title="Нет идей" description="В списке идей пока нет идей" />
     </Island>
   );
 }

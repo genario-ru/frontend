@@ -6,8 +6,7 @@ import {
 } from "@/features/templates/template-card/components/template-cards-radio-group";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
+import { Plug } from "@/shared/components/ui/plug";
 
 import {
   type ScenarioSettingsFormSchema,
@@ -68,20 +67,21 @@ export function ScenarioSettingsTemplatesSelectionSubformSkeleton() {
 
 export function ScenarioSettingsTemplatesSelectionSubformEmptyPlug() {
   return (
-    <EmptyPlug
-      className="flex-1"
+    <Plug
       title="Нет шаблонов"
       description="На данный момент нет доступных шаблонов для выбора"
+      className="flex-1"
     />
   );
 }
 
 export function ScenarioSettingsTemplatesSelectionSubformErrorPlug() {
   return (
-    <ErrorPlug
-      className="flex-1"
+    <Plug
+      variant="negative"
       title="Ошибка загрузки"
       description="Произошла ошибка при загрузке шаблонов. Попробуйте обновить страницу"
+      className="flex-1"
     />
   );
 }

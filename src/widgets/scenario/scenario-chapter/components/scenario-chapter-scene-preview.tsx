@@ -6,8 +6,7 @@ import { ScenarioChapterScenePreviewImage } from "@/features/scenario/scenario-c
 import { ScenarioChapterScenePreviewLayout } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { Button } from "@/shared/components/ui/button";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
+import { Plug } from "@/shared/components/ui/plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 import { cn } from "@/shared/utils/cn";
@@ -132,7 +131,8 @@ function ScenarioChapterScenePreviewGeneratingAlert() {
 
 function ScenarioChapterScenePreviewErrorPlug() {
   return (
-    <ErrorPlug
+    <Plug
+      variant="negative"
       title="Ошибка генерации"
       description="Не удалось сгенерировать превью. Попробуйте еще раз по кнопке выше"
     />
@@ -141,7 +141,7 @@ function ScenarioChapterScenePreviewErrorPlug() {
 
 function ScenarioChapterScenePreviewEmptyPlug() {
   return (
-    <EmptyPlug
+    <Plug
       title="Превью пока нет"
       description="Вы можете сгенерировать превью сцены по кнопке выше"
     />

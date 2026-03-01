@@ -2,8 +2,8 @@ import type { LinkComponentProps } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import LogoDarkIcon from "@/icons/logo-dark.svg";
-import LogoLightIcon from "@/icons/logo-light.svg";
+import LogoFullDark from "@/icons/logo-full-dark.svg";
+import LogoFullLight from "@/icons/logo-full-light.svg";
 import { cn } from "@/shared/utils/cn";
 
 const logoVariantProps = cva("", {
@@ -29,10 +29,10 @@ export const Logo = ({ size, className, ...props }: LogoProps) => {
       )}
       {...props}
     >
-      <LogoDarkIcon
+      <LogoFullDark
         className={cn(logoVariantProps({ size }), "hidden dark:block")}
       />
-      <LogoLightIcon
+      <LogoFullLight
         className={cn(logoVariantProps({ size }), "block dark:hidden")}
       />
     </Link>

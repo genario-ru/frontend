@@ -1,9 +1,8 @@
 import { withForm } from "@/lib/tanstack-form";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ProfileImage } from "@/shared/components/common/profile-image";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Plug } from "@/shared/components/ui/plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
@@ -124,7 +123,7 @@ export function IdeasListSettingsParamsConfigurationSubformSkeleton() {
 
 export function IdeasListSettingsParamsConfigurationSubformEmptyPlug() {
   return (
-    <EmptyPlug
+    <Plug
       className="flex-1"
       title="Нет данных"
       description="Недостаточно данных для отображения формы"
@@ -134,7 +133,8 @@ export function IdeasListSettingsParamsConfigurationSubformEmptyPlug() {
 
 export function IdeasListSettingsParamsConfigurationSubformErrorPlug() {
   return (
-    <ErrorPlug
+    <Plug
+      variant="negative"
       className="flex-1"
       title="Ошибка загрузки"
       description="Произошла ошибка при загрузке данных. Попробуйте обновить страницу"

@@ -2,8 +2,8 @@ import type {
   GetApiV1IdeasIdeaIdQueryResponse,
   GetApiV1ScenariosScenarioIdQueryResponse,
 } from "@/codegen/api/product";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 
 import { useScenarioSettingsForm } from "../hooks/use-scenario-settings-form";
 import { ScenarioSettingsCurrentSubform } from "./scenario-settings-current-subform";
@@ -73,10 +73,11 @@ export function ScenarioSettingsFormSkeleton() {
 export function ScenarioSettingsFormErrorPlug() {
   return (
     <Island className="flex-1">
-      <ErrorPlug
-        className="flex-1"
+      <Plug
+        variant="negative"
         title="Ошибка загрузки"
         description="Произошла ошибка при загрузке формы. Попробуйте обновить страницу"
+        className="flex-1"
       />
     </Island>
   );

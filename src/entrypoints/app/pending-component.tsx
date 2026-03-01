@@ -1,13 +1,22 @@
+import { cva } from "class-variance-authority";
+
+import LogoIconDark from "@/icons/logo-full-dark.svg";
+import LogoIconLight from "@/icons/logo-full-light.svg";
+import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
+import { cn } from "@/shared/utils/cn";
+
+const logoIconVariants = cva(
+  "m-auto animate-bounce h-10 w-auto object-fit duration-100",
+);
 
 export const AppPendingComponent = () => {
   return (
-    <PageLayout>
-      <img
-        src="/logo-512.png"
-        alt="Animated logo"
-        className="animate-flash-scale repeat-infinite m-auto h-24 w-24 object-cover duration-100"
-      />
+    <PageLayout className="justify-center">
+      <ContentLayout>
+        <LogoIconDark className={cn(logoIconVariants(), "hidden dark:block")} />
+        <LogoIconLight className={cn(logoIconVariants(), "dark:hidden")} />
+      </ContentLayout>
     </PageLayout>
   );
 };

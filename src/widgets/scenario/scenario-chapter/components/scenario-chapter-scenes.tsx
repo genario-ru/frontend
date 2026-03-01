@@ -5,9 +5,8 @@ import {
 } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
 import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 import { cn } from "@/shared/utils/cn";
 
 import {
@@ -142,8 +141,9 @@ export function ScenarioChapterScenesSkeleton({
 export function ScenarioChapterScenesErrorPlug() {
   return (
     <Island roundedTop={false} className="flex-1">
-      <ErrorPlug
-        variant="outlined"
+      <Plug
+        variant="negative"
+        appearance="outlined"
         className="flex-1"
         title="Ошибка"
         description="Произошла ошибка при загрузке сцен"
@@ -155,8 +155,8 @@ export function ScenarioChapterScenesErrorPlug() {
 export function ScenarioChapterScenesEmptyPlug() {
   return (
     <Island roundedTop={false} className="flex-1">
-      <EmptyPlug
-        variant="outlined"
+      <Plug
+        appearance="outlined"
         title="Нет сцен"
         description="В данном разделе пока нет сцен."
         className="flex-1"

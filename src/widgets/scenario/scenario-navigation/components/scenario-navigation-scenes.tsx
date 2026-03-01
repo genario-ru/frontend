@@ -1,7 +1,6 @@
 import { ScenarioNavigationScene } from "@/features/scenario/scenario-navigation/components/scenario-navigation-scene";
 import { ItemsList } from "@/shared/components/common/items-list";
-import { EmptyPlug } from "@/shared/components/ui/empty-plug";
-import { ErrorPlug } from "@/shared/components/ui/error-plug";
+import { Plug } from "@/shared/components/ui/plug";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
@@ -112,7 +111,8 @@ export function ScenarioNavigationScenesErrorPlug({
     size === "base" ? "Произошла ошибка при загрузке сцен" : undefined;
 
   return (
-    <ErrorPlug
+    <Plug
+      variant="negative"
       direction="row"
       title={title}
       description={description}
@@ -128,7 +128,7 @@ export function ScenarioNavigationScenesEmptyPlug({
   size = "base",
 }: Pick<ScenarioNavigationScenesProps, "size">) {
   return (
-    <EmptyPlug
+    <Plug
       direction="row"
       title="В данном разделе пока нет сцен"
       className={cn({

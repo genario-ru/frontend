@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const inputVariants = cva(
-  "duration-200 bg-neutral-2 caret-neutral-8 rounded-full placeholder:text-neutral-6 w-full truncate outline-none",
+  "duration-200 bg-neutral-2 caret-neutral-8 rounded-full placeholder:text-neutral-6 w-full truncate outline-none hover:bg-neutral-3",
   {
     variants: {
       size: {
