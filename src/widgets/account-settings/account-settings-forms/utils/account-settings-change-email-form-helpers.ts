@@ -3,7 +3,7 @@ import { createFormMatchValidateFn } from "@/lib/tanstack-form/utils/create-form
 import { accountSettingsChangeEmailFormSchema } from "../schemas/account-settings-change-email-form-schema";
 import type { AccountSettingsChangeEmailFormSchema } from "../types/account-settings-change-email-types";
 
-export const changeEmailFormMatchFieldValidateFn =
+export const changeEmailFormMatchValidateFn =
   createFormMatchValidateFn<AccountSettingsChangeEmailFormSchema>(
     accountSettingsChangeEmailFormSchema,
   );

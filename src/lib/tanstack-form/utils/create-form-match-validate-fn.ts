@@ -4,7 +4,9 @@ import type { ZodSchema } from "zod";
 
 import { createFormValidateFn } from "./create-form-validate-fn";
 
-const matchErrorMessage = "Для сохранения формы, обновите ее содержимое";
+const MATCH_FORM_ERROR_MESSAGE = "Для сохранения формы, обновите ее содержимое";
+const MATCH_FIELD_ERROR_MESSAGE =
+  "Новое значение не может совпадать с предыдущим";
 
 export const createFormMatchValidateFn = <T extends Record<string, unknown>>(
   schema: ZodSchema<T>,
@@ -22,8 +24,20 @@ export const createFormMatchValidateFn = <T extends Record<string, unknown>>(
 
     // 2. Если Zod валидация прошла успешно, проверяем совпадение с initialValues
     if (isEqual(value, initialValues)) {
+      const fieldNames = Object.keys(value);
+
+      if (fieldNames.length === 1) {
+        const [singleFieldName] = fieldNames;
+
+        return {
+          fields: {
+            [singleFieldName]: MATCH_FIELD_ERROR_MESSAGE,
+          },
+        };
+      }
+
       return {
-        form: matchErrorMessage,
+        form: MATCH_FORM_ERROR_MESSAGE,
         fields: {},
       };
     }
