@@ -9,7 +9,7 @@ import { cn } from "@/shared/utils/cn";
 import type { PublicButtonVariantsProps } from "./button";
 
 export type ButtonLinkProps = LinkComponentProps &
-  PublicButtonVariantsProps & {
+  Omit<PublicButtonVariantsProps, "state"> & {
     icon?: ReactNode;
     iconPosition?: "left" | "right";
   };
@@ -21,7 +21,6 @@ export const ButtonLink = ({
   variant,
   priority,
   rounding,
-  state,
   direction,
   className,
   children,
@@ -39,7 +38,6 @@ export const ButtonLink = ({
           size,
           rounding,
           content: withChildren ? "mixed" : "icon",
-          state,
           direction,
         }),
         className,
