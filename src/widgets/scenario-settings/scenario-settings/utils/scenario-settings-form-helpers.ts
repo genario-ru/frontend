@@ -1,8 +1,7 @@
-import * as z from "zod";
-
 import { createFormMatchValidateFn } from "@/lib/tanstack-form/utils/create-form-match-validate-fn";
 import { createFormStepValidationFn } from "@/lib/tanstack-form/utils/create-form-step-validate-fn";
 import { createFormValidateFn } from "@/lib/tanstack-form/utils/create-form-validate-fn";
+import { z } from "@/lib/zod";
 
 import { createScenarioSchema } from "../schemas/create-scenario-schema";
 

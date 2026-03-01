@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import { z } from "zod/v4";
+import { z } from "@/lib/zod/index.ts";
 
 /**
  * @description Bad Request. Usually due to missing parameters, or invalid parameters.

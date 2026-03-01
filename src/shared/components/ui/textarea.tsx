@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const textareaWrapperVariants = cva(
-  "w-full h-fit duration-200 overflow-hidden bg-neutral-2",
+  "w-full h-fit duration-200 overflow-hidden bg-neutral-2 hover:bg-neutral-3",
   {
     variants: {
       size: {

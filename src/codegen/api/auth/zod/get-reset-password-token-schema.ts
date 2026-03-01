@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import { z } from "zod/v4";
+import { z } from "@/lib/zod/index.ts";
 
 export const getResetPasswordTokenPathParamsSchema = z.object({
   token: z.string().describe("The token to reset the password"),

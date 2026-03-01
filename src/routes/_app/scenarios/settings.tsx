@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import * as z from "zod";
 
 import { ScenarioSettingsComponent } from "@/entrypoints/scenario-settings/component";
+import { z } from "@/lib/zod";
 
 const scenarioSettingsSearchSchema = z.object({
   templateId: z.string().optional(),

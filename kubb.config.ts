@@ -91,6 +91,7 @@ function createConfig({
         },
       }),
       pluginZod({
+        importPath: "@/lib/zod/index.ts",
         output: {
           path: "zod",
         },

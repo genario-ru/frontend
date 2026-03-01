@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import * as z from "zod";
 
 import { IdeasListSettingsComponent } from "@/entrypoints/ideas-list-settings/component";
+import { z } from "@/lib/zod";
 
 const ideasListSettingsSearchSchema = z.object({
   templateId: z.string().optional(),

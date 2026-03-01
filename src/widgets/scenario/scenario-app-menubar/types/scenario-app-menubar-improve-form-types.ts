@@ -1,4 +1,4 @@
-import * as z from "zod";
+import { z } from "@/lib/zod";
 
 import type { scenarioAppMenubarImproveFormSchema } from "../schemas/scenario-app-menubar-improve-form-schema";
 

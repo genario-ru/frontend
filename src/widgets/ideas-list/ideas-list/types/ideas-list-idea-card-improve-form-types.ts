@@ -1,4 +1,4 @@
-import * as z from "zod";
+import { z } from "@/lib/zod";
 
 import type { ideasListIdeaCardImproveFormSchema } from "../schemas/ideas-list-idea-card-improve-form-schema";
 

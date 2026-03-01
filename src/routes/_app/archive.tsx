@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import * as z from "zod";
 
 import { getApiV1ArchiveItemsMyQueryParamsSchema } from "@/codegen/api/product";
 import { ArchiveComponent } from "@/entrypoints/archive/component";
+import { z } from "@/lib/zod";
 
 const archiveSearchSchema = getApiV1ArchiveItemsMyQueryParamsSchema
   .unwrap()

@@ -1,4 +1,4 @@
-import * as z from "zod";
+import { z } from "@/lib/zod";
 
 import type { profileDialogFormSchema } from "../schemas/profile-dialog-form-schema";
 

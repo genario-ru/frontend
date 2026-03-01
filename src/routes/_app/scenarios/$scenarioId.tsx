@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import * as z from "zod";
 
 import { ScenarioComponent } from "@/entrypoints/scenario/component";
+import { z } from "@/lib/zod";
 
 const scenarioSearchSchema = z.object({
   chapterId: z.string().optional(),

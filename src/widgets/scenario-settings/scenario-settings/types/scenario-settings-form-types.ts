@@ -1,4 +1,4 @@
-import * as z from "zod";
+import { z } from "@/lib/zod";
 
 import type { createScenarioSchema } from "../schemas/create-scenario-schema";
 

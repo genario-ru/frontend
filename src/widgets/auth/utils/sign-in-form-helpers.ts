@@ -1,7 +1,7 @@
 import { formOptions } from "@tanstack/react-form";
-import * as z from "zod";
 
 import { createFormValidateFn } from "@/lib/tanstack-form/utils/create-form-validate-fn";
+import { z } from "@/lib/zod";
 
 export const signInFormSchema = z.object({
   email: z.email("Введите корректный email"),

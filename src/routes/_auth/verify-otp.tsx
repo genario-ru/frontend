@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import * as z from "zod";
 
 import { VerifyOTPComponent } from "@/entrypoints/verify-otp/component";
+import { z } from "@/lib/zod";
 
 const verifyOTPSearchSchema = z.object({
   email: z.email(),
