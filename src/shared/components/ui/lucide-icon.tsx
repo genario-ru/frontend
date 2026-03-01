@@ -1,4 +1,8 @@
-import type { LucideIcon as LucideIconType, LucideProps } from "lucide-react";
+import {
+  type LucideIcon as LucideIconType,
+  type LucideProps,
+  SquircleDashedIcon,
+} from "lucide-react";
 import type { ComponentType, LazyExoticComponent } from "react";
 import { lazy, Suspense } from "react";
 import { pascalCase } from "text-case";
@@ -47,23 +51,24 @@ export const LucideIcon = ({
   className,
   ...props
 }: LucideIconProps) => {
+  const iconClassName = cn(
+    svgIconVariants({ size, color, priority }),
+    className,
+  );
+
   if (typeof Icon === "string") {
     const LazyIcon = getLazyIcon(Icon);
 
     return (
-      <Suspense fallback={null}>
-        <LazyIcon
-          className={cn(svgIconVariants({ size, color, priority }), className)}
-          {...props}
-        />
+      <Suspense
+        fallback={
+          <SquircleDashedIcon className={cn("opacity-30", iconClassName)} />
+        }
+      >
+        <LazyIcon className={iconClassName} {...props} />
       </Suspense>
     );
   }
 
-  return (
-    <Icon
-      className={cn(svgIconVariants({ size, color, priority }), className)}
-      {...props}
-    />
-  );
+  return <Icon className={iconClassName} {...props} />;
 };
