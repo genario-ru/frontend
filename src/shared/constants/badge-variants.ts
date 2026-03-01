@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const badgeVariants = cva(
-  "inline-flex w-fit h-fit items-center font-medium outline-none",
+  "inline-flex w-fit h-fit items-center font-medium outline-none rounded-full",
   {
     variants: {
       color: {
@@ -15,8 +15,8 @@ export const badgeVariants = cva(
         tertiary: "",
       },
       size: {
-        base: "text-sm rounded-2.5 px-2.5 h-[30px] gap-1.5 [&_svg]:size-5",
-        sm: "text-xs rounded-2 px-1.5 h-6 gap-1 [&_svg]:size-4",
+        base: "text-sm px-2.5 h-[30px] gap-1.5 [&_svg]:size-5",
+        sm: "text-xs px-1.5 h-6 gap-1 [&_svg]:size-4",
       },
     },
     compoundVariants: [

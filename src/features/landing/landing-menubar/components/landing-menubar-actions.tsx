@@ -13,7 +13,7 @@ export function LandingMenubarActions({
     <Island
       row
       roundedTop={false}
-      className={cn("w-fit duration-200", {
+      className={cn("w-fit gap-2 duration-200", {
         "shadow-bottom-1": withShadow,
       })}
     >
