@@ -1,5 +1,3 @@
-import ky, { type SearchParamsOption } from "ky";
-
 import { envs } from "@/shared/constants/envs";
 
 import { APIError } from "../classes/api-error";
@@ -45,7 +43,6 @@ export default async function client<
 >({
   url,
   method,
-  params,
   data: body,
   signal,
   headers: initialHeaders,
@@ -58,10 +55,9 @@ export default async function client<
   const fullUrl = `${envs.VITE_BASE_API_URL}${url}`;
 
   try {
-    const response = await ky(fullUrl, {
+    const response = await fetch(fullUrl, {
       method,
       body: JSON.stringify(body),
-      searchParams: params as SearchParamsOption,
       signal,
       headers,
       credentials: "include",
@@ -70,16 +66,14 @@ export default async function client<
     const contentType = response.headers.get("Content-Type");
 
     if (!contentType?.includes(documentTypes.json)) {
-      console.warn("Non-JSON response is not supported");
-
-      return {
-        data: {} as TData,
+      throw new APIError("Non-JSON response is not supported", {
         status: response.status,
         statusText: response.statusText,
-      };
+        url: response.url,
+      });
     }
 
-    const data = await response.json<TData>();
+    const data = await response.json();
 
     if (!response.ok) {
       throw new APIError(`HTTP Error ${response.status}`, {
