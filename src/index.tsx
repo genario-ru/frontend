@@ -4,9 +4,9 @@ import "@/lib/i18n";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+import { ThemeProvider } from "next-themes";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider } from "tanstack-theme-kit";
 
 import { createQueryClient } from "@/lib/tanstack-query/create-query-client.ts";
 import { createRouter } from "@/lib/tanstack-router/create-router.ts";

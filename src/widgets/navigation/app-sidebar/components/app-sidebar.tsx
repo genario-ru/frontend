@@ -1,5 +1,5 @@
 import { BellIcon, MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "tanstack-theme-kit";
+import { useTheme } from "next-themes";
 
 import { AppSidebarContent } from "@/features/navigation/app-sidebar/components/app-sidebar-content";
 import { AppSidebarFooter } from "@/features/navigation/app-sidebar/components/app-sidebar-footer";
@@ -17,10 +17,10 @@ import { AppSidebarLayout } from "./app-sidebar-layout";
 import { AppSidebarUserMenu } from "./app-sidebar-user-menu";
 
 export const AppSidebar = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
   return (
