@@ -6,7 +6,7 @@ export function LandingMenubar() {
   const { isScrolled } = usePageCheckScroll();
 
   return (
-    <div className="sticky top-0 flex w-full items-center justify-between">
+    <div className="sticky top-0 z-1 flex w-full items-center justify-between">
       <LandingMenubarLinks withShadow={isScrolled} />
       <LandingMenubarActions withShadow={isScrolled} />
     </div>

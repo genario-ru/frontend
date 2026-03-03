@@ -2,6 +2,7 @@ import type { ComponentProps, CSSProperties } from "react";
 
 import { Heading } from "@/shared/components/ui/heading";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton, type SkeletonProps } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/utils/cn";
 
 type TemplateCardProps = ComponentProps<"div"> & {
@@ -50,5 +51,11 @@ export function TemplateCard({
       )}
       {children}
     </div>
+  );
+}
+
+export function TemplateCardSkeleton({ className, ...props }: SkeletonProps) {
+  return (
+    <Skeleton className={cn("rounded-4 min-h-[176px]", className)} {...props} />
   );
 }

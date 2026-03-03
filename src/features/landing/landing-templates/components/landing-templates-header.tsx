@@ -2,23 +2,21 @@ import { Badge } from "@/shared/components/ui/badge";
 
 import { LandingSectionHeader } from "../../landing-section-header/components/landing-section-header";
 
-const LANDING_POSSIBILITIES_BADGE = "Что-то очень важное";
-const LANDING_POSSIBILITES_TITLE = "Возможности Genario";
-
-const LANDING_POSSIBILITES_DESCRIPTION =
+const LANDING_TEMPLATES_BADGE = "Что-то очень важное";
+const LANDING_TEMPLITES_TITLE = "Шаблоны на все случаи";
+const LANDING_TEMPLITES_DESCRIPTION =
   "Создавайте сценарии для видео за минуты, а не часы, Создавайте сценарии для видео за минуты, а не часы, Создавайте сценарии";
 
-export function LandingPossibilitiesHeader() {
+export function LandingTemplatesHeader() {
   return (
     <LandingSectionHeader
       badge={
-        <Badge color="custom" className="bg-neutral-1/30 text-neutral-1">
-          {LANDING_POSSIBILITIES_BADGE}
+        <Badge color="custom" className="bg-accent-1 text-accent-6">
+          {LANDING_TEMPLATES_BADGE}
         </Badge>
       }
-      title={LANDING_POSSIBILITES_TITLE}
-      description={LANDING_POSSIBILITES_DESCRIPTION}
-      inverseColors={true}
+      title={LANDING_TEMPLITES_TITLE}
+      description={LANDING_TEMPLITES_DESCRIPTION}
     />
   );
 }
