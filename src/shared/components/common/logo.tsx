@@ -2,8 +2,8 @@ import type { LinkComponentProps } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import LogoFullDark from "@/icons/logo-full-dark.svg";
-import LogoFullLight from "@/icons/logo-full-light.svg";
+import LogoFullDark from "@/assets/svgs/logo-full-dark.svg";
+import LogoFullLight from "@/assets/svgs/logo-full-light.svg";
 import { cn } from "@/shared/utils/cn";
 
 const logoVariantProps = cva("", {

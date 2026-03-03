@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
-import LogoIconDark from "@/icons/logo-full-dark.svg";
-import LogoIconLight from "@/icons/logo-full-light.svg";
+import LogoIconDark from "@/assets/svgs/logo-full-dark.svg";
+import LogoIconLight from "@/assets/svgs/logo-full-light.svg";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { cn } from "@/shared/utils/cn";
