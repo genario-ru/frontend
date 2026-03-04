@@ -30,7 +30,7 @@ export const getApiV1ReferralInvitesMy200Schema = z.object({
       referralTargetUserId: z.uuid(),
       referralCodeId: z.uuid(),
       creditsBatchId: z.union([z.uuid(), z.null()]),
-      planDiscountId: z.union([z.uuid(), z.null()]),
+      tariffDiscountId: z.union([z.uuid(), z.null()]),
       createdAt: z.string(),
       updatedAt: z.string(),
       referralSourceUser: z.object({
@@ -88,12 +88,12 @@ export const getApiV1ReferralInvitesMy200Schema = z.object({
           z.null(),
         ]),
       ),
-      planDiscount: z.optional(
+      tariffDiscount: z.optional(
         z.union([
           z.object({
             id: z.uuid(),
             userId: z.uuid(),
-            planId: z.union([z.uuid(), z.null()]),
+            tariffId: z.union([z.uuid(), z.null()]),
             type: z.enum(["fixed", "percentage"]),
             value: z.int().min(-9007199254740991).max(9007199254740991),
             expiresAt: z.union([z.string(), z.null()]),

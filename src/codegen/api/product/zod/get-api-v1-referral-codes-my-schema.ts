@@ -23,7 +23,7 @@ export const getApiV1ReferralCodesMy200Schema = z.object({
           slug: z.string(),
           name: z.string(),
           description: z.union([z.string(), z.null()]),
-          type: z.enum(["credits", "plan_discount"]),
+          type: z.enum(["credits", "tariff_discount"]),
           userType: z.enum(["referral_source", "referral_target"]),
           value: z.int().min(-9007199254740991).max(9007199254740991),
           createdAt: z.string(),

@@ -5,7 +5,7 @@
 
 export const referralRewardTypeEnum = {
   credits: "credits",
-  plan_discount: "plan_discount",
+  tariff_discount: "tariff_discount",
 } as const;
 
 export type ReferralRewardTypeEnumKey =

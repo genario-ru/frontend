@@ -50,13 +50,13 @@ export const referralTargetUserRoleEnum = {
 export type ReferralTargetUserRoleEnumKey =
   (typeof referralTargetUserRoleEnum)[keyof typeof referralTargetUserRoleEnum];
 
-export const planDiscountTypeEnum = {
+export const tariffDiscountTypeEnum = {
   fixed: "fixed",
   percentage: "percentage",
 } as const;
 
-export type PlanDiscountTypeEnumKey =
-  (typeof planDiscountTypeEnum)[keyof typeof planDiscountTypeEnum];
+export type TariffDiscountTypeEnumKey =
+  (typeof tariffDiscountTypeEnum)[keyof typeof tariffDiscountTypeEnum];
 
 /**
  * @description My referral invites retrieved successfully
@@ -87,7 +87,7 @@ export type GetApiV1ReferralInvitesMy200 = {
      */
     referralCodeId: string;
     creditsBatchId: string | null;
-    planDiscountId: string | null;
+    tariffDiscountId: string | null;
     /**
      * @type string
      */
@@ -247,7 +247,7 @@ export type GetApiV1ReferralInvitesMy200 = {
        */
       updatedAt: string;
     } | null;
-    planDiscount?: {
+    tariffDiscount?: {
       /**
        * @type string, uuid
        */
@@ -256,11 +256,11 @@ export type GetApiV1ReferralInvitesMy200 = {
        * @type string, uuid
        */
       userId: string;
-      planId: string | null;
+      tariffId: string | null;
       /**
        * @type string
        */
-      type: PlanDiscountTypeEnumKey;
+      type: TariffDiscountTypeEnumKey;
       /**
        * @minLength -9007199254740991
        * @maxLength 9007199254740991

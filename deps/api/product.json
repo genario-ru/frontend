@@ -13311,7 +13311,7 @@
                                     "type": "string",
                                     "enum": [
                                       "credits",
-                                      "plan_discount"
+                                      "tariff_discount"
                                     ]
                                   },
                                   "userType": {
@@ -13502,7 +13502,7 @@
                               }
                             ]
                           },
-                          "planDiscountId": {
+                          "tariffDiscountId": {
                             "anyOf": [
                               {
                                 "type": "string",
@@ -13801,7 +13801,7 @@
                               }
                             ]
                           },
-                          "planDiscount": {
+                          "tariffDiscount": {
                             "anyOf": [
                               {
                                 "type": "object",
@@ -13816,7 +13816,7 @@
                                     "format": "uuid",
                                     "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                                   },
-                                  "planId": {
+                                  "tariffId": {
                                     "anyOf": [
                                       {
                                         "type": "string",
@@ -13860,7 +13860,7 @@
                                 "required": [
                                   "id",
                                   "userId",
-                                  "planId",
+                                  "tariffId",
                                   "type",
                                   "value",
                                   "expiresAt",
@@ -13881,7 +13881,7 @@
                           "referralTargetUserId",
                           "referralCodeId",
                           "creditsBatchId",
-                          "planDiscountId",
+                          "tariffDiscountId",
                           "createdAt",
                           "updatedAt",
                           "referralSourceUser",

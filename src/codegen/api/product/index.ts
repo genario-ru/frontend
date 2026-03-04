@@ -297,14 +297,14 @@ export type {
   GetApiV1ReferralInvitesMyQuery,
   GetApiV1ReferralInvitesMyQueryParams,
   GetApiV1ReferralInvitesMyQueryResponse,
-  PlanDiscountTypeEnumKey,
   ReferralSourceUserRoleEnumKey,
   ReferralTargetUserRoleEnumKey,
+  TariffDiscountTypeEnumKey,
 } from "./models/get-api-v1-referral-invites-my.ts";
 export { dataRewardStatusEnum } from "./models/get-api-v1-referral-invites-my.ts";
-export { planDiscountTypeEnum } from "./models/get-api-v1-referral-invites-my.ts";
 export { referralSourceUserRoleEnum } from "./models/get-api-v1-referral-invites-my.ts";
 export { referralTargetUserRoleEnum } from "./models/get-api-v1-referral-invites-my.ts";
+export { tariffDiscountTypeEnum } from "./models/get-api-v1-referral-invites-my.ts";
 export type {
   DataStatusEnum13Key,
   GetApiV1ScenariosChaptersChapterId200,
