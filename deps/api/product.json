@@ -14266,11 +14266,86 @@
                               }
                             ]
                           },
+                          "priority": {
+                            "type": "boolean"
+                          },
                           "createdAt": {
                             "type": "string"
                           },
                           "updatedAt": {
                             "type": "string"
+                          },
+                          "trial": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  },
+                                  "tariffId": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  "price": {
+                                    "type": "integer",
+                                    "minimum": -9007199254740991,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "creditsAmount": {
+                                    "type": "integer",
+                                    "minimum": -9007199254740991,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "active": {
+                                    "type": "boolean"
+                                  },
+                                  "firstTimeOnly": {
+                                    "type": "boolean"
+                                  },
+                                  "durationDays": {
+                                    "type": "integer",
+                                    "minimum": -9007199254740991,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "tariffId",
+                                  "slug",
+                                  "price",
+                                  "creditsAmount",
+                                  "active",
+                                  "firstTimeOnly",
+                                  "durationDays",
+                                  "createdAt",
+                                  "updatedAt"
+                                ]
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
                           }
                         },
                         "required": [
@@ -14282,6 +14357,7 @@
                           "oldPrice",
                           "creditsAmount",
                           "billingPeriod",
+                          "priority",
                           "createdAt",
                           "updatedAt"
                         ]

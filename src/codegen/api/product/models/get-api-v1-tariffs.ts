@@ -48,6 +48,10 @@ export type GetApiV1Tariffs200 = {
     creditsAmount: number;
     billingPeriod: DataBillingPeriodEnumKey | null;
     /**
+     * @type boolean
+     */
+    priority: boolean;
+    /**
      * @type string
      */
     createdAt: string;
@@ -55,6 +59,52 @@ export type GetApiV1Tariffs200 = {
      * @type string
      */
     updatedAt: string;
+    trial?: {
+      /**
+       * @type string, uuid
+       */
+      id: string;
+      tariffId: string | null;
+      /**
+       * @maxLength 255
+       * @type string
+       */
+      slug: string;
+      /**
+       * @minLength -9007199254740991
+       * @maxLength 9007199254740991
+       * @type integer
+       */
+      price: number;
+      /**
+       * @minLength -9007199254740991
+       * @maxLength 9007199254740991
+       * @type integer
+       */
+      creditsAmount: number;
+      /**
+       * @type boolean
+       */
+      active: boolean;
+      /**
+       * @type boolean
+       */
+      firstTimeOnly: boolean;
+      /**
+       * @minLength -9007199254740991
+       * @maxLength 9007199254740991
+       * @type integer
+       */
+      durationDays: number;
+      /**
+       * @type string
+       */
+      createdAt: string;
+      /**
+       * @type string
+       */
+      updatedAt: string;
+    } | null;
   }[];
 };
 

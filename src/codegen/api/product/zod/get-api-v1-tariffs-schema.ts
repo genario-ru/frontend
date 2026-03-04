@@ -19,8 +19,26 @@ export const getApiV1Tariffs200Schema = z.object({
       oldPrice: z.union([z.int(), z.null()]),
       creditsAmount: z.int().min(-9007199254740991).max(9007199254740991),
       billingPeriod: z.union([z.enum(["month", "year"]), z.null()]),
+      priority: z.boolean(),
       createdAt: z.string(),
       updatedAt: z.string(),
+      trial: z.optional(
+        z.union([
+          z.object({
+            id: z.uuid(),
+            tariffId: z.union([z.uuid(), z.null()]),
+            slug: z.string().max(255),
+            price: z.int().min(-9007199254740991).max(9007199254740991),
+            creditsAmount: z.int().min(-9007199254740991).max(9007199254740991),
+            active: z.boolean(),
+            firstTimeOnly: z.boolean(),
+            durationDays: z.int().min(-9007199254740991).max(9007199254740991),
+            createdAt: z.string(),
+            updatedAt: z.string(),
+          }),
+          z.null(),
+        ]),
+      ),
     }),
   ),
 });
