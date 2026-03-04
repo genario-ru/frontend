@@ -100,7 +100,7 @@ export const buttonVariants = cva(
         variant: "neutral",
         priority: "tertiary",
         className: cn(
-          "text-neutral-8 [&_svg]:stroke-neutral-8",
+          "bg-neutral-1 text-neutral-8 [&_svg]:stroke-neutral-8",
           "hover:bg-neutral-2 active:bg-neutral-2",
           "focus-visible:ring-neutral-8",
         ),

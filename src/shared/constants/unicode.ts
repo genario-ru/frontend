@@ -26,3 +26,5 @@ export const RDQUO = "\u201d";
 export const MINUS = "\u2212";
 
 export const SPACE = "\u0020";
+
+export const SLASH = "\u002f";

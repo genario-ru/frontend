@@ -31,7 +31,7 @@ export const landingMenubarLinks: LandingMenubarLink[] = [
     label: "Тарифы",
     navigateOptions: {
       to: "/",
-      hash: "plans",
+      hash: "tariffs",
     },
   },
   {
