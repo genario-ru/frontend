@@ -76,6 +76,8 @@ export const getApiV1ReferralInvitesMy200Schema = z.object({
           z.object({
             id: z.uuid(),
             userId: z.uuid(),
+            name: z.string(),
+            description: z.union([z.string(), z.null()]),
             initialAmount: z.int().min(-9007199254740991).max(9007199254740991),
             remainingAmount: z
               .int()

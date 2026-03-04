@@ -226,6 +226,11 @@ export type GetApiV1ReferralInvitesMy200 = {
        */
       userId: string;
       /**
+       * @type string
+       */
+      name: string;
+      description: string | null;
+      /**
        * @minLength -9007199254740991
        * @maxLength 9007199254740991
        * @type integer

@@ -24,6 +24,7 @@ export { getApiV1ScenariosScenarioId } from "./clients/get-api-v1-scenarios-scen
 export { getApiV1ScenariosScenarioIdCurrentVersion } from "./clients/get-api-v1-scenarios-scenario-id-current-version.ts";
 export { getApiV1ScenariosScenarioIdVersions } from "./clients/get-api-v1-scenarios-scenario-id-versions.ts";
 export { getApiV1ScenariosVersionsVersionId } from "./clients/get-api-v1-scenarios-versions-version-id.ts";
+export { getApiV1Tariffs } from "./clients/get-api-v1-tariffs.ts";
 export { getApiV1Templates } from "./clients/get-api-v1-templates.ts";
 export { getApiV1Tones } from "./clients/get-api-v1-tones.ts";
 export { getApiV1VideoDurations } from "./clients/get-api-v1-video-durations.ts";
@@ -389,6 +390,18 @@ export type {
 export { dataStatusEnum10 } from "./models/get-api-v1-scenarios-versions-version-id.ts";
 export { scenarioChaptersStatusEnum4 } from "./models/get-api-v1-scenarios-versions-version-id.ts";
 export type {
+  DataBillingPeriodEnumKey,
+  GetApiV1Tariffs200,
+  GetApiV1Tariffs400,
+  GetApiV1Tariffs401,
+  GetApiV1Tariffs403,
+  GetApiV1Tariffs404,
+  GetApiV1Tariffs500,
+  GetApiV1TariffsQuery,
+  GetApiV1TariffsQueryResponse,
+} from "./models/get-api-v1-tariffs.ts";
+export { dataBillingPeriodEnum } from "./models/get-api-v1-tariffs.ts";
+export type {
   GetApiV1Templates200,
   GetApiV1Templates400,
   GetApiV1Templates401,
@@ -749,6 +762,10 @@ export type { GetApiV1ScenariosVersionsVersionIdQueryKey } from "./tanstack/get-
 export { getApiV1ScenariosVersionsVersionIdQueryKey } from "./tanstack/get-api-v1-scenarios-versions-version-id.ts";
 export { getApiV1ScenariosVersionsVersionIdQueryOptions } from "./tanstack/get-api-v1-scenarios-versions-version-id.ts";
 export { useGetApiV1ScenariosVersionsVersionId } from "./tanstack/get-api-v1-scenarios-versions-version-id.ts";
+export type { GetApiV1TariffsQueryKey } from "./tanstack/get-api-v1-tariffs.ts";
+export { getApiV1TariffsQueryKey } from "./tanstack/get-api-v1-tariffs.ts";
+export { getApiV1TariffsQueryOptions } from "./tanstack/get-api-v1-tariffs.ts";
+export { useGetApiV1Tariffs } from "./tanstack/get-api-v1-tariffs.ts";
 export type { GetApiV1TemplatesQueryKey } from "./tanstack/get-api-v1-templates.ts";
 export { getApiV1TemplatesQueryKey } from "./tanstack/get-api-v1-templates.ts";
 export { getApiV1TemplatesQueryOptions } from "./tanstack/get-api-v1-templates.ts";
@@ -1083,6 +1100,15 @@ export {
   getApiV1ScenariosVersionsVersionIdPathParamsSchema,
   getApiV1ScenariosVersionsVersionIdQueryResponseSchema,
 } from "./zod/get-api-v1-scenarios-versions-version-id-schema.ts";
+export {
+  getApiV1Tariffs200Schema,
+  getApiV1Tariffs400Schema,
+  getApiV1Tariffs401Schema,
+  getApiV1Tariffs403Schema,
+  getApiV1Tariffs404Schema,
+  getApiV1Tariffs500Schema,
+  getApiV1TariffsQueryResponseSchema,
+} from "./zod/get-api-v1-tariffs-schema.ts";
 export {
   getApiV1Templates200Schema,
   getApiV1Templates400Schema,

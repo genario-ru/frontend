@@ -24,6 +24,7 @@ export { getApiV1ScenariosScenarioId } from "./get-api-v1-scenarios-scenario-id.
 export { getApiV1ScenariosScenarioIdCurrentVersion } from "./get-api-v1-scenarios-scenario-id-current-version.ts";
 export { getApiV1ScenariosScenarioIdVersions } from "./get-api-v1-scenarios-scenario-id-versions.ts";
 export { getApiV1ScenariosVersionsVersionId } from "./get-api-v1-scenarios-versions-version-id.ts";
+export { getApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export { getApiV1Templates } from "./get-api-v1-templates.ts";
 export { getApiV1Tones } from "./get-api-v1-tones.ts";
 export { getApiV1VideoDurations } from "./get-api-v1-video-durations.ts";

@@ -253,6 +253,15 @@ export {
   getApiV1ScenariosVersionsVersionIdQueryResponseSchema,
 } from "./get-api-v1-scenarios-versions-version-id-schema.ts";
 export {
+  getApiV1Tariffs200Schema,
+  getApiV1Tariffs400Schema,
+  getApiV1Tariffs401Schema,
+  getApiV1Tariffs403Schema,
+  getApiV1Tariffs404Schema,
+  getApiV1Tariffs500Schema,
+  getApiV1TariffsQueryResponseSchema,
+} from "./get-api-v1-tariffs-schema.ts";
+export {
   getApiV1Templates200Schema,
   getApiV1Templates400Schema,
   getApiV1Templates401Schema,

@@ -114,6 +114,10 @@ export type { GetApiV1ScenariosVersionsVersionIdQueryKey } from "./get-api-v1-sc
 export { getApiV1ScenariosVersionsVersionIdQueryKey } from "./get-api-v1-scenarios-versions-version-id.ts";
 export { getApiV1ScenariosVersionsVersionIdQueryOptions } from "./get-api-v1-scenarios-versions-version-id.ts";
 export { useGetApiV1ScenariosVersionsVersionId } from "./get-api-v1-scenarios-versions-version-id.ts";
+export type { GetApiV1TariffsQueryKey } from "./get-api-v1-tariffs.ts";
+export { getApiV1TariffsQueryKey } from "./get-api-v1-tariffs.ts";
+export { getApiV1TariffsQueryOptions } from "./get-api-v1-tariffs.ts";
+export { useGetApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export type { GetApiV1TemplatesQueryKey } from "./get-api-v1-templates.ts";
 export { getApiV1TemplatesQueryKey } from "./get-api-v1-templates.ts";
 export { getApiV1TemplatesQueryOptions } from "./get-api-v1-templates.ts";

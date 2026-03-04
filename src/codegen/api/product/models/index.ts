@@ -343,6 +343,18 @@ export type {
 export { dataStatusEnum10 } from "./get-api-v1-scenarios-versions-version-id.ts";
 export { scenarioChaptersStatusEnum4 } from "./get-api-v1-scenarios-versions-version-id.ts";
 export type {
+  DataBillingPeriodEnumKey,
+  GetApiV1Tariffs200,
+  GetApiV1Tariffs400,
+  GetApiV1Tariffs401,
+  GetApiV1Tariffs403,
+  GetApiV1Tariffs404,
+  GetApiV1Tariffs500,
+  GetApiV1TariffsQuery,
+  GetApiV1TariffsQueryResponse,
+} from "./get-api-v1-tariffs.ts";
+export { dataBillingPeriodEnum } from "./get-api-v1-tariffs.ts";
+export type {
   GetApiV1Templates200,
   GetApiV1Templates400,
   GetApiV1Templates401,
