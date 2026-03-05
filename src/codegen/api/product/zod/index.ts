@@ -262,6 +262,15 @@ export {
   getApiV1TariffsQueryResponseSchema,
 } from "./get-api-v1-tariffs-schema.ts";
 export {
+  getApiV1TariffsTrial200Schema,
+  getApiV1TariffsTrial400Schema,
+  getApiV1TariffsTrial401Schema,
+  getApiV1TariffsTrial403Schema,
+  getApiV1TariffsTrial404Schema,
+  getApiV1TariffsTrial500Schema,
+  getApiV1TariffsTrialQueryResponseSchema,
+} from "./get-api-v1-tariffs-trial-schema.ts";
+export {
   getApiV1Templates200Schema,
   getApiV1Templates400Schema,
   getApiV1Templates401Schema,

@@ -14247,11 +14247,6 @@
                               }
                             ]
                           },
-                          "creditsAmount": {
-                            "type": "integer",
-                            "minimum": -9007199254740991,
-                            "maximum": 9007199254740991
-                          },
                           "billingPeriod": {
                             "anyOf": [
                               {
@@ -14266,86 +14261,60 @@
                               }
                             ]
                           },
-                          "priority": {
+                          "durationDays": {
+                            "anyOf": [
+                              {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "isRenewable": {
                             "type": "boolean"
+                          },
+                          "isPreferred": {
+                            "type": "boolean"
+                          },
+                          "creditsAmount": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "maxProfilesAmount": {
+                            "anyOf": [
+                              {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "exportAvailable": {
+                            "type": "boolean"
+                          },
+                          "versionHistoryAvailable": {
+                            "type": "boolean"
+                          },
+                          "generationPriority": {
+                            "type": "string",
+                            "enum": [
+                              "basic",
+                              "medium",
+                              "high"
+                            ]
                           },
                           "createdAt": {
                             "type": "string"
                           },
                           "updatedAt": {
                             "type": "string"
-                          },
-                          "trial": {
-                            "anyOf": [
-                              {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                                  },
-                                  "tariffId": {
-                                    "anyOf": [
-                                      {
-                                        "type": "string",
-                                        "format": "uuid",
-                                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                                      },
-                                      {
-                                        "type": "null"
-                                      }
-                                    ]
-                                  },
-                                  "slug": {
-                                    "type": "string",
-                                    "maxLength": 255
-                                  },
-                                  "price": {
-                                    "type": "integer",
-                                    "minimum": -9007199254740991,
-                                    "maximum": 9007199254740991
-                                  },
-                                  "creditsAmount": {
-                                    "type": "integer",
-                                    "minimum": -9007199254740991,
-                                    "maximum": 9007199254740991
-                                  },
-                                  "active": {
-                                    "type": "boolean"
-                                  },
-                                  "firstTimeOnly": {
-                                    "type": "boolean"
-                                  },
-                                  "durationDays": {
-                                    "type": "integer",
-                                    "minimum": -9007199254740991,
-                                    "maximum": 9007199254740991
-                                  },
-                                  "createdAt": {
-                                    "type": "string"
-                                  },
-                                  "updatedAt": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "tariffId",
-                                  "slug",
-                                  "price",
-                                  "creditsAmount",
-                                  "active",
-                                  "firstTimeOnly",
-                                  "durationDays",
-                                  "createdAt",
-                                  "updatedAt"
-                                ]
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ]
                           }
                         },
                         "required": [
@@ -14355,13 +14324,246 @@
                           "description",
                           "price",
                           "oldPrice",
-                          "creditsAmount",
                           "billingPeriod",
-                          "priority",
+                          "durationDays",
+                          "isRenewable",
+                          "isPreferred",
+                          "creditsAmount",
+                          "maxProfilesAmount",
+                          "exportAvailable",
+                          "versionHistoryAvailable",
+                          "generationPriority",
                           "createdAt",
                           "updatedAt"
                         ]
                       }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "title": "Bad request response",
+                  "examples": [
+                    "Invalid request data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "title": "Unauthorized response",
+                  "examples": [
+                    "You have to authenticate to access this resource"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "title": "Forbidden response",
+                  "examples": [
+                    "You are not authorized to access this resource"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "title": "Not found response",
+                  "examples": [
+                    "Resource not found"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "title": "Internal server error response",
+                  "examples": [
+                    "You have to authenticate to access this resource"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tariffs/trial": {
+      "get": {
+        "operationId": "getApiV1TariffsTrial",
+        "tags": [
+          "Tariffs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Trial tariff retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "slug": {
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "price": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "oldPrice": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "billingPeriod": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "month",
+                                "year"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "durationDays": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "isRenewable": {
+                          "type": "boolean"
+                        },
+                        "isPreferred": {
+                          "type": "boolean"
+                        },
+                        "creditsAmount": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "maxProfilesAmount": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "exportAvailable": {
+                          "type": "boolean"
+                        },
+                        "versionHistoryAvailable": {
+                          "type": "boolean"
+                        },
+                        "generationPriority": {
+                          "type": "string",
+                          "enum": [
+                            "basic",
+                            "medium",
+                            "high"
+                          ]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "slug",
+                        "name",
+                        "description",
+                        "price",
+                        "oldPrice",
+                        "billingPeriod",
+                        "durationDays",
+                        "isRenewable",
+                        "isPreferred",
+                        "creditsAmount",
+                        "maxProfilesAmount",
+                        "exportAvailable",
+                        "versionHistoryAvailable",
+                        "generationPriority",
+                        "createdAt",
+                        "updatedAt"
+                      ]
                     }
                   },
                   "required": [

@@ -3,29 +3,29 @@
  * Do not edit manually.
  */
 
-export const dataBillingPeriodEnum = {
+export const dataBillingPeriodEnum2 = {
   month: "month",
   year: "year",
 } as const;
 
-export type DataBillingPeriodEnumKey =
-  (typeof dataBillingPeriodEnum)[keyof typeof dataBillingPeriodEnum];
+export type DataBillingPeriodEnum2Key =
+  (typeof dataBillingPeriodEnum2)[keyof typeof dataBillingPeriodEnum2];
 
-export const dataGenerationPriorityEnum = {
+export const dataGenerationPriorityEnum2 = {
   basic: "basic",
   medium: "medium",
   high: "high",
 } as const;
 
-export type DataGenerationPriorityEnumKey =
-  (typeof dataGenerationPriorityEnum)[keyof typeof dataGenerationPriorityEnum];
+export type DataGenerationPriorityEnum2Key =
+  (typeof dataGenerationPriorityEnum2)[keyof typeof dataGenerationPriorityEnum2];
 
 /**
- * @description Tariffs retrieved successfully
+ * @description Trial tariff retrieved successfully
  */
-export type GetApiV1Tariffs200 = {
+export type GetApiV1TariffsTrial200 = {
   /**
-   * @type array
+   * @type object
    */
   data: {
     /**
@@ -49,7 +49,7 @@ export type GetApiV1Tariffs200 = {
      */
     price: number;
     oldPrice: number | null;
-    billingPeriod: DataBillingPeriodEnumKey | null;
+    billingPeriod: DataBillingPeriodEnum2Key | null;
     durationDays: number | null;
     /**
      * @type boolean
@@ -77,7 +77,7 @@ export type GetApiV1Tariffs200 = {
     /**
      * @type string
      */
-    generationPriority: DataGenerationPriorityEnumKey;
+    generationPriority: DataGenerationPriorityEnum2Key;
     /**
      * @type string
      */
@@ -86,47 +86,47 @@ export type GetApiV1Tariffs200 = {
      * @type string
      */
     updatedAt: string;
-  }[];
+  };
 };
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1Tariffs400 = string;
+export type GetApiV1TariffsTrial400 = string;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1Tariffs401 = string;
+export type GetApiV1TariffsTrial401 = string;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1Tariffs403 = string;
+export type GetApiV1TariffsTrial403 = string;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1Tariffs404 = string;
+export type GetApiV1TariffsTrial404 = string;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1Tariffs500 = string;
+export type GetApiV1TariffsTrial500 = string;
 
-export type GetApiV1TariffsQueryResponse = GetApiV1Tariffs200;
+export type GetApiV1TariffsTrialQueryResponse = GetApiV1TariffsTrial200;
 
-export type GetApiV1TariffsQuery = {
-  Response: GetApiV1Tariffs200;
+export type GetApiV1TariffsTrialQuery = {
+  Response: GetApiV1TariffsTrial200;
   Errors:
-    | GetApiV1Tariffs400
-    | GetApiV1Tariffs401
-    | GetApiV1Tariffs403
-    | GetApiV1Tariffs404
-    | GetApiV1Tariffs500;
+    | GetApiV1TariffsTrial400
+    | GetApiV1TariffsTrial401
+    | GetApiV1TariffsTrial403
+    | GetApiV1TariffsTrial404
+    | GetApiV1TariffsTrial500;
 };

@@ -22,15 +22,8 @@ export function LandingTariffsList() {
 
     if (tariffsData) {
       return tariffsData.data.map((tariff) => {
-        const isPriorityTariff = tariff.priority;
-        let buttonLinkTitle = `Оформить за ${tariff.price} ${RUBBLE_SIGN}`;
-
-        if (tariff.trial) {
-          const tariffTrialPrice = tariff.trial.price;
-          const tariffTrialDurationDays = tariff.trial.durationDays;
-
-          buttonLinkTitle = `Попробовать ${tariffTrialDurationDays} за ${tariffTrialPrice} ${RUBBLE_SIGN}`;
-        }
+        const isPriorityTariff = tariff.isPreferred;
+        const buttonLinkTitle = `Оформить за ${tariff.price} ${RUBBLE_SIGN}`;
 
         return (
           <TariffCard
