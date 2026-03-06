@@ -45,33 +45,33 @@ export const svgIconVariants = cva("shrink-0", {
     {
       color: "positive",
       priority: "primary",
-      className: "stroke-positive-8",
+      className: "stroke-positive-6",
     },
     {
       color: "positive",
       priority: "secondary",
-      className: "stroke-positive-7",
+      className: "stroke-positive-5",
     },
     {
       color: "positive",
       priority: "tertiary",
-      className: "stroke-positive-6",
+      className: "stroke-positive-4",
     },
     // Negative
     {
       color: "negative",
       priority: "primary",
-      className: "stroke-negative-8",
+      className: "stroke-negative-6",
     },
     {
       color: "negative",
       priority: "secondary",
-      className: "stroke-negative-7",
+      className: "stroke-negative-5",
     },
     {
       color: "negative",
       priority: "tertiary",
-      className: "stroke-negative-6",
+      className: "stroke-negative-4",
     },
   ],
 });

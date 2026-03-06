@@ -1,5 +1,8 @@
 import { LandingIsland } from "@/features/landing/landing-island/components/landing-island";
-import { LandingTrialTariffFeatureSkeleton } from "@/features/landing/landing-trial-tariff/components/landing-trial-tariff-feature";
+import {
+  LandingTrialTariffFeature,
+  LandingTrialTariffFeatureSkeleton,
+} from "@/features/landing/landing-trial-tariff/components/landing-trial-tariff-feature";
 import {
   LandingTrialTariffHeader,
   LandingTrialTariffHeaderSkeleton,
@@ -25,7 +28,16 @@ export function LandingTrialTariff() {
         title={trialTariffData.data.name}
         description={trialTariffData.data.description}
       />
-      <div>features</div>
+      <div className="grid w-full max-w-[1000px] grid-cols-2 gap-6">
+        {trialTariffData.data.features.map((feature, index) =>
+          feature.included ? (
+            <LandingTrialTariffFeature
+              key={`trial-tariff-feature-${index}`}
+              text={feature.text}
+            />
+          ) : null,
+        )}
+      </div>
     </LandingIsland>
   );
 }

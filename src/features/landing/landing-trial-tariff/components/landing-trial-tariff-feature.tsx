@@ -5,16 +5,16 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 type LandingTrialTariffFeatureProps = {
-  title: string;
+  text: string;
 };
 
 export function LandingTrialTariffFeature({
-  title,
+  text,
 }: LandingTrialTariffFeatureProps) {
   return (
     <div className="flex items-center gap-2.5">
       <LucideIcon size="xl" color="positive" icon={CheckIcon} />
-      <p className="text-2xl">{title}</p>
+      <p className="text-2xl">{text}</p>
     </div>
   );
 }
