@@ -12,7 +12,6 @@ type TextSkeletonProps = ComponentProps<typeof Skeleton> & {
 };
 
 export const TextSkeleton = ({
-  mode,
   fontSize,
   lineHeight,
   linesCount = 1,
@@ -26,10 +25,9 @@ export const TextSkeleton = ({
         <div
           key={index}
           style={{ height: `${lineHeight}px` }}
-          className="flex items-center"
+          className="flex w-full items-center"
         >
           <Skeleton
-            mode={mode}
             style={{ height: `${fontSize}px` }}
             className={cn(
               "rounded-full",

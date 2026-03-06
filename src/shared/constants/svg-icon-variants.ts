@@ -3,6 +3,7 @@ import { cva } from "class-variance-authority";
 export const svgIconVariants = cva("shrink-0", {
   variants: {
     size: {
+      xl: "size-8",
       lg: "size-7",
       base: "size-6",
       sm: "size-5",

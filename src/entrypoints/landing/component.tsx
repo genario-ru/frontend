@@ -6,6 +6,7 @@ import { LandingPersonalization } from "@/widgets/landing/landing-personalizatio
 import { LandingPossibilities } from "@/widgets/landing/landing-possibilities/components/landing-possibilities";
 import { LadndingTariffs } from "@/widgets/landing/landing-tariffs/components/landing-tariffs";
 import { LandingTemplates } from "@/widgets/landing/landing-templates/components/landing-templates";
+import { LandingTrialTariff } from "@/widgets/landing/landing-trial-tariff/components/landing-trial-tariff";
 
 export function LandingComponent() {
   return (
@@ -16,6 +17,7 @@ export function LandingComponent() {
         <LandingPossibilities />
         <LandingTemplates />
         <LandingPersonalization />
+        <LandingTrialTariff />
         <LadndingTariffs />
       </ContentLayout>
     </PageLayout>
