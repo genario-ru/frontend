@@ -86,6 +86,19 @@ export type GetApiV1Tariffs200 = {
      * @type string
      */
     updatedAt: string;
+    /**
+     * @type array
+     */
+    features: {
+      /**
+       * @type string
+       */
+      text: string;
+      /**
+       * @type boolean
+       */
+      included: boolean;
+    }[];
   }[];
 };
 

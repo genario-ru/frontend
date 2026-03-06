@@ -14633,6 +14633,24 @@
                           },
                           "updatedAt": {
                             "type": "string"
+                          },
+                          "features": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "text": {
+                                  "type": "string"
+                                },
+                                "included": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "text",
+                                "included"
+                              ]
+                            }
                           }
                         },
                         "required": [
@@ -14652,7 +14670,8 @@
                           "versionHistoryAvailable",
                           "generationPriority",
                           "createdAt",
-                          "updatedAt"
+                          "updatedAt",
+                          "features"
                         ]
                       }
                     }
@@ -14861,6 +14880,24 @@
                         },
                         "updatedAt": {
                           "type": "string"
+                        },
+                        "features": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              },
+                              "included": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "text",
+                              "included"
+                            ]
+                          }
                         }
                       },
                       "required": [
@@ -14880,7 +14917,8 @@
                         "versionHistoryAvailable",
                         "generationPriority",
                         "createdAt",
-                        "updatedAt"
+                        "updatedAt",
+                        "features"
                       ]
                     }
                   },

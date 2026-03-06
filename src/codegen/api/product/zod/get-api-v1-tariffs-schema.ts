@@ -28,6 +28,12 @@ export const getApiV1Tariffs200Schema = z.object({
       generationPriority: z.enum(["basic", "medium", "high"]),
       createdAt: z.string(),
       updatedAt: z.string(),
+      features: z.array(
+        z.object({
+          text: z.string(),
+          included: z.boolean(),
+        }),
+      ),
     }),
   ),
 });
