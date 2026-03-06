@@ -47,7 +47,7 @@ export const buttonVariants = cva(
       variant: "neutral",
       priority: "secondary",
       size: "base",
-      rounding: "full",
+      rounding: "base",
       content: "mixed",
       state: "default",
     },
