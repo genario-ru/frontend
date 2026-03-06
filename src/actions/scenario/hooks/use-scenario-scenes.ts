@@ -15,7 +15,10 @@ export function useScenarioScenes({
   chapterId,
 }: UseScenarioScenesParams) {
   const navigate = useNavigate();
-  const { sceneId } = useSearch({ from: "/_app/scenarios/$scenarioId" });
+
+  const { sceneId } = useSearch({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
 
   const {
     scenarioChapterData,

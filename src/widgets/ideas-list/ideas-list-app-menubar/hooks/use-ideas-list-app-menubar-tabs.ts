@@ -17,7 +17,10 @@ export function useIdeasListAppMenubarTabs({
   ideasListId,
 }: UseIdeasListAppMenubarTabsParams) {
   const navigate = useNavigate();
-  const search = useSearch({ from: "/_app/ideas-lists/$ideasListId" });
+
+  const search = useSearch({
+    from: "/_with-auth/_with-subscription/ideas-lists/$ideasListId",
+  });
 
   const handleTabClick = useCallback(
     (slug: string) => {

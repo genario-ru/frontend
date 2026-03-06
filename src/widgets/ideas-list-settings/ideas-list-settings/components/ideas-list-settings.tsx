@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import type { IdeasListSettingsSearch } from "@/routes/_app/ideas-lists/settings";
+import type { IdeasListSettingsSearch } from "@/routes/_with-auth/_with-subscription/ideas-lists/settings";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useIdeasListSettings } from "../hooks/use-ideas-list-settings";

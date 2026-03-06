@@ -17,7 +17,7 @@ export function useArchiveFilters() {
   const navigate = useNavigate();
 
   const activeFilters = useSearch({
-    from: "/_app/archive",
+    from: "/_with-auth/_with-subscription/archive",
   });
 
   const hasActiveFilters = useMemo(

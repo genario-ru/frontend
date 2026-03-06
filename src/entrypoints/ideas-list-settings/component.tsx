@@ -6,7 +6,7 @@ import { IdeasListSettingsAppMenubar } from "@/widgets/ideas-list-settings/ideas
 
 export function IdeasListSettingsComponent() {
   const { templateId, ideasListId } = useSearch({
-    from: "/_app/ideas-lists/settings",
+    from: "/_with-auth/_with-subscription/ideas-lists/settings",
   });
 
   return (

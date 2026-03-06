@@ -14,7 +14,7 @@ const archiveSearchSchema = getApiV1ArchiveItemsMyQueryParamsSchema
 
 export type ArchiveSearch = z.infer<typeof archiveSearchSchema>;
 
-export const Route = createFileRoute("/_app/archive")({
+export const Route = createFileRoute("/_with-auth/_with-subscription/archive")({
   validateSearch: zodValidator(archiveSearchSchema),
   loaderDeps: ({ search }) => ({ search }),
   component: ArchiveComponent,

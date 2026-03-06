@@ -17,7 +17,10 @@ export function useScenarioAppMenubarTabs({
   scenarioId,
 }: UseScenarioAppMenubarTabsParams) {
   const navigate = useNavigate();
-  const search = useSearch({ from: "/_app/scenarios/$scenarioId" });
+
+  const search = useSearch({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
 
   const tabs: ScenarioAppMenubarTab[] = useMemo(
     () => [

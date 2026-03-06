@@ -10,7 +10,9 @@ const ideasListSearchSchema = z.object({
 
 export type IdeasListSearch = z.infer<typeof ideasListSearchSchema>;
 
-export const Route = createFileRoute("/_app/ideas-lists/$ideasListId")({
+export const Route = createFileRoute(
+  "/_with-auth/_with-subscription/ideas-lists/$ideasListId",
+)({
   validateSearch: zodValidator(ideasListSearchSchema),
   component: IdeasListComponent,
 });

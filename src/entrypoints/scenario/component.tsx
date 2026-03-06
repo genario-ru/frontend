@@ -12,8 +12,14 @@ import { ScenarioNavigationStatic } from "@/widgets/scenario/scenario-navigation
 import { ScenarioReferences } from "@/widgets/scenario/scenario-references/components/scenario-references";
 
 export function ScenarioComponent() {
-  const { scenarioId } = useParams({ from: "/_app/scenarios/$scenarioId" });
-  const { tab } = useSearch({ from: "/_app/scenarios/$scenarioId" });
+  const { scenarioId } = useParams({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
+
+  const { tab } = useSearch({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
+
   const staticNavigationRef = useRef<HTMLDivElement>(null);
 
   const body = useMemo(() => {

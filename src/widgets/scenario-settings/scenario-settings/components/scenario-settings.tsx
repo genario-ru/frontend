@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import type { ScenarioSettingsSearch } from "@/routes/_app/scenarios/settings";
+import type { ScenarioSettingsSearch } from "@/routes/_with-auth/_with-subscription/scenarios/settings";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 
 import { useScenarioSettings } from "../hooks/use-scenario-settings";

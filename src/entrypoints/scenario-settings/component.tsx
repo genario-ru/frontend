@@ -6,7 +6,7 @@ import { ScenarioSettingsAppMenubar } from "@/widgets/scenario-settings/scenario
 
 export function ScenarioSettingsComponent() {
   const { templateId, scenarioId, fromIdeaId } = useSearch({
-    from: "/_app/scenarios/settings",
+    from: "/_with-auth/_with-subscription/scenarios/settings",
   });
 
   return (

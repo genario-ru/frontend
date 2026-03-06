@@ -11,7 +11,10 @@ type UseScenarioChaptersParams = {
 
 export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
   const navigate = useNavigate();
-  const { chapterId } = useSearch({ from: "/_app/scenarios/$scenarioId" });
+
+  const { chapterId } = useSearch({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
 
   const {
     scenarioCurrentVersionData,

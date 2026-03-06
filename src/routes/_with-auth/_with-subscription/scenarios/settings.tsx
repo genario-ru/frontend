@@ -14,7 +14,9 @@ export type ScenarioSettingsSearch = z.infer<
   typeof scenarioSettingsSearchSchema
 >;
 
-export const Route = createFileRoute("/_app/scenarios/settings")({
+export const Route = createFileRoute(
+  "/_with-auth/_with-subscription/scenarios/settings",
+)({
   validateSearch: zodValidator(scenarioSettingsSearchSchema),
   component: ScenarioSettingsComponent,
 });

@@ -12,7 +12,9 @@ const scenarioSearchSchema = z.object({
 
 export type ScenarioSearch = z.infer<typeof scenarioSearchSchema>;
 
-export const Route = createFileRoute("/_app/scenarios/$scenarioId")({
+export const Route = createFileRoute(
+  "/_with-auth/_with-subscription/scenarios/$scenarioId",
+)({
   validateSearch: zodValidator(scenarioSearchSchema),
   component: ScenarioComponent,
 });

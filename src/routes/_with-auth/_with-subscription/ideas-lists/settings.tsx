@@ -13,7 +13,9 @@ export type IdeasListSettingsSearch = z.infer<
   typeof ideasListSettingsSearchSchema
 >;
 
-export const Route = createFileRoute("/_app/ideas-lists/settings")({
+export const Route = createFileRoute(
+  "/_with-auth/_with-subscription/ideas-lists/settings",
+)({
   validateSearch: zodValidator(ideasListSettingsSearchSchema),
   component: IdeasListSettingsComponent,
 });
