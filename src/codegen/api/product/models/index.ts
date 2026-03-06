@@ -343,6 +343,7 @@ export type {
 export { dataStatusEnum10 } from "./get-api-v1-scenarios-versions-version-id.ts";
 export { scenarioChaptersStatusEnum4 } from "./get-api-v1-scenarios-versions-version-id.ts";
 export type {
+  DataStatusEnum17Key,
   GetApiV1SubscriptonsMy200,
   GetApiV1SubscriptonsMy400,
   GetApiV1SubscriptonsMy401,
@@ -351,7 +352,12 @@ export type {
   GetApiV1SubscriptonsMy500,
   GetApiV1SubscriptonsMyQuery,
   GetApiV1SubscriptonsMyQueryResponse,
+  TariffBillingPeriodEnumKey,
+  TariffGenerationPriorityEnumKey,
 } from "./get-api-v1-subscriptons-my.ts";
+export { dataStatusEnum17 } from "./get-api-v1-subscriptons-my.ts";
+export { tariffBillingPeriodEnum } from "./get-api-v1-subscriptons-my.ts";
+export { tariffGenerationPriorityEnum } from "./get-api-v1-subscriptons-my.ts";
 export type {
   DataBillingPeriodEnumKey,
   DataGenerationPriorityEnumKey,

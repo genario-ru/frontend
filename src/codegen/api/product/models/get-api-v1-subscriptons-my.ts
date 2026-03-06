@@ -3,6 +3,33 @@
  * Do not edit manually.
  */
 
+export const dataStatusEnum17 = {
+  pending: "pending",
+  active: "active",
+  overdue: "overdue",
+  cancelled: "cancelled",
+} as const;
+
+export type DataStatusEnum17Key =
+  (typeof dataStatusEnum17)[keyof typeof dataStatusEnum17];
+
+export const tariffBillingPeriodEnum = {
+  month: "month",
+  year: "year",
+} as const;
+
+export type TariffBillingPeriodEnumKey =
+  (typeof tariffBillingPeriodEnum)[keyof typeof tariffBillingPeriodEnum];
+
+export const tariffGenerationPriorityEnum = {
+  basic: "basic",
+  medium: "medium",
+  high: "high",
+} as const;
+
+export type TariffGenerationPriorityEnumKey =
+  (typeof tariffGenerationPriorityEnum)[keyof typeof tariffGenerationPriorityEnum];
+
 /**
  * @description My subscriptions retrieved successfully
  */
@@ -19,19 +46,18 @@ export type GetApiV1SubscriptonsMy200 = {
      * @type string, uuid
      */
     userId: string;
-    currentVersionId: string | null;
-    profileId: string | null;
-    templateId: string | null;
-    platformId: string | null;
-    videoTypeId: string | null;
-    videoDurationId: string | null;
     /**
-     * @type boolean
+     * @type string, uuid
      */
-    saved: boolean;
-    name: string | null;
-    description: string | null;
-    targetAudience: string | null;
+    tariffId: string;
+    /**
+     * @type string
+     */
+    startsAt: string;
+    endsAt: string | null;
+    lastBilledAt: string | null;
+    nextBillingAt: string | null;
+    status: DataStatusEnum17Key | null;
     /**
      * @type string
      */
@@ -40,6 +66,69 @@ export type GetApiV1SubscriptonsMy200 = {
      * @type string
      */
     updatedAt: string;
+    /**
+     * @type object
+     */
+    tariff: {
+      /**
+       * @type string, uuid
+       */
+      id: string;
+      /**
+       * @maxLength 255
+       * @type string
+       */
+      slug: string;
+      /**
+       * @type string
+       */
+      name: string;
+      description: string | null;
+      /**
+       * @minLength -9007199254740991
+       * @maxLength 9007199254740991
+       * @type integer
+       */
+      price: number;
+      oldPrice: number | null;
+      billingPeriod: TariffBillingPeriodEnumKey | null;
+      durationDays: number | null;
+      /**
+       * @type boolean
+       */
+      isRenewable: boolean;
+      /**
+       * @type boolean
+       */
+      isPreferred: boolean;
+      /**
+       * @minLength -9007199254740991
+       * @maxLength 9007199254740991
+       * @type integer
+       */
+      creditsAmount: number;
+      maxProfilesAmount: number | null;
+      /**
+       * @type boolean
+       */
+      exportAvailable: boolean;
+      /**
+       * @type boolean
+       */
+      versionHistoryAvailable: boolean;
+      /**
+       * @type string
+       */
+      generationPriority: TariffGenerationPriorityEnumKey;
+      /**
+       * @type string
+       */
+      createdAt: string;
+      /**
+       * @type string
+       */
+      updatedAt: string;
+    };
   }[];
 };
 
