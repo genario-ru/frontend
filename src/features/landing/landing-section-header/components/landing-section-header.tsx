@@ -45,7 +45,7 @@ export function LandingSectionHeader({
       <h2
         className={cn("text-3xl font-semibold", {
           "text-neutral-8": !inverseColors,
-          "text-neutral-1": inverseColors,
+          "text-neutral-1 dark:text-neutral-8": inverseColors,
           "text-center": isAlignCenter,
         })}
       >
@@ -55,7 +55,7 @@ export function LandingSectionHeader({
         <p
           className={cn("text-xl", {
             "text-neutral-8/60": !inverseColors,
-            "text-neutral-1/60": inverseColors,
+            "text-neutral-1/60 dark:text-neutral-8/60": inverseColors,
             "text-center": isAlignCenter,
           })}
         >

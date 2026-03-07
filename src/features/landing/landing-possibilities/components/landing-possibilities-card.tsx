@@ -22,21 +22,26 @@ export function LandingPossibilitiesCard({
   return (
     <div className="relative flex-1">
       <div
-        className={cn("rounded-4 flex flex-1 flex-col gap-3 p-6", {
-          "bg-neutral-1/30": !disabled,
-          "bg-neutral-1/15 pointer-events-none": disabled,
-        })}
+        className={cn(
+          "rounded-4 bg-neutral-1/30 dark:bg-neutral-8/30 flex flex-1 flex-col gap-3 p-6",
+          {
+            "opacity-60": disabled,
+          },
+        )}
       >
         <div className="flex items-center gap-1.5 [&_svg]:size-6">
           {icon}
-          <p className="text-neutral-1 text-xl">{title}</p>
+          <p className="text-neutral-1 dark:text-neutral-8 text-xl">{title}</p>
         </div>
-        <p className="text-neutral-1/60">{description}</p>
+        <p className="text-neutral-1/60 dark:text-neutral-8/60">
+          {description}
+        </p>
       </div>
       {soon && (
         <Badge
           icon={<ZapIcon />}
-          className="text-accent-6 [&_svg]:stroke-accent-6 absolute top-3 right-3"
+          color="custom"
+          className="bg-neutral-1 dark:bg-neutral-8 text-accent-7 [&_svg]:stroke-accent-7 dark:text-accent-2 dark:[&_svg]:stroke-accent-2 absolute top-3 right-3"
         >
           Скоро
         </Badge>

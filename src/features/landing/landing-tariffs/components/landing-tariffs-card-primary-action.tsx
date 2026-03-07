@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import {
   ButtonLink,
   type ButtonLinkProps,
@@ -9,6 +11,7 @@ type LandingTariffsCardPrimaryActionProps = Pick<
 > & {
   title: string;
   subtitle?: string;
+  isDarkTheme?: boolean;
   isPreferredTariff?: boolean;
 };
 
@@ -17,15 +20,24 @@ export function LandingTariffsCardPrimaryAction({
   search,
   title,
   subtitle,
+  isDarkTheme,
   isPreferredTariff,
 }: LandingTariffsCardPrimaryActionProps) {
+  const priority = useMemo(() => {
+    if (isDarkTheme || isPreferredTariff) {
+      return "primary";
+    }
+
+    return "tertiary";
+  }, [isDarkTheme, isPreferredTariff]);
+
   return (
     <ButtonLink
       to={to}
       search={search}
       size="lg"
       variant={isPreferredTariff ? "accent" : "neutral"}
-      priority={isPreferredTariff ? "primary" : "tertiary"}
+      priority={priority}
       className="w-full flex-col items-center gap-0"
     >
       {title}

@@ -21,13 +21,14 @@ export function TariffCardListItem({
       <LucideIcon
         size="sm"
         icon={Icon}
-        className={cn("stroke-neutral-6 mt-0.5", {
+        className={cn("mt-0.5", {
           "stroke-positive-6 group-data-[inverse=true]/tariff-card:stroke-positive-4":
             !negative,
-          "group-data-[inverse=true]/tariff-card:stroke-neutral-3": negative,
+          "stroke-neutral-8/70 group-data-[inverse=true]/tariff-card:stroke-neutral-1/70":
+            negative,
         })}
       />
-      <span className="text-neutral-7 group-data-[inverse=true]/tariff-card:text-neutral-3">
+      <span className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">
         {title}
       </span>
     </li>

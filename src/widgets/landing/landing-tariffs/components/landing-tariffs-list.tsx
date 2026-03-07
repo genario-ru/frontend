@@ -1,4 +1,5 @@
 import { partition } from "es-toolkit";
+import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -16,6 +17,7 @@ import { useLandingTariffsList } from "../hooks/use-landing-tariffs-list";
 
 export function LandingTariffsList() {
   const { t } = useTranslation();
+  const { resolvedTheme } = useTheme();
 
   const {
     tariffsData,
@@ -39,10 +41,15 @@ export function LandingTariffsList() {
 
     if (tariffsData) {
       return tariffsData.data.map((tariff) => {
+        const isDarkTheme = resolvedTheme !== "light";
         const isPreferredTariff = tariff.isPreferred;
         const trialTariffDurationDays = trialTariffData?.data.durationDays;
         const trialTariffPrice = trialTariffData?.data.price;
         const hasTrial = trialTariffDurationDays && trialTariffPrice;
+
+        const inverseColors = isDarkTheme
+          ? isPreferredTariff
+          : !isPreferredTariff;
 
         const primaryAction = (
           <LandingTariffsCardPrimaryAction
@@ -61,6 +68,7 @@ export function LandingTariffsList() {
               tariffSlug: tariff.slug,
               trialTariffSlug: trialTariffData?.data.slug,
             }}
+            isDarkTheme={isDarkTheme}
             isPreferredTariff={isPreferredTariff}
           />
         );
@@ -72,7 +80,7 @@ export function LandingTariffsList() {
               tariffSlug: tariff.slug,
             }}
             title="Оформить без пробного периода"
-            inverseColors={!isPreferredTariff}
+            inverseColors={inverseColors}
           />
         ) : undefined;
 
@@ -88,13 +96,14 @@ export function LandingTariffsList() {
             description={tariff.description}
             price={tariff.price}
             oldPrice={tariff.oldPrice}
-            inverseColors={!isPreferredTariff}
+            inverseColors={inverseColors}
             primaryAction={primaryAction}
             secondaryAction={secondaryAction}
             features={features.map((feature) => feature.text)}
             limitations={limitations.map((limitation) => limitation.text)}
             className={cn("h-full flex-1", {
-              "bg-neutral-1/25": !isPreferredTariff,
+              "bg-neutral-1/20 dark:bg-neutral-8/20": !isPreferredTariff,
+              "bg-neutral-1 dark:bg-neutral-8": isPreferredTariff,
             })}
           />
         );
@@ -102,7 +111,14 @@ export function LandingTariffsList() {
     }
 
     return null;
-  }, [t, tariffsData, trialTariffData, isTariffsLoading, isTrialTariffLoading]);
+  }, [
+    t,
+    resolvedTheme,
+    tariffsData,
+    trialTariffData,
+    isTariffsLoading,
+    isTrialTariffLoading,
+  ]);
 
   return <div className="flex w-full items-center gap-2">{list}</div>;
 }

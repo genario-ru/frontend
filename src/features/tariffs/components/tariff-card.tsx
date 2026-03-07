@@ -51,25 +51,27 @@ export function TariffCard({
           <p className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-2xl font-semibold">
             {name}
           </p>
-          <p className="text-neutral-6 group-data-[inverse=true]/tariff-card:text-neutral-3">
+          <p className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">
             {description}
           </p>
         </div>
         <div className="w-full">
-          <span className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-2xl font-semibold">
-            {price}
-            {NBSP}
-            {RUBBLE_SIGN}
-            {NBSP}
+          <span className="text-2xl font-semibold">
+            <span className="group-data-[inverse=true]/tariff-card:text-neutral-1">
+              {price}
+              {NBSP}
+              {RUBBLE_SIGN}
+              {NBSP}
+            </span>
             {oldPrice && (
-              <span className="text-neutral-6 group-data-[inverse=true]/tariff-card:text-neutral-3 line-through">
+              <span className="text-neutral-8/50 group-data-[inverse=true]/tariff-card:text-neutral-1/50 line-through">
                 {oldPrice}
                 {NBSP}
                 {RUBBLE_SIGN}
               </span>
             )}
           </span>
-          <span className="text-neutral-6 group-data-[inverse=true]/tariff-card:text-neutral-3">
+          <span className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">
             {SLASH}
             мес
           </span>
