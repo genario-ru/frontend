@@ -14,7 +14,7 @@ export function LandingPossibilitiesHeader() {
       badge={
         <Badge
           color="custom"
-          className="bg-neutral-1/30 text-neutral-1 dark:text-neutral-8"
+          className="bg-neutral-1/30 dark:bg-neutral-8/30 text-neutral-1 dark:text-neutral-8"
         >
           {LANDING_POSSIBILITIES_BADGE}
         </Badge>

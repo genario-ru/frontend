@@ -7,7 +7,7 @@ export function LandingHeroBadge() {
     <Badge
       icon={<ZapIcon />}
       color="custom"
-      className="bg-accent-1 text-accent-6 [&_svg]:stroke-accent-6"
+      className="bg-accent-1 text-accent-7 [&_svg]:stroke-accent-7"
     >
       Какая-то очень притягивающая информация
     </Badge>

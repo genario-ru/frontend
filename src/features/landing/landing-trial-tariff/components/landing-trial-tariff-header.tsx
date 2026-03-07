@@ -20,7 +20,7 @@ export function LandingTrialTariffHeader({
   return (
     <LandingSectionHeader
       badge={
-        <Badge color="custom" className="bg-accent-1 text-accent-6">
+        <Badge color="custom" className="bg-accent-1 text-accent-7">
           {LANDING_TRIAL_TARIFF_BADGE}
         </Badge>
       }

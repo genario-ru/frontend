@@ -11,7 +11,7 @@ export function LandingTemplatesHeader() {
   return (
     <LandingSectionHeader
       badge={
-        <Badge color="custom" className="bg-accent-1 text-accent-6">
+        <Badge color="custom" className="bg-accent-1 text-accent-7">
           {LANDING_TEMPLATES_BADGE}
         </Badge>
       }
