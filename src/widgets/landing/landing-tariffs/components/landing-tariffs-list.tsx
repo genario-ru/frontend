@@ -1,17 +1,26 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { TariffCard } from "@/features/tariffs/components/tariff-card";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
-import { RUBBLE_SIGN } from "@/shared/constants/unicode";
+import { NBSP, RUBBLE_SIGN } from "@/shared/constants/unicode";
+import { cn } from "@/shared/utils/cn";
 
 import { useLandingTariffsList } from "../hooks/use-landing-tariffs-list";
 
 export function LandingTariffsList() {
-  const { tariffsData, isTariffsLoading } = useLandingTariffsList();
+  const { t } = useTranslation();
+
+  const {
+    tariffsData,
+    trialTariffData,
+    isTariffsLoading,
+    isTrialTariffLoading,
+  } = useLandingTariffsList();
 
   const list = useMemo(() => {
-    if (isTariffsLoading) {
+    if (isTariffsLoading || isTrialTariffLoading) {
       return (
         <ItemsList
           count={3}
@@ -23,7 +32,10 @@ export function LandingTariffsList() {
     if (tariffsData) {
       return tariffsData.data.map((tariff) => {
         const isPriorityTariff = tariff.isPreferred;
-        const buttonLinkTitle = `Оформить за ${tariff.price} ${RUBBLE_SIGN}`;
+
+        const buttonLinkTitle = trialTariffData?.data.durationDays
+          ? `Попробовать ${t("common.days_count.days", { count: trialTariffData.data.durationDays })} за ${trialTariffData.data.price}${NBSP}${RUBBLE_SIGN}`
+          : `Оформить за ${tariff.price}${NBSP}${RUBBLE_SIGN}`;
 
         return (
           <TariffCard
@@ -39,13 +51,16 @@ export function LandingTariffsList() {
               variant: isPriorityTariff ? "accent" : "neutral",
               priority: isPriorityTariff ? "primary" : "secondary",
             }}
+            className={cn("flex-1", {
+              "bg-neutral-1/25": !isPriorityTariff,
+            })}
           />
         );
       });
     }
 
     return null;
-  }, [tariffsData, isTariffsLoading]);
+  }, [t, tariffsData, trialTariffData, isTariffsLoading, isTrialTariffLoading]);
 
-  return <div className="flex w-full items-center">{list}</div>;
+  return <div className="flex w-full items-center gap-2">{list}</div>;
 }

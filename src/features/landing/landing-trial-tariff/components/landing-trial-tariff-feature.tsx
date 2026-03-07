@@ -13,7 +13,12 @@ export function LandingTrialTariffFeature({
 }: LandingTrialTariffFeatureProps) {
   return (
     <div className="flex items-center gap-2.5">
-      <LucideIcon size="xl" color="positive" icon={CheckIcon} />
+      <LucideIcon
+        size="xl"
+        color="positive"
+        priority="secondary"
+        icon={CheckIcon}
+      />
       <p className="text-2xl">{text}</p>
     </div>
   );

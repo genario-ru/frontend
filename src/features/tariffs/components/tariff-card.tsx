@@ -17,6 +17,7 @@ type TariffCardProps = PropsWithClassName<{
   limitations?: string[];
   inverseColors?: boolean;
   buttonLinkTitle: string;
+  buttonLinkSubtitle?: string;
   buttonLinkProps?: ButtonLinkProps;
 }>;
 
@@ -55,13 +56,15 @@ export function TariffCard({
           <span className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-2xl font-semibold">
             {price}
             {NBSP}
+            {RUBBLE_SIGN}
+            {NBSP}
             {oldPrice && (
               <span className="text-neutral-6 group-data-[inverse=true]/tariff-card:text-neutral-3 line-through">
                 {oldPrice}
                 {NBSP}
+                {RUBBLE_SIGN}
               </span>
             )}
-            {RUBBLE_SIGN}
           </span>
           <span className="text-neutral-6 group-data-[inverse=true]/tariff-card:text-neutral-3">
             {SLASH}
