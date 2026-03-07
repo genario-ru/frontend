@@ -19,7 +19,7 @@ export function LandingTrialTariffFeature({
         priority="secondary"
         icon={CheckIcon}
       />
-      <p className="text-2xl">{text}</p>
+      <p className="text-xl font-medium">{text}</p>
     </div>
   );
 }

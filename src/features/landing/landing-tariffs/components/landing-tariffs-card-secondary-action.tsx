@@ -19,7 +19,7 @@ export function LandingTariffsCardSecondaryAction({
       search={search}
       className={cn("underline duration-200", {
         "text-neutral-7 hover:text-neutral-8": !inverseColors,
-        "text-neutral-3 hover:text-neutral-2": inverseColors,
+        "text-neutral-3 hover:text-neutral-1": inverseColors,
       })}
     >
       {title}
