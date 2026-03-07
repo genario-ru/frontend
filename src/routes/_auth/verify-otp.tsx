@@ -8,6 +8,7 @@ const verifyOTPSearchSchema = z.object({
   email: z.email(),
   redirect: z.string().optional(),
   tariffSlug: z.string().optional(),
+  trialTariffSlug: z.string().optional(),
 });
 
 export type VerifyOTPSearch = z.infer<typeof verifyOTPSearchSchema>;

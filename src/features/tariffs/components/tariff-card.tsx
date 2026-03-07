@@ -1,7 +1,5 @@
-import {
-  ButtonLink,
-  type ButtonLinkProps,
-} from "@/shared/components/ui/button-link";
+import type { ReactNode } from "react";
+
 import { NBSP, RUBBLE_SIGN, SLASH } from "@/shared/constants/unicode";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
@@ -16,9 +14,8 @@ type TariffCardProps = PropsWithClassName<{
   features?: string[];
   limitations?: string[];
   inverseColors?: boolean;
-  buttonLinkTitle: string;
-  buttonLinkSubtitle?: string;
-  buttonLinkProps?: ButtonLinkProps;
+  primaryAction: ReactNode;
+  secondaryAction?: ReactNode;
 }>;
 
 export function TariffCard({
@@ -29,8 +26,8 @@ export function TariffCard({
   features = [],
   limitations = [],
   inverseColors = false,
-  buttonLinkTitle,
-  buttonLinkProps: { className: buttonLinkClassName, ...buttonLinkProps } = {},
+  primaryAction,
+  secondaryAction,
   className,
 }: TariffCardProps) {
   const hasList = features.length + limitations.length > 0;
@@ -39,11 +36,11 @@ export function TariffCard({
     <div
       data-inverse={inverseColors}
       className={cn(
-        "group/tariff-card rounded-4 bg-neutral-1 flex flex-col p-6",
+        "group/tariff-card rounded-4 bg-neutral-1 flex flex-col gap-6 p-6",
         className,
       )}
     >
-      <header className="flex w-full flex-col gap-4">
+      <header className="flex w-full flex-col gap-3">
         <div className="flex w-full flex-col gap-1">
           <p className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-2xl font-semibold">
             {name}
@@ -71,14 +68,11 @@ export function TariffCard({
             мес
           </span>
         </div>
-        <ButtonLink
-          size="lg"
-          className={cn("w-full justify-center", buttonLinkClassName)}
-          {...buttonLinkProps}
-        >
-          {buttonLinkTitle}
-        </ButtonLink>
       </header>
+      <div className="flex flex-col items-center gap-2">
+        {primaryAction}
+        {secondaryAction}
+      </div>
       {hasList && (
         <ul className="flex w-full flex-col gap-1">
           {features.map((feature, index) => (
@@ -91,6 +85,7 @@ export function TariffCard({
             <TariffCardListItem
               key={`tariff-card-${name}-limitation-${index}`}
               title={feature}
+              negative
             />
           ))}
         </ul>

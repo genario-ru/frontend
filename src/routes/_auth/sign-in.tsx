@@ -10,6 +10,7 @@ const signInSearchSchema = z.object({
   email: z.email().optional(),
   redirect: z.string().optional(),
   tariffSlug: z.string().optional(),
+  trialTariffSlug: z.string().optional(),
 });
 
 export type SignInSearch = z.infer<typeof signInSearchSchema>;

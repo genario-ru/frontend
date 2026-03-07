@@ -1,6 +1,9 @@
+import { partition } from "es-toolkit";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import { LandingTariffsCardPrimaryAction } from "@/features/landing/landing-tariffs/components/landing-tariffs-card-primary-action";
+import { LandingTariffsCardSecondaryAction } from "@/features/landing/landing-tariffs/components/landing-tariffs-card-secondary-action";
 import { TariffCard } from "@/features/tariffs/components/tariff-card";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
@@ -31,11 +34,47 @@ export function LandingTariffsList() {
 
     if (tariffsData) {
       return tariffsData.data.map((tariff) => {
-        const isPriorityTariff = tariff.isPreferred;
+        const isPreferredTariff = tariff.isPreferred;
+        const trialTariffDurationDays = trialTariffData?.data.durationDays;
+        const trialTariffPrice = trialTariffData?.data.price;
+        const hasTrial = trialTariffDurationDays && trialTariffPrice;
 
-        const buttonLinkTitle = trialTariffData?.data.durationDays
-          ? `Попробовать ${t("common.days_count.days", { count: trialTariffData.data.durationDays })} за ${trialTariffData.data.price}${NBSP}${RUBBLE_SIGN}`
-          : `Оформить за ${tariff.price}${NBSP}${RUBBLE_SIGN}`;
+        const primaryAction = (
+          <LandingTariffsCardPrimaryAction
+            title={
+              hasTrial
+                ? `Попробовать ${t("common.days_count.days", { count: trialTariffDurationDays })} за ${trialTariffPrice}${NBSP}${RUBBLE_SIGN}`
+                : `Оформить за ${tariff.price}${NBSP}${RUBBLE_SIGN}/мес`
+            }
+            subtitle={
+              hasTrial
+                ? `Затем ${tariff.price}${NBSP}${RUBBLE_SIGN}/мес`
+                : undefined
+            }
+            to="/sign-in"
+            search={{
+              tariffSlug: tariff.slug,
+              trialTariffSlug: trialTariffData?.data.slug,
+            }}
+            isPreferredTariff={isPreferredTariff}
+          />
+        );
+
+        const secondaryAction = hasTrial ? (
+          <LandingTariffsCardSecondaryAction
+            to="/sign-in"
+            search={{
+              tariffSlug: tariff.slug,
+            }}
+            title="Оформить без пробного периода"
+            inverseColors={!isPreferredTariff}
+          />
+        ) : undefined;
+
+        const [features, limitations] = partition(
+          tariff.features,
+          (feature) => feature.included,
+        );
 
         return (
           <TariffCard
@@ -44,15 +83,13 @@ export function LandingTariffsList() {
             description={tariff.description}
             price={tariff.price}
             oldPrice={tariff.oldPrice}
-            inverseColors={!isPriorityTariff}
-            buttonLinkTitle={buttonLinkTitle}
-            buttonLinkProps={{
-              to: "/sign-in",
-              variant: isPriorityTariff ? "accent" : "neutral",
-              priority: isPriorityTariff ? "primary" : "secondary",
-            }}
-            className={cn("flex-1", {
-              "bg-neutral-1/25": !isPriorityTariff,
+            inverseColors={!isPreferredTariff}
+            primaryAction={primaryAction}
+            secondaryAction={secondaryAction}
+            features={features.map((feature) => feature.text)}
+            limitations={limitations.map((limitation) => limitation.text)}
+            className={cn("h-full flex-1", {
+              "bg-neutral-1/25": !isPreferredTariff,
             })}
           />
         );
