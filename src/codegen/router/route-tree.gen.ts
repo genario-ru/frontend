@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from "./../../routes/__root";
+import { Route as WithAuthRouteRouteImport } from "./../../routes/_with-auth/route";
 import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route";
 import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
 import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
@@ -28,6 +29,10 @@ import { Route as WithAuthWithSubscriptionScenariosScenarioIdRouteImport } from 
 import { Route as WithAuthWithSubscriptionIdeasListsSettingsRouteImport } from "./../../routes/_with-auth/_with-subscription/ideas-lists/settings";
 import { Route as WithAuthWithSubscriptionIdeasListsIdeasListIdRouteImport } from "./../../routes/_with-auth/_with-subscription/ideas-lists/$ideasListId";
 
+const WithAuthRouteRoute = WithAuthRouteRouteImport.update({
+  id: "/_with-auth",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: "/_auth",
   getParentRoute: () => rootRouteImport,
@@ -44,8 +49,8 @@ const AuthSignInRoute = AuthSignInRouteImport.update({
 } as any);
 const WithAuthWithSubscriptionRouteRoute =
   WithAuthWithSubscriptionRouteRouteImport.update({
-    id: "/_with-auth/_with-subscription",
-    getParentRoute: () => rootRouteImport,
+    id: "/_with-subscription",
+    getParentRoute: () => WithAuthRouteRoute,
   } as any);
 const WithoutAuthLandingIndexRoute = WithoutAuthLandingIndexRouteImport.update({
   id: "/_without-auth/_landing/",
@@ -72,9 +77,9 @@ const WithoutAuthDocumentsPdProcessingConsentRoute =
   } as any);
 const WithAuthWithoutSubscriptionTariffsRoute =
   WithAuthWithoutSubscriptionTariffsRouteImport.update({
-    id: "/_with-auth/_without-subscription/tariffs",
+    id: "/_without-subscription/tariffs",
     path: "/tariffs",
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => WithAuthRouteRoute,
   } as any);
 const WithAuthWithSubscriptionProfilesRoute =
   WithAuthWithSubscriptionProfilesRouteImport.update({
@@ -170,6 +175,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   "/_auth": typeof AuthRouteRouteWithChildren;
+  "/_with-auth": typeof WithAuthRouteRouteWithChildren;
   "/_with-auth/_with-subscription": typeof WithAuthWithSubscriptionRouteRouteWithChildren;
   "/_auth/sign-in": typeof AuthSignInRoute;
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
@@ -228,6 +234,7 @@ export interface FileRouteTypes {
   id:
     | "__root__"
     | "/_auth"
+    | "/_with-auth"
     | "/_with-auth/_with-subscription"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
@@ -249,8 +256,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
-  WithAuthWithSubscriptionRouteRoute: typeof WithAuthWithSubscriptionRouteRouteWithChildren;
-  WithAuthWithoutSubscriptionTariffsRoute: typeof WithAuthWithoutSubscriptionTariffsRoute;
+  WithAuthRouteRoute: typeof WithAuthRouteRouteWithChildren;
   WithoutAuthDocumentsPdProcessingConsentRoute: typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   WithoutAuthDocumentsPdProcessingPolicyRoute: typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
   WithoutAuthDocumentsUserAgreementRoute: typeof WithoutAuthDocumentsUserAgreementRoute;
@@ -259,6 +265,13 @@ export interface RootRouteChildren {
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
+    "/_with-auth": {
+      id: "/_with-auth";
+      path: "";
+      fullPath: "";
+      preLoaderRoute: typeof WithAuthRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/_auth": {
       id: "/_auth";
       path: "";
@@ -285,7 +298,7 @@ declare module "@tanstack/react-router" {
       path: "";
       fullPath: "";
       preLoaderRoute: typeof WithAuthWithSubscriptionRouteRouteImport;
-      parentRoute: typeof rootRouteImport;
+      parentRoute: typeof WithAuthRouteRoute;
     };
     "/_without-auth/_landing/": {
       id: "/_without-auth/_landing/";
@@ -320,7 +333,7 @@ declare module "@tanstack/react-router" {
       path: "/tariffs";
       fullPath: "/tariffs";
       preLoaderRoute: typeof WithAuthWithoutSubscriptionTariffsRouteImport;
-      parentRoute: typeof rootRouteImport;
+      parentRoute: typeof WithAuthRouteRoute;
     };
     "/_with-auth/_with-subscription/profiles": {
       id: "/_with-auth/_with-subscription/profiles";
@@ -439,12 +452,25 @@ const WithAuthWithSubscriptionRouteRouteWithChildren =
     WithAuthWithSubscriptionRouteRouteChildren,
   );
 
-const rootRouteChildren: RootRouteChildren = {
-  AuthRouteRoute: AuthRouteRouteWithChildren,
+interface WithAuthRouteRouteChildren {
+  WithAuthWithSubscriptionRouteRoute: typeof WithAuthWithSubscriptionRouteRouteWithChildren;
+  WithAuthWithoutSubscriptionTariffsRoute: typeof WithAuthWithoutSubscriptionTariffsRoute;
+}
+
+const WithAuthRouteRouteChildren: WithAuthRouteRouteChildren = {
   WithAuthWithSubscriptionRouteRoute:
     WithAuthWithSubscriptionRouteRouteWithChildren,
   WithAuthWithoutSubscriptionTariffsRoute:
     WithAuthWithoutSubscriptionTariffsRoute,
+};
+
+const WithAuthRouteRouteWithChildren = WithAuthRouteRoute._addFileChildren(
+  WithAuthRouteRouteChildren,
+);
+
+const rootRouteChildren: RootRouteChildren = {
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  WithAuthRouteRoute: WithAuthRouteRouteWithChildren,
   WithoutAuthDocumentsPdProcessingConsentRoute:
     WithoutAuthDocumentsPdProcessingConsentRoute,
   WithoutAuthDocumentsPdProcessingPolicyRoute:
