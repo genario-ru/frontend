@@ -4,9 +4,11 @@ import { useTranslation } from "react-i18next";
 
 import { LandingTariffsCardPrimaryAction } from "@/features/landing/landing-tariffs/components/landing-tariffs-card-primary-action";
 import { LandingTariffsCardSecondaryAction } from "@/features/landing/landing-tariffs/components/landing-tariffs-card-secondary-action";
-import { TariffCard } from "@/features/tariffs/components/tariff-card";
+import {
+  TariffCard,
+  TariffCardSkeleton,
+} from "@/features/tariffs/components/tariff-card";
 import { ItemsList } from "@/shared/components/common/items-list";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { NBSP, RUBBLE_SIGN } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
@@ -26,8 +28,11 @@ export function LandingTariffsList() {
     if (isTariffsLoading || isTrialTariffLoading) {
       return (
         <ItemsList
+          noParent
+          row
           count={3}
-          item={<Skeleton className="rounded-6 h-[400px] flex-1" />}
+          item={<TariffCardSkeleton className="bg-neutral-3/60" />}
+          itemClassName="flex-1 opacity-60"
         />
       );
     }

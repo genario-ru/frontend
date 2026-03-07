@@ -1,6 +1,8 @@
 import { CheckIcon, XIcon } from "lucide-react";
 
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 import { cn } from "@/shared/utils/cn";
 
 type TariffCardListItem = {
@@ -29,5 +31,14 @@ export function TariffCardListItem({
         {title}
       </span>
     </li>
+  );
+}
+
+export function TariffCardListItemSkeleton() {
+  return (
+    <div className="flex gap-2">
+      <Skeleton className="rounded-1.5 size-5" />
+      <TextSkeleton fontSize={16} lineHeight={24} className="w-3/4" />
+    </div>
   );
 }
