@@ -10,10 +10,13 @@
 
 import { Route as rootRouteImport } from "./../../routes/__root";
 import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route";
-import { Route as WithoutAuthIndexRouteImport } from "./../../routes/_without-auth/index";
 import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
 import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
 import { Route as WithAuthWithSubscriptionRouteRouteImport } from "./../../routes/_with-auth/_with-subscription/route";
+import { Route as WithoutAuthLandingIndexRouteImport } from "./../../routes/_without-auth/_landing/index";
+import { Route as WithoutAuthDocumentsUserAgreementRouteImport } from "./../../routes/_without-auth/documents/user-agreement";
+import { Route as WithoutAuthDocumentsPdProcessingPolicyRouteImport } from "./../../routes/_without-auth/documents/pd-processing-policy";
+import { Route as WithoutAuthDocumentsPdProcessingConsentRouteImport } from "./../../routes/_without-auth/documents/pd-processing-consent";
 import { Route as WithAuthWithoutSubscriptionTariffsRouteImport } from "./../../routes/_with-auth/_without-subscription/tariffs";
 import { Route as WithAuthWithSubscriptionProfilesRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles";
 import { Route as WithAuthWithSubscriptionHomeRouteImport } from "./../../routes/_with-auth/_with-subscription/home";
@@ -29,11 +32,6 @@ const AuthRouteRoute = AuthRouteRouteImport.update({
   id: "/_auth",
   getParentRoute: () => rootRouteImport,
 } as any);
-const WithoutAuthIndexRoute = WithoutAuthIndexRouteImport.update({
-  id: "/_without-auth/",
-  path: "/",
-  getParentRoute: () => rootRouteImport,
-} as any);
 const AuthVerifyOtpRoute = AuthVerifyOtpRouteImport.update({
   id: "/verify-otp",
   path: "/verify-otp",
@@ -47,6 +45,29 @@ const AuthSignInRoute = AuthSignInRouteImport.update({
 const WithAuthWithSubscriptionRouteRoute =
   WithAuthWithSubscriptionRouteRouteImport.update({
     id: "/_with-auth/_with-subscription",
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const WithoutAuthLandingIndexRoute = WithoutAuthLandingIndexRouteImport.update({
+  id: "/_without-auth/_landing/",
+  path: "/",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const WithoutAuthDocumentsUserAgreementRoute =
+  WithoutAuthDocumentsUserAgreementRouteImport.update({
+    id: "/_without-auth/documents/user-agreement",
+    path: "/documents/user-agreement",
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const WithoutAuthDocumentsPdProcessingPolicyRoute =
+  WithoutAuthDocumentsPdProcessingPolicyRouteImport.update({
+    id: "/_without-auth/documents/pd-processing-policy",
+    path: "/documents/pd-processing-policy",
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const WithoutAuthDocumentsPdProcessingConsentRoute =
+  WithoutAuthDocumentsPdProcessingConsentRouteImport.update({
+    id: "/_without-auth/documents/pd-processing-consent",
+    path: "/documents/pd-processing-consent",
     getParentRoute: () => rootRouteImport,
   } as any);
 const WithAuthWithoutSubscriptionTariffsRoute =
@@ -113,11 +134,14 @@ const WithAuthWithSubscriptionIdeasListsIdeasListIdRoute =
 export interface FileRoutesByFullPath {
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
-  "/": typeof WithoutAuthIndexRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
+  "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
+  "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
+  "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
+  "/": typeof WithoutAuthLandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
@@ -128,11 +152,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
-  "/": typeof WithoutAuthIndexRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
+  "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
+  "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
+  "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
+  "/": typeof WithoutAuthLandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
@@ -146,11 +173,14 @@ export interface FileRoutesById {
   "/_with-auth/_with-subscription": typeof WithAuthWithSubscriptionRouteRouteWithChildren;
   "/_auth/sign-in": typeof AuthSignInRoute;
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
-  "/_without-auth/": typeof WithoutAuthIndexRoute;
   "/_with-auth/_with-subscription/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/_with-auth/_with-subscription/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/_with-auth/_with-subscription/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/_with-auth/_without-subscription/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
+  "/_without-auth/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
+  "/_without-auth/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
+  "/_without-auth/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
+  "/_without-auth/_landing/": typeof WithoutAuthLandingIndexRoute;
   "/_with-auth/_with-subscription/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/_with-auth/_with-subscription/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
   "/_with-auth/_with-subscription/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
@@ -163,11 +193,14 @@ export interface FileRouteTypes {
   fullPaths:
     | "/sign-in"
     | "/verify-otp"
-    | "/"
     | "/archive"
     | "/home"
     | "/profiles"
     | "/tariffs"
+    | "/documents/pd-processing-consent"
+    | "/documents/pd-processing-policy"
+    | "/documents/user-agreement"
+    | "/"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
@@ -178,11 +211,14 @@ export interface FileRouteTypes {
   to:
     | "/sign-in"
     | "/verify-otp"
-    | "/"
     | "/archive"
     | "/home"
     | "/profiles"
     | "/tariffs"
+    | "/documents/pd-processing-consent"
+    | "/documents/pd-processing-policy"
+    | "/documents/user-agreement"
+    | "/"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
@@ -195,11 +231,14 @@ export interface FileRouteTypes {
     | "/_with-auth/_with-subscription"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
-    | "/_without-auth/"
     | "/_with-auth/_with-subscription/archive"
     | "/_with-auth/_with-subscription/home"
     | "/_with-auth/_with-subscription/profiles"
     | "/_with-auth/_without-subscription/tariffs"
+    | "/_without-auth/documents/pd-processing-consent"
+    | "/_without-auth/documents/pd-processing-policy"
+    | "/_without-auth/documents/user-agreement"
+    | "/_without-auth/_landing/"
     | "/_with-auth/_with-subscription/ideas-lists/$ideasListId"
     | "/_with-auth/_with-subscription/ideas-lists/settings"
     | "/_with-auth/_with-subscription/scenarios/$scenarioId"
@@ -211,8 +250,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   WithAuthWithSubscriptionRouteRoute: typeof WithAuthWithSubscriptionRouteRouteWithChildren;
-  WithoutAuthIndexRoute: typeof WithoutAuthIndexRoute;
   WithAuthWithoutSubscriptionTariffsRoute: typeof WithAuthWithoutSubscriptionTariffsRoute;
+  WithoutAuthDocumentsPdProcessingConsentRoute: typeof WithoutAuthDocumentsPdProcessingConsentRoute;
+  WithoutAuthDocumentsPdProcessingPolicyRoute: typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
+  WithoutAuthDocumentsUserAgreementRoute: typeof WithoutAuthDocumentsUserAgreementRoute;
+  WithoutAuthLandingIndexRoute: typeof WithoutAuthLandingIndexRoute;
 }
 
 declare module "@tanstack/react-router" {
@@ -222,13 +264,6 @@ declare module "@tanstack/react-router" {
       path: "";
       fullPath: "";
       preLoaderRoute: typeof AuthRouteRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/_without-auth/": {
-      id: "/_without-auth/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof WithoutAuthIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/_auth/verify-otp": {
@@ -250,6 +285,34 @@ declare module "@tanstack/react-router" {
       path: "";
       fullPath: "";
       preLoaderRoute: typeof WithAuthWithSubscriptionRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/_landing/": {
+      id: "/_without-auth/_landing/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof WithoutAuthLandingIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/documents/user-agreement": {
+      id: "/_without-auth/documents/user-agreement";
+      path: "/documents/user-agreement";
+      fullPath: "/documents/user-agreement";
+      preLoaderRoute: typeof WithoutAuthDocumentsUserAgreementRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/documents/pd-processing-policy": {
+      id: "/_without-auth/documents/pd-processing-policy";
+      path: "/documents/pd-processing-policy";
+      fullPath: "/documents/pd-processing-policy";
+      preLoaderRoute: typeof WithoutAuthDocumentsPdProcessingPolicyRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/documents/pd-processing-consent": {
+      id: "/_without-auth/documents/pd-processing-consent";
+      path: "/documents/pd-processing-consent";
+      fullPath: "/documents/pd-processing-consent";
+      preLoaderRoute: typeof WithoutAuthDocumentsPdProcessingConsentRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/_with-auth/_without-subscription/tariffs": {
@@ -380,9 +443,15 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   WithAuthWithSubscriptionRouteRoute:
     WithAuthWithSubscriptionRouteRouteWithChildren,
-  WithoutAuthIndexRoute: WithoutAuthIndexRoute,
   WithAuthWithoutSubscriptionTariffsRoute:
     WithAuthWithoutSubscriptionTariffsRoute,
+  WithoutAuthDocumentsPdProcessingConsentRoute:
+    WithoutAuthDocumentsPdProcessingConsentRoute,
+  WithoutAuthDocumentsPdProcessingPolicyRoute:
+    WithoutAuthDocumentsPdProcessingPolicyRoute,
+  WithoutAuthDocumentsUserAgreementRoute:
+    WithoutAuthDocumentsUserAgreementRoute,
+  WithoutAuthLandingIndexRoute: WithoutAuthLandingIndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

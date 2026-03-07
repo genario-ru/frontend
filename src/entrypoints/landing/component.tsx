@@ -1,3 +1,4 @@
+import { Footer } from "@/features/navigation/footer/components/footer";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { LandingFaq } from "@/widgets/landing/landing-faq/components/landing-faq";
@@ -21,6 +22,7 @@ export function LandingComponent() {
         <LandingTrialTariff />
         <LandingTariffs />
         <LandingFaq />
+        <Footer />
       </ContentLayout>
     </PageLayout>
   );
