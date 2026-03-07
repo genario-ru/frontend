@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
-import { NBSP, RUBBLE_SIGN, SLASH } from "@/shared/constants/unicode";
+import { NBSP, RUBLE_SIGN, SLASH } from "@/shared/constants/unicode";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
@@ -60,14 +60,14 @@ export function TariffCard({
             <span className="group-data-[inverse=true]/tariff-card:text-neutral-1">
               {price}
               {NBSP}
-              {RUBBLE_SIGN}
+              {RUBLE_SIGN}
               {NBSP}
             </span>
             {oldPrice && (
               <span className="text-neutral-8/50 group-data-[inverse=true]/tariff-card:text-neutral-1/50 line-through">
                 {oldPrice}
                 {NBSP}
-                {RUBBLE_SIGN}
+                {RUBLE_SIGN}
               </span>
             )}
           </span>

@@ -1,5 +1,4 @@
 import { partition } from "es-toolkit";
-import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -13,18 +12,17 @@ import { ItemsList } from "@/shared/components/common/items-list";
 import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
-import { useLandingTariffsList } from "../hooks/use-landing-tariffs-list";
+import { useTariffsList } from "../hooks/use-tariffs-list";
 
-export function LandingTariffsList() {
+export function TariffsList() {
   const { t } = useTranslation();
-  const { resolvedTheme } = useTheme();
 
   const {
     tariffsData,
     trialTariffData,
     isTariffsLoading,
     isTrialTariffLoading,
-  } = useLandingTariffsList();
+  } = useTariffsList();
 
   const list = useMemo(() => {
     if (isTariffsLoading || isTrialTariffLoading) {
@@ -34,22 +32,17 @@ export function LandingTariffsList() {
           row
           count={3}
           item={<TariffCardSkeleton className="bg-neutral-3/60" />}
-          itemClassName="flex-1 opacity-60"
+          itemClassName="flex-1"
         />
       );
     }
 
     if (tariffsData) {
       return tariffsData.data.map((tariff) => {
-        const isDarkTheme = resolvedTheme !== "light";
         const isPreferredTariff = tariff.isPreferred;
         const trialTariffDurationDays = trialTariffData?.data.durationDays;
         const trialTariffPrice = trialTariffData?.data.price;
         const hasTrial = trialTariffDurationDays && trialTariffPrice;
-
-        const inverseColors = isDarkTheme
-          ? isPreferredTariff
-          : !isPreferredTariff;
 
         const primaryActionTitle = hasTrial
           ? `Попробовать ${t("common.days_count.days", { count: trialTariffDurationDays })} за ${trialTariffPrice}${NBSP}${RUBLE_SIGN}`
@@ -69,7 +62,7 @@ export function LandingTariffsList() {
               trialTariffSlug: trialTariffData?.data.slug,
             }}
             variant={isPreferredTariff ? "accent" : "neutral"}
-            priority={isDarkTheme || isPreferredTariff ? "primary" : "tertiary"}
+            priority={isPreferredTariff ? "primary" : "secondary"}
           />
         );
 
@@ -80,9 +73,6 @@ export function LandingTariffsList() {
               tariffSlug: tariff.slug,
             }}
             title="Оформить без пробного периода"
-            className={cn({
-              "text-neutral-1/70 hover:text-neutral-1": inverseColors,
-            })}
           />
         ) : undefined;
 
@@ -98,14 +88,13 @@ export function LandingTariffsList() {
             description={tariff.description}
             price={tariff.price}
             oldPrice={tariff.oldPrice}
-            inverseColors={inverseColors}
             primaryAction={primaryAction}
             secondaryAction={secondaryAction}
             features={features.map((feature) => feature.text)}
             limitations={limitations.map((limitation) => limitation.text)}
-            className={cn("h-full flex-1", {
-              "bg-neutral-1/20 dark:bg-neutral-8/20": !isPreferredTariff,
-              "bg-neutral-1 dark:bg-neutral-8": isPreferredTariff,
+            className={cn("flex-1", {
+              "bg-neutral-2": isPreferredTariff,
+              "border-neutral-3 border": !isPreferredTariff,
             })}
           />
         );
@@ -113,14 +102,7 @@ export function LandingTariffsList() {
     }
 
     return null;
-  }, [
-    t,
-    resolvedTheme,
-    tariffsData,
-    trialTariffData,
-    isTariffsLoading,
-    isTrialTariffLoading,
-  ]);
+  }, [t, tariffsData, trialTariffData, isTariffsLoading, isTrialTariffLoading]);
 
-  return <div className="flex w-full items-center gap-2">{list}</div>;
+  return <div className="flex w-full gap-2">{list}</div>;
 }

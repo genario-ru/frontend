@@ -1,6 +1,6 @@
-import { NeedSupport } from "@/features/auth/components/need-support";
 import { WelcomeImage } from "@/features/auth/components/welcome-image";
 import { Logo } from "@/shared/components/common/logo";
+import { NeedSupport } from "@/shared/components/common/need-support";
 import { Island, type IslandProps } from "@/shared/components/ui/island";
 import { cn } from "@/shared/utils/cn";
 
