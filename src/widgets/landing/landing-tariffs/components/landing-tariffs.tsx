@@ -3,7 +3,7 @@ import { LandingTariffsHeader } from "@/features/landing/landing-tariffs/compone
 
 import { LandingTariffsList } from "./landing-tariffs-list";
 
-export function LadndingTariffs() {
+export function LandingTariffs() {
   return (
     <LandingIsland className="from-neutral-8 to-accent-6 isolate items-center gap-8 bg-linear-to-r">
       <LandingTariffsHeader />

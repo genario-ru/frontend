@@ -1,10 +1,11 @@
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
+import { LandingFaq } from "@/widgets/landing/landing-faq/components/landing-faq";
 import { LandingHero } from "@/widgets/landing/landing-hero/components/landing-hero";
 import { LandingMenubar } from "@/widgets/landing/landing-menubar/components/landing-menubar";
 import { LandingPersonalization } from "@/widgets/landing/landing-personalization/components/landing-personalization";
 import { LandingPossibilities } from "@/widgets/landing/landing-possibilities/components/landing-possibilities";
-import { LadndingTariffs } from "@/widgets/landing/landing-tariffs/components/landing-tariffs";
+import { LandingTariffs } from "@/widgets/landing/landing-tariffs/components/landing-tariffs";
 import { LandingTemplates } from "@/widgets/landing/landing-templates/components/landing-templates";
 import { LandingTrialTariff } from "@/widgets/landing/landing-trial-tariff/components/landing-trial-tariff";
 
@@ -18,7 +19,8 @@ export function LandingComponent() {
         <LandingTemplates />
         <LandingPersonalization />
         <LandingTrialTariff />
-        <LadndingTariffs />
+        <LandingTariffs />
+        <LandingFaq />
       </ContentLayout>
     </PageLayout>
   );
