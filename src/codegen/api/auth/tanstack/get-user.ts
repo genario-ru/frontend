@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getUser } from "../clients/get-user.ts";
 import type {
@@ -55,10 +54,10 @@ export function getUserQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getUser({ params }, config);
+      return getUser(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -94,14 +93,14 @@ export function useGetUser<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getUserQueryKey(params);
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getUserQueryKey(params);
 
   const query = useQuery(
     {
       ...getUserQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

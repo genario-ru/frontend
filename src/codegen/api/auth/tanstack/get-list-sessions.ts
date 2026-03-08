@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getListSessions } from "../clients/get-list-sessions.ts";
 import type {
@@ -55,10 +54,7 @@ export function getListSessionsQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getListSessions(config);
+      return getListSessions({ ...config, signal: config.signal ?? signal });
     },
   });
 }
@@ -93,14 +89,14 @@ export function useGetListSessions<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getListSessionsQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getListSessionsQueryKey();
 
   const query = useQuery(
     {
       ...getListSessionsQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

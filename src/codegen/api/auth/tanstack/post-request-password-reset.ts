@@ -15,7 +15,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { postRequestPasswordReset } from "../clients/post-request-password-reset.ts";
 import type {

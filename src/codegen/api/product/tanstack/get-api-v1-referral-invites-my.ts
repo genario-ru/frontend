@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ReferralInvitesMy } from "../clients/get-api-v1-referral-invites-my.ts";
 import type {
@@ -60,10 +59,10 @@ export function getApiV1ReferralInvitesMyQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1ReferralInvitesMy({ params }, config);
+      return getApiV1ReferralInvitesMy(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -97,15 +96,15 @@ export function useGetApiV1ReferralInvitesMy<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getApiV1ReferralInvitesMyQueryKey(params);
+    resolvedOptions?.queryKey ?? getApiV1ReferralInvitesMyQueryKey(params);
 
   const query = useQuery(
     {
       ...getApiV1ReferralInvitesMyQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

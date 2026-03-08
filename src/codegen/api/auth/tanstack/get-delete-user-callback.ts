@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getDeleteUserCallback } from "../clients/get-delete-user-callback.ts";
 import type {
@@ -58,10 +57,10 @@ export function getDeleteUserCallbackQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getDeleteUserCallback({ params }, config);
+      return getDeleteUserCallback(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -97,15 +96,15 @@ export function useGetDeleteUserCallback<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getDeleteUserCallbackQueryKey(params);
+    resolvedOptions?.queryKey ?? getDeleteUserCallbackQueryKey(params);
 
   const query = useQuery(
     {
       ...getDeleteUserCallbackQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

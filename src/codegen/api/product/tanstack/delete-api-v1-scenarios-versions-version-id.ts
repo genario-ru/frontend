@@ -15,7 +15,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { deleteApiV1ScenariosVersionsVersionId } from "../clients/delete-api-v1-scenarios-versions-version-id.ts";
 import type {

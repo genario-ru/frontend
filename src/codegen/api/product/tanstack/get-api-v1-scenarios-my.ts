@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ScenariosMy } from "../clients/get-api-v1-scenarios-my.ts";
 import type {
@@ -53,10 +52,10 @@ export function getApiV1ScenariosMyQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1ScenariosMy(config);
+      return getApiV1ScenariosMy({
+        ...config,
+        signal: config.signal ?? signal,
+      });
     },
   });
 }
@@ -89,14 +88,14 @@ export function useGetApiV1ScenariosMy<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1ScenariosMyQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getApiV1ScenariosMyQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1ScenariosMyQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { listUsers } from "../clients/list-users.ts";
 import type {
@@ -55,10 +54,10 @@ export function listUsersQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return listUsers({ params }, config);
+      return listUsers(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -94,14 +93,14 @@ export function useListUsers<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? listUsersQueryKey(params);
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? listUsersQueryKey(params);
 
   const query = useQuery(
     {
       ...listUsersQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

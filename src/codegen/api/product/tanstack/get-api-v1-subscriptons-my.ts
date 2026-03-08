@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1SubscriptonsMy } from "../clients/get-api-v1-subscriptons-my.ts";
 import type {
@@ -53,10 +52,10 @@ export function getApiV1SubscriptonsMyQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1SubscriptonsMy(config);
+      return getApiV1SubscriptonsMy({
+        ...config,
+        signal: config.signal ?? signal,
+      });
     },
   });
 }
@@ -89,14 +88,15 @@ export function useGetApiV1SubscriptonsMy<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1SubscriptonsMyQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey =
+    resolvedOptions?.queryKey ?? getApiV1SubscriptonsMyQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1SubscriptonsMyQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

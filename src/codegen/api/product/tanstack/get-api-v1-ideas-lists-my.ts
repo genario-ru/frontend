@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1IdeasListsMy } from "../clients/get-api-v1-ideas-lists-my.ts";
 import type {
@@ -56,10 +55,10 @@ export function getApiV1IdeasListsMyQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1IdeasListsMy({ params }, config);
+      return getApiV1IdeasListsMy(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -93,15 +92,15 @@ export function useGetApiV1IdeasListsMy<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getApiV1IdeasListsMyQueryKey(params);
+    resolvedOptions?.queryKey ?? getApiV1IdeasListsMyQueryKey(params);
 
   const query = useQuery(
     {
       ...getApiV1IdeasListsMyQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

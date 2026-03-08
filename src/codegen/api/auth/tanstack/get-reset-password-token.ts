@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getResetPasswordToken } from "../clients/get-reset-password-token.ts";
 import type {
@@ -71,10 +70,10 @@ export function getResetPasswordTokenQueryOptions(
     enabled: !!token,
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getResetPasswordToken({ token, params }, config);
+      return getResetPasswordToken(
+        { token: token, params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -116,15 +115,16 @@ export function useGetResetPasswordToken<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getResetPasswordTokenQueryKey({ token }, params);
+    resolvedOptions?.queryKey ??
+    getResetPasswordTokenQueryKey({ token }, params);
 
   const query = useQuery(
     {
       ...getResetPasswordTokenQueryOptions({ token, params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

@@ -17,7 +17,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1IdeasListsMy } from "../clients/get-api-v1-ideas-lists-my.ts";
 import type {
@@ -58,16 +57,15 @@ export function getApiV1IdeasListsMyInfiniteQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal, pageParam }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-
       params = {
         ...(params ?? {}),
         ["page"]:
           pageParam as unknown as GetApiV1IdeasListsMyQueryParams["page"],
       } as GetApiV1IdeasListsMyQueryParams;
-      return getApiV1IdeasListsMy({ params }, config);
+      return getApiV1IdeasListsMy(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage?.["meta"]?.["nextPage"],
@@ -106,15 +104,15 @@ export function useGetApiV1IdeasListsMyInfinite<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getApiV1IdeasListsMyInfiniteQueryKey(params);
+    resolvedOptions?.queryKey ?? getApiV1IdeasListsMyInfiniteQueryKey(params);
 
   const query = useInfiniteQuery(
     {
       ...getApiV1IdeasListsMyInfiniteQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as InfiniteQueryObserverOptions<
       TQueryFnData,
       TError,

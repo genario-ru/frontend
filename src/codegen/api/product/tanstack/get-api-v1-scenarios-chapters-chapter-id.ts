@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ScenariosChaptersChapterId } from "../clients/get-api-v1-scenarios-chapters-chapter-id.ts";
 import type {
@@ -67,10 +66,10 @@ export function getApiV1ScenariosChaptersChapterIdQueryOptions(
     enabled: !!chapterId,
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1ScenariosChaptersChapterId({ chapterId }, config);
+      return getApiV1ScenariosChaptersChapterId(
+        { chapterId: chapterId },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
   });
 }
@@ -106,16 +105,16 @@ export function useGetApiV1ScenariosChaptersChapterId<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ??
+    resolvedOptions?.queryKey ??
     getApiV1ScenariosChaptersChapterIdQueryKey({ chapterId });
 
   const query = useQuery(
     {
       ...getApiV1ScenariosChaptersChapterIdQueryOptions({ chapterId }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

@@ -15,7 +15,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { patchApiV1ScenariosScenarioIdSave } from "../clients/patch-api-v1-scenarios-scenario-id-save.ts";
 import type {

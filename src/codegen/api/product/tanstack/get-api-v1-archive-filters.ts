@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ArchiveFilters } from "../clients/get-api-v1-archive-filters.ts";
 import type {
@@ -53,10 +52,10 @@ export function getApiV1ArchiveFiltersQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1ArchiveFilters(config);
+      return getApiV1ArchiveFilters({
+        ...config,
+        signal: config.signal ?? signal,
+      });
     },
   });
 }
@@ -89,14 +88,15 @@ export function useGetApiV1ArchiveFilters<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1ArchiveFiltersQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey =
+    resolvedOptions?.queryKey ?? getApiV1ArchiveFiltersQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1ArchiveFiltersQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

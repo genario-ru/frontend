@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1TariffsTrial } from "../clients/get-api-v1-tariffs-trial.ts";
 import type {
@@ -53,10 +52,10 @@ export function getApiV1TariffsTrialQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1TariffsTrial(config);
+      return getApiV1TariffsTrial({
+        ...config,
+        signal: config.signal ?? signal,
+      });
     },
   });
 }
@@ -89,14 +88,14 @@ export function useGetApiV1TariffsTrial<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1TariffsTrialQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getApiV1TariffsTrialQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1TariffsTrialQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

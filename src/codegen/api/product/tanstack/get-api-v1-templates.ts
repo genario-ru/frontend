@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1Templates } from "../clients/get-api-v1-templates.ts";
 import type {
@@ -53,10 +52,7 @@ export function getApiV1TemplatesQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1Templates(config);
+      return getApiV1Templates({ ...config, signal: config.signal ?? signal });
     },
   });
 }
@@ -89,14 +85,14 @@ export function useGetApiV1Templates<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1TemplatesQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getApiV1TemplatesQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1TemplatesQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

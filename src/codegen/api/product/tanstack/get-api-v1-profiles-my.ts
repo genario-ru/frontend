@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ProfilesMy } from "../clients/get-api-v1-profiles-my.ts";
 import type {
@@ -53,10 +52,7 @@ export function getApiV1ProfilesMyQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1ProfilesMy(config);
+      return getApiV1ProfilesMy({ ...config, signal: config.signal ?? signal });
     },
   });
 }
@@ -89,14 +85,14 @@ export function useGetApiV1ProfilesMy<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1ProfilesMyQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getApiV1ProfilesMyQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1ProfilesMyQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

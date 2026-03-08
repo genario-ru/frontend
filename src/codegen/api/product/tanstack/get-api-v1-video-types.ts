@@ -16,7 +16,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1VideoTypes } from "../clients/get-api-v1-video-types.ts";
 import type {
@@ -53,10 +52,7 @@ export function getApiV1VideoTypesQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-      return getApiV1VideoTypes(config);
+      return getApiV1VideoTypes({ ...config, signal: config.signal ?? signal });
     },
   });
 }
@@ -89,14 +85,14 @@ export function useGetApiV1VideoTypes<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
-  const queryKey = queryOptions?.queryKey ?? getApiV1VideoTypesQueryKey();
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
+  const queryKey = resolvedOptions?.queryKey ?? getApiV1VideoTypesQueryKey();
 
   const query = useQuery(
     {
       ...getApiV1VideoTypesQueryOptions(config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<

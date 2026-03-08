@@ -15,7 +15,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { postApiV1IdeasListsIdeasListIdMoreIdeas } from "../clients/post-api-v1-ideas-lists-ideas-list-id-more-ideas.ts";
 import type {

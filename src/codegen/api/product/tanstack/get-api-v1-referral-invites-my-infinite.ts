@@ -17,7 +17,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { getApiV1ReferralInvitesMy } from "../clients/get-api-v1-referral-invites-my.ts";
 import type {
@@ -62,16 +61,15 @@ export function getApiV1ReferralInvitesMyInfiniteQueryOptions(
   >({
     queryKey,
     queryFn: async ({ signal, pageParam }) => {
-      if (!config.signal) {
-        config.signal = signal;
-      }
-
       params = {
         ...(params ?? {}),
         ["page"]:
           pageParam as unknown as GetApiV1ReferralInvitesMyQueryParams["page"],
       } as GetApiV1ReferralInvitesMyQueryParams;
-      return getApiV1ReferralInvitesMy({ params }, config);
+      return getApiV1ReferralInvitesMy(
+        { params: params },
+        { ...config, signal: config.signal ?? signal },
+      );
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage?.["meta"]?.["nextPage"],
@@ -110,15 +108,16 @@ export function useGetApiV1ReferralInvitesMyInfinite<
   } = {},
 ) {
   const { query: queryConfig = {}, client: config = {} } = options ?? {};
-  const { client: queryClient, ...queryOptions } = queryConfig;
+  const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
-    queryOptions?.queryKey ?? getApiV1ReferralInvitesMyInfiniteQueryKey(params);
+    resolvedOptions?.queryKey ??
+    getApiV1ReferralInvitesMyInfiniteQueryKey(params);
 
   const query = useInfiniteQuery(
     {
       ...getApiV1ReferralInvitesMyInfiniteQueryOptions({ params }, config),
+      ...resolvedOptions,
       queryKey,
-      ...queryOptions,
     } as unknown as InfiniteQueryObserverOptions<
       TQueryFnData,
       TError,

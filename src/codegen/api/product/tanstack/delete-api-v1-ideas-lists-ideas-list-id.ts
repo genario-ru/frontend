@@ -15,7 +15,6 @@ import type {
   RequestConfig,
   ResponseErrorConfig,
 } from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
 
 import { deleteApiV1IdeasListsIdeasListId } from "../clients/delete-api-v1-ideas-lists-ideas-list-id.ts";
 import type {
