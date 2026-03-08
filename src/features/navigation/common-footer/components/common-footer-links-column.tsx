@@ -1,13 +1,16 @@
 import { Link } from "@tanstack/react-router";
 
-import type { FooterLinksColumn } from "../types/footer-links";
+import type { CommonFooterLinksColumn } from "../types/common-footer-links";
 
-type FooterLinksColumnProps = FooterLinksColumn;
+type CommonFooterLinksColumnProps = CommonFooterLinksColumn;
 
-const footerLinkClassName =
+const commonFooterLinkClassName =
   "text-neutral-6 hover:text-neutral-8 duration-200 hover:underline";
 
-export function FooterLinksColumn({ title, items }: FooterLinksColumnProps) {
+export function CommonFooterLinksColumn({
+  title,
+  items,
+}: CommonFooterLinksColumnProps) {
   return (
     <div className="flex flex-col gap-3">
       <p className="font-medium">{title}</p>
@@ -21,7 +24,7 @@ export function FooterLinksColumn({ title, items }: FooterLinksColumnProps) {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={footerLinkClassName}
+              className={commonFooterLinkClassName}
             >
               {item.title}
             </a>
@@ -32,7 +35,7 @@ export function FooterLinksColumn({ title, items }: FooterLinksColumnProps) {
           <Link
             key={`footer-documents-${item.title}-item-${index}`}
             to={item.to}
-            className={footerLinkClassName}
+            className={commonFooterLinkClassName}
           >
             {item.title}
           </Link>

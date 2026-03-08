@@ -1,11 +1,11 @@
 import { Logo } from "@/shared/components/common/logo";
 import { Island } from "@/shared/components/ui/island";
 
-import { footerLinks } from "../constants/footer-links";
-import { FooterLegalInfo } from "./footer-legal-info";
-import { FooterLinksColumn } from "./footer-links-column";
+import { commonFooterLinks } from "../constants/common-footer-links";
+import { CommonFooterLegalInfo } from "./common-footer-legal-info";
+import { CommonFooterLinksColumn } from "./common-footer-links-column";
 
-export function Footer() {
+export function CommonFooter() {
   return (
     <Island
       as="footer"
@@ -15,11 +15,11 @@ export function Footer() {
     >
       <div className="flex flex-col justify-between gap-8">
         <Logo />
-        <FooterLegalInfo />
+        <CommonFooterLegalInfo />
       </div>
       <nav className="flex gap-12">
-        {footerLinks.map((column, index) => (
-          <FooterLinksColumn
+        {commonFooterLinks.map((column, index) => (
+          <CommonFooterLinksColumn
             key={`footer-links-column-${index}`}
             title={column.title}
             items={column.items}

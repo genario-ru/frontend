@@ -1,11 +1,11 @@
 import type { NavigateOptions } from "@tanstack/react-router";
 
-type LandingMenubarLink = {
+type LandingHeaderLink = {
   label: string;
   navigateOptions: NavigateOptions;
 };
 
-export const landingMenubarLinks: LandingMenubarLink[] = [
+export const landingHeaderLinks: LandingHeaderLink[] = [
   {
     label: "Возможности",
     navigateOptions: {

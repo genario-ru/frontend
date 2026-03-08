@@ -9,6 +9,9 @@ import {
 import { TariffCardPrimaryAction } from "@/features/tariffs/tariff-card/components/tariff-card-primary-action";
 import { TariffCardSecondaryAction } from "@/features/tariffs/tariff-card/components/tariff-card-secondary-action";
 import { ItemsList } from "@/shared/components/common/items-list";
+import { NeedSupport } from "@/shared/components/common/need-support";
+import { Heading } from "@/shared/components/ui/heading";
+import { Island } from "@/shared/components/ui/island";
 import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
@@ -104,5 +107,17 @@ export function TariffsList() {
     return null;
   }, [t, tariffsData, trialTariffData, isTariffsLoading, isTrialTariffLoading]);
 
-  return <div className="flex w-full gap-2">{list}</div>;
+  return (
+    <Island className="h-fit min-h-[520px] max-w-7xl items-center justify-between gap-8 p-6">
+      <header className="flex max-w-3xl flex-col items-center gap-2">
+        <Heading className="text-3xl font-semibold">Тарифы</Heading>
+        <p className="text-neutral-7 text-center text-lg">
+          Создавайте сценарии для видео за минуты, а не часы, Создавайте
+          сценарии для видео за минуты, а не часы, Создавайте сценарии
+        </p>
+      </header>
+      <div className="flex w-full gap-2">{list}</div>
+      <NeedSupport className="mx-auto text-sm" />
+    </Island>
+  );
 }

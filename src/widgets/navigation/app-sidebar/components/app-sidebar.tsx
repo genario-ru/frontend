@@ -7,7 +7,7 @@ import { AppSidebarHeader } from "@/features/navigation/app-sidebar/components/a
 import { AppSidebarMenu } from "@/features/navigation/app-sidebar/components/app-sidebar-menu";
 import { AppSidebarMenuItem } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-item";
 import { AppSidebarMenuLink } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-link";
-import { Logo } from "@/shared/components/common/logo";
+import { LogoLink } from "@/shared/components/common/logo-link";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/utils/cn";
@@ -28,7 +28,7 @@ export const AppSidebar = () => {
       <AppSidebarHeader>
         <AppSidebarMenu>
           <AppSidebarMenuItem>
-            <Logo
+            <LogoLink
               href="/home"
               className="rounded-t-5 flex h-full w-full items-center justify-center p-5"
             />

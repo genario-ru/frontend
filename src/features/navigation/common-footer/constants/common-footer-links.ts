@@ -1,6 +1,6 @@
-import type { FooterLinksColumn } from "../types/footer-links";
+import type { CommonFooterLinksColumn } from "../types/common-footer-links";
 
-export const footerLinks: FooterLinksColumn[] = [
+export const commonFooterLinks: CommonFooterLinksColumn[] = [
   {
     title: "Социльные сети",
     items: [

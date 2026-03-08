@@ -1,9 +1,9 @@
-import { Footer } from "@/features/navigation/footer/components/footer";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { LandingFaq } from "@/widgets/landing/landing-faq/components/landing-faq";
+import { LandingFooter } from "@/widgets/landing/landing-footer/components/landing-footer";
+import { LandingHeader } from "@/widgets/landing/landing-header/components/landing-header";
 import { LandingHero } from "@/widgets/landing/landing-hero/components/landing-hero";
-import { LandingMenubar } from "@/widgets/landing/landing-menubar/components/landing-menubar";
 import { LandingPersonalization } from "@/widgets/landing/landing-personalization/components/landing-personalization";
 import { LandingPossibilities } from "@/widgets/landing/landing-possibilities/components/landing-possibilities";
 import { LandingTariffs } from "@/widgets/landing/landing-tariffs/components/landing-tariffs";
@@ -14,7 +14,7 @@ export function LandingComponent() {
   return (
     <PageLayout className="max-w-7xl py-0">
       <ContentLayout className="gap-6">
-        <LandingMenubar />
+        <LandingHeader />
         <LandingHero />
         <LandingPossibilities />
         <LandingTemplates />
@@ -22,7 +22,7 @@ export function LandingComponent() {
         <LandingTrialTariff />
         <LandingTariffs />
         <LandingFaq />
-        <Footer />
+        <LandingFooter />
       </ContentLayout>
     </PageLayout>
   );

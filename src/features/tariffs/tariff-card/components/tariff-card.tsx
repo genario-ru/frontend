@@ -61,14 +61,16 @@ export function TariffCard({
               {price}
               {NBSP}
               {RUBLE_SIGN}
-              {NBSP}
             </span>
             {oldPrice && (
-              <span className="text-neutral-8/50 group-data-[inverse=true]/tariff-card:text-neutral-1/50 line-through">
-                {oldPrice}
+              <>
                 {NBSP}
-                {RUBLE_SIGN}
-              </span>
+                <span className="text-neutral-8/50 group-data-[inverse=true]/tariff-card:text-neutral-1/50 line-through">
+                  {oldPrice}
+                  {NBSP}
+                  {RUBLE_SIGN}
+                </span>
+              </>
             )}
           </span>
           <span className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">
