@@ -81,7 +81,12 @@ function createConfig({
       clean: true,
     },
     plugins: [
-      pluginOas(),
+      pluginOas({
+        discriminator: "inherit",
+        // ← ЭТО ОТКЛЮЧАЕТ ВСЕ JSON-схемы полностью
+        // (в старых версиях было output: false, сейчас — generators: [])
+        generators: [],
+      }),
       pluginTs({
         output: {
           path: "models",
