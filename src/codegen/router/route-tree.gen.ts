@@ -19,6 +19,7 @@ import { Route as WithoutAuthDocumentsUserAgreementRouteImport } from "./../../r
 import { Route as WithoutAuthDocumentsPdProcessingPolicyRouteImport } from "./../../routes/_without-auth/documents/pd-processing-policy";
 import { Route as WithoutAuthDocumentsPdProcessingConsentRouteImport } from "./../../routes/_without-auth/documents/pd-processing-consent";
 import { Route as WithAuthWithoutSubscriptionTariffsRouteImport } from "./../../routes/_with-auth/_without-subscription/tariffs";
+import { Route as WithAuthWithoutSubscriptionPaymentRedirectRouteImport } from "./../../routes/_with-auth/_without-subscription/payment-redirect";
 import { Route as WithAuthWithSubscriptionProfilesRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles";
 import { Route as WithAuthWithSubscriptionHomeRouteImport } from "./../../routes/_with-auth/_with-subscription/home";
 import { Route as WithAuthWithSubscriptionArchiveRouteImport } from "./../../routes/_with-auth/_with-subscription/archive";
@@ -79,6 +80,12 @@ const WithAuthWithoutSubscriptionTariffsRoute =
   WithAuthWithoutSubscriptionTariffsRouteImport.update({
     id: "/_without-subscription/tariffs",
     path: "/tariffs",
+    getParentRoute: () => WithAuthRouteRoute,
+  } as any);
+const WithAuthWithoutSubscriptionPaymentRedirectRoute =
+  WithAuthWithoutSubscriptionPaymentRedirectRouteImport.update({
+    id: "/_without-subscription/payment-redirect",
+    path: "/payment-redirect",
     getParentRoute: () => WithAuthRouteRoute,
   } as any);
 const WithAuthWithSubscriptionProfilesRoute =
@@ -142,6 +149,7 @@ export interface FileRoutesByFullPath {
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
+  "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
@@ -160,6 +168,7 @@ export interface FileRoutesByTo {
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
+  "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
@@ -182,6 +191,7 @@ export interface FileRoutesById {
   "/_with-auth/_with-subscription/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/_with-auth/_with-subscription/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/_with-auth/_with-subscription/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
+  "/_with-auth/_without-subscription/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/_with-auth/_without-subscription/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/_without-auth/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   "/_without-auth/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
@@ -202,6 +212,7 @@ export interface FileRouteTypes {
     | "/archive"
     | "/home"
     | "/profiles"
+    | "/payment-redirect"
     | "/tariffs"
     | "/documents/pd-processing-consent"
     | "/documents/pd-processing-policy"
@@ -220,6 +231,7 @@ export interface FileRouteTypes {
     | "/archive"
     | "/home"
     | "/profiles"
+    | "/payment-redirect"
     | "/tariffs"
     | "/documents/pd-processing-consent"
     | "/documents/pd-processing-policy"
@@ -241,6 +253,7 @@ export interface FileRouteTypes {
     | "/_with-auth/_with-subscription/archive"
     | "/_with-auth/_with-subscription/home"
     | "/_with-auth/_with-subscription/profiles"
+    | "/_with-auth/_without-subscription/payment-redirect"
     | "/_with-auth/_without-subscription/tariffs"
     | "/_without-auth/documents/pd-processing-consent"
     | "/_without-auth/documents/pd-processing-policy"
@@ -333,6 +346,13 @@ declare module "@tanstack/react-router" {
       path: "/tariffs";
       fullPath: "/tariffs";
       preLoaderRoute: typeof WithAuthWithoutSubscriptionTariffsRouteImport;
+      parentRoute: typeof WithAuthRouteRoute;
+    };
+    "/_with-auth/_without-subscription/payment-redirect": {
+      id: "/_with-auth/_without-subscription/payment-redirect";
+      path: "/payment-redirect";
+      fullPath: "/payment-redirect";
+      preLoaderRoute: typeof WithAuthWithoutSubscriptionPaymentRedirectRouteImport;
       parentRoute: typeof WithAuthRouteRoute;
     };
     "/_with-auth/_with-subscription/profiles": {
@@ -454,12 +474,15 @@ const WithAuthWithSubscriptionRouteRouteWithChildren =
 
 interface WithAuthRouteRouteChildren {
   WithAuthWithSubscriptionRouteRoute: typeof WithAuthWithSubscriptionRouteRouteWithChildren;
+  WithAuthWithoutSubscriptionPaymentRedirectRoute: typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   WithAuthWithoutSubscriptionTariffsRoute: typeof WithAuthWithoutSubscriptionTariffsRoute;
 }
 
 const WithAuthRouteRouteChildren: WithAuthRouteRouteChildren = {
   WithAuthWithSubscriptionRouteRoute:
     WithAuthWithSubscriptionRouteRouteWithChildren,
+  WithAuthWithoutSubscriptionPaymentRedirectRoute:
+    WithAuthWithoutSubscriptionPaymentRedirectRoute,
   WithAuthWithoutSubscriptionTariffsRoute:
     WithAuthWithoutSubscriptionTariffsRoute,
 };
