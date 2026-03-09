@@ -1,4 +1,4 @@
-import { useGetApiV1ScenariosScenarioIdCurrentVersion } from "@/codegen/api/product";
+import { useGetApiV1ScenariosByScenarioIdCurrentVersion } from "@/codegen/api/product";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
@@ -14,7 +14,7 @@ export function useGetCurrentScenarioVersion({
     data: scenarioCurrentVersionData,
     isLoading: isScenarioCurrentVersionLoading,
     isError: isScenarioCurrentVersionError,
-  } = useGetApiV1ScenariosScenarioIdCurrentVersion(
+  } = useGetApiV1ScenariosByScenarioIdCurrentVersion(
     {
       scenarioId: scenarioId as string,
     },

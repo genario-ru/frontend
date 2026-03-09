@@ -5,61 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getTrialTariffResponseSchemaSchema } from "./get-trial-tariff-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Trial tariff retrieved successfully
  */
-export const getApiV1TariffsTrial200Schema = z.object({
-  data: z.object({
-    id: z.uuid(),
-    slug: z.string().max(255),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    price: z.int().min(-9007199254740991).max(9007199254740991),
-    oldPrice: z.union([z.int(), z.null()]),
-    billingPeriod: z.union([z.enum(["month", "year"]), z.null()]),
-    durationDays: z.union([z.int(), z.null()]),
-    isRenewable: z.boolean(),
-    isPreferred: z.boolean(),
-    creditsAmount: z.int().min(-9007199254740991).max(9007199254740991),
-    maxProfilesAmount: z.union([z.int(), z.null()]),
-    exportAvailable: z.boolean(),
-    versionHistoryAvailable: z.boolean(),
-    generationPriority: z.enum(["basic", "medium", "high"]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    features: z.array(
-      z.object({
-        text: z.string(),
-        included: z.boolean(),
-      }),
-    ),
-  }),
-});
+export const getApiV1TariffsTrial200Schema = z
+  .lazy(() => getTrialTariffResponseSchemaSchema)
+  .describe("Get trial tariff response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1TariffsTrial400Schema = z.string();
+export const getApiV1TariffsTrial400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1TariffsTrial401Schema = z.string();
+export const getApiV1TariffsTrial401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1TariffsTrial403Schema = z.string();
+export const getApiV1TariffsTrial403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1TariffsTrial404Schema = z.string();
+export const getApiV1TariffsTrial404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1TariffsTrial500Schema = z.string();
+export const getApiV1TariffsTrial500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1TariffsTrialQueryResponseSchema = z.lazy(
   () => getApiV1TariffsTrial200Schema,

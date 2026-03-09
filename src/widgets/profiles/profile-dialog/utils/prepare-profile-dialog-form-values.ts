@@ -1,12 +1,12 @@
 import type {
-  GetApiV1ProfilesProfileIdQueryResponse,
+  GetApiV1ProfilesByProfileIdQueryResponse,
   GetApiV1ProfilesTypesQueryResponse,
 } from "@/codegen/api/product";
 
 import type { ProfileDialogFormValues } from "../types";
 
 type PrepareDefaultProfileFormValuesParams = {
-  profileData: GetApiV1ProfilesProfileIdQueryResponse | undefined;
+  profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
   profileTypesData: GetApiV1ProfilesTypesQueryResponse;
 };
 

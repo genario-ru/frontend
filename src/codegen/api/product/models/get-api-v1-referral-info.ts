@@ -3,54 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetReferralInfoResponseSchema } from "./get-referral-info-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get referral info response
  * @description Referral info retrieved successfully
  */
-export type GetApiV1ReferralInfo200 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type string
-     */
-    referralBasicInfo: string;
-    /**
-     * @type string
-     */
-    referralDocumentLink: string;
-  };
-};
+export type GetApiV1ReferralInfo200 = GetReferralInfoResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ReferralInfo400 = string;
+export type GetApiV1ReferralInfo400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ReferralInfo401 = string;
+export type GetApiV1ReferralInfo401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ReferralInfo403 = string;
+export type GetApiV1ReferralInfo403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ReferralInfo404 = string;
+export type GetApiV1ReferralInfo404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ReferralInfo500 = string;
+export type GetApiV1ReferralInfo500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ReferralInfoQueryResponse = GetApiV1ReferralInfo200;
 

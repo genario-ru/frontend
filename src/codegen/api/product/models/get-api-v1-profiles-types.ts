@@ -3,68 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetProfileTypesResponseSchema } from "./get-profile-types-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get profile types response
  * @description Profile types retrieved successfully
  */
-export type GetApiV1ProfilesTypes200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    icon: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  }[];
-};
+export type GetApiV1ProfilesTypes200 = GetProfileTypesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ProfilesTypes400 = string;
+export type GetApiV1ProfilesTypes400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ProfilesTypes401 = string;
+export type GetApiV1ProfilesTypes401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ProfilesTypes403 = string;
+export type GetApiV1ProfilesTypes403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ProfilesTypes404 = string;
+export type GetApiV1ProfilesTypes404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ProfilesTypes500 = string;
+export type GetApiV1ProfilesTypes500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ProfilesTypesQueryResponse = GetApiV1ProfilesTypes200;
 

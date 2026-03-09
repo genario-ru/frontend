@@ -1,83 +1,111 @@
+export { archiveFilterOptionSchemaSchema } from "./archive-filter-option-schema-schema.ts";
+export { archiveFilterSchemaSchema } from "./archive-filter-schema-schema.ts";
+export { archiveFiltersSchemaSchema } from "./archive-filters-schema-schema.ts";
+export { archiveIdeasListSchemaSchema } from "./archive-ideas-list-schema-schema.ts";
+export { archiveItemSchemaSchema } from "./archive-item-schema-schema.ts";
+export { archiveScenarioSchemaSchema } from "./archive-scenario-schema-schema.ts";
+export { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+export { createIdeaBodySchemaSchema } from "./create-idea-body-schema-schema.ts";
+export { createIdeaResponseSchemaSchema } from "./create-idea-response-schema-schema.ts";
+export { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema-schema.ts";
+export { createIdeasListResponseSchemaSchema } from "./create-ideas-list-response-schema-schema.ts";
+export { createProfileBodySchemaSchema } from "./create-profile-body-schema-schema.ts";
+export { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
+export { createScenarioBodySchemaSchema } from "./create-scenario-body-schema-schema.ts";
+export { createScenarioResponseSchemaSchema } from "./create-scenario-response-schema-schema.ts";
+export { createScenarioScenePreviewResponseSchemaSchema } from "./create-scenario-scene-preview-response-schema-schema.ts";
+export { creditsBatchSchemaSchema } from "./credits-batch-schema-schema.ts";
 export {
-  deleteApiV1IdeasIdeaId200Schema,
-  deleteApiV1IdeasIdeaId400Schema,
-  deleteApiV1IdeasIdeaId401Schema,
-  deleteApiV1IdeasIdeaId403Schema,
-  deleteApiV1IdeasIdeaId404Schema,
-  deleteApiV1IdeasIdeaId500Schema,
-  deleteApiV1IdeasIdeaIdMutationResponseSchema,
-  deleteApiV1IdeasIdeaIdPathParamsSchema,
-} from "./delete-api-v1-ideas-idea-id-schema.ts";
+  deleteApiV1IdeasByIdeaId200Schema,
+  deleteApiV1IdeasByIdeaId400Schema,
+  deleteApiV1IdeasByIdeaId401Schema,
+  deleteApiV1IdeasByIdeaId403Schema,
+  deleteApiV1IdeasByIdeaId404Schema,
+  deleteApiV1IdeasByIdeaId500Schema,
+  deleteApiV1IdeasByIdeaIdMutationResponseSchema,
+  deleteApiV1IdeasByIdeaIdPathParamsSchema,
+} from "./delete-api-v1-ideas-by-idea-id-schema.ts";
 export {
-  deleteApiV1IdeasListsIdeasListId200Schema,
-  deleteApiV1IdeasListsIdeasListId400Schema,
-  deleteApiV1IdeasListsIdeasListId401Schema,
-  deleteApiV1IdeasListsIdeasListId403Schema,
-  deleteApiV1IdeasListsIdeasListId404Schema,
-  deleteApiV1IdeasListsIdeasListId500Schema,
-  deleteApiV1IdeasListsIdeasListIdMutationResponseSchema,
-  deleteApiV1IdeasListsIdeasListIdPathParamsSchema,
-} from "./delete-api-v1-ideas-lists-ideas-list-id-schema.ts";
+  deleteApiV1IdeasListsByIdeasListId200Schema,
+  deleteApiV1IdeasListsByIdeasListId400Schema,
+  deleteApiV1IdeasListsByIdeasListId401Schema,
+  deleteApiV1IdeasListsByIdeasListId403Schema,
+  deleteApiV1IdeasListsByIdeasListId404Schema,
+  deleteApiV1IdeasListsByIdeasListId500Schema,
+  deleteApiV1IdeasListsByIdeasListIdMutationResponseSchema,
+  deleteApiV1IdeasListsByIdeasListIdPathParamsSchema,
+} from "./delete-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
-  deleteApiV1ProfilesProfileId200Schema,
-  deleteApiV1ProfilesProfileId400Schema,
-  deleteApiV1ProfilesProfileId401Schema,
-  deleteApiV1ProfilesProfileId403Schema,
-  deleteApiV1ProfilesProfileId404Schema,
-  deleteApiV1ProfilesProfileId500Schema,
-  deleteApiV1ProfilesProfileIdMutationResponseSchema,
-  deleteApiV1ProfilesProfileIdPathParamsSchema,
-} from "./delete-api-v1-profiles-profile-id-schema.ts";
+  deleteApiV1ProfilesByProfileId200Schema,
+  deleteApiV1ProfilesByProfileId400Schema,
+  deleteApiV1ProfilesByProfileId401Schema,
+  deleteApiV1ProfilesByProfileId403Schema,
+  deleteApiV1ProfilesByProfileId404Schema,
+  deleteApiV1ProfilesByProfileId500Schema,
+  deleteApiV1ProfilesByProfileIdMutationResponseSchema,
+  deleteApiV1ProfilesByProfileIdPathParamsSchema,
+} from "./delete-api-v1-profiles-by-profile-id-schema.ts";
 export {
-  deleteApiV1ScenariosChaptersChapterId200Schema,
-  deleteApiV1ScenariosChaptersChapterId400Schema,
-  deleteApiV1ScenariosChaptersChapterId401Schema,
-  deleteApiV1ScenariosChaptersChapterId403Schema,
-  deleteApiV1ScenariosChaptersChapterId404Schema,
-  deleteApiV1ScenariosChaptersChapterId500Schema,
-  deleteApiV1ScenariosChaptersChapterIdMutationResponseSchema,
-  deleteApiV1ScenariosChaptersChapterIdPathParamsSchema,
-} from "./delete-api-v1-scenarios-chapters-chapter-id-schema.ts";
+  deleteApiV1ScenariosByScenarioId200Schema,
+  deleteApiV1ScenariosByScenarioId400Schema,
+  deleteApiV1ScenariosByScenarioId401Schema,
+  deleteApiV1ScenariosByScenarioId403Schema,
+  deleteApiV1ScenariosByScenarioId404Schema,
+  deleteApiV1ScenariosByScenarioId500Schema,
+  deleteApiV1ScenariosByScenarioIdMutationResponseSchema,
+  deleteApiV1ScenariosByScenarioIdPathParamsSchema,
+} from "./delete-api-v1-scenarios-by-scenario-id-schema.ts";
 export {
-  deleteApiV1ScenariosScenarioId200Schema,
-  deleteApiV1ScenariosScenarioId400Schema,
-  deleteApiV1ScenariosScenarioId401Schema,
-  deleteApiV1ScenariosScenarioId403Schema,
-  deleteApiV1ScenariosScenarioId404Schema,
-  deleteApiV1ScenariosScenarioId500Schema,
-  deleteApiV1ScenariosScenarioIdMutationResponseSchema,
-  deleteApiV1ScenariosScenarioIdPathParamsSchema,
-} from "./delete-api-v1-scenarios-scenario-id-schema.ts";
+  deleteApiV1ScenariosChaptersByChapterId200Schema,
+  deleteApiV1ScenariosChaptersByChapterId400Schema,
+  deleteApiV1ScenariosChaptersByChapterId401Schema,
+  deleteApiV1ScenariosChaptersByChapterId403Schema,
+  deleteApiV1ScenariosChaptersByChapterId404Schema,
+  deleteApiV1ScenariosChaptersByChapterId500Schema,
+  deleteApiV1ScenariosChaptersByChapterIdMutationResponseSchema,
+  deleteApiV1ScenariosChaptersByChapterIdPathParamsSchema,
+} from "./delete-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 export {
-  deleteApiV1ScenariosSceneComponentsSceneComponentId200Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentId400Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentId401Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentId403Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentId404Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentId500Schema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentIdMutationResponseSchema,
-  deleteApiV1ScenariosSceneComponentsSceneComponentIdPathParamsSchema,
-} from "./delete-api-v1-scenarios-scene-components-scene-component-id-schema.ts";
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId200Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId400Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId401Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId403Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId404Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentId500Schema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponseSchema,
+  deleteApiV1ScenariosSceneComponentsBySceneComponentIdPathParamsSchema,
+} from "./delete-api-v1-scenarios-scene-components-by-scene-component-id-schema.ts";
 export {
-  deleteApiV1ScenariosScenesSceneId200Schema,
-  deleteApiV1ScenariosScenesSceneId400Schema,
-  deleteApiV1ScenariosScenesSceneId401Schema,
-  deleteApiV1ScenariosScenesSceneId403Schema,
-  deleteApiV1ScenariosScenesSceneId404Schema,
-  deleteApiV1ScenariosScenesSceneId500Schema,
-  deleteApiV1ScenariosScenesSceneIdMutationResponseSchema,
-  deleteApiV1ScenariosScenesSceneIdPathParamsSchema,
-} from "./delete-api-v1-scenarios-scenes-scene-id-schema.ts";
+  deleteApiV1ScenariosScenesBySceneId200Schema,
+  deleteApiV1ScenariosScenesBySceneId400Schema,
+  deleteApiV1ScenariosScenesBySceneId401Schema,
+  deleteApiV1ScenariosScenesBySceneId403Schema,
+  deleteApiV1ScenariosScenesBySceneId404Schema,
+  deleteApiV1ScenariosScenesBySceneId500Schema,
+  deleteApiV1ScenariosScenesBySceneIdMutationResponseSchema,
+  deleteApiV1ScenariosScenesBySceneIdPathParamsSchema,
+} from "./delete-api-v1-scenarios-scenes-by-scene-id-schema.ts";
 export {
-  deleteApiV1ScenariosVersionsVersionId200Schema,
-  deleteApiV1ScenariosVersionsVersionId400Schema,
-  deleteApiV1ScenariosVersionsVersionId401Schema,
-  deleteApiV1ScenariosVersionsVersionId403Schema,
-  deleteApiV1ScenariosVersionsVersionId404Schema,
-  deleteApiV1ScenariosVersionsVersionId500Schema,
-  deleteApiV1ScenariosVersionsVersionIdMutationResponseSchema,
-  deleteApiV1ScenariosVersionsVersionIdPathParamsSchema,
-} from "./delete-api-v1-scenarios-versions-version-id-schema.ts";
+  deleteApiV1ScenariosVersionsByVersionId200Schema,
+  deleteApiV1ScenariosVersionsByVersionId400Schema,
+  deleteApiV1ScenariosVersionsByVersionId401Schema,
+  deleteApiV1ScenariosVersionsByVersionId403Schema,
+  deleteApiV1ScenariosVersionsByVersionId404Schema,
+  deleteApiV1ScenariosVersionsByVersionId500Schema,
+  deleteApiV1ScenariosVersionsByVersionIdMutationResponseSchema,
+  deleteApiV1ScenariosVersionsByVersionIdPathParamsSchema,
+} from "./delete-api-v1-scenarios-versions-by-version-id-schema.ts";
+export { deleteIdeaResponseSchemaSchema } from "./delete-idea-response-schema-schema.ts";
+export { deleteIdeasListResponseSchemaSchema } from "./delete-ideas-list-response-schema-schema.ts";
+export { deleteProfileResponseSchemaSchema } from "./delete-profile-response-schema-schema.ts";
+export { deleteScenarioChapterResponseSchemaSchema } from "./delete-scenario-chapter-response-schema-schema.ts";
+export { deleteScenarioResponseSchemaSchema } from "./delete-scenario-response-schema-schema.ts";
+export { deleteScenarioSceneComponentResponseSchemaSchema } from "./delete-scenario-scene-component-response-schema-schema.ts";
+export { deleteScenarioSceneResponseSchemaSchema } from "./delete-scenario-scene-response-schema-schema.ts";
+export { deleteScenarioVersionResponseSchemaSchema } from "./delete-scenario-version-response-schema-schema.ts";
+export { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+export { generateMoreIdeasBodySchemaSchema } from "./generate-more-ideas-body-schema-schema.ts";
+export { generateMoreIdeasResponseSchemaSchema } from "./generate-more-ideas-response-schema-schema.ts";
 export {
   getApiV1ArchiveFilters200Schema,
   getApiV1ArchiveFilters400Schema,
@@ -98,26 +126,26 @@ export {
   getApiV1ArchiveItemsMyQueryResponseSchema,
 } from "./get-api-v1-archive-items-my-schema.ts";
 export {
-  getApiV1IdeasIdeaId200Schema,
-  getApiV1IdeasIdeaId400Schema,
-  getApiV1IdeasIdeaId401Schema,
-  getApiV1IdeasIdeaId403Schema,
-  getApiV1IdeasIdeaId404Schema,
-  getApiV1IdeasIdeaId500Schema,
-  getApiV1IdeasIdeaIdPathParamsSchema,
-  getApiV1IdeasIdeaIdQueryResponseSchema,
-} from "./get-api-v1-ideas-idea-id-schema.ts";
+  getApiV1IdeasByIdeaId200Schema,
+  getApiV1IdeasByIdeaId400Schema,
+  getApiV1IdeasByIdeaId401Schema,
+  getApiV1IdeasByIdeaId403Schema,
+  getApiV1IdeasByIdeaId404Schema,
+  getApiV1IdeasByIdeaId500Schema,
+  getApiV1IdeasByIdeaIdPathParamsSchema,
+  getApiV1IdeasByIdeaIdQueryResponseSchema,
+} from "./get-api-v1-ideas-by-idea-id-schema.ts";
 export {
-  getApiV1IdeasListsIdeasListId200Schema,
-  getApiV1IdeasListsIdeasListId400Schema,
-  getApiV1IdeasListsIdeasListId401Schema,
-  getApiV1IdeasListsIdeasListId403Schema,
-  getApiV1IdeasListsIdeasListId404Schema,
-  getApiV1IdeasListsIdeasListId500Schema,
-  getApiV1IdeasListsIdeasListIdPathParamsSchema,
-  getApiV1IdeasListsIdeasListIdQueryParamsSchema,
-  getApiV1IdeasListsIdeasListIdQueryResponseSchema,
-} from "./get-api-v1-ideas-lists-ideas-list-id-schema.ts";
+  getApiV1IdeasListsByIdeasListId200Schema,
+  getApiV1IdeasListsByIdeasListId400Schema,
+  getApiV1IdeasListsByIdeasListId401Schema,
+  getApiV1IdeasListsByIdeasListId403Schema,
+  getApiV1IdeasListsByIdeasListId404Schema,
+  getApiV1IdeasListsByIdeasListId500Schema,
+  getApiV1IdeasListsByIdeasListIdPathParamsSchema,
+  getApiV1IdeasListsByIdeasListIdQueryParamsSchema,
+  getApiV1IdeasListsByIdeasListIdQueryResponseSchema,
+} from "./get-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
   getApiV1IdeasListsMy200Schema,
   getApiV1IdeasListsMy400Schema,
@@ -138,6 +166,16 @@ export {
   getApiV1PlatformsQueryResponseSchema,
 } from "./get-api-v1-platforms-schema.ts";
 export {
+  getApiV1ProfilesByProfileId200Schema,
+  getApiV1ProfilesByProfileId400Schema,
+  getApiV1ProfilesByProfileId401Schema,
+  getApiV1ProfilesByProfileId403Schema,
+  getApiV1ProfilesByProfileId404Schema,
+  getApiV1ProfilesByProfileId500Schema,
+  getApiV1ProfilesByProfileIdPathParamsSchema,
+  getApiV1ProfilesByProfileIdQueryResponseSchema,
+} from "./get-api-v1-profiles-by-profile-id-schema.ts";
+export {
   getApiV1ProfilesMy200Schema,
   getApiV1ProfilesMy400Schema,
   getApiV1ProfilesMy401Schema,
@@ -146,16 +184,6 @@ export {
   getApiV1ProfilesMy500Schema,
   getApiV1ProfilesMyQueryResponseSchema,
 } from "./get-api-v1-profiles-my-schema.ts";
-export {
-  getApiV1ProfilesProfileId200Schema,
-  getApiV1ProfilesProfileId400Schema,
-  getApiV1ProfilesProfileId401Schema,
-  getApiV1ProfilesProfileId403Schema,
-  getApiV1ProfilesProfileId404Schema,
-  getApiV1ProfilesProfileId500Schema,
-  getApiV1ProfilesProfileIdPathParamsSchema,
-  getApiV1ProfilesProfileIdQueryResponseSchema,
-} from "./get-api-v1-profiles-profile-id-schema.ts";
 export {
   getApiV1ProfilesTypes200Schema,
   getApiV1ProfilesTypes400Schema,
@@ -194,15 +222,45 @@ export {
   getApiV1ReferralInvitesMyQueryResponseSchema,
 } from "./get-api-v1-referral-invites-my-schema.ts";
 export {
-  getApiV1ScenariosChaptersChapterId200Schema,
-  getApiV1ScenariosChaptersChapterId400Schema,
-  getApiV1ScenariosChaptersChapterId401Schema,
-  getApiV1ScenariosChaptersChapterId403Schema,
-  getApiV1ScenariosChaptersChapterId404Schema,
-  getApiV1ScenariosChaptersChapterId500Schema,
-  getApiV1ScenariosChaptersChapterIdPathParamsSchema,
-  getApiV1ScenariosChaptersChapterIdQueryResponseSchema,
-} from "./get-api-v1-scenarios-chapters-chapter-id-schema.ts";
+  getApiV1ScenariosByScenarioIdCurrentVersion200Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersion400Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersion401Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersion403Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersion404Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersion500Schema,
+  getApiV1ScenariosByScenarioIdCurrentVersionPathParamsSchema,
+  getApiV1ScenariosByScenarioIdCurrentVersionQueryResponseSchema,
+} from "./get-api-v1-scenarios-by-scenario-id-current-version-schema.ts";
+export {
+  getApiV1ScenariosByScenarioId200Schema,
+  getApiV1ScenariosByScenarioId400Schema,
+  getApiV1ScenariosByScenarioId401Schema,
+  getApiV1ScenariosByScenarioId403Schema,
+  getApiV1ScenariosByScenarioId404Schema,
+  getApiV1ScenariosByScenarioId500Schema,
+  getApiV1ScenariosByScenarioIdPathParamsSchema,
+  getApiV1ScenariosByScenarioIdQueryResponseSchema,
+} from "./get-api-v1-scenarios-by-scenario-id-schema.ts";
+export {
+  getApiV1ScenariosByScenarioIdVersions200Schema,
+  getApiV1ScenariosByScenarioIdVersions400Schema,
+  getApiV1ScenariosByScenarioIdVersions401Schema,
+  getApiV1ScenariosByScenarioIdVersions403Schema,
+  getApiV1ScenariosByScenarioIdVersions404Schema,
+  getApiV1ScenariosByScenarioIdVersions500Schema,
+  getApiV1ScenariosByScenarioIdVersionsPathParamsSchema,
+  getApiV1ScenariosByScenarioIdVersionsQueryResponseSchema,
+} from "./get-api-v1-scenarios-by-scenario-id-versions-schema.ts";
+export {
+  getApiV1ScenariosChaptersByChapterId200Schema,
+  getApiV1ScenariosChaptersByChapterId400Schema,
+  getApiV1ScenariosChaptersByChapterId401Schema,
+  getApiV1ScenariosChaptersByChapterId403Schema,
+  getApiV1ScenariosChaptersByChapterId404Schema,
+  getApiV1ScenariosChaptersByChapterId500Schema,
+  getApiV1ScenariosChaptersByChapterIdPathParamsSchema,
+  getApiV1ScenariosChaptersByChapterIdQueryResponseSchema,
+} from "./get-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 export {
   getApiV1ScenariosMy200Schema,
   getApiV1ScenariosMy400Schema,
@@ -213,45 +271,15 @@ export {
   getApiV1ScenariosMyQueryResponseSchema,
 } from "./get-api-v1-scenarios-my-schema.ts";
 export {
-  getApiV1ScenariosScenarioIdCurrentVersion200Schema,
-  getApiV1ScenariosScenarioIdCurrentVersion400Schema,
-  getApiV1ScenariosScenarioIdCurrentVersion401Schema,
-  getApiV1ScenariosScenarioIdCurrentVersion403Schema,
-  getApiV1ScenariosScenarioIdCurrentVersion404Schema,
-  getApiV1ScenariosScenarioIdCurrentVersion500Schema,
-  getApiV1ScenariosScenarioIdCurrentVersionPathParamsSchema,
-  getApiV1ScenariosScenarioIdCurrentVersionQueryResponseSchema,
-} from "./get-api-v1-scenarios-scenario-id-current-version-schema.ts";
-export {
-  getApiV1ScenariosScenarioId200Schema,
-  getApiV1ScenariosScenarioId400Schema,
-  getApiV1ScenariosScenarioId401Schema,
-  getApiV1ScenariosScenarioId403Schema,
-  getApiV1ScenariosScenarioId404Schema,
-  getApiV1ScenariosScenarioId500Schema,
-  getApiV1ScenariosScenarioIdPathParamsSchema,
-  getApiV1ScenariosScenarioIdQueryResponseSchema,
-} from "./get-api-v1-scenarios-scenario-id-schema.ts";
-export {
-  getApiV1ScenariosScenarioIdVersions200Schema,
-  getApiV1ScenariosScenarioIdVersions400Schema,
-  getApiV1ScenariosScenarioIdVersions401Schema,
-  getApiV1ScenariosScenarioIdVersions403Schema,
-  getApiV1ScenariosScenarioIdVersions404Schema,
-  getApiV1ScenariosScenarioIdVersions500Schema,
-  getApiV1ScenariosScenarioIdVersionsPathParamsSchema,
-  getApiV1ScenariosScenarioIdVersionsQueryResponseSchema,
-} from "./get-api-v1-scenarios-scenario-id-versions-schema.ts";
-export {
-  getApiV1ScenariosVersionsVersionId200Schema,
-  getApiV1ScenariosVersionsVersionId400Schema,
-  getApiV1ScenariosVersionsVersionId401Schema,
-  getApiV1ScenariosVersionsVersionId403Schema,
-  getApiV1ScenariosVersionsVersionId404Schema,
-  getApiV1ScenariosVersionsVersionId500Schema,
-  getApiV1ScenariosVersionsVersionIdPathParamsSchema,
-  getApiV1ScenariosVersionsVersionIdQueryResponseSchema,
-} from "./get-api-v1-scenarios-versions-version-id-schema.ts";
+  getApiV1ScenariosVersionsByVersionId200Schema,
+  getApiV1ScenariosVersionsByVersionId400Schema,
+  getApiV1ScenariosVersionsByVersionId401Schema,
+  getApiV1ScenariosVersionsByVersionId403Schema,
+  getApiV1ScenariosVersionsByVersionId404Schema,
+  getApiV1ScenariosVersionsByVersionId500Schema,
+  getApiV1ScenariosVersionsByVersionIdPathParamsSchema,
+  getApiV1ScenariosVersionsByVersionIdQueryResponseSchema,
+} from "./get-api-v1-scenarios-versions-by-version-id-schema.ts";
 export {
   getApiV1SubscriptonsMy200Schema,
   getApiV1SubscriptonsMy400Schema,
@@ -315,138 +343,174 @@ export {
   getApiV1VideoTypes500Schema,
   getApiV1VideoTypesQueryResponseSchema,
 } from "./get-api-v1-video-types-schema.ts";
+export { getArchiveFiltersResponseSchemaSchema } from "./get-archive-filters-response-schema-schema.ts";
+export { getIdeaResponseSchemaSchema } from "./get-idea-response-schema-schema.ts";
+export { getIdeasListResponseSchemaSchema } from "./get-ideas-list-response-schema-schema.ts";
+export { getMyArchiveItemsResponseMetaSchemaSchema } from "./get-my-archive-items-response-meta-schema-schema.ts";
+export { getMyArchiveItemsResponseSchemaSchema } from "./get-my-archive-items-response-schema-schema.ts";
+export { getMyIdeasListResponseMetaSchemaSchema } from "./get-my-ideas-list-response-meta-schema-schema.ts";
+export { getMyIdeasListsResponseSchemaSchema } from "./get-my-ideas-lists-response-schema-schema.ts";
+export { getMyProfilesResponseSchemaSchema } from "./get-my-profiles-response-schema-schema.ts";
+export { getMyReferralCodesResponseSchemaSchema } from "./get-my-referral-codes-response-schema-schema.ts";
+export { getMyReferralInvitesResponseMetaSchemaSchema } from "./get-my-referral-invites-response-meta-schema-schema.ts";
+export { getMyReferralInvitesResponseSchemaSchema } from "./get-my-referral-invites-response-schema-schema.ts";
+export { getMyScenariosResponseSchemaSchema } from "./get-my-scenarios-response-schema-schema.ts";
+export { getMySubscriptionsResponseSchemaSchema } from "./get-my-subscriptions-response-schema-schema.ts";
+export { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";
+export { getProfileResponseSchemaSchema } from "./get-profile-response-schema-schema.ts";
+export { getProfileTypesResponseSchemaSchema } from "./get-profile-types-response-schema-schema.ts";
+export { getReferralInfoResponseSchemaSchema } from "./get-referral-info-response-schema-schema.ts";
+export { getScenarioChapterResponseSchemaSchema } from "./get-scenario-chapter-response-schema-schema.ts";
+export { getScenarioCurrentVersionResponseSchemaSchema } from "./get-scenario-current-version-response-schema-schema.ts";
+export { getScenarioResponseSchemaSchema } from "./get-scenario-response-schema-schema.ts";
+export { getScenarioVersionResponseSchemaSchema } from "./get-scenario-version-response-schema-schema.ts";
+export { getScenarioVersionsResponseSchemaSchema } from "./get-scenario-versions-response-schema-schema.ts";
+export { getTariffsResponseSchemaSchema } from "./get-tariffs-response-schema-schema.ts";
+export { getTemplatesResponseSchemaSchema } from "./get-templates-response-schema-schema.ts";
+export { getTonesResponseSchemaSchema } from "./get-tones-response-schema-schema.ts";
+export { getTrialTariffResponseSchemaSchema } from "./get-trial-tariff-response-schema-schema.ts";
+export { getVideoDurationsResponseSchemaSchema } from "./get-video-durations-response-schema-schema.ts";
+export { getVideoTypesResponseSchemaSchema } from "./get-video-types-response-schema-schema.ts";
+export { ideaExtendedSchemaSchema } from "./idea-extended-schema-schema.ts";
+export { ideaSchemaSchema } from "./idea-schema-schema.ts";
+export { ideasListExtendedSchemaSchema } from "./ideas-list-extended-schema-schema.ts";
+export { ideasListSchemaSchema } from "./ideas-list-schema-schema.ts";
+export { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+export { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 export {
-  patchApiV1IdeasIdeaIdSave200Schema,
-  patchApiV1IdeasIdeaIdSave400Schema,
-  patchApiV1IdeasIdeaIdSave401Schema,
-  patchApiV1IdeasIdeaIdSave403Schema,
-  patchApiV1IdeasIdeaIdSave404Schema,
-  patchApiV1IdeasIdeaIdSave500Schema,
-  patchApiV1IdeasIdeaIdSaveMutationRequestSchema,
-  patchApiV1IdeasIdeaIdSaveMutationResponseSchema,
-  patchApiV1IdeasIdeaIdSavePathParamsSchema,
-} from "./patch-api-v1-ideas-idea-id-save-schema.ts";
+  patchApiV1IdeasByIdeaIdSave200Schema,
+  patchApiV1IdeasByIdeaIdSave400Schema,
+  patchApiV1IdeasByIdeaIdSave401Schema,
+  patchApiV1IdeasByIdeaIdSave403Schema,
+  patchApiV1IdeasByIdeaIdSave404Schema,
+  patchApiV1IdeasByIdeaIdSave500Schema,
+  patchApiV1IdeasByIdeaIdSaveMutationRequestSchema,
+  patchApiV1IdeasByIdeaIdSaveMutationResponseSchema,
+  patchApiV1IdeasByIdeaIdSavePathParamsSchema,
+} from "./patch-api-v1-ideas-by-idea-id-save-schema.ts";
 export {
-  patchApiV1IdeasIdeaId200Schema,
-  patchApiV1IdeasIdeaId400Schema,
-  patchApiV1IdeasIdeaId401Schema,
-  patchApiV1IdeasIdeaId403Schema,
-  patchApiV1IdeasIdeaId404Schema,
-  patchApiV1IdeasIdeaId500Schema,
-  patchApiV1IdeasIdeaIdMutationRequestSchema,
-  patchApiV1IdeasIdeaIdMutationResponseSchema,
-  patchApiV1IdeasIdeaIdPathParamsSchema,
-} from "./patch-api-v1-ideas-idea-id-schema.ts";
+  patchApiV1IdeasByIdeaId200Schema,
+  patchApiV1IdeasByIdeaId400Schema,
+  patchApiV1IdeasByIdeaId401Schema,
+  patchApiV1IdeasByIdeaId403Schema,
+  patchApiV1IdeasByIdeaId404Schema,
+  patchApiV1IdeasByIdeaId500Schema,
+  patchApiV1IdeasByIdeaIdMutationRequestSchema,
+  patchApiV1IdeasByIdeaIdMutationResponseSchema,
+  patchApiV1IdeasByIdeaIdPathParamsSchema,
+} from "./patch-api-v1-ideas-by-idea-id-schema.ts";
 export {
-  patchApiV1IdeasListsIdeasListId200Schema,
-  patchApiV1IdeasListsIdeasListId400Schema,
-  patchApiV1IdeasListsIdeasListId401Schema,
-  patchApiV1IdeasListsIdeasListId403Schema,
-  patchApiV1IdeasListsIdeasListId404Schema,
-  patchApiV1IdeasListsIdeasListId500Schema,
-  patchApiV1IdeasListsIdeasListIdMutationRequestSchema,
-  patchApiV1IdeasListsIdeasListIdMutationResponseSchema,
-  patchApiV1IdeasListsIdeasListIdPathParamsSchema,
-} from "./patch-api-v1-ideas-lists-ideas-list-id-schema.ts";
+  patchApiV1IdeasListsByIdeasListId200Schema,
+  patchApiV1IdeasListsByIdeasListId400Schema,
+  patchApiV1IdeasListsByIdeasListId401Schema,
+  patchApiV1IdeasListsByIdeasListId403Schema,
+  patchApiV1IdeasListsByIdeasListId404Schema,
+  patchApiV1IdeasListsByIdeasListId500Schema,
+  patchApiV1IdeasListsByIdeasListIdMutationRequestSchema,
+  patchApiV1IdeasListsByIdeasListIdMutationResponseSchema,
+  patchApiV1IdeasListsByIdeasListIdPathParamsSchema,
+} from "./patch-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
-  patchApiV1ProfilesProfileId200Schema,
-  patchApiV1ProfilesProfileId400Schema,
-  patchApiV1ProfilesProfileId401Schema,
-  patchApiV1ProfilesProfileId403Schema,
-  patchApiV1ProfilesProfileId404Schema,
-  patchApiV1ProfilesProfileId500Schema,
-  patchApiV1ProfilesProfileIdMutationRequestSchema,
-  patchApiV1ProfilesProfileIdMutationResponseSchema,
-  patchApiV1ProfilesProfileIdPathParamsSchema,
-} from "./patch-api-v1-profiles-profile-id-schema.ts";
+  patchApiV1ProfilesByProfileId200Schema,
+  patchApiV1ProfilesByProfileId400Schema,
+  patchApiV1ProfilesByProfileId401Schema,
+  patchApiV1ProfilesByProfileId403Schema,
+  patchApiV1ProfilesByProfileId404Schema,
+  patchApiV1ProfilesByProfileId500Schema,
+  patchApiV1ProfilesByProfileIdMutationRequestSchema,
+  patchApiV1ProfilesByProfileIdMutationResponseSchema,
+  patchApiV1ProfilesByProfileIdPathParamsSchema,
+} from "./patch-api-v1-profiles-by-profile-id-schema.ts";
 export {
-  patchApiV1ScenariosChaptersChapterId200Schema,
-  patchApiV1ScenariosChaptersChapterId400Schema,
-  patchApiV1ScenariosChaptersChapterId401Schema,
-  patchApiV1ScenariosChaptersChapterId403Schema,
-  patchApiV1ScenariosChaptersChapterId404Schema,
-  patchApiV1ScenariosChaptersChapterId500Schema,
-  patchApiV1ScenariosChaptersChapterIdMutationRequestSchema,
-  patchApiV1ScenariosChaptersChapterIdMutationResponseSchema,
-  patchApiV1ScenariosChaptersChapterIdPathParamsSchema,
-} from "./patch-api-v1-scenarios-chapters-chapter-id-schema.ts";
+  patchApiV1ScenariosByScenarioIdCurrentVersion200Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersion400Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersion401Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersion403Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersion404Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersion500Schema,
+  patchApiV1ScenariosByScenarioIdCurrentVersionMutationRequestSchema,
+  patchApiV1ScenariosByScenarioIdCurrentVersionMutationResponseSchema,
+  patchApiV1ScenariosByScenarioIdCurrentVersionPathParamsSchema,
+} from "./patch-api-v1-scenarios-by-scenario-id-current-version-schema.ts";
 export {
-  patchApiV1ScenariosScenarioIdCurrentVersion200Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersion400Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersion401Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersion403Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersion404Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersion500Schema,
-  patchApiV1ScenariosScenarioIdCurrentVersionMutationRequestSchema,
-  patchApiV1ScenariosScenarioIdCurrentVersionMutationResponseSchema,
-  patchApiV1ScenariosScenarioIdCurrentVersionPathParamsSchema,
-} from "./patch-api-v1-scenarios-scenario-id-current-version-schema.ts";
+  patchApiV1ScenariosByScenarioIdSave200Schema,
+  patchApiV1ScenariosByScenarioIdSave400Schema,
+  patchApiV1ScenariosByScenarioIdSave401Schema,
+  patchApiV1ScenariosByScenarioIdSave403Schema,
+  patchApiV1ScenariosByScenarioIdSave404Schema,
+  patchApiV1ScenariosByScenarioIdSave500Schema,
+  patchApiV1ScenariosByScenarioIdSaveMutationRequestSchema,
+  patchApiV1ScenariosByScenarioIdSaveMutationResponseSchema,
+  patchApiV1ScenariosByScenarioIdSavePathParamsSchema,
+} from "./patch-api-v1-scenarios-by-scenario-id-save-schema.ts";
 export {
-  patchApiV1ScenariosScenarioIdSave200Schema,
-  patchApiV1ScenariosScenarioIdSave400Schema,
-  patchApiV1ScenariosScenarioIdSave401Schema,
-  patchApiV1ScenariosScenarioIdSave403Schema,
-  patchApiV1ScenariosScenarioIdSave404Schema,
-  patchApiV1ScenariosScenarioIdSave500Schema,
-  patchApiV1ScenariosScenarioIdSaveMutationRequestSchema,
-  patchApiV1ScenariosScenarioIdSaveMutationResponseSchema,
-  patchApiV1ScenariosScenarioIdSavePathParamsSchema,
-} from "./patch-api-v1-scenarios-scenario-id-save-schema.ts";
+  patchApiV1ScenariosByScenarioId200Schema,
+  patchApiV1ScenariosByScenarioId400Schema,
+  patchApiV1ScenariosByScenarioId401Schema,
+  patchApiV1ScenariosByScenarioId403Schema,
+  patchApiV1ScenariosByScenarioId404Schema,
+  patchApiV1ScenariosByScenarioId500Schema,
+  patchApiV1ScenariosByScenarioIdMutationRequestSchema,
+  patchApiV1ScenariosByScenarioIdMutationResponseSchema,
+  patchApiV1ScenariosByScenarioIdPathParamsSchema,
+} from "./patch-api-v1-scenarios-by-scenario-id-schema.ts";
 export {
-  patchApiV1ScenariosScenarioId200Schema,
-  patchApiV1ScenariosScenarioId400Schema,
-  patchApiV1ScenariosScenarioId401Schema,
-  patchApiV1ScenariosScenarioId403Schema,
-  patchApiV1ScenariosScenarioId404Schema,
-  patchApiV1ScenariosScenarioId500Schema,
-  patchApiV1ScenariosScenarioIdMutationRequestSchema,
-  patchApiV1ScenariosScenarioIdMutationResponseSchema,
-  patchApiV1ScenariosScenarioIdPathParamsSchema,
-} from "./patch-api-v1-scenarios-scenario-id-schema.ts";
+  patchApiV1ScenariosChaptersByChapterId200Schema,
+  patchApiV1ScenariosChaptersByChapterId400Schema,
+  patchApiV1ScenariosChaptersByChapterId401Schema,
+  patchApiV1ScenariosChaptersByChapterId403Schema,
+  patchApiV1ScenariosChaptersByChapterId404Schema,
+  patchApiV1ScenariosChaptersByChapterId500Schema,
+  patchApiV1ScenariosChaptersByChapterIdMutationRequestSchema,
+  patchApiV1ScenariosChaptersByChapterIdMutationResponseSchema,
+  patchApiV1ScenariosChaptersByChapterIdPathParamsSchema,
+} from "./patch-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 export {
-  patchApiV1ScenariosSceneComponentsSceneComponentId200Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentId400Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentId401Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentId403Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentId404Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentId500Schema,
-  patchApiV1ScenariosSceneComponentsSceneComponentIdMutationRequestSchema,
-  patchApiV1ScenariosSceneComponentsSceneComponentIdMutationResponseSchema,
-  patchApiV1ScenariosSceneComponentsSceneComponentIdPathParamsSchema,
-} from "./patch-api-v1-scenarios-scene-components-scene-component-id-schema.ts";
+  patchApiV1ScenariosSceneComponentsBySceneComponentId200Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentId400Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentId401Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentId403Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentId404Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentId500Schema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationRequestSchema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponseSchema,
+  patchApiV1ScenariosSceneComponentsBySceneComponentIdPathParamsSchema,
+} from "./patch-api-v1-scenarios-scene-components-by-scene-component-id-schema.ts";
 export {
-  patchApiV1ScenariosScenesSceneId200Schema,
-  patchApiV1ScenariosScenesSceneId400Schema,
-  patchApiV1ScenariosScenesSceneId401Schema,
-  patchApiV1ScenariosScenesSceneId403Schema,
-  patchApiV1ScenariosScenesSceneId404Schema,
-  patchApiV1ScenariosScenesSceneId500Schema,
-  patchApiV1ScenariosScenesSceneIdMutationRequestSchema,
-  patchApiV1ScenariosScenesSceneIdMutationResponseSchema,
-  patchApiV1ScenariosScenesSceneIdPathParamsSchema,
-} from "./patch-api-v1-scenarios-scenes-scene-id-schema.ts";
+  patchApiV1ScenariosScenesBySceneId200Schema,
+  patchApiV1ScenariosScenesBySceneId400Schema,
+  patchApiV1ScenariosScenesBySceneId401Schema,
+  patchApiV1ScenariosScenesBySceneId403Schema,
+  patchApiV1ScenariosScenesBySceneId404Schema,
+  patchApiV1ScenariosScenesBySceneId500Schema,
+  patchApiV1ScenariosScenesBySceneIdMutationRequestSchema,
+  patchApiV1ScenariosScenesBySceneIdMutationResponseSchema,
+  patchApiV1ScenariosScenesBySceneIdPathParamsSchema,
+} from "./patch-api-v1-scenarios-scenes-by-scene-id-schema.ts";
+export { platformExtendedSchemaSchema } from "./platform-extended-schema-schema.ts";
+export { platformSchemaSchema } from "./platform-schema-schema.ts";
 export {
-  postApiV1IdeasListsIdeasListIdIdeas201Schema,
-  postApiV1IdeasListsIdeasListIdIdeas400Schema,
-  postApiV1IdeasListsIdeasListIdIdeas401Schema,
-  postApiV1IdeasListsIdeasListIdIdeas403Schema,
-  postApiV1IdeasListsIdeasListIdIdeas404Schema,
-  postApiV1IdeasListsIdeasListIdIdeas500Schema,
-  postApiV1IdeasListsIdeasListIdIdeasMutationRequestSchema,
-  postApiV1IdeasListsIdeasListIdIdeasMutationResponseSchema,
-  postApiV1IdeasListsIdeasListIdIdeasPathParamsSchema,
-} from "./post-api-v1-ideas-lists-ideas-list-id-ideas-schema.ts";
+  postApiV1IdeasListsByIdeasListIdIdeas201Schema,
+  postApiV1IdeasListsByIdeasListIdIdeas400Schema,
+  postApiV1IdeasListsByIdeasListIdIdeas401Schema,
+  postApiV1IdeasListsByIdeasListIdIdeas403Schema,
+  postApiV1IdeasListsByIdeasListIdIdeas404Schema,
+  postApiV1IdeasListsByIdeasListIdIdeas500Schema,
+  postApiV1IdeasListsByIdeasListIdIdeasMutationRequestSchema,
+  postApiV1IdeasListsByIdeasListIdIdeasMutationResponseSchema,
+  postApiV1IdeasListsByIdeasListIdIdeasPathParamsSchema,
+} from "./post-api-v1-ideas-lists-by-ideas-list-id-ideas-schema.ts";
 export {
-  postApiV1IdeasListsIdeasListIdMoreIdeas202Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeas400Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeas401Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeas403Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeas404Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeas500Schema,
-  postApiV1IdeasListsIdeasListIdMoreIdeasMutationRequestSchema,
-  postApiV1IdeasListsIdeasListIdMoreIdeasMutationResponseSchema,
-  postApiV1IdeasListsIdeasListIdMoreIdeasPathParamsSchema,
-} from "./post-api-v1-ideas-lists-ideas-list-id-more-ideas-schema.ts";
+  postApiV1IdeasListsByIdeasListIdMoreIdeas202Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeas400Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeas401Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeas403Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeas404Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeas500Schema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeasMutationRequestSchema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeasMutationResponseSchema,
+  postApiV1IdeasListsByIdeasListIdMoreIdeasPathParamsSchema,
+} from "./post-api-v1-ideas-lists-by-ideas-list-id-more-ideas-schema.ts";
 export {
   postApiV1IdeasLists201Schema,
   postApiV1IdeasLists400Schema,
@@ -468,16 +532,16 @@ export {
   postApiV1ProfilesMutationResponseSchema,
 } from "./post-api-v1-profiles-schema.ts";
 export {
-  postApiV1ScenariosScenesSceneIdPreview200Schema,
-  postApiV1ScenariosScenesSceneIdPreview201Schema,
-  postApiV1ScenariosScenesSceneIdPreview400Schema,
-  postApiV1ScenariosScenesSceneIdPreview401Schema,
-  postApiV1ScenariosScenesSceneIdPreview403Schema,
-  postApiV1ScenariosScenesSceneIdPreview404Schema,
-  postApiV1ScenariosScenesSceneIdPreview500Schema,
-  postApiV1ScenariosScenesSceneIdPreviewMutationResponseSchema,
-  postApiV1ScenariosScenesSceneIdPreviewPathParamsSchema,
-} from "./post-api-v1-scenarios-scenes-scene-id-preview-schema.ts";
+  postApiV1ScenariosScenesBySceneIdPreview200Schema,
+  postApiV1ScenariosScenesBySceneIdPreview201Schema,
+  postApiV1ScenariosScenesBySceneIdPreview400Schema,
+  postApiV1ScenariosScenesBySceneIdPreview401Schema,
+  postApiV1ScenariosScenesBySceneIdPreview403Schema,
+  postApiV1ScenariosScenesBySceneIdPreview404Schema,
+  postApiV1ScenariosScenesBySceneIdPreview500Schema,
+  postApiV1ScenariosScenesBySceneIdPreviewMutationResponseSchema,
+  postApiV1ScenariosScenesBySceneIdPreviewPathParamsSchema,
+} from "./post-api-v1-scenarios-scenes-by-scene-id-preview-schema.ts";
 export {
   postApiV1Scenarios201Schema,
   postApiV1Scenarios400Schema,
@@ -488,3 +552,51 @@ export {
   postApiV1ScenariosMutationRequestSchema,
   postApiV1ScenariosMutationResponseSchema,
 } from "./post-api-v1-scenarios-schema.ts";
+export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
+export { profileSchemaSchema } from "./profile-schema-schema.ts";
+export { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
+export { referralCodeSchemaSchema } from "./referral-code-schema-schema.ts";
+export { referralInviteExtendedSchemaSchema } from "./referral-invite-extended-schema-schema.ts";
+export { referralRewardSchemaSchema } from "./referral-reward-schema-schema.ts";
+export { saveIdeaBodySchemaSchema } from "./save-idea-body-schema-schema.ts";
+export { saveIdeaResponseSchemaSchema } from "./save-idea-response-schema-schema.ts";
+export { saveScenarioBodySchemaSchema } from "./save-scenario-body-schema-schema.ts";
+export { saveScenarioResponseSchemaSchema } from "./save-scenario-response-schema-schema.ts";
+export { scenarioChapterExtendedSchemaSchema } from "./scenario-chapter-extended-schema-schema.ts";
+export { scenarioChapterSchemaSchema } from "./scenario-chapter-schema-schema.ts";
+export { scenarioExtendedSchemaSchema } from "./scenario-extended-schema-schema.ts";
+export { scenarioSceneComponentExtendedSchemaSchema } from "./scenario-scene-component-extended-schema-schema.ts";
+export { scenarioSceneComponentSchemaSchema } from "./scenario-scene-component-schema-schema.ts";
+export { scenarioSceneComponentTypeSchemaSchema } from "./scenario-scene-component-type-schema-schema.ts";
+export { scenarioSceneExtendedSchemaSchema } from "./scenario-scene-extended-schema-schema.ts";
+export { scenarioScenePreviewSchemaSchema } from "./scenario-scene-preview-schema-schema.ts";
+export { scenarioSceneSchemaSchema } from "./scenario-scene-schema-schema.ts";
+export { scenarioSchemaSchema } from "./scenario-schema-schema.ts";
+export { scenarioVersionExtendedSchemaSchema } from "./scenario-version-extended-schema-schema.ts";
+export { scenarioVersionSchemaSchema } from "./scenario-version-schema-schema.ts";
+export { subscriptionExtendedSchemaSchema } from "./subscription-extended-schema-schema.ts";
+export { tariffDiscountSchemaSchema } from "./tariff-discount-schema-schema.ts";
+export { tariffExtendedSchemaSchema } from "./tariff-extended-schema-schema.ts";
+export { tariffSchemaSchema } from "./tariff-schema-schema.ts";
+export { templateSchemaSchema } from "./template-schema-schema.ts";
+export { toneSchemaSchema } from "./tone-schema-schema.ts";
+export { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+export { updateIdeaBodySchemaSchema } from "./update-idea-body-schema-schema.ts";
+export { updateIdeaResponseSchemaSchema } from "./update-idea-response-schema-schema.ts";
+export { updateIdeasListBodySchemaSchema } from "./update-ideas-list-body-schema-schema.ts";
+export { updateIdeasListResponseSchemaSchema } from "./update-ideas-list-response-schema-schema.ts";
+export { updateProfileBodySchemaSchema } from "./update-profile-body-schema-schema.ts";
+export { updateProfileResponseSchemaSchema } from "./update-profile-response-schema-schema.ts";
+export { updateScenarioBodySchemaSchema } from "./update-scenario-body-schema-schema.ts";
+export { updateScenarioChapterBodySchemaSchema } from "./update-scenario-chapter-body-schema-schema.ts";
+export { updateScenarioChapterResponseSchemaSchema } from "./update-scenario-chapter-response-schema-schema.ts";
+export { updateScenarioCurrentVersionBodySchemaSchema } from "./update-scenario-current-version-body-schema-schema.ts";
+export { updateScenarioCurrentVersionResponseSchemaSchema } from "./update-scenario-current-version-response-schema-schema.ts";
+export { updateScenarioResponseSchemaSchema } from "./update-scenario-response-schema-schema.ts";
+export { updateScenarioSceneBodySchemaSchema } from "./update-scenario-scene-body-schema-schema.ts";
+export { updateScenarioSceneComponentBodySchemaSchema } from "./update-scenario-scene-component-body-schema-schema.ts";
+export { updateScenarioSceneComponentResponseSchemaSchema } from "./update-scenario-scene-component-response-schema-schema.ts";
+export { updateScenarioSceneResponseSchemaSchema } from "./update-scenario-scene-response-schema-schema.ts";
+export { userSchemaSchema } from "./user-schema-schema.ts";
+export { videoDurationSchemaSchema } from "./video-duration-schema-schema.ts";
+export { videoTypeSchemaSchema } from "./video-type-schema-schema.ts";

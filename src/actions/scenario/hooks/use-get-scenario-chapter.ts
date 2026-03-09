@@ -1,4 +1,4 @@
-import { useGetApiV1ScenariosChaptersChapterId } from "@/codegen/api/product";
+import { useGetApiV1ScenariosChaptersByChapterId } from "@/codegen/api/product";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
@@ -14,7 +14,7 @@ export function useGetScenarioChapter({
     data: scenarioChapterData,
     isLoading: isScenarioChapterLoading,
     error: isScenarioChapterError,
-  } = useGetApiV1ScenariosChaptersChapterId(
+  } = useGetApiV1ScenariosChaptersByChapterId(
     {
       chapterId: chapterId as string,
     },

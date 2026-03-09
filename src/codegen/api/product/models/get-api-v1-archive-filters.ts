@@ -3,92 +3,48 @@
  * Do not edit manually.
  */
 
-export const dataSlugEnum = {
-  entity: "entity",
-  sort: "sort",
-  templateIds: "templateIds",
-  profileIds: "profileIds",
-  toneIds: "toneIds",
-  videoTypeIds: "videoTypeIds",
-  platformIds: "platformIds",
-  videoDurationIds: "videoDurationIds",
-} as const;
-
-export type DataSlugEnumKey = (typeof dataSlugEnum)[keyof typeof dataSlugEnum];
-
-export const dataTypeEnum = {
-  select: "select",
-  multiselect: "multiselect",
-} as const;
-
-export type DataTypeEnumKey = (typeof dataTypeEnum)[keyof typeof dataTypeEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetArchiveFiltersResponseSchema } from "./get-archive-filters-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get archive filters response
  * @description Archive filters retrieved successfully
  */
-export type GetApiV1ArchiveFilters200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string
-     */
-    slug: DataSlugEnumKey;
-    /**
-     * @type string
-     */
-    name: string;
-    icon: string | null;
-    /**
-     * @type string
-     */
-    type: DataTypeEnumKey;
-    /**
-     * @type array
-     */
-    options: {
-      /**
-       * @type string
-       */
-      label: string;
-      /**
-       * @type string
-       */
-      value: string;
-    }[];
-  }[];
-};
+export type GetApiV1ArchiveFilters200 = GetArchiveFiltersResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ArchiveFilters400 = string;
+export type GetApiV1ArchiveFilters400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ArchiveFilters401 = string;
+export type GetApiV1ArchiveFilters401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ArchiveFilters403 = string;
+export type GetApiV1ArchiveFilters403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ArchiveFilters404 = string;
+export type GetApiV1ArchiveFilters404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ArchiveFilters500 = string;
+export type GetApiV1ArchiveFilters500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ArchiveFiltersQueryResponse = GetApiV1ArchiveFilters200;
 

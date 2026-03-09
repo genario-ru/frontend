@@ -3,7 +3,7 @@ import type { RefObject } from "react";
 import { useCreateProfile } from "@/actions/profiles/hooks/use-create-profile";
 import { useUpdateProfile } from "@/actions/profiles/hooks/use-update-profile";
 import type {
-  GetApiV1ProfilesProfileIdQueryResponse,
+  GetApiV1ProfilesByProfileIdQueryResponse,
   GetApiV1ProfilesTypesQueryResponse,
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
@@ -18,7 +18,7 @@ import {
 
 type UseProfileDialogFormParams = {
   overlayRef: RefObject<HTMLDivElement | null>;
-  profileData: GetApiV1ProfilesProfileIdQueryResponse | undefined;
+  profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
   profileTypesData: GetApiV1ProfilesTypesQueryResponse;
   onDialogClose: () => void;
 };

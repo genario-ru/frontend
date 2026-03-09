@@ -2,7 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 import { useGenerateMoreIdeas } from "@/actions/ideas-lists/hooks/use-generate-more-ideas";
-import { getApiV1IdeasListsIdeasListIdQueryKey } from "@/codegen/api/product";
+import { getApiV1IdeasListsByIdeasListIdQueryKey } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -27,7 +27,7 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
         setIsMoreIdeasDialogOpen(false);
 
         queryClient.invalidateQueries({
-          queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
+          queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
             ideasListId: ideasListId,
           }),
         });

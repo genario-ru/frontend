@@ -5,6 +5,13 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getMyIdeasListsResponseSchemaSchema } from "./get-my-ideas-lists-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 export const getApiV1IdeasListsMyQueryParamsSchema = z
   .object({
     q: z.optional(z.string().describe("Строка поиска")),
@@ -23,113 +30,44 @@ export const getApiV1IdeasListsMyQueryParamsSchema = z
 /**
  * @description Ideas lists retrieved successfully
  */
-export const getApiV1IdeasListsMy200Schema = z.object({
-  data: z.array(
-    z.object({
-      id: z.uuid(),
-      userId: z.uuid(),
-      profileId: z.union([z.uuid(), z.null()]),
-      templateId: z.union([z.uuid(), z.null()]),
-      status: z.enum(["pending", "generation", "failed", "ready"]),
-      name: z.union([z.string(), z.null()]),
-      description: z.union([z.string(), z.null()]),
-      targetAudience: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      template: z.union([
-        z.object({
-          id: z.uuid(),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          color: z.string(),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-      profile: z.union([
-        z.object({
-          id: z.uuid(),
-          userId: z.uuid(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          targetAudience: z.union([z.string(), z.null()]),
-          typeId: z.union([z.uuid(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-        z.null(),
-      ]),
-      tones: z.array(
-        z.object({
-          id: z.uuid(),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      ),
-      videoTypes: z.array(
-        z.object({
-          id: z.uuid(),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      ),
-    }),
-  ),
-  meta: z.object({
-    previousPage: z
-      .union([z.number(), z.null()])
-      .describe("Номер предыдущей страницы"),
-    currentPage: z.number().describe("Номер текущей страницы"),
-    nextPage: z
-      .union([z.number(), z.null()])
-      .describe("Номер следующей страницы"),
-    perPage: z
-      .number()
-      .describe("Количество элементов в одной странице ответа"),
-    totalItems: z.number().describe("Общее количество элементов по запросу"),
-    totalPages: z.number().describe("Общее количество страниц по запросу"),
-    sortOrder: z.enum(["asc", "desc"]).describe("Вид сортировки"),
-    sortBy: z.enum(["createdAt", "updatedAt"]),
-    q: z.optional(z.string().describe("Строка поиска")),
-    profileId: z.optional(z.uuid()),
-  }),
-});
+export const getApiV1IdeasListsMy200Schema = z
+  .lazy(() => getMyIdeasListsResponseSchemaSchema)
+  .describe("Get my ideas lists response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1IdeasListsMy400Schema = z.string();
+export const getApiV1IdeasListsMy400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1IdeasListsMy401Schema = z.string();
+export const getApiV1IdeasListsMy401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1IdeasListsMy403Schema = z.string();
+export const getApiV1IdeasListsMy403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1IdeasListsMy404Schema = z.string();
+export const getApiV1IdeasListsMy404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1IdeasListsMy500Schema = z.string();
+export const getApiV1IdeasListsMy500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1IdeasListsMyQueryResponseSchema = z.lazy(
   () => getApiV1IdeasListsMy200Schema,

@@ -33,7 +33,7 @@ function getPostApiV1IdeasListsUrl() {
  * {@link /api/v1/ideas-lists}
  */
 export async function postApiV1IdeasLists(
-  { data }: { data?: PostApiV1IdeasListsMutationRequest } = {},
+  { data }: { data: PostApiV1IdeasListsMutationRequest },
   config: Partial<RequestConfig<PostApiV1IdeasListsMutationRequest>> & {
     client?: Client;
   } = {},

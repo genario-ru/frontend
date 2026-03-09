@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
+  getApiV1ProfilesByProfileIdQueryKey,
   getApiV1ProfilesMyQueryKey,
-  getApiV1ProfilesProfileIdQueryKey,
-  usePatchApiV1ProfilesProfileId,
+  usePatchApiV1ProfilesByProfileId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -17,7 +17,7 @@ export function useUpdateProfile(params?: UseUpdateProfileParams) {
   const { showSuccessToast, showErrorToast } = useToast();
 
   const { mutate: updateProfile, isPending: isUpdateProfilePending } =
-    usePatchApiV1ProfilesProfileId({
+    usePatchApiV1ProfilesByProfileId({
       mutation: {
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
@@ -25,7 +25,7 @@ export function useUpdateProfile(params?: UseUpdateProfileParams) {
           });
 
           queryClient.invalidateQueries({
-            queryKey: getApiV1ProfilesProfileIdQueryKey({
+            queryKey: getApiV1ProfilesByProfileIdQueryKey({
               profileId: data.id,
             }),
           });

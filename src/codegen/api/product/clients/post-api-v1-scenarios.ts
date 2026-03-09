@@ -33,7 +33,7 @@ function getPostApiV1ScenariosUrl() {
  * {@link /api/v1/scenarios}
  */
 export async function postApiV1Scenarios(
-  { data }: { data?: PostApiV1ScenariosMutationRequest } = {},
+  { data }: { data: PostApiV1ScenariosMutationRequest },
   config: Partial<RequestConfig<PostApiV1ScenariosMutationRequest>> & {
     client?: Client;
   } = {},

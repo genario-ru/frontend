@@ -3,97 +3,54 @@
  * Do not edit manually.
  */
 
-export const dataStatusEnum = {
-  pending: "pending",
-  generation: "generation",
-  failed: "failed",
-  ready: "ready",
-} as const;
-
-export type DataStatusEnumKey =
-  (typeof dataStatusEnum)[keyof typeof dataStatusEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { CreateIdeasListBodySchema } from "./create-ideas-list-body-schema.ts";
+import type { CreateIdeasListResponseSchema } from "./create-ideas-list-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Create ideas list response
  * @description Ideas list created successfully
  */
-export type PostApiV1IdeasLists201 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    profileId: string | null;
-    templateId: string | null;
-    /**
-     * @type string
-     */
-    status: DataStatusEnumKey;
-    name: string | null;
-    description: string | null;
-    targetAudience: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  };
-};
+export type PostApiV1IdeasLists201 = CreateIdeasListResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type PostApiV1IdeasLists400 = string;
+export type PostApiV1IdeasLists400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type PostApiV1IdeasLists401 = string;
+export type PostApiV1IdeasLists401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type PostApiV1IdeasLists403 = string;
+export type PostApiV1IdeasLists403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type PostApiV1IdeasLists404 = string;
+export type PostApiV1IdeasLists404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type PostApiV1IdeasLists500 = string;
+export type PostApiV1IdeasLists500 = InternalServerErrorResponseSchema;
 
-export type PostApiV1IdeasListsMutationRequest = {
-  templateId?: string | null;
-  profileId?: string | null;
-  name?: string | null;
-  description?: string | null;
-  targetAudience?: string | null;
-  /**
-   * @type array | undefined
-   */
-  toneIds?: string[];
-  /**
-   * @type array | undefined
-   */
-  videoTypeIds?: string[];
-};
+/**
+ * Create ideas list body
+ */
+export type PostApiV1IdeasListsMutationRequest = CreateIdeasListBodySchema;
 
 export type PostApiV1IdeasListsMutationResponse = PostApiV1IdeasLists201;
 

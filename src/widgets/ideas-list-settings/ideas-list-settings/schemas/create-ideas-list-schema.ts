@@ -1,3 +1,3 @@
-import { postApiV1IdeasListsMutationRequestSchema } from "@/codegen/api/product";
+import { createIdeasListBodySchemaSchema } from "@/codegen/api/product";
 
-export const createIdeasListSchema = postApiV1IdeasListsMutationRequestSchema;
+export const createIdeasListSchema = createIdeasListBodySchemaSchema;

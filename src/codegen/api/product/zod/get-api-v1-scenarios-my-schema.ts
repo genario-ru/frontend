@@ -5,54 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getMyScenariosResponseSchemaSchema } from "./get-my-scenarios-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description My scenarios retrieved successfully
  */
-export const getApiV1ScenariosMy200Schema = z.object({
-  data: z.array(
-    z.object({
-      id: z.uuid(),
-      userId: z.uuid(),
-      currentVersionId: z.union([z.uuid(), z.null()]),
-      profileId: z.union([z.uuid(), z.null()]),
-      templateId: z.union([z.uuid(), z.null()]),
-      platformId: z.union([z.uuid(), z.null()]),
-      videoTypeId: z.union([z.uuid(), z.null()]),
-      videoDurationId: z.union([z.uuid(), z.null()]),
-      saved: z.boolean(),
-      name: z.union([z.string(), z.null()]),
-      description: z.union([z.string(), z.null()]),
-      targetAudience: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
+export const getApiV1ScenariosMy200Schema = z
+  .lazy(() => getMyScenariosResponseSchemaSchema)
+  .describe("Get my scenarios response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ScenariosMy400Schema = z.string();
+export const getApiV1ScenariosMy400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ScenariosMy401Schema = z.string();
+export const getApiV1ScenariosMy401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ScenariosMy403Schema = z.string();
+export const getApiV1ScenariosMy403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ScenariosMy404Schema = z.string();
+export const getApiV1ScenariosMy404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ScenariosMy500Schema = z.string();
+export const getApiV1ScenariosMy500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ScenariosMyQueryResponseSchema = z.lazy(
   () => getApiV1ScenariosMy200Schema,

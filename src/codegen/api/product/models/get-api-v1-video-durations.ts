@@ -3,74 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetVideoDurationsResponseSchema } from "./get-video-durations-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get video durations response
  * @description Video durations retrieved successfully
  */
-export type GetApiV1VideoDurations200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    /**
-     * @minLength -9007199254740991
-     * @maxLength 9007199254740991
-     * @type integer
-     */
-    minSeconds: number;
-    maxSeconds: number | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  }[];
-};
+export type GetApiV1VideoDurations200 = GetVideoDurationsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1VideoDurations400 = string;
+export type GetApiV1VideoDurations400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1VideoDurations401 = string;
+export type GetApiV1VideoDurations401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1VideoDurations403 = string;
+export type GetApiV1VideoDurations403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1VideoDurations404 = string;
+export type GetApiV1VideoDurations404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1VideoDurations500 = string;
+export type GetApiV1VideoDurations500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1VideoDurationsQueryResponse = GetApiV1VideoDurations200;
 

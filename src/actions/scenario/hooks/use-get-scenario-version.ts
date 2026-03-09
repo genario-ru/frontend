@@ -1,4 +1,4 @@
-import { useGetApiV1ScenariosVersionsVersionId } from "@/codegen/api/product";
+import { useGetApiV1ScenariosVersionsByVersionId } from "@/codegen/api/product";
 
 type UseGetScenarioVersionParams = {
   scenarioVersionId?: string | null;
@@ -11,7 +11,7 @@ export function useGetScenarioVersion({
     data: scenarioVersionData,
     isLoading: isScenarioVersionLoading,
     isError: isScenarioVersionError,
-  } = useGetApiV1ScenariosVersionsVersionId(
+  } = useGetApiV1ScenariosVersionsByVersionId(
     {
       versionId: scenarioVersionId as string,
     },

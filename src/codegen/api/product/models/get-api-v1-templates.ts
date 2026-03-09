@@ -3,72 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetTemplatesResponseSchema } from "./get-templates-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get templates response
  * @description Templates retrieved successfully
  */
-export type GetApiV1Templates200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    icon: string | null;
-    /**
-     * @type string
-     */
-    color: string;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  }[];
-};
+export type GetApiV1Templates200 = GetTemplatesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1Templates400 = string;
+export type GetApiV1Templates400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1Templates401 = string;
+export type GetApiV1Templates401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1Templates403 = string;
+export type GetApiV1Templates403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1Templates404 = string;
+export type GetApiV1Templates404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1Templates500 = string;
+export type GetApiV1Templates500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1TemplatesQueryResponse = GetApiV1Templates200;
 

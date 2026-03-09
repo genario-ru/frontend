@@ -3,132 +3,48 @@
  * Do not edit manually.
  */
 
-export const referralRewardTypeEnum = {
-  credits: "credits",
-  tariff_discount: "tariff_discount",
-} as const;
-
-export type ReferralRewardTypeEnumKey =
-  (typeof referralRewardTypeEnum)[keyof typeof referralRewardTypeEnum];
-
-export const referralRewardUserTypeEnum = {
-  referral_source: "referral_source",
-  referral_target: "referral_target",
-} as const;
-
-export type ReferralRewardUserTypeEnumKey =
-  (typeof referralRewardUserTypeEnum)[keyof typeof referralRewardUserTypeEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMyReferralCodesResponseSchema } from "./get-my-referral-codes-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get my referral codes response
  * @description My referral codes retrieved successfully
  */
-export type GetApiV1ReferralCodesMy200 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type array
-     */
-    referralCodes: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string, uuid
-       */
-      userId: string;
-      /**
-       * @type string, uuid
-       */
-      referralRewardId: string;
-      /**
-       * @maxLength 8
-       * @type string
-       */
-      code: string;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-      /**
-       * @type object
-       */
-      referralReward: {
-        /**
-         * @type string, uuid
-         */
-        id: string;
-        /**
-         * @type string
-         */
-        slug: string;
-        /**
-         * @type string
-         */
-        name: string;
-        description: string | null;
-        /**
-         * @type string
-         */
-        type: ReferralRewardTypeEnumKey;
-        /**
-         * @type string
-         */
-        userType: ReferralRewardUserTypeEnumKey;
-        /**
-         * @minLength -9007199254740991
-         * @maxLength 9007199254740991
-         * @type integer
-         */
-        value: number;
-        /**
-         * @type string
-         */
-        createdAt: string;
-        /**
-         * @type string
-         */
-        updatedAt: string;
-      };
-    }[];
-  };
-};
+export type GetApiV1ReferralCodesMy200 = GetMyReferralCodesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ReferralCodesMy400 = string;
+export type GetApiV1ReferralCodesMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ReferralCodesMy401 = string;
+export type GetApiV1ReferralCodesMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ReferralCodesMy403 = string;
+export type GetApiV1ReferralCodesMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ReferralCodesMy404 = string;
+export type GetApiV1ReferralCodesMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ReferralCodesMy500 = string;
+export type GetApiV1ReferralCodesMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ReferralCodesMyQueryResponse = GetApiV1ReferralCodesMy200;
 

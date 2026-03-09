@@ -1,4 +1,4 @@
-import { useGetApiV1ScenariosScenarioId } from "@/codegen/api/product";
+import { useGetApiV1ScenariosByScenarioId } from "@/codegen/api/product";
 
 type UseGetScenarioParams = {
   scenarioId: string | undefined;
@@ -9,7 +9,7 @@ export function useGetScenario({ scenarioId }: UseGetScenarioParams) {
     data: scenarioData,
     isLoading: isScenarioLoading,
     isError: isScenarioError,
-  } = useGetApiV1ScenariosScenarioId(
+  } = useGetApiV1ScenariosByScenarioId(
     {
       scenarioId: scenarioId as string,
     },

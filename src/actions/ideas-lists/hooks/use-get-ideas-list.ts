@@ -1,4 +1,4 @@
-import { useGetApiV1IdeasListsIdeasListId } from "@/codegen/api/product";
+import { useGetApiV1IdeasListsByIdeasListId } from "@/codegen/api/product";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 const REFRESH_INTERVAL = 3000;
@@ -13,7 +13,7 @@ export function useGetIdeasList({ ideasListId, saved }: UseGetIdeasListParams) {
     data: ideasListData,
     isLoading: isIdeasListLoading,
     isError: isIdeasListError,
-  } = useGetApiV1IdeasListsIdeasListId(
+  } = useGetApiV1IdeasListsByIdeasListId(
     {
       ideasListId: ideasListId as string,
       params: {

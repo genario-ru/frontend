@@ -3,203 +3,48 @@
  * Do not edit manually.
  */
 
-export const userRoleEnum = {
-  user: "user",
-  admin: "admin",
-} as const;
-
-export type UserRoleEnumKey = (typeof userRoleEnum)[keyof typeof userRoleEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMyProfilesResponseSchema } from "./get-my-profiles-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get my profiles response
  * @description My profiles retrieved successfully
  */
-export type GetApiV1ProfilesMy200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    targetAudience: string | null;
-    typeId: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type object
-     */
-    user: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      email: string;
-      /**
-       * @type boolean
-       */
-      emailVerified: boolean;
-      phone: string | null;
-      /**
-       * @type boolean
-       */
-      phoneVerified: boolean;
-      /**
-       * @type string
-       */
-      name: string;
-      image: string | null;
-      /**
-       * @type string
-       */
-      role: UserRoleEnumKey;
-      /**
-       * @type boolean
-       */
-      banned: boolean;
-      banReason: string | null;
-      banExpires: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-    /**
-     * @type object
-     */
-    type: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-    /**
-     * @type array
-     */
-    platforms: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      logoUrl: string | null;
-      baseUrl: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    }[];
-    /**
-     * @type array
-     */
-    tones: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    }[];
-  }[];
-};
+export type GetApiV1ProfilesMy200 = GetMyProfilesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ProfilesMy400 = string;
+export type GetApiV1ProfilesMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ProfilesMy401 = string;
+export type GetApiV1ProfilesMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ProfilesMy403 = string;
+export type GetApiV1ProfilesMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ProfilesMy404 = string;
+export type GetApiV1ProfilesMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ProfilesMy500 = string;
+export type GetApiV1ProfilesMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ProfilesMyQueryResponse = GetApiV1ProfilesMy200;
 

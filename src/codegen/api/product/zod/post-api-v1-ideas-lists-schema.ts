@@ -5,58 +5,59 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema-schema.ts";
+import { createIdeasListResponseSchemaSchema } from "./create-ideas-list-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Ideas list created successfully
  */
-export const postApiV1IdeasLists201Schema = z.object({
-  data: z.object({
-    id: z.uuid(),
-    userId: z.uuid(),
-    profileId: z.union([z.uuid(), z.null()]),
-    templateId: z.union([z.uuid(), z.null()]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+export const postApiV1IdeasLists201Schema = z
+  .lazy(() => createIdeasListResponseSchemaSchema)
+  .describe("Create ideas list response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1IdeasLists400Schema = z.string();
+export const postApiV1IdeasLists400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1IdeasLists401Schema = z.string();
+export const postApiV1IdeasLists401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1IdeasLists403Schema = z.string();
+export const postApiV1IdeasLists403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1IdeasLists404Schema = z.string();
+export const postApiV1IdeasLists404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1IdeasLists500Schema = z.string();
+export const postApiV1IdeasLists500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
-export const postApiV1IdeasListsMutationRequestSchema = z.object({
-  templateId: z.optional(z.union([z.uuid(), z.null()])),
-  profileId: z.optional(z.union([z.uuid(), z.null()])),
-  name: z.optional(z.union([z.string(), z.null()])),
-  description: z.optional(z.union([z.string(), z.null()])),
-  targetAudience: z.optional(z.union([z.string(), z.null()])),
-  toneIds: z.optional(z.array(z.uuid())),
-  videoTypeIds: z.optional(z.array(z.uuid())),
-});
+export const postApiV1IdeasListsMutationRequestSchema = z
+  .lazy(() => createIdeasListBodySchemaSchema)
+  .describe("Create ideas list body description");
 
 export const postApiV1IdeasListsMutationResponseSchema = z.lazy(
   () => postApiV1IdeasLists201Schema,

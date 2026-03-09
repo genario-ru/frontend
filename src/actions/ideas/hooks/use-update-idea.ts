@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1IdeasListsIdeasListIdQueryKey,
-  usePatchApiV1IdeasIdeaId,
+  getApiV1IdeasListsByIdeasListIdQueryKey,
+  usePatchApiV1IdeasByIdeaId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -16,7 +16,7 @@ export function useUpdateIdea({ onError, onSuccess }: UseUpdateIdeaParams) {
   const { showErrorToast } = useToast();
 
   const { mutate: updateIdea, isPending: isUpdateIdeaPending } =
-    usePatchApiV1IdeasIdeaId({
+    usePatchApiV1IdeasByIdeaId({
       mutation: {
         onError: () => {
           showErrorToast({
@@ -28,7 +28,7 @@ export function useUpdateIdea({ onError, onSuccess }: UseUpdateIdeaParams) {
         },
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
-            queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
+            queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
               ideasListId: data.ideasListId,
             }),
           });

@@ -1,6 +1,6 @@
 import { formOptions, revalidateLogic } from "@tanstack/react-form";
 
-import type { GetApiV1IdeasListsIdeasListIdQueryResponse } from "@/codegen/api/product";
+import type { GetApiV1IdeasListsByIdeasListIdQueryResponse } from "@/codegen/api/product";
 
 import {
   type IdeasListSettingsFormSchema,
@@ -10,7 +10,7 @@ import {
 
 type PrepareScenarioFormOptionsParams = {
   templateId: string | undefined;
-  ideasListData: GetApiV1IdeasListsIdeasListIdQueryResponse | undefined;
+  ideasListData: GetApiV1IdeasListsByIdeasListIdQueryResponse | undefined;
 };
 
 export const prepareIdeasListSettingsFormOptions = ({

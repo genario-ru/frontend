@@ -3,6 +3,13 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMyIdeasListsResponseSchema } from "./get-my-ideas-lists-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 export const getApiV1IdeasListsMyQueryParamsSortOrderEnum = {
   asc: "asc",
   desc: "desc",
@@ -50,255 +57,41 @@ export type GetApiV1IdeasListsMyQueryParams = {
   profileId?: string;
 };
 
-export const dataStatusEnum6 = {
-  pending: "pending",
-  generation: "generation",
-  failed: "failed",
-  ready: "ready",
-} as const;
-
-export type DataStatusEnum6Key =
-  (typeof dataStatusEnum6)[keyof typeof dataStatusEnum6];
-
-export const metaSortOrderEnum = {
-  asc: "asc",
-  desc: "desc",
-} as const;
-
-export type MetaSortOrderEnumKey =
-  (typeof metaSortOrderEnum)[keyof typeof metaSortOrderEnum];
-
-export const metaSortByEnum = {
-  createdAt: "createdAt",
-  updatedAt: "updatedAt",
-} as const;
-
-export type MetaSortByEnumKey =
-  (typeof metaSortByEnum)[keyof typeof metaSortByEnum];
-
 /**
+ * Get my ideas lists response
  * @description Ideas lists retrieved successfully
  */
-export type GetApiV1IdeasListsMy200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    profileId: string | null;
-    templateId: string | null;
-    /**
-     * @type string
-     */
-    status: DataStatusEnum6Key;
-    name: string | null;
-    description: string | null;
-    targetAudience: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    template: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      color: string;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    } | null;
-    profile: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string, uuid
-       */
-      userId: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      targetAudience: string | null;
-      typeId: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    } | null;
-    /**
-     * @type array
-     */
-    tones: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    }[];
-    /**
-     * @type array
-     */
-    videoTypes: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    }[];
-  }[];
-  /**
-   * @type object
-   */
-  meta: {
-    /**
-     * @description Номер предыдущей страницы
-     */
-    previousPage: number | null;
-    /**
-     * @description Номер текущей страницы
-     * @type number
-     */
-    currentPage: number;
-    /**
-     * @description Номер следующей страницы
-     */
-    nextPage: number | null;
-    /**
-     * @description Количество элементов в одной странице ответа
-     * @type number
-     */
-    perPage: number;
-    /**
-     * @description Общее количество элементов по запросу
-     * @type number
-     */
-    totalItems: number;
-    /**
-     * @description Общее количество страниц по запросу
-     * @type number
-     */
-    totalPages: number;
-    /**
-     * @description Вид сортировки
-     * @type string
-     */
-    sortOrder: MetaSortOrderEnumKey;
-    /**
-     * @type string
-     */
-    sortBy: MetaSortByEnumKey;
-    /**
-     * @description Строка поиска
-     * @type string | undefined
-     */
-    q?: string;
-    /**
-     * @type string | undefined, uuid
-     */
-    profileId?: string;
-  };
-};
+export type GetApiV1IdeasListsMy200 = GetMyIdeasListsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1IdeasListsMy400 = string;
+export type GetApiV1IdeasListsMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1IdeasListsMy401 = string;
+export type GetApiV1IdeasListsMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1IdeasListsMy403 = string;
+export type GetApiV1IdeasListsMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1IdeasListsMy404 = string;
+export type GetApiV1IdeasListsMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1IdeasListsMy500 = string;
+export type GetApiV1IdeasListsMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1IdeasListsMyQueryResponse = GetApiV1IdeasListsMy200;
 

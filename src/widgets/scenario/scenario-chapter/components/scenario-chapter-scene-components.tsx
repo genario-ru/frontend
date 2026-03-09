@@ -1,4 +1,4 @@
-import type { GetApiV1ScenariosChaptersChapterIdQueryResponse } from "@/codegen/api/product";
+import type { GetApiV1ScenariosChaptersByChapterIdQueryResponse } from "@/codegen/api/product";
 import {
   ScenarioChapterSceneComponent,
   ScenarioChapterSceneComponentSkeleton,
@@ -8,7 +8,7 @@ import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterSceneComponentsProps = {
   videoTypeSlug: string;
-  scene: GetApiV1ScenariosChaptersChapterIdQueryResponse["data"]["scenes"][number];
+  scene: GetApiV1ScenariosChaptersByChapterIdQueryResponse["data"]["scenes"][number];
 };
 
 type ScenarioChapterSceneComponentsSkeletonProps = {

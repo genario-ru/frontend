@@ -3,102 +3,54 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { CreateProfileBodySchema } from "./create-profile-body-schema.ts";
+import type { CreateProfileResponseSchema } from "./create-profile-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Create profile response
  * @description Profile created successfully
  */
-export type PostApiV1Profiles201 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    targetAudience: string | null;
-    typeId: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  };
-};
+export type PostApiV1Profiles201 = CreateProfileResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type PostApiV1Profiles400 = string;
+export type PostApiV1Profiles400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type PostApiV1Profiles401 = string;
+export type PostApiV1Profiles401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type PostApiV1Profiles403 = string;
+export type PostApiV1Profiles403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type PostApiV1Profiles404 = string;
+export type PostApiV1Profiles404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type PostApiV1Profiles500 = string;
+export type PostApiV1Profiles500 = InternalServerErrorResponseSchema;
 
-export type PostApiV1ProfilesMutationRequest = {
-  /**
-   * @minLength 1
-   * @maxLength 256
-   * @type string
-   */
-  name: string;
-  /**
-   * @minLength 64
-   * @maxLength 8192
-   * @type string
-   */
-  description: string;
-  /**
-   * @minLength 1
-   * @maxLength 1024
-   * @type string | undefined
-   */
-  targetAudience?: string;
-  /**
-   * @type string, uuid
-   */
-  typeId: string;
-  /**
-   * @type array | undefined
-   */
-  toneIds?: string[];
-  /**
-   * @type array | undefined
-   */
-  platformIds?: string[];
-};
+/**
+ * Create profile body
+ */
+export type PostApiV1ProfilesMutationRequest = CreateProfileBodySchema;
 
 export type PostApiV1ProfilesMutationResponse = PostApiV1Profiles201;
 

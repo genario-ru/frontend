@@ -1,7 +1,6 @@
-import { patchApiV1IdeasIdeaIdMutationRequestSchema } from "@/codegen/api/product";
+import { updateIdeaBodySchemaSchema } from "@/codegen/api/product";
 
-export const ideasListIdeaCardEditFormSchema =
-  patchApiV1IdeasIdeaIdMutationRequestSchema.pick({
-    name: true,
-    description: true,
-  });
+export const ideasListIdeaCardEditFormSchema = updateIdeaBodySchemaSchema.pick({
+  name: true,
+  description: true,
+});

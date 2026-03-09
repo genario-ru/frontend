@@ -1,11 +1,11 @@
 import {
-  type PatchApiV1ScenariosScenarioIdMutationResponse,
-  usePatchApiV1ScenariosScenarioId,
+  type PatchApiV1ScenariosByScenarioIdMutationResponse,
+  usePatchApiV1ScenariosByScenarioId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseUpdateScenarioParams = {
-  onSuccess?: (data: PatchApiV1ScenariosScenarioIdMutationResponse) => void;
+  onSuccess?: (data: PatchApiV1ScenariosByScenarioIdMutationResponse) => void;
   onError?: () => void;
 };
 
@@ -14,7 +14,7 @@ export function useUpdateScenario(params?: UseUpdateScenarioParams) {
   const { showErrorToast } = useToast();
 
   const { mutate: updateScenario, isPending: isUpdateScenarioPending } =
-    usePatchApiV1ScenariosScenarioId({
+    usePatchApiV1ScenariosByScenarioId({
       mutation: {
         onSuccess: (data) => {
           onSuccess?.(data);

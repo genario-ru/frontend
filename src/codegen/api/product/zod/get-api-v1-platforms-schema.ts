@@ -5,59 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Platforms retrieved successfully
  */
-export const getApiV1Platforms200Schema = z.object({
-  data: z.array(
-    z.object({
-      id: z.uuid(),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      logoUrl: z.union([z.string(), z.null()]),
-      baseUrl: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-      videoTypes: z.array(
-        z.object({
-          id: z.uuid(),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          icon: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      ),
-    }),
-  ),
-});
+export const getApiV1Platforms200Schema = z
+  .lazy(() => getPlatformsResponseSchemaSchema)
+  .describe("Get platforms response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1Platforms400Schema = z.string();
+export const getApiV1Platforms400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1Platforms401Schema = z.string();
+export const getApiV1Platforms401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1Platforms403Schema = z.string();
+export const getApiV1Platforms403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1Platforms404Schema = z.string();
+export const getApiV1Platforms404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1Platforms500Schema = z.string();
+export const getApiV1Platforms500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1PlatformsQueryResponseSchema = z.lazy(
   () => getApiV1Platforms200Schema,

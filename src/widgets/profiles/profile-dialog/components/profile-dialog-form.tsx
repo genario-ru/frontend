@@ -2,7 +2,7 @@ import type { RefObject } from "react";
 
 import type {
   GetApiV1PlatformsQueryResponse,
-  GetApiV1ProfilesProfileIdQueryResponse,
+  GetApiV1ProfilesByProfileIdQueryResponse,
   GetApiV1ProfilesTypesQueryResponse,
   GetApiV1TonesQueryResponse,
 } from "@/codegen/api/product";
@@ -18,7 +18,7 @@ import { cn } from "@/shared/utils/cn";
 import { useProfileDialogForm } from "../hooks/use-profile-dialog-form";
 
 type ProfileFormProps = {
-  profileData: GetApiV1ProfilesProfileIdQueryResponse | undefined;
+  profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
   profileTypesData: GetApiV1ProfilesTypesQueryResponse;
   tonesData: GetApiV1TonesQueryResponse;
   platformsData: GetApiV1PlatformsQueryResponse;

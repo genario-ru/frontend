@@ -49,7 +49,7 @@ export function postApiV1ScenariosMutationOptions<TContext = unknown>(
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
     >,
-    { data?: PostApiV1ScenariosMutationRequest },
+    { data: PostApiV1ScenariosMutationRequest },
     TContext
   >({
     mutationKey,
@@ -73,7 +73,7 @@ export function usePostApiV1Scenarios<TContext>(
         | PostApiV1Scenarios404
         | PostApiV1Scenarios500
       >,
-      { data?: PostApiV1ScenariosMutationRequest },
+      { data: PostApiV1ScenariosMutationRequest },
       TContext
     > & { client?: QueryClient };
     client?: Partial<RequestConfig<PostApiV1ScenariosMutationRequest>> & {
@@ -97,7 +97,7 @@ export function usePostApiV1Scenarios<TContext>(
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
     >,
-    { data?: PostApiV1ScenariosMutationRequest },
+    { data: PostApiV1ScenariosMutationRequest },
     TContext
   >;
 
@@ -110,7 +110,7 @@ export function usePostApiV1Scenarios<TContext>(
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
     >,
-    { data?: PostApiV1ScenariosMutationRequest },
+    { data: PostApiV1ScenariosMutationRequest },
     TContext
   >(
     {
@@ -128,7 +128,7 @@ export function usePostApiV1Scenarios<TContext>(
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
     >,
-    { data?: PostApiV1ScenariosMutationRequest },
+    { data: PostApiV1ScenariosMutationRequest },
     TContext
   >;
 }

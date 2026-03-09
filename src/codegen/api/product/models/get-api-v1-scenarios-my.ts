@@ -3,75 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get my scenarios response
  * @description My scenarios retrieved successfully
  */
-export type GetApiV1ScenariosMy200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    currentVersionId: string | null;
-    profileId: string | null;
-    templateId: string | null;
-    platformId: string | null;
-    videoTypeId: string | null;
-    videoDurationId: string | null;
-    /**
-     * @type boolean
-     */
-    saved: boolean;
-    name: string | null;
-    description: string | null;
-    targetAudience: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  }[];
-};
+export type GetApiV1ScenariosMy200 = GetMyScenariosResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ScenariosMy400 = string;
+export type GetApiV1ScenariosMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ScenariosMy401 = string;
+export type GetApiV1ScenariosMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ScenariosMy403 = string;
+export type GetApiV1ScenariosMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ScenariosMy404 = string;
+export type GetApiV1ScenariosMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ScenariosMy500 = string;
+export type GetApiV1ScenariosMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ScenariosMyQueryResponse = GetApiV1ScenariosMy200;
 

@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1ScenariosScenarioIdQueryKey,
-  usePatchApiV1ScenariosScenarioIdSave,
+  getApiV1ScenariosByScenarioIdQueryKey,
+  usePatchApiV1ScenariosByScenarioIdSave,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -16,7 +16,7 @@ export function useSaveScenario({ onError, onSuccess }: UseSaveScenarioParams) {
   const { showErrorToast } = useToast();
 
   const { mutate: saveScenario, isPending: isSaveScenarioPending } =
-    usePatchApiV1ScenariosScenarioIdSave({
+    usePatchApiV1ScenariosByScenarioIdSave({
       mutation: {
         onError: () => {
           showErrorToast({
@@ -28,7 +28,7 @@ export function useSaveScenario({ onError, onSuccess }: UseSaveScenarioParams) {
         },
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
-            queryKey: getApiV1ScenariosScenarioIdQueryKey({
+            queryKey: getApiV1ScenariosByScenarioIdQueryKey({
               scenarioId: data.id,
             }),
           });

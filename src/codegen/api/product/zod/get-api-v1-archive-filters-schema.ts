@@ -5,59 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getArchiveFiltersResponseSchemaSchema } from "./get-archive-filters-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Archive filters retrieved successfully
  */
-export const getApiV1ArchiveFilters200Schema = z.object({
-  data: z.array(
-    z.object({
-      slug: z.enum([
-        "entity",
-        "sort",
-        "templateIds",
-        "profileIds",
-        "toneIds",
-        "videoTypeIds",
-        "platformIds",
-        "videoDurationIds",
-      ]),
-      name: z.string(),
-      icon: z.union([z.string(), z.null()]),
-      type: z.enum(["select", "multiselect"]),
-      options: z.array(
-        z.object({
-          label: z.string(),
-          value: z.string(),
-        }),
-      ),
-    }),
-  ),
-});
+export const getApiV1ArchiveFilters200Schema = z
+  .lazy(() => getArchiveFiltersResponseSchemaSchema)
+  .describe("Схема ответа с вариантами фильтров архива");
 
 /**
  * @description Bad request
  */
-export const getApiV1ArchiveFilters400Schema = z.string();
+export const getApiV1ArchiveFilters400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ArchiveFilters401Schema = z.string();
+export const getApiV1ArchiveFilters401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ArchiveFilters403Schema = z.string();
+export const getApiV1ArchiveFilters403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ArchiveFilters404Schema = z.string();
+export const getApiV1ArchiveFilters404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ArchiveFilters500Schema = z.string();
+export const getApiV1ArchiveFilters500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ArchiveFiltersQueryResponseSchema = z.lazy(
   () => getApiV1ArchiveFilters200Schema,

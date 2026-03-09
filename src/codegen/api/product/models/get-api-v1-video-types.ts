@@ -3,68 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetVideoTypesResponseSchema } from "./get-video-types-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get video types response
  * @description Video types retrieved successfully
  */
-export type GetApiV1VideoTypes200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    icon: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  }[];
-};
+export type GetApiV1VideoTypes200 = GetVideoTypesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1VideoTypes400 = string;
+export type GetApiV1VideoTypes400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1VideoTypes401 = string;
+export type GetApiV1VideoTypes401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1VideoTypes403 = string;
+export type GetApiV1VideoTypes403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1VideoTypes404 = string;
+export type GetApiV1VideoTypes404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1VideoTypes500 = string;
+export type GetApiV1VideoTypes500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1VideoTypesQueryResponse = GetApiV1VideoTypes200;
 

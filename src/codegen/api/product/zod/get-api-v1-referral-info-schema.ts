@@ -5,40 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getReferralInfoResponseSchemaSchema } from "./get-referral-info-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Referral info retrieved successfully
  */
-export const getApiV1ReferralInfo200Schema = z.object({
-  data: z.object({
-    referralBasicInfo: z.string(),
-    referralDocumentLink: z.string(),
-  }),
-});
+export const getApiV1ReferralInfo200Schema = z
+  .lazy(() => getReferralInfoResponseSchemaSchema)
+  .describe("Get referral info response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ReferralInfo400Schema = z.string();
+export const getApiV1ReferralInfo400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ReferralInfo401Schema = z.string();
+export const getApiV1ReferralInfo401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ReferralInfo403Schema = z.string();
+export const getApiV1ReferralInfo403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ReferralInfo404Schema = z.string();
+export const getApiV1ReferralInfo404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ReferralInfo500Schema = z.string();
+export const getApiV1ReferralInfo500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ReferralInfoQueryResponseSchema = z.lazy(
   () => getApiV1ReferralInfo200Schema,

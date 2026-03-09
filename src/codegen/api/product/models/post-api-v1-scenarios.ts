@@ -3,90 +3,54 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { CreateScenarioBodySchema } from "./create-scenario-body-schema.ts";
+import type { CreateScenarioResponseSchema } from "./create-scenario-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Create scenario response
  * @description Scenario created successfully
  */
-export type PostApiV1Scenarios201 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    currentVersionId: string | null;
-    profileId: string | null;
-    templateId: string | null;
-    platformId: string | null;
-    videoTypeId: string | null;
-    videoDurationId: string | null;
-    /**
-     * @type boolean
-     */
-    saved: boolean;
-    name: string | null;
-    description: string | null;
-    targetAudience: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-  };
-};
+export type PostApiV1Scenarios201 = CreateScenarioResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type PostApiV1Scenarios400 = string;
+export type PostApiV1Scenarios400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type PostApiV1Scenarios401 = string;
+export type PostApiV1Scenarios401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type PostApiV1Scenarios403 = string;
+export type PostApiV1Scenarios403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type PostApiV1Scenarios404 = string;
+export type PostApiV1Scenarios404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type PostApiV1Scenarios500 = string;
+export type PostApiV1Scenarios500 = InternalServerErrorResponseSchema;
 
-export type PostApiV1ScenariosMutationRequest = {
-  name?: string | null;
-  description?: string | null;
-  templateId?: string | null;
-  videoTypeId?: string | null;
-  videoDurationId?: string | null;
-  platformId?: string | null;
-  profileId?: string | null;
-  targetAudience?: string | null;
-  /**
-   * @type array | undefined
-   */
-  toneIds?: string[];
-};
+/**
+ * Create scenario body
+ */
+export type PostApiV1ScenariosMutationRequest = CreateScenarioBodySchema;
 
 export type PostApiV1ScenariosMutationResponse = PostApiV1Scenarios201;
 

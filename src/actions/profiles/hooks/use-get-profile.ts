@@ -1,4 +1,4 @@
-import { useGetApiV1ProfilesProfileId } from "@/codegen/api/product";
+import { useGetApiV1ProfilesByProfileId } from "@/codegen/api/product";
 
 type UseGetProfileParams = {
   profileId: string | undefined;
@@ -9,7 +9,7 @@ export function useGetProfile({ profileId }: UseGetProfileParams) {
     data: profileData,
     isLoading: isProfileLoading,
     isError: isProfileError,
-  } = useGetApiV1ProfilesProfileId(
+  } = useGetApiV1ProfilesByProfileId(
     {
       profileId: profileId as string,
     },

@@ -5,47 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getProfileTypesResponseSchemaSchema } from "./get-profile-types-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Profile types retrieved successfully
  */
-export const getApiV1ProfilesTypes200Schema = z.object({
-  data: z.array(
-    z.object({
-      id: z.uuid(),
-      slug: z.string(),
-      name: z.string(),
-      description: z.union([z.string(), z.null()]),
-      icon: z.union([z.string(), z.null()]),
-      createdAt: z.string(),
-      updatedAt: z.string(),
-    }),
-  ),
-});
+export const getApiV1ProfilesTypes200Schema = z
+  .lazy(() => getProfileTypesResponseSchemaSchema)
+  .describe("Get profile types response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ProfilesTypes400Schema = z.string();
+export const getApiV1ProfilesTypes400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ProfilesTypes401Schema = z.string();
+export const getApiV1ProfilesTypes401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ProfilesTypes403Schema = z.string();
+export const getApiV1ProfilesTypes403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ProfilesTypes404Schema = z.string();
+export const getApiV1ProfilesTypes404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ProfilesTypes500Schema = z.string();
+export const getApiV1ProfilesTypes500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ProfilesTypesQueryResponseSchema = z.lazy(
   () => getApiV1ProfilesTypes200Schema,

@@ -5,6 +5,13 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getMyArchiveItemsResponseSchemaSchema } from "./get-my-archive-items-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 export const getApiV1ArchiveItemsMyQueryParamsSchema = z
   .object({
     q: z.optional(z.string().describe("Строка поиска")),
@@ -28,350 +35,44 @@ export const getApiV1ArchiveItemsMyQueryParamsSchema = z
 /**
  * @description Archive items retrieved successfully
  */
-export const getApiV1ArchiveItemsMy200Schema = z.object({
-  data: z.array(
-    z.union([
-      z.object({
-        entity: z.literal("ideasList"),
-        data: z.object({
-          id: z.uuid(),
-          userId: z.uuid(),
-          profileId: z.union([z.uuid(), z.null()]),
-          templateId: z.union([z.uuid(), z.null()]),
-          status: z.enum(["pending", "generation", "failed", "ready"]),
-          name: z.union([z.string(), z.null()]),
-          description: z.union([z.string(), z.null()]),
-          targetAudience: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-          template: z.union([
-            z.object({
-              id: z.uuid(),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              icon: z.union([z.string(), z.null()]),
-              color: z.string(),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          profile: z.union([
-            z.object({
-              id: z.uuid(),
-              userId: z.uuid(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              targetAudience: z.union([z.string(), z.null()]),
-              typeId: z.union([z.uuid(), z.null()]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-            z.null(),
-          ]),
-          tones: z.array(
-            z.object({
-              id: z.uuid(),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              icon: z.union([z.string(), z.null()]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-          ),
-          videoTypes: z.array(
-            z.object({
-              id: z.uuid(),
-              slug: z.string(),
-              name: z.string(),
-              description: z.union([z.string(), z.null()]),
-              icon: z.union([z.string(), z.null()]),
-              createdAt: z.string(),
-              updatedAt: z.string(),
-            }),
-          ),
-        }),
-      }),
-      z.object({
-        entity: z.literal("scenario"),
-        data: z.object({
-          id: z.uuid(),
-          userId: z.uuid(),
-          currentVersionId: z.union([z.uuid(), z.null()]),
-          profileId: z.union([z.uuid(), z.null()]),
-          templateId: z.union([z.uuid(), z.null()]),
-          platformId: z.union([z.uuid(), z.null()]),
-          videoTypeId: z.union([z.uuid(), z.null()]),
-          videoDurationId: z.union([z.uuid(), z.null()]),
-          saved: z.boolean(),
-          name: z.union([z.string(), z.null()]),
-          description: z.union([z.string(), z.null()]),
-          targetAudience: z.union([z.string(), z.null()]),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-          currentVersion: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                scenarioId: z.uuid(),
-                status: z.enum(["pending", "generation", "failed", "ready"]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-                profile: z.optional(
-                  z.union([
-                    z.object({
-                      id: z.uuid(),
-                      userId: z.uuid(),
-                      name: z.string(),
-                      description: z.union([z.string(), z.null()]),
-                      targetAudience: z.union([z.string(), z.null()]),
-                      typeId: z.union([z.uuid(), z.null()]),
-                      createdAt: z.string(),
-                      updatedAt: z.string(),
-                    }),
-                    z.null(),
-                  ]),
-                ),
-                platform: z.optional(
-                  z.union([
-                    z.object({
-                      id: z.uuid(),
-                      slug: z.string(),
-                      name: z.string(),
-                      description: z.union([z.string(), z.null()]),
-                      logoUrl: z.union([z.string(), z.null()]),
-                      baseUrl: z.union([z.string(), z.null()]),
-                      createdAt: z.string(),
-                      updatedAt: z.string(),
-                    }),
-                    z.null(),
-                  ]),
-                ),
-                videoType: z.optional(
-                  z.union([
-                    z.object({
-                      id: z.uuid(),
-                      slug: z.string(),
-                      name: z.string(),
-                      description: z.union([z.string(), z.null()]),
-                      icon: z.union([z.string(), z.null()]),
-                      createdAt: z.string(),
-                      updatedAt: z.string(),
-                    }),
-                    z.null(),
-                  ]),
-                ),
-                videoDuration: z.optional(
-                  z.union([
-                    z.object({
-                      id: z.uuid(),
-                      slug: z.string(),
-                      name: z.string(),
-                      description: z.union([z.string(), z.null()]),
-                      minSeconds: z
-                        .int()
-                        .min(-9007199254740991)
-                        .max(9007199254740991),
-                      maxSeconds: z.union([z.int(), z.null()]),
-                      createdAt: z.string(),
-                      updatedAt: z.string(),
-                    }),
-                    z.null(),
-                  ]),
-                ),
-                tones: z.optional(
-                  z.union([
-                    z.array(
-                      z.object({
-                        id: z.uuid(),
-                        slug: z.string(),
-                        name: z.string(),
-                        description: z.union([z.string(), z.null()]),
-                        icon: z.union([z.string(), z.null()]),
-                        createdAt: z.string(),
-                        updatedAt: z.string(),
-                      }),
-                    ),
-                    z.null(),
-                  ]),
-                ),
-                scenarioChapters: z.optional(
-                  z.union([
-                    z.array(
-                      z.object({
-                        id: z.uuid(),
-                        scenarioVersionId: z.uuid(),
-                        name: z.string(),
-                        description: z.union([z.string(), z.null()]),
-                        status: z.enum([
-                          "pending",
-                          "generation",
-                          "failed",
-                          "ready",
-                        ]),
-                        startTime: z
-                          .int()
-                          .min(-9007199254740991)
-                          .max(9007199254740991),
-                        endTime: z
-                          .int()
-                          .min(-9007199254740991)
-                          .max(9007199254740991),
-                        createdAt: z.string(),
-                        updatedAt: z.string(),
-                      }),
-                    ),
-                    z.null(),
-                  ]),
-                ),
-              }),
-              z.null(),
-            ]),
-          ),
-          profile: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                userId: z.uuid(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                targetAudience: z.union([z.string(), z.null()]),
-                typeId: z.union([z.uuid(), z.null()]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-              z.null(),
-            ]),
-          ),
-          template: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                slug: z.string(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                icon: z.union([z.string(), z.null()]),
-                color: z.string(),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-              z.null(),
-            ]),
-          ),
-          platform: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                slug: z.string(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                logoUrl: z.union([z.string(), z.null()]),
-                baseUrl: z.union([z.string(), z.null()]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-              z.null(),
-            ]),
-          ),
-          videoType: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                slug: z.string(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                icon: z.union([z.string(), z.null()]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-              z.null(),
-            ]),
-          ),
-          videoDuration: z.optional(
-            z.union([
-              z.object({
-                id: z.uuid(),
-                slug: z.string(),
-                name: z.string(),
-                description: z.union([z.string(), z.null()]),
-                minSeconds: z
-                  .int()
-                  .min(-9007199254740991)
-                  .max(9007199254740991),
-                maxSeconds: z.union([z.int(), z.null()]),
-                createdAt: z.string(),
-                updatedAt: z.string(),
-              }),
-              z.null(),
-            ]),
-          ),
-          tones: z.optional(
-            z.union([
-              z.array(
-                z.object({
-                  id: z.uuid(),
-                  slug: z.string(),
-                  name: z.string(),
-                  description: z.union([z.string(), z.null()]),
-                  icon: z.union([z.string(), z.null()]),
-                  createdAt: z.string(),
-                  updatedAt: z.string(),
-                }),
-              ),
-              z.null(),
-            ]),
-          ),
-        }),
-      }),
-    ]),
-  ),
-  meta: z.object({
-    previousPage: z
-      .union([z.number(), z.null()])
-      .describe("Номер предыдущей страницы"),
-    currentPage: z.number().describe("Номер текущей страницы"),
-    nextPage: z
-      .union([z.number(), z.null()])
-      .describe("Номер следующей страницы"),
-    perPage: z
-      .number()
-      .describe("Количество элементов в одной странице ответа"),
-    totalItems: z.number().describe("Общее количество элементов по запросу"),
-    totalPages: z.number().describe("Общее количество страниц по запросу"),
-    q: z.optional(z.string().describe("Строка поиска")),
-    entity: z.optional(z.string()),
-    ideasListsTotalItems: z.number(),
-    scenariosTotalItems: z.number(),
-    sort: z.string(),
-  }),
-});
+export const getApiV1ArchiveItemsMy200Schema = z
+  .lazy(() => getMyArchiveItemsResponseSchemaSchema)
+  .describe("Archive items response payload");
 
 /**
  * @description Bad request
  */
-export const getApiV1ArchiveItemsMy400Schema = z.string();
+export const getApiV1ArchiveItemsMy400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ArchiveItemsMy401Schema = z.string();
+export const getApiV1ArchiveItemsMy401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ArchiveItemsMy403Schema = z.string();
+export const getApiV1ArchiveItemsMy403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ArchiveItemsMy404Schema = z.string();
+export const getApiV1ArchiveItemsMy404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ArchiveItemsMy500Schema = z.string();
+export const getApiV1ArchiveItemsMy500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ArchiveItemsMyQueryResponseSchema = z.lazy(
   () => getApiV1ArchiveItemsMy200Schema,

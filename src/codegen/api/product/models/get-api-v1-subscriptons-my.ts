@@ -3,164 +3,48 @@
  * Do not edit manually.
  */
 
-export const dataStatusEnum17 = {
-  pending: "pending",
-  active: "active",
-  overdue: "overdue",
-  cancelled: "cancelled",
-} as const;
-
-export type DataStatusEnum17Key =
-  (typeof dataStatusEnum17)[keyof typeof dataStatusEnum17];
-
-export const tariffBillingPeriodEnum = {
-  month: "month",
-  year: "year",
-} as const;
-
-export type TariffBillingPeriodEnumKey =
-  (typeof tariffBillingPeriodEnum)[keyof typeof tariffBillingPeriodEnum];
-
-export const tariffGenerationPriorityEnum = {
-  basic: "basic",
-  medium: "medium",
-  high: "high",
-} as const;
-
-export type TariffGenerationPriorityEnumKey =
-  (typeof tariffGenerationPriorityEnum)[keyof typeof tariffGenerationPriorityEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get my subscriptions response
  * @description My subscriptions retrieved successfully
  */
-export type GetApiV1SubscriptonsMy200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string, uuid
-     */
-    userId: string;
-    /**
-     * @type string, uuid
-     */
-    tariffId: string;
-    /**
-     * @type string
-     */
-    startsAt: string;
-    endsAt: string | null;
-    lastBilledAt: string | null;
-    nextBillingAt: string | null;
-    status: DataStatusEnum17Key | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type object
-     */
-    tariff: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @maxLength 255
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      /**
-       * @minLength -9007199254740991
-       * @maxLength 9007199254740991
-       * @type integer
-       */
-      price: number;
-      oldPrice: number | null;
-      billingPeriod: TariffBillingPeriodEnumKey | null;
-      durationDays: number | null;
-      /**
-       * @type boolean
-       */
-      isRenewable: boolean;
-      /**
-       * @type boolean
-       */
-      isPreferred: boolean;
-      /**
-       * @minLength -9007199254740991
-       * @maxLength 9007199254740991
-       * @type integer
-       */
-      creditsAmount: number;
-      maxProfilesAmount: number | null;
-      /**
-       * @type boolean
-       */
-      exportAvailable: boolean;
-      /**
-       * @type boolean
-       */
-      versionHistoryAvailable: boolean;
-      /**
-       * @type string
-       */
-      generationPriority: TariffGenerationPriorityEnumKey;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-  }[];
-};
+export type GetApiV1SubscriptonsMy200 = GetMySubscriptionsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1SubscriptonsMy400 = string;
+export type GetApiV1SubscriptonsMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1SubscriptonsMy401 = string;
+export type GetApiV1SubscriptonsMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1SubscriptonsMy403 = string;
+export type GetApiV1SubscriptonsMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1SubscriptonsMy404 = string;
+export type GetApiV1SubscriptonsMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1SubscriptonsMy500 = string;
+export type GetApiV1SubscriptonsMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1SubscriptonsMyQueryResponse = GetApiV1SubscriptonsMy200;
 

@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1IdeasListsIdeasListIdQueryKey,
-  useDeleteApiV1IdeasIdeaId,
+  getApiV1IdeasListsByIdeasListIdQueryKey,
+  useDeleteApiV1IdeasByIdeaId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -17,7 +17,7 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteIdea, isPending: isDeleteIdeaPending } =
-    useDeleteApiV1IdeasIdeaId({
+    useDeleteApiV1IdeasByIdeaId({
       mutation: {
         onError: () => {
           showErrorToast({
@@ -33,7 +33,7 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
           });
 
           queryClient.invalidateQueries({
-            queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
+            queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
               ideasListId: data.ideasListId,
             }),
           });

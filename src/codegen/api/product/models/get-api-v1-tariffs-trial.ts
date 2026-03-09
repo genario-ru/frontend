@@ -3,134 +3,48 @@
  * Do not edit manually.
  */
 
-export const dataBillingPeriodEnum2 = {
-  month: "month",
-  year: "year",
-} as const;
-
-export type DataBillingPeriodEnum2Key =
-  (typeof dataBillingPeriodEnum2)[keyof typeof dataBillingPeriodEnum2];
-
-export const dataGenerationPriorityEnum2 = {
-  basic: "basic",
-  medium: "medium",
-  high: "high",
-} as const;
-
-export type DataGenerationPriorityEnum2Key =
-  (typeof dataGenerationPriorityEnum2)[keyof typeof dataGenerationPriorityEnum2];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetTrialTariffResponseSchema } from "./get-trial-tariff-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get trial tariff response
  * @description Trial tariff retrieved successfully
  */
-export type GetApiV1TariffsTrial200 = {
-  /**
-   * @type object
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @maxLength 255
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    /**
-     * @minLength -9007199254740991
-     * @maxLength 9007199254740991
-     * @type integer
-     */
-    price: number;
-    oldPrice: number | null;
-    billingPeriod: DataBillingPeriodEnum2Key | null;
-    durationDays: number | null;
-    /**
-     * @type boolean
-     */
-    isRenewable: boolean;
-    /**
-     * @type boolean
-     */
-    isPreferred: boolean;
-    /**
-     * @minLength -9007199254740991
-     * @maxLength 9007199254740991
-     * @type integer
-     */
-    creditsAmount: number;
-    maxProfilesAmount: number | null;
-    /**
-     * @type boolean
-     */
-    exportAvailable: boolean;
-    /**
-     * @type boolean
-     */
-    versionHistoryAvailable: boolean;
-    /**
-     * @type string
-     */
-    generationPriority: DataGenerationPriorityEnum2Key;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type array
-     */
-    features: {
-      /**
-       * @type string
-       */
-      text: string;
-      /**
-       * @type boolean
-       */
-      included: boolean;
-    }[];
-  };
-};
+export type GetApiV1TariffsTrial200 = GetTrialTariffResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1TariffsTrial400 = string;
+export type GetApiV1TariffsTrial400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1TariffsTrial401 = string;
+export type GetApiV1TariffsTrial401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1TariffsTrial403 = string;
+export type GetApiV1TariffsTrial403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1TariffsTrial404 = string;
+export type GetApiV1TariffsTrial404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1TariffsTrial500 = string;
+export type GetApiV1TariffsTrial500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1TariffsTrialQueryResponse = GetApiV1TariffsTrial200;
 

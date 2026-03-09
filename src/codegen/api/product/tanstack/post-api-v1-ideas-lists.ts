@@ -49,7 +49,7 @@ export function postApiV1IdeasListsMutationOptions<TContext = unknown>(
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
     >,
-    { data?: PostApiV1IdeasListsMutationRequest },
+    { data: PostApiV1IdeasListsMutationRequest },
     TContext
   >({
     mutationKey,
@@ -73,7 +73,7 @@ export function usePostApiV1IdeasLists<TContext>(
         | PostApiV1IdeasLists404
         | PostApiV1IdeasLists500
       >,
-      { data?: PostApiV1IdeasListsMutationRequest },
+      { data: PostApiV1IdeasListsMutationRequest },
       TContext
     > & { client?: QueryClient };
     client?: Partial<RequestConfig<PostApiV1IdeasListsMutationRequest>> & {
@@ -97,7 +97,7 @@ export function usePostApiV1IdeasLists<TContext>(
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
     >,
-    { data?: PostApiV1IdeasListsMutationRequest },
+    { data: PostApiV1IdeasListsMutationRequest },
     TContext
   >;
 
@@ -110,7 +110,7 @@ export function usePostApiV1IdeasLists<TContext>(
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
     >,
-    { data?: PostApiV1IdeasListsMutationRequest },
+    { data: PostApiV1IdeasListsMutationRequest },
     TContext
   >(
     {
@@ -128,7 +128,7 @@ export function usePostApiV1IdeasLists<TContext>(
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
     >,
-    { data?: PostApiV1IdeasListsMutationRequest },
+    { data: PostApiV1IdeasListsMutationRequest },
     TContext
   >;
 }

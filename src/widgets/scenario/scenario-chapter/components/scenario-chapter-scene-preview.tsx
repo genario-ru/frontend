@@ -1,7 +1,7 @@
 import { WandSparklesIcon } from "lucide-react";
 import { useMemo } from "react";
 
-import type { GetApiV1ScenariosChaptersChapterIdQueryResponse } from "@/codegen/api/product";
+import type { ScenarioSceneExtendedSchema } from "@/codegen/api/product";
 import { ScenarioChapterScenePreviewImage } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-image";
 import { ScenarioChapterScenePreviewLayout } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-preview-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
@@ -17,7 +17,7 @@ type ScenarioChapterScenePreviewProps = {
   chapterId: string;
   sceneId: string;
   videoTypeSlug: string;
-  scene: GetApiV1ScenariosChaptersChapterIdQueryResponse["data"]["scenes"][number];
+  scene: ScenarioSceneExtendedSchema;
 };
 
 type ScenarioChapterScenePreviewSkeletonProps = {

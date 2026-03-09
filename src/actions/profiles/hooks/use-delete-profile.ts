@@ -2,7 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import {
   getApiV1ProfilesMyQueryKey,
-  useDeleteApiV1ProfilesProfileId,
+  useDeleteApiV1ProfilesByProfileId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -16,7 +16,7 @@ export function useDeleteProfile(params?: UseDeleteProfileParams) {
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteProfile, isPending: isDeleteProfilePending } =
-    useDeleteApiV1ProfilesProfileId({
+    useDeleteApiV1ProfilesByProfileId({
       mutation: {
         onError: () => {
           showErrorToast({

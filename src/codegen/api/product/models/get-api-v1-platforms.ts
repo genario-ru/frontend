@@ -3,96 +3,48 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 /**
+ * Get platforms response
  * @description Platforms retrieved successfully
  */
-export type GetApiV1Platforms200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    logoUrl: string | null;
-    baseUrl: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type array
-     */
-    videoTypes: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      slug: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      icon: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    }[];
-  }[];
-};
+export type GetApiV1Platforms200 = GetPlatformsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1Platforms400 = string;
+export type GetApiV1Platforms400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1Platforms401 = string;
+export type GetApiV1Platforms401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1Platforms403 = string;
+export type GetApiV1Platforms403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1Platforms404 = string;
+export type GetApiV1Platforms404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1Platforms500 = string;
+export type GetApiV1Platforms500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1PlatformsQueryResponse = GetApiV1Platforms200;
 

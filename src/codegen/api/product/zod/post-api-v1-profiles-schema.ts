@@ -5,55 +5,59 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { createProfileBodySchemaSchema } from "./create-profile-body-schema-schema.ts";
+import { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Profile created successfully
  */
-export const postApiV1Profiles201Schema = z.object({
-  data: z.object({
-    id: z.uuid(),
-    userId: z.uuid(),
-    name: z.string(),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([z.uuid(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+export const postApiV1Profiles201Schema = z
+  .lazy(() => createProfileResponseSchemaSchema)
+  .describe("Create profile response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1Profiles400Schema = z.string();
+export const postApiV1Profiles400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1Profiles401Schema = z.string();
+export const postApiV1Profiles401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1Profiles403Schema = z.string();
+export const postApiV1Profiles403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1Profiles404Schema = z.string();
+export const postApiV1Profiles404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1Profiles500Schema = z.string();
+export const postApiV1Profiles500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
-export const postApiV1ProfilesMutationRequestSchema = z.object({
-  name: z.string().min(1).max(256),
-  description: z.string().min(64).max(8192),
-  targetAudience: z.optional(z.string().min(1).max(1024)),
-  typeId: z.uuid(),
-  toneIds: z.optional(z.array(z.uuid())),
-  platformIds: z.optional(z.array(z.uuid())),
-});
+export const postApiV1ProfilesMutationRequestSchema = z
+  .lazy(() => createProfileBodySchemaSchema)
+  .describe("Create profile body description");
 
 export const postApiV1ProfilesMutationResponseSchema = z.lazy(
   () => postApiV1Profiles201Schema,

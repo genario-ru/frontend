@@ -3,134 +3,48 @@
  * Do not edit manually.
  */
 
-export const dataBillingPeriodEnum = {
-  month: "month",
-  year: "year",
-} as const;
-
-export type DataBillingPeriodEnumKey =
-  (typeof dataBillingPeriodEnum)[keyof typeof dataBillingPeriodEnum];
-
-export const dataGenerationPriorityEnum = {
-  basic: "basic",
-  medium: "medium",
-  high: "high",
-} as const;
-
-export type DataGenerationPriorityEnumKey =
-  (typeof dataGenerationPriorityEnum)[keyof typeof dataGenerationPriorityEnum];
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetTariffsResponseSchema } from "./get-tariffs-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
+ * Get tariffs response
  * @description Tariffs retrieved successfully
  */
-export type GetApiV1Tariffs200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @maxLength 255
-     * @type string
-     */
-    slug: string;
-    /**
-     * @type string
-     */
-    name: string;
-    description: string | null;
-    /**
-     * @minLength -9007199254740991
-     * @maxLength 9007199254740991
-     * @type integer
-     */
-    price: number;
-    oldPrice: number | null;
-    billingPeriod: DataBillingPeriodEnumKey | null;
-    durationDays: number | null;
-    /**
-     * @type boolean
-     */
-    isRenewable: boolean;
-    /**
-     * @type boolean
-     */
-    isPreferred: boolean;
-    /**
-     * @minLength -9007199254740991
-     * @maxLength 9007199254740991
-     * @type integer
-     */
-    creditsAmount: number;
-    maxProfilesAmount: number | null;
-    /**
-     * @type boolean
-     */
-    exportAvailable: boolean;
-    /**
-     * @type boolean
-     */
-    versionHistoryAvailable: boolean;
-    /**
-     * @type string
-     */
-    generationPriority: DataGenerationPriorityEnumKey;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type array
-     */
-    features: {
-      /**
-       * @type string
-       */
-      text: string;
-      /**
-       * @type boolean
-       */
-      included: boolean;
-    }[];
-  }[];
-};
+export type GetApiV1Tariffs200 = GetTariffsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1Tariffs400 = string;
+export type GetApiV1Tariffs400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1Tariffs401 = string;
+export type GetApiV1Tariffs401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1Tariffs403 = string;
+export type GetApiV1Tariffs403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1Tariffs404 = string;
+export type GetApiV1Tariffs404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1Tariffs500 = string;
+export type GetApiV1Tariffs500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1TariffsQueryResponse = GetApiV1Tariffs200;
 

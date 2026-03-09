@@ -5,64 +5,59 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { createScenarioBodySchemaSchema } from "./create-scenario-body-schema-schema.ts";
+import { createScenarioResponseSchemaSchema } from "./create-scenario-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description Scenario created successfully
  */
-export const postApiV1Scenarios201Schema = z.object({
-  data: z.object({
-    id: z.uuid(),
-    userId: z.uuid(),
-    currentVersionId: z.union([z.uuid(), z.null()]),
-    profileId: z.union([z.uuid(), z.null()]),
-    templateId: z.union([z.uuid(), z.null()]),
-    platformId: z.union([z.uuid(), z.null()]),
-    videoTypeId: z.union([z.uuid(), z.null()]),
-    videoDurationId: z.union([z.uuid(), z.null()]),
-    saved: z.boolean(),
-    name: z.union([z.string(), z.null()]),
-    description: z.union([z.string(), z.null()]),
-    targetAudience: z.union([z.string(), z.null()]),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-  }),
-});
+export const postApiV1Scenarios201Schema = z
+  .lazy(() => createScenarioResponseSchemaSchema)
+  .describe("Create scenario response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1Scenarios400Schema = z.string();
+export const postApiV1Scenarios400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1Scenarios401Schema = z.string();
+export const postApiV1Scenarios401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1Scenarios403Schema = z.string();
+export const postApiV1Scenarios403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1Scenarios404Schema = z.string();
+export const postApiV1Scenarios404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1Scenarios500Schema = z.string();
+export const postApiV1Scenarios500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
-export const postApiV1ScenariosMutationRequestSchema = z.object({
-  name: z.optional(z.union([z.string(), z.null()])),
-  description: z.optional(z.union([z.string(), z.null()])),
-  templateId: z.optional(z.union([z.uuid(), z.null()])),
-  videoTypeId: z.optional(z.union([z.uuid(), z.null()])),
-  videoDurationId: z.optional(z.union([z.uuid(), z.null()])),
-  platformId: z.optional(z.union([z.uuid(), z.null()])),
-  profileId: z.optional(z.union([z.uuid(), z.null()])),
-  targetAudience: z.optional(z.union([z.string(), z.null()])),
-  toneIds: z.optional(z.array(z.uuid())),
-});
+export const postApiV1ScenariosMutationRequestSchema = z
+  .lazy(() => createScenarioBodySchemaSchema)
+  .describe("Create scenario body description");
 
 export const postApiV1ScenariosMutationResponseSchema = z.lazy(
   () => postApiV1Scenarios201Schema,

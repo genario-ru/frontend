@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1ScenariosChaptersChapterIdQueryKey,
-  usePostApiV1ScenariosScenesSceneIdPreview,
+  getApiV1ScenariosChaptersByChapterIdQueryKey,
+  usePostApiV1ScenariosScenesBySceneIdPreview,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -23,7 +23,7 @@ export function useCreateScenarioScenePreview({
   const {
     mutate: createScenarioScenePreview,
     isPending: isCreateScenarioScenePreviewPending,
-  } = usePostApiV1ScenariosScenesSceneIdPreview({
+  } = usePostApiV1ScenariosScenesBySceneIdPreview({
     mutation: {
       onError: () => {
         onError?.();
@@ -37,7 +37,7 @@ export function useCreateScenarioScenePreview({
         onSuccess?.();
 
         queryClient.invalidateQueries({
-          queryKey: getApiV1ScenariosChaptersChapterIdQueryKey({
+          queryKey: getApiV1ScenariosChaptersByChapterIdQueryKey({
             chapterId,
           }),
         });

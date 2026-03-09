@@ -5,59 +5,54 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getMyReferralCodesResponseSchemaSchema } from "./get-my-referral-codes-response-schema-schema.ts";
+import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
+
 /**
  * @description My referral codes retrieved successfully
  */
-export const getApiV1ReferralCodesMy200Schema = z.object({
-  data: z.object({
-    referralCodes: z.array(
-      z.object({
-        id: z.uuid(),
-        userId: z.uuid(),
-        referralRewardId: z.uuid(),
-        code: z.string().max(8),
-        createdAt: z.string(),
-        updatedAt: z.string(),
-        referralReward: z.object({
-          id: z.uuid(),
-          slug: z.string(),
-          name: z.string(),
-          description: z.union([z.string(), z.null()]),
-          type: z.enum(["credits", "tariff_discount"]),
-          userType: z.enum(["referral_source", "referral_target"]),
-          value: z.int().min(-9007199254740991).max(9007199254740991),
-          createdAt: z.string(),
-          updatedAt: z.string(),
-        }),
-      }),
-    ),
-  }),
-});
+export const getApiV1ReferralCodesMy200Schema = z
+  .lazy(() => getMyReferralCodesResponseSchemaSchema)
+  .describe("Get my referral codes response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ReferralCodesMy400Schema = z.string();
+export const getApiV1ReferralCodesMy400Schema = z
+  .lazy(() => badRequestResponseSchemaSchema)
+  .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ReferralCodesMy401Schema = z.string();
+export const getApiV1ReferralCodesMy401Schema = z
+  .lazy(() => unauthorizedResponseSchemaSchema)
+  .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ReferralCodesMy403Schema = z.string();
+export const getApiV1ReferralCodesMy403Schema = z
+  .lazy(() => forbiddenResponseSchemaSchema)
+  .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ReferralCodesMy404Schema = z.string();
+export const getApiV1ReferralCodesMy404Schema = z
+  .lazy(() => notFoundResponseSchemaSchema)
+  .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ReferralCodesMy500Schema = z.string();
+export const getApiV1ReferralCodesMy500Schema = z
+  .lazy(() => internalServerErrorResponseSchemaSchema)
+  .describe("Internal server error response description");
 
 export const getApiV1ReferralCodesMyQueryResponseSchema = z.lazy(
   () => getApiV1ReferralCodesMy200Schema,

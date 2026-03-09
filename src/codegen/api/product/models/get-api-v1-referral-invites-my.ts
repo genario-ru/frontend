@@ -3,6 +3,13 @@
  * Do not edit manually.
  */
 
+import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { GetMyReferralInvitesResponseSchema } from "./get-my-referral-invites-response-schema.ts";
+import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
+
 export type GetApiV1ReferralInvitesMyQueryParams = {
   /**
    * @description Строка поиска
@@ -25,337 +32,41 @@ export type GetApiV1ReferralInvitesMyQueryParams = {
   sort?: string;
 };
 
-export const dataRewardStatusEnum = {
-  registered: "registered",
-  rewarded: "rewarded",
-  cancelled: "cancelled",
-} as const;
-
-export type DataRewardStatusEnumKey =
-  (typeof dataRewardStatusEnum)[keyof typeof dataRewardStatusEnum];
-
-export const referralSourceUserRoleEnum = {
-  user: "user",
-  admin: "admin",
-} as const;
-
-export type ReferralSourceUserRoleEnumKey =
-  (typeof referralSourceUserRoleEnum)[keyof typeof referralSourceUserRoleEnum];
-
-export const referralTargetUserRoleEnum = {
-  user: "user",
-  admin: "admin",
-} as const;
-
-export type ReferralTargetUserRoleEnumKey =
-  (typeof referralTargetUserRoleEnum)[keyof typeof referralTargetUserRoleEnum];
-
-export const tariffDiscountTypeEnum = {
-  fixed: "fixed",
-  percentage: "percentage",
-} as const;
-
-export type TariffDiscountTypeEnumKey =
-  (typeof tariffDiscountTypeEnum)[keyof typeof tariffDiscountTypeEnum];
-
 /**
+ * Get my referral invites response
  * @description My referral invites retrieved successfully
  */
-export type GetApiV1ReferralInvitesMy200 = {
-  /**
-   * @type array
-   */
-  data: {
-    /**
-     * @type string, uuid
-     */
-    id: string;
-    /**
-     * @type string
-     */
-    rewardStatus: DataRewardStatusEnumKey;
-    /**
-     * @type string, uuid
-     */
-    referralSourceUserId: string;
-    /**
-     * @type string, uuid
-     */
-    referralTargetUserId: string;
-    /**
-     * @type string, uuid
-     */
-    referralCodeId: string;
-    creditsBatchId: string | null;
-    tariffDiscountId: string | null;
-    /**
-     * @type string
-     */
-    createdAt: string;
-    /**
-     * @type string
-     */
-    updatedAt: string;
-    /**
-     * @type object
-     */
-    referralSourceUser: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      email: string;
-      /**
-       * @type boolean
-       */
-      emailVerified: boolean;
-      phone: string | null;
-      /**
-       * @type boolean
-       */
-      phoneVerified: boolean;
-      /**
-       * @type string
-       */
-      name: string;
-      image: string | null;
-      /**
-       * @type string
-       */
-      role: ReferralSourceUserRoleEnumKey;
-      /**
-       * @type boolean
-       */
-      banned: boolean;
-      banReason: string | null;
-      banExpires: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-    /**
-     * @type object
-     */
-    referralTargetUser: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string
-       */
-      email: string;
-      /**
-       * @type boolean
-       */
-      emailVerified: boolean;
-      phone: string | null;
-      /**
-       * @type boolean
-       */
-      phoneVerified: boolean;
-      /**
-       * @type string
-       */
-      name: string;
-      image: string | null;
-      /**
-       * @type string
-       */
-      role: ReferralTargetUserRoleEnumKey;
-      /**
-       * @type boolean
-       */
-      banned: boolean;
-      banReason: string | null;
-      banExpires: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-    /**
-     * @type object
-     */
-    referralCode: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string, uuid
-       */
-      userId: string;
-      /**
-       * @type string, uuid
-       */
-      referralRewardId: string;
-      /**
-       * @maxLength 8
-       * @type string
-       */
-      code: string;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    };
-    creditsBatch?: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string, uuid
-       */
-      userId: string;
-      /**
-       * @type string
-       */
-      name: string;
-      description: string | null;
-      /**
-       * @minLength -9007199254740991
-       * @maxLength 9007199254740991
-       * @type integer
-       */
-      initialAmount: number;
-      /**
-       * @minLength -9007199254740991
-       * @maxLength 9007199254740991
-       * @type integer
-       */
-      remainingAmount: number;
-      expiresAt: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    } | null;
-    tariffDiscount?: {
-      /**
-       * @type string, uuid
-       */
-      id: string;
-      /**
-       * @type string, uuid
-       */
-      userId: string;
-      tariffId: string | null;
-      /**
-       * @type string
-       */
-      type: TariffDiscountTypeEnumKey;
-      /**
-       * @minLength -9007199254740991
-       * @maxLength 9007199254740991
-       * @type integer
-       */
-      value: number;
-      expiresAt: string | null;
-      /**
-       * @type string
-       */
-      createdAt: string;
-      /**
-       * @type string
-       */
-      updatedAt: string;
-    } | null;
-  }[];
-  /**
-   * @type object
-   */
-  meta: {
-    /**
-     * @description Номер предыдущей страницы
-     */
-    previousPage: number | null;
-    /**
-     * @description Номер текущей страницы
-     * @type number
-     */
-    currentPage: number;
-    /**
-     * @description Номер следующей страницы
-     */
-    nextPage: number | null;
-    /**
-     * @description Количество элементов в одной странице ответа
-     * @type number
-     */
-    perPage: number;
-    /**
-     * @description Общее количество элементов по запросу
-     * @type number
-     */
-    totalItems: number;
-    /**
-     * @description Общее количество страниц по запросу
-     * @type number
-     */
-    totalPages: number;
-    /**
-     * @description Строка поиска
-     * @type string | undefined
-     */
-    q?: string;
-    /**
-     * @type string
-     */
-    sort: string;
-  };
-};
+export type GetApiV1ReferralInvitesMy200 = GetMyReferralInvitesResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1ReferralInvitesMy400 = string;
+export type GetApiV1ReferralInvitesMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1ReferralInvitesMy401 = string;
+export type GetApiV1ReferralInvitesMy401 = UnauthorizedResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1ReferralInvitesMy403 = string;
+export type GetApiV1ReferralInvitesMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1ReferralInvitesMy404 = string;
+export type GetApiV1ReferralInvitesMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1ReferralInvitesMy500 = string;
+export type GetApiV1ReferralInvitesMy500 = InternalServerErrorResponseSchema;
 
 export type GetApiV1ReferralInvitesMyQueryResponse =
   GetApiV1ReferralInvitesMy200;

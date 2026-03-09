@@ -5,12 +5,12 @@ import { useNavigate } from "@tanstack/react-router";
 import { useCreateScenario } from "@/actions/scenario/hooks/use-create-scenario";
 import { useUpdateScenario } from "@/actions/scenario/hooks/use-update-scenario";
 import type {
-  GetApiV1IdeasIdeaIdQueryResponse,
-  GetApiV1ScenariosScenarioIdQueryResponse,
+  GetApiV1IdeasByIdeaIdQueryResponse,
+  GetApiV1ScenariosByScenarioIdQueryResponse,
 } from "@/codegen/api/product";
 import {
   getApiV1ArchiveItemsMyQueryKey,
-  getApiV1ScenariosScenarioIdQueryKey,
+  getApiV1ScenariosByScenarioIdQueryKey,
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
@@ -21,8 +21,8 @@ import { usePrefetchScenarioSettingsSubformsData } from "./use-prefetch-scenario
 
 type UseScenarioSettingsFormParams = {
   templateId: string | undefined;
-  scenarioData: GetApiV1ScenariosScenarioIdQueryResponse | undefined;
-  ideaData: GetApiV1IdeasIdeaIdQueryResponse | undefined;
+  scenarioData: GetApiV1ScenariosByScenarioIdQueryResponse | undefined;
+  ideaData: GetApiV1IdeasByIdeaIdQueryResponse | undefined;
 };
 
 export function useScenarioSettingsForm({
@@ -59,13 +59,7 @@ export function useScenarioSettingsForm({
       });
 
       queryClient.invalidateQueries({
-        queryKey: getApiV1ScenariosScenarioIdQueryKey({
-          scenarioId: data.data.id,
-        }),
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ScenariosScenarioIdQueryKey({
+        queryKey: getApiV1ScenariosByScenarioIdQueryKey({
           scenarioId: data.data.id,
         }),
       });

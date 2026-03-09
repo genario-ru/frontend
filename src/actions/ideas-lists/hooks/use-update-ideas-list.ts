@@ -1,11 +1,11 @@
 import {
-  type PatchApiV1IdeasListsIdeasListIdMutationResponse,
-  usePatchApiV1IdeasListsIdeasListId,
+  type PatchApiV1IdeasListsByIdeasListIdMutationResponse,
+  usePatchApiV1IdeasListsByIdeasListId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseUpdateIdeasListParams = {
-  onSuccess?: (data: PatchApiV1IdeasListsIdeasListIdMutationResponse) => void;
+  onSuccess?: (data: PatchApiV1IdeasListsByIdeasListIdMutationResponse) => void;
   onError?: () => void;
 };
 
@@ -14,7 +14,7 @@ export function useUpdateIdeasList(params?: UseUpdateIdeasListParams) {
   const { showErrorToast } = useToast();
 
   const { mutate: updateIdeasList, isPending: isUpdateIdeasListPending } =
-    usePatchApiV1IdeasListsIdeasListId({
+    usePatchApiV1IdeasListsByIdeasListId({
       mutation: {
         onSuccess: (data) => {
           onSuccess?.(data);

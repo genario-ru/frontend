@@ -6,8 +6,8 @@ import { useCreateIdeasList } from "@/actions/ideas-lists/hooks/use-create-ideas
 import { useUpdateIdeasList } from "@/actions/ideas-lists/hooks/use-update-ideas-list";
 import {
   getApiV1ArchiveItemsMyQueryKey,
-  getApiV1IdeasListsIdeasListIdQueryKey,
-  type GetApiV1IdeasListsIdeasListIdQueryResponse,
+  getApiV1IdeasListsByIdeasListIdQueryKey,
+  type GetApiV1IdeasListsByIdeasListIdQueryResponse,
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
@@ -18,7 +18,7 @@ import { usePrefetchIdeasListSettingsSubformsData } from "./use-prefetch-ideas-l
 
 type UseIdeasListSettingsFormParams = {
   templateId: string | undefined;
-  ideasListData: GetApiV1IdeasListsIdeasListIdQueryResponse | undefined;
+  ideasListData: GetApiV1IdeasListsByIdeasListIdQueryResponse | undefined;
 };
 
 export function useIdeasListSettingsForm({
@@ -53,13 +53,7 @@ export function useIdeasListSettingsForm({
       });
 
       queryClient.invalidateQueries({
-        queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
-          ideasListId: data.data.id,
-        }),
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: getApiV1IdeasListsIdeasListIdQueryKey({
+        queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
           ideasListId: data.data.id,
         }),
       });
