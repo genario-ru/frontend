@@ -144,6 +144,7 @@ const WithAuthWithSubscriptionIdeasListsIdeasListIdRoute =
   } as any);
 
 export interface FileRoutesByFullPath {
+  "/": typeof WithoutAuthLandingIndexRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
@@ -154,7 +155,6 @@ export interface FileRoutesByFullPath {
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
   "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
-  "/": typeof WithoutAuthLandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
@@ -163,6 +163,7 @@ export interface FileRoutesByFullPath {
   "/settings/billing": typeof WithAuthWithSubscriptionSettingsBillingRoute;
 }
 export interface FileRoutesByTo {
+  "/": typeof WithoutAuthLandingIndexRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
@@ -173,7 +174,6 @@ export interface FileRoutesByTo {
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
   "/documents/pd-processing-policy": typeof WithoutAuthDocumentsPdProcessingPolicyRoute;
   "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
-  "/": typeof WithoutAuthLandingIndexRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
@@ -207,6 +207,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
+    | "/"
     | "/sign-in"
     | "/verify-otp"
     | "/archive"
@@ -217,7 +218,6 @@ export interface FileRouteTypes {
     | "/documents/pd-processing-consent"
     | "/documents/pd-processing-policy"
     | "/documents/user-agreement"
-    | "/"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
@@ -226,6 +226,7 @@ export interface FileRouteTypes {
     | "/settings/billing";
   fileRoutesByTo: FileRoutesByTo;
   to:
+    | "/"
     | "/sign-in"
     | "/verify-otp"
     | "/archive"
@@ -236,7 +237,6 @@ export interface FileRouteTypes {
     | "/documents/pd-processing-consent"
     | "/documents/pd-processing-policy"
     | "/documents/user-agreement"
-    | "/"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
     | "/scenarios/$scenarioId"
@@ -281,14 +281,14 @@ declare module "@tanstack/react-router" {
     "/_with-auth": {
       id: "/_with-auth";
       path: "";
-      fullPath: "";
+      fullPath: "/";
       preLoaderRoute: typeof WithAuthRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/_auth": {
       id: "/_auth";
       path: "";
-      fullPath: "";
+      fullPath: "/";
       preLoaderRoute: typeof AuthRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
@@ -309,7 +309,7 @@ declare module "@tanstack/react-router" {
     "/_with-auth/_with-subscription": {
       id: "/_with-auth/_with-subscription";
       path: "";
-      fullPath: "";
+      fullPath: "/";
       preLoaderRoute: typeof WithAuthWithSubscriptionRouteRouteImport;
       parentRoute: typeof WithAuthRouteRoute;
     };

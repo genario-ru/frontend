@@ -5,7 +5,7 @@ import { documentTypes } from "../constants/document-types";
 import type { APIErrorInfo } from "../types";
 import { prepareQueryString } from "./prepare-query-string";
 
-type Method = "GET" | "PUT" | "PATCH" | "POST" | "DELETE" | "OPTIONS" | "HEAD";
+type Method = "GET" | "PUT" | "PATCH" | "POST" | "DELETE";
 
 type ResponseType =
   | "arraybuffer"
