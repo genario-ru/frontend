@@ -27,4 +27,5 @@ export type UpdateScenarioBodySchema = {
   profileId?: string | null;
   targetAudience?: string | null;
   toneIds?: string[] | null;
+  regenerate?: boolean | null;
 };

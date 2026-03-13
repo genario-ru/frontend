@@ -68,7 +68,10 @@ export function useScenarioSettingsForm({
 
   const form = useAppForm({
     ...formOptions,
-    onSubmit: ({ value, formApi }) => {
+    onSubmitMeta: {
+      submitAction: "some-action",
+    },
+    onSubmit: ({ value, meta, formApi }) => {
       switch (value.currentStep) {
         case ScenarioSettingsFormSteps.TemplateSelection:
           formApi.setFieldValue(
@@ -94,7 +97,10 @@ export function useScenarioSettingsForm({
           if (scenarioData) {
             updateScenario({
               scenarioId: scenarioData.data.id,
-              data: commonScenarioParams,
+              data: {
+                ...commonScenarioParams,
+                regenerate: meta.submitAction === "regenerate",
+              },
             });
           } else {
             createScenario({ data: commonScenarioParams });

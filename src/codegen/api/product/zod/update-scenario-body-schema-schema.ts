@@ -19,5 +19,6 @@ export const updateScenarioBodySchemaSchema = z
     profileId: z.optional(z.union([z.uuid(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
     toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
+    regenerate: z.optional(z.union([z.boolean(), z.null()])),
   })
   .describe("Update scenario body description");

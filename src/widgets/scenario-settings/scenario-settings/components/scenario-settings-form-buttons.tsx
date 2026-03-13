@@ -1,6 +1,6 @@
 import { useRouter } from "@tanstack/react-router";
 import { ArrowLeftIcon, ArrowRightIcon, FilmIcon } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -56,6 +56,80 @@ export const ScenarioSettingsFormButtons = withForm({
       }
     }, [currentStep, form]);
 
+    const leftButton = useMemo(() => {
+      if (currentStep === ScenarioSettingsFormSteps.TemplateSelection) {
+        return (
+          <Button
+            type="button"
+            size="lg"
+            disabled={isLoading}
+            onClick={onCancelButtonClick}
+          >
+            Отмена
+          </Button>
+        );
+      }
+
+      return (
+        <Button
+          size="lg"
+          type="button"
+          iconPosition="left"
+          disabled={isLoading}
+          icon={<ArrowLeftIcon />}
+          onClick={onBackButtonClick}
+        >
+          Назад
+        </Button>
+      );
+    }, [currentStep, isLoading, onCancelButtonClick, onBackButtonClick]);
+
+    const rightButtons = useMemo(() => {
+      if (currentStep === ScenarioSettingsFormSteps.ParamsConfiguration) {
+        if (!editMode) {
+          return (
+            <Button
+              priority="primary"
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+              icon={<FilmIcon />}
+            >
+              Сгенерировать сценарий
+            </Button>
+          );
+        }
+
+        return (
+          <div className="flex items-center gap-2">
+            <Button
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+            >
+              Сохранить
+            </Button>
+            <Button
+              priority="primary"
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+              icon={<FilmIcon />}
+              onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
+            >
+              Сохранить и сгенерировать новую версию
+            </Button>
+          </div>
+        );
+      }
+
+      return (
+        <Button size="lg" disabled={isLoading} icon={<ArrowRightIcon />}>
+          Далее
+        </Button>
+      );
+    }, [currentStep, editMode, form, isLoading]);
+
     return (
       <Island
         row
@@ -65,51 +139,8 @@ export const ScenarioSettingsFormButtons = withForm({
           "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
         })}
       >
-        {/* Кнопка слева */}
-        {currentStep === ScenarioSettingsFormSteps.TemplateSelection ? (
-          <Button
-            type="button"
-            size="lg"
-            disabled={isLoading}
-            onClick={onCancelButtonClick}
-          >
-            Отмена
-          </Button>
-        ) : (
-          <Button
-            size="lg"
-            type="button"
-            iconPosition="left"
-            disabled={isLoading}
-            icon={<ArrowLeftIcon />}
-            onClick={onBackButtonClick}
-          >
-            Назад
-          </Button>
-        )}
-
-        {/* Кнопка справа (submit) */}
-        {currentStep === ScenarioSettingsFormSteps.ParamsConfiguration ? (
-          <Button
-            variant={editMode ? "neutral" : "accent"}
-            priority="primary"
-            size="lg"
-            disabled={isLoading}
-            state={isLoading ? "loading" : "default"}
-            icon={editMode ? undefined : <FilmIcon />}
-          >
-            {editMode ? "Сохранить" : "Сгенерировать сценарий"}
-          </Button>
-        ) : (
-          <Button
-            priority="primary"
-            size="lg"
-            disabled={isLoading}
-            icon={<ArrowRightIcon />}
-          >
-            Далее
-          </Button>
-        )}
+        {leftButton}
+        {rightButtons}
       </Island>
     );
   },
