@@ -5138,7 +5138,6 @@
             "anyOf": [
               {
                 "type": "string",
-                "minLength": 16,
                 "maxLength": 4096
               },
               {
@@ -5709,7 +5708,6 @@
             "anyOf": [
               {
                 "type": "string",
-                "minLength": 16,
                 "maxLength": 4096
               },
               {
@@ -5985,14 +5983,7 @@
             "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "status": {
             "type": "string",
@@ -6228,24 +6219,10 @@
             "type": "boolean"
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "targetAudience": {
             "anyOf": [
@@ -7791,24 +7768,10 @@
             "type": "boolean"
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "targetAudience": {
             "anyOf": [
@@ -7862,26 +7825,6 @@
       "CreateScenarioBodySchema": {
         "type": "object",
         "properties": {
-          "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "templateId": {
             "anyOf": [
               {
@@ -7952,15 +7895,36 @@
               }
             ]
           },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
+          },
+          "description": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
+          },
           "toneIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            }
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
+        "required": [
+          "name",
+          "description"
+        ],
         "title": "Create scenario body",
         "description": "Create scenario body description"
       },
@@ -8182,24 +8146,14 @@
         "type": "object",
         "properties": {
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
           },
           "templateId": {
             "anyOf": [
@@ -8272,14 +8226,25 @@
             ]
           },
           "toneIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            }
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
+        "required": [
+          "name",
+          "description"
+        ],
         "title": "Update scenario body",
         "description": "Update scenario body description"
       },
@@ -8641,16 +8606,6 @@
           "name": {
             "type": "string"
           },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "startTime": {
             "type": "integer",
             "minimum": -9007199254740991,
@@ -8688,7 +8643,6 @@
           "id",
           "scenarioChapterId",
           "name",
-          "description",
           "startTime",
           "endTime",
           "createdAt",
@@ -8716,14 +8670,7 @@
             "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "status": {
             "type": "string",
@@ -8802,38 +8749,20 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "status": {
             "type": "string",
-            "enum": [
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
-          "startTime": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "endTime": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "minLength": 16,
+            "maxLength": 4096
           }
         },
+        "required": [
+          "name",
+          "description"
+        ],
         "title": "Update scenario chapter body",
         "description": "Update scenario chapter body description"
       },
@@ -8866,16 +8795,6 @@
           "name": {
             "type": "string"
           },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "startTime": {
             "type": "integer",
             "minimum": -9007199254740991,
@@ -8897,7 +8816,6 @@
           "id",
           "scenarioChapterId",
           "name",
-          "description",
           "startTime",
           "endTime",
           "createdAt",
@@ -8935,61 +8853,15 @@
       "UpdateScenarioSceneBodySchema": {
         "type": "object",
         "properties": {
-          "previewId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
           "name": {
-            "type": "string"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "startTime": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "endTime": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "badges": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
           }
         },
+        "required": [
+          "name"
+        ],
         "title": "Update scenario scene body",
         "description": "Update scenario scene body description"
       },
@@ -9073,39 +8945,20 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
           },
           "content": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "icon": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "color": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
           }
         },
+        "required": [
+          "name",
+          "content"
+        ],
         "title": "Update scenario scene component body",
         "description": "Update scenario scene component body description"
       },

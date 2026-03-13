@@ -89,7 +89,6 @@ export const IdeasListSettingsFormButtons = withForm({
         if (!editMode) {
           return (
             <Button
-              variant="accent"
               priority="primary"
               size="lg"
               disabled={isLoading}
@@ -104,7 +103,6 @@ export const IdeasListSettingsFormButtons = withForm({
         return (
           <div className="flex items-center gap-2">
             <Button
-              variant="accent"
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
@@ -112,7 +110,6 @@ export const IdeasListSettingsFormButtons = withForm({
               Сохранить
             </Button>
             <Button
-              variant="accent"
               priority="primary"
               size="lg"
               disabled={isLoading}
@@ -127,12 +124,7 @@ export const IdeasListSettingsFormButtons = withForm({
       }
 
       return (
-        <Button
-          variant="accent"
-          size="lg"
-          disabled={isLoading}
-          icon={<ArrowRightIcon />}
-        >
+        <Button size="lg" disabled={isLoading} icon={<ArrowRightIcon />}>
           Далее
         </Button>
       );

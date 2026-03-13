@@ -30,7 +30,10 @@ export type ScenarioChapterSchema = {
    * @type string
    */
   name: string;
-  description: string | null;
+  /**
+   * @type string
+   */
+  description: string;
   /**
    * @type string
    */

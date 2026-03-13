@@ -10,12 +10,6 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateScenarioSceneBodySchemaSchema = z
   .object({
-    previewId: z.optional(z.union([z.uuid(), z.null()])),
-    status: z.optional(z.enum(["pending", "generation", "failed", "ready"])),
-    name: z.optional(z.string()),
-    description: z.optional(z.union([z.string(), z.null()])),
-    startTime: z.optional(z.int().min(-9007199254740991).max(9007199254740991)),
-    endTime: z.optional(z.int().min(-9007199254740991).max(9007199254740991)),
-    badges: z.optional(z.union([z.string(), z.null()])),
+    name: z.string().min(3).max(256),
   })
   .describe("Update scenario scene body description");

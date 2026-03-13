@@ -8,16 +8,23 @@
  * @description Update scenario body description
  */
 export type UpdateScenarioBodySchema = {
-  name?: string | null;
-  description?: string | null;
+  /**
+   * @minLength 3
+   * @maxLength 256
+   * @type string
+   */
+  name: string;
+  /**
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
+   */
+  description: string;
   templateId?: string | null;
   videoTypeId?: string | null;
   videoDurationId?: string | null;
   platformId?: string | null;
   profileId?: string | null;
   targetAudience?: string | null;
-  /**
-   * @type array | undefined
-   */
-  toneIds?: string[];
+  toneIds?: string[] | null;
 };

@@ -32,7 +32,10 @@ export type ScenarioChapterExtendedSchema = {
    * @type string
    */
   name: string;
-  description: string | null;
+  /**
+   * @type string
+   */
+  description: string;
   /**
    * @type string
    */

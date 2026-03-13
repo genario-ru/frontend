@@ -3,40 +3,21 @@
  * Do not edit manually.
  */
 
-export const updateScenarioChapterBodySchemaStatusEnum = {
-  pending: "pending",
-  generation: "generation",
-  failed: "failed",
-  ready: "ready",
-} as const;
-
-export type UpdateScenarioChapterBodySchemaStatusEnumKey =
-  (typeof updateScenarioChapterBodySchemaStatusEnum)[keyof typeof updateScenarioChapterBodySchemaStatusEnum];
-
 /**
  * Update scenario chapter body
  * @description Update scenario chapter body description
  */
 export type UpdateScenarioChapterBodySchema = {
   /**
-   * @type string | undefined
+   * @minLength 3
+   * @maxLength 256
+   * @type string
    */
-  name?: string;
-  description?: string | null;
+  name: string;
   /**
-   * @type string | undefined
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
    */
-  status?: UpdateScenarioChapterBodySchemaStatusEnumKey;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer | undefined
-   */
-  startTime?: number;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer | undefined
-   */
-  endTime?: number;
+  description: string;
 };

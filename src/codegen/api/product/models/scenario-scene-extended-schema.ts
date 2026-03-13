@@ -23,7 +23,6 @@ export type ScenarioSceneExtendedSchema = {
    * @type string
    */
   name: string;
-  description: string | null;
   /**
    * @minLength -9007199254740991
    * @maxLength 9007199254740991

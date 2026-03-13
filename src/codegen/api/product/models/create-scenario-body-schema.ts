@@ -8,8 +8,6 @@
  * @description Create scenario body description
  */
 export type CreateScenarioBodySchema = {
-  name?: string | null;
-  description?: string | null;
   templateId?: string | null;
   videoTypeId?: string | null;
   videoDurationId?: string | null;
@@ -17,7 +15,16 @@ export type CreateScenarioBodySchema = {
   profileId?: string | null;
   targetAudience?: string | null;
   /**
-   * @type array | undefined
+   * @minLength 3
+   * @maxLength 256
+   * @type string
    */
-  toneIds?: string[];
+  name: string;
+  /**
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
+   */
+  description: string;
+  toneIds?: string[] | null;
 };

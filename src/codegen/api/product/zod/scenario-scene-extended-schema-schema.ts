@@ -16,7 +16,6 @@ export const scenarioSceneExtendedSchemaSchema = z
     id: z.uuid(),
     scenarioChapterId: z.uuid(),
     name: z.string(),
-    description: z.union([z.string(), z.null()]),
     startTime: z.int().min(-9007199254740991).max(9007199254740991),
     endTime: z.int().min(-9007199254740991).max(9007199254740991),
     createdAt: z.string(),

@@ -789,20 +789,12 @@ export type { UpdateIdeasListResponseSchema } from "./update-ideas-list-response
 export type { UpdateProfileBodySchema } from "./update-profile-body-schema.ts";
 export type { UpdateProfileResponseSchema } from "./update-profile-response-schema.ts";
 export type { UpdateScenarioBodySchema } from "./update-scenario-body-schema.ts";
-export type {
-  UpdateScenarioChapterBodySchema,
-  UpdateScenarioChapterBodySchemaStatusEnumKey,
-} from "./update-scenario-chapter-body-schema.ts";
-export { updateScenarioChapterBodySchemaStatusEnum } from "./update-scenario-chapter-body-schema.ts";
+export type { UpdateScenarioChapterBodySchema } from "./update-scenario-chapter-body-schema.ts";
 export type { UpdateScenarioChapterResponseSchema } from "./update-scenario-chapter-response-schema.ts";
 export type { UpdateScenarioCurrentVersionBodySchema } from "./update-scenario-current-version-body-schema.ts";
 export type { UpdateScenarioCurrentVersionResponseSchema } from "./update-scenario-current-version-response-schema.ts";
 export type { UpdateScenarioResponseSchema } from "./update-scenario-response-schema.ts";
-export type {
-  UpdateScenarioSceneBodySchema,
-  UpdateScenarioSceneBodySchemaStatusEnumKey,
-} from "./update-scenario-scene-body-schema.ts";
-export { updateScenarioSceneBodySchemaStatusEnum } from "./update-scenario-scene-body-schema.ts";
+export type { UpdateScenarioSceneBodySchema } from "./update-scenario-scene-body-schema.ts";
 export type { UpdateScenarioSceneComponentBodySchema } from "./update-scenario-scene-component-body-schema.ts";
 export type { UpdateScenarioSceneComponentResponseSchema } from "./update-scenario-scene-component-response-schema.ts";
 export type { UpdateScenarioSceneResponseSchema } from "./update-scenario-scene-response-schema.ts";

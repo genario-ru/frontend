@@ -15,7 +15,7 @@ export const scenarioChapterExtendedSchemaSchema = z
     id: z.uuid(),
     scenarioVersionId: z.uuid(),
     name: z.string(),
-    description: z.union([z.string(), z.null()]),
+    description: z.string(),
     status: z.enum(["pending", "generation", "failed", "ready"]),
     startTime: z.int().min(-9007199254740991).max(9007199254740991),
     endTime: z.int().min(-9007199254740991).max(9007199254740991),

@@ -3,42 +3,15 @@
  * Do not edit manually.
  */
 
-export const updateScenarioSceneBodySchemaStatusEnum = {
-  pending: "pending",
-  generation: "generation",
-  failed: "failed",
-  ready: "ready",
-} as const;
-
-export type UpdateScenarioSceneBodySchemaStatusEnumKey =
-  (typeof updateScenarioSceneBodySchemaStatusEnum)[keyof typeof updateScenarioSceneBodySchemaStatusEnum];
-
 /**
  * Update scenario scene body
  * @description Update scenario scene body description
  */
 export type UpdateScenarioSceneBodySchema = {
-  previewId?: string | null;
   /**
-   * @type string | undefined
+   * @minLength 3
+   * @maxLength 256
+   * @type string
    */
-  status?: UpdateScenarioSceneBodySchemaStatusEnumKey;
-  /**
-   * @type string | undefined
-   */
-  name?: string;
-  description?: string | null;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer | undefined
-   */
-  startTime?: number;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer | undefined
-   */
-  endTime?: number;
-  badges?: string | null;
+  name: string;
 };

@@ -10,9 +10,7 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateScenarioSceneComponentBodySchemaSchema = z
   .object({
-    name: z.optional(z.string()),
-    content: z.optional(z.union([z.string(), z.null()])),
-    icon: z.optional(z.union([z.string(), z.null()])),
-    color: z.optional(z.union([z.string(), z.null()])),
+    name: z.string().min(3).max(256),
+    content: z.string().min(16).max(4096),
   })
   .describe("Update scenario scene component body description");

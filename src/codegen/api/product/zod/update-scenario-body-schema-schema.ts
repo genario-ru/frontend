@@ -10,14 +10,14 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateScenarioBodySchemaSchema = z
   .object({
-    name: z.optional(z.union([z.string(), z.null()])),
-    description: z.optional(z.union([z.string(), z.null()])),
+    name: z.string().min(3).max(256),
+    description: z.string().min(16).max(4096),
     templateId: z.optional(z.union([z.uuid(), z.null()])),
     videoTypeId: z.optional(z.union([z.uuid(), z.null()])),
     videoDurationId: z.optional(z.union([z.uuid(), z.null()])),
     platformId: z.optional(z.union([z.uuid(), z.null()])),
     profileId: z.optional(z.union([z.uuid(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
-    toneIds: z.optional(z.array(z.uuid())),
+    toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
   })
   .describe("Update scenario body description");

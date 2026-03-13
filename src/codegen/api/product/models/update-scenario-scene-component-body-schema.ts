@@ -9,10 +9,15 @@
  */
 export type UpdateScenarioSceneComponentBodySchema = {
   /**
-   * @type string | undefined
+   * @minLength 3
+   * @maxLength 256
+   * @type string
    */
-  name?: string;
-  content?: string | null;
-  icon?: string | null;
-  color?: string | null;
+  name: string;
+  /**
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
+   */
+  content: string;
 };

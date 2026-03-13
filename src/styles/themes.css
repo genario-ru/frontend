@@ -29,7 +29,7 @@
   --positive-7: #15803d;
   --positive-8: #166534;
 
-  /* Accent colors — Tailwind indigo (100→800, aligned with negative/positive) */
+  /* Accent colors */
   --accent-1: #e0e7ff;
   --accent-2: #c7d2fe;
   --accent-3: #a5b4fc;
@@ -71,7 +71,7 @@
   --positive-7: #86efac;
   --positive-8: #bbf7d0;
 
-  /* Accent colors — Tailwind indigo (950→300, aligned with negative/positive) */
+  /* Accent colors */
   --accent-1: #1e1b4b;
   --accent-2: #312e81;
   --accent-3: #3730a3;

@@ -10,10 +10,7 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateScenarioChapterBodySchemaSchema = z
   .object({
-    name: z.optional(z.string()),
-    description: z.optional(z.union([z.string(), z.null()])),
-    status: z.optional(z.enum(["pending", "generation", "failed", "ready"])),
-    startTime: z.optional(z.int().min(-9007199254740991).max(9007199254740991)),
-    endTime: z.optional(z.int().min(-9007199254740991).max(9007199254740991)),
+    name: z.string().min(3).max(256),
+    description: z.string().min(16).max(4096),
   })
   .describe("Update scenario chapter body description");

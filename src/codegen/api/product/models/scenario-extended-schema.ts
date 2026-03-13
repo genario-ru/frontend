@@ -34,8 +34,14 @@ export type ScenarioExtendedSchema = {
    * @type boolean
    */
   saved: boolean;
-  name: string | null;
-  description: string | null;
+  /**
+   * @type string
+   */
+  name: string;
+  /**
+   * @type string
+   */
+  description: string;
   targetAudience: string | null;
   /**
    * @type string
