@@ -4564,24 +4564,10 @@
             ]
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "reason": {
             "anyOf": [
@@ -4946,24 +4932,10 @@
             ]
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "targetAudience": {
             "anyOf": [
@@ -5065,24 +5037,10 @@
             ]
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "reason": {
             "anyOf": [
@@ -5153,26 +5111,6 @@
       "UpdateIdeaBodySchema": {
         "type": "object",
         "properties": {
-          "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "saved": {
             "type": "boolean"
           },
@@ -5185,8 +5123,34 @@
                 "type": "null"
               }
             ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
+          },
+          "description": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 16,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
+        "required": [
+          "name",
+          "description"
+        ],
         "title": "Update idea body",
         "description": "Update idea body description"
       },
@@ -5389,24 +5353,10 @@
             ]
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string"
           },
           "targetAudience": {
             "anyOf": [
@@ -5480,26 +5430,6 @@
               }
             ]
           },
-          "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "targetAudience": {
             "anyOf": [
               {
@@ -5510,15 +5440,33 @@
               }
             ]
           },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
+          },
+          "description": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
+          },
           "toneIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            }
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "videoTypeIds": {
+            "minItems": 1,
             "type": "array",
             "items": {
               "type": "string",
@@ -5527,6 +5475,11 @@
             }
           }
         },
+        "required": [
+          "name",
+          "description",
+          "videoTypeIds"
+        ],
         "title": "Create ideas list body",
         "description": "Create ideas list body description"
       },
@@ -5636,24 +5589,10 @@
                 ]
               },
               "name": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               },
               "description": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               },
               "targetAudience": {
                 "anyOf": [
@@ -5757,19 +5696,21 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
           },
           "description": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
+          },
+          "reason": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "minLength": 16,
+                "maxLength": 4096
               },
               {
                 "type": "null"
@@ -5778,7 +5719,9 @@
           }
         },
         "required": [
-          "videoTypeId"
+          "videoTypeId",
+          "name",
+          "description"
         ],
         "title": "Create idea body",
         "description": "Create idea body description"
@@ -6642,7 +6585,7 @@
       "UpdateIdeasListBodySchema": {
         "type": "object",
         "properties": {
-          "profileId": {
+          "templateId": {
             "anyOf": [
               {
                 "type": "string",
@@ -6654,20 +6597,12 @@
               }
             ]
           },
-          "name": {
+          "profileId": {
             "anyOf": [
               {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
               },
               {
                 "type": "null"
@@ -6684,7 +6619,33 @@
               }
             ]
           },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 256
+          },
+          "description": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 4096
+          },
           "toneIds": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoTypeIds": {
+            "minItems": 1,
             "type": "array",
             "items": {
               "type": "string",
@@ -6692,15 +6653,22 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             }
           },
-          "videoTypeIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            }
+          "regenerate": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
+        "required": [
+          "name",
+          "description",
+          "videoTypeIds"
+        ],
         "title": "Update ideas list body",
         "description": "Update ideas list body description"
       },

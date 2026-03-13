@@ -8,11 +8,22 @@
  * @description Update idea body description
  */
 export type UpdateIdeaBodySchema = {
-  name?: string | null;
-  description?: string | null;
   /**
    * @type boolean | undefined
    */
   saved?: boolean;
   liked?: boolean | null;
+  /**
+   * @minLength 3
+   * @maxLength 256
+   * @type string
+   */
+  name: string;
+  /**
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
+   */
+  description: string;
+  reason?: string | null;
 };

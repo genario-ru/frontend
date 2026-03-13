@@ -67,7 +67,10 @@ export function useIdeasListSettingsForm({
 
   const form = useAppForm({
     ...formOptions,
-    onSubmit: ({ value, formApi }) => {
+    onSubmitMeta: {
+      submitAction: "some-action",
+    },
+    onSubmit: ({ value, meta, formApi }) => {
       switch (value.currentStep) {
         case IdeasListSettingsFormSteps.TemplateSelection:
           formApi.setFieldValue(
@@ -93,7 +96,10 @@ export function useIdeasListSettingsForm({
           if (ideasListData) {
             updateIdeasList({
               ideasListId: ideasListData.data.id,
-              data: commonIdeasListParams,
+              data: {
+                ...commonIdeasListParams,
+                regenerate: meta.submitAction === "regenerate",
+              },
             });
           } else {
             createIdeasList({ data: commonIdeasListParams });

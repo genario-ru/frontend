@@ -28,8 +28,14 @@ export type IdeaExtendedSchema = {
    */
   saved: boolean;
   liked: boolean | null;
-  name: string | null;
-  description: string | null;
+  /**
+   * @type string
+   */
+  name: string;
+  /**
+   * @type string
+   */
+  description: string;
   reason: string | null;
   /**
    * @type string

@@ -10,15 +10,22 @@
 export type CreateIdeasListBodySchema = {
   templateId?: string | null;
   profileId?: string | null;
-  name?: string | null;
-  description?: string | null;
   targetAudience?: string | null;
   /**
-   * @type array | undefined
+   * @minLength 3
+   * @maxLength 256
+   * @type string
    */
-  toneIds?: string[];
+  name: string;
   /**
-   * @type array | undefined
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
    */
-  videoTypeIds?: string[];
+  description: string;
+  toneIds?: string[] | null;
+  /**
+   * @type array
+   */
+  videoTypeIds: string[];
 };

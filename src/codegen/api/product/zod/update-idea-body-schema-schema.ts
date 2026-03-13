@@ -10,9 +10,10 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateIdeaBodySchemaSchema = z
   .object({
-    name: z.optional(z.union([z.string(), z.null()])),
-    description: z.optional(z.union([z.string(), z.null()])),
     saved: z.optional(z.boolean()),
     liked: z.optional(z.union([z.boolean(), z.null()])),
+    name: z.string().min(3).max(256),
+    description: z.string().min(16).max(4096),
+    reason: z.optional(z.union([z.string(), z.null()])),
   })
   .describe("Update idea body description");

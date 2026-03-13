@@ -1,4 +1,5 @@
 import type { CheckedState } from "@radix-ui/react-checkbox";
+import { useStore } from "@tanstack/react-form";
 import { isNil, noop } from "es-toolkit";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -31,9 +32,12 @@ export const CheckboxCardsField = ({
   const {
     options: { defaultValue },
     state: { value: checkedValues },
+    store,
     pushValue,
     removeValue,
   } = useFieldContext<string[] | undefined>();
+
+  const errors: string[] = useStore(store, (state) => state.meta.errors);
 
   const onCheckedChange = (shouldBeChecked: CheckedState, value: string) => {
     const valueIndex = checkedValues?.findIndex(
@@ -56,11 +60,12 @@ export const CheckboxCardsField = ({
   };
 
   return (
-    <FieldLayout labelText={title}>
+    <FieldLayout labelText={title} errorMessage={errors[0]}>
       <CheckboxCardsGroup {...props}>
         {items.map((item) => (
           <CheckboxCardsGroupItem
             key={item.value}
+            state={errors.length > 0 ? "error" : "default"}
             defaultChecked={defaultValue?.some(
               (defaultItem) => defaultItem === item.value,
             )}

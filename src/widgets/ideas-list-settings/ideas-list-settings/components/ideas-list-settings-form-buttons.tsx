@@ -1,6 +1,6 @@
 import { useRouter } from "@tanstack/react-router";
 import { ArrowLeftIcon, ArrowRightIcon, LightbulbIcon } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -56,6 +56,88 @@ export const IdeasListSettingsFormButtons = withForm({
       }
     }, [currentStep, form]);
 
+    const leftButton = useMemo(() => {
+      if (currentStep === IdeasListSettingsFormSteps.TemplateSelection) {
+        return (
+          <Button
+            type="button"
+            size="lg"
+            disabled={isLoading}
+            onClick={onCancelButtonClick}
+          >
+            Отмена
+          </Button>
+        );
+      }
+
+      return (
+        <Button
+          size="lg"
+          type="button"
+          iconPosition="left"
+          disabled={isLoading}
+          icon={<ArrowLeftIcon />}
+          onClick={onBackButtonClick}
+        >
+          Назад
+        </Button>
+      );
+    }, [currentStep, isLoading, onCancelButtonClick, onBackButtonClick]);
+
+    const rightButtons = useMemo(() => {
+      if (currentStep === IdeasListSettingsFormSteps.ParamsConfiguration) {
+        if (!editMode) {
+          return (
+            <Button
+              variant="accent"
+              priority="primary"
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+              icon={<LightbulbIcon />}
+            >
+              Сгенерировать идеи
+            </Button>
+          );
+        }
+
+        return (
+          <div className="flex items-center gap-2">
+            <Button
+              variant="accent"
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+            >
+              Сохранить
+            </Button>
+            <Button
+              variant="accent"
+              priority="primary"
+              size="lg"
+              disabled={isLoading}
+              state={isLoading ? "loading" : "default"}
+              icon={<LightbulbIcon />}
+              onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
+            >
+              Сохранить и придумать новые идеи
+            </Button>
+          </div>
+        );
+      }
+
+      return (
+        <Button
+          variant="accent"
+          size="lg"
+          disabled={isLoading}
+          icon={<ArrowRightIcon />}
+        >
+          Далее
+        </Button>
+      );
+    }, [currentStep, editMode, form, isLoading]);
+
     return (
       <Island
         row
@@ -65,50 +147,8 @@ export const IdeasListSettingsFormButtons = withForm({
           "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
         })}
       >
-        {/* Кнопка слева */}
-        {currentStep === IdeasListSettingsFormSteps.TemplateSelection ? (
-          <Button
-            type="button"
-            size="lg"
-            disabled={isLoading}
-            onClick={onCancelButtonClick}
-          >
-            Отмена
-          </Button>
-        ) : (
-          <Button
-            size="lg"
-            type="button"
-            iconPosition="left"
-            disabled={isLoading}
-            icon={<ArrowLeftIcon />}
-            onClick={onBackButtonClick}
-          >
-            Назад
-          </Button>
-        )}
-
-        {/* Кнопка справа (submit) */}
-        {currentStep === IdeasListSettingsFormSteps.ParamsConfiguration ? (
-          <Button
-            priority="primary"
-            size="lg"
-            disabled={isLoading}
-            state={isLoading ? "loading" : "default"}
-            icon={editMode ? undefined : <LightbulbIcon />}
-          >
-            {editMode ? "Сохранить" : "Сгенерировать идеи"}
-          </Button>
-        ) : (
-          <Button
-            priority="primary"
-            size="lg"
-            disabled={isLoading}
-            icon={<ArrowRightIcon />}
-          >
-            Далее
-          </Button>
-        )}
+        {leftButton}
+        {rightButtons}
       </Island>
     );
   },

@@ -12,6 +12,17 @@ export type CreateIdeaBodySchema = {
    * @type string, uuid
    */
   videoTypeId: string;
-  name?: string | null;
-  description?: string | null;
+  /**
+   * @minLength 3
+   * @maxLength 256
+   * @type string
+   */
+  name: string;
+  /**
+   * @minLength 16
+   * @maxLength 4096
+   * @type string
+   */
+  description: string;
+  reason?: string | null;
 };

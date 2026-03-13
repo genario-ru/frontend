@@ -39,13 +39,25 @@ z.config({
         };
 
       case "too_big":
+        if (iss.origin === "array") {
+          return {
+            message: `Выберите не более ${iss.maximum} элементов`,
+          };
+        }
+
         return {
-          message: `Введенное значение должно быть не менее ${iss.maximum} символов`,
+          message: `Введенное значение должно быть не более ${iss.maximum} символов`,
         };
 
       case "too_small":
+        if (iss.origin === "array") {
+          return {
+            message: `Выберите не менее ${iss.minimum} элементов`,
+          };
+        }
+
         return {
-          message: `Введенное значение должно быть не более ${iss.minimum} символов`,
+          message: `Введенное значение должно быть не менее ${iss.minimum} символов`,
         };
 
       case "unrecognized_keys":

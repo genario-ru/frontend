@@ -32,8 +32,14 @@ export type IdeasListSchema = {
    * @type string
    */
   status: IdeasListSchemaStatusEnumKey;
-  name: string | null;
-  description: string | null;
+  /**
+   * @type string
+   */
+  name: string;
+  /**
+   * @type string
+   */
+  description: string;
   targetAudience: string | null;
   /**
    * @type string

@@ -12,10 +12,10 @@ export const createIdeasListBodySchemaSchema = z
   .object({
     templateId: z.optional(z.union([z.uuid(), z.null()])),
     profileId: z.optional(z.union([z.uuid(), z.null()])),
-    name: z.optional(z.union([z.string(), z.null()])),
-    description: z.optional(z.union([z.string(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
-    toneIds: z.optional(z.array(z.uuid())),
-    videoTypeIds: z.optional(z.array(z.uuid())),
+    name: z.string().min(3).max(256),
+    description: z.string().min(16).max(4096),
+    toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
+    videoTypeIds: z.array(z.uuid()).min(1),
   })
   .describe("Create ideas list body description");

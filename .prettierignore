@@ -12,3 +12,4 @@ src/codegen/router
 deps
 configs
 pnpm-lock.yaml
+*.json

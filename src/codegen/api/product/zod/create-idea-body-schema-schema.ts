@@ -11,7 +11,8 @@ import { z } from "@/lib/zod/index.ts";
 export const createIdeaBodySchemaSchema = z
   .object({
     videoTypeId: z.uuid(),
-    name: z.optional(z.union([z.string(), z.null()])),
-    description: z.optional(z.union([z.string(), z.null()])),
+    name: z.string().min(3).max(256),
+    description: z.string().min(16).max(4096),
+    reason: z.optional(z.union([z.string(), z.null()])),
   })
   .describe("Create idea body description");

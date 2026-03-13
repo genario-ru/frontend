@@ -1,5 +1,5 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
@@ -12,13 +12,25 @@ const checkboxCardsGroupItemVariants = cva(
     "hover:bg-neutral-2 active:bg-neutral-2 focus-visible:bg-neutral-2",
     "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2",
   ),
+  {
+    variants: {
+      state: {
+        default: "",
+        error: "ring-2 ring-negative-6",
+      },
+    },
+    defaultVariants: {
+      state: "default",
+    },
+  },
 );
 
 type CheckboxCardsGroupProps = ComponentProps<"div">;
 
 type CheckboxCardsGroupItemProps = ComponentProps<
   typeof CheckboxPrimitive.Root
->;
+> &
+  VariantProps<typeof checkboxCardsGroupItemVariants>;
 
 export const CheckboxCardsGroup = ({
   className,
@@ -28,13 +40,14 @@ export const CheckboxCardsGroup = ({
 };
 
 export const CheckboxCardsGroupItem = ({
+  state,
   children,
   className,
   ...props
 }: CheckboxCardsGroupItemProps) => {
   return (
     <CheckboxPrimitive.Root
-      className={cn(checkboxCardsGroupItemVariants(), className)}
+      className={cn(checkboxCardsGroupItemVariants({ state }), className)}
       {...props}
     >
       <div
