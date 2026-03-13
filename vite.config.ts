@@ -11,6 +11,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   const swDev = env.SW_DEV;
+  const baseUrl = env.VITE_BASE_URL;
 
   return {
     plugins: [
@@ -48,7 +49,7 @@ export default defineConfig(({ mode }) => {
           related_applications: [
             {
               platform: "webapp",
-              url: "https://app.genario.ru/manifest.webmanifest",
+              url: `${baseUrl}/manifest.webmanifest`,
             },
           ],
           icons: [
