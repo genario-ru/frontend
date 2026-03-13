@@ -8,16 +8,12 @@ export { badRequestResponseSchemaSchema } from "./bad-request-response-schema-sc
 export { createIdeaBodySchemaSchema } from "./create-idea-body-schema-schema.ts";
 export { createIdeaResponseSchemaSchema } from "./create-idea-response-schema-schema.ts";
 export { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema-schema.ts";
-export { createIdeasListExportBodySchemaSchema } from "./create-ideas-list-export-body-schema-schema.ts";
-export { createIdeasListExportResponseSchemaSchema } from "./create-ideas-list-export-response-schema-schema.ts";
 export { createIdeasListResponseSchemaSchema } from "./create-ideas-list-response-schema-schema.ts";
 export { createProfileBodySchemaSchema } from "./create-profile-body-schema-schema.ts";
 export { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
 export { createScenarioBodySchemaSchema } from "./create-scenario-body-schema-schema.ts";
 export { createScenarioResponseSchemaSchema } from "./create-scenario-response-schema-schema.ts";
 export { createScenarioScenePreviewResponseSchemaSchema } from "./create-scenario-scene-preview-response-schema-schema.ts";
-export { createScenarioVersionExportBodySchemaSchema } from "./create-scenario-version-export-body-schema-schema.ts";
-export { createScenarioVersionExportResponseSchemaSchema } from "./create-scenario-version-export-response-schema-schema.ts";
 export { creditsBatchSchemaSchema } from "./credits-batch-schema-schema.ts";
 export {
   deleteApiV1IdeasByIdeaId200Schema,
@@ -140,15 +136,16 @@ export {
   getApiV1IdeasByIdeaIdQueryResponseSchema,
 } from "./get-api-v1-ideas-by-idea-id-schema.ts";
 export {
-  getApiV1IdeasListsByIdeasListIdExportsByExportId200Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportId400Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportId401Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportId403Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportId404Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportId500Schema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportIdPathParamsSchema,
-  getApiV1IdeasListsByIdeasListIdExportsByExportIdQueryResponseSchema,
-} from "./get-api-v1-ideas-lists-by-ideas-list-id-exports-by-export-id-schema.ts";
+  getApiV1IdeasListsByIdeasListIdExport200Schema,
+  getApiV1IdeasListsByIdeasListIdExport400Schema,
+  getApiV1IdeasListsByIdeasListIdExport401Schema,
+  getApiV1IdeasListsByIdeasListIdExport403Schema,
+  getApiV1IdeasListsByIdeasListIdExport404Schema,
+  getApiV1IdeasListsByIdeasListIdExport500Schema,
+  getApiV1IdeasListsByIdeasListIdExportPathParamsSchema,
+  getApiV1IdeasListsByIdeasListIdExportQueryParamsSchema,
+  getApiV1IdeasListsByIdeasListIdExportQueryResponseSchema,
+} from "./get-api-v1-ideas-lists-by-ideas-list-id-export-schema.ts";
 export {
   getApiV1IdeasListsByIdeasListId200Schema,
   getApiV1IdeasListsByIdeasListId400Schema,
@@ -285,15 +282,16 @@ export {
   getApiV1ScenariosMyQueryResponseSchema,
 } from "./get-api-v1-scenarios-my-schema.ts";
 export {
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId200Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId400Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId401Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId403Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId404Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportId500Schema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportIdPathParamsSchema,
-  getApiV1ScenariosVersionsByVersionIdExportsByExportIdQueryResponseSchema,
-} from "./get-api-v1-scenarios-versions-by-version-id-exports-by-export-id-schema.ts";
+  getApiV1ScenariosVersionsByVersionIdExport200Schema,
+  getApiV1ScenariosVersionsByVersionIdExport400Schema,
+  getApiV1ScenariosVersionsByVersionIdExport401Schema,
+  getApiV1ScenariosVersionsByVersionIdExport403Schema,
+  getApiV1ScenariosVersionsByVersionIdExport404Schema,
+  getApiV1ScenariosVersionsByVersionIdExport500Schema,
+  getApiV1ScenariosVersionsByVersionIdExportPathParamsSchema,
+  getApiV1ScenariosVersionsByVersionIdExportQueryParamsSchema,
+  getApiV1ScenariosVersionsByVersionIdExportQueryResponseSchema,
+} from "./get-api-v1-scenarios-versions-by-version-id-export-schema.ts";
 export {
   getApiV1ScenariosVersionsByVersionId200Schema,
   getApiV1ScenariosVersionsByVersionId400Schema,
@@ -517,17 +515,6 @@ export {
 export { platformExtendedSchemaSchema } from "./platform-extended-schema-schema.ts";
 export { platformSchemaSchema } from "./platform-schema-schema.ts";
 export {
-  postApiV1IdeasListsByIdeasListIdExports201Schema,
-  postApiV1IdeasListsByIdeasListIdExports400Schema,
-  postApiV1IdeasListsByIdeasListIdExports401Schema,
-  postApiV1IdeasListsByIdeasListIdExports403Schema,
-  postApiV1IdeasListsByIdeasListIdExports404Schema,
-  postApiV1IdeasListsByIdeasListIdExports500Schema,
-  postApiV1IdeasListsByIdeasListIdExportsMutationRequestSchema,
-  postApiV1IdeasListsByIdeasListIdExportsMutationResponseSchema,
-  postApiV1IdeasListsByIdeasListIdExportsPathParamsSchema,
-} from "./post-api-v1-ideas-lists-by-ideas-list-id-exports-schema.ts";
-export {
   postApiV1IdeasListsByIdeasListIdIdeas201Schema,
   postApiV1IdeasListsByIdeasListIdIdeas400Schema,
   postApiV1IdeasListsByIdeasListIdIdeas401Schema,
@@ -590,17 +577,6 @@ export {
   postApiV1ScenariosMutationRequestSchema,
   postApiV1ScenariosMutationResponseSchema,
 } from "./post-api-v1-scenarios-schema.ts";
-export {
-  postApiV1ScenariosVersionsByVersionIdExports201Schema,
-  postApiV1ScenariosVersionsByVersionIdExports400Schema,
-  postApiV1ScenariosVersionsByVersionIdExports401Schema,
-  postApiV1ScenariosVersionsByVersionIdExports403Schema,
-  postApiV1ScenariosVersionsByVersionIdExports404Schema,
-  postApiV1ScenariosVersionsByVersionIdExports500Schema,
-  postApiV1ScenariosVersionsByVersionIdExportsMutationRequestSchema,
-  postApiV1ScenariosVersionsByVersionIdExportsMutationResponseSchema,
-  postApiV1ScenariosVersionsByVersionIdExportsPathParamsSchema,
-} from "./post-api-v1-scenarios-versions-by-version-id-exports-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
 export { profileSchemaSchema } from "./profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";

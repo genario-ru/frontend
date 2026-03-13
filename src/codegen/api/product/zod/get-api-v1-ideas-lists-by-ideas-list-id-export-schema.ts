@@ -7,58 +7,61 @@ import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
-import { getScenarioVersionExportResponseSchemaSchema } from "./get-scenario-version-export-response-schema-schema.ts";
+import { getIdeasListExportResponseSchemaSchema } from "./get-ideas-list-export-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportIdPathParamsSchema =
-  z.object({
-    versionId: z.uuid(),
-    exportId: z.uuid(),
-  });
+export const getApiV1IdeasListsByIdeasListIdExportPathParamsSchema = z.object({
+  ideasListId: z.uuid(),
+});
+
+export const getApiV1IdeasListsByIdeasListIdExportQueryParamsSchema = z.object({
+  format: z.enum(["pdf", "docx"]),
+});
 
 /**
- * @description Scenario version export retrieved successfully
+ * @description Ideas list export retrieved successfully
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId200Schema = z
-  .lazy(() => getScenarioVersionExportResponseSchemaSchema)
-  .describe("Get scenario version export response description");
+export const getApiV1IdeasListsByIdeasListIdExport200Schema = z
+  .lazy(() => getIdeasListExportResponseSchemaSchema)
+  .describe("Get ideas list export response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId400Schema = z
+export const getApiV1IdeasListsByIdeasListIdExport400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId401Schema = z
+export const getApiV1IdeasListsByIdeasListIdExport401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId403Schema = z
+export const getApiV1IdeasListsByIdeasListIdExport403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId404Schema = z
+export const getApiV1IdeasListsByIdeasListIdExport404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportId500Schema = z
+export const getApiV1IdeasListsByIdeasListIdExport500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const getApiV1ScenariosVersionsByVersionIdExportsByExportIdQueryResponseSchema =
-  z.lazy(() => getApiV1ScenariosVersionsByVersionIdExportsByExportId200Schema);
+export const getApiV1IdeasListsByIdeasListIdExportQueryResponseSchema = z.lazy(
+  () => getApiV1IdeasListsByIdeasListIdExport200Schema,
+);

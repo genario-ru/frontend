@@ -6,64 +6,63 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
-import { createScenarioVersionExportBodySchemaSchema } from "./create-scenario-version-export-body-schema-schema.ts";
-import { createScenarioVersionExportResponseSchemaSchema } from "./create-scenario-version-export-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { getScenarioVersionExportResponseSchemaSchema } from "./get-scenario-version-export-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
-export const postApiV1ScenariosVersionsByVersionIdExportsPathParamsSchema =
+export const getApiV1ScenariosVersionsByVersionIdExportPathParamsSchema =
   z.object({
     versionId: z.uuid(),
   });
 
+export const getApiV1ScenariosVersionsByVersionIdExportQueryParamsSchema =
+  z.object({
+    format: z.enum(["pdf", "docx"]),
+  });
+
 /**
- * @description Scenario version export created successfully
+ * @description Scenario version export retrieved successfully
  */
-export const postApiV1ScenariosVersionsByVersionIdExports201Schema = z
-  .lazy(() => createScenarioVersionExportResponseSchemaSchema)
-  .describe("Create scenario version export response description");
+export const getApiV1ScenariosVersionsByVersionIdExport200Schema = z
+  .lazy(() => getScenarioVersionExportResponseSchemaSchema)
+  .describe("Get scenario version export response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1ScenariosVersionsByVersionIdExports400Schema = z
+export const getApiV1ScenariosVersionsByVersionIdExport400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1ScenariosVersionsByVersionIdExports401Schema = z
+export const getApiV1ScenariosVersionsByVersionIdExport401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1ScenariosVersionsByVersionIdExports403Schema = z
+export const getApiV1ScenariosVersionsByVersionIdExport403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1ScenariosVersionsByVersionIdExports404Schema = z
+export const getApiV1ScenariosVersionsByVersionIdExport404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1ScenariosVersionsByVersionIdExports500Schema = z
+export const getApiV1ScenariosVersionsByVersionIdExport500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const postApiV1ScenariosVersionsByVersionIdExportsMutationRequestSchema =
-  z
-    .lazy(() => createScenarioVersionExportBodySchemaSchema)
-    .describe("Create scenario version export body description");
-
-export const postApiV1ScenariosVersionsByVersionIdExportsMutationResponseSchema =
-  z.lazy(() => postApiV1ScenariosVersionsByVersionIdExports201Schema);
+export const getApiV1ScenariosVersionsByVersionIdExportQueryResponseSchema =
+  z.lazy(() => getApiV1ScenariosVersionsByVersionIdExport200Schema);
