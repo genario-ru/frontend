@@ -63,6 +63,11 @@ export function useScenarioSettingsForm({
           scenarioId: data.data.id,
         }),
       });
+
+      navigate({
+        to: "/scenarios/$scenarioId",
+        params: { scenarioId: data.data.id },
+      });
     },
   });
 
