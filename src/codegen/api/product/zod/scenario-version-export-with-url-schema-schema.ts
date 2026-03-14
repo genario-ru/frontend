@@ -15,7 +15,7 @@ export const scenarioVersionExportWithUrlSchemaSchema = z
     scenarioVersionId: z.uuid(),
     attachmentId: z.union([z.uuid(), z.null()]),
     format: z.enum(["pdf", "docx"]),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
+    status: z.enum(["idle", "pending", "generation", "failed", "ready"]),
     error: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),

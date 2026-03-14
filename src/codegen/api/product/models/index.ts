@@ -165,19 +165,16 @@ export type {
   GetApiV1IdeasListsByIdeasListIdQueryResponse,
 } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export type {
-  GetApiV1IdeasListsByIdeasListIdExport200,
-  GetApiV1IdeasListsByIdeasListIdExport400,
-  GetApiV1IdeasListsByIdeasListIdExport401,
-  GetApiV1IdeasListsByIdeasListIdExport403,
-  GetApiV1IdeasListsByIdeasListIdExport404,
-  GetApiV1IdeasListsByIdeasListIdExport500,
-  GetApiV1IdeasListsByIdeasListIdExportPathParams,
-  GetApiV1IdeasListsByIdeasListIdExportQuery,
-  GetApiV1IdeasListsByIdeasListIdExportQueryParams,
-  GetApiV1IdeasListsByIdeasListIdExportQueryParamsFormatEnumKey,
-  GetApiV1IdeasListsByIdeasListIdExportQueryResponse,
-} from "./get-api-v1-ideas-lists-by-ideas-list-id-export.ts";
-export { getApiV1IdeasListsByIdeasListIdExportQueryParamsFormatEnum } from "./get-api-v1-ideas-lists-by-ideas-list-id-export.ts";
+  GetApiV1IdeasListsByIdeasListIdExports200,
+  GetApiV1IdeasListsByIdeasListIdExports400,
+  GetApiV1IdeasListsByIdeasListIdExports401,
+  GetApiV1IdeasListsByIdeasListIdExports403,
+  GetApiV1IdeasListsByIdeasListIdExports404,
+  GetApiV1IdeasListsByIdeasListIdExports500,
+  GetApiV1IdeasListsByIdeasListIdExportsPathParams,
+  GetApiV1IdeasListsByIdeasListIdExportsQuery,
+  GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
+} from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export type {
   GetApiV1IdeasListsMy200,
   GetApiV1IdeasListsMy400,
@@ -331,19 +328,16 @@ export type {
   GetApiV1ScenariosVersionsByVersionIdQueryResponse,
 } from "./get-api-v1-scenarios-versions-by-version-id.ts";
 export type {
-  GetApiV1ScenariosVersionsByVersionIdExport200,
-  GetApiV1ScenariosVersionsByVersionIdExport400,
-  GetApiV1ScenariosVersionsByVersionIdExport401,
-  GetApiV1ScenariosVersionsByVersionIdExport403,
-  GetApiV1ScenariosVersionsByVersionIdExport404,
-  GetApiV1ScenariosVersionsByVersionIdExport500,
-  GetApiV1ScenariosVersionsByVersionIdExportPathParams,
-  GetApiV1ScenariosVersionsByVersionIdExportQuery,
-  GetApiV1ScenariosVersionsByVersionIdExportQueryParams,
-  GetApiV1ScenariosVersionsByVersionIdExportQueryParamsFormatEnumKey,
-  GetApiV1ScenariosVersionsByVersionIdExportQueryResponse,
-} from "./get-api-v1-scenarios-versions-by-version-id-export.ts";
-export { getApiV1ScenariosVersionsByVersionIdExportQueryParamsFormatEnum } from "./get-api-v1-scenarios-versions-by-version-id-export.ts";
+  GetApiV1ScenariosVersionsByVersionIdExports200,
+  GetApiV1ScenariosVersionsByVersionIdExports400,
+  GetApiV1ScenariosVersionsByVersionIdExports401,
+  GetApiV1ScenariosVersionsByVersionIdExports403,
+  GetApiV1ScenariosVersionsByVersionIdExports404,
+  GetApiV1ScenariosVersionsByVersionIdExports500,
+  GetApiV1ScenariosVersionsByVersionIdExportsPathParams,
+  GetApiV1ScenariosVersionsByVersionIdExportsQuery,
+  GetApiV1ScenariosVersionsByVersionIdExportsQueryResponse,
+} from "./get-api-v1-scenarios-versions-by-version-id-exports.ts";
 export type {
   GetApiV1SubscriptonsMy200,
   GetApiV1SubscriptonsMy400,
@@ -417,6 +411,7 @@ export type {
 export type { GetArchiveFiltersResponseSchema } from "./get-archive-filters-response-schema.ts";
 export type { GetIdeaResponseSchema } from "./get-idea-response-schema.ts";
 export type { GetIdeasListExportResponseSchema } from "./get-ideas-list-export-response-schema.ts";
+export type { GetIdeasListExportsResponseSchema } from "./get-ideas-list-exports-response-schema.ts";
 export type {
   DataStatusEnumKey,
   GetIdeasListResponseSchema,
@@ -446,6 +441,7 @@ export type { GetScenarioChapterResponseSchema } from "./get-scenario-chapter-re
 export type { GetScenarioCurrentVersionResponseSchema } from "./get-scenario-current-version-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./get-scenario-response-schema.ts";
 export type { GetScenarioVersionExportResponseSchema } from "./get-scenario-version-export-response-schema.ts";
+export type { GetScenarioVersionExportsResponseSchema } from "./get-scenario-version-exports-response-schema.ts";
 export type { GetScenarioVersionResponseSchema } from "./get-scenario-version-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./get-scenario-versions-response-schema.ts";
 export type { GetTariffsResponseSchema } from "./get-tariffs-response-schema.ts";
@@ -456,6 +452,13 @@ export type { GetVideoDurationsResponseSchema } from "./get-video-durations-resp
 export type { GetVideoTypesResponseSchema } from "./get-video-types-response-schema.ts";
 export type { IdeaExtendedSchema } from "./idea-extended-schema.ts";
 export type { IdeaSchema } from "./idea-schema.ts";
+export type {
+  IdeasListExportItemSchema,
+  IdeasListExportItemSchemaFormatEnumKey,
+  IdeasListExportItemSchemaStateEnumKey,
+} from "./ideas-list-export-item-schema.ts";
+export { ideasListExportItemSchemaFormatEnum } from "./ideas-list-export-item-schema.ts";
+export { ideasListExportItemSchemaStateEnum } from "./ideas-list-export-item-schema.ts";
 export type {
   IdeasListExportWithUrlSchema,
   IdeasListExportWithUrlSchemaFormatEnumKey,
@@ -609,6 +612,20 @@ export type {
   PostApiV1IdeasListsMutationResponse,
 } from "./post-api-v1-ideas-lists.ts";
 export type {
+  PostApiV1IdeasListsByIdeasListIdExport200,
+  PostApiV1IdeasListsByIdeasListIdExport400,
+  PostApiV1IdeasListsByIdeasListIdExport401,
+  PostApiV1IdeasListsByIdeasListIdExport403,
+  PostApiV1IdeasListsByIdeasListIdExport404,
+  PostApiV1IdeasListsByIdeasListIdExport500,
+  PostApiV1IdeasListsByIdeasListIdExportMutation,
+  PostApiV1IdeasListsByIdeasListIdExportMutationRequest,
+  PostApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnumKey,
+  PostApiV1IdeasListsByIdeasListIdExportMutationResponse,
+  PostApiV1IdeasListsByIdeasListIdExportPathParams,
+} from "./post-api-v1-ideas-lists-by-ideas-list-id-export.ts";
+export { postApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnum } from "./post-api-v1-ideas-lists-by-ideas-list-id-export.ts";
+export type {
   PostApiV1IdeasListsByIdeasListIdIdeas201,
   PostApiV1IdeasListsByIdeasListIdIdeas400,
   PostApiV1IdeasListsByIdeasListIdIdeas401,
@@ -666,6 +683,20 @@ export type {
   PostApiV1ScenariosScenesBySceneIdPreviewMutationResponse,
   PostApiV1ScenariosScenesBySceneIdPreviewPathParams,
 } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
+export type {
+  PostApiV1ScenariosVersionsByVersionIdExport200,
+  PostApiV1ScenariosVersionsByVersionIdExport400,
+  PostApiV1ScenariosVersionsByVersionIdExport401,
+  PostApiV1ScenariosVersionsByVersionIdExport403,
+  PostApiV1ScenariosVersionsByVersionIdExport404,
+  PostApiV1ScenariosVersionsByVersionIdExport500,
+  PostApiV1ScenariosVersionsByVersionIdExportMutation,
+  PostApiV1ScenariosVersionsByVersionIdExportMutationRequest,
+  PostApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnumKey,
+  PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
+  PostApiV1ScenariosVersionsByVersionIdExportPathParams,
+} from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
+export { postApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnum } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
@@ -708,6 +739,13 @@ export type {
 export { scenarioScenePreviewSchemaStatusEnum } from "./scenario-scene-preview-schema.ts";
 export type { ScenarioSceneSchema } from "./scenario-scene-schema.ts";
 export type { ScenarioSchema } from "./scenario-schema.ts";
+export type {
+  ScenarioVersionExportItemSchema,
+  ScenarioVersionExportItemSchemaFormatEnumKey,
+  ScenarioVersionExportItemSchemaStateEnumKey,
+} from "./scenario-version-export-item-schema.ts";
+export { scenarioVersionExportItemSchemaFormatEnum } from "./scenario-version-export-item-schema.ts";
+export { scenarioVersionExportItemSchemaStateEnum } from "./scenario-version-export-item-schema.ts";
 export type {
   ScenarioVersionExportWithUrlSchema,
   ScenarioVersionExportWithUrlSchemaFormatEnumKey,

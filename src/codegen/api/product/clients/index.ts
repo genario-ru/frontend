@@ -10,7 +10,7 @@ export { getApiV1ArchiveFilters } from "./get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./get-api-v1-archive-items-my.ts";
 export { getApiV1IdeasByIdeaId } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
-export { getApiV1IdeasListsByIdeasListIdExport } from "./get-api-v1-ideas-lists-by-ideas-list-id-export.ts";
+export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsMy } from "./get-api-v1-ideas-lists-my.ts";
 export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
@@ -25,7 +25,7 @@ export { getApiV1ScenariosByScenarioIdVersions } from "./get-api-v1-scenarios-by
 export { getApiV1ScenariosChaptersByChapterId } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosMy } from "./get-api-v1-scenarios-my.ts";
 export { getApiV1ScenariosVersionsByVersionId } from "./get-api-v1-scenarios-versions-by-version-id.ts";
-export { getApiV1ScenariosVersionsByVersionIdExport } from "./get-api-v1-scenarios-versions-by-version-id-export.ts";
+export { getApiV1ScenariosVersionsByVersionIdExports } from "./get-api-v1-scenarios-versions-by-version-id-exports.ts";
 export { getApiV1SubscriptonsMy } from "./get-api-v1-subscriptons-my.ts";
 export { getApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./get-api-v1-tariffs-trial.ts";
@@ -44,8 +44,10 @@ export { patchApiV1ScenariosChaptersByChapterId } from "./patch-api-v1-scenarios
 export { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "./patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { patchApiV1ScenariosScenesBySceneId } from "./patch-api-v1-scenarios-scenes-by-scene-id.ts";
 export { postApiV1IdeasLists } from "./post-api-v1-ideas-lists.ts";
+export { postApiV1IdeasListsByIdeasListIdExport } from "./post-api-v1-ideas-lists-by-ideas-list-id-export.ts";
 export { postApiV1IdeasListsByIdeasListIdIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-ideas.ts";
 export { postApiV1IdeasListsByIdeasListIdMoreIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
 export { postApiV1Profiles } from "./post-api-v1-profiles.ts";
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
+export { postApiV1ScenariosVersionsByVersionIdExport } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";

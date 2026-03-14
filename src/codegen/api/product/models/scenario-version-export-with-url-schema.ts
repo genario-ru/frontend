@@ -12,6 +12,7 @@ export type ScenarioVersionExportWithUrlSchemaFormatEnumKey =
   (typeof scenarioVersionExportWithUrlSchemaFormatEnum)[keyof typeof scenarioVersionExportWithUrlSchemaFormatEnum];
 
 export const scenarioVersionExportWithUrlSchemaStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

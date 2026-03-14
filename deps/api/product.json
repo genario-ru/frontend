@@ -787,8 +787,8 @@
       }
     },
     "/api/v1/ideas-lists/{ideasListId}/export": {
-      "get": {
-        "operationId": "getApiV1IdeasListsByIdeasListIdExport",
+      "post": {
+        "operationId": "postApiV1IdeasListsByIdeasListIdExport",
         "tags": [
           "Ideas lists"
         ],
@@ -864,16 +864,108 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "format": {
+                    "type": "string",
+                    "enum": [
+                      "pdf",
+                      "docx"
+                    ]
+                  }
+                },
+                "required": [
+                  "format"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ideas-lists/{ideasListId}/exports": {
+      "get": {
+        "operationId": "getApiV1IdeasListsByIdeasListIdExports",
+        "tags": [
+          "Ideas lists"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ideas list exports retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetIdeasListExportsResponseSchema"
+                }
+              }
+            }
           },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
           {
-            "in": "query",
-            "name": "format",
+            "in": "path",
+            "name": "ideasListId",
             "schema": {
               "type": "string",
-              "enum": [
-                "pdf",
-                "docx"
-              ]
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
           }
@@ -2996,8 +3088,8 @@
       }
     },
     "/api/v1/scenarios/versions/{versionId}/export": {
-      "get": {
-        "operationId": "getApiV1ScenariosVersionsByVersionIdExport",
+      "post": {
+        "operationId": "postApiV1ScenariosVersionsByVersionIdExport",
         "tags": [
           "Scenarios"
         ],
@@ -3073,16 +3165,108 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "format": {
+                    "type": "string",
+                    "enum": [
+                      "pdf",
+                      "docx"
+                    ]
+                  }
+                },
+                "required": [
+                  "format"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios/versions/{versionId}/exports": {
+      "get": {
+        "operationId": "getApiV1ScenariosVersionsByVersionIdExports",
+        "tags": [
+          "Scenarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "Scenario version exports retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetScenarioVersionExportsResponseSchema"
+                }
+              }
+            }
           },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
           {
-            "in": "query",
-            "name": "format",
+            "in": "path",
+            "name": "versionId",
             "schema": {
               "type": "string",
-              "enum": [
-                "pdf",
-                "docx"
-              ]
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
           }
@@ -5259,6 +5443,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -5323,6 +5508,65 @@
         ],
         "title": "Get ideas list export response",
         "description": "Get ideas list export response description"
+      },
+      "IdeasListExportItemSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "pdf",
+              "docx"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "pending",
+              "generation",
+              "failed",
+              "ready"
+            ]
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "format",
+          "state",
+          "url"
+        ],
+        "title": "Ideas list export item",
+        "description": "Ideas list export item description"
+      },
+      "GetIdeasListExportsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdeasListExportItemSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get ideas list exports response",
+        "description": "Get ideas list exports response description"
       },
       "GetIdeasListResponseSchema": {
         "type": "object",
@@ -8044,6 +8288,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -8104,6 +8349,65 @@
         ],
         "title": "Get scenario version export response",
         "description": "Get scenario version export response description"
+      },
+      "ScenarioVersionExportItemSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "pdf",
+              "docx"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "pending",
+              "generation",
+              "failed",
+              "ready"
+            ]
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "format",
+          "state",
+          "url"
+        ],
+        "title": "Scenario version export item",
+        "description": "Scenario version export item description"
+      },
+      "GetScenarioVersionExportsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScenarioVersionExportItemSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get scenario version exports response",
+        "description": "Get scenario version exports response description"
       },
       "GetScenarioVersionResponseSchema": {
         "type": "object",

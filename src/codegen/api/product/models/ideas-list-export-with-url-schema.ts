@@ -12,6 +12,7 @@ export type IdeasListExportWithUrlSchemaFormatEnumKey =
   (typeof ideasListExportWithUrlSchemaFormatEnum)[keyof typeof ideasListExportWithUrlSchemaFormatEnum];
 
 export const ideasListExportWithUrlSchemaStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",
