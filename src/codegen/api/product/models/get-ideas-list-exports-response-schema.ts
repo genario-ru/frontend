@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { IdeasListExportItemSchema } from "./ideas-list-export-item-schema.ts";
+import type { ExportDocumentShortSchema } from "./export-document-short-schema.ts";
 
 /**
  * Get ideas list exports response
@@ -13,5 +13,5 @@ export type GetIdeasListExportsResponseSchema = {
   /**
    * @type array
    */
-  data: IdeasListExportItemSchema[];
+  data: ExportDocumentShortSchema[];
 };

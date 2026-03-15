@@ -59,20 +59,11 @@ export type PostApiV1ScenariosVersionsByVersionIdExport404 =
 export type PostApiV1ScenariosVersionsByVersionIdExport500 =
   InternalServerErrorResponseSchema;
 
-export const postApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnum =
-  {
-    pdf: "pdf",
-    docx: "docx",
-  } as const;
-
-export type PostApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnumKey =
-  (typeof postApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnum)[keyof typeof postApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnum];
-
 export type PostApiV1ScenariosVersionsByVersionIdExportMutationRequest = {
   /**
    * @type string
    */
-  format: PostApiV1ScenariosVersionsByVersionIdExportMutationRequestFormatEnumKey;
+  format: string;
 };
 
 export type PostApiV1ScenariosVersionsByVersionIdExportMutationResponse =

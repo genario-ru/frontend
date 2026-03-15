@@ -16,6 +16,12 @@ export const getApiV1IdeasListsByIdeasListIdExportsPathParamsSchema = z.object({
   ideasListId: z.uuid(),
 });
 
+export const getApiV1IdeasListsByIdeasListIdExportsQueryParamsSchema = z.object(
+  {
+    savedOnly: z.boolean().default(false),
+  },
+);
+
 /**
  * @description Ideas list exports retrieved successfully
  */

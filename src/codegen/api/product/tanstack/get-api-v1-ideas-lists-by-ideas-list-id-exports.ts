@@ -25,19 +25,24 @@ import type {
   GetApiV1IdeasListsByIdeasListIdExports404,
   GetApiV1IdeasListsByIdeasListIdExports500,
   GetApiV1IdeasListsByIdeasListIdExportsPathParams,
+  GetApiV1IdeasListsByIdeasListIdExportsQueryParams,
   GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
 } from "../models/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 
-export const getApiV1IdeasListsByIdeasListIdExportsQueryKey = ({
-  ideasListId,
-}: {
-  ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
-}) =>
+export const getApiV1IdeasListsByIdeasListIdExportsQueryKey = (
+  {
+    ideasListId,
+  }: {
+    ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
+  },
+  params: GetApiV1IdeasListsByIdeasListIdExportsQueryParams = {},
+) =>
   [
     {
       url: "/api/v1/ideas-lists/:ideasListId/exports",
       params: { ideasListId: ideasListId },
     },
+    ...(params ? [params] : []),
   ] as const;
 
 export type GetApiV1IdeasListsByIdeasListIdExportsQueryKey = ReturnType<
@@ -47,14 +52,17 @@ export type GetApiV1IdeasListsByIdeasListIdExportsQueryKey = ReturnType<
 export function getApiV1IdeasListsByIdeasListIdExportsQueryOptions(
   {
     ideasListId,
+    params,
   }: {
     ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
+    params?: GetApiV1IdeasListsByIdeasListIdExportsQueryParams;
   },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
-  const queryKey = getApiV1IdeasListsByIdeasListIdExportsQueryKey({
-    ideasListId,
-  });
+  const queryKey = getApiV1IdeasListsByIdeasListIdExportsQueryKey(
+    { ideasListId },
+    params,
+  );
   return queryOptions<
     GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
     ResponseErrorConfig<
@@ -71,7 +79,7 @@ export function getApiV1IdeasListsByIdeasListIdExportsQueryOptions(
     queryKey,
     queryFn: async ({ signal }) => {
       return getApiV1IdeasListsByIdeasListIdExports(
-        { ideasListId: ideasListId },
+        { ideasListId: ideasListId, params: params },
         { ...config, signal: config.signal ?? signal },
       );
     },
@@ -88,8 +96,10 @@ export function useGetApiV1IdeasListsByIdeasListIdExports<
 >(
   {
     ideasListId,
+    params,
   }: {
     ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
+    params?: GetApiV1IdeasListsByIdeasListIdExportsQueryParams;
   },
   options: {
     query?: Partial<
@@ -114,12 +124,12 @@ export function useGetApiV1IdeasListsByIdeasListIdExports<
   const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
     resolvedOptions?.queryKey ??
-    getApiV1IdeasListsByIdeasListIdExportsQueryKey({ ideasListId });
+    getApiV1IdeasListsByIdeasListIdExportsQueryKey({ ideasListId }, params);
 
   const query = useQuery(
     {
       ...getApiV1IdeasListsByIdeasListIdExportsQueryOptions(
-        { ideasListId },
+        { ideasListId, params },
         config,
       ),
       ...resolvedOptions,

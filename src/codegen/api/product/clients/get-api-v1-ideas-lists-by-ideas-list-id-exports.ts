@@ -17,6 +17,7 @@ import type {
   GetApiV1IdeasListsByIdeasListIdExports404,
   GetApiV1IdeasListsByIdeasListIdExports500,
   GetApiV1IdeasListsByIdeasListIdExportsPathParams,
+  GetApiV1IdeasListsByIdeasListIdExportsQueryParams,
   GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
 } from "../models/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 import { getApiV1IdeasListsByIdeasListIdExportsQueryResponseSchema } from "../zod/get-api-v1-ideas-lists-by-ideas-list-id-exports-schema.ts";
@@ -39,8 +40,10 @@ function getGetApiV1IdeasListsByIdeasListIdExportsUrl({
 export async function getApiV1IdeasListsByIdeasListIdExports(
   {
     ideasListId,
+    params,
   }: {
     ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
+    params?: GetApiV1IdeasListsByIdeasListIdExportsQueryParams;
   },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
@@ -61,6 +64,7 @@ export async function getApiV1IdeasListsByIdeasListIdExports(
     url: getGetApiV1IdeasListsByIdeasListIdExportsUrl({
       ideasListId,
     }).url.toString(),
+    params,
     ...requestConfig,
   });
   return getApiV1IdeasListsByIdeasListIdExportsQueryResponseSchema.parse(

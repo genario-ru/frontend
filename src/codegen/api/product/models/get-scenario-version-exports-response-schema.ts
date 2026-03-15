@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { ScenarioVersionExportItemSchema } from "./scenario-version-export-item-schema.ts";
+import type { ExportDocumentShortSchema } from "./export-document-short-schema.ts";
 
 /**
  * Get scenario version exports response
@@ -13,5 +13,5 @@ export type GetScenarioVersionExportsResponseSchema = {
   /**
    * @type array
    */
-  data: ScenarioVersionExportItemSchema[];
+  data: ExportDocumentShortSchema[];
 };

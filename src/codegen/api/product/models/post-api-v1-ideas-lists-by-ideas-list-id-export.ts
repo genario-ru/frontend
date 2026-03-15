@@ -4,8 +4,9 @@
  */
 
 import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
+import type { CreateIdeasListExportBodySchema } from "./create-ideas-list-export-body-schema.ts";
+import type { CreateIdeasListExportResponseSchema } from "./create-ideas-list-export-response-schema.ts";
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
-import type { GetIdeasListExportResponseSchema } from "./get-ideas-list-export-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
@@ -18,11 +19,11 @@ export type PostApiV1IdeasListsByIdeasListIdExportPathParams = {
 };
 
 /**
- * Get ideas list export response
+ * Create ideas list export response
  * @description Ideas list export retrieved successfully
  */
 export type PostApiV1IdeasListsByIdeasListIdExport200 =
-  GetIdeasListExportResponseSchema;
+  CreateIdeasListExportResponseSchema;
 
 /**
  * Bad request response
@@ -57,20 +58,11 @@ export type PostApiV1IdeasListsByIdeasListIdExport404 = NotFoundResponseSchema;
 export type PostApiV1IdeasListsByIdeasListIdExport500 =
   InternalServerErrorResponseSchema;
 
-export const postApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnum = {
-  pdf: "pdf",
-  docx: "docx",
-} as const;
-
-export type PostApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnumKey =
-  (typeof postApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnum)[keyof typeof postApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnum];
-
-export type PostApiV1IdeasListsByIdeasListIdExportMutationRequest = {
-  /**
-   * @type string
-   */
-  format: PostApiV1IdeasListsByIdeasListIdExportMutationRequestFormatEnumKey;
-};
+/**
+ * Create ideas list export body
+ */
+export type PostApiV1IdeasListsByIdeasListIdExportMutationRequest =
+  CreateIdeasListExportBodySchema;
 
 export type PostApiV1IdeasListsByIdeasListIdExportMutationResponse =
   PostApiV1IdeasListsByIdeasListIdExport200;

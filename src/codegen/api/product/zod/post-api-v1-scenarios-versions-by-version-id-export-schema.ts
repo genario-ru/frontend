@@ -61,7 +61,7 @@ export const postApiV1ScenariosVersionsByVersionIdExport500Schema = z
 
 export const postApiV1ScenariosVersionsByVersionIdExportMutationRequestSchema =
   z.object({
-    format: z.enum(["pdf", "docx"]),
+    format: z.string(),
   });
 
 export const postApiV1ScenariosVersionsByVersionIdExportMutationResponseSchema =

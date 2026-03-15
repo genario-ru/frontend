@@ -6,10 +6,10 @@
 import type { ExportDocumentShortSchema } from "./export-document-short-schema.ts";
 
 /**
- * Get scenario version export response
- * @description Get scenario version export response description
+ * Create ideas list export response
+ * @description Create ideas list export response description
  */
-export type GetScenarioVersionExportResponseSchema = {
+export type CreateIdeasListExportResponseSchema = {
   /**
    * @description Export document short description
    * @type object

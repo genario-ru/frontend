@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { ideasListExportItemSchemaSchema } from "./ideas-list-export-item-schema-schema.ts";
+import { exportDocumentShortSchemaSchema } from "./export-document-short-schema-schema.ts";
 
 /**
  * @description Get ideas list exports response description
@@ -14,8 +14,8 @@ export const getIdeasListExportsResponseSchemaSchema = z
   .object({
     get data() {
       return z.array(
-        ideasListExportItemSchemaSchema.describe(
-          "Ideas list export item description",
+        exportDocumentShortSchemaSchema.describe(
+          "Export document short description",
         ),
       );
     },

@@ -17,6 +17,14 @@ export type GetApiV1IdeasListsByIdeasListIdExportsPathParams = {
   ideasListId: string;
 };
 
+export type GetApiV1IdeasListsByIdeasListIdExportsQueryParams = {
+  /**
+   * @default false
+   * @type boolean | undefined
+   */
+  savedOnly?: boolean;
+};
+
 /**
  * Get ideas list exports response
  * @description Ideas list exports retrieved successfully
@@ -63,6 +71,7 @@ export type GetApiV1IdeasListsByIdeasListIdExportsQueryResponse =
 export type GetApiV1IdeasListsByIdeasListIdExportsQuery = {
   Response: GetApiV1IdeasListsByIdeasListIdExports200;
   PathParams: GetApiV1IdeasListsByIdeasListIdExportsPathParams;
+  QueryParams: GetApiV1IdeasListsByIdeasListIdExportsQueryParams;
   Errors:
     | GetApiV1IdeasListsByIdeasListIdExports400
     | GetApiV1IdeasListsByIdeasListIdExports401

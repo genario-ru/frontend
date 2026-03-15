@@ -6,8 +6,9 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { createIdeasListExportBodySchemaSchema } from "./create-ideas-list-export-body-schema-schema.ts";
+import { createIdeasListExportResponseSchemaSchema } from "./create-ideas-list-export-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
-import { getIdeasListExportResponseSchemaSchema } from "./get-ideas-list-export-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
@@ -20,8 +21,8 @@ export const postApiV1IdeasListsByIdeasListIdExportPathParamsSchema = z.object({
  * @description Ideas list export retrieved successfully
  */
 export const postApiV1IdeasListsByIdeasListIdExport200Schema = z
-  .lazy(() => getIdeasListExportResponseSchemaSchema)
-  .describe("Get ideas list export response description");
+  .lazy(() => createIdeasListExportResponseSchemaSchema)
+  .describe("Create ideas list export response description");
 
 /**
  * @description Bad request
@@ -58,10 +59,9 @@ export const postApiV1IdeasListsByIdeasListIdExport500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const postApiV1IdeasListsByIdeasListIdExportMutationRequestSchema =
-  z.object({
-    format: z.enum(["pdf", "docx"]),
-  });
+export const postApiV1IdeasListsByIdeasListIdExportMutationRequestSchema = z
+  .lazy(() => createIdeasListExportBodySchemaSchema)
+  .describe("Create ideas list export body description");
 
 export const postApiV1IdeasListsByIdeasListIdExportMutationResponseSchema =
   z.lazy(() => postApiV1IdeasListsByIdeasListIdExport200Schema);

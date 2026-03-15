@@ -798,7 +798,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetIdeasListExportResponseSchema"
+                  "$ref": "#/components/schemas/CreateIdeasListExportResponseSchema"
                 }
               }
             }
@@ -871,19 +871,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "format": {
-                    "type": "string",
-                    "enum": [
-                      "pdf",
-                      "docx"
-                    ]
-                  }
-                },
-                "required": [
-                  "format"
-                ]
+                "$ref": "#/components/schemas/CreateIdeasListExportBodySchema"
               }
             }
           }
@@ -968,6 +956,14 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "savedOnly",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
           }
         ]
       }
@@ -3175,11 +3171,7 @@
                 "type": "object",
                 "properties": {
                   "format": {
-                    "type": "string",
-                    "enum": [
-                      "pdf",
-                      "docx"
-                    ]
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -5403,57 +5395,16 @@
         "title": "Generate more ideas body",
         "description": "Generate more ideas body description"
       },
-      "IdeasListExportWithUrlSchema": {
+      "ExportDocumentShortSchema": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          "formatName": {
+            "type": "string"
           },
-          "userId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          "formatSlug": {
+            "type": "string"
           },
-          "ideasListId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "attachmentId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "format": {
-            "type": "string",
-            "enum": [
-              "pdf",
-              "docx"
-            ]
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "idle",
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
-          "savedOnly": {
-            "type": "boolean"
-          },
-          "error": {
+          "formatColor": {
             "anyOf": [
               {
                 "type": "string"
@@ -5463,13 +5414,37 @@
               }
             ]
           },
-          "createdAt": {
-            "type": "string"
+          "formatIcon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
-          "updatedAt": {
-            "type": "string"
+          "documentStatus": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "pending",
+              "generation",
+              "failed",
+              "ready"
+            ]
           },
-          "url": {
+          "documentStatusDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "documentUrl": {
             "anyOf": [
               {
                 "type": "string"
@@ -5481,76 +5456,46 @@
           }
         },
         "required": [
-          "id",
-          "userId",
-          "ideasListId",
-          "attachmentId",
-          "format",
-          "status",
-          "savedOnly",
-          "error",
-          "createdAt",
-          "updatedAt",
-          "url"
+          "formatName",
+          "formatSlug",
+          "formatColor",
+          "formatIcon",
+          "documentStatus",
+          "documentStatusDetails",
+          "documentUrl"
         ],
-        "title": "Ideas list export with url",
-        "description": "Ideas list export with url description"
+        "title": "Export document short",
+        "description": "Export document short description"
       },
-      "GetIdeasListExportResponseSchema": {
+      "CreateIdeasListExportResponseSchema": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/IdeasListExportWithUrlSchema"
+            "$ref": "#/components/schemas/ExportDocumentShortSchema"
           }
         },
         "required": [
           "data"
         ],
-        "title": "Get ideas list export response",
-        "description": "Get ideas list export response description"
+        "title": "Create ideas list export response",
+        "description": "Create ideas list export response description"
       },
-      "IdeasListExportItemSchema": {
+      "CreateIdeasListExportBodySchema": {
         "type": "object",
         "properties": {
-          "name": {
+          "format": {
             "type": "string"
           },
-          "format": {
-            "type": "string",
-            "enum": [
-              "pdf",
-              "docx"
-            ]
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "idle",
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
-          "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+          "savedOnly": {
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
-          "name",
-          "format",
-          "state",
-          "url"
+          "format"
         ],
-        "title": "Ideas list export item",
-        "description": "Ideas list export item description"
+        "title": "Create ideas list export body",
+        "description": "Create ideas list export body description"
       },
       "GetIdeasListExportsResponseSchema": {
         "type": "object",
@@ -5558,7 +5503,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdeasListExportItemSchema"
+              "$ref": "#/components/schemas/ExportDocumentShortSchema"
             }
           }
         },
@@ -8248,100 +8193,11 @@
         "title": "Delete scenario version response",
         "description": "Delete scenario version response description"
       },
-      "ScenarioVersionExportWithUrlSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "scenarioVersionId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "attachmentId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "format": {
-            "type": "string",
-            "enum": [
-              "pdf",
-              "docx"
-            ]
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "idle",
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
-          "error": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          },
-          "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id",
-          "userId",
-          "scenarioVersionId",
-          "attachmentId",
-          "format",
-          "status",
-          "error",
-          "createdAt",
-          "updatedAt",
-          "url"
-        ],
-        "title": "Scenario version export with url",
-        "description": "Scenario version export with url description"
-      },
       "GetScenarioVersionExportResponseSchema": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ScenarioVersionExportWithUrlSchema"
+            "$ref": "#/components/schemas/ExportDocumentShortSchema"
           }
         },
         "required": [
@@ -8350,56 +8206,13 @@
         "title": "Get scenario version export response",
         "description": "Get scenario version export response description"
       },
-      "ScenarioVersionExportItemSchema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "format": {
-            "type": "string",
-            "enum": [
-              "pdf",
-              "docx"
-            ]
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "idle",
-              "pending",
-              "generation",
-              "failed",
-              "ready"
-            ]
-          },
-          "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        },
-        "required": [
-          "name",
-          "format",
-          "state",
-          "url"
-        ],
-        "title": "Scenario version export item",
-        "description": "Scenario version export item description"
-      },
       "GetScenarioVersionExportsResponseSchema": {
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ScenarioVersionExportItemSchema"
+              "$ref": "#/components/schemas/ExportDocumentShortSchema"
             }
           }
         },

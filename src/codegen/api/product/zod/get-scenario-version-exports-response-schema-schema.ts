@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { scenarioVersionExportItemSchemaSchema } from "./scenario-version-export-item-schema-schema.ts";
+import { exportDocumentShortSchemaSchema } from "./export-document-short-schema-schema.ts";
 
 /**
  * @description Get scenario version exports response description
@@ -14,8 +14,8 @@ export const getScenarioVersionExportsResponseSchemaSchema = z
   .object({
     get data() {
       return z.array(
-        scenarioVersionExportItemSchemaSchema.describe(
-          "Scenario version export item description",
+        exportDocumentShortSchemaSchema.describe(
+          "Export document short description",
         ),
       );
     },

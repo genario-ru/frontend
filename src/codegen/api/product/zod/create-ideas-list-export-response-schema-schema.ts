@@ -8,9 +8,9 @@ import { z } from "@/lib/zod/index.ts";
 import { exportDocumentShortSchemaSchema } from "./export-document-short-schema-schema.ts";
 
 /**
- * @description Get scenario version export response description
+ * @description Create ideas list export response description
  */
-export const getScenarioVersionExportResponseSchemaSchema = z
+export const createIdeasListExportResponseSchemaSchema = z
   .object({
     get data() {
       return exportDocumentShortSchemaSchema.describe(
@@ -18,4 +18,4 @@ export const getScenarioVersionExportResponseSchemaSchema = z
       );
     },
   })
-  .describe("Get scenario version export response description");
+  .describe("Create ideas list export response description");
