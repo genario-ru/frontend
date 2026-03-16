@@ -1,7 +1,10 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 
 import { useCreateExport } from "@/actions/ideas-lists/hooks/use-create-export";
 import { useGetExports } from "@/actions/ideas-lists/hooks/use-get-exports";
+import type { GetApiV1IdeasListsByIdeasListIdExportsQueryResponse } from "@/codegen/api/product/models";
+import { getApiV1IdeasListsByIdeasListIdExportsQueryKey } from "@/codegen/api/product/tanstack/get-api-v1-ideas-lists-by-ideas-list-id-exports";
 import { useToast } from "@/shared/hooks/use-toast";
 import { downloadFileByUrl } from "@/shared/utils/download-file-by-url";
 
@@ -20,6 +23,7 @@ export function useIdeasListAppMenubarExportSubmenu({
   ideasListId,
   handleDropdownMenuClose,
 }: UseIdeasListAppMenubarExportSubmenuParams) {
+  const queryClient = useQueryClient();
   const [exportJob, setExportJob] = useState<ExportJob | null>(null);
   const { showErrorToast } = useToast();
   const { createExport, isCreateExportPending } = useCreateExport();
@@ -67,10 +71,28 @@ export function useIdeasListAppMenubarExportSubmenu({
       createExport(
         { ideasListId, data: { format } },
         {
-          onSuccess: ({ data }) => {
-            if (data.documentUrl) {
-              handleDownloadIdeasList(data.documentUrl);
-            } else if (data.documentStatus === "failed") {
+          onSuccess: ({ data: mutationData }) => {
+            queryClient.setQueryData(
+              getApiV1IdeasListsByIdeasListIdExportsQueryKey({ ideasListId }),
+              (
+                oldData: GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
+              ) => {
+                return {
+                  ...oldData,
+                  data: oldData.data.map((exportData) => {
+                    if (exportData.formatSlug === format) {
+                      return mutationData;
+                    }
+
+                    return exportData;
+                  }),
+                };
+              },
+            );
+
+            if (mutationData.documentUrl) {
+              handleDownloadIdeasList(mutationData.documentUrl);
+            } else if (mutationData.documentStatus === "failed") {
               handleDownloadIdeasListError();
             } else {
               setExportJob({ format });
@@ -84,6 +106,7 @@ export function useIdeasListAppMenubarExportSubmenu({
     },
     [
       ideasListId,
+      queryClient,
       exportJob,
       exportsData,
       createExport,
