@@ -8,6 +8,7 @@ export { deleteApiV1ScenariosScenesBySceneId } from "./delete-api-v1-scenarios-s
 export { deleteApiV1ScenariosVersionsByVersionId } from "./delete-api-v1-scenarios-versions-by-version-id.ts";
 export { getApiV1ArchiveFilters } from "./get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./get-api-v1-archive-items-my.ts";
+export { getApiV1AttachmentsByAttachmentIdDownload } from "./get-api-v1-attachments-by-attachment-id-download.ts";
 export { getApiV1IdeasByIdeaId } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";

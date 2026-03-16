@@ -129,6 +129,16 @@ export {
   getApiV1ArchiveItemsMyQueryResponseSchema,
 } from "./get-api-v1-archive-items-my-schema.ts";
 export {
+  getApiV1AttachmentsByAttachmentIdDownload200Schema,
+  getApiV1AttachmentsByAttachmentIdDownload400Schema,
+  getApiV1AttachmentsByAttachmentIdDownload401Schema,
+  getApiV1AttachmentsByAttachmentIdDownload403Schema,
+  getApiV1AttachmentsByAttachmentIdDownload404Schema,
+  getApiV1AttachmentsByAttachmentIdDownload500Schema,
+  getApiV1AttachmentsByAttachmentIdDownloadPathParamsSchema,
+  getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema,
+} from "./get-api-v1-attachments-by-attachment-id-download-schema.ts";
+export {
   getApiV1IdeasByIdeaId200Schema,
   getApiV1IdeasByIdeaId400Schema,
   getApiV1IdeasByIdeaId401Schema,

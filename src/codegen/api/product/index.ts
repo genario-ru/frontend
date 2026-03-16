@@ -8,6 +8,7 @@ export { deleteApiV1ScenariosScenesBySceneId } from "./clients/delete-api-v1-sce
 export { deleteApiV1ScenariosVersionsByVersionId } from "./clients/delete-api-v1-scenarios-versions-by-version-id.ts";
 export { getApiV1ArchiveFilters } from "./clients/get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./clients/get-api-v1-archive-items-my.ts";
+export { getApiV1AttachmentsByAttachmentIdDownload } from "./clients/get-api-v1-attachments-by-attachment-id-download.ts";
 export { getApiV1IdeasByIdeaId } from "./clients/get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
@@ -201,6 +202,17 @@ export type {
   GetApiV1ArchiveItemsMyQueryParams,
   GetApiV1ArchiveItemsMyQueryResponse,
 } from "./models/get-api-v1-archive-items-my.ts";
+export type {
+  GetApiV1AttachmentsByAttachmentIdDownload200,
+  GetApiV1AttachmentsByAttachmentIdDownload400,
+  GetApiV1AttachmentsByAttachmentIdDownload401,
+  GetApiV1AttachmentsByAttachmentIdDownload403,
+  GetApiV1AttachmentsByAttachmentIdDownload404,
+  GetApiV1AttachmentsByAttachmentIdDownload500,
+  GetApiV1AttachmentsByAttachmentIdDownloadPathParams,
+  GetApiV1AttachmentsByAttachmentIdDownloadQuery,
+  GetApiV1AttachmentsByAttachmentIdDownloadQueryResponse,
+} from "./models/get-api-v1-attachments-by-attachment-id-download.ts";
 export type {
   GetApiV1IdeasByIdeaId200,
   GetApiV1IdeasByIdeaId400,
@@ -885,6 +897,10 @@ export type { GetApiV1ArchiveItemsMyInfiniteQueryKey } from "./tanstack/get-api-
 export { getApiV1ArchiveItemsMyInfiniteQueryKey } from "./tanstack/get-api-v1-archive-items-my-infinite.ts";
 export { getApiV1ArchiveItemsMyInfiniteQueryOptions } from "./tanstack/get-api-v1-archive-items-my-infinite.ts";
 export { useGetApiV1ArchiveItemsMyInfinite } from "./tanstack/get-api-v1-archive-items-my-infinite.ts";
+export type { GetApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
+export { getApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
+export { getApiV1AttachmentsByAttachmentIdDownloadQueryOptions } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
+export { useGetApiV1AttachmentsByAttachmentIdDownload } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
 export type { GetApiV1IdeasByIdeaIdQueryKey } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasByIdeaIdQueryKey } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasByIdeaIdQueryOptions } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
@@ -1195,6 +1211,16 @@ export {
   getApiV1ArchiveItemsMyQueryParamsSchema,
   getApiV1ArchiveItemsMyQueryResponseSchema,
 } from "./zod/get-api-v1-archive-items-my-schema.ts";
+export {
+  getApiV1AttachmentsByAttachmentIdDownload200Schema,
+  getApiV1AttachmentsByAttachmentIdDownload400Schema,
+  getApiV1AttachmentsByAttachmentIdDownload401Schema,
+  getApiV1AttachmentsByAttachmentIdDownload403Schema,
+  getApiV1AttachmentsByAttachmentIdDownload404Schema,
+  getApiV1AttachmentsByAttachmentIdDownload500Schema,
+  getApiV1AttachmentsByAttachmentIdDownloadPathParamsSchema,
+  getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema,
+} from "./zod/get-api-v1-attachments-by-attachment-id-download-schema.ts";
 export {
   getApiV1IdeasByIdeaId200Schema,
   getApiV1IdeasByIdeaId400Schema,

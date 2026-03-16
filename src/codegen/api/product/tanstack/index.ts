@@ -42,6 +42,10 @@ export type { GetApiV1ArchiveItemsMyInfiniteQueryKey } from "./get-api-v1-archiv
 export { getApiV1ArchiveItemsMyInfiniteQueryKey } from "./get-api-v1-archive-items-my-infinite.ts";
 export { getApiV1ArchiveItemsMyInfiniteQueryOptions } from "./get-api-v1-archive-items-my-infinite.ts";
 export { useGetApiV1ArchiveItemsMyInfinite } from "./get-api-v1-archive-items-my-infinite.ts";
+export type { GetApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./get-api-v1-attachments-by-attachment-id-download.ts";
+export { getApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./get-api-v1-attachments-by-attachment-id-download.ts";
+export { getApiV1AttachmentsByAttachmentIdDownloadQueryOptions } from "./get-api-v1-attachments-by-attachment-id-download.ts";
+export { useGetApiV1AttachmentsByAttachmentIdDownload } from "./get-api-v1-attachments-by-attachment-id-download.ts";
 export type { GetApiV1IdeasByIdeaIdQueryKey } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasByIdeaIdQueryKey } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasByIdeaIdQueryOptions } from "./get-api-v1-ideas-by-idea-id.ts";

@@ -149,6 +149,17 @@ export type {
   GetApiV1ArchiveItemsMyQueryResponse,
 } from "./get-api-v1-archive-items-my.ts";
 export type {
+  GetApiV1AttachmentsByAttachmentIdDownload200,
+  GetApiV1AttachmentsByAttachmentIdDownload400,
+  GetApiV1AttachmentsByAttachmentIdDownload401,
+  GetApiV1AttachmentsByAttachmentIdDownload403,
+  GetApiV1AttachmentsByAttachmentIdDownload404,
+  GetApiV1AttachmentsByAttachmentIdDownload500,
+  GetApiV1AttachmentsByAttachmentIdDownloadPathParams,
+  GetApiV1AttachmentsByAttachmentIdDownloadQuery,
+  GetApiV1AttachmentsByAttachmentIdDownloadQueryResponse,
+} from "./get-api-v1-attachments-by-attachment-id-download.ts";
+export type {
   GetApiV1IdeasByIdeaId200,
   GetApiV1IdeasByIdeaId400,
   GetApiV1IdeasByIdeaId401,
