@@ -38,6 +38,27 @@ export default defineConfig(({ mode }) => {
           enabled: swDev === "true",
           type: "module",
         },
+        workbox: {
+          // Удалять устаревшие precache-данные при активации нового SW
+          cleanupOutdatedCaches: true,
+          // HTML не включаем в precache — иначе SW отдаёт старый index.html после деплоя
+          globPatterns: ["**/*.{js,css,ico,png,svg,woff,woff2,ttf,eot}"],
+          // Для навигации всегда идём в сеть первым делом (NetworkFirst):
+          // nginx вернёт свежий index.html с no-cache, а ссылки на новые хэшированные
+          // ассеты заставят браузер подтянуть актуальный бандл.
+          // При недоступности сети — отдаётся закэшированная копия (offline-поддержка).
+          runtimeCaching: [
+            {
+              urlPattern: ({ request }) => request.mode === "navigate",
+              handler: "NetworkFirst",
+              options: {
+                cacheName: "navigation-cache",
+                networkTimeoutSeconds: 3,
+                cacheableResponse: { statuses: [0, 200] },
+              },
+            },
+          ],
+        },
         manifest: {
           id: "genario",
           name: "Genario - AI Scenario generator",
