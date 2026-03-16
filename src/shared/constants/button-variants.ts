@@ -42,6 +42,12 @@ export const buttonVariants = cva(
         column: "flex-col",
         row: "flex-row",
       },
+      align: {
+        center: "",
+        start: "",
+        end: "",
+        between: "",
+      },
     },
     defaultVariants: {
       variant: "neutral",
@@ -50,6 +56,8 @@ export const buttonVariants = cva(
       rounding: "base",
       content: "mixed",
       state: "default",
+      direction: "row",
+      align: "center",
     },
     compoundVariants: [
       // Rounding base (size-dependent)
@@ -67,6 +75,48 @@ export const buttonVariants = cva(
         rounding: "base",
         size: "sm",
         className: "rounded-2.5",
+      },
+      // Align (row)
+      {
+        direction: "row",
+        align: "center",
+        className: "justify-center",
+      },
+      {
+        direction: "row",
+        align: "start",
+        className: "justify-start",
+      },
+      {
+        direction: "row",
+        align: "end",
+        className: "justify-end",
+      },
+      {
+        direction: "row",
+        align: "between",
+        className: "justify-between",
+      },
+      // Align (column)
+      {
+        direction: "column",
+        align: "center",
+        className: "items-center",
+      },
+      {
+        direction: "column",
+        align: "start",
+        className: "items-start",
+      },
+      {
+        direction: "column",
+        align: "end",
+        className: "items-end",
+      },
+      {
+        direction: "column",
+        align: "between",
+        className: "items-between",
       },
       // Icon
       {

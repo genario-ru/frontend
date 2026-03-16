@@ -1,31 +1,33 @@
 import { type VariantProps } from "class-variance-authority";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, CSSProperties, ReactNode } from "react";
 
 import { buttonVariants } from "@/shared/constants/button-variants";
 import { cn } from "@/shared/utils/cn";
 
 import { Spinner } from "./spinner";
 
-export type PublicButtonVariantsProps = Omit<
+export type PublicButtonProps = Omit<
   VariantProps<typeof buttonVariants>,
   "content"
->;
+> & {
+  icon?: ReactNode;
+  iconPosition?: "left" | "right";
+  iconColor?: string | null;
+};
 
-export type ButtonProps = ComponentProps<"button"> &
-  PublicButtonVariantsProps & {
-    icon?: ReactNode;
-    iconPosition?: "left" | "right";
-  };
+export type ButtonProps = ComponentProps<"button"> & PublicButtonProps;
 
 export const Button = ({
   icon,
   iconPosition = "right",
+  iconColor,
   variant,
   priority,
   size,
   rounding,
   state,
   direction,
+  align,
   children,
   className,
   ...props
@@ -33,6 +35,7 @@ export const Button = ({
   const isLoading = state === "loading";
   const withChildren = Boolean(children);
   const withIcon = Boolean(icon);
+  const withIconColor = Boolean(iconColor);
   let leftIcon: ReactNode | null = null;
   let rightIcon: ReactNode | null = null;
 
@@ -42,9 +45,16 @@ export const Button = ({
     rightIcon = isLoading ? <Spinner /> : withIcon ? icon : null;
   }
 
+  const style = iconColor
+    ? ({
+        "--button-icon-color": iconColor,
+      } as CSSProperties)
+    : undefined;
+
   return (
     <button
       disabled={state === "loading"}
+      style={style}
       className={cn(
         buttonVariants({
           variant,
@@ -54,7 +64,11 @@ export const Button = ({
           content: withChildren ? "mixed" : "icon",
           state,
           direction,
+          align,
         }),
+        {
+          "[&_svg]:stroke-(--button-icon-color)!": withIconColor,
+        },
         className,
       )}
       {...props}

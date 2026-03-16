@@ -5,10 +5,12 @@ import { useDeleteIdeasList } from "@/actions/ideas-lists/hooks/use-delete-ideas
 
 type UseIdeasListAppMenubarDeleteIdeaDialogParams = {
   ideasListId: string;
+  handleDropdownMenuClose: () => void;
 };
 
 export function useIdeasListAppMenubarDeleteIdeaDialog({
   ideasListId,
+  handleDropdownMenuClose,
 }: UseIdeasListAppMenubarDeleteIdeaDialogParams) {
   const navigate = useNavigate();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -16,6 +18,7 @@ export function useIdeasListAppMenubarDeleteIdeaDialog({
   const { deleteIdeasList, isDeleteIdeasListPending } = useDeleteIdeasList({
     onSuccess: () => {
       setIsDeleteDialogOpen(false);
+      handleDropdownMenuClose();
       navigate({ to: "/archive" });
     },
   });

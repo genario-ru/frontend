@@ -1,5 +1,6 @@
 import { TrashIcon } from "lucide-react";
 
+import { AppMenubarDropdownMenuButton } from "@/features/navigation/app-menubar/components/app-menubar-dropdown-menu-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -14,22 +15,29 @@ import { useIdeasListAppMenubarDeleteIdeaDialog } from "../hooks/use-ideas-list-
 
 type IdeasListAppMenubarDeleteIdeaDialogProps = {
   ideasListId: string;
+  handleDropdownMenuClose: () => void;
 };
 
 export function IdeasListAppMenubarDeleteIdeaDialog({
   ideasListId,
+  handleDropdownMenuClose,
 }: IdeasListAppMenubarDeleteIdeaDialogProps) {
   const {
     isDeleteDialogOpen,
     isDeleteIdeasListPending,
     setIsDeleteDialogOpen,
     handleDeleteConfirmButtonClick,
-  } = useIdeasListAppMenubarDeleteIdeaDialog({ ideasListId });
+  } = useIdeasListAppMenubarDeleteIdeaDialog({
+    ideasListId,
+    handleDropdownMenuClose,
+  });
 
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <Button priority="tertiary" variant="negative" icon={<TrashIcon />} />
+        <AppMenubarDropdownMenuButton variant="negative" icon={<TrashIcon />}>
+          Удалить
+        </AppMenubarDropdownMenuButton>
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader

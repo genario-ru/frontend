@@ -1,5 +1,6 @@
 import { WandSparklesIcon } from "lucide-react";
 
+import { AppMenubarButton } from "@/features/navigation/app-menubar/components/app-menubar-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -34,9 +35,9 @@ export function IdeasListAppMenubarMoreIdeasDialog({
       onOpenChange={setIsMoreIdeasDialogOpen}
     >
       <DialogTrigger asChild>
-        <Button priority="tertiary" icon={<WandSparklesIcon />}>
+        <AppMenubarButton icon={<WandSparklesIcon />}>
           Больше идей
-        </Button>
+        </AppMenubarButton>
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader

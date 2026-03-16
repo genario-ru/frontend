@@ -1,5 +1,5 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { ChevronRightIcon, CircleIcon } from "lucide-react";
+import { CircleIcon } from "lucide-react";
 import { type ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
@@ -10,47 +10,33 @@ export const DropdownMenu = DropdownMenuPrimitive.Root;
 
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
+export const DropdownMenuSubTrigger = DropdownMenuPrimitive.SubTrigger;
+
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuItem = DropdownMenuPrimitive.Item;
 
 export const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
-export const DropdownMenuSubTrigger = ({
-  className,
-  inset,
-  children,
-  ...props
-}: ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-  inset?: boolean;
-}) => (
-  <DropdownMenuPrimitive.SubTrigger
-    className={cn(
-      "focus:bg-neutral-1 data-[state=open]:bg-neutral-1 flex items-center gap-2 rounded-lg p-1.5 text-sm font-medium outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50",
-      {
-        "pl-7": inset,
-      },
-      className,
-    )}
-    {...props}
-  >
-    {children}
-    <ChevronRightIcon size={16} className="ml-auto" />
-  </DropdownMenuPrimitive.SubTrigger>
-);
-
 export const DropdownMenuSubContent = ({
   className,
+  sideOffset = 4,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) => (
-  <DropdownMenuPrimitive.SubContent
-    className={cn(
-      "bg-neutral-1 min-w-32 overflow-hidden rounded-xl p-1 shadow-sm",
-      "origin-(--radix-dropdown-menu-content-transform-origin)",
-      className,
-    )}
-    {...props}
-  />
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.SubContent
+      sideOffset={sideOffset}
+      className={cn(
+        "bg-neutral-1 border-neutral-2 rounded-3.5 shadow-bottom-2 flex min-w-40 flex-col overflow-x-hidden overflow-y-auto border",
+        "max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin)",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+        className,
+      )}
+      {...props}
+    />
+  </DropdownMenuPrimitive.Portal>
 );
 
 export const DropdownMenuContent = ({
@@ -83,31 +69,6 @@ export const DropdownMenuGroup = ({
   >
     {children}
   </DropdownMenuPrimitive.Group>
-);
-
-export const DropdownMenuItem = ({
-  className,
-  inset,
-  unstyled = false,
-  ...props
-}: ComponentProps<typeof DropdownMenuPrimitive.Item> & {
-  inset?: boolean;
-  unstyled?: boolean;
-}) => (
-  <DropdownMenuPrimitive.Item
-    className={
-      !unstyled
-        ? cn(
-            "focus:bg-neutral-1 rounded-2.5 flex h-8 items-center gap-1.5 px-2 text-sm font-medium select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
-            {
-              "pl-8": inset,
-            },
-            className,
-          )
-        : ""
-    }
-    {...props}
-  />
 );
 
 export const DropdownMenuRadioItem = ({
