@@ -1,5 +1,6 @@
 import { TrashIcon } from "lucide-react";
 
+import { AppMenubarDropdownMenuButton } from "@/features/navigation/app-menubar/components/app-menubar-dropdown-menu-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -14,22 +15,29 @@ import { useScenarioAppMenubarDeleteDialog } from "../hooks/use-scenario-app-men
 
 type ScenarioAppMenubarDeleteDialogProps = {
   scenarioId: string;
+  handleDropdownMenuClose: () => void;
 };
 
 export function ScenarioAppMenubarDeleteDialog({
   scenarioId,
+  handleDropdownMenuClose,
 }: ScenarioAppMenubarDeleteDialogProps) {
   const {
     isDeleteDialogOpen,
     isDeleteScenarioPending,
     setIsDeleteDialogOpen,
     handleConfirmDeleteButtonClick,
-  } = useScenarioAppMenubarDeleteDialog({ scenarioId });
+  } = useScenarioAppMenubarDeleteDialog({
+    scenarioId,
+    handleDropdownMenuClose,
+  });
 
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <Button priority="tertiary" variant="negative" icon={<TrashIcon />} />
+        <AppMenubarDropdownMenuButton variant="negative" icon={<TrashIcon />}>
+          Удалить
+        </AppMenubarDropdownMenuButton>
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader

@@ -17,6 +17,7 @@ type ScenarioAppMenubarParams = {
 export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
   const {
     scenarioData,
+    scenarioVersionId,
     scenarioTitle,
     scenarioDescription,
     isScenarioLoading,
@@ -67,8 +68,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
         <div className="flex h-full flex-col items-end justify-between gap-4">
           <ScenarioAppMenubarActions
             scenarioId={scenarioId}
-            isScenarioLoading={isScenarioLoading}
-            initialSaved={scenarioData?.data.saved ?? false}
+            scenarioVersionId={scenarioVersionId}
           />
           <ScenarioAppMenubarTabs scenarioId={scenarioId} />
         </div>

@@ -14,23 +14,25 @@ export function useIdeasListAppMenubarDeleteIdeaDialog({
 }: UseIdeasListAppMenubarDeleteIdeaDialogParams) {
   const navigate = useNavigate();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const { deleteIdeasList, isDeleteIdeasListPending } = useDeleteIdeasList();
 
-  const { deleteIdeasList, isDeleteIdeasListPending } = useDeleteIdeasList({
-    onSuccess: () => {
-      setIsDeleteDialogOpen(false);
-      handleDropdownMenuClose();
-      navigate({ to: "/archive" });
-    },
-  });
-
-  const handleDeleteConfirmButtonClick = useCallback(() => {
-    deleteIdeasList({ ideasListId });
-  }, [deleteIdeasList, ideasListId]);
+  const handleConfirmDeleteButtonClick = useCallback(() => {
+    deleteIdeasList(
+      { ideasListId },
+      {
+        onSuccess: () => {
+          setIsDeleteDialogOpen(false);
+          handleDropdownMenuClose();
+          navigate({ to: "/archive", replace: true });
+        },
+      },
+    );
+  }, [ideasListId, handleDropdownMenuClose, navigate, deleteIdeasList]);
 
   return {
     isDeleteDialogOpen,
     isDeleteIdeasListPending,
     setIsDeleteDialogOpen,
-    handleDeleteConfirmButtonClick,
+    handleConfirmDeleteButtonClick,
   };
 }

@@ -1,39 +1,22 @@
-import { PencilIcon } from "lucide-react";
-
-import { ButtonLink } from "@/shared/components/ui/button-link";
-
-import { ScenarioAppMenubarDeleteDialog } from "./scenario-app-menubar-delete-dialog";
 import { ScenarioAppMenubarImproveDialog } from "./scenario-app-menubar-improve-dialog";
+import { ScenarioAppMenubarMoreActions } from "./scenario-app-menubar-more-actions";
 
 type ScenarioAppMenubarActionsProps = {
   scenarioId: string;
-  isScenarioLoading: boolean;
-  initialSaved: boolean;
+  scenarioVersionId?: string;
 };
 
 export function ScenarioAppMenubarActions({
   scenarioId,
+  scenarioVersionId,
 }: ScenarioAppMenubarActionsProps) {
   return (
     <div className="flex items-center gap-1">
       <ScenarioAppMenubarImproveDialog scenarioId={scenarioId} />
-      <ButtonLink
-        priority="tertiary"
-        to="/scenarios/settings"
-        search={{
-          scenarioId,
-        }}
-        icon={<PencilIcon />}
+      <ScenarioAppMenubarMoreActions
+        scenarioId={scenarioId}
+        scenarioVersionId={scenarioVersionId}
       />
-      {/* {isScenarioLoading ? (
-        <Skeleton className="h-10 w-10 rounded-xl" />
-      ) : (
-        <ScenarioAppMenubarSave
-          scenarioId={scenarioId}
-          initialSaved={initialSaved}
-        />
-      )} */}
-      <ScenarioAppMenubarDeleteDialog scenarioId={scenarioId} />
     </div>
   );
 }

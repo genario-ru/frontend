@@ -9,23 +9,25 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 
-import { useIdeasListAppMenubarMoreActions } from "../hooks/use-ideas-list-app-menubar-more-actions";
-import { IdeasListAppMenubarDeleteIdeaDialog } from "./ideas-list-app-menubar-delete-idea-dialog";
-import { IdeasListAppMenubarExportSubmenu } from "./ideas-list-app-menubar-export-submenu";
+import { useScenarioAppMenubarMoreActions } from "../hooks/use-scenario-app-menubar-more-actions";
+import { ScenarioAppMenubarDeleteDialog } from "./scenario-app-menubar-delete-dialog";
+import { ScenarioAppMenubarExportSubmenu } from "./scenario-app-menubar-export-submenu";
 
-type IdeasListAppMenubarMoreActionsProps = {
-  ideasListId: string;
+type ScenarioAppMenubarMoreActionsProps = {
+  scenarioId: string;
+  scenarioVersionId?: string;
 };
 
-export function IdeasListAppMenubarMoreActions({
-  ideasListId,
-}: IdeasListAppMenubarMoreActionsProps) {
+export function ScenarioAppMenubarMoreActions({
+  scenarioId,
+  scenarioVersionId,
+}: ScenarioAppMenubarMoreActionsProps) {
   const {
     isDropdownMenuOpen,
     isExportAvailable,
     setIsDropdownMenuOpen,
     handleDropdownMenuClose,
-  } = useIdeasListAppMenubarMoreActions();
+  } = useScenarioAppMenubarMoreActions();
 
   return (
     <DropdownMenu
@@ -39,20 +41,20 @@ export function IdeasListAppMenubarMoreActions({
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <AppMenubarButtonLink
-            to="/ideas-lists/settings"
-            search={{ ideasListId }}
+            to="/scenarios/settings"
+            search={{ scenarioId }}
             icon={<PencilIcon />}
           >
             Редактировать
           </AppMenubarButtonLink>
-          {isExportAvailable && (
-            <IdeasListAppMenubarExportSubmenu
-              ideasListId={ideasListId}
+          {isExportAvailable && scenarioVersionId && (
+            <ScenarioAppMenubarExportSubmenu
+              scenarioVersionId={scenarioVersionId}
               handleDropdownMenuClose={handleDropdownMenuClose}
             />
           )}
-          <IdeasListAppMenubarDeleteIdeaDialog
-            ideasListId={ideasListId}
+          <ScenarioAppMenubarDeleteDialog
+            scenarioId={scenarioId}
             handleDropdownMenuClose={handleDropdownMenuClose}
           />
         </DropdownMenuGroup>

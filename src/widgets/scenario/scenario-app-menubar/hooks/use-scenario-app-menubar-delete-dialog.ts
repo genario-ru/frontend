@@ -5,24 +5,29 @@ import { useDeleteScenario } from "@/actions/scenario/hooks/use-delete-scenario"
 
 type UseScenarioAppMenubarDeleteDialogParams = {
   scenarioId: string;
+  handleDropdownMenuClose: () => void;
 };
 
 export function useScenarioAppMenubarDeleteDialog({
   scenarioId,
+  handleDropdownMenuClose,
 }: UseScenarioAppMenubarDeleteDialogParams) {
   const navigate = useNavigate();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-
-  const { deleteScenario, isDeleteScenarioPending } = useDeleteScenario({
-    onSuccess: () => {
-      setIsDeleteDialogOpen(false);
-      navigate({ to: "/archive" });
-    },
-  });
+  const { deleteScenario, isDeleteScenarioPending } = useDeleteScenario();
 
   const handleConfirmDeleteButtonClick = useCallback(() => {
-    deleteScenario({ scenarioId });
-  }, [scenarioId, deleteScenario]);
+    deleteScenario(
+      { scenarioId },
+      {
+        onSuccess: () => {
+          setIsDeleteDialogOpen(false);
+          handleDropdownMenuClose();
+          navigate({ to: "/archive", replace: true });
+        },
+      },
+    );
+  }, [scenarioId, handleDropdownMenuClose, navigate, deleteScenario]);
 
   return {
     isDeleteDialogOpen,

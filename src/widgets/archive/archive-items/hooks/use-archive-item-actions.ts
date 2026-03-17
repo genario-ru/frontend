@@ -18,23 +18,28 @@ export function useArchiveItemActions({
   const [isDeleteArchiveItemDialogOpen, setIsDeleteArchiveItemDialogOpen] =
     useState(false);
 
-  const { deleteIdeasList, isDeleteIdeasListPending } = useDeleteIdeasList({
-    onSuccess: () => {
-      setIsDeleteArchiveItemDialogOpen(false);
-    },
-  });
-
-  const { deleteScenario, isDeleteScenarioPending } = useDeleteScenario({
-    onSuccess: () => {
-      setIsDeleteArchiveItemDialogOpen(false);
-    },
-  });
+  const { deleteIdeasList, isDeleteIdeasListPending } = useDeleteIdeasList();
+  const { deleteScenario, isDeleteScenarioPending } = useDeleteScenario();
 
   const handleDeleteArchiveItem = () => {
     if (entity === "ideasList") {
-      deleteIdeasList({ ideasListId: id });
+      deleteIdeasList(
+        { ideasListId: id },
+        {
+          onSuccess: () => {
+            setIsDeleteArchiveItemDialogOpen(false);
+          },
+        },
+      );
     } else if (entity === "scenario") {
-      deleteScenario({ scenarioId: id });
+      deleteScenario(
+        { scenarioId: id },
+        {
+          onSuccess: () => {
+            setIsDeleteArchiveItemDialogOpen(false);
+          },
+        },
+      );
     }
   };
 

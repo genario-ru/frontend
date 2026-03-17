@@ -6,13 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseDeleteScenarioParams = {
-  onSuccess?: () => void;
-  onError?: () => void;
-};
-
-export function useDeleteScenario(params?: UseDeleteScenarioParams) {
-  const { onSuccess, onError } = params ?? {};
+export function useDeleteScenario() {
   const queryClient = useQueryClient();
   const { showErrorToast, showSuccessToast } = useToast();
 
@@ -28,16 +22,12 @@ export function useDeleteScenario(params?: UseDeleteScenarioParams) {
             title: "Сценарий удален",
             description: "Сценарий был успешно удален",
           });
-
-          onSuccess?.();
         },
         onError: () => {
           showErrorToast({
             title: "Ошибка",
             description: "Произошла ошибка при удалении сценария",
           });
-
-          onError?.();
         },
       },
     });

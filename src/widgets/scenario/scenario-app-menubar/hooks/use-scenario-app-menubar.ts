@@ -13,6 +13,12 @@ export function useScenarioAppMenubar({
     scenarioId,
   });
 
+  const scenarioVersionId = useMemo(() => {
+    if (scenarioData?.data?.currentVersionId) {
+      return scenarioData.data.currentVersionId;
+    }
+  }, [scenarioData]);
+
   const scenarioTitle = useMemo(() => {
     if (!scenarioData) {
       return undefined;
@@ -31,6 +37,7 @@ export function useScenarioAppMenubar({
 
   return {
     scenarioData,
+    scenarioVersionId,
     scenarioTitle,
     scenarioDescription,
     isScenarioLoading,

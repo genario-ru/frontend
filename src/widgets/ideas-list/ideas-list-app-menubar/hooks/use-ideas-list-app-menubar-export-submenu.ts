@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 
-import { useCreateExport } from "@/actions/ideas-lists/hooks/use-create-export";
-import { useGetExports } from "@/actions/ideas-lists/hooks/use-get-exports";
+import { useCreateIdeasListExport } from "@/actions/ideas-lists/hooks/use-create-ideas-list-export";
+import { useGetIdeasListExports } from "@/actions/ideas-lists/hooks/use-get-ideas-list-exports";
 import type { GetApiV1IdeasListsByIdeasListIdExportsQueryResponse } from "@/codegen/api/product/models";
 import { getApiV1IdeasListsByIdeasListIdExportsQueryKey } from "@/codegen/api/product/tanstack/get-api-v1-ideas-lists-by-ideas-list-id-exports";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -26,14 +26,16 @@ export function useIdeasListAppMenubarExportSubmenu({
   const queryClient = useQueryClient();
   const [exportJob, setExportJob] = useState<ExportJob | null>(null);
   const { showErrorToast } = useToast();
-  const { createExport, isCreateExportPending } = useCreateExport();
+  const { createIdeasListExport, isCreateIdeasListExportPending } =
+    useCreateIdeasListExport();
 
-  const { exportsData, isGetExportsLoading } = useGetExports({
-    ideasListId,
-    refetchInterval: exportJob
-      ? WAITING_FOR_EXPORT_REFRESH_INTERVAL
-      : undefined,
-  });
+  const { ideasListExportsData, isGetIdeasListExportsLoading } =
+    useGetIdeasListExports({
+      ideasListId,
+      refetchInterval: exportJob
+        ? WAITING_FOR_EXPORT_REFRESH_INTERVAL
+        : undefined,
+    });
 
   const handleDownloadIdeasListError = useCallback(() => {
     showErrorToast({
@@ -59,7 +61,7 @@ export function useIdeasListAppMenubarExportSubmenu({
         return;
       }
 
-      const exportData = exportsData?.data.find(
+      const exportData = ideasListExportsData?.data.find(
         (exportData) => exportData.formatSlug === format,
       );
 
@@ -68,7 +70,7 @@ export function useIdeasListAppMenubarExportSubmenu({
         return;
       }
 
-      createExport(
+      createIdeasListExport(
         { ideasListId, data: { format } },
         {
           onSuccess: ({ data: mutationData }) => {
@@ -108,19 +110,19 @@ export function useIdeasListAppMenubarExportSubmenu({
       ideasListId,
       queryClient,
       exportJob,
-      exportsData,
-      createExport,
+      ideasListExportsData,
+      createIdeasListExport,
       handleDownloadIdeasList,
       handleDownloadIdeasListError,
     ],
   );
 
   useEffect(() => {
-    if (!exportJob || !exportsData) {
+    if (!exportJob || !ideasListExportsData) {
       return;
     }
 
-    const exportData = exportsData.data.find(
+    const exportData = ideasListExportsData.data.find(
       (exportData) => exportData.formatSlug === exportJob.format,
     );
 
@@ -131,16 +133,16 @@ export function useIdeasListAppMenubarExportSubmenu({
     }
   }, [
     exportJob,
-    exportsData,
+    ideasListExportsData,
     handleDownloadIdeasList,
     handleDownloadIdeasListError,
   ]);
 
   return {
     exportJob,
-    exportsData,
-    isCreateExportPending,
-    isGetExportsLoading,
+    exportsData: ideasListExportsData,
+    isCreateExportPending: isCreateIdeasListExportPending,
+    isGetExportsLoading: isGetIdeasListExportsLoading,
     handleCreateExport,
   };
 }

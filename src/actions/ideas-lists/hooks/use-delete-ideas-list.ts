@@ -6,13 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseDeleteIdeasListParams = {
-  onSuccess?: () => void;
-  onError?: () => void;
-};
-
-export function useDeleteIdeasList(params?: UseDeleteIdeasListParams) {
-  const { onSuccess, onError } = params ?? {};
+export function useDeleteIdeasList() {
   const queryClient = useQueryClient();
   const { showErrorToast, showSuccessToast } = useToast();
 
@@ -28,16 +22,12 @@ export function useDeleteIdeasList(params?: UseDeleteIdeasListParams) {
             title: "Список идей удален",
             description: "Список идей был успешно удален",
           });
-
-          onSuccess?.();
         },
         onError: () => {
           showErrorToast({
             title: "Ошибка",
             description: "Произошла ошибка при удалении списка идей",
           });
-
-          onError?.();
         },
       },
     });

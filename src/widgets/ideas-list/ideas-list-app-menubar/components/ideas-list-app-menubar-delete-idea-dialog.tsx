@@ -26,7 +26,7 @@ export function IdeasListAppMenubarDeleteIdeaDialog({
     isDeleteDialogOpen,
     isDeleteIdeasListPending,
     setIsDeleteDialogOpen,
-    handleDeleteConfirmButtonClick,
+    handleConfirmDeleteButtonClick,
   } = useIdeasListAppMenubarDeleteIdeaDialog({
     ideasListId,
     handleDropdownMenuClose,
@@ -52,7 +52,7 @@ export function IdeasListAppMenubarDeleteIdeaDialog({
             priority="primary"
             variant="negative"
             state={isDeleteIdeasListPending ? "loading" : "default"}
-            onClick={handleDeleteConfirmButtonClick}
+            onClick={handleConfirmDeleteButtonClick}
           >
             Удалить
           </Button>

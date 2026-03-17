@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 
 import { useGetActiveSubscriptionTariff } from "@/actions/subscriptions/hooks/use-get-active-subscription-tariff";
 
-export function useIdeasListAppMenubarMoreActions() {
+export function useScenarioAppMenubarMoreActions() {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const { activeSubscriptionTariff } = useGetActiveSubscriptionTariff();
 
