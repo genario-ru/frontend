@@ -1,0 +1,30 @@
+---
+description: Require analysis of at least 3 similar domain examples before creating new files
+alwaysApply: true
+---
+
+# Domain Reference Analysis Before New Files
+
+Before adding a new file/folder inside any domain layer (`actions`, `features`, `widgets`, `entities`), perform a reference study first.
+
+## Mandatory pre-coding step
+
+- Find and analyze at least 3 similar implementations in the same layer.
+- Prefer references from the same domain; if there are not enough, use nearest related domains.
+- Compare structure, naming, hook/component split, and dependency patterns.
+
+## Required output in task flow
+
+- Explicitly list the 3+ reference paths used for guidance.
+- Reuse established local conventions from those references.
+- Explain deviations briefly if the new implementation cannot follow the found patterns.
+
+## Examples of where to look
+
+- New `widget` -> inspect at least 3 existing widgets in `src/widgets/<domain>` (or similar domains).
+- New `action` hook -> inspect at least 3 existing hooks in `src/actions/<domain>`.
+- New `feature` component -> inspect at least 3 existing components in `src/features/<domain>`.
+
+## Do not skip
+
+- Do not start writing new domain files before this reference pass is complete.
