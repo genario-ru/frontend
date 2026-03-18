@@ -1,0 +1,26 @@
+---
+description: Domain implementation patterns for actions, widgets, and features
+alwaysApply: true
+---
+
+# Domain Patterns
+
+Prefer consistent domain-first implementation across `actions`, `features`, and `widgets`.
+
+## Typical change flow
+
+1. Add or reuse API/query hooks from `@/codegen/api/*`.
+2. Implement domain business orchestration in `actions/<domain>`.
+3. Implement presentational and composed UI in `features/<domain>` and `widgets/<domain>`.
+4. Wire page-level composition in `entrypoints`.
+
+## Naming and organization
+
+- Keep domain folder names kebab-case.
+- Keep hooks prefixed with `use-` in filenames where applicable.
+- Co-locate component hooks with widget/feature when scoped to that component.
+
+## Avoid
+
+- Cross-domain coupling inside `shared`.
+- Business logic buried in route files.

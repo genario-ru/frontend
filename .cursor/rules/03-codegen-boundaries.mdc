@@ -1,0 +1,23 @@
+---
+description: Protect generated files and enforce regeneration workflow
+alwaysApply: true
+---
+
+# Codegen Boundaries
+
+Generated files are read-only by convention.
+
+## Never edit manually
+
+- `src/codegen/**`
+- `src/codegen/router/route-tree.gen.ts`
+
+## Make changes through generators
+
+- API schemas update: `pnpm api:download`
+- API code generation: `pnpm api:generate` (or `pnpm api:generate:hey-api` when explicitly needed)
+- Router tree generation: `pnpm router:generate`
+
+## Implementation rule
+
+- If requested behavior requires changing generated output, edit source inputs/configs (`scripts`, `kubb.config.ts`, `src/routes/**`, schema files), then regenerate.

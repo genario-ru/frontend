@@ -1,0 +1,27 @@
+---
+description: Code style, imports, and quality checks for TS/React files
+globs: src/**/*.{ts,tsx,js,jsx}
+alwaysApply: false
+---
+
+# Code Style And Imports
+
+Use repository configs as source of truth: `eslint.config.js`, `prettier.config.js`, `tsconfig.json`.
+
+## Style defaults
+
+- Use double quotes.
+- Use semicolons.
+- Keep import order sorted (simple-import-sort).
+- Prefer path alias imports via `@/*` for `src` modules.
+
+## TypeScript defaults
+
+- Keep strict typing; avoid `any` unless justified.
+- Use `_` prefix for intentionally unused variables/args.
+
+## Before finishing task
+
+1. Run `pnpm lint:fix`.
+2. Run `pnpm lint:typescript`.
+3. If route files changed, run `pnpm router:generate`.

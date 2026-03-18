@@ -1,0 +1,21 @@
+---
+description: TanStack routing and entrypoint boundaries
+globs: src/routes/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Routing And Entrypoints
+
+Follow `src/routes/README.md` when editing route files.
+
+## Route file policy
+
+- Files in `src/routes/**` should export only route declaration via `createFileRoute`.
+- Do not move heavy components/business logic into route files.
+- Put substantial logic/components in `actions`, `widgets`, `features`, `entrypoints`, `shared`, or `lib`.
+
+## Generation workflow
+
+- Route tree is generated at `src/codegen/router/route-tree.gen.ts`.
+- After adding/changing route files, run `pnpm router:generate` (or `pnpm router:watch` during active route work).
+- Never manually edit generated route tree files.

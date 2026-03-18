@@ -1,0 +1,31 @@
+---
+description: FSD layering and placement rules for project code
+alwaysApply: true
+---
+
+# FSD Architecture
+
+Use the project FSD structure from `src/README.md`.
+
+## Layer placement
+
+- `src/actions`: complex business hooks and orchestration by domain.
+- `src/features`: UI components with simple local logic.
+- `src/widgets`: composite domain blocks that use features/actions.
+- `src/shared`: reusable cross-domain components, hooks, utils, types.
+- `src/lib`: technical infrastructure (api, auth, i18n, tanstack setup).
+- `src/entrypoints`: pages, layouts, route-level composition.
+- `src/routes`: route declarations only.
+
+## Dependency direction
+
+- Prefer dependencies from higher-level layers to lower-level layers.
+- Avoid importing domain-specific code into `shared` and `lib`.
+- Keep feature/widget logic in domain folders when possible.
+
+## Placement decision shortcut
+
+1. Is it generic and reusable across domains? -> `shared` or `lib`.
+2. Is it domain business logic/hook? -> `actions/<domain>`.
+3. Is it domain UI block with composition? -> `widgets/<domain>`.
+4. Is it route-level page composition? -> `entrypoints`.
