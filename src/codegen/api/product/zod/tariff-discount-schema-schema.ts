@@ -14,7 +14,7 @@ export const tariffDiscountSchemaSchema = z
     userId: z.uuid(),
     tariffId: z.union([z.uuid(), z.null()]),
     type: z.enum(["fixed", "percentage"]),
-    value: z.int().min(-9007199254740991).max(9007199254740991),
+    value: z.string(),
     expiresAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),

@@ -30,11 +30,9 @@ export type TariffDiscountSchema = {
    */
   type: TariffDiscountSchemaTypeEnumKey;
   /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
+   * @type string
    */
-  value: number;
+  value: string;
   expiresAt: string | null;
   /**
    * @type string
