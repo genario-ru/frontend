@@ -1,0 +1,23 @@
+---
+description: i18n translation and resources type generation workflow
+alwaysApply: true
+---
+
+# i18n Workflow
+
+The project has locale files in `public/locales/en/translation.json` and `public/locales/ru/translation.json`.
+
+## When changing user-facing text
+
+- Prefer translation keys over hardcoded strings in components.
+- Keep keys and structure consistent between `en` and `ru`.
+
+## Required follow-up after locale updates
+
+- Regenerate i18n resources types with `pnpm i18n:resources`.
+- Ensure TypeScript stays clean after key changes (`pnpm lint:typescript`).
+
+## Avoid
+
+- Introducing text only in one language without intentional fallback.
+- Editing generated i18n type files manually when a generator exists.
