@@ -40,10 +40,12 @@ export type TariffSchema = {
   name: string;
   description: string | null;
   /**
-   * @type string
+   * @minLength -8388608
+   * @maxLength 8388607
+   * @type number
    */
-  price: string;
-  oldPrice: string | null;
+  price: number;
+  oldPrice: number | null;
   billingPeriod: TariffSchemaBillingPeriodEnumKey | null;
   durationDays: number | null;
   /**

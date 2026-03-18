@@ -7489,7 +7489,9 @@
             ]
           },
           "value": {
-            "type": "string"
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "expiresAt": {
             "anyOf": [
@@ -8952,12 +8954,16 @@
             ]
           },
           "price": {
-            "type": "string"
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "oldPrice": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "number",
+                "minimum": -8388608,
+                "maximum": 8388607
               },
               {
                 "type": "null"
@@ -9191,12 +9197,16 @@
             ]
           },
           "price": {
-            "type": "string"
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "oldPrice": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "number",
+                "minimum": -8388608,
+                "maximum": 8388607
               },
               {
                 "type": "null"
