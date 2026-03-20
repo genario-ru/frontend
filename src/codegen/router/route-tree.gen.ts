@@ -20,15 +20,18 @@ import { Route as WithoutAuthDocumentsPdProcessingPolicyRouteImport } from "./..
 import { Route as WithoutAuthDocumentsPdProcessingConsentRouteImport } from "./../../routes/_without-auth/documents/pd-processing-consent";
 import { Route as WithAuthWithoutSubscriptionTariffsRouteImport } from "./../../routes/_with-auth/_without-subscription/tariffs";
 import { Route as WithAuthWithoutSubscriptionPaymentRedirectRouteImport } from "./../../routes/_with-auth/_without-subscription/payment-redirect";
-import { Route as WithAuthWithSubscriptionProfilesRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles";
 import { Route as WithAuthWithSubscriptionHomeRouteImport } from "./../../routes/_with-auth/_with-subscription/home";
 import { Route as WithAuthWithSubscriptionArchiveRouteImport } from "./../../routes/_with-auth/_with-subscription/archive";
+import { Route as WithAuthWithSubscriptionProfilesIndexRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles/index";
 import { Route as WithAuthWithSubscriptionSettingsBillingRouteImport } from "./../../routes/_with-auth/_with-subscription/settings/billing";
 import { Route as WithAuthWithSubscriptionSettingsAccountRouteImport } from "./../../routes/_with-auth/_with-subscription/settings/account";
 import { Route as WithAuthWithSubscriptionScenariosSettingsRouteImport } from "./../../routes/_with-auth/_with-subscription/scenarios/settings";
 import { Route as WithAuthWithSubscriptionScenariosScenarioIdRouteImport } from "./../../routes/_with-auth/_with-subscription/scenarios/$scenarioId";
+import { Route as WithAuthWithSubscriptionProfilesSettingsRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles/settings";
 import { Route as WithAuthWithSubscriptionIdeasListsSettingsRouteImport } from "./../../routes/_with-auth/_with-subscription/ideas-lists/settings";
 import { Route as WithAuthWithSubscriptionIdeasListsIdeasListIdRouteImport } from "./../../routes/_with-auth/_with-subscription/ideas-lists/$ideasListId";
+import { Route as WithAuthWithSubscriptionProfilesImportIndexRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles/import/index";
+import { Route as WithAuthWithSubscriptionProfilesImportReviewRouteImport } from "./../../routes/_with-auth/_with-subscription/profiles/import/review";
 
 const WithAuthRouteRoute = WithAuthRouteRouteImport.update({
   id: "/_with-auth",
@@ -88,12 +91,6 @@ const WithAuthWithoutSubscriptionPaymentRedirectRoute =
     path: "/payment-redirect",
     getParentRoute: () => WithAuthRouteRoute,
   } as any);
-const WithAuthWithSubscriptionProfilesRoute =
-  WithAuthWithSubscriptionProfilesRouteImport.update({
-    id: "/profiles",
-    path: "/profiles",
-    getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
-  } as any);
 const WithAuthWithSubscriptionHomeRoute =
   WithAuthWithSubscriptionHomeRouteImport.update({
     id: "/home",
@@ -104,6 +101,12 @@ const WithAuthWithSubscriptionArchiveRoute =
   WithAuthWithSubscriptionArchiveRouteImport.update({
     id: "/archive",
     path: "/archive",
+    getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
+  } as any);
+const WithAuthWithSubscriptionProfilesIndexRoute =
+  WithAuthWithSubscriptionProfilesIndexRouteImport.update({
+    id: "/profiles/",
+    path: "/profiles/",
     getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
   } as any);
 const WithAuthWithSubscriptionSettingsBillingRoute =
@@ -130,6 +133,12 @@ const WithAuthWithSubscriptionScenariosScenarioIdRoute =
     path: "/scenarios/$scenarioId",
     getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
   } as any);
+const WithAuthWithSubscriptionProfilesSettingsRoute =
+  WithAuthWithSubscriptionProfilesSettingsRouteImport.update({
+    id: "/profiles/settings",
+    path: "/profiles/settings",
+    getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
+  } as any);
 const WithAuthWithSubscriptionIdeasListsSettingsRoute =
   WithAuthWithSubscriptionIdeasListsSettingsRouteImport.update({
     id: "/ideas-lists/settings",
@@ -142,6 +151,18 @@ const WithAuthWithSubscriptionIdeasListsIdeasListIdRoute =
     path: "/ideas-lists/$ideasListId",
     getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
   } as any);
+const WithAuthWithSubscriptionProfilesImportIndexRoute =
+  WithAuthWithSubscriptionProfilesImportIndexRouteImport.update({
+    id: "/profiles/import/",
+    path: "/profiles/import/",
+    getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
+  } as any);
+const WithAuthWithSubscriptionProfilesImportReviewRoute =
+  WithAuthWithSubscriptionProfilesImportReviewRouteImport.update({
+    id: "/profiles/import/review",
+    path: "/profiles/import/review",
+    getParentRoute: () => WithAuthWithSubscriptionRouteRoute,
+  } as any);
 
 export interface FileRoutesByFullPath {
   "/": typeof WithoutAuthLandingIndexRoute;
@@ -149,7 +170,6 @@ export interface FileRoutesByFullPath {
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
-  "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
@@ -157,10 +177,14 @@ export interface FileRoutesByFullPath {
   "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
+  "/profiles/settings": typeof WithAuthWithSubscriptionProfilesSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
   "/scenarios/settings": typeof WithAuthWithSubscriptionScenariosSettingsRoute;
   "/settings/account": typeof WithAuthWithSubscriptionSettingsAccountRoute;
   "/settings/billing": typeof WithAuthWithSubscriptionSettingsBillingRoute;
+  "/profiles/": typeof WithAuthWithSubscriptionProfilesIndexRoute;
+  "/profiles/import/review": typeof WithAuthWithSubscriptionProfilesImportReviewRoute;
+  "/profiles/import/": typeof WithAuthWithSubscriptionProfilesImportIndexRoute;
 }
 export interface FileRoutesByTo {
   "/": typeof WithoutAuthLandingIndexRoute;
@@ -168,7 +192,6 @@ export interface FileRoutesByTo {
   "/verify-otp": typeof AuthVerifyOtpRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
-  "/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
@@ -176,10 +199,14 @@ export interface FileRoutesByTo {
   "/documents/user-agreement": typeof WithoutAuthDocumentsUserAgreementRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
+  "/profiles/settings": typeof WithAuthWithSubscriptionProfilesSettingsRoute;
   "/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
   "/scenarios/settings": typeof WithAuthWithSubscriptionScenariosSettingsRoute;
   "/settings/account": typeof WithAuthWithSubscriptionSettingsAccountRoute;
   "/settings/billing": typeof WithAuthWithSubscriptionSettingsBillingRoute;
+  "/profiles": typeof WithAuthWithSubscriptionProfilesIndexRoute;
+  "/profiles/import/review": typeof WithAuthWithSubscriptionProfilesImportReviewRoute;
+  "/profiles/import": typeof WithAuthWithSubscriptionProfilesImportIndexRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -190,7 +217,6 @@ export interface FileRoutesById {
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
   "/_with-auth/_with-subscription/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/_with-auth/_with-subscription/home": typeof WithAuthWithSubscriptionHomeRoute;
-  "/_with-auth/_with-subscription/profiles": typeof WithAuthWithSubscriptionProfilesRoute;
   "/_with-auth/_without-subscription/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
   "/_with-auth/_without-subscription/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/_without-auth/documents/pd-processing-consent": typeof WithoutAuthDocumentsPdProcessingConsentRoute;
@@ -199,10 +225,14 @@ export interface FileRoutesById {
   "/_without-auth/_landing/": typeof WithoutAuthLandingIndexRoute;
   "/_with-auth/_with-subscription/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   "/_with-auth/_with-subscription/ideas-lists/settings": typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
+  "/_with-auth/_with-subscription/profiles/settings": typeof WithAuthWithSubscriptionProfilesSettingsRoute;
   "/_with-auth/_with-subscription/scenarios/$scenarioId": typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
   "/_with-auth/_with-subscription/scenarios/settings": typeof WithAuthWithSubscriptionScenariosSettingsRoute;
   "/_with-auth/_with-subscription/settings/account": typeof WithAuthWithSubscriptionSettingsAccountRoute;
   "/_with-auth/_with-subscription/settings/billing": typeof WithAuthWithSubscriptionSettingsBillingRoute;
+  "/_with-auth/_with-subscription/profiles/": typeof WithAuthWithSubscriptionProfilesIndexRoute;
+  "/_with-auth/_with-subscription/profiles/import/review": typeof WithAuthWithSubscriptionProfilesImportReviewRoute;
+  "/_with-auth/_with-subscription/profiles/import/": typeof WithAuthWithSubscriptionProfilesImportIndexRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -212,7 +242,6 @@ export interface FileRouteTypes {
     | "/verify-otp"
     | "/archive"
     | "/home"
-    | "/profiles"
     | "/payment-redirect"
     | "/tariffs"
     | "/documents/pd-processing-consent"
@@ -220,10 +249,14 @@ export interface FileRouteTypes {
     | "/documents/user-agreement"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
+    | "/profiles/settings"
     | "/scenarios/$scenarioId"
     | "/scenarios/settings"
     | "/settings/account"
-    | "/settings/billing";
+    | "/settings/billing"
+    | "/profiles/"
+    | "/profiles/import/review"
+    | "/profiles/import/";
   fileRoutesByTo: FileRoutesByTo;
   to:
     | "/"
@@ -231,7 +264,6 @@ export interface FileRouteTypes {
     | "/verify-otp"
     | "/archive"
     | "/home"
-    | "/profiles"
     | "/payment-redirect"
     | "/tariffs"
     | "/documents/pd-processing-consent"
@@ -239,10 +271,14 @@ export interface FileRouteTypes {
     | "/documents/user-agreement"
     | "/ideas-lists/$ideasListId"
     | "/ideas-lists/settings"
+    | "/profiles/settings"
     | "/scenarios/$scenarioId"
     | "/scenarios/settings"
     | "/settings/account"
-    | "/settings/billing";
+    | "/settings/billing"
+    | "/profiles"
+    | "/profiles/import/review"
+    | "/profiles/import";
   id:
     | "__root__"
     | "/_auth"
@@ -252,7 +288,6 @@ export interface FileRouteTypes {
     | "/_auth/verify-otp"
     | "/_with-auth/_with-subscription/archive"
     | "/_with-auth/_with-subscription/home"
-    | "/_with-auth/_with-subscription/profiles"
     | "/_with-auth/_without-subscription/payment-redirect"
     | "/_with-auth/_without-subscription/tariffs"
     | "/_without-auth/documents/pd-processing-consent"
@@ -261,10 +296,14 @@ export interface FileRouteTypes {
     | "/_without-auth/_landing/"
     | "/_with-auth/_with-subscription/ideas-lists/$ideasListId"
     | "/_with-auth/_with-subscription/ideas-lists/settings"
+    | "/_with-auth/_with-subscription/profiles/settings"
     | "/_with-auth/_with-subscription/scenarios/$scenarioId"
     | "/_with-auth/_with-subscription/scenarios/settings"
     | "/_with-auth/_with-subscription/settings/account"
-    | "/_with-auth/_with-subscription/settings/billing";
+    | "/_with-auth/_with-subscription/settings/billing"
+    | "/_with-auth/_with-subscription/profiles/"
+    | "/_with-auth/_with-subscription/profiles/import/review"
+    | "/_with-auth/_with-subscription/profiles/import/";
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -355,13 +394,6 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof WithAuthWithoutSubscriptionPaymentRedirectRouteImport;
       parentRoute: typeof WithAuthRouteRoute;
     };
-    "/_with-auth/_with-subscription/profiles": {
-      id: "/_with-auth/_with-subscription/profiles";
-      path: "/profiles";
-      fullPath: "/profiles";
-      preLoaderRoute: typeof WithAuthWithSubscriptionProfilesRouteImport;
-      parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
-    };
     "/_with-auth/_with-subscription/home": {
       id: "/_with-auth/_with-subscription/home";
       path: "/home";
@@ -374,6 +406,13 @@ declare module "@tanstack/react-router" {
       path: "/archive";
       fullPath: "/archive";
       preLoaderRoute: typeof WithAuthWithSubscriptionArchiveRouteImport;
+      parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
+    };
+    "/_with-auth/_with-subscription/profiles/": {
+      id: "/_with-auth/_with-subscription/profiles/";
+      path: "/profiles";
+      fullPath: "/profiles/";
+      preLoaderRoute: typeof WithAuthWithSubscriptionProfilesIndexRouteImport;
       parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
     };
     "/_with-auth/_with-subscription/settings/billing": {
@@ -404,6 +443,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof WithAuthWithSubscriptionScenariosScenarioIdRouteImport;
       parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
     };
+    "/_with-auth/_with-subscription/profiles/settings": {
+      id: "/_with-auth/_with-subscription/profiles/settings";
+      path: "/profiles/settings";
+      fullPath: "/profiles/settings";
+      preLoaderRoute: typeof WithAuthWithSubscriptionProfilesSettingsRouteImport;
+      parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
+    };
     "/_with-auth/_with-subscription/ideas-lists/settings": {
       id: "/_with-auth/_with-subscription/ideas-lists/settings";
       path: "/ideas-lists/settings";
@@ -416,6 +462,20 @@ declare module "@tanstack/react-router" {
       path: "/ideas-lists/$ideasListId";
       fullPath: "/ideas-lists/$ideasListId";
       preLoaderRoute: typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRouteImport;
+      parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
+    };
+    "/_with-auth/_with-subscription/profiles/import/": {
+      id: "/_with-auth/_with-subscription/profiles/import/";
+      path: "/profiles/import";
+      fullPath: "/profiles/import/";
+      preLoaderRoute: typeof WithAuthWithSubscriptionProfilesImportIndexRouteImport;
+      parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
+    };
+    "/_with-auth/_with-subscription/profiles/import/review": {
+      id: "/_with-auth/_with-subscription/profiles/import/review";
+      path: "/profiles/import/review";
+      fullPath: "/profiles/import/review";
+      preLoaderRoute: typeof WithAuthWithSubscriptionProfilesImportReviewRouteImport;
       parentRoute: typeof WithAuthWithSubscriptionRouteRoute;
     };
   }
@@ -438,25 +498,28 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 interface WithAuthWithSubscriptionRouteRouteChildren {
   WithAuthWithSubscriptionArchiveRoute: typeof WithAuthWithSubscriptionArchiveRoute;
   WithAuthWithSubscriptionHomeRoute: typeof WithAuthWithSubscriptionHomeRoute;
-  WithAuthWithSubscriptionProfilesRoute: typeof WithAuthWithSubscriptionProfilesRoute;
   WithAuthWithSubscriptionIdeasListsIdeasListIdRoute: typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
   WithAuthWithSubscriptionIdeasListsSettingsRoute: typeof WithAuthWithSubscriptionIdeasListsSettingsRoute;
+  WithAuthWithSubscriptionProfilesSettingsRoute: typeof WithAuthWithSubscriptionProfilesSettingsRoute;
   WithAuthWithSubscriptionScenariosScenarioIdRoute: typeof WithAuthWithSubscriptionScenariosScenarioIdRoute;
   WithAuthWithSubscriptionScenariosSettingsRoute: typeof WithAuthWithSubscriptionScenariosSettingsRoute;
   WithAuthWithSubscriptionSettingsAccountRoute: typeof WithAuthWithSubscriptionSettingsAccountRoute;
   WithAuthWithSubscriptionSettingsBillingRoute: typeof WithAuthWithSubscriptionSettingsBillingRoute;
+  WithAuthWithSubscriptionProfilesIndexRoute: typeof WithAuthWithSubscriptionProfilesIndexRoute;
+  WithAuthWithSubscriptionProfilesImportReviewRoute: typeof WithAuthWithSubscriptionProfilesImportReviewRoute;
+  WithAuthWithSubscriptionProfilesImportIndexRoute: typeof WithAuthWithSubscriptionProfilesImportIndexRoute;
 }
 
 const WithAuthWithSubscriptionRouteRouteChildren: WithAuthWithSubscriptionRouteRouteChildren =
   {
     WithAuthWithSubscriptionArchiveRoute: WithAuthWithSubscriptionArchiveRoute,
     WithAuthWithSubscriptionHomeRoute: WithAuthWithSubscriptionHomeRoute,
-    WithAuthWithSubscriptionProfilesRoute:
-      WithAuthWithSubscriptionProfilesRoute,
     WithAuthWithSubscriptionIdeasListsIdeasListIdRoute:
       WithAuthWithSubscriptionIdeasListsIdeasListIdRoute,
     WithAuthWithSubscriptionIdeasListsSettingsRoute:
       WithAuthWithSubscriptionIdeasListsSettingsRoute,
+    WithAuthWithSubscriptionProfilesSettingsRoute:
+      WithAuthWithSubscriptionProfilesSettingsRoute,
     WithAuthWithSubscriptionScenariosScenarioIdRoute:
       WithAuthWithSubscriptionScenariosScenarioIdRoute,
     WithAuthWithSubscriptionScenariosSettingsRoute:
@@ -465,6 +528,12 @@ const WithAuthWithSubscriptionRouteRouteChildren: WithAuthWithSubscriptionRouteR
       WithAuthWithSubscriptionSettingsAccountRoute,
     WithAuthWithSubscriptionSettingsBillingRoute:
       WithAuthWithSubscriptionSettingsBillingRoute,
+    WithAuthWithSubscriptionProfilesIndexRoute:
+      WithAuthWithSubscriptionProfilesIndexRoute,
+    WithAuthWithSubscriptionProfilesImportReviewRoute:
+      WithAuthWithSubscriptionProfilesImportReviewRoute,
+    WithAuthWithSubscriptionProfilesImportIndexRoute:
+      WithAuthWithSubscriptionProfilesImportIndexRoute,
   };
 
 const WithAuthWithSubscriptionRouteRouteWithChildren =
