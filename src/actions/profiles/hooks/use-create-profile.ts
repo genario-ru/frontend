@@ -6,12 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseCreateProfileParams = {
-  onSuccess?: () => void;
-};
-
-export function useCreateProfile(params?: UseCreateProfileParams) {
-  const { onSuccess } = params ?? {};
+export function useCreateProfile() {
   const queryClient = useQueryClient();
   const { showSuccessToast, showErrorToast } = useToast();
 
@@ -27,8 +22,6 @@ export function useCreateProfile(params?: UseCreateProfileParams) {
             title: "Профиль создан",
             description: `Профиль "${data.name}" успешно создан`,
           });
-
-          onSuccess?.();
         },
         onError: () => {
           showErrorToast({

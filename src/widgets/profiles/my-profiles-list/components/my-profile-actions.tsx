@@ -1,30 +1,44 @@
+import { PencilIcon } from "lucide-react";
+
 import { ProfileCardActions } from "@/features/profiles/profile-card/components/profile-card-actions";
 import { ProfileCardDeleteProfileDialog } from "@/features/profiles/profile-card/components/profile-card-delete-profile-dialog";
+import { ButtonLink } from "@/shared/components/ui/button-link";
 
 import { useMyProfileActions } from "../hooks/use-my-profile-actions";
-import { MyProfileEditDialog } from "./my-profile-edit-dialog";
 
 type MyProfileProps = {
-  id: string;
-  name: string;
+  profileId: string;
+  profileName: string;
 };
 
-export function MyProfileActions({ id, name }: MyProfileProps) {
+export function MyProfileActions({ profileId, profileName }: MyProfileProps) {
   const {
     handleDeleteProfile,
     isDeleteProfilePending,
     isDeleteProfileDialogOpened,
     setIsDeleteProfileDialogOpened,
   } = useMyProfileActions({
-    profileId: id,
+    profileId,
   });
 
   return (
     <ProfileCardActions
-      editDialog={<MyProfileEditDialog profileId={id} />}
-      deleteDialog={
+      editAction={
+        <ButtonLink
+          to="/profiles/settings"
+          search={{ profileId }}
+          size="sm"
+          priority="tertiary"
+          rounding="base"
+          className="w-full justify-start"
+          icon={<PencilIcon />}
+        >
+          Редактировать
+        </ButtonLink>
+      }
+      deleteAction={
         <ProfileCardDeleteProfileDialog
-          profileName={name}
+          profileName={profileName}
           isDialogOpened={isDeleteProfileDialogOpened}
           isDeleteProfilePending={isDeleteProfilePending}
           setIsDialogOpened={setIsDeleteProfileDialogOpened}

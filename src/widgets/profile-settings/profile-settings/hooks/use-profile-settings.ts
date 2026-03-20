@@ -1,18 +1,13 @@
-import { useCallback, useRef, useState } from "react";
-
 import { useGetPlatforms } from "@/actions/platforms/hooks/use-get-platforms";
 import { useGetProfile } from "@/actions/profiles/hooks/use-get-profile";
 import { useGetProfileTypes } from "@/actions/profiles/hooks/use-get-profile-types";
 import { useGetTones } from "@/actions/tones/hooks/use-get-tones";
 
-type UseProfileDialogParams = {
+type UseProfileSettingsParams = {
   profileId: string | undefined;
 };
 
-export function useProfileDialog({ profileId }: UseProfileDialogParams) {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
+export function useProfileSettings({ profileId }: UseProfileSettingsParams) {
   const { profileData, isProfileLoading, isProfileError } = useGetProfile({
     profileId,
   });
@@ -25,25 +20,17 @@ export function useProfileDialog({ profileId }: UseProfileDialogParams) {
   const { platformsData, isPlatformsLoading, isPlatformsError } =
     useGetPlatforms();
 
-  const onDialogClose = useCallback(() => {
-    setIsDialogOpen(false);
-  }, []);
-
   return {
-    overlayRef,
-    isDialogOpen,
     profileData,
     profileTypesData,
     tonesData,
     platformsData,
-    isProfileDialogFormDataLoading:
+    isLoading:
+      isProfileLoading ||
       isProfileTypesLoading ||
       isTonesLoading ||
-      isPlatformsLoading ||
-      isProfileLoading,
-    isProfileDialogFormDataError:
-      isProfileTypesError || isTonesError || isPlatformsError || isProfileError,
-    setIsDialogOpen,
-    onDialogClose,
+      isPlatformsLoading,
+    isError:
+      isProfileError || isProfileTypesError || isTonesError || isPlatformsError,
   };
 }

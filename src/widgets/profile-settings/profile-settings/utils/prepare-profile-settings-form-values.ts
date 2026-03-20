@@ -1,19 +1,14 @@
-import type {
-  GetApiV1ProfilesByProfileIdQueryResponse,
-  GetApiV1ProfilesTypesQueryResponse,
-} from "@/codegen/api/product";
+import type { GetApiV1ProfilesByProfileIdQueryResponse } from "@/codegen/api/product";
 
-import type { ProfileDialogFormValues } from "../types";
+import type { ProfileSettingsFormValues } from "../schemas/profile-settings-form-schema";
 
-type PrepareDefaultProfileFormValuesParams = {
+type PrepareDefaultProfileSettingsFormValuesParams = {
   profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
-  profileTypesData: GetApiV1ProfilesTypesQueryResponse;
 };
 
-export const prepareDefaultProfileFormValues = ({
+export const prepareDefaultProfileSettingsFormValues = ({
   profileData,
-  profileTypesData,
-}: PrepareDefaultProfileFormValuesParams): ProfileDialogFormValues => {
+}: PrepareDefaultProfileSettingsFormValuesParams): ProfileSettingsFormValues => {
   if (profileData) {
     return {
       name: profileData.data.name,
@@ -29,7 +24,7 @@ export const prepareDefaultProfileFormValues = ({
     name: "",
     description: "",
     targetAudience: "",
-    typeId: profileTypesData.data[0]?.id ?? "",
+    typeId: "",
     toneIds: [],
     platformIds: [],
   };

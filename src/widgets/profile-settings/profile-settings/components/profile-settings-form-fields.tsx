@@ -1,50 +1,26 @@
-import type { RefObject } from "react";
-
 import type {
   GetApiV1PlatformsQueryResponse,
-  GetApiV1ProfilesByProfileIdQueryResponse,
   GetApiV1ProfilesTypesQueryResponse,
   GetApiV1TonesQueryResponse,
 } from "@/codegen/api/product";
-import { Button } from "@/shared/components/ui/button";
-import {
-  DialogBody,
-  DialogClose,
-  DialogFooter,
-} from "@/shared/components/ui/dialog";
+import { withForm } from "@/lib/tanstack-form";
+import { Island } from "@/shared/components/ui/island";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
-import { cn } from "@/shared/utils/cn";
 
-import { useProfileDialogForm } from "../hooks/use-profile-dialog-form";
+import type { ProfileSettingsFormValues } from "../schemas/profile-settings-form-schema";
 
-type ProfileFormProps = {
-  profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
+type ProfileSettingsFormFieldsProps = {
   profileTypesData: GetApiV1ProfilesTypesQueryResponse;
   tonesData: GetApiV1TonesQueryResponse;
   platformsData: GetApiV1PlatformsQueryResponse;
-  overlayRef: RefObject<HTMLDivElement | null>;
-  onDialogClose: () => void;
 };
 
-export const ProfileDialogForm = ({
-  profileData,
-  profileTypesData,
-  tonesData,
-  platformsData,
-  overlayRef,
-  onDialogClose,
-}: ProfileFormProps) => {
-  const { form, isLoading, isScrolledToBottom, onFormSubmit } =
-    useProfileDialogForm({
-      overlayRef,
-      profileData,
-      profileTypesData,
-      onDialogClose,
-    });
-
-  return (
-    <form onSubmit={onFormSubmit} className="flex w-full flex-col">
-      <DialogBody>
+export const ProfileSettingsFormFields = withForm({
+  defaultValues: {} as ProfileSettingsFormValues,
+  props: {} as ProfileSettingsFormFieldsProps,
+  render: ({ form, profileTypesData, tonesData, platformsData }) => {
+    return (
+      <Island roundedBottom={false} className="flex-1 gap-6">
         <form.AppField name="name">
           {(field) => (
             <field.InputField
@@ -69,7 +45,7 @@ export const ProfileDialogForm = ({
               size="lg"
               label="Целевая аудитория"
               autoComplete="off"
-              placeholder="Мужчины и женщины в возврасте от 25 до 40 лет, имеющие интерес к катанию на горных велосипедах"
+              placeholder="Мужчины и женщины в возрасте от 25 до 40 лет, имеющие интерес к катанию на горных велосипедах"
             />
           )}
         </form.AppField>
@@ -112,27 +88,7 @@ export const ProfileDialogForm = ({
             />
           )}
         </form.AppField>
-      </DialogBody>
-      <DialogFooter
-        className={cn("sticky -bottom-10 z-1 duration-200", {
-          "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
-        })}
-      >
-        <DialogClose asChild>
-          <Button size="lg" type="button">
-            Отмена
-          </Button>
-        </DialogClose>
-        <form.AppForm>
-          <form.SubmitButton
-            size="lg"
-            state={isLoading ? "loading" : "default"}
-            className="ml-auto"
-          >
-            {profileData ? "Сохранить" : "Создать профиль"}
-          </form.SubmitButton>
-        </form.AppForm>
-      </DialogFooter>
-    </form>
-  );
-};
+      </Island>
+    );
+  },
+});

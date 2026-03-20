@@ -13,14 +13,7 @@ export function MyProfilesList() {
 
   const body = useMemo(() => {
     if (isMyProfilesLoading) {
-      return (
-        <ItemsList
-          noParent
-          count={3}
-          item={<ProfileCardSkeleton />}
-          className="w-full"
-        />
-      );
+      return <MyProfilesListSkeleton />;
     }
 
     if (myProfilesData) {
@@ -33,7 +26,12 @@ export function MyProfilesList() {
           typeName={profile.type.name}
           tones={profile.tones.map((tone) => tone.name)}
           platforms={profile.platforms.map((platform) => platform.name)}
-          actions={<MyProfileActions id={profile.id} name={profile.name} />}
+          actions={
+            <MyProfileActions
+              profileId={profile.id}
+              profileName={profile.name}
+            />
+          }
         />
       ));
     }
@@ -43,5 +41,16 @@ export function MyProfilesList() {
 
   return (
     <ContentLayout className="grid grid-cols-2 gap-4">{body}</ContentLayout>
+  );
+}
+
+function MyProfilesListSkeleton() {
+  return (
+    <ItemsList
+      noParent
+      count={4}
+      item={<ProfileCardSkeleton />}
+      className="w-full"
+    />
   );
 }

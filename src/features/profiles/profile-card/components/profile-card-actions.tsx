@@ -11,13 +11,13 @@ import {
 } from "@/shared/components/ui/dropdown-menu";
 
 type ProfileCardActionsProps = {
-  editDialog: ReactNode;
-  deleteDialog: ReactNode;
+  editAction: ReactNode;
+  deleteAction: ReactNode;
 };
 
 export const ProfileCardActions = ({
-  editDialog,
-  deleteDialog,
+  editAction,
+  deleteAction,
 }: ProfileCardActionsProps) => {
   const [isDropdownMenuOpened, setIsDropdownMenuOpened] = useState(false);
 
@@ -32,8 +32,8 @@ export const ProfileCardActions = ({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>{editDialog}</DropdownMenuItem>
-          <DropdownMenuItem asChild>{deleteDialog}</DropdownMenuItem>
+          <DropdownMenuItem asChild>{editAction}</DropdownMenuItem>
+          <DropdownMenuItem asChild>{deleteAction}</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
