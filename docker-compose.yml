@@ -1,23 +1,8 @@
-version: "3.8"
-
 services:
   frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - VITE_BASE_URL=${VITE_BASE_URL}
-        - VITE_BASE_API_URL=${VITE_BASE_API_URL}
-    container_name: genario-frontend
+    build: .
     ports:
-      - "3000:80"
-    restart: unless-stopped
+      - "3000:3000"
     environment:
       - VITE_BASE_URL=${VITE_BASE_URL}
       - VITE_BASE_API_URL=${VITE_BASE_API_URL}
-    networks:
-      - genario-network
-
-networks:
-  genario-network:
-    driver: bridge
