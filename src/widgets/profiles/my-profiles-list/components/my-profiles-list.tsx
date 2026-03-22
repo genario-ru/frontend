@@ -52,9 +52,10 @@ export function MyProfilesList() {
 function MyProfilesListSkeleton() {
   return (
     <ItemsList
+      gap={16}
       count={4}
       item={<ProfileCardSkeleton />}
-      className="grid w-full flex-1 grid-cols-2 gap-4"
+      className="grid w-full grid-cols-2"
     />
   );
 }
