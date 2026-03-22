@@ -1,9 +1,12 @@
-import { useMemo } from "react";
+import { PlusIcon } from "lucide-react";
 
 import { ProfileCard } from "@/features/profiles/profile-card/components/profile-card";
 import { ProfileCardSkeleton } from "@/features/profiles/profile-card/components/profile-card-skeleton";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
+import { ButtonLink } from "@/shared/components/ui/button-link";
+import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 
 import { useMyProfilesList } from "../hooks/use-my-profiles-list";
 import { MyProfileActions } from "./my-profile-actions";
@@ -11,13 +14,21 @@ import { MyProfileActions } from "./my-profile-actions";
 export function MyProfilesList() {
   const { myProfilesData, isMyProfilesLoading } = useMyProfilesList();
 
-  const body = useMemo(() => {
-    if (isMyProfilesLoading) {
-      return <MyProfilesListSkeleton />;
-    }
+  if (isMyProfilesLoading) {
+    return <MyProfilesListSkeleton />;
+  }
 
-    if (myProfilesData) {
-      return myProfilesData.data.map((profile) => (
+  if (!myProfilesData) {
+    return null;
+  }
+
+  if (!myProfilesData.data.length) {
+    return <MyProfilesListEmpty />;
+  }
+
+  return (
+    <ContentLayout className="grid grid-cols-2 gap-4">
+      {myProfilesData.data.map((profile) => (
         <ProfileCard
           key={profile.id}
           id={profile.id}
@@ -33,24 +44,41 @@ export function MyProfilesList() {
             />
           }
         />
-      ));
-    }
-
-    return null;
-  }, [isMyProfilesLoading, myProfilesData]);
-
-  return (
-    <ContentLayout className="grid grid-cols-2 gap-4">{body}</ContentLayout>
+      ))}
+    </ContentLayout>
   );
 }
 
 function MyProfilesListSkeleton() {
   return (
     <ItemsList
-      noParent
       count={4}
       item={<ProfileCardSkeleton />}
-      className="w-full"
+      className="grid w-full flex-1 grid-cols-2 gap-4"
     />
+  );
+}
+
+function MyProfilesListEmpty() {
+  return (
+    <Island className="flex-1 items-center justify-center">
+      <Plug
+        size="lg"
+        title="Нет профилей каналов"
+        description="Создайте первый профиль канала для лучшей персонализации генерируемого контента"
+        actions={
+          <ButtonLink
+            size="lg"
+            variant="accent"
+            priority="primary"
+            to="/profiles/settings"
+            icon={<PlusIcon />}
+            className="mt-3"
+          >
+            Создать профиль
+          </ButtonLink>
+        }
+      />
+    </Island>
   );
 }

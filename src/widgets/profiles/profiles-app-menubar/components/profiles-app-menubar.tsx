@@ -1,4 +1,4 @@
-import { PlusIcon } from "lucide-react";
+import { ImportIcon, PlusIcon } from "lucide-react";
 
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { ButtonLink } from "@/shared/components/ui/button-link";
@@ -8,13 +8,18 @@ export function ProfilesAppMenubar() {
     <AppMenubar
       title="Профили"
       right={
-        <ButtonLink
-          priority="primary"
-          icon={<PlusIcon />}
-          to="/profiles/settings"
-        >
-          Новый профиль
-        </ButtonLink>
+        <div className="flex items-center gap-2">
+          <ButtonLink to="/profiles/import" icon={<ImportIcon />}>
+            Импорт каналов
+          </ButtonLink>
+          <ButtonLink
+            priority="primary"
+            icon={<PlusIcon />}
+            to="/profiles/settings"
+          >
+            Новый профиль
+          </ButtonLink>
+        </div>
       }
     />
   );

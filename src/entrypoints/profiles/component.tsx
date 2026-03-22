@@ -6,7 +6,7 @@ export function ProfilesComponent() {
   return (
     <>
       <ProfilesAppMenubar />
-      <PageLayout>
+      <PageLayout className="flex-1">
         <MyProfilesList />
       </PageLayout>
     </>

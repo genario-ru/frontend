@@ -5,7 +5,7 @@ import {
   type LucideIcon as LucideIconType,
   ShredderIcon,
 } from "lucide-react";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
@@ -54,7 +54,7 @@ const plugIconVariants = cva("", {
     },
     size: {
       base: "size-6",
-      lg: "size-10",
+      lg: "size-8",
     },
   },
   defaultVariants: {
@@ -63,11 +63,11 @@ const plugIconVariants = cva("", {
   },
 });
 
-const plugTitleVariants = cva("", {
+const plugTitleVariants = cva("whitespace-pre-line", {
   variants: {
     size: {
       base: "font-medium",
-      lg: "font-medium text-xl",
+      lg: "font-medium text-lg",
     },
   },
   defaultVariants: {
@@ -75,17 +75,20 @@ const plugTitleVariants = cva("", {
   },
 });
 
-const plugDescriptionVariants = cva("text-neutral-6 text-center", {
-  variants: {
-    size: {
-      base: "text-sm max-w-md",
-      lg: "text-base max-w-2xl",
+const plugDescriptionVariants = cva(
+  "text-neutral-6 text-center whitespace-pre-line",
+  {
+    variants: {
+      size: {
+        base: "text-sm max-w-md",
+        lg: "text-base max-w-xl",
+      },
+    },
+    defaultVariants: {
+      size: "base",
     },
   },
-  defaultVariants: {
-    size: "base",
-  },
-});
+);
 
 const plugDefaultIconByVariant = {
   negative: CircleXIcon,
@@ -103,6 +106,7 @@ export type PlugProps = ComponentProps<"div"> &
     description?: string;
     icon?: LucideIconType;
     variant?: PlugVariant;
+    actions?: ReactNode;
   };
 
 export function Plug({
@@ -110,6 +114,7 @@ export function Plug({
   description,
   icon,
   variant = "neutral",
+  actions,
   appearance,
   direction,
   size,
@@ -170,6 +175,7 @@ export function Plug({
       {...props}
     >
       {content}
+      {actions}
     </div>
   );
 }
