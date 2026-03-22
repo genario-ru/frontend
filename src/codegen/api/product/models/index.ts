@@ -19,6 +19,8 @@ export type { CreateIdeasListExportResponseSchema } from "./create-ideas-list-ex
 export type { CreateIdeasListResponseSchema } from "./create-ideas-list-response-schema.ts";
 export type { CreateProfileBodySchema } from "./create-profile-body-schema.ts";
 export type { CreateProfileResponseSchema } from "./create-profile-response-schema.ts";
+export type { CreateProfilesFromChannelsBodySchema } from "./create-profiles-from-channels-body-schema.ts";
+export type { CreateProfilesFromChannelsErrorSchema } from "./create-profiles-from-channels-error-schema.ts";
 export type { CreateScenarioBodySchema } from "./create-scenario-body-schema.ts";
 export type { CreateScenarioResponseSchema } from "./create-scenario-response-schema.ts";
 export type { CreateScenarioScenePreviewResponseSchema } from "./create-scenario-scene-preview-response-schema.ts";
@@ -230,6 +232,16 @@ export type {
   GetApiV1ProfilesByProfileIdQuery,
   GetApiV1ProfilesByProfileIdQueryResponse,
 } from "./get-api-v1-profiles-by-profile-id.ts";
+export type {
+  GetApiV1ProfilesChannelsPlatforms200,
+  GetApiV1ProfilesChannelsPlatforms400,
+  GetApiV1ProfilesChannelsPlatforms401,
+  GetApiV1ProfilesChannelsPlatforms403,
+  GetApiV1ProfilesChannelsPlatforms404,
+  GetApiV1ProfilesChannelsPlatforms500,
+  GetApiV1ProfilesChannelsPlatformsQuery,
+  GetApiV1ProfilesChannelsPlatformsQueryResponse,
+} from "./get-api-v1-profiles-channels-platforms.ts";
 export type {
   GetApiV1ProfilesMy200,
   GetApiV1ProfilesMy400,
@@ -451,6 +463,7 @@ export type { GetMyReferralInvitesResponseMetaSchema } from "./get-my-referral-i
 export type { GetMyReferralInvitesResponseSchema } from "./get-my-referral-invites-response-schema.ts";
 export type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
+export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
 export type { GetProfileResponseSchema } from "./get-profile-response-schema.ts";
 export type { GetProfileTypesResponseSchema } from "./get-profile-types-response-schema.ts";
@@ -663,6 +676,28 @@ export type {
   PostApiV1ProfilesMutationResponse,
 } from "./post-api-v1-profiles.ts";
 export type {
+  PostApiV1ProfilesChannels201,
+  PostApiV1ProfilesChannels400,
+  PostApiV1ProfilesChannels401,
+  PostApiV1ProfilesChannels403,
+  PostApiV1ProfilesChannels404,
+  PostApiV1ProfilesChannels500,
+  PostApiV1ProfilesChannelsMutation,
+  PostApiV1ProfilesChannelsMutationRequest,
+  PostApiV1ProfilesChannelsMutationResponse,
+} from "./post-api-v1-profiles-channels.ts";
+export type {
+  PostApiV1ProfilesChannelsValidate200,
+  PostApiV1ProfilesChannelsValidate400,
+  PostApiV1ProfilesChannelsValidate401,
+  PostApiV1ProfilesChannelsValidate403,
+  PostApiV1ProfilesChannelsValidate404,
+  PostApiV1ProfilesChannelsValidate500,
+  PostApiV1ProfilesChannelsValidateMutation,
+  PostApiV1ProfilesChannelsValidateMutationRequest,
+  PostApiV1ProfilesChannelsValidateMutationResponse,
+} from "./post-api-v1-profiles-channels-validate.ts";
+export type {
   PostApiV1Scenarios201,
   PostApiV1Scenarios400,
   PostApiV1Scenarios401,
@@ -697,6 +732,11 @@ export type {
   PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
   PostApiV1ScenariosVersionsByVersionIdExportPathParams,
 } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
+export type {
+  ProfileChannelUrlValidationSchema,
+  ProfileChannelUrlValidationSchemaStatusEnumKey,
+} from "./profile-channel-url-validation-schema.ts";
+export { profileChannelUrlValidationSchemaStatusEnum } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
@@ -794,5 +834,7 @@ export type { UpdateScenarioSceneComponentResponseSchema } from "./update-scenar
 export type { UpdateScenarioSceneResponseSchema } from "./update-scenario-scene-response-schema.ts";
 export type { UserSchema, UserSchemaRoleEnumKey } from "./user-schema.ts";
 export { userSchemaRoleEnum } from "./user-schema.ts";
+export type { ValidateProfileChannelBodySchema } from "./validate-profile-channel-body-schema.ts";
+export type { ValidateProfileChannelResponseSchema } from "./validate-profile-channel-response-schema.ts";
 export type { VideoDurationSchema } from "./video-duration-schema.ts";
 export type { VideoTypeSchema } from "./video-type-schema.ts";

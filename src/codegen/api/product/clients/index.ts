@@ -15,6 +15,7 @@ export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists
 export { getApiV1IdeasListsMy } from "./get-api-v1-ideas-lists-my.ts";
 export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
+export { getApiV1ProfilesChannelsPlatforms } from "./get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesMy } from "./get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesTypes } from "./get-api-v1-profiles-types.ts";
 export { getApiV1ReferralCodesMy } from "./get-api-v1-referral-codes-my.ts";
@@ -49,6 +50,8 @@ export { postApiV1IdeasListsByIdeasListIdExport } from "./post-api-v1-ideas-list
 export { postApiV1IdeasListsByIdeasListIdIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-ideas.ts";
 export { postApiV1IdeasListsByIdeasListIdMoreIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
 export { postApiV1Profiles } from "./post-api-v1-profiles.ts";
+export { postApiV1ProfilesChannels } from "./post-api-v1-profiles-channels.ts";
+export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channels-validate.ts";
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosVersionsByVersionIdExport } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";

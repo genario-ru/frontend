@@ -16,6 +16,9 @@ export const platformSchemaSchema = z
     description: z.union([z.string(), z.null()]),
     logoUrl: z.union([z.string(), z.null()]),
     baseUrl: z.union([z.string(), z.null()]),
+    urlRegex: z.union([z.string(), z.null()]),
+    channelUrlRegex: z.union([z.string(), z.null()]),
+    hasAutoImport: z.boolean(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

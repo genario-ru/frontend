@@ -25,6 +25,12 @@ export type PlatformExtendedSchema = {
   description: string | null;
   logoUrl: string | null;
   baseUrl: string | null;
+  urlRegex: string | null;
+  channelUrlRegex: string | null;
+  /**
+   * @type boolean
+   */
+  hasAutoImport: boolean;
   /**
    * @type string
    */

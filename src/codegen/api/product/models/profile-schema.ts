@@ -16,13 +16,13 @@ export type ProfileSchema = {
    * @type string, uuid
    */
   userId: string;
+  typeId: string | null;
   /**
    * @type string
    */
   name: string;
   description: string | null;
   targetAudience: string | null;
-  typeId: string | null;
   /**
    * @type string
    */

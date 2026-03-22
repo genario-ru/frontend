@@ -17,10 +17,10 @@ export const profileExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
+    typeId: z.union([z.uuid(), z.null()]),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     targetAudience: z.union([z.string(), z.null()]),
-    typeId: z.union([z.uuid(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
     get user() {
