@@ -32,7 +32,8 @@ const getLazyIcon = (iconName: string) => {
   const LazyIcon = lazy(() =>
     import("lucide-react").then((module) => {
       const IconComponent =
-        module.icons[normalizedIconName as keyof typeof module.icons];
+        module.icons[normalizedIconName as keyof typeof module.icons] ??
+        module.icons.SquircleDashed;
 
       return { default: IconComponent };
     }),
