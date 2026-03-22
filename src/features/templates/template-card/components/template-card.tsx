@@ -47,7 +47,7 @@ export function TemplateCard({
         <Heading variant="h3">{title}</Heading>
       </header>
       {description && (
-        <p className="text-neutral-7 line-clamp-4 text-sm">{description}</p>
+        <p className="text-neutral-7 line-clamp-3 text-sm">{description}</p>
       )}
       {children}
     </div>
