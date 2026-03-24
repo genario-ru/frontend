@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { patchApiV1IdeasListsByIdeasListId } from "../clients/patch-api-v1-ideas-lists-by-ideas-list-id.ts";
 import type {

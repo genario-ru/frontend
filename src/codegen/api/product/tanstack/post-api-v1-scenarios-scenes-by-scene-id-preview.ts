@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { postApiV1ScenariosScenesBySceneIdPreview } from "../clients/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 import type {

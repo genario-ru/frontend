@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { postLinkSocial } from "../clients/post-link-social.ts";
 import type {

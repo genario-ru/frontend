@@ -16,7 +16,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { getApiV1ArchiveItemsMy } from "../clients/get-api-v1-archive-items-my.ts";
 import type {

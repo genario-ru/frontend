@@ -57,7 +57,7 @@ function createConfig({
     parser: "zod",
     pathParamsType: "object",
     paramsType: "object",
-    importPath: "@/lib/api/utils/client.ts",
+    importPath: "@/lib/api/client",
     transformers: {
       name: kebabCaseTransformer,
     },

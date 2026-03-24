@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { deleteApiV1ScenariosScenesBySceneId } from "../clients/delete-api-v1-scenarios-scenes-by-scene-id.ts";
 import type {

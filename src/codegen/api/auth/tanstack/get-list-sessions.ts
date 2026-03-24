@@ -15,7 +15,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { getListSessions } from "../clients/get-list-sessions.ts";
 import type {

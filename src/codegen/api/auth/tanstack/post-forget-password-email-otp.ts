@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { postForgetPasswordEmailOtp } from "../clients/post-forget-password-email-otp.ts";
 import type {

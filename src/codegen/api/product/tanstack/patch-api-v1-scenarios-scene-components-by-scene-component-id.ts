@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "../clients/patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 import type {

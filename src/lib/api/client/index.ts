@@ -1,9 +1,9 @@
 import { envs } from "@/shared/constants/envs";
 
 import { APIError } from "../classes/api-error";
-import { parseResponseData } from "./parse-response-data";
-import { prepareQueryString } from "./prepare-query-string";
-import { prepareRequestBody } from "./prepare-request-body";
+import { parseResponseData } from "../utils/parse-response-data";
+import { prepareQueryString } from "../utils/prepare-query-string";
+import { prepareRequestBody } from "../utils/prepare-request-body";
 
 type Method = "GET" | "PUT" | "PATCH" | "POST" | "DELETE";
 
@@ -35,7 +35,7 @@ export type Client = <TData, _TError = unknown, TVariables = unknown>(
   config: RequestConfig<TVariables>,
 ) => Promise<ResponseConfig<TData>>;
 
-export type ResponseErrorConfig<TError = unknown> = TError;
+export type ResponseErrorConfig<TError = unknown> = APIError<TError>;
 
 export default async function client<TData, TError, TVariables = unknown>({
   url = "",

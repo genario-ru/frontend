@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { postEmailOtpCheckVerificationOtp } from "../clients/post-email-otp-check-verification-otp.ts";
 import type {

@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { deleteApiV1ProfilesByProfileId } from "../clients/delete-api-v1-profiles-by-profile-id.ts";
 import type {

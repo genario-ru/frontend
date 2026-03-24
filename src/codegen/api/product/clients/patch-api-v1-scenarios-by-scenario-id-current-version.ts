@@ -7,8 +7,8 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
-import fetch from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
+import fetch from "@/lib/api/client";
 
 import type {
   PatchApiV1ScenariosByScenarioIdCurrentVersion400,

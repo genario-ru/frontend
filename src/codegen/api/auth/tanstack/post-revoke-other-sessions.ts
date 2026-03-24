@@ -14,7 +14,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { postRevokeOtherSessions } from "../clients/post-revoke-other-sessions.ts";
 import type {

@@ -15,7 +15,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { getApiV1ProfilesByProfileId } from "../clients/get-api-v1-profiles-by-profile-id.ts";
 import type {

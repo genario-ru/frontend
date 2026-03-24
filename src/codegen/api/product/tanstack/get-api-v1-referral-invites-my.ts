@@ -15,7 +15,7 @@ import type {
   Client,
   RequestConfig,
   ResponseErrorConfig,
-} from "@/lib/api/utils/client.ts";
+} from "@/lib/api/client";
 
 import { getApiV1ReferralInvitesMy } from "../clients/get-api-v1-referral-invites-my.ts";
 import type {
