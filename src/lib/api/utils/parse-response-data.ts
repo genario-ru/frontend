@@ -1,35 +1,27 @@
-import { APIError } from "../classes/api-error";
 import { documentTypes } from "../constants/document-types";
-import type { ResponseType } from "./client";
 
-export async function parseResponseData<TData>(
+export async function parseResponseData<T>(
   response: Response,
-  responseType: ResponseType,
+  contentType: string | null,
 ) {
-  switch (responseType) {
-    case "arraybuffer":
-      return (await response.arrayBuffer()) as TData;
+  if (!contentType) {
+    throw new Error("Content type is required");
+  }
 
-    case "blob":
-      return (await response.blob()) as TData;
+  switch (contentType) {
+    case documentTypes.json:
+      return (await response.json()) as T;
 
-    case "text":
-    case "document":
-    case "stream":
-      return (await response.text()) as TData;
+    case documentTypes.text:
+    case documentTypes.html:
+    case documentTypes.document:
+      return (await response.text()) as T;
+
+    case documentTypes.octetStream:
+      return (await response.arrayBuffer()) as T;
 
     default: {
-      const contentType = response.headers.get("Content-Type");
-
-      if (!contentType?.includes(documentTypes.json)) {
-        throw new APIError("Non-JSON response is not supported", {
-          status: response.status,
-          statusText: response.statusText,
-          url: response.url,
-        });
-      }
-
-      return (await response.json()) as TData;
+      throw new Error("Unsupported response type");
     }
   }
 }

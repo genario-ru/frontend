@@ -17,7 +17,23 @@ export const createFormValidateFn = <T extends Record<string, unknown>>(
       const fields: Record<string, string> = {};
 
       zodResult.error.issues.forEach((issue) => {
-        const fieldPath = issue.path.join(".");
+        let fieldPath = "";
+
+        issue.path.forEach((path, index) => {
+          if (index === 0) {
+            fieldPath = path.toString();
+          } else if (typeof path === "number") {
+            fieldPath += `[${path}]`;
+          } else {
+            fieldPath += `.${path.toString()}`;
+          }
+        });
+
+        console.log({
+          fieldPath,
+          issue,
+        });
+
         fields[fieldPath] = issue.message;
       });
 

@@ -1,11 +1,11 @@
-import type { APIErrorInfo } from "../types";
+import type { APIErrorCause } from "../schemas/api-error-cause";
 
-export class APIError extends Error {
+export class APIError<TError = unknown> extends Error {
   constructor(
     message: string,
-    public cause: APIErrorInfo,
+    public cause: APIErrorCause<TError>,
   ) {
     super(message);
-    this.name = "FetchFnError";
+    this.name = "APIError";
   }
 }

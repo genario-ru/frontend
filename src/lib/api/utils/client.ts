@@ -1,8 +1,6 @@
 import { envs } from "@/shared/constants/envs";
 
 import { APIError } from "../classes/api-error";
-import type { APIErrorInfo } from "../types";
-import { parseErrorResponseData } from "./parse-error-response-data";
 import { parseResponseData } from "./parse-response-data";
 import { prepareQueryString } from "./prepare-query-string";
 import { prepareRequestBody } from "./prepare-request-body";
@@ -39,16 +37,11 @@ export type Client = <TData, _TError = unknown, TVariables = unknown>(
 
 export type ResponseErrorConfig<TError = unknown> = TError;
 
-export default async function client<
-  TData,
-  _TError = APIErrorInfo,
-  TVariables = unknown,
->({
+export default async function client<TData, TError, TVariables = unknown>({
   url = "",
   method,
   params,
   data: body,
-  responseType = "json",
   signal,
   headers: initialHeaders,
 }: RequestConfig<TVariables>): Promise<ResponseConfig<TData>> {
@@ -72,10 +65,12 @@ export default async function client<
       credentials: "include",
     });
 
-    if (!response.ok) {
-      const errorData = await parseErrorResponseData(response);
+    const contentType = response.headers.get("Content-Type");
 
-      throw new APIError(`HTTP Error ${response.status}`, {
+    if (!response.ok) {
+      const errorData = await parseResponseData<TError>(response, contentType);
+
+      throw new APIError<TError>(`HTTP Error ${response.status}`, {
         url: response.url,
         status: response.status,
         statusText: response.statusText,
@@ -83,7 +78,7 @@ export default async function client<
       });
     }
 
-    const data = await parseResponseData<TData>(response, responseType);
+    const data = await parseResponseData<TData>(response, contentType);
 
     return {
       data,
