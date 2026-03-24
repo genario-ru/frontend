@@ -1705,7 +1705,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateProfilesFromChannelsBodySchema"
+                  "$ref": "#/components/schemas/CreateProfilesFromChannelsResponseSchema"
                 }
               }
             }
@@ -4987,6 +4987,16 @@
               }
             ]
           },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "icon": {
             "anyOf": [
               {
@@ -5012,6 +5022,7 @@
           "slug",
           "name",
           "description",
+          "details",
           "icon",
           "color",
           "createdAt",
@@ -6153,6 +6164,16 @@
               }
             ]
           },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "logoUrl": {
             "anyOf": [
               {
@@ -6208,6 +6229,7 @@
           "slug",
           "name",
           "description",
+          "details",
           "logoUrl",
           "baseUrl",
           "urlRegex",
@@ -6987,6 +7009,16 @@
               }
             ]
           },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "logoUrl": {
             "anyOf": [
               {
@@ -7048,6 +7080,7 @@
           "slug",
           "name",
           "description",
+          "details",
           "logoUrl",
           "baseUrl",
           "urlRegex",
@@ -7330,22 +7363,69 @@
         "title": "Get my profiles response",
         "description": "Get my profiles response description"
       },
-      "CreateProfilesFromChannelsBodySchema": {
+      "ProfilesFromChannelsJobSchema": {
         "type": "object",
         "properties": {
-          "channelUrls": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uri"
-            }
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "pending",
+              "generation",
+              "failed",
+              "ready"
+            ]
+          },
+          "statusDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
           }
         },
         "required": [
-          "channelUrls"
+          "id",
+          "userId",
+          "status",
+          "statusDetails",
+          "createdAt",
+          "updatedAt"
         ],
-        "title": "Create profiles from channels body",
-        "description": "Create profiles from channels body description"
+        "title": "Profiles from channels job",
+        "description": "Profiles from channels job description"
+      },
+      "CreateProfilesFromChannelsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProfilesFromChannelsJobSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Create profiles from channels response",
+        "description": "Create profiles from channels response description"
       },
       "ProfileChannelUrlValidationSchema": {
         "type": "object",
@@ -7399,6 +7479,23 @@
         ],
         "title": "Create profiles from channels error",
         "description": "Create profiles from channels error description"
+      },
+      "CreateProfilesFromChannelsBodySchema": {
+        "type": "object",
+        "properties": {
+          "channelUrls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "required": [
+          "channelUrls"
+        ],
+        "title": "Create profiles from channels body",
+        "description": "Create profiles from channels body description"
       },
       "ValidateProfileChannelResponseSchema": {
         "type": "object",
@@ -8853,6 +8950,16 @@
               }
             ]
           },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "icon": {
             "anyOf": [
               {
@@ -8888,6 +8995,7 @@
           "slug",
           "name",
           "description",
+          "details",
           "icon",
           "color",
           "optional",

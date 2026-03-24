@@ -14,6 +14,7 @@ export const scenarioSceneComponentTypeSchemaSchema = z
     slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
+    details: z.union([z.string(), z.null()]),
     icon: z.union([z.string(), z.null()]),
     color: z.union([z.string(), z.null()]),
     optional: z.boolean(),

@@ -21,6 +21,7 @@ export type ScenarioSceneComponentTypeSchema = {
    */
   name: string;
   description: string | null;
+  details: string | null;
   icon: string | null;
   color: string | null;
   /**

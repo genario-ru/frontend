@@ -21,6 +21,7 @@ export type { CreateProfileBodySchema } from "./create-profile-body-schema.ts";
 export type { CreateProfileResponseSchema } from "./create-profile-response-schema.ts";
 export type { CreateProfilesFromChannelsBodySchema } from "./create-profiles-from-channels-body-schema.ts";
 export type { CreateProfilesFromChannelsErrorSchema } from "./create-profiles-from-channels-error-schema.ts";
+export type { CreateProfilesFromChannelsResponseSchema } from "./create-profiles-from-channels-response-schema.ts";
 export type { CreateScenarioBodySchema } from "./create-scenario-body-schema.ts";
 export type { CreateScenarioResponseSchema } from "./create-scenario-response-schema.ts";
 export type { CreateScenarioScenePreviewResponseSchema } from "./create-scenario-scene-preview-response-schema.ts";
@@ -740,6 +741,11 @@ export { profileChannelUrlValidationSchemaStatusEnum } from "./profile-channel-u
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
+export type {
+  ProfilesFromChannelsJobSchema,
+  ProfilesFromChannelsJobSchemaStatusEnumKey,
+} from "./profiles-from-channels-job-schema.ts";
+export { profilesFromChannelsJobSchemaStatusEnum } from "./profiles-from-channels-job-schema.ts";
 export type { ReferralCodeSchema } from "./referral-code-schema.ts";
 export type {
   ReferralInviteExtendedSchema,

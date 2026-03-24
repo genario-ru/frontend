@@ -5,16 +5,18 @@
 
 import type { CreateProfilesFromChannelsBodySchema } from "./create-profiles-from-channels-body-schema.ts";
 import type { CreateProfilesFromChannelsErrorSchema } from "./create-profiles-from-channels-error-schema.ts";
+import type { CreateProfilesFromChannelsResponseSchema } from "./create-profiles-from-channels-response-schema.ts";
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
- * Create profiles from channels body
+ * Create profiles from channels response
  * @description Profiles from channels created successfully
  */
-export type PostApiV1ProfilesChannels201 = CreateProfilesFromChannelsBodySchema;
+export type PostApiV1ProfilesChannels201 =
+  CreateProfilesFromChannelsResponseSchema;
 
 /**
  * Create profiles from channels error

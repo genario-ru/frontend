@@ -21,6 +21,7 @@ export type TemplateSchema = {
    */
   name: string;
   description: string | null;
+  details: string | null;
   icon: string | null;
   /**
    * @type string

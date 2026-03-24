@@ -78,6 +78,7 @@ export type { CreateProfileBodySchema } from "./models/create-profile-body-schem
 export type { CreateProfileResponseSchema } from "./models/create-profile-response-schema.ts";
 export type { CreateProfilesFromChannelsBodySchema } from "./models/create-profiles-from-channels-body-schema.ts";
 export type { CreateProfilesFromChannelsErrorSchema } from "./models/create-profiles-from-channels-error-schema.ts";
+export type { CreateProfilesFromChannelsResponseSchema } from "./models/create-profiles-from-channels-response-schema.ts";
 export type { CreateScenarioBodySchema } from "./models/create-scenario-body-schema.ts";
 export type { CreateScenarioResponseSchema } from "./models/create-scenario-response-schema.ts";
 export type { CreateScenarioScenePreviewResponseSchema } from "./models/create-scenario-scene-preview-response-schema.ts";
@@ -797,6 +798,11 @@ export { profileChannelUrlValidationSchemaStatusEnum } from "./models/profile-ch
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
 export type { ProfileSchema } from "./models/profile-schema.ts";
 export type { ProfileTypeSchema } from "./models/profile-type-schema.ts";
+export type {
+  ProfilesFromChannelsJobSchema,
+  ProfilesFromChannelsJobSchemaStatusEnumKey,
+} from "./models/profiles-from-channels-job-schema.ts";
+export { profilesFromChannelsJobSchemaStatusEnum } from "./models/profiles-from-channels-job-schema.ts";
 export type { ReferralCodeSchema } from "./models/referral-code-schema.ts";
 export type {
   ReferralInviteExtendedSchema,
@@ -1155,6 +1161,7 @@ export { createProfileBodySchemaSchema } from "./zod/create-profile-body-schema-
 export { createProfileResponseSchemaSchema } from "./zod/create-profile-response-schema-schema.ts";
 export { createProfilesFromChannelsBodySchemaSchema } from "./zod/create-profiles-from-channels-body-schema-schema.ts";
 export { createProfilesFromChannelsErrorSchemaSchema } from "./zod/create-profiles-from-channels-error-schema-schema.ts";
+export { createProfilesFromChannelsResponseSchemaSchema } from "./zod/create-profiles-from-channels-response-schema-schema.ts";
 export { createScenarioBodySchemaSchema } from "./zod/create-scenario-body-schema-schema.ts";
 export { createScenarioResponseSchemaSchema } from "./zod/create-scenario-response-schema-schema.ts";
 export { createScenarioScenePreviewResponseSchemaSchema } from "./zod/create-scenario-scene-preview-response-schema-schema.ts";
@@ -1787,6 +1794,7 @@ export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-u
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";
 export { profileSchemaSchema } from "./zod/profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./zod/profile-type-schema-schema.ts";
+export { profilesFromChannelsJobSchemaSchema } from "./zod/profiles-from-channels-job-schema-schema.ts";
 export { referralCodeSchemaSchema } from "./zod/referral-code-schema-schema.ts";
 export { referralInviteExtendedSchemaSchema } from "./zod/referral-invite-extended-schema-schema.ts";
 export { referralRewardSchemaSchema } from "./zod/referral-reward-schema-schema.ts";

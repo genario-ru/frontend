@@ -15,6 +15,7 @@ export { createProfileBodySchemaSchema } from "./create-profile-body-schema-sche
 export { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
 export { createProfilesFromChannelsBodySchemaSchema } from "./create-profiles-from-channels-body-schema-schema.ts";
 export { createProfilesFromChannelsErrorSchemaSchema } from "./create-profiles-from-channels-error-schema-schema.ts";
+export { createProfilesFromChannelsResponseSchemaSchema } from "./create-profiles-from-channels-response-schema-schema.ts";
 export { createScenarioBodySchemaSchema } from "./create-scenario-body-schema-schema.ts";
 export { createScenarioResponseSchemaSchema } from "./create-scenario-response-schema-schema.ts";
 export { createScenarioScenePreviewResponseSchemaSchema } from "./create-scenario-scene-preview-response-schema-schema.ts";
@@ -647,6 +648,7 @@ export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-v
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
 export { profileSchemaSchema } from "./profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
+export { profilesFromChannelsJobSchemaSchema } from "./profiles-from-channels-job-schema-schema.ts";
 export { referralCodeSchemaSchema } from "./referral-code-schema-schema.ts";
 export { referralInviteExtendedSchemaSchema } from "./referral-invite-extended-schema-schema.ts";
 export { referralRewardSchemaSchema } from "./referral-reward-schema-schema.ts";

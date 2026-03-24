@@ -7,6 +7,7 @@ import { z } from "@/lib/zod/index.ts";
 
 import { createProfilesFromChannelsBodySchemaSchema } from "./create-profiles-from-channels-body-schema-schema.ts";
 import { createProfilesFromChannelsErrorSchemaSchema } from "./create-profiles-from-channels-error-schema-schema.ts";
+import { createProfilesFromChannelsResponseSchemaSchema } from "./create-profiles-from-channels-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
@@ -16,8 +17,8 @@ import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema
  * @description Profiles from channels created successfully
  */
 export const postApiV1ProfilesChannels201Schema = z
-  .lazy(() => createProfilesFromChannelsBodySchemaSchema)
-  .describe("Create profiles from channels body description");
+  .lazy(() => createProfilesFromChannelsResponseSchemaSchema)
+  .describe("Create profiles from channels response description");
 
 /**
  * @description Profiles from channels creation failed
