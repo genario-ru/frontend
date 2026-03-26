@@ -63,6 +63,15 @@ export function useProfilesImportForm() {
 
   const handleValidateProfileChannel = useCallback(
     (channelUrl: string, index: number) => {
+      form.validateField(`channelUrls[${index}]`, "submit");
+
+      const fieldMeta = form.getFieldMeta(`channelUrls[${index}]`);
+      const isValid = fieldMeta && fieldMeta.isValid;
+
+      if (!isValid) {
+        return;
+      }
+
       validateProfileChannel(
         { data: { url: channelUrl } },
         {
