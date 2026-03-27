@@ -31,7 +31,7 @@ export const VerifyOTPForm = ({ email, redirect }: VerifyOTPFormProps) => {
       <form.Field name="code">
         {(field) => (
           <FieldLayout
-            errorMessage={field.state.meta.errorMap.onSubmit}
+            message={field.state.meta.errorMap.onSubmit}
             className="w-fit"
           >
             <OTPInput

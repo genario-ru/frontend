@@ -36,7 +36,7 @@ export const ScenarioSettingsTemplatesSelectionSubform = withForm({
         name={`${ScenarioSettingsFormSteps.TemplateSelection}.templateId`}
       >
         {(field) => (
-          <FieldLayout errorMessage={field.state.meta.errors[0]}>
+          <FieldLayout message={field.state.meta.errors[0]}>
             <TemplateCardsRadioGroup
               value={field.state.value}
               onBlur={field.handleBlur}
