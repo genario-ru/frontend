@@ -17,9 +17,9 @@ export function ProfilesImportPlatformsListItem({
 }: ProfilesImportPlatformsListItemProps) {
   return (
     <div className="flex w-full gap-3">
-      <div className="bg-neutral-1 rounded-4 flex h-14 w-14 items-center justify-center">
+      <div className="bg-neutral-1 rounded-4 flex size-14 items-center justify-center">
         {logoUrl ? (
-          <img src={logoUrl} alt={name} className="h-10 w-10 object-contain" />
+          <img src={logoUrl} alt={name} className="size-10 object-contain" />
         ) : (
           <LucideIcon icon={VideoIcon} className="size-10" />
         )}
@@ -36,11 +36,11 @@ export function ProfilesImportPlatformsListItem({
 
 export function ProfilesImportPlatformsListItemSkeleton() {
   return (
-    <div className="flex items-center gap-3">
-      <Skeleton className="rounded-4 h-14 w-14" />
-      <div className="flex flex-1 flex-col gap-1">
+    <div className="flex gap-3">
+      <Skeleton className="rounded-4 size-14" />
+      <div className="flex flex-1 flex-col">
         <TextSkeleton fontSize={16} lineHeight={24} className="w-40" />
-        <TextSkeleton fontSize={16} lineHeight={20} linesCount={2} />
+        <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />
       </div>
     </div>
   );

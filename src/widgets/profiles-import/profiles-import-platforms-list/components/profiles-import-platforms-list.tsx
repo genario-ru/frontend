@@ -53,7 +53,7 @@ export function ProfilesImportPlatformsListSkeleton() {
   return (
     <ItemsList
       noParent
-      count={3}
+      count={2}
       item={<ProfilesImportPlatformsListItemSkeleton />}
     />
   );
