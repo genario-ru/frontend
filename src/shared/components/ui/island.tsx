@@ -59,9 +59,7 @@ export const Island = ({
         <header className="flex justify-between gap-4">
           <div className="flex flex-col gap-1">
             {title && <Heading variant="h2">{title}</Heading>}
-            {description && (
-              <p className="text-neutral-7 text-sm">{description}</p>
-            )}
+            {description && <p className="text-neutral-7">{description}</p>}
           </div>
           {actions}
         </header>
