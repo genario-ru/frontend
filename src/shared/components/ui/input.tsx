@@ -20,6 +20,7 @@ const inputVariants = cva(
       state: {
         default: "",
         error: "ring-2 ring-negative-6",
+        success: "ring-2 ring-positive-6",
       },
     },
     defaultVariants: {

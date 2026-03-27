@@ -70,11 +70,7 @@ export const MultiSelectField = ({
   const errors: string[] = useStore(store, (state) => state.meta.errors);
 
   return (
-    <FieldLayout
-      labelText={label}
-      errorMessage={errors[0]}
-      className={className}
-    >
+    <FieldLayout labelText={label} message={errors[0]} className={className}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

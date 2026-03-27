@@ -32,7 +32,7 @@ export const TextareaField = ({
     <FieldLayout
       labelHtmlFor={name}
       labelText={label}
-      errorMessage={errors[0]}
+      message={errors[0]}
       action={action}
     >
       <Textarea

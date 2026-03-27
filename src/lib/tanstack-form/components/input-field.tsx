@@ -1,7 +1,10 @@
 import { useStore } from "@tanstack/react-form";
 import type { ChangeEvent, ReactNode } from "react";
 
-import { FieldLayout } from "@/shared/components/layouts/field-layout";
+import {
+  FieldLayout,
+  type FieldLayoutProps,
+} from "@/shared/components/layouts/field-layout";
 import { Input, type InputProps } from "@/shared/components/ui/input";
 
 import { useFieldContext } from "..";
@@ -12,14 +15,14 @@ type InputFieldProps = Omit<
 > & {
   label?: string | null;
   action?: ReactNode;
-  fieldLayoutClassName?: string;
+  fieldLayoutProps?: FieldLayoutProps;
 };
 
 export const InputField = <TInputData extends string | number>({
   type = "text",
   label,
   action,
-  fieldLayoutClassName,
+  fieldLayoutProps,
   ...props
 }: InputFieldProps) => {
   const {
@@ -46,8 +49,8 @@ export const InputField = <TInputData extends string | number>({
       labelHtmlFor={name}
       labelText={label}
       action={action}
-      errorMessage={errors[0]}
-      className={fieldLayoutClassName}
+      message={errors[0]}
+      {...fieldLayoutProps}
     >
       <Input
         id={name}

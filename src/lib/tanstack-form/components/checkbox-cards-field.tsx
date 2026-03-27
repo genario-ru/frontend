@@ -60,7 +60,7 @@ export const CheckboxCardsField = ({
   };
 
   return (
-    <FieldLayout labelText={title} errorMessage={errors[0]}>
+    <FieldLayout labelText={title} message={errors[0]}>
       <CheckboxCardsGroup {...props}>
         {items.map((item) => (
           <CheckboxCardsGroupItem

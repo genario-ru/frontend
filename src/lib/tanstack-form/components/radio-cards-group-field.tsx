@@ -37,11 +37,7 @@ export const RadioCardsGroupField = ({
   const errors: string[] = useStore(store, (state) => state.meta.errors);
 
   return (
-    <FieldLayout
-      labelText={label}
-      errorMessage={errors[0]}
-      className={className}
-    >
+    <FieldLayout labelText={label} message={errors[0]} className={className}>
       <RadioCardsGroup
         defaultValue={defaultValue}
         value={value}

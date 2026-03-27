@@ -1,20 +1,44 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps, ReactNode } from "react";
 
 import { Label } from "@/shared/components/ui/label";
 import { cn } from "@/shared/utils/cn";
 
-type FieldLayoutProps = ComponentProps<"div"> & {
+const fieldLayoutMessageVariants = cva(
+  "text-sm font-medium whitespace-pre-line",
+  {
+    variants: {
+      variant: {
+        neutral: "text-neutral-8",
+        negative: "text-negative-6",
+        positive: "text-positive-6",
+        accent: "text-accent-6",
+      },
+    },
+    defaultVariants: {
+      variant: "negative",
+    },
+  },
+);
+
+type FieldLayoutMessageVariant = VariantProps<
+  typeof fieldLayoutMessageVariants
+>;
+
+export type FieldLayoutProps = ComponentProps<"div"> & {
   labelHtmlFor?: string;
   labelText?: string | null;
   action?: ReactNode;
-  errorMessage?: string;
+  message?: string;
+  messageVariant?: FieldLayoutMessageVariant["variant"];
 };
 
 export function FieldLayout({
   labelHtmlFor,
   labelText,
   action,
-  errorMessage,
+  message,
+  messageVariant,
   className,
   children,
   ...props
@@ -28,9 +52,9 @@ export function FieldLayout({
         </header>
       )}
       {children}
-      {errorMessage && (
-        <p className="text-negative-6 w-full text-sm font-medium whitespace-pre-wrap">
-          {errorMessage}
+      {message && (
+        <p className={fieldLayoutMessageVariants({ variant: messageVariant })}>
+          {message}
         </p>
       )}
     </div>
