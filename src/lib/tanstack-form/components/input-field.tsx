@@ -9,10 +9,7 @@ import { Input, type InputProps } from "@/shared/components/ui/input";
 
 import { useFieldContext } from "..";
 
-type InputFieldProps = Omit<
-  InputProps,
-  "id" | "state" | "value" | "onChange"
-> & {
+type InputFieldProps = Omit<InputProps, "id" | "value" | "onChange"> & {
   label?: string | null;
   action?: ReactNode;
   fieldLayoutProps?: FieldLayoutProps;
@@ -22,7 +19,8 @@ export const InputField = <TInputData extends string | number>({
   type = "text",
   label,
   action,
-  fieldLayoutProps,
+  state,
+  fieldLayoutProps: { message, messageVariant, ...fieldLayoutProps } = {},
   ...props
 }: InputFieldProps) => {
   const {
@@ -49,14 +47,15 @@ export const InputField = <TInputData extends string | number>({
       labelHtmlFor={name}
       labelText={label}
       action={action}
-      message={errors[0]}
+      message={errors[0] ?? message}
+      messageVariant={messageVariant}
       {...fieldLayoutProps}
     >
       <Input
         id={name}
         name={name}
         type={type}
-        state={errors.length > 0 ? "error" : "default"}
+        state={errors.length > 0 ? "error" : state}
         value={value}
         onChange={onInputChange}
         {...props}

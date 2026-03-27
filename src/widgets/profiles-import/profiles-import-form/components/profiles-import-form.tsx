@@ -5,6 +5,7 @@ import { ProfilesImportFormFields } from "./profiles-import-form-fields";
 export function ProfilesImportForm() {
   const {
     form,
+    successValidationFields,
     onFormSubmit,
     handleValidateProfileChannel,
     handleAddProfileChannel,
@@ -14,6 +15,7 @@ export function ProfilesImportForm() {
     <form onSubmit={onFormSubmit} className="flex w-full flex-col gap-4">
       <ProfilesImportFormFields
         form={form}
+        successValidationFields={successValidationFields}
         handleValidateProfileChannel={handleValidateProfileChannel}
       />
       <ProfilesImportFormButtons
