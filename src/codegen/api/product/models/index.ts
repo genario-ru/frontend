@@ -234,6 +234,16 @@ export type {
   GetApiV1ProfilesByProfileIdQueryResponse,
 } from "./get-api-v1-profiles-by-profile-id.ts";
 export type {
+  GetApiV1ProfilesChannelsJobsMy200,
+  GetApiV1ProfilesChannelsJobsMy400,
+  GetApiV1ProfilesChannelsJobsMy401,
+  GetApiV1ProfilesChannelsJobsMy403,
+  GetApiV1ProfilesChannelsJobsMy404,
+  GetApiV1ProfilesChannelsJobsMy500,
+  GetApiV1ProfilesChannelsJobsMyQuery,
+  GetApiV1ProfilesChannelsJobsMyQueryResponse,
+} from "./get-api-v1-profiles-channels-jobs-my.ts";
+export type {
   GetApiV1ProfilesChannelsPlatforms200,
   GetApiV1ProfilesChannelsPlatforms400,
   GetApiV1ProfilesChannelsPlatforms401,
@@ -458,6 +468,7 @@ export type {
 export { getMyIdeasListResponseMetaSchemaSortByEnum } from "./get-my-ideas-list-response-meta-schema.ts";
 export { getMyIdeasListResponseMetaSchemaSortOrderEnum } from "./get-my-ideas-list-response-meta-schema.ts";
 export type { GetMyIdeasListsResponseSchema } from "./get-my-ideas-lists-response-schema.ts";
+export type { GetMyProfilesFromChannelsJobResponseSchema } from "./get-my-profiles-from-channels-job-response-schema.ts";
 export type { GetMyProfilesResponseSchema } from "./get-my-profiles-response-schema.ts";
 export type { GetMyReferralCodesResponseSchema } from "./get-my-referral-codes-response-schema.ts";
 export type { GetMyReferralInvitesResponseMetaSchema } from "./get-my-referral-invites-response-meta-schema.ts";

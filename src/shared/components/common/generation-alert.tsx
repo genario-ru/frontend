@@ -1,8 +1,9 @@
 import { LoaderPinwheelIcon } from "lucide-react";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
-import { Heading } from "../ui/heading";
+import { Heading, type HeadingProps } from "../ui/heading";
 import { Island, type IslandProps } from "../ui/island";
 import { LucideIcon } from "../ui/lucide-icon";
 
@@ -10,12 +11,19 @@ type GenerationAlertProps = IslandProps & {
   title?: string;
   description?: string;
   hasGradient?: boolean;
+  titleProps?: HeadingProps;
+  descriptionProps?: ComponentProps<"p">;
 };
 
 export function GenerationAlert({
   title = "Идет генерация",
   description,
   hasGradient = true,
+  titleProps,
+  descriptionProps: {
+    className: descriptionClassName,
+    ...descriptionProps
+  } = {},
   className,
   ...props
 }: GenerationAlertProps) {
@@ -35,10 +43,20 @@ export function GenerationAlert({
           icon={LoaderPinwheelIcon}
           className="stroke-accent-6 animate-spin"
         />
-        <Heading variant="h3">{title}</Heading>
+        <Heading variant="h3" {...titleProps}>
+          {title}
+        </Heading>
       </header>
       {description && (
-        <p className="text-neutral-7 max-w-sm text-center">{description}</p>
+        <p
+          className={cn(
+            "text-neutral-7 max-w-sm text-center",
+            descriptionClassName,
+          )}
+          {...descriptionProps}
+        >
+          {description}
+        </p>
       )}
     </Island>
   );

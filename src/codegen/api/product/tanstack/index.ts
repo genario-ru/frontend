@@ -74,6 +74,10 @@ export type { GetApiV1ProfilesByProfileIdQueryKey } from "./get-api-v1-profiles-
 export { getApiV1ProfilesByProfileIdQueryKey } from "./get-api-v1-profiles-by-profile-id.ts";
 export { getApiV1ProfilesByProfileIdQueryOptions } from "./get-api-v1-profiles-by-profile-id.ts";
 export { useGetApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
+export type { GetApiV1ProfilesChannelsJobsMyQueryKey } from "./get-api-v1-profiles-channels-jobs-my.ts";
+export { getApiV1ProfilesChannelsJobsMyQueryKey } from "./get-api-v1-profiles-channels-jobs-my.ts";
+export { getApiV1ProfilesChannelsJobsMyQueryOptions } from "./get-api-v1-profiles-channels-jobs-my.ts";
+export { useGetApiV1ProfilesChannelsJobsMy } from "./get-api-v1-profiles-channels-jobs-my.ts";
 export type { GetApiV1ProfilesChannelsPlatformsQueryKey } from "./get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryKey } from "./get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryOptions } from "./get-api-v1-profiles-channels-platforms.ts";

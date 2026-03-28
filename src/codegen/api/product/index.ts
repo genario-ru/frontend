@@ -15,6 +15,7 @@ export { getApiV1IdeasListsByIdeasListIdExports } from "./clients/get-api-v1-ide
 export { getApiV1IdeasListsMy } from "./clients/get-api-v1-ideas-lists-my.ts";
 export { getApiV1Platforms } from "./clients/get-api-v1-platforms.ts";
 export { getApiV1ProfilesByProfileId } from "./clients/get-api-v1-profiles-by-profile-id.ts";
+export { getApiV1ProfilesChannelsJobsMy } from "./clients/get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsPlatforms } from "./clients/get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesMy } from "./clients/get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesTypes } from "./clients/get-api-v1-profiles-types.ts";
@@ -291,6 +292,16 @@ export type {
   GetApiV1ProfilesByProfileIdQueryResponse,
 } from "./models/get-api-v1-profiles-by-profile-id.ts";
 export type {
+  GetApiV1ProfilesChannelsJobsMy200,
+  GetApiV1ProfilesChannelsJobsMy400,
+  GetApiV1ProfilesChannelsJobsMy401,
+  GetApiV1ProfilesChannelsJobsMy403,
+  GetApiV1ProfilesChannelsJobsMy404,
+  GetApiV1ProfilesChannelsJobsMy500,
+  GetApiV1ProfilesChannelsJobsMyQuery,
+  GetApiV1ProfilesChannelsJobsMyQueryResponse,
+} from "./models/get-api-v1-profiles-channels-jobs-my.ts";
+export type {
   GetApiV1ProfilesChannelsPlatforms200,
   GetApiV1ProfilesChannelsPlatforms400,
   GetApiV1ProfilesChannelsPlatforms401,
@@ -515,6 +526,7 @@ export type {
 export { getMyIdeasListResponseMetaSchemaSortByEnum } from "./models/get-my-ideas-list-response-meta-schema.ts";
 export { getMyIdeasListResponseMetaSchemaSortOrderEnum } from "./models/get-my-ideas-list-response-meta-schema.ts";
 export type { GetMyIdeasListsResponseSchema } from "./models/get-my-ideas-lists-response-schema.ts";
+export type { GetMyProfilesFromChannelsJobResponseSchema } from "./models/get-my-profiles-from-channels-job-response-schema.ts";
 export type { GetMyProfilesResponseSchema } from "./models/get-my-profiles-response-schema.ts";
 export type { GetMyReferralCodesResponseSchema } from "./models/get-my-referral-codes-response-schema.ts";
 export type { GetMyReferralInvitesResponseMetaSchema } from "./models/get-my-referral-invites-response-meta-schema.ts";
@@ -976,6 +988,10 @@ export type { GetApiV1ProfilesByProfileIdQueryKey } from "./tanstack/get-api-v1-
 export { getApiV1ProfilesByProfileIdQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
 export { getApiV1ProfilesByProfileIdQueryOptions } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
 export { useGetApiV1ProfilesByProfileId } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
+export type { GetApiV1ProfilesChannelsJobsMyQueryKey } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
+export { getApiV1ProfilesChannelsJobsMyQueryKey } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
+export { getApiV1ProfilesChannelsJobsMyQueryOptions } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
+export { useGetApiV1ProfilesChannelsJobsMy } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
 export type { GetApiV1ProfilesChannelsPlatformsQueryKey } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryKey } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryOptions } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
@@ -1345,6 +1361,15 @@ export {
   getApiV1ProfilesByProfileIdQueryResponseSchema,
 } from "./zod/get-api-v1-profiles-by-profile-id-schema.ts";
 export {
+  getApiV1ProfilesChannelsJobsMy200Schema,
+  getApiV1ProfilesChannelsJobsMy400Schema,
+  getApiV1ProfilesChannelsJobsMy401Schema,
+  getApiV1ProfilesChannelsJobsMy403Schema,
+  getApiV1ProfilesChannelsJobsMy404Schema,
+  getApiV1ProfilesChannelsJobsMy500Schema,
+  getApiV1ProfilesChannelsJobsMyQueryResponseSchema,
+} from "./zod/get-api-v1-profiles-channels-jobs-my-schema.ts";
+export {
   getApiV1ProfilesChannelsPlatforms200Schema,
   getApiV1ProfilesChannelsPlatforms400Schema,
   getApiV1ProfilesChannelsPlatforms401Schema,
@@ -1539,6 +1564,7 @@ export { getMyArchiveItemsResponseMetaSchemaSchema } from "./zod/get-my-archive-
 export { getMyArchiveItemsResponseSchemaSchema } from "./zod/get-my-archive-items-response-schema-schema.ts";
 export { getMyIdeasListResponseMetaSchemaSchema } from "./zod/get-my-ideas-list-response-meta-schema-schema.ts";
 export { getMyIdeasListsResponseSchemaSchema } from "./zod/get-my-ideas-lists-response-schema-schema.ts";
+export { getMyProfilesFromChannelsJobResponseSchemaSchema } from "./zod/get-my-profiles-from-channels-job-response-schema-schema.ts";
 export { getMyProfilesResponseSchemaSchema } from "./zod/get-my-profiles-response-schema-schema.ts";
 export { getMyReferralCodesResponseSchemaSchema } from "./zod/get-my-referral-codes-response-schema-schema.ts";
 export { getMyReferralInvitesResponseMetaSchemaSchema } from "./zod/get-my-referral-invites-response-meta-schema-schema.ts";

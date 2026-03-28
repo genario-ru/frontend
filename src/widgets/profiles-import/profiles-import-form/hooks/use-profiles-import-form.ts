@@ -1,7 +1,10 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 
 import { useCreateProfilesFromChannels } from "@/actions/profiles/hooks/use-create-profiles-from-channels";
 import { useValidateProfileChannel } from "@/actions/profiles/hooks/use-validate-profile-channel";
+import { getApiV1ProfilesChannelsJobsMyQueryKey } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -11,6 +14,8 @@ import { profilesImportFormValidateFn } from "../utils/profile-import-form-helpe
 import { useProfilesImportFormValidations } from "./use-profiles-import-form-validations";
 
 export function useProfilesImportForm() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { showErrorToast } = useToast();
 
   const { createProfilesFromChannels, isCreateProfilesFromChannelsPending } =
@@ -40,6 +45,13 @@ export function useProfilesImportForm() {
       createProfilesFromChannels(
         { data: value },
         {
+          onSuccess: () => {
+            queryClient.invalidateQueries({
+              queryKey: getApiV1ProfilesChannelsJobsMyQueryKey(),
+            });
+
+            navigate({ to: "/profiles" });
+          },
           onError: (error) => {
             const errorData = error.cause.data;
 
