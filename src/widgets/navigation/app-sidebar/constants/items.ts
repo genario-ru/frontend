@@ -1,4 +1,10 @@
-import { ArchiveIcon, BoltIcon, HouseIcon, UsersRoundIcon } from "lucide-react";
+import {
+  ArchiveIcon,
+  BoltIcon,
+  CreditCardIcon,
+  HouseIcon,
+  UsersRoundIcon,
+} from "lucide-react";
 
 import type { AppSidebarItem } from "../types/app-sidebar-types";
 
@@ -17,6 +23,11 @@ export const appSidebarItems: AppSidebarItem[] = [
     Icon: UsersRoundIcon,
     label: "Профили",
     to: "/profiles",
+  },
+  {
+    Icon: CreditCardIcon,
+    label: "Подписка",
+    to: "/billing",
   },
   {
     Icon: BoltIcon,
