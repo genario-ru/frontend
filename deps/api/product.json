@@ -7428,38 +7428,64 @@
         "description": "Create profiles from channels response description"
       },
       "ProfileChannelUrlValidationSchema": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "error",
-              "success"
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "status": {
+                "type": "string",
+                "const": "success"
+              },
+              "statusDetails": {
+                "type": "string"
+              },
+              "platform": {
+                "$ref": "#/components/schemas/PlatformSchema"
+              }
+            },
+            "required": [
+              "url",
+              "status",
+              "statusDetails",
+              "platform"
             ]
           },
-          "statusDetails": {
-            "type": "string"
-          },
-          "platform": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/PlatformSchema"
+          {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
               },
-              {
-                "type": "null"
+              "status": {
+                "type": "string",
+                "const": "error"
+              },
+              "statusDetails": {
+                "type": "string"
+              },
+              "platform": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/PlatformSchema"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
+            },
+            "required": [
+              "url",
+              "status",
+              "statusDetails",
+              "platform"
             ]
           }
-        },
-        "required": [
-          "url",
-          "status",
-          "statusDetails",
-          "platform"
         ],
         "title": "Profile channel url validation",
         "description": "Profile channel url validation description"

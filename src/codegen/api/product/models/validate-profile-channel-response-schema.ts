@@ -12,7 +12,6 @@ import type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-va
 export type ValidateProfileChannelResponseSchema = {
   /**
    * @description Profile channel url validation description
-   * @type object
    */
   data: ProfileChannelUrlValidationSchema;
 };

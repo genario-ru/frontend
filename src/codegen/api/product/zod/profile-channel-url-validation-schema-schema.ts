@@ -11,12 +11,22 @@ import { platformSchemaSchema } from "./platform-schema-schema.ts";
  * @description Profile channel url validation description
  */
 export const profileChannelUrlValidationSchemaSchema = z
-  .object({
-    url: z.url(),
-    status: z.enum(["error", "success"]),
-    statusDetails: z.string(),
-    get platform() {
-      return z.union([platformSchemaSchema, z.null()]);
-    },
-  })
+  .union([
+    z.object({
+      url: z.url(),
+      status: z.literal("success"),
+      statusDetails: z.string(),
+      get platform() {
+        return platformSchemaSchema.describe("Platform description");
+      },
+    }),
+    z.object({
+      url: z.url(),
+      status: z.literal("error"),
+      statusDetails: z.string(),
+      get platform() {
+        return z.union([platformSchemaSchema, z.null()]);
+      },
+    }),
+  ])
   .describe("Profile channel url validation description");

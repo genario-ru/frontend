@@ -5,30 +5,42 @@
 
 import type { PlatformSchema } from "./platform-schema.ts";
 
-export const profileChannelUrlValidationSchemaStatusEnum = {
-  error: "error",
-  success: "success",
-} as const;
-
-export type ProfileChannelUrlValidationSchemaStatusEnumKey =
-  (typeof profileChannelUrlValidationSchemaStatusEnum)[keyof typeof profileChannelUrlValidationSchemaStatusEnum];
-
 /**
  * Profile channel url validation
  * @description Profile channel url validation description
  */
-export type ProfileChannelUrlValidationSchema = {
-  /**
-   * @type string, uri
-   */
-  url: string;
-  /**
-   * @type string
-   */
-  status: ProfileChannelUrlValidationSchemaStatusEnumKey;
-  /**
-   * @type string
-   */
-  statusDetails: string;
-  platform: PlatformSchema | null;
-};
+export type ProfileChannelUrlValidationSchema =
+  | {
+      /**
+       * @type string, uri
+       */
+      url: string;
+      /**
+       * @type string
+       */
+      status: "success";
+      /**
+       * @type string
+       */
+      statusDetails: string;
+      /**
+       * @description Platform description
+       * @type object
+       */
+      platform: PlatformSchema;
+    }
+  | {
+      /**
+       * @type string, uri
+       */
+      url: string;
+      /**
+       * @type string
+       */
+      status: "error";
+      /**
+       * @type string
+       */
+      statusDetails: string;
+      platform: PlatformSchema | null;
+    };

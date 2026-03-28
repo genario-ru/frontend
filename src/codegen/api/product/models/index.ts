@@ -733,11 +733,7 @@ export type {
   PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
   PostApiV1ScenariosVersionsByVersionIdExportPathParams,
 } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
-export type {
-  ProfileChannelUrlValidationSchema,
-  ProfileChannelUrlValidationSchemaStatusEnumKey,
-} from "./profile-channel-url-validation-schema.ts";
-export { profileChannelUrlValidationSchemaStatusEnum } from "./profile-channel-url-validation-schema.ts";
+export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
