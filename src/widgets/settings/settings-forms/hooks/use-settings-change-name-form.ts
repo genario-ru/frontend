@@ -3,17 +3,17 @@ import { useUpdateUser } from "@/actions/auth/hooks/use-update-user";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
-import type { AccountSettingsChangeNameFormSchema } from "../types/account-settings-change-form-types";
-import { changeNameFormMatchValidateFn } from "../utils/account-settings-change-name-form-helpers";
+import type { SettingsChangeNameFormSchema } from "../types/settings-change-form-types";
+import { changeNameFormMatchValidateFn } from "../utils/settings-change-name-form-helpers";
 
-export function useAccountSettingsChangeNameForm() {
+export function useSettingsChangeNameForm() {
   const { sessionData, refetchSession } = useGetSession();
   const { updateUserAsync } = useUpdateUser();
 
   const form = useAppForm({
     defaultValues: {
       name: sessionData?.user.name ?? "",
-    } as AccountSettingsChangeNameFormSchema,
+    } as SettingsChangeNameFormSchema,
     validators: {
       onChange: (data) => {
         if (form.state.submissionAttempts > 0) {

@@ -1,9 +1,9 @@
 import { IslandSection } from "@/shared/components/ui/island";
 
-import { useAccountSettingsChangeNameForm } from "../hooks/use-account-settings-change-name-form";
+import { useSettingsChangeNameForm } from "../hooks/use-settings-change-name-form";
 
-export function AccountSettingsChangeNameForm() {
-  const { form, onFormSubmit } = useAccountSettingsChangeNameForm();
+export function SettingsChangeNameForm() {
+  const { form, onFormSubmit } = useSettingsChangeNameForm();
 
   return (
     <IslandSection title="Имя">

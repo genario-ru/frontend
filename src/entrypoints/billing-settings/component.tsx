@@ -1,3 +1,3 @@
-export function BillingSettingsComponent() {
-  return <div>BillingSettingsComponent</div>;
+export function BillingComponent() {
+  return <div>BillingComponent</div>;
 }

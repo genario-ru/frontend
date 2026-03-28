@@ -21,6 +21,6 @@ export const appSidebarItems: AppSidebarItem[] = [
   {
     Icon: BoltIcon,
     label: "Настройки",
-    to: "/settings/account",
+    to: "/settings",
   },
 ];

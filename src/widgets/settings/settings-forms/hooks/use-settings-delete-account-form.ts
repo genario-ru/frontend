@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useDeleteUser } from "@/actions/auth/hooks/use-delete-user";
 import { composeFullUrl } from "@/shared/utils/compose-full-url";
 
-export function useAccountSettingsDeleteAccountForm() {
+export function useSettingsDeleteAccountForm() {
   const { deleteUser, isDeleteUserPending } = useDeleteUser();
 
   const onConfirmDeleteAccountButtonClick = useCallback(() => {

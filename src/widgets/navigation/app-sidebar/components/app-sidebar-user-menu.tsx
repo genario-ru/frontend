@@ -32,7 +32,7 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <AppSidebarUserMenuButtonLink
-              to="/settings/account"
+              to="/settings"
               className="flex items-center gap-2 py-3"
             >
               <ProfileImage
@@ -52,10 +52,7 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink
-              to="/settings/account"
-              icon={<BoltIcon />}
-            >
+            <AppSidebarUserMenuButtonLink to="/settings" icon={<BoltIcon />}>
               Настройки
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>

@@ -11,15 +11,15 @@ import {
 } from "@/shared/components/ui/dialog";
 import { IslandSection } from "@/shared/components/ui/island";
 
-import { useAccountSettingsDeleteAccountForm } from "../hooks/use-account-settings-delete-account-form";
+import { useSettingsDeleteAccountForm } from "../hooks/use-settings-delete-account-form";
 
 const ISLAND_SECTION_TITLE = "Удаление аккаунта";
 const ISLAND_SECTION_DESCRIPTION =
   "При удалении вашего аккаунта все ваши данные будут безвозвратно удалены и не смогут быть восстановлены.";
 
-export function AccountSettingsDeleteAccountForm() {
+export function SettingsDeleteAccountForm() {
   const { isDeleteUserPending, onConfirmDeleteAccountButtonClick } =
-    useAccountSettingsDeleteAccountForm();
+    useSettingsDeleteAccountForm();
 
   return (
     <IslandSection

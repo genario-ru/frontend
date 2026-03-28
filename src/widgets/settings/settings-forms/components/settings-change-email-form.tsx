@@ -9,7 +9,7 @@ import {
 } from "@/shared/components/ui/dialog";
 import { IslandSection } from "@/shared/components/ui/island";
 
-import { useAccountSettingsChangeEmailForm } from "../hooks/use-account-settings-change-email-form";
+import { useSettingsChangeEmailForm } from "../hooks/use-settings-change-email-form";
 
 const ISLAND_TITLE = "Email";
 const ISLAND_DESCRIPTION =
@@ -19,13 +19,13 @@ const DIALOG_DESCRIPTION =
   "Письмо для подтверждения было отправлено на ваш новый Email";
 const DIALOG_CLOSE_BUTTON_TEXT = "Хорошо, спасибо";
 
-export function AccountSettingsChangeEmailForm() {
+export function SettingsChangeEmailForm() {
   const {
     form,
     isEmailSentDialogOpen,
     setIsEmailSentDialogOpen,
     onFormSubmit,
-  } = useAccountSettingsChangeEmailForm();
+  } = useSettingsChangeEmailForm();
 
   return (
     <IslandSection title={ISLAND_TITLE} description={ISLAND_DESCRIPTION}>
