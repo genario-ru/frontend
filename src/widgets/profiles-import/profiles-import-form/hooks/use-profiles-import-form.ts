@@ -13,18 +13,15 @@ import { useProfilesImportFormValidations } from "./use-profiles-import-form-val
 export function useProfilesImportForm() {
   const { showErrorToast } = useToast();
 
-  const { validateProfileChannel, isValidateProfileChannelPending } =
-    useValidateProfileChannel();
-
   const { createProfilesFromChannels, isCreateProfilesFromChannelsPending } =
     useCreateProfilesFromChannels();
 
   const {
     successValidationFields,
-    activeValidationFieldIndex,
+    activeValidationFields,
     addSuccessValidationField,
     removeSuccessValidationField,
-    setActiveValidationFieldIndex,
+    addActiveValidationFieldIndex,
     resetActiveValidationFieldIndex,
   } = useProfilesImportFormValidations();
 
@@ -74,9 +71,47 @@ export function useProfilesImportForm() {
     },
   });
 
+  const { validateProfileChannel, isValidateProfileChannelPending } =
+    useValidateProfileChannel({
+      mutation: {
+        onSuccess: ({ data }, { data: { url } }) => {
+          const channelUrls = form.getFieldValue("channelUrls");
+          const fieldIndex = channelUrls.indexOf(url);
+
+          if (fieldIndex === -1) {
+            return;
+          }
+
+          if (data.status === "error") {
+            removeSuccessValidationField(fieldIndex);
+
+            form.setFieldMeta(`channelUrls[${fieldIndex}]`, (meta) => ({
+              ...meta,
+              errorMap: {
+                ...meta.errorMap,
+                onSubmit: data.statusDetails,
+              },
+            }));
+          } else {
+            addSuccessValidationField(fieldIndex);
+          }
+        },
+        onSettled: (_response, _error, variables) => {
+          const channelUrls = form.getFieldValue("channelUrls");
+          const fieldIndex = channelUrls.indexOf(variables.data.url);
+
+          if (fieldIndex === -1) {
+            return;
+          }
+
+          resetActiveValidationFieldIndex(fieldIndex);
+        },
+      },
+    });
+
   const handleValidateProfileChannel = useCallback(
     (channelUrl: string, index: number) => {
-      if (isValidateProfileChannelPending) {
+      if (activeValidationFields.includes(index)) {
         return;
       }
 
@@ -90,40 +125,15 @@ export function useProfilesImportForm() {
         return;
       }
 
-      setActiveValidationFieldIndex(index);
-
-      validateProfileChannel(
-        { data: { url: channelUrl } },
-        {
-          onSettled: () => {
-            resetActiveValidationFieldIndex();
-          },
-          onSuccess: ({ data }) => {
-            if (data.status === "error") {
-              removeSuccessValidationField(index);
-
-              form.setFieldMeta(`channelUrls[${index}]`, (meta) => ({
-                ...meta,
-                errorMap: {
-                  ...meta.errorMap,
-                  onSubmit: data.statusDetails,
-                },
-              }));
-            } else {
-              addSuccessValidationField(index);
-            }
-          },
-        },
-      );
+      addActiveValidationFieldIndex(index);
+      validateProfileChannel({ data: { url: channelUrl } });
     },
     [
       form,
-      isValidateProfileChannelPending,
+      activeValidationFields,
+      addActiveValidationFieldIndex,
       validateProfileChannel,
-      addSuccessValidationField,
       removeSuccessValidationField,
-      setActiveValidationFieldIndex,
-      resetActiveValidationFieldIndex,
     ],
   );
 
@@ -136,7 +146,7 @@ export function useProfilesImportForm() {
   return {
     form,
     successValidationFields,
-    activeValidationFieldIndex,
+    activeValidationFields,
     isCreateProfilesFromChannelsPending,
     onFormSubmit,
     handleValidateProfileChannel,

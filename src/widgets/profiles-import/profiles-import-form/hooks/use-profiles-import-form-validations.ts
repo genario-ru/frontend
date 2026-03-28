@@ -5,9 +5,9 @@ export function useProfilesImportFormValidations() {
     number[]
   >([]);
 
-  const [activeValidationFieldIndex, setActiveValidationFieldIndex] = useState<
-    number | null
-  >(null);
+  const [activeValidationFields, setActiveValidationFields] = useState<
+    number[]
+  >([]);
 
   function addSuccessValidationField(index: number) {
     setSuccessValidationFields((prev) => [...prev, index]);
@@ -17,16 +17,20 @@ export function useProfilesImportFormValidations() {
     setSuccessValidationFields((prev) => prev.filter((i) => i !== index));
   }
 
-  function resetActiveValidationFieldIndex() {
-    setActiveValidationFieldIndex(null);
+  function addActiveValidationFieldIndex(index: number) {
+    setActiveValidationFields((prev) => [...prev, index]);
+  }
+
+  function resetActiveValidationFieldIndex(index: number) {
+    setActiveValidationFields((prev) => prev.filter((i) => i !== index));
   }
 
   return {
     successValidationFields,
-    activeValidationFieldIndex,
+    activeValidationFields,
     addSuccessValidationField,
     removeSuccessValidationField,
-    setActiveValidationFieldIndex,
+    addActiveValidationFieldIndex,
     resetActiveValidationFieldIndex,
   };
 }

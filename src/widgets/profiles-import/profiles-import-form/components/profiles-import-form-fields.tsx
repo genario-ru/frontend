@@ -7,7 +7,7 @@ import type { ProfilesImportFormValues } from "../schemas/profiles-import-form-s
 
 type ProfilesImportFormFieldsProps = {
   successValidationFields: number[];
-  activeValidationFieldIndex: number | null;
+  activeValidationFields: number[];
   handleValidateProfileChannel: (channelUrl: string, index: number) => void;
 };
 
@@ -17,7 +17,7 @@ export const ProfilesImportFormFields = withForm({
   render: ({
     form,
     successValidationFields,
-    activeValidationFieldIndex,
+    activeValidationFields,
     handleValidateProfileChannel,
   }) => {
     return (
@@ -32,7 +32,7 @@ export const ProfilesImportFormFields = withForm({
                 const isRemoveAvailable = !isFirst && (!isFilled || !isValid);
 
                 const isValidationInProgress =
-                  activeValidationFieldIndex === index;
+                  activeValidationFields.includes(index);
 
                 const isSuccessValidation =
                   successValidationFields.includes(index);

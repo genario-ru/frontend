@@ -1,11 +1,17 @@
 import { usePostApiV1ProfilesChannelsValidate } from "@/codegen/api/product";
 
-export function useValidateProfileChannel() {
+type UseValidateProfileChannelProps = Parameters<
+  typeof usePostApiV1ProfilesChannelsValidate
+>[0];
+
+export function useValidateProfileChannel(
+  options?: UseValidateProfileChannelProps,
+) {
   const {
     mutate: validateProfileChannel,
     isPending: isValidateProfileChannelPending,
     isError: isValidateProfileChannelError,
-  } = usePostApiV1ProfilesChannelsValidate();
+  } = usePostApiV1ProfilesChannelsValidate(options);
 
   return {
     validateProfileChannel,
