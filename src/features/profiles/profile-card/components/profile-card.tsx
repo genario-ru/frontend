@@ -10,7 +10,7 @@ export type ProfileCardProps = {
   id: string;
   name: string;
   description: string | null;
-  typeName: string;
+  typeName?: string | null;
   tones: string[];
   platforms: string[];
   actions: ReactNode;
@@ -44,7 +44,7 @@ export const ProfileCard = ({
         <div className="flex w-full justify-between gap-2">
           <div className="mt-auto flex items-center gap-2 pt-3">
             <h2 className="text-xl font-semibold">{name}</h2>
-            <Badge size="sm">{typeName}</Badge>
+            {typeName && <Badge size="sm">{typeName}</Badge>}
           </div>
           {actions}
         </div>

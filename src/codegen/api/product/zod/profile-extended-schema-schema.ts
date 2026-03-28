@@ -27,7 +27,7 @@ export const profileExtendedSchemaSchema = z
       return userSchemaSchema.describe("User description");
     },
     get type() {
-      return profileTypeSchemaSchema.describe("Profile type description");
+      return z.union([profileTypeSchemaSchema, z.null()]);
     },
     get platforms() {
       return z.array(platformSchemaSchema.describe("Platform description"));

@@ -7315,7 +7315,14 @@
             "$ref": "#/components/schemas/UserSchema"
           },
           "type": {
-            "$ref": "#/components/schemas/ProfileTypeSchema"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProfileTypeSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "platforms": {
             "type": "array",

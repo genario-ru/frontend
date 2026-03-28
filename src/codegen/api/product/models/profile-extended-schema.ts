@@ -41,11 +41,7 @@ export type ProfileExtendedSchema = {
    * @type object
    */
   user: UserSchema;
-  /**
-   * @description Profile type description
-   * @type object
-   */
-  type: ProfileTypeSchema;
+  type: ProfileTypeSchema | null;
   /**
    * @type array
    */
