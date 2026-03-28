@@ -6,6 +6,8 @@ export function ProfilesImportForm() {
   const {
     form,
     successValidationFields,
+    activeValidationFieldIndex,
+    isCreateProfilesFromChannelsPending,
     onFormSubmit,
     handleValidateProfileChannel,
     handleAddProfileChannel,
@@ -16,10 +18,14 @@ export function ProfilesImportForm() {
       <ProfilesImportFormFields
         form={form}
         successValidationFields={successValidationFields}
+        activeValidationFieldIndex={activeValidationFieldIndex}
         handleValidateProfileChannel={handleValidateProfileChannel}
       />
       <ProfilesImportFormButtons
         form={form}
+        isCreateProfilesFromChannelsPending={
+          isCreateProfilesFromChannelsPending
+        }
         handleAddProfileChannel={handleAddProfileChannel}
       />
     </form>

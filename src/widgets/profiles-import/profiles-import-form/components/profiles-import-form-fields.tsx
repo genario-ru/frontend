@@ -7,13 +7,19 @@ import type { ProfilesImportFormValues } from "../schemas/profiles-import-form-s
 
 type ProfilesImportFormFieldsProps = {
   successValidationFields: number[];
+  activeValidationFieldIndex: number | null;
   handleValidateProfileChannel: (channelUrl: string, index: number) => void;
 };
 
 export const ProfilesImportFormFields = withForm({
   defaultValues: {} as ProfilesImportFormValues,
   props: {} as ProfilesImportFormFieldsProps,
-  render: ({ form, successValidationFields, handleValidateProfileChannel }) => {
+  render: ({
+    form,
+    successValidationFields,
+    activeValidationFieldIndex,
+    handleValidateProfileChannel,
+  }) => {
     return (
       <form.AppField name="channelUrls" mode="array">
         {(field) =>
@@ -24,6 +30,9 @@ export const ProfilesImportFormFields = withForm({
                 const isFilled = subfield.state.value.length > 0;
                 const isValid = subfield.state.meta.isValid;
                 const isRemoveAvailable = !isFirst && (!isFilled || !isValid);
+
+                const isValidationInProgress =
+                  activeValidationFieldIndex === index;
 
                 const isSuccessValidation =
                   successValidationFields.includes(index);
@@ -53,6 +62,7 @@ export const ProfilesImportFormFields = withForm({
                       <Button
                         type="button"
                         icon={<SearchIcon />}
+                        state={isValidationInProgress ? "loading" : "default"}
                         onClick={() =>
                           handleValidateProfileChannel(
                             subfield.state.value,

@@ -12,13 +12,20 @@ import { useProfilesImportFormValidations } from "./use-profiles-import-form-val
 
 export function useProfilesImportForm() {
   const { showErrorToast } = useToast();
-  const { createProfilesFromChannels } = useCreateProfilesFromChannels();
-  const { validateProfileChannel } = useValidateProfileChannel();
+
+  const { validateProfileChannel, isValidateProfileChannelPending } =
+    useValidateProfileChannel();
+
+  const { createProfilesFromChannels, isCreateProfilesFromChannelsPending } =
+    useCreateProfilesFromChannels();
 
   const {
     successValidationFields,
+    activeValidationFieldIndex,
     addSuccessValidationField,
     removeSuccessValidationField,
+    setActiveValidationFieldIndex,
+    resetActiveValidationFieldIndex,
   } = useProfilesImportFormValidations();
 
   const form = useAppForm({
@@ -29,10 +36,12 @@ export function useProfilesImportForm() {
       onSubmit: profilesImportFormValidateFn,
     },
     onSubmit: ({ value, formApi }) => {
+      if (isValidateProfileChannelPending) {
+        return;
+      }
+
       createProfilesFromChannels(
-        {
-          data: value,
-        },
+        { data: value },
         {
           onError: (error) => {
             const errorData = error.cause.data;
@@ -67,6 +76,10 @@ export function useProfilesImportForm() {
 
   const handleValidateProfileChannel = useCallback(
     (channelUrl: string, index: number) => {
+      if (isValidateProfileChannelPending) {
+        return;
+      }
+
       form.validateField(`channelUrls[${index}]`, "submit");
 
       const fieldMeta = form.getFieldMeta(`channelUrls[${index}]`);
@@ -77,9 +90,14 @@ export function useProfilesImportForm() {
         return;
       }
 
+      setActiveValidationFieldIndex(index);
+
       validateProfileChannel(
         { data: { url: channelUrl } },
         {
+          onSettled: () => {
+            resetActiveValidationFieldIndex();
+          },
           onSuccess: ({ data }) => {
             if (data.status === "error") {
               removeSuccessValidationField(index);
@@ -100,9 +118,12 @@ export function useProfilesImportForm() {
     },
     [
       form,
+      isValidateProfileChannelPending,
       validateProfileChannel,
       addSuccessValidationField,
       removeSuccessValidationField,
+      setActiveValidationFieldIndex,
+      resetActiveValidationFieldIndex,
     ],
   );
 
@@ -115,6 +136,8 @@ export function useProfilesImportForm() {
   return {
     form,
     successValidationFields,
+    activeValidationFieldIndex,
+    isCreateProfilesFromChannelsPending,
     onFormSubmit,
     handleValidateProfileChannel,
     handleAddProfileChannel,
