@@ -1,4 +1,4 @@
-import { ChevronDownIcon, FilmIcon, LightbulbIcon } from "lucide-react";
+import { ChevronDownIcon, BookImageIcon, LightbulbIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -29,7 +29,7 @@ export function ArchiveAppMenubarActions() {
           </ArchiveAppMenubarActionsButtonLink>
           <ArchiveAppMenubarActionsButtonLink
             priority="tertiary"
-            icon={<FilmIcon />}
+            icon={<BookImageIcon />}
             to="/scenarios/settings"
           >
             Новый сценарий

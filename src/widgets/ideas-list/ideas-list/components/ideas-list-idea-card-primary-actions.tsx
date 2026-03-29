@@ -1,4 +1,4 @@
-import { FilmIcon } from "lucide-react";
+import { BookImageIcon } from "lucide-react";
 
 import { ButtonLink } from "@/shared/components/ui/button-link";
 
@@ -23,7 +23,7 @@ export function IdeasListIdeaCardPrimaryActions({
         size="sm"
         priority="primary"
         {...createScenarioLinkOptions}
-        icon={<FilmIcon />}
+        icon={<BookImageIcon />}
       >
         Создать сценарий
       </ButtonLink>

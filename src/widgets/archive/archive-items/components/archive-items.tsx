@@ -1,4 +1,4 @@
-import { FilmIcon, LightbulbIcon, RotateCwIcon } from "lucide-react";
+import { BookImageIcon, LightbulbIcon, RotateCwIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
@@ -145,7 +145,7 @@ export function ArchiveItemsEmpty() {
           >
             Новые идеи
           </ButtonLink>
-          <ButtonLink size="lg" to="/scenarios/settings" icon={<FilmIcon />}>
+          <ButtonLink size="lg" to="/scenarios/settings" icon={<BookImageIcon />}>
             Новый сценарий
           </ButtonLink>
         </div>

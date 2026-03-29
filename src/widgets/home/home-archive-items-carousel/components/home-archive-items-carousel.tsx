@@ -1,12 +1,15 @@
 import "swiper/swiper.css";
 
+import { BookImageIcon, LightbulbIcon } from "lucide-react";
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
 import { ArchiveItemSkeleton } from "@/features/archive/archive-item/components/archive-item-skeleton";
 import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
+import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
+import { Plug } from "@/shared/components/ui/plug";
 import { ArchiveItemBadges } from "@/widgets/archive/archive-items/components/archive-item-badges";
 
 import { useHomeArchiveItemsCarousel } from "../hooks/use-home-archive-items-carousel";
@@ -15,6 +18,7 @@ import { HomeArchiveItemsSeeAll } from "./home-archive-items-see-all";
 export function HomeArchiveItemsCarousel() {
   const {
     archiveItemsData,
+    showSeeAllButton,
     isLoadingArchiveItems,
     hasPreviousSlide,
     hasNextSlide,
@@ -23,6 +27,10 @@ export function HomeArchiveItemsCarousel() {
     onPreviousButtonClick,
     onNextButtonClick,
   } = useHomeArchiveItemsCarousel();
+
+  const isEmptyArchiveItems = useMemo(() => {
+    return !archiveItemsData?.length;
+  }, [archiveItemsData]);
 
   const slides = useMemo(() => {
     if (isLoadingArchiveItems) {
@@ -37,7 +45,7 @@ export function HomeArchiveItemsCarousel() {
       );
     }
 
-    if (!archiveItemsData?.length) {
+    if (isEmptyArchiveItems) {
       return null;
     }
 
@@ -55,7 +63,32 @@ export function HomeArchiveItemsCarousel() {
         />
       </SwiperSlide>
     ));
-  }, [archiveItemsData, isLoadingArchiveItems]);
+  }, [archiveItemsData, isLoadingArchiveItems, isEmptyArchiveItems]);
+
+  const body = useMemo(() => {
+    if (isEmptyArchiveItems) {
+      return <HomeArchiveItemsCarouselEmptyPlug />;
+    }
+
+    return (
+      <Swiper
+        onSwiper={onSwiper}
+        onSlideChange={onSlideChange}
+        spaceBetween={8}
+        slidesPerView={3.2}
+        style={{ overflow: "visible" }}
+        className="w-full"
+        wrapperClass="grid min-h-[176px] w-full auto-cols-fr auto-rows-fr"
+      >
+        {slides}
+        {showSeeAllButton && (
+          <SwiperSlide style={{ height: "auto" }} className="w-full">
+            <HomeArchiveItemsSeeAll />
+          </SwiperSlide>
+        )}
+      </Swiper>
+    );
+  }, [showSeeAllButton, isEmptyArchiveItems, slides, onSwiper, onSlideChange]);
 
   return (
     <Island
@@ -70,20 +103,28 @@ export function HomeArchiveItemsCarousel() {
       }
       className="gap-3 overflow-hidden"
     >
-      <Swiper
-        onSwiper={onSwiper}
-        onSlideChange={onSlideChange}
-        spaceBetween={8}
-        slidesPerView={3.2}
-        style={{ overflow: "visible" }}
-        className="w-full"
-        wrapperClass="grid min-h-[176px] w-full auto-cols-fr auto-rows-fr"
-      >
-        {slides}
-        <SwiperSlide style={{ height: "auto" }} className="w-full">
-          <HomeArchiveItemsSeeAll />
-        </SwiperSlide>
-      </Swiper>
+      {body}
     </Island>
+  );
+}
+
+export function HomeArchiveItemsCarouselEmptyPlug() {
+  return (
+    <Plug
+      variant="neutral"
+      title="Тут пока пусто"
+      description="Создайте свой первый список идей или сценарий"
+      actions={
+        <div className="mt-3 flex items-center gap-2">
+          <ButtonLink to="/ideas-lists/settings" icon={<LightbulbIcon />}>
+            Новые идеи
+          </ButtonLink>
+          <ButtonLink to="/scenarios/settings" icon={<BookImageIcon />}>
+            Новый сценарий
+          </ButtonLink>
+        </div>
+      }
+      className="min-h-[176px]"
+    />
   );
 }

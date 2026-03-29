@@ -1,9 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   CircleCheckIcon,
+  CircleMinusIcon,
   CircleXIcon,
   type LucideIcon as LucideIconType,
-  ShredderIcon,
 } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -18,8 +18,8 @@ const plugVariants = cva("group/plug w-full flex items-center justify-center", {
       outlined: "border border-neutral-3 rounded-4",
     },
     direction: {
-      column: "flex-col gap-1",
-      row: "flex-row gap-2 py-0",
+      column: "flex-col",
+      row: "flex-row py-0",
     },
     size: {
       base: "",
@@ -34,8 +34,18 @@ const plugVariants = cva("group/plug w-full flex items-center justify-center", {
   compoundVariants: [
     {
       direction: "column",
+      size: "base",
+      className: "gap-1.5",
+    },
+    {
+      direction: "column",
       size: "lg",
       className: "gap-2",
+    },
+    {
+      direction: "column",
+      size: "lg",
+      className: "gap-3",
     },
     {
       direction: "row",
@@ -93,7 +103,7 @@ const plugDescriptionVariants = cva(
 const plugDefaultIconByVariant = {
   negative: CircleXIcon,
   positive: CircleCheckIcon,
-  neutral: ShredderIcon,
+  neutral: CircleMinusIcon,
 } as const;
 
 type PlugVariant = NonNullable<
@@ -116,7 +126,7 @@ export function Plug({
   variant = "neutral",
   actions,
   appearance,
-  direction,
+  direction = "column",
   size,
   className,
   ...props
@@ -150,22 +160,17 @@ export function Plug({
     </div>
   );
 
-  const content =
-    direction === "row" ? (
-      <>
-        {iconEl}
-        <div className="flex flex-col">
-          {titleEl}
-          {descriptionEl}
-        </div>
-      </>
-    ) : (
-      <>
-        {iconEl}
-        {titleEl}
-        {descriptionEl}
-      </>
-    );
+  const textContent = (
+    <div
+      className={cn("flex flex-col", {
+        "items-start": direction === "row",
+        "items-center": direction === "column",
+      })}
+    >
+      {titleEl}
+      {descriptionEl}
+    </div>
+  );
 
   return (
     <div
@@ -174,7 +179,8 @@ export function Plug({
       className={cn(plugVariants({ appearance, direction, size }), className)}
       {...props}
     >
-      {content}
+      {iconEl}
+      {textContent}
       {actions}
     </div>
   );

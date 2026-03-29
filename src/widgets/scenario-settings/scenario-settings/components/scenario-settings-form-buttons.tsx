@@ -1,5 +1,5 @@
 import { useRouter } from "@tanstack/react-router";
-import { ArrowLeftIcon, ArrowRightIcon, FilmIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, BookImageIcon } from "lucide-react";
 import { useCallback, useMemo } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
@@ -93,7 +93,7 @@ export const ScenarioSettingsFormButtons = withForm({
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<FilmIcon />}
+              icon={<BookImageIcon />}
             >
               Сгенерировать сценарий
             </Button>
@@ -114,7 +114,7 @@ export const ScenarioSettingsFormButtons = withForm({
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<FilmIcon />}
+              icon={<BookImageIcon />}
               onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
             >
               Сохранить и сгенерировать новую версию

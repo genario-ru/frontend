@@ -1,4 +1,4 @@
-import { FilmIcon, LightbulbIcon } from "lucide-react";
+import { BookImageIcon, LightbulbIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
@@ -33,7 +33,7 @@ export function TemplateCardMenu({
       <TemplateCardMenuButtonLink
         to="/scenarios/settings"
         search={{ templateId }}
-        icon={<LucideIcon icon={FilmIcon} />}
+        icon={<LucideIcon icon={BookImageIcon} />}
       >
         Новый сценарий
       </TemplateCardMenuButtonLink>

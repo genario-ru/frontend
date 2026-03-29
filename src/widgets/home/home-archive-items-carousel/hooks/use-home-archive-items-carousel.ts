@@ -23,6 +23,7 @@ export function useHomeArchiveItemsCarousel() {
 
   return {
     archiveItemsData: slicedArchiveItemsData,
+    showSeeAllButton: archiveItemsData.length > MAX_ARCHIVE_ITEMS_COUNT,
     isLoadingArchiveItems,
     hasPreviousSlide,
     hasNextSlide,
