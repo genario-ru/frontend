@@ -34,6 +34,7 @@ export function HomeArchiveItemsCarousel() {
 
   const slides = useMemo(() => {
     if (isLoadingArchiveItems) {
+      // TODO: Поисследовать странное отображение скелетонов, когда выносим этот код в отдельный компонент
       return (
         <>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -43,10 +44,6 @@ export function HomeArchiveItemsCarousel() {
           ))}
         </>
       );
-    }
-
-    if (isEmptyArchiveItems) {
-      return null;
     }
 
     return archiveItemsData.map((item) => (
@@ -63,10 +60,10 @@ export function HomeArchiveItemsCarousel() {
         />
       </SwiperSlide>
     ));
-  }, [archiveItemsData, isLoadingArchiveItems, isEmptyArchiveItems]);
+  }, [archiveItemsData, isLoadingArchiveItems]);
 
   const body = useMemo(() => {
-    if (isEmptyArchiveItems) {
+    if (isEmptyArchiveItems && !isLoadingArchiveItems) {
       return <HomeArchiveItemsCarouselEmptyPlug />;
     }
 
@@ -88,7 +85,14 @@ export function HomeArchiveItemsCarousel() {
         )}
       </Swiper>
     );
-  }, [showSeeAllButton, isEmptyArchiveItems, slides, onSwiper, onSlideChange]);
+  }, [
+    showSeeAllButton,
+    isLoadingArchiveItems,
+    isEmptyArchiveItems,
+    slides,
+    onSwiper,
+    onSlideChange,
+  ]);
 
   return (
     <Island
