@@ -438,6 +438,377 @@
         ]
       }
     },
+    "/api/v1/billing/payment-methods/my": {
+      "get": {
+        "operationId": "getApiV1BillingPaymentMethodsMy",
+        "tags": [
+          "Billing"
+        ],
+        "responses": {
+          "200": {
+            "description": "My payment methods retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyPaymentMethodsResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/billing/payments/my": {
+      "get": {
+        "operationId": "getApiV1BillingPaymentsMy",
+        "tags": [
+          "Billing"
+        ],
+        "responses": {
+          "200": {
+            "description": "My payments retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyPaymentsResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/credits/packages": {
+      "get": {
+        "operationId": "getApiV1CreditsPackages",
+        "tags": [
+          "Credits"
+        ],
+        "responses": {
+          "200": {
+            "description": "Credits packages retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCreditsPackagesResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/credits/batches/my": {
+      "get": {
+        "operationId": "getApiV1CreditsBatchesMy",
+        "tags": [
+          "Credits"
+        ],
+        "responses": {
+          "200": {
+            "description": "My credits batches retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyCreditsBatchesResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/credits/packages/initiate-payment": {
+      "post": {
+        "operationId": "postApiV1CreditsPackagesInitiatePayment",
+        "tags": [
+          "Credits"
+        ],
+        "responses": {
+          "200": {
+            "description": "Credits package payment initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitiateCreditsPackagePaymentResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "creditsPackageId": {
+                    "type": "string"
+                  },
+                  "redirect": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "creditsPackageId"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/ideas-lists": {
       "post": {
         "operationId": "postApiV1IdeasLists",
@@ -4488,6 +4859,100 @@
         }
       }
     },
+    "/api/v1/subscriptions/initiate-payment": {
+      "post": {
+        "operationId": "postApiV1SubscriptionsInitiatePayment",
+        "tags": [
+          "Subscriptions"
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription payment initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitiateSubscriptionPaymentResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tariffSlug": {
+                    "type": "string"
+                  },
+                  "trialTariffSlug": {
+                    "type": "string"
+                  },
+                  "redirect": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tariffSlug"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/tariffs": {
       "get": {
         "operationId": "getApiV1Tariffs",
@@ -5568,6 +6033,611 @@
         ],
         "title": "Save idea body",
         "description": "Save idea body description"
+      },
+      "PaymentMethodSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "paymentMethodId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "paymentMethodId",
+          "type",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Payment method",
+        "description": "Payment method description"
+      },
+      "GetMyPaymentMethodsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentMethodSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get my payment methods response",
+        "description": "Get my payment methods response description"
+      },
+      "TariffSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "price": {
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "oldPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": -8388608,
+                "maximum": 8388607
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "billingPeriod": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "month",
+                  "year"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "durationDays": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isRenewable": {
+            "type": "boolean"
+          },
+          "isPreferred": {
+            "type": "boolean"
+          },
+          "creditsAmount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "maxProfilesAmount": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exportAvailable": {
+            "type": "boolean"
+          },
+          "versionHistoryAvailable": {
+            "type": "boolean"
+          },
+          "generationPriority": {
+            "type": "string",
+            "enum": [
+              "basic",
+              "medium",
+              "high"
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "description",
+          "price",
+          "oldPrice",
+          "billingPeriod",
+          "durationDays",
+          "isRenewable",
+          "isPreferred",
+          "creditsAmount",
+          "maxProfilesAmount",
+          "exportAvailable",
+          "versionHistoryAvailable",
+          "generationPriority",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Tariff",
+        "description": "Tariff description"
+      },
+      "CreditsPackageSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "amount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "price": {
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "oldPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": -8388608,
+                "maximum": 8388607
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "forPurchase": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "amount",
+          "price",
+          "oldPrice",
+          "forPurchase",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Credits package",
+        "description": "Credits package description"
+      },
+      "PaymentExtendedSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "paymentMethodId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "paymentId": {
+            "type": "string"
+          },
+          "paymentLink": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "currency": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "succeeded",
+              "canceled"
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "paymentMethod": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PaymentMethodSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tariff": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TariffSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "creditsPackage": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreditsPackageSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "paymentMethodId",
+          "paymentId",
+          "paymentLink",
+          "amount",
+          "currency",
+          "status",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Payment extended",
+        "description": "Payment extended description"
+      },
+      "GetMyPaymentsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentExtendedSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get my payments response",
+        "description": "Get my payments response description"
+      },
+      "GetCreditsPackagesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditsPackageSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get credits packages response",
+        "description": "Get credits packages response description"
+      },
+      "SubscriptionSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "tariffId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "startsAt": {
+            "type": "string"
+          },
+          "endsAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lastBilledAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "nextBillingAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "active",
+                  "overdue",
+                  "cancelled"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "tariffId",
+          "startsAt",
+          "endsAt",
+          "lastBilledAt",
+          "nextBillingAt",
+          "status",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Subscription",
+        "description": "Subscription description"
+      },
+      "CreditsBatchExtendedSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "initialAmount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "remainingAmount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "expiresAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "subscription": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SubscriptionSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "creditsPackage": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreditsPackageSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "name",
+          "description",
+          "initialAmount",
+          "remainingAmount",
+          "expiresAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Credits batch extended",
+        "description": "Credits batch extended description"
+      },
+      "GetMyCreditsBatchesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditsBatchExtendedSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get my credits batches response",
+        "description": "Get my credits batches response description"
+      },
+      "InitiateCreditsPackagePaymentResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "paymentLink": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "paymentLink"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Initiate credits package payment response",
+        "description": "Initiate credits package payment response description"
       },
       "IdeasListSchema": {
         "type": "object",
@@ -9550,140 +10620,6 @@
         "title": "Update scenario scene component body",
         "description": "Update scenario scene component body description"
       },
-      "TariffSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "slug": {
-            "type": "string",
-            "maxLength": 255
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "price": {
-            "type": "number",
-            "minimum": -8388608,
-            "maximum": 8388607
-          },
-          "oldPrice": {
-            "anyOf": [
-              {
-                "type": "number",
-                "minimum": -8388608,
-                "maximum": 8388607
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "billingPeriod": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "month",
-                  "year"
-                ]
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "durationDays": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": -9007199254740991,
-                "maximum": 9007199254740991
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "isRenewable": {
-            "type": "boolean"
-          },
-          "isPreferred": {
-            "type": "boolean"
-          },
-          "creditsAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "maxProfilesAmount": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": -9007199254740991,
-                "maximum": 9007199254740991
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "exportAvailable": {
-            "type": "boolean"
-          },
-          "versionHistoryAvailable": {
-            "type": "boolean"
-          },
-          "generationPriority": {
-            "type": "string",
-            "enum": [
-              "basic",
-              "medium",
-              "high"
-            ]
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "slug",
-          "name",
-          "description",
-          "price",
-          "oldPrice",
-          "billingPeriod",
-          "durationDays",
-          "isRenewable",
-          "isPreferred",
-          "creditsAmount",
-          "maxProfilesAmount",
-          "exportAvailable",
-          "versionHistoryAvailable",
-          "generationPriority",
-          "createdAt",
-          "updatedAt"
-        ],
-        "title": "Tariff",
-        "description": "Tariff description"
-      },
       "SubscriptionExtendedSchema": {
         "type": "object",
         "properties": {
@@ -9792,6 +10728,27 @@
         ],
         "title": "Get my subscriptions response",
         "description": "Get my subscriptions response description"
+      },
+      "InitiateSubscriptionPaymentResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "paymentLink": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "paymentLink"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Initiate subscription payment response",
+        "description": "Initiate subscription payment response description"
       },
       "TariffExtendedSchema": {
         "type": "object",
