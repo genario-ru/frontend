@@ -11,6 +11,7 @@ import { z } from "@/lib/zod/index.ts";
 export const tariffSchemaSchema = z
   .object({
     id: z.uuid(),
+    creditsPackageId: z.union([z.uuid(), z.null()]),
     slug: z.string().max(255),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
@@ -20,7 +21,6 @@ export const tariffSchemaSchema = z
     durationDays: z.union([z.int(), z.null()]),
     isRenewable: z.boolean(),
     isPreferred: z.boolean(),
-    creditsAmount: z.int().min(-9007199254740991).max(9007199254740991),
     maxProfilesAmount: z.union([z.int(), z.null()]),
     exportAvailable: z.boolean(),
     versionHistoryAvailable: z.boolean(),

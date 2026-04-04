@@ -10,6 +10,7 @@ export const subscriptionExtendedSchemaStatusEnum = {
   active: "active",
   overdue: "overdue",
   cancelled: "cancelled",
+  terminated: "terminated",
 } as const;
 
 export type SubscriptionExtendedSchemaStatusEnumKey =
@@ -32,14 +33,22 @@ export type SubscriptionExtendedSchema = {
    * @type string, uuid
    */
   tariffId: string;
+  startsAt: string | null;
+  endsAt: string | null;
+  cycleStartsAt: string | null;
+  cycleEndsAt: string | null;
+  lastBilledAt: string | null;
+  nextBillingAt: string | null;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  failedBillingAttempts: number;
   /**
    * @type string
    */
-  startsAt: string;
-  endsAt: string | null;
-  lastBilledAt: string | null;
-  nextBillingAt: string | null;
-  status: SubscriptionExtendedSchemaStatusEnumKey | null;
+  status: SubscriptionExtendedSchemaStatusEnumKey;
   /**
    * @type string
    */

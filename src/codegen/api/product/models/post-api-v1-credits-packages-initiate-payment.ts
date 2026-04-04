@@ -5,6 +5,7 @@
 
 import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { InitiateCreditsPackagePaymentBodySchema } from "./initiate-credits-package-payment-body-schema.ts";
 import type { InitiateCreditsPackagePaymentResponseSchema } from "./initiate-credits-package-payment-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
@@ -51,16 +52,11 @@ export type PostApiV1CreditsPackagesInitiatePayment404 = NotFoundResponseSchema;
 export type PostApiV1CreditsPackagesInitiatePayment500 =
   InternalServerErrorResponseSchema;
 
-export type PostApiV1CreditsPackagesInitiatePaymentMutationRequest = {
-  /**
-   * @type string
-   */
-  creditsPackageId: string;
-  /**
-   * @type string | undefined
-   */
-  redirect?: string;
-};
+/**
+ * Initiate credits package payment body
+ */
+export type PostApiV1CreditsPackagesInitiatePaymentMutationRequest =
+  InitiateCreditsPackagePaymentBodySchema;
 
 export type PostApiV1CreditsPackagesInitiatePaymentMutationResponse =
   PostApiV1CreditsPackagesInitiatePayment200;

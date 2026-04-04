@@ -6,6 +6,15 @@
 import type { CreditsPackageSchema } from "./credits-package-schema.ts";
 import type { SubscriptionSchema } from "./subscription-schema.ts";
 
+export const creditsBatchExtendedSchemaStatusEnum = {
+  pending: "pending",
+  active: "active",
+  terminated: "terminated",
+} as const;
+
+export type CreditsBatchExtendedSchemaStatusEnumKey =
+  (typeof creditsBatchExtendedSchemaStatusEnum)[keyof typeof creditsBatchExtendedSchemaStatusEnum];
+
 /**
  * Credits batch extended
  * @description Credits batch extended description
@@ -20,6 +29,10 @@ export type CreditsBatchExtendedSchema = {
    */
   userId: string;
   /**
+   * @type string, uuid
+   */
+  creditsPackageId: string;
+  /**
    * @type string
    */
   name: string;
@@ -29,13 +42,11 @@ export type CreditsBatchExtendedSchema = {
    * @maxLength 9007199254740991
    * @type integer
    */
-  initialAmount: number;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
-   */
   remainingAmount: number;
+  /**
+   * @type string
+   */
+  status: CreditsBatchExtendedSchemaStatusEnumKey;
   expiresAt: string | null;
   /**
    * @type string

@@ -21,7 +21,8 @@ export const paymentExtendedSchemaSchema = z
     paymentLink: z.union([z.string(), z.null()]),
     amount: z.number().min(-8388608).max(8388607),
     currency: z.string(),
-    status: z.enum(["pending", "succeeded", "canceled"]),
+    status: z.enum(["pending", "succeeded", "canceled", "failed"]),
+    statusDetails: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
     get paymentMethod() {

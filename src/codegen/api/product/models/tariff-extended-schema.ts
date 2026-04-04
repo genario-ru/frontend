@@ -29,6 +29,7 @@ export type TariffExtendedSchema = {
    * @type string, uuid
    */
   id: string;
+  creditsPackageId: string | null;
   /**
    * @maxLength 255
    * @type string
@@ -56,12 +57,6 @@ export type TariffExtendedSchema = {
    * @type boolean
    */
   isPreferred: boolean;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
-   */
-  creditsAmount: number;
   maxProfilesAmount: number | null;
   /**
    * @type boolean

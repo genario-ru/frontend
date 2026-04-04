@@ -30,7 +30,7 @@ import type {
 } from "../models/get-delete-user-callback.ts";
 
 export const getDeleteUserCallbackQueryKey = (
-  params: GetDeleteUserCallbackQueryParams = {},
+  params?: GetDeleteUserCallbackQueryParams,
 ) => [{ url: "/delete-user/callback" }, ...(params ? [params] : [])] as const;
 
 export type GetDeleteUserCallbackQueryKey = ReturnType<

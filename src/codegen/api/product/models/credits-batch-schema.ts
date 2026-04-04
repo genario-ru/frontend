@@ -3,6 +3,15 @@
  * Do not edit manually.
  */
 
+export const creditsBatchSchemaStatusEnum = {
+  pending: "pending",
+  active: "active",
+  terminated: "terminated",
+} as const;
+
+export type CreditsBatchSchemaStatusEnumKey =
+  (typeof creditsBatchSchemaStatusEnum)[keyof typeof creditsBatchSchemaStatusEnum];
+
 /**
  * Credits batch
  * @description Credits batch description
@@ -17,6 +26,10 @@ export type CreditsBatchSchema = {
    */
   userId: string;
   /**
+   * @type string, uuid
+   */
+  creditsPackageId: string;
+  /**
    * @type string
    */
   name: string;
@@ -26,13 +39,11 @@ export type CreditsBatchSchema = {
    * @maxLength 9007199254740991
    * @type integer
    */
-  initialAmount: number;
-  /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
-   */
   remainingAmount: number;
+  /**
+   * @type string
+   */
+  status: CreditsBatchSchemaStatusEnumKey;
   expiresAt: string | null;
   /**
    * @type string

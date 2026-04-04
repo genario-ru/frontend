@@ -29,7 +29,7 @@ import type {
   ListUsersQueryResponse,
 } from "../models/list-users.ts";
 
-export const listUsersQueryKey = (params: ListUsersQueryParams = {}) =>
+export const listUsersQueryKey = (params?: ListUsersQueryParams) =>
   [{ url: "/admin/list-users" }, ...(params ? [params] : [])] as const;
 
 export type ListUsersQueryKey = ReturnType<typeof listUsersQueryKey>;

@@ -61,4 +61,5 @@ export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channe
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosVersionsByVersionIdExport } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
+export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./post-api-v1-subscriptions-initiate-payment.ts";

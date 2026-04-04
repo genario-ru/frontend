@@ -29,7 +29,7 @@ import type {
 } from "../models/get-api-v1-ideas-lists-my.ts";
 
 export const getApiV1IdeasListsMyQueryKey = (
-  params: GetApiV1IdeasListsMyQueryParams = {},
+  params?: GetApiV1IdeasListsMyQueryParams,
 ) => [{ url: "/api/v1/ideas-lists/my" }, ...(params ? [params] : [])] as const;
 
 export type GetApiV1IdeasListsMyQueryKey = ReturnType<

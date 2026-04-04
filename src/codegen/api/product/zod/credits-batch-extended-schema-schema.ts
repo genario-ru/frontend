@@ -15,10 +15,11 @@ export const creditsBatchExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
+    creditsPackageId: z.uuid(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
-    initialAmount: z.int().min(-9007199254740991).max(9007199254740991),
     remainingAmount: z.int().min(-9007199254740991).max(9007199254740991),
+    status: z.enum(["pending", "active", "terminated"]),
     expiresAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),

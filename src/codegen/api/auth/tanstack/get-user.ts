@@ -29,7 +29,7 @@ import type {
   GetUserQueryResponse,
 } from "../models/get-user.ts";
 
-export const getUserQueryKey = (params: GetUserQueryParams = {}) =>
+export const getUserQueryKey = (params?: GetUserQueryParams) =>
   [{ url: "/admin/get-user" }, ...(params ? [params] : [])] as const;
 
 export type GetUserQueryKey = ReturnType<typeof getUserQueryKey>;

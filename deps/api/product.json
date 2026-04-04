@@ -791,18 +791,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "creditsPackageId": {
-                    "type": "string"
-                  },
-                  "redirect": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "creditsPackageId"
-                ]
+                "$ref": "#/components/schemas/InitiateCreditsPackagePaymentBodySchema"
               }
             }
           }
@@ -4859,6 +4848,88 @@
         }
       }
     },
+    "/api/v1/subscriptions/{subscriptionId}/cancel": {
+      "post": {
+        "operationId": "postApiV1SubscriptionsBySubscriptionIdCancel",
+        "tags": [
+          "Subscriptions"
+        ],
+        "responses": {
+          "201": {
+            "description": "Subscription cancelled successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelSubscriptionResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subscriptionId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ]
+      }
+    },
     "/api/v1/subscriptions/initiate-payment": {
       "post": {
         "operationId": "postApiV1SubscriptionsInitiatePayment",
@@ -4932,21 +5003,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "tariffSlug": {
-                    "type": "string"
-                  },
-                  "trialTariffSlug": {
-                    "type": "string"
-                  },
-                  "redirect": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "tariffSlug"
-                ]
+                "$ref": "#/components/schemas/InitiateSubscriptionPaymentBodySchema"
               }
             }
           }
@@ -6050,8 +6107,54 @@
           "paymentMethodId": {
             "type": "string"
           },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "inactive"
+            ]
+          },
+          "statusDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "type": {
             "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confirmationUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "data": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ]
           },
           "createdAt": {
             "type": "string"
@@ -6064,7 +6167,12 @@
           "id",
           "userId",
           "paymentMethodId",
+          "status",
+          "statusDetails",
           "type",
+          "title",
+          "confirmationUrl",
+          "data",
           "createdAt",
           "updatedAt"
         ],
@@ -6094,6 +6202,18 @@
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "creditsPackageId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "slug": {
             "type": "string",
@@ -6161,11 +6281,6 @@
           "isPreferred": {
             "type": "boolean"
           },
-          "creditsAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
           "maxProfilesAmount": {
             "anyOf": [
               {
@@ -6201,6 +6316,7 @@
         },
         "required": [
           "id",
+          "creditsPackageId",
           "slug",
           "name",
           "description",
@@ -6210,7 +6326,6 @@
           "durationDays",
           "isRenewable",
           "isPreferred",
-          "creditsAmount",
           "maxProfilesAmount",
           "exportAvailable",
           "versionHistoryAvailable",
@@ -6339,7 +6454,18 @@
             "enum": [
               "pending",
               "succeeded",
-              "canceled"
+              "canceled",
+              "failed"
+            ]
+          },
+          "statusDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "createdAt": {
@@ -6388,6 +6514,7 @@
           "amount",
           "currency",
           "status",
+          "statusDetails",
           "createdAt",
           "updatedAt"
         ],
@@ -6445,9 +6572,36 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "startsAt": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "endsAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cycleStartsAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cycleEndsAt": {
             "anyOf": [
               {
                 "type": "string"
@@ -6477,20 +6631,19 @@
               }
             ]
           },
+          "failedBillingAttempts": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
           "status": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "pending",
-                  "active",
-                  "overdue",
-                  "cancelled"
-                ]
-              },
-              {
-                "type": "null"
-              }
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "overdue",
+              "cancelled",
+              "terminated"
             ]
           },
           "createdAt": {
@@ -6506,8 +6659,11 @@
           "tariffId",
           "startsAt",
           "endsAt",
+          "cycleStartsAt",
+          "cycleEndsAt",
           "lastBilledAt",
           "nextBillingAt",
+          "failedBillingAttempts",
           "status",
           "createdAt",
           "updatedAt"
@@ -6528,6 +6684,11 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
+          "creditsPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
           "name": {
             "type": "string"
           },
@@ -6541,15 +6702,18 @@
               }
             ]
           },
-          "initialAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
           "remainingAmount": {
             "type": "integer",
             "minimum": -9007199254740991,
             "maximum": 9007199254740991
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "terminated"
+            ]
           },
           "expiresAt": {
             "anyOf": [
@@ -6591,10 +6755,11 @@
         "required": [
           "id",
           "userId",
+          "creditsPackageId",
           "name",
           "description",
-          "initialAmount",
           "remainingAmount",
+          "status",
           "expiresAt",
           "createdAt",
           "updatedAt"
@@ -6638,6 +6803,22 @@
         ],
         "title": "Initiate credits package payment response",
         "description": "Initiate credits package payment response description"
+      },
+      "InitiateCreditsPackagePaymentBodySchema": {
+        "type": "object",
+        "properties": {
+          "creditsPackageId": {
+            "type": "string"
+          },
+          "redirect": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "creditsPackageId"
+        ],
+        "title": "Initiate credits package payment body",
+        "description": "Initiate credits package payment body description"
       },
       "IdeasListSchema": {
         "type": "object",
@@ -9083,6 +9264,11 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
+          "creditsPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
           "name": {
             "type": "string"
           },
@@ -9096,15 +9282,18 @@
               }
             ]
           },
-          "initialAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
           "remainingAmount": {
             "type": "integer",
             "minimum": -9007199254740991,
             "maximum": 9007199254740991
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "terminated"
+            ]
           },
           "expiresAt": {
             "anyOf": [
@@ -9126,10 +9315,11 @@
         "required": [
           "id",
           "userId",
+          "creditsPackageId",
           "name",
           "description",
-          "initialAmount",
           "remainingAmount",
+          "status",
           "expiresAt",
           "createdAt",
           "updatedAt"
@@ -10639,9 +10829,36 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "startsAt": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "endsAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cycleStartsAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cycleEndsAt": {
             "anyOf": [
               {
                 "type": "string"
@@ -10671,20 +10888,19 @@
               }
             ]
           },
+          "failedBillingAttempts": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
           "status": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "pending",
-                  "active",
-                  "overdue",
-                  "cancelled"
-                ]
-              },
-              {
-                "type": "null"
-              }
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "overdue",
+              "cancelled",
+              "terminated"
             ]
           },
           "createdAt": {
@@ -10703,8 +10919,11 @@
           "tariffId",
           "startsAt",
           "endsAt",
+          "cycleStartsAt",
+          "cycleEndsAt",
           "lastBilledAt",
           "nextBillingAt",
+          "failedBillingAttempts",
           "status",
           "createdAt",
           "updatedAt",
@@ -10729,6 +10948,19 @@
         "title": "Get my subscriptions response",
         "description": "Get my subscriptions response description"
       },
+      "CancelSubscriptionResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Cancel subscription response",
+        "description": "Cancel subscription response description"
+      },
       "InitiateSubscriptionPaymentResponseSchema": {
         "type": "object",
         "properties": {
@@ -10750,6 +10982,25 @@
         "title": "Initiate subscription payment response",
         "description": "Initiate subscription payment response description"
       },
+      "InitiateSubscriptionPaymentBodySchema": {
+        "type": "object",
+        "properties": {
+          "tariffSlug": {
+            "type": "string"
+          },
+          "trialTariffSlug": {
+            "type": "string"
+          },
+          "redirect": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tariffSlug"
+        ],
+        "title": "Initiate subscription payment body",
+        "description": "Initiate subscription payment body description"
+      },
       "TariffExtendedSchema": {
         "type": "object",
         "properties": {
@@ -10757,6 +11008,18 @@
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "creditsPackageId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "slug": {
             "type": "string",
@@ -10824,11 +11087,6 @@
           "isPreferred": {
             "type": "boolean"
           },
-          "creditsAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
           "maxProfilesAmount": {
             "anyOf": [
               {
@@ -10882,6 +11140,7 @@
         },
         "required": [
           "id",
+          "creditsPackageId",
           "slug",
           "name",
           "description",
@@ -10891,7 +11150,6 @@
           "durationDays",
           "isRenewable",
           "isPreferred",
-          "creditsAmount",
           "maxProfilesAmount",
           "exportAvailable",
           "versionHistoryAvailable",

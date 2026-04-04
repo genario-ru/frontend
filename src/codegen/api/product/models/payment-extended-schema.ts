@@ -11,6 +11,7 @@ export const paymentExtendedSchemaStatusEnum = {
   pending: "pending",
   succeeded: "succeeded",
   canceled: "canceled",
+  failed: "failed",
 } as const;
 
 export type PaymentExtendedSchemaStatusEnumKey =
@@ -49,6 +50,7 @@ export type PaymentExtendedSchema = {
    * @type string
    */
   status: PaymentExtendedSchemaStatusEnumKey;
+  statusDetails: string | null;
   /**
    * @type string
    */

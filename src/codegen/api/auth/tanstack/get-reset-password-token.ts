@@ -32,7 +32,7 @@ import type {
 
 export const getResetPasswordTokenQueryKey = (
   { token }: { token: GetResetPasswordTokenPathParams["token"] },
-  params: GetResetPasswordTokenQueryParams = {},
+  params?: GetResetPasswordTokenQueryParams,
 ) =>
   [
     { url: "/reset-password/:token", params: { token: token } },

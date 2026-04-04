@@ -6,58 +6,58 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
+import { cancelSubscriptionResponseSchemaSchema } from "./cancel-subscription-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
-import { initiateSubscriptionPaymentBodySchemaSchema } from "./initiate-subscription-payment-body-schema-schema.ts";
-import { initiateSubscriptionPaymentResponseSchemaSchema } from "./initiate-subscription-payment-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
+export const postApiV1SubscriptionsBySubscriptionIdCancelPathParamsSchema =
+  z.object({
+    subscriptionId: z.uuid(),
+  });
+
 /**
- * @description Subscription payment initiated successfully
+ * @description Subscription cancelled successfully
  */
-export const postApiV1SubscriptionsInitiatePayment200Schema = z
-  .lazy(() => initiateSubscriptionPaymentResponseSchemaSchema)
-  .describe("Initiate subscription payment response description");
+export const postApiV1SubscriptionsBySubscriptionIdCancel201Schema = z
+  .lazy(() => cancelSubscriptionResponseSchemaSchema)
+  .describe("Cancel subscription response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1SubscriptionsInitiatePayment400Schema = z
+export const postApiV1SubscriptionsBySubscriptionIdCancel400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1SubscriptionsInitiatePayment401Schema = z
+export const postApiV1SubscriptionsBySubscriptionIdCancel401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1SubscriptionsInitiatePayment403Schema = z
+export const postApiV1SubscriptionsBySubscriptionIdCancel403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1SubscriptionsInitiatePayment404Schema = z
+export const postApiV1SubscriptionsBySubscriptionIdCancel404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1SubscriptionsInitiatePayment500Schema = z
+export const postApiV1SubscriptionsBySubscriptionIdCancel500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const postApiV1SubscriptionsInitiatePaymentMutationRequestSchema = z
-  .lazy(() => initiateSubscriptionPaymentBodySchemaSchema)
-  .describe("Initiate subscription payment body description");
-
-export const postApiV1SubscriptionsInitiatePaymentMutationResponseSchema =
-  z.lazy(() => postApiV1SubscriptionsInitiatePayment200Schema);
+export const postApiV1SubscriptionsBySubscriptionIdCancelMutationResponseSchema =
+  z.lazy(() => postApiV1SubscriptionsBySubscriptionIdCancel201Schema);

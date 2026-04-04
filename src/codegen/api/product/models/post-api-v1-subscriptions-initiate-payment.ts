@@ -5,6 +5,7 @@
 
 import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
+import type { InitiateSubscriptionPaymentBodySchema } from "./initiate-subscription-payment-body-schema.ts";
 import type { InitiateSubscriptionPaymentResponseSchema } from "./initiate-subscription-payment-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
@@ -49,20 +50,11 @@ export type PostApiV1SubscriptionsInitiatePayment404 = NotFoundResponseSchema;
 export type PostApiV1SubscriptionsInitiatePayment500 =
   InternalServerErrorResponseSchema;
 
-export type PostApiV1SubscriptionsInitiatePaymentMutationRequest = {
-  /**
-   * @type string
-   */
-  tariffSlug: string;
-  /**
-   * @type string | undefined
-   */
-  trialTariffSlug?: string;
-  /**
-   * @type string | undefined
-   */
-  redirect?: string;
-};
+/**
+ * Initiate subscription payment body
+ */
+export type PostApiV1SubscriptionsInitiatePaymentMutationRequest =
+  InitiateSubscriptionPaymentBodySchema;
 
 export type PostApiV1SubscriptionsInitiatePaymentMutationResponse =
   PostApiV1SubscriptionsInitiatePayment200;

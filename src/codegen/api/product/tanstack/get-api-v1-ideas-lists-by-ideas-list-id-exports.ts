@@ -35,7 +35,7 @@ export const getApiV1IdeasListsByIdeasListIdExportsQueryKey = (
   }: {
     ideasListId: GetApiV1IdeasListsByIdeasListIdExportsPathParams["ideasListId"];
   },
-  params: GetApiV1IdeasListsByIdeasListIdExportsQueryParams = {},
+  params?: GetApiV1IdeasListsByIdeasListIdExportsQueryParams,
 ) =>
   [
     {

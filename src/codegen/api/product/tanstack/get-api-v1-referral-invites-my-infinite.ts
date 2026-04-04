@@ -30,7 +30,7 @@ import type {
 } from "../models/get-api-v1-referral-invites-my.ts";
 
 export const getApiV1ReferralInvitesMyInfiniteQueryKey = (
-  params: GetApiV1ReferralInvitesMyQueryParams = {},
+  params?: GetApiV1ReferralInvitesMyQueryParams,
 ) =>
   [
     { url: "/api/v1/referral/invites/my" },

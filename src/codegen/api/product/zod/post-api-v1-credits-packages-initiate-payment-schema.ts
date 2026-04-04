@@ -7,6 +7,7 @@ import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
+import { initiateCreditsPackagePaymentBodySchemaSchema } from "./initiate-credits-package-payment-body-schema-schema.ts";
 import { initiateCreditsPackagePaymentResponseSchemaSchema } from "./initiate-credits-package-payment-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
@@ -54,11 +55,9 @@ export const postApiV1CreditsPackagesInitiatePayment500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const postApiV1CreditsPackagesInitiatePaymentMutationRequestSchema =
-  z.object({
-    creditsPackageId: z.string(),
-    redirect: z.optional(z.string()),
-  });
+export const postApiV1CreditsPackagesInitiatePaymentMutationRequestSchema = z
+  .lazy(() => initiateCreditsPackagePaymentBodySchemaSchema)
+  .describe("Initiate credits package payment body description");
 
 export const postApiV1CreditsPackagesInitiatePaymentMutationResponseSchema =
   z.lazy(() => postApiV1CreditsPackagesInitiatePayment200Schema);

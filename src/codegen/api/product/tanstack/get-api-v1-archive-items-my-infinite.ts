@@ -30,7 +30,7 @@ import type {
 } from "../models/get-api-v1-archive-items-my.ts";
 
 export const getApiV1ArchiveItemsMyInfiniteQueryKey = (
-  params: GetApiV1ArchiveItemsMyQueryParams = {},
+  params?: GetApiV1ArchiveItemsMyQueryParams,
 ) =>
   [{ url: "/api/v1/archive/items/my" }, ...(params ? [params] : [])] as const;
 

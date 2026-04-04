@@ -3,6 +3,15 @@
  * Do not edit manually.
  */
 
+export const paymentMethodSchemaStatusEnum = {
+  pending: "pending",
+  active: "active",
+  inactive: "inactive",
+} as const;
+
+export type PaymentMethodSchemaStatusEnumKey =
+  (typeof paymentMethodSchemaStatusEnum)[keyof typeof paymentMethodSchemaStatusEnum];
+
 /**
  * Payment method
  * @description Payment method description
@@ -23,7 +32,15 @@ export type PaymentMethodSchema = {
   /**
    * @type string
    */
+  status: PaymentMethodSchemaStatusEnumKey;
+  statusDetails: string | null;
+  /**
+   * @type string
+   */
   type: string;
+  title: string | null;
+  confirmationUrl: string | null;
+  data: any | null;
   /**
    * @type string
    */
