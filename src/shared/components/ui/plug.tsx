@@ -43,8 +43,8 @@ const plugVariants = cva("group/plug w-full flex items-center justify-center", {
       className: "gap-2",
     },
     {
-      direction: "column",
-      size: "lg",
+      direction: "row",
+      size: "base",
       className: "gap-3",
     },
     {
