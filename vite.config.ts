@@ -43,6 +43,9 @@ export default defineConfig(({ mode }) => {
           cleanupOutdatedCaches: true,
           // HTML не включаем в precache — иначе SW отдаёт старый index.html после деплоя
           globPatterns: ["**/*.{js,css,ico,png,svg,woff,woff2,ttf,eot}"],
+          // Отключаем navigateFallback — index.html не в precache,
+          // навигация обрабатывается через runtimeCaching ниже
+          navigateFallback: null,
           // Для навигации всегда идём в сеть первым делом (NetworkFirst):
           // nginx вернёт свежий index.html с no-cache, а ссылки на новые хэшированные
           // ассеты заставят браузер подтянуть актуальный бандл.
