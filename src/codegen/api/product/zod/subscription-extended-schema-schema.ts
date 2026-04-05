@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { tariffSchemaSchema } from "./tariff-schema-schema.ts";
+import { tariffExtendedSchemaSchema } from "./tariff-extended-schema-schema.ts";
 
 /**
  * @description Subscription extended description
@@ -26,7 +26,7 @@ export const subscriptionExtendedSchemaSchema = z
     createdAt: z.string(),
     updatedAt: z.string(),
     get tariff() {
-      return tariffSchemaSchema.describe("Tariff description");
+      return tariffExtendedSchemaSchema.describe("Tariff extended description");
     },
   })
   .describe("Subscription extended description");

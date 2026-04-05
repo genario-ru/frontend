@@ -5,6 +5,8 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { creditsPackageSchemaSchema } from "./credits-package-schema-schema.ts";
+
 /**
  * @description Tariff extended description
  */
@@ -27,6 +29,9 @@ export const tariffExtendedSchemaSchema = z
     generationPriority: z.enum(["basic", "medium", "high"]),
     createdAt: z.string(),
     updatedAt: z.string(),
+    get creditsPackage() {
+      return z.union([creditsPackageSchemaSchema, z.null()]).optional();
+    },
     features: z.array(
       z.object({
         text: z.string(),

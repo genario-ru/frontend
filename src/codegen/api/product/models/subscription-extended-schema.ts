@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { TariffSchema } from "./tariff-schema.ts";
+import type { TariffExtendedSchema } from "./tariff-extended-schema.ts";
 
 export const subscriptionExtendedSchemaStatusEnum = {
   pending: "pending",
@@ -58,8 +58,8 @@ export type SubscriptionExtendedSchema = {
    */
   updatedAt: string;
   /**
-   * @description Tariff description
+   * @description Tariff extended description
    * @type object
    */
-  tariff: TariffSchema;
+  tariff: TariffExtendedSchema;
 };

@@ -3,6 +3,8 @@
  * Do not edit manually.
  */
 
+import type { CreditsPackageSchema } from "./credits-package-schema.ts";
+
 export const tariffExtendedSchemaBillingPeriodEnum = {
   month: "month",
   year: "year",
@@ -78,6 +80,7 @@ export type TariffExtendedSchema = {
    * @type string
    */
   updatedAt: string;
+  creditsPackage?: CreditsPackageSchema | null;
   /**
    * @type array
    */
