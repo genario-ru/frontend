@@ -1,4 +1,4 @@
-import { ChevronDownIcon, BookImageIcon, LightbulbIcon } from "lucide-react";
+import { BookImageIcon, ChevronDownIcon, LightbulbIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
 import {

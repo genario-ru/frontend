@@ -145,7 +145,11 @@ export function ArchiveItemsEmpty() {
           >
             Новые идеи
           </ButtonLink>
-          <ButtonLink size="lg" to="/scenarios/settings" icon={<BookImageIcon />}>
+          <ButtonLink
+            size="lg"
+            to="/scenarios/settings"
+            icon={<BookImageIcon />}
+          >
             Новый сценарий
           </ButtonLink>
         </div>
