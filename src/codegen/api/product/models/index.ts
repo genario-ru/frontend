@@ -1,3 +1,5 @@
+export type { AddPaymentMethodBodySchema } from "./add-payment-method-body-schema.ts";
+export type { AddPaymentMethodResponseSchema } from "./add-payment-method-response-schema.ts";
 export type { ArchiveFilterOptionSchema } from "./archive-filter-option-schema.ts";
 export type {
   ArchiveFilterSchema,
@@ -37,6 +39,17 @@ export type {
 } from "./credits-batch-schema.ts";
 export { creditsBatchSchemaStatusEnum } from "./credits-batch-schema.ts";
 export type { CreditsPackageSchema } from "./credits-package-schema.ts";
+export type {
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId200,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId401,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId403,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId404,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId500,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodIdMutation,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodIdMutationResponse,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodIdPathParams,
+} from "./delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
 export type {
   DeleteApiV1IdeasByIdeaId200,
   DeleteApiV1IdeasByIdeaId400,
@@ -127,6 +140,7 @@ export type {
 } from "./delete-api-v1-scenarios-versions-by-version-id.ts";
 export type { DeleteIdeaResponseSchema } from "./delete-idea-response-schema.ts";
 export type { DeleteIdeasListResponseSchema } from "./delete-ideas-list-response-schema.ts";
+export type { DeletePaymentMethodResponseSchema } from "./delete-payment-method-response-schema.ts";
 export type { DeleteProfileResponseSchema } from "./delete-profile-response-schema.ts";
 export type { DeleteScenarioChapterResponseSchema } from "./delete-scenario-chapter-response-schema.ts";
 export type { DeleteScenarioResponseSchema } from "./delete-scenario-response-schema.ts";
@@ -698,6 +712,17 @@ export type {
 export { paymentMethodSchemaStatusEnum } from "./payment-method-schema.ts";
 export type { PlatformExtendedSchema } from "./platform-extended-schema.ts";
 export type { PlatformSchema } from "./platform-schema.ts";
+export type {
+  PostApiV1BillingPaymentMethods201,
+  PostApiV1BillingPaymentMethods400,
+  PostApiV1BillingPaymentMethods401,
+  PostApiV1BillingPaymentMethods403,
+  PostApiV1BillingPaymentMethods404,
+  PostApiV1BillingPaymentMethods500,
+  PostApiV1BillingPaymentMethodsMutation,
+  PostApiV1BillingPaymentMethodsMutationRequest,
+  PostApiV1BillingPaymentMethodsMutationResponse,
+} from "./post-api-v1-billing-payment-methods.ts";
 export type {
   PostApiV1CreditsPackagesInitiatePayment200,
   PostApiV1CreditsPackagesInitiatePayment400,

@@ -1,3 +1,4 @@
+export { deleteApiV1BillingPaymentMethodsByPaymentMethodId } from "./delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
 export { deleteApiV1IdeasByIdeaId } from "./delete-api-v1-ideas-by-idea-id.ts";
 export { deleteApiV1IdeasListsByIdeasListId } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { deleteApiV1ProfilesByProfileId } from "./delete-api-v1-profiles-by-profile-id.ts";
@@ -50,6 +51,7 @@ export { patchApiV1ScenariosByScenarioIdSave } from "./patch-api-v1-scenarios-by
 export { patchApiV1ScenariosChaptersByChapterId } from "./patch-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "./patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { patchApiV1ScenariosScenesBySceneId } from "./patch-api-v1-scenarios-scenes-by-scene-id.ts";
+export { postApiV1BillingPaymentMethods } from "./post-api-v1-billing-payment-methods.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./post-api-v1-ideas-lists.ts";
 export { postApiV1IdeasListsByIdeasListIdExport } from "./post-api-v1-ideas-lists-by-ideas-list-id-export.ts";
