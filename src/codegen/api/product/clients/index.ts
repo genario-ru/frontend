@@ -14,6 +14,7 @@ export { getApiV1BillingPaymentMethodsMy } from "./get-api-v1-billing-payment-me
 export { getApiV1BillingPaymentsMy } from "./get-api-v1-billing-payments-my.ts";
 export { getApiV1CreditsBatchesMy } from "./get-api-v1-credits-batches-my.ts";
 export { getApiV1CreditsPackages } from "./get-api-v1-credits-packages.ts";
+export { getApiV1CreditsUsageMy } from "./get-api-v1-credits-usage-my.ts";
 export { getApiV1IdeasByIdeaId } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";

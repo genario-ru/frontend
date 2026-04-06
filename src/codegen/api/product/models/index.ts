@@ -40,6 +40,11 @@ export type {
 export { creditsBatchSchemaStatusEnum } from "./credits-batch-schema.ts";
 export type { CreditsPackageSchema } from "./credits-package-schema.ts";
 export type {
+  CreditsUsagePublicExtendedSchema,
+  CreditsUsagePublicExtendedSchemaEntityEnumKey,
+} from "./credits-usage-public-extended-schema.ts";
+export { creditsUsagePublicExtendedSchemaEntityEnum } from "./credits-usage-public-extended-schema.ts";
+export type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId200,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId401,
@@ -227,6 +232,17 @@ export type {
   GetApiV1CreditsPackagesQuery,
   GetApiV1CreditsPackagesQueryResponse,
 } from "./get-api-v1-credits-packages.ts";
+export type {
+  GetApiV1CreditsUsageMy200,
+  GetApiV1CreditsUsageMy400,
+  GetApiV1CreditsUsageMy401,
+  GetApiV1CreditsUsageMy403,
+  GetApiV1CreditsUsageMy404,
+  GetApiV1CreditsUsageMy500,
+  GetApiV1CreditsUsageMyQuery,
+  GetApiV1CreditsUsageMyQueryParams,
+  GetApiV1CreditsUsageMyQueryResponse,
+} from "./get-api-v1-credits-usage-my.ts";
 export type {
   GetApiV1IdeasByIdeaId200,
   GetApiV1IdeasByIdeaId400,
@@ -527,6 +543,8 @@ export { dataStatusEnum } from "./get-ideas-list-response-schema.ts";
 export type { GetMyArchiveItemsResponseMetaSchema } from "./get-my-archive-items-response-meta-schema.ts";
 export type { GetMyArchiveItemsResponseSchema } from "./get-my-archive-items-response-schema.ts";
 export type { GetMyCreditsBatchesResponseSchema } from "./get-my-credits-batches-response-schema.ts";
+export type { GetMyCreditsUsageResponseMetaSchema } from "./get-my-credits-usage-response-meta-schema.ts";
+export type { GetMyCreditsUsageResponseSchema } from "./get-my-credits-usage-response-schema.ts";
 export type {
   GetMyIdeasListResponseMetaSchema,
   GetMyIdeasListResponseMetaSchemaSortByEnumKey,

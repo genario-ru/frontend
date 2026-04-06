@@ -880,6 +880,94 @@
         }
       }
     },
+    "/api/v1/credits/usage/my": {
+      "get": {
+        "operationId": "getApiV1CreditsUsageMy",
+        "tags": [
+          "Credits"
+        ],
+        "responses": {
+          "200": {
+            "description": "My credits usage retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyCreditsUsageResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Номер страницы"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Количество элементов в одной странице ответа"
+          }
+        ]
+      }
+    },
     "/api/v1/credits/packages/initiate-payment": {
       "post": {
         "operationId": "postApiV1CreditsPackagesInitiatePayment",
@@ -6989,6 +7077,220 @@
         "title": "Get my credits batches response",
         "description": "Get my credits batches response description"
       },
+      "CreditsBatchSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "creditsPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "remainingAmount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "terminated"
+            ]
+          },
+          "expiresAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "creditsPackageId",
+          "name",
+          "description",
+          "remainingAmount",
+          "status",
+          "expiresAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Credits batch",
+        "description": "Credits batch description"
+      },
+      "CreditsUsagePublicExtendedSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "batchId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "entity": {
+            "type": "string",
+            "enum": [
+              "ideas-list",
+              "scenario-chapters",
+              "scenario-chapter-scenes",
+              "scenario-scene-preview"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "creditsAmount": {
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "creditsBatch": {
+            "$ref": "#/components/schemas/CreditsBatchSchema"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "batchId",
+          "entity",
+          "entityId",
+          "creditsAmount",
+          "createdAt",
+          "updatedAt",
+          "creditsBatch"
+        ],
+        "title": "Credits usage extended (public)",
+        "description": "Credits usage extended without pricing fields"
+      },
+      "GetMyCreditsUsageResponseMetaSchema": {
+        "type": "object",
+        "properties": {
+          "previousPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер предыдущей страницы"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Номер текущей страницы"
+          },
+          "nextPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер следующей страницы"
+          },
+          "perPage": {
+            "type": "number",
+            "description": "Количество элементов в одной странице ответа"
+          },
+          "totalItems": {
+            "type": "number",
+            "description": "Общее количество элементов по запросу"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Общее количество страниц по запросу"
+          },
+          "q": {
+            "description": "Строка поиска",
+            "type": "string"
+          }
+        },
+        "required": [
+          "previousPage",
+          "currentPage",
+          "nextPage",
+          "perPage",
+          "totalItems",
+          "totalPages"
+        ],
+        "title": "Get my credits usage response meta",
+        "description": "Get my credits usage response meta description"
+      },
+      "GetMyCreditsUsageResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditsUsagePublicExtendedSchema"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/GetMyCreditsUsageResponseMetaSchema"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Get my credits usage response",
+        "description": "Get my credits usage response description"
+      },
       "InitiateCreditsPackagePaymentResponseSchema": {
         "type": "object",
         "properties": {
@@ -9456,82 +9758,6 @@
         ],
         "title": "Referral code",
         "description": "Referral code description"
-      },
-      "CreditsBatchSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "creditsPackageId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "remainingAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "active",
-              "terminated"
-            ]
-          },
-          "expiresAt": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "userId",
-          "creditsPackageId",
-          "name",
-          "description",
-          "remainingAmount",
-          "status",
-          "expiresAt",
-          "createdAt",
-          "updatedAt"
-        ],
-        "title": "Credits batch",
-        "description": "Credits batch description"
       },
       "TariffDiscountSchema": {
         "type": "object",
