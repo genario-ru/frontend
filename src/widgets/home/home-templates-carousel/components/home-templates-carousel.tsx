@@ -66,7 +66,7 @@ export function HomeTemplatesCarousel() {
           onNextClick={onNextButtonClick}
         />
       }
-      className="gap-3 overflow-hidden"
+      className="isolate gap-3 overflow-hidden"
     >
       <Swiper
         onSwiper={onSwiper}

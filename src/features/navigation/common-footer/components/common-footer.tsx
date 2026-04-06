@@ -1,22 +1,22 @@
-import { Logo } from "@/shared/components/common/logo";
 import { Island } from "@/shared/components/ui/island";
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
+import { cn } from "@/shared/utils/cn";
 
 import { commonFooterLinks } from "../constants/common-footer-links";
 import { CommonFooterLegalInfo } from "./common-footer-legal-info";
 import { CommonFooterLinksColumn } from "./common-footer-links-column";
 
-export function CommonFooter() {
+type CommonFooterProps = PropsWithClassName;
+
+export function CommonFooter({ className }: CommonFooterProps) {
   return (
     <Island
-      as="footer"
       row
+      as="footer"
       roundedBottom={false}
-      className="flex w-full justify-between"
+      className={cn("flex w-full justify-between", className)}
     >
-      <div className="flex flex-col justify-between gap-8">
-        <Logo />
-        <CommonFooterLegalInfo />
-      </div>
+      <CommonFooterLegalInfo />
       <nav className="flex gap-12">
         {commonFooterLinks.map((column, index) => (
           <CommonFooterLinksColumn

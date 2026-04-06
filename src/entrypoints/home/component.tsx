@@ -1,3 +1,4 @@
+import { CommonFooter } from "@/features/navigation/common-footer/components/common-footer";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { HomeAppMenubar } from "@/widgets/home/home-app-menubar/components/home-app-menubar";
@@ -8,12 +9,13 @@ export function HomeComponent() {
   return (
     <>
       <HomeAppMenubar />
-      <PageLayout>
+      <PageLayout className="pb-5">
         <ContentLayout className="gap-4">
           <HomeTemplatesCarousel />
           <HomeArchiveItemsCarousel />
         </ContentLayout>
       </PageLayout>
+      <CommonFooter className="mt-auto" />
     </>
   );
 }
