@@ -8,9 +8,9 @@ import { z } from "@/lib/zod/index.ts";
 import { creditsBatchSchemaSchema } from "./credits-batch-schema-schema.ts";
 
 /**
- * @description Credits usage extended without pricing fields
+ * @description Credits usage extended description
  */
-export const creditsUsagePublicExtendedSchemaSchema = z
+export const creditsUsageExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
@@ -23,10 +23,11 @@ export const creditsUsagePublicExtendedSchemaSchema = z
     ]),
     entityId: z.uuid(),
     creditsAmount: z.number().min(-8388608).max(8388607),
+    tokensPerCredit: z.int().min(-9007199254740991).max(9007199254740991),
     createdAt: z.string(),
     updatedAt: z.string(),
     get creditsBatch() {
       return creditsBatchSchemaSchema.describe("Credits batch description");
     },
   })
-  .describe("Credits usage extended without pricing fields");
+  .describe("Credits usage extended description");

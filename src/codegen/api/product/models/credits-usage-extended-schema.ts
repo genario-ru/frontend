@@ -5,21 +5,21 @@
 
 import type { CreditsBatchSchema } from "./credits-batch-schema.ts";
 
-export const creditsUsagePublicExtendedSchemaEntityEnum = {
+export const creditsUsageExtendedSchemaEntityEnum = {
   "ideas-list": "ideas-list",
   "scenario-chapters": "scenario-chapters",
   "scenario-chapter-scenes": "scenario-chapter-scenes",
   "scenario-scene-preview": "scenario-scene-preview",
 } as const;
 
-export type CreditsUsagePublicExtendedSchemaEntityEnumKey =
-  (typeof creditsUsagePublicExtendedSchemaEntityEnum)[keyof typeof creditsUsagePublicExtendedSchemaEntityEnum];
+export type CreditsUsageExtendedSchemaEntityEnumKey =
+  (typeof creditsUsageExtendedSchemaEntityEnum)[keyof typeof creditsUsageExtendedSchemaEntityEnum];
 
 /**
- * Credits usage extended (public)
- * @description Credits usage extended without pricing fields
+ * Credits usage extended
+ * @description Credits usage extended description
  */
-export type CreditsUsagePublicExtendedSchema = {
+export type CreditsUsageExtendedSchema = {
   /**
    * @type string, uuid
    */
@@ -35,7 +35,7 @@ export type CreditsUsagePublicExtendedSchema = {
   /**
    * @type string
    */
-  entity: CreditsUsagePublicExtendedSchemaEntityEnumKey;
+  entity: CreditsUsageExtendedSchemaEntityEnumKey;
   /**
    * @type string, uuid
    */
@@ -46,6 +46,12 @@ export type CreditsUsagePublicExtendedSchema = {
    * @type number
    */
   creditsAmount: number;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  tokensPerCredit: number;
   /**
    * @type string
    */

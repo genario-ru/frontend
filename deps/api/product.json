@@ -7153,7 +7153,7 @@
         "title": "Credits batch",
         "description": "Credits batch description"
       },
-      "CreditsUsagePublicExtendedSchema": {
+      "CreditsUsageExtendedSchema": {
         "type": "object",
         "properties": {
           "id": {
@@ -7190,6 +7190,11 @@
             "minimum": -8388608,
             "maximum": 8388607
           },
+          "tokensPerCredit": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
           "createdAt": {
             "type": "string"
           },
@@ -7207,12 +7212,13 @@
           "entity",
           "entityId",
           "creditsAmount",
+          "tokensPerCredit",
           "createdAt",
           "updatedAt",
           "creditsBatch"
         ],
-        "title": "Credits usage extended (public)",
-        "description": "Credits usage extended without pricing fields"
+        "title": "Credits usage extended",
+        "description": "Credits usage extended description"
       },
       "GetMyCreditsUsageResponseMetaSchema": {
         "type": "object",
@@ -7277,7 +7283,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CreditsUsagePublicExtendedSchema"
+              "$ref": "#/components/schemas/CreditsUsageExtendedSchema"
             }
           },
           "meta": {

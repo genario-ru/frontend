@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { CreditsUsagePublicExtendedSchema } from "./credits-usage-public-extended-schema.ts";
+import type { CreditsUsageExtendedSchema } from "./credits-usage-extended-schema.ts";
 import type { GetMyCreditsUsageResponseMetaSchema } from "./get-my-credits-usage-response-meta-schema.ts";
 
 /**
@@ -14,7 +14,7 @@ export type GetMyCreditsUsageResponseSchema = {
   /**
    * @type array
    */
-  data: CreditsUsagePublicExtendedSchema[];
+  data: CreditsUsageExtendedSchema[];
   /**
    * @description Get my credits usage response meta description
    * @type object

@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { creditsUsagePublicExtendedSchemaSchema } from "./credits-usage-public-extended-schema-schema.ts";
+import { creditsUsageExtendedSchemaSchema } from "./credits-usage-extended-schema-schema.ts";
 import { getMyCreditsUsageResponseMetaSchemaSchema } from "./get-my-credits-usage-response-meta-schema-schema.ts";
 
 /**
@@ -15,8 +15,8 @@ export const getMyCreditsUsageResponseSchemaSchema = z
   .object({
     get data() {
       return z.array(
-        creditsUsagePublicExtendedSchemaSchema.describe(
-          "Credits usage extended without pricing fields",
+        creditsUsageExtendedSchemaSchema.describe(
+          "Credits usage extended description",
         ),
       );
     },

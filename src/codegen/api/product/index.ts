@@ -108,10 +108,10 @@ export type {
 export { creditsBatchSchemaStatusEnum } from "./models/credits-batch-schema.ts";
 export type { CreditsPackageSchema } from "./models/credits-package-schema.ts";
 export type {
-  CreditsUsagePublicExtendedSchema,
-  CreditsUsagePublicExtendedSchemaEntityEnumKey,
-} from "./models/credits-usage-public-extended-schema.ts";
-export { creditsUsagePublicExtendedSchemaEntityEnum } from "./models/credits-usage-public-extended-schema.ts";
+  CreditsUsageExtendedSchema,
+  CreditsUsageExtendedSchemaEntityEnumKey,
+} from "./models/credits-usage-extended-schema.ts";
+export { creditsUsageExtendedSchemaEntityEnum } from "./models/credits-usage-extended-schema.ts";
 export type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId200,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,
@@ -1387,7 +1387,7 @@ export { createScenarioScenePreviewResponseSchemaSchema } from "./zod/create-sce
 export { creditsBatchExtendedSchemaSchema } from "./zod/credits-batch-extended-schema-schema.ts";
 export { creditsBatchSchemaSchema } from "./zod/credits-batch-schema-schema.ts";
 export { creditsPackageSchemaSchema } from "./zod/credits-package-schema-schema.ts";
-export { creditsUsagePublicExtendedSchemaSchema } from "./zod/credits-usage-public-extended-schema-schema.ts";
+export { creditsUsageExtendedSchemaSchema } from "./zod/credits-usage-extended-schema-schema.ts";
 export {
   deleteApiV1BillingPaymentMethodsByPaymentMethodId200Schema,
   deleteApiV1BillingPaymentMethodsByPaymentMethodId400Schema,

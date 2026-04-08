@@ -25,7 +25,7 @@ export { createScenarioScenePreviewResponseSchemaSchema } from "./create-scenari
 export { creditsBatchExtendedSchemaSchema } from "./credits-batch-extended-schema-schema.ts";
 export { creditsBatchSchemaSchema } from "./credits-batch-schema-schema.ts";
 export { creditsPackageSchemaSchema } from "./credits-package-schema-schema.ts";
-export { creditsUsagePublicExtendedSchemaSchema } from "./credits-usage-public-extended-schema-schema.ts";
+export { creditsUsageExtendedSchemaSchema } from "./credits-usage-extended-schema-schema.ts";
 export {
   deleteApiV1BillingPaymentMethodsByPaymentMethodId200Schema,
   deleteApiV1BillingPaymentMethodsByPaymentMethodId400Schema,

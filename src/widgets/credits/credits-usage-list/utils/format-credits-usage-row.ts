@@ -1,20 +1,16 @@
 import { format, isToday, isYesterday } from "date-fns";
 import { ru } from "date-fns/locale";
 
-import type { CreditsUsagePublicExtendedSchema } from "@/codegen/api/product";
+import type { CreditsUsageExtendedSchema } from "@/codegen/api/product";
 
-const ENTITY_TITLE: Record<CreditsUsagePublicExtendedSchema["entity"], string> =
-  {
-    "ideas-list": "Список идей",
-    "scenario-chapters": "Сценарий",
-    "scenario-chapter-scenes": "Сценарий",
-    "scenario-scene-preview": "Превью сцены",
-  };
+const ENTITY_TITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
+  "ideas-list": "Список идей",
+  "scenario-chapters": "Сценарий",
+  "scenario-chapter-scenes": "Сценарий",
+  "scenario-scene-preview": "Превью сцены",
+};
 
-const ENTITY_SUBTITLE: Record<
-  CreditsUsagePublicExtendedSchema["entity"],
-  string
-> = {
+const ENTITY_SUBTITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
   "ideas-list": "Генерация контента списка идей",
   "scenario-chapters": "Работа с главами сценария",
   "scenario-chapter-scenes": "Работа со сценами",
@@ -35,7 +31,7 @@ function formatUsageDate(dateString: string): string {
 
 export type CreditsUsageRowView = {
   id: string;
-  entity: CreditsUsagePublicExtendedSchema["entity"];
+  entity: CreditsUsageExtendedSchema["entity"];
   title: string;
   subtitle: string;
   creditsAmount: number;
@@ -44,7 +40,7 @@ export type CreditsUsageRowView = {
 };
 
 export function formatCreditsUsageRow(
-  usage: CreditsUsagePublicExtendedSchema,
+  usage: CreditsUsageExtendedSchema,
 ): CreditsUsageRowView {
   const batchName = usage.creditsBatch.name;
 

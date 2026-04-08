@@ -40,10 +40,10 @@ export type {
 export { creditsBatchSchemaStatusEnum } from "./credits-batch-schema.ts";
 export type { CreditsPackageSchema } from "./credits-package-schema.ts";
 export type {
-  CreditsUsagePublicExtendedSchema,
-  CreditsUsagePublicExtendedSchemaEntityEnumKey,
-} from "./credits-usage-public-extended-schema.ts";
-export { creditsUsagePublicExtendedSchemaEntityEnum } from "./credits-usage-public-extended-schema.ts";
+  CreditsUsageExtendedSchema,
+  CreditsUsageExtendedSchemaEntityEnumKey,
+} from "./credits-usage-extended-schema.ts";
+export { creditsUsageExtendedSchemaEntityEnum } from "./credits-usage-extended-schema.ts";
 export type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId200,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,

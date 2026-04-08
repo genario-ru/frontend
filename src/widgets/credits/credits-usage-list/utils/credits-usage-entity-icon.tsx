@@ -5,10 +5,10 @@ import {
   ScrollTextIcon,
 } from "lucide-react";
 
-import type { CreditsUsagePublicExtendedSchema } from "@/codegen/api/product";
+import type { CreditsUsageExtendedSchema } from "@/codegen/api/product";
 
 type CreditsUsageEntityIconProps = {
-  entity: CreditsUsagePublicExtendedSchema["entity"];
+  entity: CreditsUsageExtendedSchema["entity"];
 };
 
 export function CreditsUsageEntityIcon({
