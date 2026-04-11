@@ -52,8 +52,6 @@ export function useScenarioNavigationScenes({
 
   const handleSceneValueChange = useCallback(
     (sceneId: string) => {
-      handleScenarioChapterSceneClick(sceneId);
-
       const activeElement = sceneRefsMap.current.get(sceneId);
 
       if (activeElement) {
@@ -63,6 +61,8 @@ export function useScenarioNavigationScenes({
           inline: "center",
         });
       }
+
+      handleScenarioChapterSceneClick(sceneId);
     },
     [handleScenarioChapterSceneClick],
   );

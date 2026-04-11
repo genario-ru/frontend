@@ -24,9 +24,7 @@ export function useScenarioScenes({
     scenarioChapterData,
     isScenarioChapterLoading,
     isScenarioChapterError,
-  } = useGetScenarioChapter({
-    chapterId,
-  });
+  } = useGetScenarioChapter({ chapterId });
 
   const isScenarioChapterGenerating = useMemo(() => {
     return checkIsGenerationStatus(scenarioChapterData?.data.status);
@@ -84,6 +82,20 @@ export function useScenarioScenes({
     return scenarioChapterScenesList[currentChapterIndex + 1];
   }, [scenarioChapterScenesList, chapterId]);
 
+  const scrollToScenarioChapterScene = useCallback((sceneId: string) => {
+    const sceneElement = document.getElementById(
+      `scenario-chapter-scene-${sceneId}`,
+    );
+
+    if (sceneElement) {
+      sceneElement.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, []);
+
   const handleScenarioChapterSceneClick = useCallback(
     (sceneId: string) => {
       navigate({
@@ -91,9 +103,12 @@ export function useScenarioScenes({
         params: { scenarioId },
         search: { chapterId, sceneId },
         replace: true,
+        resetScroll: false,
       });
+
+      scrollToScenarioChapterScene(sceneId);
     },
-    [scenarioId, chapterId, navigate],
+    [scenarioId, chapterId, navigate, scrollToScenarioChapterScene],
   );
 
   return {
@@ -105,6 +120,7 @@ export function useScenarioScenes({
     isScenarioChapterGenerationFailed,
     isScenarioChapterLoading,
     isScenarioChapterError,
+    scrollToScenarioChapterScene,
     handleScenarioChapterSceneClick,
   };
 }

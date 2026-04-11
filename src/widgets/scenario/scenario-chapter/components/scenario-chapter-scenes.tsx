@@ -1,22 +1,13 @@
-import { useScenarioScenes } from "@/actions/scenario/hooks/use-scenario-scenes";
-import {
-  ScenarioChapterSceneHeader,
-  ScenarioChapterSceneHeaderSkeleton,
-} from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-header";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
-import { cn } from "@/shared/utils/cn";
 
+import { useScenarioChapterScenes } from "../hooks/use-scenario-chapter-scenes";
 import {
-  ScenarioChapterSceneComponents,
-  ScenarioChapterSceneComponentsSkeleton,
-} from "./scenario-chapter-scene-components";
-import {
-  ScenarioChapterScenePreview,
-  ScenarioChapterScenePreviewSkeleton,
-} from "./scenario-chapter-scene-preview";
+  ScenarioChapterScene,
+  ScenarioChapterSceneSkeleton,
+} from "./scenario-chapter-scene";
 
 type ScenarioChapterScenesProps = {
   chapterId: string;
@@ -41,7 +32,8 @@ export function ScenarioChapterScenes({
     isScenarioChapterGenerationFailed,
     isScenarioChapterLoading,
     isScenarioChapterError,
-  } = useScenarioScenes({ scenarioId, chapterId });
+    handleIntersectingSceneIdChange,
+  } = useScenarioChapterScenes({ scenarioId, chapterId });
 
   if (isScenarioChapterGenerating) {
     return <ScenarioChapterScenesGeneratingAlert />;
@@ -62,33 +54,15 @@ export function ScenarioChapterScenes({
   return (
     <Island roundedTop={false} className="gap-8 py-8">
       {scenarioChapterScenesList.map((scene, index) => (
-        <section key={scene.id} className="flex flex-col gap-4">
-          <ScenarioChapterSceneHeader
-            key={scene.id}
-            chapterPosition={chapterPosition}
-            position={index + 1}
-            name={scene.name}
-            startTime={scene.startTime}
-            endTime={scene.endTime}
-          />
-          <div
-            className={cn("grid w-full gap-4", {
-              "grid-cols-8": videoTypeSlug === "short",
-              "grid-cols-2": videoTypeSlug === "long",
-            })}
-          >
-            <ScenarioChapterScenePreview
-              chapterId={chapterId}
-              sceneId={scene.id}
-              videoTypeSlug={videoTypeSlug}
-              scene={scene}
-            />
-            <ScenarioChapterSceneComponents
-              videoTypeSlug={videoTypeSlug}
-              scene={scene}
-            />
-          </div>
-        </section>
+        <ScenarioChapterScene
+          key={`scenario-chapter-scene-${scene.id}`}
+          chapterId={chapterId}
+          videoTypeSlug={videoTypeSlug}
+          chapterPosition={chapterPosition}
+          position={index + 1}
+          scene={scene}
+          handleIntersectingSceneIdChange={handleIntersectingSceneIdChange}
+        />
       ))}
     </Island>
   );
@@ -115,24 +89,7 @@ export function ScenarioChapterScenesSkeleton({
       <ItemsList
         noParent
         count={2}
-        item={
-          <section className="flex flex-col gap-4">
-            <ScenarioChapterSceneHeaderSkeleton />
-            <div
-              className={cn("grid w-full gap-4", {
-                "grid-cols-8": videoTypeSlug === "short",
-                "grid-cols-2": videoTypeSlug === "long",
-              })}
-            >
-              <ScenarioChapterScenePreviewSkeleton
-                videoTypeSlug={videoTypeSlug}
-              />
-              <ScenarioChapterSceneComponentsSkeleton
-                videoTypeSlug={videoTypeSlug}
-              />
-            </div>
-          </section>
-        }
+        item={<ScenarioChapterSceneSkeleton videoTypeSlug={videoTypeSlug} />}
       />
     </Island>
   );
