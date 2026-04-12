@@ -1,4 +1,5 @@
 {
+  "autoMemoryDirectory": ".claude/memory",
   "hooks": {
     "PostToolUse": [
       {
@@ -6,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'INPUT=$(cat); FILE=$(echo \"$INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get(\\\"tool_input\\\",{}).get(\\\"file_path\\\",\\\"\\\") or \\\"\\\")\" 2>/dev/null || echo \"\"); if [[ \"$FILE\" == *\"/src/routes/\"* ]] && [[ \"$FILE\" != *\"route-tree.gen\"* ]]; then echo \"[hook] Route file edited → run: pnpm router:generate\"; fi; if [[ \"$FILE\" == *\"/locales/\"* ]] && [[ \"$FILE\" == *\".json\" ]]; then echo \"[hook] Locale file edited → run: pnpm i18n:resources\"; fi'"
+            "command": "bash /c/Users/ilialksv/genario/genario-frontend/.claude/hooks/post-edit.sh"
           }
         ]
       }
