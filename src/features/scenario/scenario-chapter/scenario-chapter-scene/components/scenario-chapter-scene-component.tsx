@@ -1,4 +1,4 @@
-import { CheckIcon, CopyIcon } from "lucide-react";
+import { CheckIcon, CopyIcon, PencilIcon } from "lucide-react";
 import { type CSSProperties, useMemo } from "react";
 
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -14,10 +14,12 @@ import { useScenarioChapterSceneComponent } from "../hooks/use-scenario-chapter-
 import { ScenarioChapterSceneComponentMarkdown } from "./scenario-chapter-scene-component-markdown";
 
 type ScenarioChapterSceneComponentProps = PropsWithClassName<{
+  componentId: string;
   name: string;
   content?: string | null;
   icon?: string | null;
   color?: string | null;
+  handleEditButtonClick: () => void;
 }>;
 
 export function ScenarioChapterSceneComponent({
@@ -26,6 +28,7 @@ export function ScenarioChapterSceneComponent({
   icon,
   color,
   className,
+  handleEditButtonClick,
 }: ScenarioChapterSceneComponentProps) {
   const { contentRef, isCopied, handleCopyButtonClick } =
     useScenarioChapterSceneComponent();
@@ -51,14 +54,23 @@ export function ScenarioChapterSceneComponent({
   const actionsEl = useMemo(() => {
     if (content) {
       return (
-        <Button
-          size="sm"
-          priority="tertiary"
-          icon={isCopied ? <CheckIcon /> : <CopyIcon />}
-          disabled={isCopied}
-          onClick={handleCopyButtonClick}
-          className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100 disabled:opacity-0 group-hover/scenario-chapter-scene:disabled:opacity-60"
-        />
+        <div className="flex items-center gap-1">
+          <Button
+            size="sm"
+            priority="tertiary"
+            icon={<PencilIcon />}
+            onClick={handleEditButtonClick}
+            className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100"
+          />
+          <Button
+            size="sm"
+            priority="tertiary"
+            icon={isCopied ? <CheckIcon /> : <CopyIcon />}
+            disabled={isCopied}
+            onClick={handleCopyButtonClick}
+            className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100 disabled:opacity-0 group-hover/scenario-chapter-scene:disabled:opacity-60"
+          />
+        </div>
       );
     }
 

@@ -5,27 +5,47 @@ alwaysApply: true
 
 # FSD Architecture
 
-Use the project FSD structure from `src/README.md`.
+Reference `src/README.md` for full documentation.
 
 ## Layer placement
 
-- `src/actions`: complex business hooks and orchestration by domain.
-- `src/features`: UI components with simple local logic.
-- `src/widgets`: composite domain blocks that use features/actions.
-- `src/shared`: reusable cross-domain components, hooks, utils, types.
-- `src/lib`: technical infrastructure (api, auth, i18n, tanstack setup).
-- `src/entrypoints`: pages, layouts, route-level composition.
-- `src/routes`: route declarations only.
+| Layer | Path | Purpose |
+|---|---|---|
+| routes | `src/routes/` | `createFileRoute()` declarations only — no logic |
+| entrypoints | `src/entrypoints/` | Page-level composition, layouts |
+| widgets | `src/widgets/<domain>/` | Composite domain blocks (features + actions) |
+| features | `src/features/<domain>/` | Presentational domain UI components |
+| actions | `src/actions/<domain>/` | Business orchestration hooks |
+| shared | `src/shared/` | Cross-domain: components/ui, utils, hooks, types, constants |
+| lib | `src/lib/` | Technical infrastructure (api, auth, i18n, tanstack-*, zod) |
+| codegen | `src/codegen/` | Generated files — **never edit manually** |
+| globals | `src/globals/` | Global `.d.ts` type definitions |
 
 ## Dependency direction
 
-- Prefer dependencies from higher-level layers to lower-level layers.
-- Avoid importing domain-specific code into `shared` and `lib`.
-- Keep feature/widget logic in domain folders when possible.
+```
+routes → entrypoints → widgets → features → actions → shared/lib → codegen
+```
+
+Higher layers import from lower layers. Never reverse this direction.
 
 ## Placement decision shortcut
 
-1. Is it generic and reusable across domains? -> `shared` or `lib`.
-2. Is it domain business logic/hook? -> `actions/<domain>`.
-3. Is it domain UI block with composition? -> `widgets/<domain>`.
-4. Is it route-level page composition? -> `entrypoints`.
+1. Generic, reusable across domains? → `shared/` or `lib/`
+2. Domain business hook/orchestration? → `actions/<domain>/`
+3. Domain presentational UI component? → `features/<domain>/`
+4. Domain composite block (features + actions)? → `widgets/<domain>/`
+5. Page-level wiring? → `entrypoints/`
+6. Route declaration? → `routes/`
+
+## Hard constraints
+
+- `shared/` and `lib/` must not contain domain-specific logic.
+- `routes/` files export only `Route` via `createFileRoute`.
+- `codegen/` is read-only — edit source configs/schemas and regenerate.
+
+## Existing domains
+
+`archive`, `auth`, `billing`, `credits`, `ideas`, `ideas-lists`, `navigation`,
+`platforms`, `profiles`, `scenario`, `subscriptions`, `tariffs`, `templates`,
+`tones`, `video-durations`, `video-types`

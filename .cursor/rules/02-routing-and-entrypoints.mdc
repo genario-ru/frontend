@@ -6,16 +6,56 @@ alwaysApply: false
 
 # Routing And Entrypoints
 
-Follow `src/routes/README.md` when editing route files.
+Reference `src/routes/README.md` for routing constraints.
 
 ## Route file policy
 
-- Files in `src/routes/**` should export only route declaration via `createFileRoute`.
-- Do not move heavy components/business logic into route files.
-- Put substantial logic/components in `actions`, `widgets`, `features`, `entrypoints`, `shared`, or `lib`.
+- Export only `Route` via `createFileRoute`. No components, no business logic.
+- Heavy logic goes to `actions`, `widgets`, `features`, `entrypoints`, `shared`, or `lib`.
+- Use `component: MyComponent` pointing to an entrypoint component.
+
+## Route layout groups
+
+```
+src/routes/
+├── __root.tsx                    # Root with RouterContext (queryClient, sessionData)
+├── _auth/                        # Unauthenticated pages (sign-in, verify-otp)
+├── _with-auth/                   # Auth guard — redirects to sign-in if no session
+│   ├── _with-subscription/       # Requires active subscription
+│   └── _without-subscription/    # Auth but no subscription
+└── _without-auth/                # Redirects authenticated users
+```
+
+## RouterContext
+
+Available in `beforeLoad` and `loader`:
+```typescript
+type RouterContext = { queryClient: QueryClient; sessionData?: GetSession200 };
+```
+
+## Patterns
+
+```typescript
+// Minimal route file
+export const Route = createFileRoute("/_with-auth/_with-subscription/my-page")({
+  validateSearch: zodValidator(searchSchema),
+  beforeLoad: async ({ context }) => {
+    await context.queryClient.ensureQueryData(getSomethingQueryOptions());
+  },
+  component: MyPageComponent,  // from src/entrypoints/my-page/component.tsx
+});
+```
+
+```typescript
+// Search params validation
+import { zodValidator } from "@tanstack/zod-adapter";
+import { z } from "@/lib/zod";
+
+const searchSchema = z.object({ q: z.string().optional(), page: z.number().optional() });
+```
 
 ## Generation workflow
 
-- Route tree is generated at `src/codegen/router/route-tree.gen.ts`.
-- After adding/changing route files, run `pnpm router:generate` (or `pnpm router:watch` during active route work).
-- Never manually edit generated route tree files.
+- Route tree: `src/codegen/router/route-tree.gen.ts` — never edit manually.
+- After any route file changes: `pnpm router:generate`.
+- During active route development: `pnpm router:watch`.

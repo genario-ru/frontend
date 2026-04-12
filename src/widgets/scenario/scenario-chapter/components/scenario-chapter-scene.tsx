@@ -68,6 +68,7 @@ export function ScenarioChapterScene({
           scene={scene}
         />
         <ScenarioChapterSceneComponents
+          chapterId={chapterId}
           videoTypeSlug={videoTypeSlug}
           scene={scene}
         />

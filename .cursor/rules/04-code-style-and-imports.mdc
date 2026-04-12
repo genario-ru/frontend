@@ -6,22 +6,54 @@ alwaysApply: false
 
 # Code Style And Imports
 
-Use repository configs as source of truth: `eslint.config.js`, `prettier.config.js`, `tsconfig.json`.
+Config sources: `eslint.config.js`, `prettier.config.js`, `tsconfig.json`.
 
 ## Style defaults
 
-- Use double quotes.
-- Use semicolons.
-- Keep import order sorted (simple-import-sort).
-- Prefer path alias imports via `@/*` for `src` modules.
+- Double quotes, semicolons.
+- Import order sorted automatically via `simple-import-sort`.
+- Prefer `@/*` path alias for all `src/` imports.
 
 ## TypeScript defaults
 
-- Keep strict typing; avoid `any` unless justified.
+- Strict typing — avoid `any` unless justified.
 - Use `_` prefix for intentionally unused variables/args.
+
+## Classnames
+
+Use `cn()` from `@/shared/utils/cn` (clsx + tailwind-merge):
+```typescript
+import { cn } from "@/shared/utils/cn";
+className={cn("base", condition && "active", props.className)}
+```
+
+## Zod imports
+
+Always import from `@/lib/zod`, not directly from `"zod"`:
+```typescript
+import { z } from "@/lib/zod";  // has project-wide custom error messages
+```
+
+## Component file structure
+
+```typescript
+// Props type declared above component
+type MyComponentProps = { ... };
+
+export function MyComponent({ prop1, prop2 }: MyComponentProps) {
+  return (...);
+}
+```
+
+## Shared UI components
+
+Use existing components from `@/shared/components/ui/` before creating new ones:
+`Button`, `Input`, `Textarea`, `Dialog`, `Sheet`, `Spinner`, `Skeleton`,
+`Badge`, `Avatar`, `Card`, `Tabs`, `Dropdown`, `Checkbox`, `Select`, etc.
 
 ## Before finishing task
 
-1. Run `pnpm lint:fix`.
-2. Run `pnpm lint:typescript`.
-3. If route files changed, run `pnpm router:generate`.
+1. `pnpm lint:fix` — auto-fix ESLint + Prettier.
+2. `pnpm lint:typescript` — verify types are clean.
+3. If route files changed → `pnpm router:generate`.
+4. If locale JSONs changed → `pnpm i18n:resources`.

@@ -1,12 +1,12 @@
 import type { GetApiV1ScenariosChaptersByChapterIdQueryResponse } from "@/codegen/api/product";
-import {
-  ScenarioChapterSceneComponent,
-  ScenarioChapterSceneComponentSkeleton,
-} from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-component";
+import { ScenarioChapterSceneComponentSkeleton } from "@/features/scenario/scenario-chapter/scenario-chapter-scene/components/scenario-chapter-scene-component";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { cn } from "@/shared/utils/cn";
 
+import { ScenarioChapterSceneComponentCard } from "./scenario-chapter-scene-component-card";
+
 type ScenarioChapterSceneComponentsProps = {
+  chapterId: string;
   videoTypeSlug: string;
   scene: GetApiV1ScenariosChaptersByChapterIdQueryResponse["data"]["scenes"][number];
 };
@@ -16,6 +16,7 @@ type ScenarioChapterSceneComponentsSkeletonProps = {
 };
 
 export function ScenarioChapterSceneComponents({
+  chapterId,
   videoTypeSlug,
   scene,
 }: ScenarioChapterSceneComponentsProps) {
@@ -27,8 +28,10 @@ export function ScenarioChapterSceneComponents({
       })}
     >
       {scene.components.map((component) => (
-        <ScenarioChapterSceneComponent
+        <ScenarioChapterSceneComponentCard
           key={component.id}
+          componentId={component.id}
+          chapterId={chapterId}
           name={component.name}
           content={component.content}
           icon={component.type.icon}

@@ -1,20 +1,21 @@
 ---
-description: Temporary testing and validation policy until test workflow is finalized
+description: Validation and testing policy
 alwaysApply: true
 ---
 
 # Testing Policy
 
-`vitest` is installed, but project-wide test workflow is not fully standardized yet.
+Vitest is installed but project-wide test workflow is not fully standardized.
 
-## Minimum validation for code tasks
+## Minimum validation for every code task
 
-- Run `pnpm lint:typescript`.
-- Run `pnpm lint:fix` when formatting/lint issues are likely.
-- For routing/codegen changes, run corresponding generators.
+1. `pnpm lint:typescript` — type check must pass.
+2. `pnpm lint:fix` — run when formatting or lint issues are likely.
+3. If routes changed → `pnpm router:generate`.
+4. If locale JSONs changed → `pnpm i18n:resources`.
 
 ## When adding tests
 
-- Prefer colocated test files next to changed modules.
-- Use Vitest conventions compatible with current Vite + TS setup.
-- If introducing a new test command/config, keep it minimal and document it in PR/task notes.
+- Colocate test files next to the module being tested.
+- Use Vitest conventions compatible with Vite + TS setup.
+- If introducing a new test command/config, keep it minimal.

@@ -1,0 +1,91 @@
+---
+description: TanStack Query, Router, and Form usage patterns
+alwaysApply: true
+---
+
+# TanStack Patterns
+
+## TanStack Query
+
+### Hooks in components/widgets
+
+```typescript
+// Prefer action wrappers over direct codegen hooks in widgets
+import { useGetSomething } from "@/actions/<domain>/hooks/use-get-something";
+```
+
+### Preloading in route loaders
+
+```typescript
+import { getGetSessionQueryOptions } from "@/codegen/api/auth";
+
+export const Route = createFileRoute("/path")({
+  beforeLoad: async ({ context }) => {
+    await context.queryClient.ensureQueryData(getGetSessionQueryOptions());
+  },
+});
+```
+
+### Infinite queries (pagination)
+
+Generated hooks ending in `Infinite` use cursor/page-based pagination:
+```typescript
+import { useGetApiV1IdeasInfinite } from "@/codegen/api/product";
+
+const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  useGetApiV1IdeasInfinite({ pageSize: 20 });
+// data.pages — array of page results
+```
+
+### Mutations
+
+```typescript
+import { usePostApiV1Something } from "@/codegen/api/product";
+
+const { mutate, isPending } = usePostApiV1Something();
+mutate({ body: { ... } }, {
+  onSuccess: () => { queryClient.invalidateQueries(...) },
+  onError: () => { toast.error(...) },
+});
+```
+
+## TanStack Router
+
+### Search params
+
+```typescript
+// Read search params in component
+import { useSearch } from "@tanstack/react-router";
+const { q, page } = useSearch({ from: "/_with-auth/_with-subscription/my-route" });
+
+// Navigate with updated params
+import { useNavigate } from "@tanstack/react-router";
+const navigate = useNavigate();
+navigate({ to: "/my-route", search: (prev) => ({ ...prev, q: "new" }), replace: true });
+```
+
+### Route params
+
+```typescript
+import { useParams } from "@tanstack/react-router";
+const { id } = useParams({ from: "/_with-auth/_with-subscription/items/$id" });
+```
+
+## TanStack Form
+
+Always use `useAppForm` from `@/lib/tanstack-form` (not bare `useForm`):
+
+```typescript
+import { useAppForm } from "@/lib/tanstack-form";
+import { z } from "@/lib/zod";
+
+const form = useAppForm({
+  defaultValues: { email: "", name: "" },
+  validators: { onSubmit: z.object({ email: z.email(), name: z.string().min(1) }) },
+  onSubmit: async ({ value }) => { /* mutation call */ },
+});
+```
+
+Available field components: `InputField`, `TextareaField`, `SelectField`,
+`CheckboxChipsField`, `MultiSelectField`, `CheckboxCardsField`, `RadioCardsGroupField`.
+Form components: `SubmitButton`, `ResetButton`.

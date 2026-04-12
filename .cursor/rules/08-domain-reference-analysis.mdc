@@ -5,26 +5,29 @@ alwaysApply: true
 
 # Domain Reference Analysis Before New Files
 
-Before adding a new file/folder inside any domain layer (`actions`, `features`, `widgets`, `entities`), perform a reference study first.
+Before creating any new file in a domain layer (`actions`, `features`, `widgets`, `entrypoints`), do a reference study first.
 
 ## Mandatory pre-coding step
 
-- Find and analyze at least 3 similar implementations in the same layer.
-- Prefer references from the same domain; if there are not enough, use nearest related domains.
-- Compare structure, naming, hook/component split, and dependency patterns.
+1. Find at least 3 similar implementations in the same layer.
+2. Prefer same domain; fall back to nearest related domains.
+3. Compare: file structure, naming, hook/component split, import patterns.
+
+## What to look for by layer
+
+| Creating | Look in |
+|---|---|
+| New action hook | `src/actions/<domain>/hooks/` (3+ hooks) |
+| New feature component | `src/features/<domain>/` (3+ components) |
+| New widget | `src/widgets/<domain>/` or other domains |
+| New entrypoint | `src/entrypoints/` (3+ existing entrypoints) |
 
 ## Required output in task flow
 
-- Explicitly list the 3+ reference paths used for guidance.
-- Reuse established local conventions from those references.
-- Explain deviations briefly if the new implementation cannot follow the found patterns.
-
-## Examples of where to look
-
-- New `widget` -> inspect at least 3 existing widgets in `src/widgets/<domain>` (or similar domains).
-- New `action` hook -> inspect at least 3 existing hooks in `src/actions/<domain>`.
-- New `feature` component -> inspect at least 3 existing components in `src/features/<domain>`.
+- List the 3+ reference paths used.
+- Reuse naming, file structure, and import conventions from those references.
+- Explain briefly if new implementation must deviate from the found patterns.
 
 ## Do not skip
 
-- Do not start writing new domain files before this reference pass is complete.
+Do not write new domain files before completing this reference pass.

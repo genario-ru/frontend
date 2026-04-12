@@ -7,20 +7,84 @@ alwaysApply: true
 
 Prefer consistent domain-first implementation across `actions`, `features`, and `widgets`.
 
-## Typical change flow
+## Typical implementation flow
 
-1. Add or reuse API/query hooks from `@/codegen/api/*`.
-2. Implement domain business orchestration in `actions/<domain>`.
-3. Implement presentational and composed UI in `features/<domain>` and `widgets/<domain>`.
-4. Wire page-level composition in `entrypoints`.
+1. Check `@/codegen/api/auth` or `@/codegen/api/product` for existing API hooks.
+2. Wrap API hook in `src/actions/<domain>/hooks/use-<name>.ts`.
+3. Build presentational UI in `src/features/<domain>/`.
+4. Compose into `src/widgets/<domain>/` if combining multiple features/actions.
+5. Wire page-level layout in `src/entrypoints/<name>/component.tsx`.
+
+## Action hook pattern
+
+```typescript
+// src/actions/auth/hooks/use-get-session.ts
+import { useGetGetSession } from "@/codegen/api/auth";
+
+export function useGetSession() {
+  const { data: sessionData, isLoading: isSessionLoading, isError: isSessionError } =
+    useGetGetSession();
+  return { sessionData, isSessionLoading, isSessionError };
+}
+```
+
+## Widget hook pattern
+
+```typescript
+// src/widgets/<domain>/<widget-name>/hooks/use-<widget-name>.ts
+import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useGetSomething } from "@/actions/<domain>/hooks/use-get-something";
+
+export function useWidgetName() {
+  const navigate = useNavigate();
+  const search = useSearch({ from: "/_with-auth/_with-subscription/my-route" });
+  const { data, isLoading } = useGetSomething();
+  // local interaction logic
+  return { data, isLoading, handlers };
+}
+```
+
+## Form pattern
+
+```typescript
+import { useAppForm } from "@/lib/tanstack-form";
+import { z } from "@/lib/zod";
+
+const schema = z.object({ name: z.string().min(1) });
+
+const form = useAppForm({
+  defaultValues: { name: "" },
+  validators: { onSubmit: schema },
+  onSubmit: async ({ value }) => { /* call mutation */ },
+});
+
+// In JSX:
+<form.AppForm>
+  <form.AppField name="name" children={(field) => <field.InputField label="Name" />} />
+  <form.SubmitButton>Submit</form.SubmitButton>
+</form.AppForm>
+```
+
+## Infinite query pattern
+
+```typescript
+// Codegen generates *Infinite hooks for paginated endpoints
+import { useGetApiV1IdeasInfinite } from "@/codegen/api/product";
+
+const { data, fetchNextPage, hasNextPage } = useGetApiV1IdeasInfinite(
+  { pageSize: 20 },
+  { getNextPageParam: (last) => last.meta?.nextPage },
+);
+```
 
 ## Naming and organization
 
-- Keep domain folder names kebab-case.
-- Keep hooks prefixed with `use-` in filenames where applicable.
-- Co-locate component hooks with widget/feature when scoped to that component.
+- Domain folder names: `kebab-case`.
+- Hook filenames: `use-<name>.ts` (prefixed).
+- Co-locate component hooks with their widget/feature (not in `src/actions`).
 
 ## Avoid
 
 - Cross-domain coupling inside `shared`.
-- Business logic buried in route files.
+- Business logic in route files.
+- Calling codegen hooks directly in widgets — wrap in actions first.
