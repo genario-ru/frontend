@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "genario-frontend",
   "private": true,
   "type": "module",
   "scripts": {
