@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1Platforms400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1Platforms401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1Platforms402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1PlatformsQuery = {
   Errors:
     | GetApiV1Platforms400
     | GetApiV1Platforms401
+    | GetApiV1Platforms402
     | GetApiV1Platforms403
     | GetApiV1Platforms404
     | GetApiV1Platforms500;

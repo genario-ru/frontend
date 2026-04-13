@@ -20,6 +20,7 @@ import { patchApiV1ScenariosByScenarioIdCurrentVersion } from "../clients/patch-
 import type {
   PatchApiV1ScenariosByScenarioIdCurrentVersion400,
   PatchApiV1ScenariosByScenarioIdCurrentVersion401,
+  PatchApiV1ScenariosByScenarioIdCurrentVersion402,
   PatchApiV1ScenariosByScenarioIdCurrentVersion403,
   PatchApiV1ScenariosByScenarioIdCurrentVersion404,
   PatchApiV1ScenariosByScenarioIdCurrentVersion500,
@@ -48,6 +49,7 @@ export function patchApiV1ScenariosByScenarioIdCurrentVersionMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdCurrentVersion400
       | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+      | PatchApiV1ScenariosByScenarioIdCurrentVersion402
       | PatchApiV1ScenariosByScenarioIdCurrentVersion403
       | PatchApiV1ScenariosByScenarioIdCurrentVersion404
       | PatchApiV1ScenariosByScenarioIdCurrentVersion500
@@ -78,6 +80,7 @@ export function usePatchApiV1ScenariosByScenarioIdCurrentVersion<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosByScenarioIdCurrentVersion400
         | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+        | PatchApiV1ScenariosByScenarioIdCurrentVersion402
         | PatchApiV1ScenariosByScenarioIdCurrentVersion403
         | PatchApiV1ScenariosByScenarioIdCurrentVersion404
         | PatchApiV1ScenariosByScenarioIdCurrentVersion500
@@ -107,6 +110,7 @@ export function usePatchApiV1ScenariosByScenarioIdCurrentVersion<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosByScenarioIdCurrentVersion400
         | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+        | PatchApiV1ScenariosByScenarioIdCurrentVersion402
         | PatchApiV1ScenariosByScenarioIdCurrentVersion403
         | PatchApiV1ScenariosByScenarioIdCurrentVersion404
         | PatchApiV1ScenariosByScenarioIdCurrentVersion500
@@ -123,6 +127,7 @@ export function usePatchApiV1ScenariosByScenarioIdCurrentVersion<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdCurrentVersion400
       | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+      | PatchApiV1ScenariosByScenarioIdCurrentVersion402
       | PatchApiV1ScenariosByScenarioIdCurrentVersion403
       | PatchApiV1ScenariosByScenarioIdCurrentVersion404
       | PatchApiV1ScenariosByScenarioIdCurrentVersion500
@@ -144,6 +149,7 @@ export function usePatchApiV1ScenariosByScenarioIdCurrentVersion<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdCurrentVersion400
       | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+      | PatchApiV1ScenariosByScenarioIdCurrentVersion402
       | PatchApiV1ScenariosByScenarioIdCurrentVersion403
       | PatchApiV1ScenariosByScenarioIdCurrentVersion404
       | PatchApiV1ScenariosByScenarioIdCurrentVersion500

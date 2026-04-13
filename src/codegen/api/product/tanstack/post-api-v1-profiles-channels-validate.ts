@@ -20,6 +20,7 @@ import { postApiV1ProfilesChannelsValidate } from "../clients/post-api-v1-profil
 import type {
   PostApiV1ProfilesChannelsValidate400,
   PostApiV1ProfilesChannelsValidate401,
+  PostApiV1ProfilesChannelsValidate402,
   PostApiV1ProfilesChannelsValidate403,
   PostApiV1ProfilesChannelsValidate404,
   PostApiV1ProfilesChannelsValidate500,
@@ -47,6 +48,7 @@ export function postApiV1ProfilesChannelsValidateMutationOptions<
     ResponseErrorConfig<
       | PostApiV1ProfilesChannelsValidate400
       | PostApiV1ProfilesChannelsValidate401
+      | PostApiV1ProfilesChannelsValidate402
       | PostApiV1ProfilesChannelsValidate403
       | PostApiV1ProfilesChannelsValidate404
       | PostApiV1ProfilesChannelsValidate500
@@ -71,6 +73,7 @@ export function usePostApiV1ProfilesChannelsValidate<TContext>(
       ResponseErrorConfig<
         | PostApiV1ProfilesChannelsValidate400
         | PostApiV1ProfilesChannelsValidate401
+        | PostApiV1ProfilesChannelsValidate402
         | PostApiV1ProfilesChannelsValidate403
         | PostApiV1ProfilesChannelsValidate404
         | PostApiV1ProfilesChannelsValidate500
@@ -96,6 +99,7 @@ export function usePostApiV1ProfilesChannelsValidate<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannelsValidate400
       | PostApiV1ProfilesChannelsValidate401
+      | PostApiV1ProfilesChannelsValidate402
       | PostApiV1ProfilesChannelsValidate403
       | PostApiV1ProfilesChannelsValidate404
       | PostApiV1ProfilesChannelsValidate500
@@ -109,6 +113,7 @@ export function usePostApiV1ProfilesChannelsValidate<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannelsValidate400
       | PostApiV1ProfilesChannelsValidate401
+      | PostApiV1ProfilesChannelsValidate402
       | PostApiV1ProfilesChannelsValidate403
       | PostApiV1ProfilesChannelsValidate404
       | PostApiV1ProfilesChannelsValidate500
@@ -127,6 +132,7 @@ export function usePostApiV1ProfilesChannelsValidate<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannelsValidate400
       | PostApiV1ProfilesChannelsValidate401
+      | PostApiV1ProfilesChannelsValidate402
       | PostApiV1ProfilesChannelsValidate403
       | PostApiV1ProfilesChannelsValidate404
       | PostApiV1ProfilesChannelsValidate500

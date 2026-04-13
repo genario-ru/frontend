@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1ProfilesChannelsValidate400,
   PostApiV1ProfilesChannelsValidate401,
+  PostApiV1ProfilesChannelsValidate402,
   PostApiV1ProfilesChannelsValidate403,
   PostApiV1ProfilesChannelsValidate404,
   PostApiV1ProfilesChannelsValidate500,
@@ -51,6 +52,7 @@ export async function postApiV1ProfilesChannelsValidate(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannelsValidate400
       | PostApiV1ProfilesChannelsValidate401
+      | PostApiV1ProfilesChannelsValidate402
       | PostApiV1ProfilesChannelsValidate403
       | PostApiV1ProfilesChannelsValidate404
       | PostApiV1ProfilesChannelsValidate500

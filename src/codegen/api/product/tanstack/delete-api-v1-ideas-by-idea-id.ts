@@ -20,6 +20,7 @@ import { deleteApiV1IdeasByIdeaId } from "../clients/delete-api-v1-ideas-by-idea
 import type {
   DeleteApiV1IdeasByIdeaId400,
   DeleteApiV1IdeasByIdeaId401,
+  DeleteApiV1IdeasByIdeaId402,
   DeleteApiV1IdeasByIdeaId403,
   DeleteApiV1IdeasByIdeaId404,
   DeleteApiV1IdeasByIdeaId500,
@@ -43,6 +44,7 @@ export function deleteApiV1IdeasByIdeaIdMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasByIdeaId400
       | DeleteApiV1IdeasByIdeaId401
+      | DeleteApiV1IdeasByIdeaId402
       | DeleteApiV1IdeasByIdeaId403
       | DeleteApiV1IdeasByIdeaId404
       | DeleteApiV1IdeasByIdeaId500
@@ -67,6 +69,7 @@ export function useDeleteApiV1IdeasByIdeaId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1IdeasByIdeaId400
         | DeleteApiV1IdeasByIdeaId401
+        | DeleteApiV1IdeasByIdeaId402
         | DeleteApiV1IdeasByIdeaId403
         | DeleteApiV1IdeasByIdeaId404
         | DeleteApiV1IdeasByIdeaId500
@@ -89,6 +92,7 @@ export function useDeleteApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasByIdeaId400
       | DeleteApiV1IdeasByIdeaId401
+      | DeleteApiV1IdeasByIdeaId402
       | DeleteApiV1IdeasByIdeaId403
       | DeleteApiV1IdeasByIdeaId404
       | DeleteApiV1IdeasByIdeaId500
@@ -102,6 +106,7 @@ export function useDeleteApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasByIdeaId400
       | DeleteApiV1IdeasByIdeaId401
+      | DeleteApiV1IdeasByIdeaId402
       | DeleteApiV1IdeasByIdeaId403
       | DeleteApiV1IdeasByIdeaId404
       | DeleteApiV1IdeasByIdeaId500
@@ -120,6 +125,7 @@ export function useDeleteApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasByIdeaId400
       | DeleteApiV1IdeasByIdeaId401
+      | DeleteApiV1IdeasByIdeaId402
       | DeleteApiV1IdeasByIdeaId403
       | DeleteApiV1IdeasByIdeaId404
       | DeleteApiV1IdeasByIdeaId500

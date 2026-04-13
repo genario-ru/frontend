@@ -20,6 +20,7 @@ import { deleteApiV1ScenariosByScenarioId } from "../clients/delete-api-v1-scena
 import type {
   DeleteApiV1ScenariosByScenarioId400,
   DeleteApiV1ScenariosByScenarioId401,
+  DeleteApiV1ScenariosByScenarioId402,
   DeleteApiV1ScenariosByScenarioId403,
   DeleteApiV1ScenariosByScenarioId404,
   DeleteApiV1ScenariosByScenarioId500,
@@ -43,6 +44,7 @@ export function deleteApiV1ScenariosByScenarioIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosByScenarioId400
       | DeleteApiV1ScenariosByScenarioId401
+      | DeleteApiV1ScenariosByScenarioId402
       | DeleteApiV1ScenariosByScenarioId403
       | DeleteApiV1ScenariosByScenarioId404
       | DeleteApiV1ScenariosByScenarioId500
@@ -67,6 +69,7 @@ export function useDeleteApiV1ScenariosByScenarioId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1ScenariosByScenarioId400
         | DeleteApiV1ScenariosByScenarioId401
+        | DeleteApiV1ScenariosByScenarioId402
         | DeleteApiV1ScenariosByScenarioId403
         | DeleteApiV1ScenariosByScenarioId404
         | DeleteApiV1ScenariosByScenarioId500
@@ -90,6 +93,7 @@ export function useDeleteApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosByScenarioId400
       | DeleteApiV1ScenariosByScenarioId401
+      | DeleteApiV1ScenariosByScenarioId402
       | DeleteApiV1ScenariosByScenarioId403
       | DeleteApiV1ScenariosByScenarioId404
       | DeleteApiV1ScenariosByScenarioId500
@@ -103,6 +107,7 @@ export function useDeleteApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosByScenarioId400
       | DeleteApiV1ScenariosByScenarioId401
+      | DeleteApiV1ScenariosByScenarioId402
       | DeleteApiV1ScenariosByScenarioId403
       | DeleteApiV1ScenariosByScenarioId404
       | DeleteApiV1ScenariosByScenarioId500
@@ -121,6 +126,7 @@ export function useDeleteApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosByScenarioId400
       | DeleteApiV1ScenariosByScenarioId401
+      | DeleteApiV1ScenariosByScenarioId402
       | DeleteApiV1ScenariosByScenarioId403
       | DeleteApiV1ScenariosByScenarioId404
       | DeleteApiV1ScenariosByScenarioId500

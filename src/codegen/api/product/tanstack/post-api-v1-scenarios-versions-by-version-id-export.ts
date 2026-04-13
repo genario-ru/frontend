@@ -20,6 +20,7 @@ import { postApiV1ScenariosVersionsByVersionIdExport } from "../clients/post-api
 import type {
   PostApiV1ScenariosVersionsByVersionIdExport400,
   PostApiV1ScenariosVersionsByVersionIdExport401,
+  PostApiV1ScenariosVersionsByVersionIdExport402,
   PostApiV1ScenariosVersionsByVersionIdExport403,
   PostApiV1ScenariosVersionsByVersionIdExport404,
   PostApiV1ScenariosVersionsByVersionIdExport500,
@@ -48,6 +49,7 @@ export function postApiV1ScenariosVersionsByVersionIdExportMutationOptions<
     ResponseErrorConfig<
       | PostApiV1ScenariosVersionsByVersionIdExport400
       | PostApiV1ScenariosVersionsByVersionIdExport401
+      | PostApiV1ScenariosVersionsByVersionIdExport402
       | PostApiV1ScenariosVersionsByVersionIdExport403
       | PostApiV1ScenariosVersionsByVersionIdExport404
       | PostApiV1ScenariosVersionsByVersionIdExport500
@@ -78,6 +80,7 @@ export function usePostApiV1ScenariosVersionsByVersionIdExport<TContext>(
       ResponseErrorConfig<
         | PostApiV1ScenariosVersionsByVersionIdExport400
         | PostApiV1ScenariosVersionsByVersionIdExport401
+        | PostApiV1ScenariosVersionsByVersionIdExport402
         | PostApiV1ScenariosVersionsByVersionIdExport403
         | PostApiV1ScenariosVersionsByVersionIdExport404
         | PostApiV1ScenariosVersionsByVersionIdExport500
@@ -107,6 +110,7 @@ export function usePostApiV1ScenariosVersionsByVersionIdExport<TContext>(
       ResponseErrorConfig<
         | PostApiV1ScenariosVersionsByVersionIdExport400
         | PostApiV1ScenariosVersionsByVersionIdExport401
+        | PostApiV1ScenariosVersionsByVersionIdExport402
         | PostApiV1ScenariosVersionsByVersionIdExport403
         | PostApiV1ScenariosVersionsByVersionIdExport404
         | PostApiV1ScenariosVersionsByVersionIdExport500
@@ -123,6 +127,7 @@ export function usePostApiV1ScenariosVersionsByVersionIdExport<TContext>(
     ResponseErrorConfig<
       | PostApiV1ScenariosVersionsByVersionIdExport400
       | PostApiV1ScenariosVersionsByVersionIdExport401
+      | PostApiV1ScenariosVersionsByVersionIdExport402
       | PostApiV1ScenariosVersionsByVersionIdExport403
       | PostApiV1ScenariosVersionsByVersionIdExport404
       | PostApiV1ScenariosVersionsByVersionIdExport500
@@ -144,6 +149,7 @@ export function usePostApiV1ScenariosVersionsByVersionIdExport<TContext>(
     ResponseErrorConfig<
       | PostApiV1ScenariosVersionsByVersionIdExport400
       | PostApiV1ScenariosVersionsByVersionIdExport401
+      | PostApiV1ScenariosVersionsByVersionIdExport402
       | PostApiV1ScenariosVersionsByVersionIdExport403
       | PostApiV1ScenariosVersionsByVersionIdExport404
       | PostApiV1ScenariosVersionsByVersionIdExport500

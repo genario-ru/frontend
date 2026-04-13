@@ -20,6 +20,7 @@ import { patchApiV1ScenariosScenesBySceneId } from "../clients/patch-api-v1-scen
 import type {
   PatchApiV1ScenariosScenesBySceneId400,
   PatchApiV1ScenariosScenesBySceneId401,
+  PatchApiV1ScenariosScenesBySceneId402,
   PatchApiV1ScenariosScenesBySceneId403,
   PatchApiV1ScenariosScenesBySceneId404,
   PatchApiV1ScenariosScenesBySceneId500,
@@ -48,6 +49,7 @@ export function patchApiV1ScenariosScenesBySceneIdMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ScenariosScenesBySceneId400
       | PatchApiV1ScenariosScenesBySceneId401
+      | PatchApiV1ScenariosScenesBySceneId402
       | PatchApiV1ScenariosScenesBySceneId403
       | PatchApiV1ScenariosScenesBySceneId404
       | PatchApiV1ScenariosScenesBySceneId500
@@ -75,6 +77,7 @@ export function usePatchApiV1ScenariosScenesBySceneId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosScenesBySceneId400
         | PatchApiV1ScenariosScenesBySceneId401
+        | PatchApiV1ScenariosScenesBySceneId402
         | PatchApiV1ScenariosScenesBySceneId403
         | PatchApiV1ScenariosScenesBySceneId404
         | PatchApiV1ScenariosScenesBySceneId500
@@ -103,6 +106,7 @@ export function usePatchApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosScenesBySceneId400
       | PatchApiV1ScenariosScenesBySceneId401
+      | PatchApiV1ScenariosScenesBySceneId402
       | PatchApiV1ScenariosScenesBySceneId403
       | PatchApiV1ScenariosScenesBySceneId404
       | PatchApiV1ScenariosScenesBySceneId500
@@ -119,6 +123,7 @@ export function usePatchApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosScenesBySceneId400
       | PatchApiV1ScenariosScenesBySceneId401
+      | PatchApiV1ScenariosScenesBySceneId402
       | PatchApiV1ScenariosScenesBySceneId403
       | PatchApiV1ScenariosScenesBySceneId404
       | PatchApiV1ScenariosScenesBySceneId500
@@ -140,6 +145,7 @@ export function usePatchApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosScenesBySceneId400
       | PatchApiV1ScenariosScenesBySceneId401
+      | PatchApiV1ScenariosScenesBySceneId402
       | PatchApiV1ScenariosScenesBySceneId403
       | PatchApiV1ScenariosScenesBySceneId404
       | PatchApiV1ScenariosScenesBySceneId500

@@ -20,6 +20,7 @@ import { deleteApiV1IdeasListsByIdeasListId } from "../clients/delete-api-v1-ide
 import type {
   DeleteApiV1IdeasListsByIdeasListId400,
   DeleteApiV1IdeasListsByIdeasListId401,
+  DeleteApiV1IdeasListsByIdeasListId402,
   DeleteApiV1IdeasListsByIdeasListId403,
   DeleteApiV1IdeasListsByIdeasListId404,
   DeleteApiV1IdeasListsByIdeasListId500,
@@ -43,6 +44,7 @@ export function deleteApiV1IdeasListsByIdeasListIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1IdeasListsByIdeasListId400
       | DeleteApiV1IdeasListsByIdeasListId401
+      | DeleteApiV1IdeasListsByIdeasListId402
       | DeleteApiV1IdeasListsByIdeasListId403
       | DeleteApiV1IdeasListsByIdeasListId404
       | DeleteApiV1IdeasListsByIdeasListId500
@@ -69,6 +71,7 @@ export function useDeleteApiV1IdeasListsByIdeasListId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1IdeasListsByIdeasListId400
         | DeleteApiV1IdeasListsByIdeasListId401
+        | DeleteApiV1IdeasListsByIdeasListId402
         | DeleteApiV1IdeasListsByIdeasListId403
         | DeleteApiV1IdeasListsByIdeasListId404
         | DeleteApiV1IdeasListsByIdeasListId500
@@ -94,6 +97,7 @@ export function useDeleteApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasListsByIdeasListId400
       | DeleteApiV1IdeasListsByIdeasListId401
+      | DeleteApiV1IdeasListsByIdeasListId402
       | DeleteApiV1IdeasListsByIdeasListId403
       | DeleteApiV1IdeasListsByIdeasListId404
       | DeleteApiV1IdeasListsByIdeasListId500
@@ -109,6 +113,7 @@ export function useDeleteApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasListsByIdeasListId400
       | DeleteApiV1IdeasListsByIdeasListId401
+      | DeleteApiV1IdeasListsByIdeasListId402
       | DeleteApiV1IdeasListsByIdeasListId403
       | DeleteApiV1IdeasListsByIdeasListId404
       | DeleteApiV1IdeasListsByIdeasListId500
@@ -129,6 +134,7 @@ export function useDeleteApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1IdeasListsByIdeasListId400
       | DeleteApiV1IdeasListsByIdeasListId401
+      | DeleteApiV1IdeasListsByIdeasListId402
       | DeleteApiV1IdeasListsByIdeasListId403
       | DeleteApiV1IdeasListsByIdeasListId404
       | DeleteApiV1IdeasListsByIdeasListId500

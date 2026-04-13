@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1Profiles400,
   PostApiV1Profiles401,
+  PostApiV1Profiles402,
   PostApiV1Profiles403,
   PostApiV1Profiles404,
   PostApiV1Profiles500,
@@ -47,6 +48,7 @@ export async function postApiV1Profiles(
     ResponseErrorConfig<
       | PostApiV1Profiles400
       | PostApiV1Profiles401
+      | PostApiV1Profiles402
       | PostApiV1Profiles403
       | PostApiV1Profiles404
       | PostApiV1Profiles500

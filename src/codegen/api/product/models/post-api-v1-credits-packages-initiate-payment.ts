@@ -9,6 +9,7 @@ import type { InitiateCreditsPackagePaymentBodySchema } from "./initiate-credits
 import type { InitiateCreditsPackagePaymentResponseSchema } from "./initiate-credits-package-payment-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -31,6 +32,13 @@ export type PostApiV1CreditsPackagesInitiatePayment400 =
  */
 export type PostApiV1CreditsPackagesInitiatePayment401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1CreditsPackagesInitiatePayment402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -67,6 +75,7 @@ export type PostApiV1CreditsPackagesInitiatePaymentMutation = {
   Errors:
     | PostApiV1CreditsPackagesInitiatePayment400
     | PostApiV1CreditsPackagesInitiatePayment401
+    | PostApiV1CreditsPackagesInitiatePayment402
     | PostApiV1CreditsPackagesInitiatePayment403
     | PostApiV1CreditsPackagesInitiatePayment404
     | PostApiV1CreditsPackagesInitiatePayment500;

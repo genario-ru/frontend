@@ -20,6 +20,7 @@ import { deleteApiV1ScenariosChaptersByChapterId } from "../clients/delete-api-v
 import type {
   DeleteApiV1ScenariosChaptersByChapterId400,
   DeleteApiV1ScenariosChaptersByChapterId401,
+  DeleteApiV1ScenariosChaptersByChapterId402,
   DeleteApiV1ScenariosChaptersByChapterId403,
   DeleteApiV1ScenariosChaptersByChapterId404,
   DeleteApiV1ScenariosChaptersByChapterId500,
@@ -43,6 +44,7 @@ export function deleteApiV1ScenariosChaptersByChapterIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosChaptersByChapterId400
       | DeleteApiV1ScenariosChaptersByChapterId401
+      | DeleteApiV1ScenariosChaptersByChapterId402
       | DeleteApiV1ScenariosChaptersByChapterId403
       | DeleteApiV1ScenariosChaptersByChapterId404
       | DeleteApiV1ScenariosChaptersByChapterId500
@@ -69,6 +71,7 @@ export function useDeleteApiV1ScenariosChaptersByChapterId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1ScenariosChaptersByChapterId400
         | DeleteApiV1ScenariosChaptersByChapterId401
+        | DeleteApiV1ScenariosChaptersByChapterId402
         | DeleteApiV1ScenariosChaptersByChapterId403
         | DeleteApiV1ScenariosChaptersByChapterId404
         | DeleteApiV1ScenariosChaptersByChapterId500
@@ -94,6 +97,7 @@ export function useDeleteApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosChaptersByChapterId400
       | DeleteApiV1ScenariosChaptersByChapterId401
+      | DeleteApiV1ScenariosChaptersByChapterId402
       | DeleteApiV1ScenariosChaptersByChapterId403
       | DeleteApiV1ScenariosChaptersByChapterId404
       | DeleteApiV1ScenariosChaptersByChapterId500
@@ -109,6 +113,7 @@ export function useDeleteApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosChaptersByChapterId400
       | DeleteApiV1ScenariosChaptersByChapterId401
+      | DeleteApiV1ScenariosChaptersByChapterId402
       | DeleteApiV1ScenariosChaptersByChapterId403
       | DeleteApiV1ScenariosChaptersByChapterId404
       | DeleteApiV1ScenariosChaptersByChapterId500
@@ -129,6 +134,7 @@ export function useDeleteApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosChaptersByChapterId400
       | DeleteApiV1ScenariosChaptersByChapterId401
+      | DeleteApiV1ScenariosChaptersByChapterId402
       | DeleteApiV1ScenariosChaptersByChapterId403
       | DeleteApiV1ScenariosChaptersByChapterId404
       | DeleteApiV1ScenariosChaptersByChapterId500

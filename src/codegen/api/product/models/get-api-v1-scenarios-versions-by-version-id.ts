@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetScenarioVersionResponseSchema } from "./get-scenario-version-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type GetApiV1ScenariosVersionsByVersionIdPathParams = {
@@ -38,6 +39,13 @@ export type GetApiV1ScenariosVersionsByVersionId401 =
   UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ScenariosVersionsByVersionId402 =
+  PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -65,6 +73,7 @@ export type GetApiV1ScenariosVersionsByVersionIdQuery = {
   Errors:
     | GetApiV1ScenariosVersionsByVersionId400
     | GetApiV1ScenariosVersionsByVersionId401
+    | GetApiV1ScenariosVersionsByVersionId402
     | GetApiV1ScenariosVersionsByVersionId403
     | GetApiV1ScenariosVersionsByVersionId404
     | GetApiV1ScenariosVersionsByVersionId500;

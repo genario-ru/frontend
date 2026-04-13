@@ -10,6 +10,7 @@ import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schem
 import { getMyPaymentsResponseSchemaSchema } from "./get-my-payments-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
 /**
@@ -32,6 +33,13 @@ export const getApiV1BillingPaymentsMy400Schema = z
 export const getApiV1BillingPaymentsMy401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
+
+/**
+ * @description Payment required
+ */
+export const getApiV1BillingPaymentsMy402Schema = z
+  .lazy(() => paymentRequiredResponseSchemaSchema)
+  .describe("Payment required response description");
 
 /**
  * @description Forbidden

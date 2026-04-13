@@ -10,6 +10,7 @@ import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schem
 import { getIdeaResponseSchemaSchema } from "./get-idea-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
 export const getApiV1IdeasByIdeaIdPathParamsSchema = z.object({
@@ -36,6 +37,13 @@ export const getApiV1IdeasByIdeaId400Schema = z
 export const getApiV1IdeasByIdeaId401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
+
+/**
+ * @description Payment required
+ */
+export const getApiV1IdeasByIdeaId402Schema = z
+  .lazy(() => paymentRequiredResponseSchemaSchema)
+  .describe("Payment required response description");
 
 /**
  * @description Forbidden

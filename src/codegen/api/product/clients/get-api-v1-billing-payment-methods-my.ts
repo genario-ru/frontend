@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1BillingPaymentMethodsMy400,
   GetApiV1BillingPaymentMethodsMy401,
+  GetApiV1BillingPaymentMethodsMy402,
   GetApiV1BillingPaymentMethodsMy403,
   GetApiV1BillingPaymentMethodsMy404,
   GetApiV1BillingPaymentMethodsMy500,
@@ -41,6 +42,7 @@ export async function getApiV1BillingPaymentMethodsMy(
     ResponseErrorConfig<
       | GetApiV1BillingPaymentMethodsMy400
       | GetApiV1BillingPaymentMethodsMy401
+      | GetApiV1BillingPaymentMethodsMy402
       | GetApiV1BillingPaymentMethodsMy403
       | GetApiV1BillingPaymentMethodsMy404
       | GetApiV1BillingPaymentMethodsMy500

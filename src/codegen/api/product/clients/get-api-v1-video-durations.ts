@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1VideoDurations400,
   GetApiV1VideoDurations401,
+  GetApiV1VideoDurations402,
   GetApiV1VideoDurations403,
   GetApiV1VideoDurations404,
   GetApiV1VideoDurations500,
@@ -38,6 +39,7 @@ export async function getApiV1VideoDurations(
     ResponseErrorConfig<
       | GetApiV1VideoDurations400
       | GetApiV1VideoDurations401
+      | GetApiV1VideoDurations402
       | GetApiV1VideoDurations403
       | GetApiV1VideoDurations404
       | GetApiV1VideoDurations500

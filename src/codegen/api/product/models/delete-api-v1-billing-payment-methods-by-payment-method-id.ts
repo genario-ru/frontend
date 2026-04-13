@@ -8,6 +8,7 @@ import type { DeletePaymentMethodResponseSchema } from "./delete-payment-method-
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type DeleteApiV1BillingPaymentMethodsByPaymentMethodIdPathParams = {
@@ -39,6 +40,13 @@ export type DeleteApiV1BillingPaymentMethodsByPaymentMethodId401 =
   UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type DeleteApiV1BillingPaymentMethodsByPaymentMethodId402 =
+  PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -68,6 +76,7 @@ export type DeleteApiV1BillingPaymentMethodsByPaymentMethodIdMutation = {
   Errors:
     | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
     | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+    | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
     | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
     | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
     | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500;

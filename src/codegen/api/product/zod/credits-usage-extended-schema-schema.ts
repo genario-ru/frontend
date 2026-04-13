@@ -26,7 +26,7 @@ export const creditsUsageExtendedSchemaSchema = z
     tokensPerCredit: z.int().min(-9007199254740991).max(9007199254740991),
     createdAt: z.string(),
     updatedAt: z.string(),
-    get creditsBatch() {
+    get batch() {
       return creditsBatchSchemaSchema.describe("Credits batch description");
     },
   })

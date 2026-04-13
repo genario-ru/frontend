@@ -21,6 +21,7 @@ import { getApiV1SubscriptonsMy } from "../clients/get-api-v1-subscriptons-my.ts
 import type {
   GetApiV1SubscriptonsMy400,
   GetApiV1SubscriptonsMy401,
+  GetApiV1SubscriptonsMy402,
   GetApiV1SubscriptonsMy403,
   GetApiV1SubscriptonsMy404,
   GetApiV1SubscriptonsMy500,
@@ -43,6 +44,7 @@ export function getApiV1SubscriptonsMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1SubscriptonsMy400
       | GetApiV1SubscriptonsMy401
+      | GetApiV1SubscriptonsMy402
       | GetApiV1SubscriptonsMy403
       | GetApiV1SubscriptonsMy404
       | GetApiV1SubscriptonsMy500
@@ -75,6 +77,7 @@ export function useGetApiV1SubscriptonsMy<
         ResponseErrorConfig<
           | GetApiV1SubscriptonsMy400
           | GetApiV1SubscriptonsMy401
+          | GetApiV1SubscriptonsMy402
           | GetApiV1SubscriptonsMy403
           | GetApiV1SubscriptonsMy404
           | GetApiV1SubscriptonsMy500
@@ -104,6 +107,7 @@ export function useGetApiV1SubscriptonsMy<
     ResponseErrorConfig<
       | GetApiV1SubscriptonsMy400
       | GetApiV1SubscriptonsMy401
+      | GetApiV1SubscriptonsMy402
       | GetApiV1SubscriptonsMy403
       | GetApiV1SubscriptonsMy404
       | GetApiV1SubscriptonsMy500

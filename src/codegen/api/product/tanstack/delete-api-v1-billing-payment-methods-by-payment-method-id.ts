@@ -20,6 +20,7 @@ import { deleteApiV1BillingPaymentMethodsByPaymentMethodId } from "../clients/de
 import type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId401,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId402,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId403,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId404,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId500,
@@ -45,6 +46,7 @@ export function deleteApiV1BillingPaymentMethodsByPaymentMethodIdMutationOptions
     ResponseErrorConfig<
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+      | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500
@@ -74,6 +76,7 @@ export function useDeleteApiV1BillingPaymentMethodsByPaymentMethodId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+        | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500
@@ -100,6 +103,7 @@ export function useDeleteApiV1BillingPaymentMethodsByPaymentMethodId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+        | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
         | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500
@@ -115,6 +119,7 @@ export function useDeleteApiV1BillingPaymentMethodsByPaymentMethodId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+      | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500
@@ -135,6 +140,7 @@ export function useDeleteApiV1BillingPaymentMethodsByPaymentMethodId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+      | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500

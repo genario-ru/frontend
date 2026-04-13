@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId400,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId401,
+  DeleteApiV1BillingPaymentMethodsByPaymentMethodId402,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId403,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId404,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodId500,
@@ -51,6 +52,7 @@ export async function deleteApiV1BillingPaymentMethodsByPaymentMethodId(
     ResponseErrorConfig<
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId400
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId401
+      | DeleteApiV1BillingPaymentMethodsByPaymentMethodId402
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId403
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId404
       | DeleteApiV1BillingPaymentMethodsByPaymentMethodId500

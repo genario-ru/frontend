@@ -21,6 +21,7 @@ import { getApiV1Templates } from "../clients/get-api-v1-templates.ts";
 import type {
   GetApiV1Templates400,
   GetApiV1Templates401,
+  GetApiV1Templates402,
   GetApiV1Templates403,
   GetApiV1Templates404,
   GetApiV1Templates500,
@@ -43,6 +44,7 @@ export function getApiV1TemplatesQueryOptions(
     ResponseErrorConfig<
       | GetApiV1Templates400
       | GetApiV1Templates401
+      | GetApiV1Templates402
       | GetApiV1Templates403
       | GetApiV1Templates404
       | GetApiV1Templates500
@@ -72,6 +74,7 @@ export function useGetApiV1Templates<
         ResponseErrorConfig<
           | GetApiV1Templates400
           | GetApiV1Templates401
+          | GetApiV1Templates402
           | GetApiV1Templates403
           | GetApiV1Templates404
           | GetApiV1Templates500
@@ -100,6 +103,7 @@ export function useGetApiV1Templates<
     ResponseErrorConfig<
       | GetApiV1Templates400
       | GetApiV1Templates401
+      | GetApiV1Templates402
       | GetApiV1Templates403
       | GetApiV1Templates404
       | GetApiV1Templates500

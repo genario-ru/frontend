@@ -20,6 +20,7 @@ import { patchApiV1IdeasListsByIdeasListId } from "../clients/patch-api-v1-ideas
 import type {
   PatchApiV1IdeasListsByIdeasListId400,
   PatchApiV1IdeasListsByIdeasListId401,
+  PatchApiV1IdeasListsByIdeasListId402,
   PatchApiV1IdeasListsByIdeasListId403,
   PatchApiV1IdeasListsByIdeasListId404,
   PatchApiV1IdeasListsByIdeasListId500,
@@ -48,6 +49,7 @@ export function patchApiV1IdeasListsByIdeasListIdMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1IdeasListsByIdeasListId400
       | PatchApiV1IdeasListsByIdeasListId401
+      | PatchApiV1IdeasListsByIdeasListId402
       | PatchApiV1IdeasListsByIdeasListId403
       | PatchApiV1IdeasListsByIdeasListId404
       | PatchApiV1IdeasListsByIdeasListId500
@@ -75,6 +77,7 @@ export function usePatchApiV1IdeasListsByIdeasListId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1IdeasListsByIdeasListId400
         | PatchApiV1IdeasListsByIdeasListId401
+        | PatchApiV1IdeasListsByIdeasListId402
         | PatchApiV1IdeasListsByIdeasListId403
         | PatchApiV1IdeasListsByIdeasListId404
         | PatchApiV1IdeasListsByIdeasListId500
@@ -103,6 +106,7 @@ export function usePatchApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasListsByIdeasListId400
       | PatchApiV1IdeasListsByIdeasListId401
+      | PatchApiV1IdeasListsByIdeasListId402
       | PatchApiV1IdeasListsByIdeasListId403
       | PatchApiV1IdeasListsByIdeasListId404
       | PatchApiV1IdeasListsByIdeasListId500
@@ -119,6 +123,7 @@ export function usePatchApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasListsByIdeasListId400
       | PatchApiV1IdeasListsByIdeasListId401
+      | PatchApiV1IdeasListsByIdeasListId402
       | PatchApiV1IdeasListsByIdeasListId403
       | PatchApiV1IdeasListsByIdeasListId404
       | PatchApiV1IdeasListsByIdeasListId500
@@ -140,6 +145,7 @@ export function usePatchApiV1IdeasListsByIdeasListId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasListsByIdeasListId400
       | PatchApiV1IdeasListsByIdeasListId401
+      | PatchApiV1IdeasListsByIdeasListId402
       | PatchApiV1IdeasListsByIdeasListId403
       | PatchApiV1IdeasListsByIdeasListId404
       | PatchApiV1IdeasListsByIdeasListId500

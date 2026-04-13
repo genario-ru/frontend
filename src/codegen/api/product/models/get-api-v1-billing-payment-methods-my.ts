@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyPaymentMethodsResponseSchema } from "./get-my-payment-methods-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,12 @@ export type GetApiV1BillingPaymentMethodsMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1BillingPaymentMethodsMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1BillingPaymentMethodsMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -56,6 +63,7 @@ export type GetApiV1BillingPaymentMethodsMyQuery = {
   Errors:
     | GetApiV1BillingPaymentMethodsMy400
     | GetApiV1BillingPaymentMethodsMy401
+    | GetApiV1BillingPaymentMethodsMy402
     | GetApiV1BillingPaymentMethodsMy403
     | GetApiV1BillingPaymentMethodsMy404
     | GetApiV1BillingPaymentMethodsMy500;

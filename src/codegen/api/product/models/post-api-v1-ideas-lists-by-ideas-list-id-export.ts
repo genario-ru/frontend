@@ -9,6 +9,7 @@ import type { CreateIdeasListExportResponseSchema } from "./create-ideas-list-ex
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type PostApiV1IdeasListsByIdeasListIdExportPathParams = {
@@ -38,6 +39,13 @@ export type PostApiV1IdeasListsByIdeasListIdExport400 =
  */
 export type PostApiV1IdeasListsByIdeasListIdExport401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1IdeasListsByIdeasListIdExport402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -74,6 +82,7 @@ export type PostApiV1IdeasListsByIdeasListIdExportMutation = {
   Errors:
     | PostApiV1IdeasListsByIdeasListIdExport400
     | PostApiV1IdeasListsByIdeasListIdExport401
+    | PostApiV1IdeasListsByIdeasListIdExport402
     | PostApiV1IdeasListsByIdeasListIdExport403
     | PostApiV1IdeasListsByIdeasListIdExport404
     | PostApiV1IdeasListsByIdeasListIdExport500;

@@ -9,6 +9,7 @@ import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-sc
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 import { validateProfileChannelBodySchemaSchema } from "./validate-profile-channel-body-schema-schema.ts";
 import { validateProfileChannelResponseSchemaSchema } from "./validate-profile-channel-response-schema-schema.ts";
@@ -33,6 +34,13 @@ export const postApiV1ProfilesChannelsValidate400Schema = z
 export const postApiV1ProfilesChannelsValidate401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
+
+/**
+ * @description Payment required
+ */
+export const postApiV1ProfilesChannelsValidate402Schema = z
+  .lazy(() => paymentRequiredResponseSchemaSchema)
+  .describe("Payment required response description");
 
 /**
  * @description Forbidden

@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetVideoDurationsResponseSchema } from "./get-video-durations-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1VideoDurations400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1VideoDurations401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1VideoDurations402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1VideoDurationsQuery = {
   Errors:
     | GetApiV1VideoDurations400
     | GetApiV1VideoDurations401
+    | GetApiV1VideoDurations402
     | GetApiV1VideoDurations403
     | GetApiV1VideoDurations404
     | GetApiV1VideoDurations500;

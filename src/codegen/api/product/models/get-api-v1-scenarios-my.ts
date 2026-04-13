@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1ScenariosMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ScenariosMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ScenariosMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1ScenariosMyQuery = {
   Errors:
     | GetApiV1ScenariosMy400
     | GetApiV1ScenariosMy401
+    | GetApiV1ScenariosMy402
     | GetApiV1ScenariosMy403
     | GetApiV1ScenariosMy404
     | GetApiV1ScenariosMy500;

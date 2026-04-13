@@ -8,6 +8,7 @@ import type { DeleteScenarioSceneResponseSchema } from "./delete-scenario-scene-
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type DeleteApiV1ScenariosScenesBySceneIdPathParams = {
@@ -37,6 +38,13 @@ export type DeleteApiV1ScenariosScenesBySceneId400 = BadRequestResponseSchema;
 export type DeleteApiV1ScenariosScenesBySceneId401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type DeleteApiV1ScenariosScenesBySceneId402 =
+  PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -64,6 +72,7 @@ export type DeleteApiV1ScenariosScenesBySceneIdMutation = {
   Errors:
     | DeleteApiV1ScenariosScenesBySceneId400
     | DeleteApiV1ScenariosScenesBySceneId401
+    | DeleteApiV1ScenariosScenesBySceneId402
     | DeleteApiV1ScenariosScenesBySceneId403
     | DeleteApiV1ScenariosScenesBySceneId404
     | DeleteApiV1ScenariosScenesBySceneId500;

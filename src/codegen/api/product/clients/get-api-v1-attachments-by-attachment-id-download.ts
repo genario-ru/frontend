@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1AttachmentsByAttachmentIdDownload400,
   GetApiV1AttachmentsByAttachmentIdDownload401,
+  GetApiV1AttachmentsByAttachmentIdDownload402,
   GetApiV1AttachmentsByAttachmentIdDownload403,
   GetApiV1AttachmentsByAttachmentIdDownload404,
   GetApiV1AttachmentsByAttachmentIdDownload500,
@@ -51,6 +52,7 @@ export async function getApiV1AttachmentsByAttachmentIdDownload(
     ResponseErrorConfig<
       | GetApiV1AttachmentsByAttachmentIdDownload400
       | GetApiV1AttachmentsByAttachmentIdDownload401
+      | GetApiV1AttachmentsByAttachmentIdDownload402
       | GetApiV1AttachmentsByAttachmentIdDownload403
       | GetApiV1AttachmentsByAttachmentIdDownload404
       | GetApiV1AttachmentsByAttachmentIdDownload500

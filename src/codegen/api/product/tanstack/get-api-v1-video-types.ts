@@ -21,6 +21,7 @@ import { getApiV1VideoTypes } from "../clients/get-api-v1-video-types.ts";
 import type {
   GetApiV1VideoTypes400,
   GetApiV1VideoTypes401,
+  GetApiV1VideoTypes402,
   GetApiV1VideoTypes403,
   GetApiV1VideoTypes404,
   GetApiV1VideoTypes500,
@@ -43,6 +44,7 @@ export function getApiV1VideoTypesQueryOptions(
     ResponseErrorConfig<
       | GetApiV1VideoTypes400
       | GetApiV1VideoTypes401
+      | GetApiV1VideoTypes402
       | GetApiV1VideoTypes403
       | GetApiV1VideoTypes404
       | GetApiV1VideoTypes500
@@ -72,6 +74,7 @@ export function useGetApiV1VideoTypes<
         ResponseErrorConfig<
           | GetApiV1VideoTypes400
           | GetApiV1VideoTypes401
+          | GetApiV1VideoTypes402
           | GetApiV1VideoTypes403
           | GetApiV1VideoTypes404
           | GetApiV1VideoTypes500
@@ -100,6 +103,7 @@ export function useGetApiV1VideoTypes<
     ResponseErrorConfig<
       | GetApiV1VideoTypes400
       | GetApiV1VideoTypes401
+      | GetApiV1VideoTypes402
       | GetApiV1VideoTypes403
       | GetApiV1VideoTypes404
       | GetApiV1VideoTypes500

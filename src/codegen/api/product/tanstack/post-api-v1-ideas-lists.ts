@@ -20,6 +20,7 @@ import { postApiV1IdeasLists } from "../clients/post-api-v1-ideas-lists.ts";
 import type {
   PostApiV1IdeasLists400,
   PostApiV1IdeasLists401,
+  PostApiV1IdeasLists402,
   PostApiV1IdeasLists403,
   PostApiV1IdeasLists404,
   PostApiV1IdeasLists500,
@@ -45,6 +46,7 @@ export function postApiV1IdeasListsMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PostApiV1IdeasLists400
       | PostApiV1IdeasLists401
+      | PostApiV1IdeasLists402
       | PostApiV1IdeasLists403
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
@@ -69,6 +71,7 @@ export function usePostApiV1IdeasLists<TContext>(
       ResponseErrorConfig<
         | PostApiV1IdeasLists400
         | PostApiV1IdeasLists401
+        | PostApiV1IdeasLists402
         | PostApiV1IdeasLists403
         | PostApiV1IdeasLists404
         | PostApiV1IdeasLists500
@@ -93,6 +96,7 @@ export function usePostApiV1IdeasLists<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasLists400
       | PostApiV1IdeasLists401
+      | PostApiV1IdeasLists402
       | PostApiV1IdeasLists403
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
@@ -106,6 +110,7 @@ export function usePostApiV1IdeasLists<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasLists400
       | PostApiV1IdeasLists401
+      | PostApiV1IdeasLists402
       | PostApiV1IdeasLists403
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500
@@ -124,6 +129,7 @@ export function usePostApiV1IdeasLists<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasLists400
       | PostApiV1IdeasLists401
+      | PostApiV1IdeasLists402
       | PostApiV1IdeasLists403
       | PostApiV1IdeasLists404
       | PostApiV1IdeasLists500

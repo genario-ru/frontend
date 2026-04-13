@@ -8,6 +8,7 @@ import type { CancelSubscriptionResponseSchema } from "./cancel-subscription-res
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type PostApiV1SubscriptionsBySubscriptionIdCancelPathParams = {
@@ -39,6 +40,13 @@ export type PostApiV1SubscriptionsBySubscriptionIdCancel401 =
   UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1SubscriptionsBySubscriptionIdCancel402 =
+  PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -68,6 +76,7 @@ export type PostApiV1SubscriptionsBySubscriptionIdCancelMutation = {
   Errors:
     | PostApiV1SubscriptionsBySubscriptionIdCancel400
     | PostApiV1SubscriptionsBySubscriptionIdCancel401
+    | PostApiV1SubscriptionsBySubscriptionIdCancel402
     | PostApiV1SubscriptionsBySubscriptionIdCancel403
     | PostApiV1SubscriptionsBySubscriptionIdCancel404
     | PostApiV1SubscriptionsBySubscriptionIdCancel500;

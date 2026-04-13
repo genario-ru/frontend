@@ -21,6 +21,7 @@ import { getApiV1CreditsUsageMy } from "../clients/get-api-v1-credits-usage-my.t
 import type {
   GetApiV1CreditsUsageMy400,
   GetApiV1CreditsUsageMy401,
+  GetApiV1CreditsUsageMy402,
   GetApiV1CreditsUsageMy403,
   GetApiV1CreditsUsageMy404,
   GetApiV1CreditsUsageMy500,
@@ -47,6 +48,7 @@ export function getApiV1CreditsUsageMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1CreditsUsageMy400
       | GetApiV1CreditsUsageMy401
+      | GetApiV1CreditsUsageMy402
       | GetApiV1CreditsUsageMy403
       | GetApiV1CreditsUsageMy404
       | GetApiV1CreditsUsageMy500
@@ -80,6 +82,7 @@ export function useGetApiV1CreditsUsageMy<
         ResponseErrorConfig<
           | GetApiV1CreditsUsageMy400
           | GetApiV1CreditsUsageMy401
+          | GetApiV1CreditsUsageMy402
           | GetApiV1CreditsUsageMy403
           | GetApiV1CreditsUsageMy404
           | GetApiV1CreditsUsageMy500
@@ -109,6 +112,7 @@ export function useGetApiV1CreditsUsageMy<
     ResponseErrorConfig<
       | GetApiV1CreditsUsageMy400
       | GetApiV1CreditsUsageMy401
+      | GetApiV1CreditsUsageMy402
       | GetApiV1CreditsUsageMy403
       | GetApiV1CreditsUsageMy404
       | GetApiV1CreditsUsageMy500

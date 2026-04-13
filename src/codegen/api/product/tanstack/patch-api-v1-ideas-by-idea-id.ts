@@ -20,6 +20,7 @@ import { patchApiV1IdeasByIdeaId } from "../clients/patch-api-v1-ideas-by-idea-i
 import type {
   PatchApiV1IdeasByIdeaId400,
   PatchApiV1IdeasByIdeaId401,
+  PatchApiV1IdeasByIdeaId402,
   PatchApiV1IdeasByIdeaId403,
   PatchApiV1IdeasByIdeaId404,
   PatchApiV1IdeasByIdeaId500,
@@ -46,6 +47,7 @@ export function patchApiV1IdeasByIdeaIdMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaId400
       | PatchApiV1IdeasByIdeaId401
+      | PatchApiV1IdeasByIdeaId402
       | PatchApiV1IdeasByIdeaId403
       | PatchApiV1IdeasByIdeaId404
       | PatchApiV1IdeasByIdeaId500
@@ -73,6 +75,7 @@ export function usePatchApiV1IdeasByIdeaId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1IdeasByIdeaId400
         | PatchApiV1IdeasByIdeaId401
+        | PatchApiV1IdeasByIdeaId402
         | PatchApiV1IdeasByIdeaId403
         | PatchApiV1IdeasByIdeaId404
         | PatchApiV1IdeasByIdeaId500
@@ -100,6 +103,7 @@ export function usePatchApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaId400
       | PatchApiV1IdeasByIdeaId401
+      | PatchApiV1IdeasByIdeaId402
       | PatchApiV1IdeasByIdeaId403
       | PatchApiV1IdeasByIdeaId404
       | PatchApiV1IdeasByIdeaId500
@@ -116,6 +120,7 @@ export function usePatchApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaId400
       | PatchApiV1IdeasByIdeaId401
+      | PatchApiV1IdeasByIdeaId402
       | PatchApiV1IdeasByIdeaId403
       | PatchApiV1IdeasByIdeaId404
       | PatchApiV1IdeasByIdeaId500
@@ -137,6 +142,7 @@ export function usePatchApiV1IdeasByIdeaId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaId400
       | PatchApiV1IdeasByIdeaId401
+      | PatchApiV1IdeasByIdeaId402
       | PatchApiV1IdeasByIdeaId403
       | PatchApiV1IdeasByIdeaId404
       | PatchApiV1IdeasByIdeaId500

@@ -20,6 +20,7 @@ import { patchApiV1ScenariosByScenarioId } from "../clients/patch-api-v1-scenari
 import type {
   PatchApiV1ScenariosByScenarioId400,
   PatchApiV1ScenariosByScenarioId401,
+  PatchApiV1ScenariosByScenarioId402,
   PatchApiV1ScenariosByScenarioId403,
   PatchApiV1ScenariosByScenarioId404,
   PatchApiV1ScenariosByScenarioId500,
@@ -48,6 +49,7 @@ export function patchApiV1ScenariosByScenarioIdMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioId400
       | PatchApiV1ScenariosByScenarioId401
+      | PatchApiV1ScenariosByScenarioId402
       | PatchApiV1ScenariosByScenarioId403
       | PatchApiV1ScenariosByScenarioId404
       | PatchApiV1ScenariosByScenarioId500
@@ -75,6 +77,7 @@ export function usePatchApiV1ScenariosByScenarioId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosByScenarioId400
         | PatchApiV1ScenariosByScenarioId401
+        | PatchApiV1ScenariosByScenarioId402
         | PatchApiV1ScenariosByScenarioId403
         | PatchApiV1ScenariosByScenarioId404
         | PatchApiV1ScenariosByScenarioId500
@@ -102,6 +105,7 @@ export function usePatchApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioId400
       | PatchApiV1ScenariosByScenarioId401
+      | PatchApiV1ScenariosByScenarioId402
       | PatchApiV1ScenariosByScenarioId403
       | PatchApiV1ScenariosByScenarioId404
       | PatchApiV1ScenariosByScenarioId500
@@ -118,6 +122,7 @@ export function usePatchApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioId400
       | PatchApiV1ScenariosByScenarioId401
+      | PatchApiV1ScenariosByScenarioId402
       | PatchApiV1ScenariosByScenarioId403
       | PatchApiV1ScenariosByScenarioId404
       | PatchApiV1ScenariosByScenarioId500
@@ -139,6 +144,7 @@ export function usePatchApiV1ScenariosByScenarioId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioId400
       | PatchApiV1ScenariosByScenarioId401
+      | PatchApiV1ScenariosByScenarioId402
       | PatchApiV1ScenariosByScenarioId403
       | PatchApiV1ScenariosByScenarioId404
       | PatchApiV1ScenariosByScenarioId500

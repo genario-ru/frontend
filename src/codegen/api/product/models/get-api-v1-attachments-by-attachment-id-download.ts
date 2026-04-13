@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type GetApiV1AttachmentsByAttachmentIdDownloadPathParams = {
@@ -34,6 +35,13 @@ export type GetApiV1AttachmentsByAttachmentIdDownload400 =
  */
 export type GetApiV1AttachmentsByAttachmentIdDownload401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1AttachmentsByAttachmentIdDownload402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -65,6 +73,7 @@ export type GetApiV1AttachmentsByAttachmentIdDownloadQuery = {
   Errors:
     | GetApiV1AttachmentsByAttachmentIdDownload400
     | GetApiV1AttachmentsByAttachmentIdDownload401
+    | GetApiV1AttachmentsByAttachmentIdDownload402
     | GetApiV1AttachmentsByAttachmentIdDownload403
     | GetApiV1AttachmentsByAttachmentIdDownload404
     | GetApiV1AttachmentsByAttachmentIdDownload500;

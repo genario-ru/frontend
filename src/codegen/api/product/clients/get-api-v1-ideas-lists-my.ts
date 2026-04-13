@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1IdeasListsMy400,
   GetApiV1IdeasListsMy401,
+  GetApiV1IdeasListsMy402,
   GetApiV1IdeasListsMy403,
   GetApiV1IdeasListsMy404,
   GetApiV1IdeasListsMy500,
@@ -40,6 +41,7 @@ export async function getApiV1IdeasListsMy(
     ResponseErrorConfig<
       | GetApiV1IdeasListsMy400
       | GetApiV1IdeasListsMy401
+      | GetApiV1IdeasListsMy402
       | GetApiV1IdeasListsMy403
       | GetApiV1IdeasListsMy404
       | GetApiV1IdeasListsMy500

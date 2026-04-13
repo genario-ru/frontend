@@ -20,6 +20,7 @@ import { postApiV1IdeasListsByIdeasListIdExport } from "../clients/post-api-v1-i
 import type {
   PostApiV1IdeasListsByIdeasListIdExport400,
   PostApiV1IdeasListsByIdeasListIdExport401,
+  PostApiV1IdeasListsByIdeasListIdExport402,
   PostApiV1IdeasListsByIdeasListIdExport403,
   PostApiV1IdeasListsByIdeasListIdExport404,
   PostApiV1IdeasListsByIdeasListIdExport500,
@@ -48,6 +49,7 @@ export function postApiV1IdeasListsByIdeasListIdExportMutationOptions<
     ResponseErrorConfig<
       | PostApiV1IdeasListsByIdeasListIdExport400
       | PostApiV1IdeasListsByIdeasListIdExport401
+      | PostApiV1IdeasListsByIdeasListIdExport402
       | PostApiV1IdeasListsByIdeasListIdExport403
       | PostApiV1IdeasListsByIdeasListIdExport404
       | PostApiV1IdeasListsByIdeasListIdExport500
@@ -78,6 +80,7 @@ export function usePostApiV1IdeasListsByIdeasListIdExport<TContext>(
       ResponseErrorConfig<
         | PostApiV1IdeasListsByIdeasListIdExport400
         | PostApiV1IdeasListsByIdeasListIdExport401
+        | PostApiV1IdeasListsByIdeasListIdExport402
         | PostApiV1IdeasListsByIdeasListIdExport403
         | PostApiV1IdeasListsByIdeasListIdExport404
         | PostApiV1IdeasListsByIdeasListIdExport500
@@ -106,6 +109,7 @@ export function usePostApiV1IdeasListsByIdeasListIdExport<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasListsByIdeasListIdExport400
       | PostApiV1IdeasListsByIdeasListIdExport401
+      | PostApiV1IdeasListsByIdeasListIdExport402
       | PostApiV1IdeasListsByIdeasListIdExport403
       | PostApiV1IdeasListsByIdeasListIdExport404
       | PostApiV1IdeasListsByIdeasListIdExport500
@@ -122,6 +126,7 @@ export function usePostApiV1IdeasListsByIdeasListIdExport<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasListsByIdeasListIdExport400
       | PostApiV1IdeasListsByIdeasListIdExport401
+      | PostApiV1IdeasListsByIdeasListIdExport402
       | PostApiV1IdeasListsByIdeasListIdExport403
       | PostApiV1IdeasListsByIdeasListIdExport404
       | PostApiV1IdeasListsByIdeasListIdExport500
@@ -143,6 +148,7 @@ export function usePostApiV1IdeasListsByIdeasListIdExport<TContext>(
     ResponseErrorConfig<
       | PostApiV1IdeasListsByIdeasListIdExport400
       | PostApiV1IdeasListsByIdeasListIdExport401
+      | PostApiV1IdeasListsByIdeasListIdExport402
       | PostApiV1IdeasListsByIdeasListIdExport403
       | PostApiV1IdeasListsByIdeasListIdExport404
       | PostApiV1IdeasListsByIdeasListIdExport500

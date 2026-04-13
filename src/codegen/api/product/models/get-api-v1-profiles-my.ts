@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyProfilesResponseSchema } from "./get-my-profiles-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1ProfilesMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ProfilesMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ProfilesMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1ProfilesMyQuery = {
   Errors:
     | GetApiV1ProfilesMy400
     | GetApiV1ProfilesMy401
+    | GetApiV1ProfilesMy402
     | GetApiV1ProfilesMy403
     | GetApiV1ProfilesMy404
     | GetApiV1ProfilesMy500;

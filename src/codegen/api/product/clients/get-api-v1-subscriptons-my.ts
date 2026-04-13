@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1SubscriptonsMy400,
   GetApiV1SubscriptonsMy401,
+  GetApiV1SubscriptonsMy402,
   GetApiV1SubscriptonsMy403,
   GetApiV1SubscriptonsMy404,
   GetApiV1SubscriptonsMy500,
@@ -38,6 +39,7 @@ export async function getApiV1SubscriptonsMy(
     ResponseErrorConfig<
       | GetApiV1SubscriptonsMy400
       | GetApiV1SubscriptonsMy401
+      | GetApiV1SubscriptonsMy402
       | GetApiV1SubscriptonsMy403
       | GetApiV1SubscriptonsMy404
       | GetApiV1SubscriptonsMy500

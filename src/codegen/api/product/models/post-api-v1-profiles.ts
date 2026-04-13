@@ -9,6 +9,7 @@ import type { CreateProfileResponseSchema } from "./create-profile-response-sche
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,12 @@ export type PostApiV1Profiles400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PostApiV1Profiles401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1Profiles402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -60,6 +67,7 @@ export type PostApiV1ProfilesMutation = {
   Errors:
     | PostApiV1Profiles400
     | PostApiV1Profiles401
+    | PostApiV1Profiles402
     | PostApiV1Profiles403
     | PostApiV1Profiles404
     | PostApiV1Profiles500;

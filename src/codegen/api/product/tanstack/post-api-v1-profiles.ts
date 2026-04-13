@@ -20,6 +20,7 @@ import { postApiV1Profiles } from "../clients/post-api-v1-profiles.ts";
 import type {
   PostApiV1Profiles400,
   PostApiV1Profiles401,
+  PostApiV1Profiles402,
   PostApiV1Profiles403,
   PostApiV1Profiles404,
   PostApiV1Profiles500,
@@ -45,6 +46,7 @@ export function postApiV1ProfilesMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PostApiV1Profiles400
       | PostApiV1Profiles401
+      | PostApiV1Profiles402
       | PostApiV1Profiles403
       | PostApiV1Profiles404
       | PostApiV1Profiles500
@@ -69,6 +71,7 @@ export function usePostApiV1Profiles<TContext>(
       ResponseErrorConfig<
         | PostApiV1Profiles400
         | PostApiV1Profiles401
+        | PostApiV1Profiles402
         | PostApiV1Profiles403
         | PostApiV1Profiles404
         | PostApiV1Profiles500
@@ -93,6 +96,7 @@ export function usePostApiV1Profiles<TContext>(
     ResponseErrorConfig<
       | PostApiV1Profiles400
       | PostApiV1Profiles401
+      | PostApiV1Profiles402
       | PostApiV1Profiles403
       | PostApiV1Profiles404
       | PostApiV1Profiles500
@@ -106,6 +110,7 @@ export function usePostApiV1Profiles<TContext>(
     ResponseErrorConfig<
       | PostApiV1Profiles400
       | PostApiV1Profiles401
+      | PostApiV1Profiles402
       | PostApiV1Profiles403
       | PostApiV1Profiles404
       | PostApiV1Profiles500
@@ -124,6 +129,7 @@ export function usePostApiV1Profiles<TContext>(
     ResponseErrorConfig<
       | PostApiV1Profiles400
       | PostApiV1Profiles401
+      | PostApiV1Profiles402
       | PostApiV1Profiles403
       | PostApiV1Profiles404
       | PostApiV1Profiles500

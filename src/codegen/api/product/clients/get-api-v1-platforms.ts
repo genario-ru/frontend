@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1Platforms400,
   GetApiV1Platforms401,
+  GetApiV1Platforms402,
   GetApiV1Platforms403,
   GetApiV1Platforms404,
   GetApiV1Platforms500,
@@ -38,6 +39,7 @@ export async function getApiV1Platforms(
     ResponseErrorConfig<
       | GetApiV1Platforms400
       | GetApiV1Platforms401
+      | GetApiV1Platforms402
       | GetApiV1Platforms403
       | GetApiV1Platforms404
       | GetApiV1Platforms500

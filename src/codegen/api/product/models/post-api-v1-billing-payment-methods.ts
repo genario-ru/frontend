@@ -9,6 +9,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,12 @@ export type PostApiV1BillingPaymentMethods400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PostApiV1BillingPaymentMethods401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1BillingPaymentMethods402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -63,6 +70,7 @@ export type PostApiV1BillingPaymentMethodsMutation = {
   Errors:
     | PostApiV1BillingPaymentMethods400
     | PostApiV1BillingPaymentMethods401
+    | PostApiV1BillingPaymentMethods402
     | PostApiV1BillingPaymentMethods403
     | PostApiV1BillingPaymentMethods404
     | PostApiV1BillingPaymentMethods500;

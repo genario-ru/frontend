@@ -20,6 +20,7 @@ import { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "../clients
 import type {
   PatchApiV1ScenariosSceneComponentsBySceneComponentId400,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId401,
+  PatchApiV1ScenariosSceneComponentsBySceneComponentId402,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId403,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId404,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId500,
@@ -51,6 +52,7 @@ export function patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationOpti
     ResponseErrorConfig<
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+      | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -83,6 +85,7 @@ export function usePatchApiV1ScenariosSceneComponentsBySceneComponentId<
       ResponseErrorConfig<
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+        | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -112,6 +115,7 @@ export function usePatchApiV1ScenariosSceneComponentsBySceneComponentId<
       ResponseErrorConfig<
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+        | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
         | PatchApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -128,6 +132,7 @@ export function usePatchApiV1ScenariosSceneComponentsBySceneComponentId<
     ResponseErrorConfig<
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+      | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -149,6 +154,7 @@ export function usePatchApiV1ScenariosSceneComponentsBySceneComponentId<
     ResponseErrorConfig<
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+      | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId500

@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   DeleteApiV1ScenariosScenesBySceneId400,
   DeleteApiV1ScenariosScenesBySceneId401,
+  DeleteApiV1ScenariosScenesBySceneId402,
   DeleteApiV1ScenariosScenesBySceneId403,
   DeleteApiV1ScenariosScenesBySceneId404,
   DeleteApiV1ScenariosScenesBySceneId500,
@@ -49,6 +50,7 @@ export async function deleteApiV1ScenariosScenesBySceneId(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosScenesBySceneId400
       | DeleteApiV1ScenariosScenesBySceneId401
+      | DeleteApiV1ScenariosScenesBySceneId402
       | DeleteApiV1ScenariosScenesBySceneId403
       | DeleteApiV1ScenariosScenesBySceneId404
       | DeleteApiV1ScenariosScenesBySceneId500

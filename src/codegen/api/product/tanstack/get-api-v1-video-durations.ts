@@ -21,6 +21,7 @@ import { getApiV1VideoDurations } from "../clients/get-api-v1-video-durations.ts
 import type {
   GetApiV1VideoDurations400,
   GetApiV1VideoDurations401,
+  GetApiV1VideoDurations402,
   GetApiV1VideoDurations403,
   GetApiV1VideoDurations404,
   GetApiV1VideoDurations500,
@@ -43,6 +44,7 @@ export function getApiV1VideoDurationsQueryOptions(
     ResponseErrorConfig<
       | GetApiV1VideoDurations400
       | GetApiV1VideoDurations401
+      | GetApiV1VideoDurations402
       | GetApiV1VideoDurations403
       | GetApiV1VideoDurations404
       | GetApiV1VideoDurations500
@@ -75,6 +77,7 @@ export function useGetApiV1VideoDurations<
         ResponseErrorConfig<
           | GetApiV1VideoDurations400
           | GetApiV1VideoDurations401
+          | GetApiV1VideoDurations402
           | GetApiV1VideoDurations403
           | GetApiV1VideoDurations404
           | GetApiV1VideoDurations500
@@ -104,6 +107,7 @@ export function useGetApiV1VideoDurations<
     ResponseErrorConfig<
       | GetApiV1VideoDurations400
       | GetApiV1VideoDurations401
+      | GetApiV1VideoDurations402
       | GetApiV1VideoDurations403
       | GetApiV1VideoDurations404
       | GetApiV1VideoDurations500

@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1SubscriptonsMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1SubscriptonsMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1SubscriptonsMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1SubscriptonsMyQuery = {
   Errors:
     | GetApiV1SubscriptonsMy400
     | GetApiV1SubscriptonsMy401
+    | GetApiV1SubscriptonsMy402
     | GetApiV1SubscriptonsMy403
     | GetApiV1SubscriptonsMy404
     | GetApiV1SubscriptonsMy500;

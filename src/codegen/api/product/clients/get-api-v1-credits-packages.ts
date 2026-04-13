@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1CreditsPackages400,
   GetApiV1CreditsPackages401,
+  GetApiV1CreditsPackages402,
   GetApiV1CreditsPackages403,
   GetApiV1CreditsPackages404,
   GetApiV1CreditsPackages500,
@@ -38,6 +39,7 @@ export async function getApiV1CreditsPackages(
     ResponseErrorConfig<
       | GetApiV1CreditsPackages400
       | GetApiV1CreditsPackages401
+      | GetApiV1CreditsPackages402
       | GetApiV1CreditsPackages403
       | GetApiV1CreditsPackages404
       | GetApiV1CreditsPackages500

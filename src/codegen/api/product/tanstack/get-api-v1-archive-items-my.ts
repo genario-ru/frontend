@@ -21,6 +21,7 @@ import { getApiV1ArchiveItemsMy } from "../clients/get-api-v1-archive-items-my.t
 import type {
   GetApiV1ArchiveItemsMy400,
   GetApiV1ArchiveItemsMy401,
+  GetApiV1ArchiveItemsMy402,
   GetApiV1ArchiveItemsMy403,
   GetApiV1ArchiveItemsMy404,
   GetApiV1ArchiveItemsMy500,
@@ -47,6 +48,7 @@ export function getApiV1ArchiveItemsMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ArchiveItemsMy400
       | GetApiV1ArchiveItemsMy401
+      | GetApiV1ArchiveItemsMy402
       | GetApiV1ArchiveItemsMy403
       | GetApiV1ArchiveItemsMy404
       | GetApiV1ArchiveItemsMy500
@@ -80,6 +82,7 @@ export function useGetApiV1ArchiveItemsMy<
         ResponseErrorConfig<
           | GetApiV1ArchiveItemsMy400
           | GetApiV1ArchiveItemsMy401
+          | GetApiV1ArchiveItemsMy402
           | GetApiV1ArchiveItemsMy403
           | GetApiV1ArchiveItemsMy404
           | GetApiV1ArchiveItemsMy500
@@ -109,6 +112,7 @@ export function useGetApiV1ArchiveItemsMy<
     ResponseErrorConfig<
       | GetApiV1ArchiveItemsMy400
       | GetApiV1ArchiveItemsMy401
+      | GetApiV1ArchiveItemsMy402
       | GetApiV1ArchiveItemsMy403
       | GetApiV1ArchiveItemsMy404
       | GetApiV1ArchiveItemsMy500

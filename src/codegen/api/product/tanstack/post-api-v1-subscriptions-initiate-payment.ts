@@ -20,6 +20,7 @@ import { postApiV1SubscriptionsInitiatePayment } from "../clients/post-api-v1-su
 import type {
   PostApiV1SubscriptionsInitiatePayment400,
   PostApiV1SubscriptionsInitiatePayment401,
+  PostApiV1SubscriptionsInitiatePayment402,
   PostApiV1SubscriptionsInitiatePayment403,
   PostApiV1SubscriptionsInitiatePayment404,
   PostApiV1SubscriptionsInitiatePayment500,
@@ -47,6 +48,7 @@ export function postApiV1SubscriptionsInitiatePaymentMutationOptions<
     ResponseErrorConfig<
       | PostApiV1SubscriptionsInitiatePayment400
       | PostApiV1SubscriptionsInitiatePayment401
+      | PostApiV1SubscriptionsInitiatePayment402
       | PostApiV1SubscriptionsInitiatePayment403
       | PostApiV1SubscriptionsInitiatePayment404
       | PostApiV1SubscriptionsInitiatePayment500
@@ -71,6 +73,7 @@ export function usePostApiV1SubscriptionsInitiatePayment<TContext>(
       ResponseErrorConfig<
         | PostApiV1SubscriptionsInitiatePayment400
         | PostApiV1SubscriptionsInitiatePayment401
+        | PostApiV1SubscriptionsInitiatePayment402
         | PostApiV1SubscriptionsInitiatePayment403
         | PostApiV1SubscriptionsInitiatePayment404
         | PostApiV1SubscriptionsInitiatePayment500
@@ -96,6 +99,7 @@ export function usePostApiV1SubscriptionsInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsInitiatePayment400
       | PostApiV1SubscriptionsInitiatePayment401
+      | PostApiV1SubscriptionsInitiatePayment402
       | PostApiV1SubscriptionsInitiatePayment403
       | PostApiV1SubscriptionsInitiatePayment404
       | PostApiV1SubscriptionsInitiatePayment500
@@ -109,6 +113,7 @@ export function usePostApiV1SubscriptionsInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsInitiatePayment400
       | PostApiV1SubscriptionsInitiatePayment401
+      | PostApiV1SubscriptionsInitiatePayment402
       | PostApiV1SubscriptionsInitiatePayment403
       | PostApiV1SubscriptionsInitiatePayment404
       | PostApiV1SubscriptionsInitiatePayment500
@@ -127,6 +132,7 @@ export function usePostApiV1SubscriptionsInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsInitiatePayment400
       | PostApiV1SubscriptionsInitiatePayment401
+      | PostApiV1SubscriptionsInitiatePayment402
       | PostApiV1SubscriptionsInitiatePayment403
       | PostApiV1SubscriptionsInitiatePayment404
       | PostApiV1SubscriptionsInitiatePayment500

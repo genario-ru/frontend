@@ -8,6 +8,7 @@ import type { DeleteIdeaResponseSchema } from "./delete-idea-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type DeleteApiV1IdeasByIdeaIdPathParams = {
@@ -36,6 +37,12 @@ export type DeleteApiV1IdeasByIdeaId400 = BadRequestResponseSchema;
 export type DeleteApiV1IdeasByIdeaId401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type DeleteApiV1IdeasByIdeaId402 = PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -62,6 +69,7 @@ export type DeleteApiV1IdeasByIdeaIdMutation = {
   Errors:
     | DeleteApiV1IdeasByIdeaId400
     | DeleteApiV1IdeasByIdeaId401
+    | DeleteApiV1IdeasByIdeaId402
     | DeleteApiV1IdeasByIdeaId403
     | DeleteApiV1IdeasByIdeaId404
     | DeleteApiV1IdeasByIdeaId500;

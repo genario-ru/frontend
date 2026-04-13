@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetTariffsResponseSchema } from "./get-tariffs-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1Tariffs400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1Tariffs401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1Tariffs402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1TariffsQuery = {
   Errors:
     | GetApiV1Tariffs400
     | GetApiV1Tariffs401
+    | GetApiV1Tariffs402
     | GetApiV1Tariffs403
     | GetApiV1Tariffs404
     | GetApiV1Tariffs500;

@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyArchiveItemsResponseSchema } from "./get-my-archive-items-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type GetApiV1ArchiveItemsMyQueryParams = {
@@ -61,6 +62,12 @@ export type GetApiV1ArchiveItemsMy400 = BadRequestResponseSchema;
 export type GetApiV1ArchiveItemsMy401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ArchiveItemsMy402 = PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -86,6 +93,7 @@ export type GetApiV1ArchiveItemsMyQuery = {
   Errors:
     | GetApiV1ArchiveItemsMy400
     | GetApiV1ArchiveItemsMy401
+    | GetApiV1ArchiveItemsMy402
     | GetApiV1ArchiveItemsMy403
     | GetApiV1ArchiveItemsMy404
     | GetApiV1ArchiveItemsMy500;

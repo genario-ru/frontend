@@ -20,6 +20,7 @@ import { postApiV1ScenariosScenesBySceneIdPreview } from "../clients/post-api-v1
 import type {
   PostApiV1ScenariosScenesBySceneIdPreview400,
   PostApiV1ScenariosScenesBySceneIdPreview401,
+  PostApiV1ScenariosScenesBySceneIdPreview402,
   PostApiV1ScenariosScenesBySceneIdPreview403,
   PostApiV1ScenariosScenesBySceneIdPreview404,
   PostApiV1ScenariosScenesBySceneIdPreview500,
@@ -43,6 +44,7 @@ export function postApiV1ScenariosScenesBySceneIdPreviewMutationOptions<
     ResponseErrorConfig<
       | PostApiV1ScenariosScenesBySceneIdPreview400
       | PostApiV1ScenariosScenesBySceneIdPreview401
+      | PostApiV1ScenariosScenesBySceneIdPreview402
       | PostApiV1ScenariosScenesBySceneIdPreview403
       | PostApiV1ScenariosScenesBySceneIdPreview404
       | PostApiV1ScenariosScenesBySceneIdPreview500
@@ -67,6 +69,7 @@ export function usePostApiV1ScenariosScenesBySceneIdPreview<TContext>(
       ResponseErrorConfig<
         | PostApiV1ScenariosScenesBySceneIdPreview400
         | PostApiV1ScenariosScenesBySceneIdPreview401
+        | PostApiV1ScenariosScenesBySceneIdPreview402
         | PostApiV1ScenariosScenesBySceneIdPreview403
         | PostApiV1ScenariosScenesBySceneIdPreview404
         | PostApiV1ScenariosScenesBySceneIdPreview500
@@ -92,6 +95,7 @@ export function usePostApiV1ScenariosScenesBySceneIdPreview<TContext>(
     ResponseErrorConfig<
       | PostApiV1ScenariosScenesBySceneIdPreview400
       | PostApiV1ScenariosScenesBySceneIdPreview401
+      | PostApiV1ScenariosScenesBySceneIdPreview402
       | PostApiV1ScenariosScenesBySceneIdPreview403
       | PostApiV1ScenariosScenesBySceneIdPreview404
       | PostApiV1ScenariosScenesBySceneIdPreview500
@@ -105,6 +109,7 @@ export function usePostApiV1ScenariosScenesBySceneIdPreview<TContext>(
     ResponseErrorConfig<
       | PostApiV1ScenariosScenesBySceneIdPreview400
       | PostApiV1ScenariosScenesBySceneIdPreview401
+      | PostApiV1ScenariosScenesBySceneIdPreview402
       | PostApiV1ScenariosScenesBySceneIdPreview403
       | PostApiV1ScenariosScenesBySceneIdPreview404
       | PostApiV1ScenariosScenesBySceneIdPreview500
@@ -123,6 +128,7 @@ export function usePostApiV1ScenariosScenesBySceneIdPreview<TContext>(
     ResponseErrorConfig<
       | PostApiV1ScenariosScenesBySceneIdPreview400
       | PostApiV1ScenariosScenesBySceneIdPreview401
+      | PostApiV1ScenariosScenesBySceneIdPreview402
       | PostApiV1ScenariosScenesBySceneIdPreview403
       | PostApiV1ScenariosScenesBySceneIdPreview404
       | PostApiV1ScenariosScenesBySceneIdPreview500

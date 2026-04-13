@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1BillingPaymentMethods400,
   PostApiV1BillingPaymentMethods401,
+  PostApiV1BillingPaymentMethods402,
   PostApiV1BillingPaymentMethods403,
   PostApiV1BillingPaymentMethods404,
   PostApiV1BillingPaymentMethods500,
@@ -51,6 +52,7 @@ export async function postApiV1BillingPaymentMethods(
     ResponseErrorConfig<
       | PostApiV1BillingPaymentMethods400
       | PostApiV1BillingPaymentMethods401
+      | PostApiV1BillingPaymentMethods402
       | PostApiV1BillingPaymentMethods403
       | PostApiV1BillingPaymentMethods404
       | PostApiV1BillingPaymentMethods500

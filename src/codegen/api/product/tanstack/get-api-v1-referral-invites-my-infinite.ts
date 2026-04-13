@@ -22,6 +22,7 @@ import { getApiV1ReferralInvitesMy } from "../clients/get-api-v1-referral-invite
 import type {
   GetApiV1ReferralInvitesMy400,
   GetApiV1ReferralInvitesMy401,
+  GetApiV1ReferralInvitesMy402,
   GetApiV1ReferralInvitesMy403,
   GetApiV1ReferralInvitesMy404,
   GetApiV1ReferralInvitesMy500,
@@ -51,6 +52,7 @@ export function getApiV1ReferralInvitesMyInfiniteQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ReferralInvitesMy400
       | GetApiV1ReferralInvitesMy401
+      | GetApiV1ReferralInvitesMy402
       | GetApiV1ReferralInvitesMy403
       | GetApiV1ReferralInvitesMy404
       | GetApiV1ReferralInvitesMy500
@@ -85,6 +87,7 @@ export function useGetApiV1ReferralInvitesMyInfinite<
   TError = ResponseErrorConfig<
     | GetApiV1ReferralInvitesMy400
     | GetApiV1ReferralInvitesMy401
+    | GetApiV1ReferralInvitesMy402
     | GetApiV1ReferralInvitesMy403
     | GetApiV1ReferralInvitesMy404
     | GetApiV1ReferralInvitesMy500

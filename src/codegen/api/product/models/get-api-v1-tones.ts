@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetTonesResponseSchema } from "./get-tones-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1Tones400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1Tones401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1Tones402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1TonesQuery = {
   Errors:
     | GetApiV1Tones400
     | GetApiV1Tones401
+    | GetApiV1Tones402
     | GetApiV1Tones403
     | GetApiV1Tones404
     | GetApiV1Tones500;

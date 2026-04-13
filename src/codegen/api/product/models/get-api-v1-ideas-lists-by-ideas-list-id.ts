@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetIdeasListResponseSchema } from "./get-ideas-list-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type GetApiV1IdeasListsByIdeasListIdPathParams = {
@@ -43,6 +44,12 @@ export type GetApiV1IdeasListsByIdeasListId400 = BadRequestResponseSchema;
 export type GetApiV1IdeasListsByIdeasListId401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1IdeasListsByIdeasListId402 = PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -71,6 +78,7 @@ export type GetApiV1IdeasListsByIdeasListIdQuery = {
   Errors:
     | GetApiV1IdeasListsByIdeasListId400
     | GetApiV1IdeasListsByIdeasListId401
+    | GetApiV1IdeasListsByIdeasListId402
     | GetApiV1IdeasListsByIdeasListId403
     | GetApiV1IdeasListsByIdeasListId404
     | GetApiV1IdeasListsByIdeasListId500;

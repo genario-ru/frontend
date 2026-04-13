@@ -21,6 +21,7 @@ import { getApiV1ProfilesTypes } from "../clients/get-api-v1-profiles-types.ts";
 import type {
   GetApiV1ProfilesTypes400,
   GetApiV1ProfilesTypes401,
+  GetApiV1ProfilesTypes402,
   GetApiV1ProfilesTypes403,
   GetApiV1ProfilesTypes404,
   GetApiV1ProfilesTypes500,
@@ -43,6 +44,7 @@ export function getApiV1ProfilesTypesQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ProfilesTypes400
       | GetApiV1ProfilesTypes401
+      | GetApiV1ProfilesTypes402
       | GetApiV1ProfilesTypes403
       | GetApiV1ProfilesTypes404
       | GetApiV1ProfilesTypes500
@@ -75,6 +77,7 @@ export function useGetApiV1ProfilesTypes<
         ResponseErrorConfig<
           | GetApiV1ProfilesTypes400
           | GetApiV1ProfilesTypes401
+          | GetApiV1ProfilesTypes402
           | GetApiV1ProfilesTypes403
           | GetApiV1ProfilesTypes404
           | GetApiV1ProfilesTypes500
@@ -103,6 +106,7 @@ export function useGetApiV1ProfilesTypes<
     ResponseErrorConfig<
       | GetApiV1ProfilesTypes400
       | GetApiV1ProfilesTypes401
+      | GetApiV1ProfilesTypes402
       | GetApiV1ProfilesTypes403
       | GetApiV1ProfilesTypes404
       | GetApiV1ProfilesTypes500

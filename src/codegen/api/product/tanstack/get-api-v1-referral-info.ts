@@ -21,6 +21,7 @@ import { getApiV1ReferralInfo } from "../clients/get-api-v1-referral-info.ts";
 import type {
   GetApiV1ReferralInfo400,
   GetApiV1ReferralInfo401,
+  GetApiV1ReferralInfo402,
   GetApiV1ReferralInfo403,
   GetApiV1ReferralInfo404,
   GetApiV1ReferralInfo500,
@@ -43,6 +44,7 @@ export function getApiV1ReferralInfoQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ReferralInfo400
       | GetApiV1ReferralInfo401
+      | GetApiV1ReferralInfo402
       | GetApiV1ReferralInfo403
       | GetApiV1ReferralInfo404
       | GetApiV1ReferralInfo500
@@ -75,6 +77,7 @@ export function useGetApiV1ReferralInfo<
         ResponseErrorConfig<
           | GetApiV1ReferralInfo400
           | GetApiV1ReferralInfo401
+          | GetApiV1ReferralInfo402
           | GetApiV1ReferralInfo403
           | GetApiV1ReferralInfo404
           | GetApiV1ReferralInfo500
@@ -103,6 +106,7 @@ export function useGetApiV1ReferralInfo<
     ResponseErrorConfig<
       | GetApiV1ReferralInfo400
       | GetApiV1ReferralInfo401
+      | GetApiV1ReferralInfo402
       | GetApiV1ReferralInfo403
       | GetApiV1ReferralInfo404
       | GetApiV1ReferralInfo500

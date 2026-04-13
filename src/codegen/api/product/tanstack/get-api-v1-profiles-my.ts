@@ -21,6 +21,7 @@ import { getApiV1ProfilesMy } from "../clients/get-api-v1-profiles-my.ts";
 import type {
   GetApiV1ProfilesMy400,
   GetApiV1ProfilesMy401,
+  GetApiV1ProfilesMy402,
   GetApiV1ProfilesMy403,
   GetApiV1ProfilesMy404,
   GetApiV1ProfilesMy500,
@@ -43,6 +44,7 @@ export function getApiV1ProfilesMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ProfilesMy400
       | GetApiV1ProfilesMy401
+      | GetApiV1ProfilesMy402
       | GetApiV1ProfilesMy403
       | GetApiV1ProfilesMy404
       | GetApiV1ProfilesMy500
@@ -72,6 +74,7 @@ export function useGetApiV1ProfilesMy<
         ResponseErrorConfig<
           | GetApiV1ProfilesMy400
           | GetApiV1ProfilesMy401
+          | GetApiV1ProfilesMy402
           | GetApiV1ProfilesMy403
           | GetApiV1ProfilesMy404
           | GetApiV1ProfilesMy500
@@ -100,6 +103,7 @@ export function useGetApiV1ProfilesMy<
     ResponseErrorConfig<
       | GetApiV1ProfilesMy400
       | GetApiV1ProfilesMy401
+      | GetApiV1ProfilesMy402
       | GetApiV1ProfilesMy403
       | GetApiV1ProfilesMy404
       | GetApiV1ProfilesMy500

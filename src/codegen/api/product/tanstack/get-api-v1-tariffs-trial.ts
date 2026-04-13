@@ -21,6 +21,7 @@ import { getApiV1TariffsTrial } from "../clients/get-api-v1-tariffs-trial.ts";
 import type {
   GetApiV1TariffsTrial400,
   GetApiV1TariffsTrial401,
+  GetApiV1TariffsTrial402,
   GetApiV1TariffsTrial403,
   GetApiV1TariffsTrial404,
   GetApiV1TariffsTrial500,
@@ -43,6 +44,7 @@ export function getApiV1TariffsTrialQueryOptions(
     ResponseErrorConfig<
       | GetApiV1TariffsTrial400
       | GetApiV1TariffsTrial401
+      | GetApiV1TariffsTrial402
       | GetApiV1TariffsTrial403
       | GetApiV1TariffsTrial404
       | GetApiV1TariffsTrial500
@@ -75,6 +77,7 @@ export function useGetApiV1TariffsTrial<
         ResponseErrorConfig<
           | GetApiV1TariffsTrial400
           | GetApiV1TariffsTrial401
+          | GetApiV1TariffsTrial402
           | GetApiV1TariffsTrial403
           | GetApiV1TariffsTrial404
           | GetApiV1TariffsTrial500
@@ -103,6 +106,7 @@ export function useGetApiV1TariffsTrial<
     ResponseErrorConfig<
       | GetApiV1TariffsTrial400
       | GetApiV1TariffsTrial401
+      | GetApiV1TariffsTrial402
       | GetApiV1TariffsTrial403
       | GetApiV1TariffsTrial404
       | GetApiV1TariffsTrial500

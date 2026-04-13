@@ -21,6 +21,7 @@ import { getApiV1ProfilesChannelsPlatforms } from "../clients/get-api-v1-profile
 import type {
   GetApiV1ProfilesChannelsPlatforms400,
   GetApiV1ProfilesChannelsPlatforms401,
+  GetApiV1ProfilesChannelsPlatforms402,
   GetApiV1ProfilesChannelsPlatforms403,
   GetApiV1ProfilesChannelsPlatforms404,
   GetApiV1ProfilesChannelsPlatforms500,
@@ -43,6 +44,7 @@ export function getApiV1ProfilesChannelsPlatformsQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ProfilesChannelsPlatforms400
       | GetApiV1ProfilesChannelsPlatforms401
+      | GetApiV1ProfilesChannelsPlatforms402
       | GetApiV1ProfilesChannelsPlatforms403
       | GetApiV1ProfilesChannelsPlatforms404
       | GetApiV1ProfilesChannelsPlatforms500
@@ -75,6 +77,7 @@ export function useGetApiV1ProfilesChannelsPlatforms<
         ResponseErrorConfig<
           | GetApiV1ProfilesChannelsPlatforms400
           | GetApiV1ProfilesChannelsPlatforms401
+          | GetApiV1ProfilesChannelsPlatforms402
           | GetApiV1ProfilesChannelsPlatforms403
           | GetApiV1ProfilesChannelsPlatforms404
           | GetApiV1ProfilesChannelsPlatforms500
@@ -104,6 +107,7 @@ export function useGetApiV1ProfilesChannelsPlatforms<
     ResponseErrorConfig<
       | GetApiV1ProfilesChannelsPlatforms400
       | GetApiV1ProfilesChannelsPlatforms401
+      | GetApiV1ProfilesChannelsPlatforms402
       | GetApiV1ProfilesChannelsPlatforms403
       | GetApiV1ProfilesChannelsPlatforms404
       | GetApiV1ProfilesChannelsPlatforms500

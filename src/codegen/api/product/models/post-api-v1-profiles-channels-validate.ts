@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 import type { ValidateProfileChannelBodySchema } from "./validate-profile-channel-body-schema.ts";
 import type { ValidateProfileChannelResponseSchema } from "./validate-profile-channel-response-schema.ts";
@@ -29,6 +30,13 @@ export type PostApiV1ProfilesChannelsValidate400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PostApiV1ProfilesChannelsValidate401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1ProfilesChannelsValidate402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -64,6 +72,7 @@ export type PostApiV1ProfilesChannelsValidateMutation = {
   Errors:
     | PostApiV1ProfilesChannelsValidate400
     | PostApiV1ProfilesChannelsValidate401
+    | PostApiV1ProfilesChannelsValidate402
     | PostApiV1ProfilesChannelsValidate403
     | PostApiV1ProfilesChannelsValidate404
     | PostApiV1ProfilesChannelsValidate500;

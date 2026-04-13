@@ -21,6 +21,7 @@ import { getApiV1CreditsPackages } from "../clients/get-api-v1-credits-packages.
 import type {
   GetApiV1CreditsPackages400,
   GetApiV1CreditsPackages401,
+  GetApiV1CreditsPackages402,
   GetApiV1CreditsPackages403,
   GetApiV1CreditsPackages404,
   GetApiV1CreditsPackages500,
@@ -43,6 +44,7 @@ export function getApiV1CreditsPackagesQueryOptions(
     ResponseErrorConfig<
       | GetApiV1CreditsPackages400
       | GetApiV1CreditsPackages401
+      | GetApiV1CreditsPackages402
       | GetApiV1CreditsPackages403
       | GetApiV1CreditsPackages404
       | GetApiV1CreditsPackages500
@@ -75,6 +77,7 @@ export function useGetApiV1CreditsPackages<
         ResponseErrorConfig<
           | GetApiV1CreditsPackages400
           | GetApiV1CreditsPackages401
+          | GetApiV1CreditsPackages402
           | GetApiV1CreditsPackages403
           | GetApiV1CreditsPackages404
           | GetApiV1CreditsPackages500
@@ -104,6 +107,7 @@ export function useGetApiV1CreditsPackages<
     ResponseErrorConfig<
       | GetApiV1CreditsPackages400
       | GetApiV1CreditsPackages401
+      | GetApiV1CreditsPackages402
       | GetApiV1CreditsPackages403
       | GetApiV1CreditsPackages404
       | GetApiV1CreditsPackages500

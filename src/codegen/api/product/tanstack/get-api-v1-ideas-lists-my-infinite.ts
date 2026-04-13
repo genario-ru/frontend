@@ -22,6 +22,7 @@ import { getApiV1IdeasListsMy } from "../clients/get-api-v1-ideas-lists-my.ts";
 import type {
   GetApiV1IdeasListsMy400,
   GetApiV1IdeasListsMy401,
+  GetApiV1IdeasListsMy402,
   GetApiV1IdeasListsMy403,
   GetApiV1IdeasListsMy404,
   GetApiV1IdeasListsMy500,
@@ -47,6 +48,7 @@ export function getApiV1IdeasListsMyInfiniteQueryOptions(
     ResponseErrorConfig<
       | GetApiV1IdeasListsMy400
       | GetApiV1IdeasListsMy401
+      | GetApiV1IdeasListsMy402
       | GetApiV1IdeasListsMy403
       | GetApiV1IdeasListsMy404
       | GetApiV1IdeasListsMy500
@@ -81,6 +83,7 @@ export function useGetApiV1IdeasListsMyInfinite<
   TError = ResponseErrorConfig<
     | GetApiV1IdeasListsMy400
     | GetApiV1IdeasListsMy401
+    | GetApiV1IdeasListsMy402
     | GetApiV1IdeasListsMy403
     | GetApiV1IdeasListsMy404
     | GetApiV1IdeasListsMy500

@@ -20,6 +20,7 @@ import { postApiV1CreditsPackagesInitiatePayment } from "../clients/post-api-v1-
 import type {
   PostApiV1CreditsPackagesInitiatePayment400,
   PostApiV1CreditsPackagesInitiatePayment401,
+  PostApiV1CreditsPackagesInitiatePayment402,
   PostApiV1CreditsPackagesInitiatePayment403,
   PostApiV1CreditsPackagesInitiatePayment404,
   PostApiV1CreditsPackagesInitiatePayment500,
@@ -47,6 +48,7 @@ export function postApiV1CreditsPackagesInitiatePaymentMutationOptions<
     ResponseErrorConfig<
       | PostApiV1CreditsPackagesInitiatePayment400
       | PostApiV1CreditsPackagesInitiatePayment401
+      | PostApiV1CreditsPackagesInitiatePayment402
       | PostApiV1CreditsPackagesInitiatePayment403
       | PostApiV1CreditsPackagesInitiatePayment404
       | PostApiV1CreditsPackagesInitiatePayment500
@@ -71,6 +73,7 @@ export function usePostApiV1CreditsPackagesInitiatePayment<TContext>(
       ResponseErrorConfig<
         | PostApiV1CreditsPackagesInitiatePayment400
         | PostApiV1CreditsPackagesInitiatePayment401
+        | PostApiV1CreditsPackagesInitiatePayment402
         | PostApiV1CreditsPackagesInitiatePayment403
         | PostApiV1CreditsPackagesInitiatePayment404
         | PostApiV1CreditsPackagesInitiatePayment500
@@ -96,6 +99,7 @@ export function usePostApiV1CreditsPackagesInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1CreditsPackagesInitiatePayment400
       | PostApiV1CreditsPackagesInitiatePayment401
+      | PostApiV1CreditsPackagesInitiatePayment402
       | PostApiV1CreditsPackagesInitiatePayment403
       | PostApiV1CreditsPackagesInitiatePayment404
       | PostApiV1CreditsPackagesInitiatePayment500
@@ -109,6 +113,7 @@ export function usePostApiV1CreditsPackagesInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1CreditsPackagesInitiatePayment400
       | PostApiV1CreditsPackagesInitiatePayment401
+      | PostApiV1CreditsPackagesInitiatePayment402
       | PostApiV1CreditsPackagesInitiatePayment403
       | PostApiV1CreditsPackagesInitiatePayment404
       | PostApiV1CreditsPackagesInitiatePayment500
@@ -127,6 +132,7 @@ export function usePostApiV1CreditsPackagesInitiatePayment<TContext>(
     ResponseErrorConfig<
       | PostApiV1CreditsPackagesInitiatePayment400
       | PostApiV1CreditsPackagesInitiatePayment401
+      | PostApiV1CreditsPackagesInitiatePayment402
       | PostApiV1CreditsPackagesInitiatePayment403
       | PostApiV1CreditsPackagesInitiatePayment404
       | PostApiV1CreditsPackagesInitiatePayment500

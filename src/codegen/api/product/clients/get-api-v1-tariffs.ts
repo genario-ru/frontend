@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1Tariffs400,
   GetApiV1Tariffs401,
+  GetApiV1Tariffs402,
   GetApiV1Tariffs403,
   GetApiV1Tariffs404,
   GetApiV1Tariffs500,
@@ -38,6 +39,7 @@ export async function getApiV1Tariffs(
     ResponseErrorConfig<
       | GetApiV1Tariffs400
       | GetApiV1Tariffs401
+      | GetApiV1Tariffs402
       | GetApiV1Tariffs403
       | GetApiV1Tariffs404
       | GetApiV1Tariffs500

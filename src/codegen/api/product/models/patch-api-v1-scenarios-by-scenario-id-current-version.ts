@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 import type { UpdateScenarioCurrentVersionBodySchema } from "./update-scenario-current-version-body-schema.ts";
 import type { UpdateScenarioCurrentVersionResponseSchema } from "./update-scenario-current-version-response-schema.ts";
@@ -38,6 +39,13 @@ export type PatchApiV1ScenariosByScenarioIdCurrentVersion400 =
  */
 export type PatchApiV1ScenariosByScenarioIdCurrentVersion401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PatchApiV1ScenariosByScenarioIdCurrentVersion402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -76,6 +84,7 @@ export type PatchApiV1ScenariosByScenarioIdCurrentVersionMutation = {
   Errors:
     | PatchApiV1ScenariosByScenarioIdCurrentVersion400
     | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+    | PatchApiV1ScenariosByScenarioIdCurrentVersion402
     | PatchApiV1ScenariosByScenarioIdCurrentVersion403
     | PatchApiV1ScenariosByScenarioIdCurrentVersion404
     | PatchApiV1ScenariosByScenarioIdCurrentVersion500;

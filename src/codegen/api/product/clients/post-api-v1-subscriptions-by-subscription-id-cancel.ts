@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1SubscriptionsBySubscriptionIdCancel400,
   PostApiV1SubscriptionsBySubscriptionIdCancel401,
+  PostApiV1SubscriptionsBySubscriptionIdCancel402,
   PostApiV1SubscriptionsBySubscriptionIdCancel403,
   PostApiV1SubscriptionsBySubscriptionIdCancel404,
   PostApiV1SubscriptionsBySubscriptionIdCancel500,
@@ -51,6 +52,7 @@ export async function postApiV1SubscriptionsBySubscriptionIdCancel(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsBySubscriptionIdCancel400
       | PostApiV1SubscriptionsBySubscriptionIdCancel401
+      | PostApiV1SubscriptionsBySubscriptionIdCancel402
       | PostApiV1SubscriptionsBySubscriptionIdCancel403
       | PostApiV1SubscriptionsBySubscriptionIdCancel404
       | PostApiV1SubscriptionsBySubscriptionIdCancel500

@@ -20,6 +20,7 @@ import { patchApiV1IdeasByIdeaIdSave } from "../clients/patch-api-v1-ideas-by-id
 import type {
   PatchApiV1IdeasByIdeaIdSave400,
   PatchApiV1IdeasByIdeaIdSave401,
+  PatchApiV1IdeasByIdeaIdSave402,
   PatchApiV1IdeasByIdeaIdSave403,
   PatchApiV1IdeasByIdeaIdSave404,
   PatchApiV1IdeasByIdeaIdSave500,
@@ -46,6 +47,7 @@ export function patchApiV1IdeasByIdeaIdSaveMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaIdSave400
       | PatchApiV1IdeasByIdeaIdSave401
+      | PatchApiV1IdeasByIdeaIdSave402
       | PatchApiV1IdeasByIdeaIdSave403
       | PatchApiV1IdeasByIdeaIdSave404
       | PatchApiV1IdeasByIdeaIdSave500
@@ -73,6 +75,7 @@ export function usePatchApiV1IdeasByIdeaIdSave<TContext>(
       ResponseErrorConfig<
         | PatchApiV1IdeasByIdeaIdSave400
         | PatchApiV1IdeasByIdeaIdSave401
+        | PatchApiV1IdeasByIdeaIdSave402
         | PatchApiV1IdeasByIdeaIdSave403
         | PatchApiV1IdeasByIdeaIdSave404
         | PatchApiV1IdeasByIdeaIdSave500
@@ -100,6 +103,7 @@ export function usePatchApiV1IdeasByIdeaIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaIdSave400
       | PatchApiV1IdeasByIdeaIdSave401
+      | PatchApiV1IdeasByIdeaIdSave402
       | PatchApiV1IdeasByIdeaIdSave403
       | PatchApiV1IdeasByIdeaIdSave404
       | PatchApiV1IdeasByIdeaIdSave500
@@ -116,6 +120,7 @@ export function usePatchApiV1IdeasByIdeaIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaIdSave400
       | PatchApiV1IdeasByIdeaIdSave401
+      | PatchApiV1IdeasByIdeaIdSave402
       | PatchApiV1IdeasByIdeaIdSave403
       | PatchApiV1IdeasByIdeaIdSave404
       | PatchApiV1IdeasByIdeaIdSave500
@@ -137,6 +142,7 @@ export function usePatchApiV1IdeasByIdeaIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1IdeasByIdeaIdSave400
       | PatchApiV1IdeasByIdeaIdSave401
+      | PatchApiV1IdeasByIdeaIdSave402
       | PatchApiV1IdeasByIdeaIdSave403
       | PatchApiV1IdeasByIdeaIdSave404
       | PatchApiV1IdeasByIdeaIdSave500

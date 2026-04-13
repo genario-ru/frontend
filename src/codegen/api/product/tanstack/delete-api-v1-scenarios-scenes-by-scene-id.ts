@@ -20,6 +20,7 @@ import { deleteApiV1ScenariosScenesBySceneId } from "../clients/delete-api-v1-sc
 import type {
   DeleteApiV1ScenariosScenesBySceneId400,
   DeleteApiV1ScenariosScenesBySceneId401,
+  DeleteApiV1ScenariosScenesBySceneId402,
   DeleteApiV1ScenariosScenesBySceneId403,
   DeleteApiV1ScenariosScenesBySceneId404,
   DeleteApiV1ScenariosScenesBySceneId500,
@@ -43,6 +44,7 @@ export function deleteApiV1ScenariosScenesBySceneIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosScenesBySceneId400
       | DeleteApiV1ScenariosScenesBySceneId401
+      | DeleteApiV1ScenariosScenesBySceneId402
       | DeleteApiV1ScenariosScenesBySceneId403
       | DeleteApiV1ScenariosScenesBySceneId404
       | DeleteApiV1ScenariosScenesBySceneId500
@@ -67,6 +69,7 @@ export function useDeleteApiV1ScenariosScenesBySceneId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1ScenariosScenesBySceneId400
         | DeleteApiV1ScenariosScenesBySceneId401
+        | DeleteApiV1ScenariosScenesBySceneId402
         | DeleteApiV1ScenariosScenesBySceneId403
         | DeleteApiV1ScenariosScenesBySceneId404
         | DeleteApiV1ScenariosScenesBySceneId500
@@ -90,6 +93,7 @@ export function useDeleteApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosScenesBySceneId400
       | DeleteApiV1ScenariosScenesBySceneId401
+      | DeleteApiV1ScenariosScenesBySceneId402
       | DeleteApiV1ScenariosScenesBySceneId403
       | DeleteApiV1ScenariosScenesBySceneId404
       | DeleteApiV1ScenariosScenesBySceneId500
@@ -103,6 +107,7 @@ export function useDeleteApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosScenesBySceneId400
       | DeleteApiV1ScenariosScenesBySceneId401
+      | DeleteApiV1ScenariosScenesBySceneId402
       | DeleteApiV1ScenariosScenesBySceneId403
       | DeleteApiV1ScenariosScenesBySceneId404
       | DeleteApiV1ScenariosScenesBySceneId500
@@ -121,6 +126,7 @@ export function useDeleteApiV1ScenariosScenesBySceneId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosScenesBySceneId400
       | DeleteApiV1ScenariosScenesBySceneId401
+      | DeleteApiV1ScenariosScenesBySceneId402
       | DeleteApiV1ScenariosScenesBySceneId403
       | DeleteApiV1ScenariosScenesBySceneId404
       | DeleteApiV1ScenariosScenesBySceneId500

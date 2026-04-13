@@ -21,6 +21,7 @@ import { getApiV1Tariffs } from "../clients/get-api-v1-tariffs.ts";
 import type {
   GetApiV1Tariffs400,
   GetApiV1Tariffs401,
+  GetApiV1Tariffs402,
   GetApiV1Tariffs403,
   GetApiV1Tariffs404,
   GetApiV1Tariffs500,
@@ -43,6 +44,7 @@ export function getApiV1TariffsQueryOptions(
     ResponseErrorConfig<
       | GetApiV1Tariffs400
       | GetApiV1Tariffs401
+      | GetApiV1Tariffs402
       | GetApiV1Tariffs403
       | GetApiV1Tariffs404
       | GetApiV1Tariffs500
@@ -72,6 +74,7 @@ export function useGetApiV1Tariffs<
         ResponseErrorConfig<
           | GetApiV1Tariffs400
           | GetApiV1Tariffs401
+          | GetApiV1Tariffs402
           | GetApiV1Tariffs403
           | GetApiV1Tariffs404
           | GetApiV1Tariffs500
@@ -100,6 +103,7 @@ export function useGetApiV1Tariffs<
     ResponseErrorConfig<
       | GetApiV1Tariffs400
       | GetApiV1Tariffs401
+      | GetApiV1Tariffs402
       | GetApiV1Tariffs403
       | GetApiV1Tariffs404
       | GetApiV1Tariffs500

@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetArchiveFiltersResponseSchema } from "./get-archive-filters-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1ArchiveFilters400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ArchiveFilters401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ArchiveFilters402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1ArchiveFiltersQuery = {
   Errors:
     | GetApiV1ArchiveFilters400
     | GetApiV1ArchiveFilters401
+    | GetApiV1ArchiveFilters402
     | GetApiV1ArchiveFilters403
     | GetApiV1ArchiveFilters404
     | GetApiV1ArchiveFilters500;

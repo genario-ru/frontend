@@ -20,6 +20,7 @@ import { postApiV1ProfilesChannels } from "../clients/post-api-v1-profiles-chann
 import type {
   PostApiV1ProfilesChannels400,
   PostApiV1ProfilesChannels401,
+  PostApiV1ProfilesChannels402,
   PostApiV1ProfilesChannels403,
   PostApiV1ProfilesChannels404,
   PostApiV1ProfilesChannels500,
@@ -45,6 +46,7 @@ export function postApiV1ProfilesChannelsMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannels400
       | PostApiV1ProfilesChannels401
+      | PostApiV1ProfilesChannels402
       | PostApiV1ProfilesChannels403
       | PostApiV1ProfilesChannels404
       | PostApiV1ProfilesChannels500
@@ -69,6 +71,7 @@ export function usePostApiV1ProfilesChannels<TContext>(
       ResponseErrorConfig<
         | PostApiV1ProfilesChannels400
         | PostApiV1ProfilesChannels401
+        | PostApiV1ProfilesChannels402
         | PostApiV1ProfilesChannels403
         | PostApiV1ProfilesChannels404
         | PostApiV1ProfilesChannels500
@@ -93,6 +96,7 @@ export function usePostApiV1ProfilesChannels<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannels400
       | PostApiV1ProfilesChannels401
+      | PostApiV1ProfilesChannels402
       | PostApiV1ProfilesChannels403
       | PostApiV1ProfilesChannels404
       | PostApiV1ProfilesChannels500
@@ -106,6 +110,7 @@ export function usePostApiV1ProfilesChannels<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannels400
       | PostApiV1ProfilesChannels401
+      | PostApiV1ProfilesChannels402
       | PostApiV1ProfilesChannels403
       | PostApiV1ProfilesChannels404
       | PostApiV1ProfilesChannels500
@@ -124,6 +129,7 @@ export function usePostApiV1ProfilesChannels<TContext>(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannels400
       | PostApiV1ProfilesChannels401
+      | PostApiV1ProfilesChannels402
       | PostApiV1ProfilesChannels403
       | PostApiV1ProfilesChannels404
       | PostApiV1ProfilesChannels500

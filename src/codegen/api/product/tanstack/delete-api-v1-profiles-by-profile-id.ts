@@ -20,6 +20,7 @@ import { deleteApiV1ProfilesByProfileId } from "../clients/delete-api-v1-profile
 import type {
   DeleteApiV1ProfilesByProfileId400,
   DeleteApiV1ProfilesByProfileId401,
+  DeleteApiV1ProfilesByProfileId402,
   DeleteApiV1ProfilesByProfileId403,
   DeleteApiV1ProfilesByProfileId404,
   DeleteApiV1ProfilesByProfileId500,
@@ -43,6 +44,7 @@ export function deleteApiV1ProfilesByProfileIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1ProfilesByProfileId400
       | DeleteApiV1ProfilesByProfileId401
+      | DeleteApiV1ProfilesByProfileId402
       | DeleteApiV1ProfilesByProfileId403
       | DeleteApiV1ProfilesByProfileId404
       | DeleteApiV1ProfilesByProfileId500
@@ -67,6 +69,7 @@ export function useDeleteApiV1ProfilesByProfileId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1ProfilesByProfileId400
         | DeleteApiV1ProfilesByProfileId401
+        | DeleteApiV1ProfilesByProfileId402
         | DeleteApiV1ProfilesByProfileId403
         | DeleteApiV1ProfilesByProfileId404
         | DeleteApiV1ProfilesByProfileId500
@@ -89,6 +92,7 @@ export function useDeleteApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ProfilesByProfileId400
       | DeleteApiV1ProfilesByProfileId401
+      | DeleteApiV1ProfilesByProfileId402
       | DeleteApiV1ProfilesByProfileId403
       | DeleteApiV1ProfilesByProfileId404
       | DeleteApiV1ProfilesByProfileId500
@@ -102,6 +106,7 @@ export function useDeleteApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ProfilesByProfileId400
       | DeleteApiV1ProfilesByProfileId401
+      | DeleteApiV1ProfilesByProfileId402
       | DeleteApiV1ProfilesByProfileId403
       | DeleteApiV1ProfilesByProfileId404
       | DeleteApiV1ProfilesByProfileId500
@@ -120,6 +125,7 @@ export function useDeleteApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ProfilesByProfileId400
       | DeleteApiV1ProfilesByProfileId401
+      | DeleteApiV1ProfilesByProfileId402
       | DeleteApiV1ProfilesByProfileId403
       | DeleteApiV1ProfilesByProfileId404
       | DeleteApiV1ProfilesByProfileId500

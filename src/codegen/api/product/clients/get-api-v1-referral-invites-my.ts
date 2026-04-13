@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ReferralInvitesMy400,
   GetApiV1ReferralInvitesMy401,
+  GetApiV1ReferralInvitesMy402,
   GetApiV1ReferralInvitesMy403,
   GetApiV1ReferralInvitesMy404,
   GetApiV1ReferralInvitesMy500,
@@ -40,6 +41,7 @@ export async function getApiV1ReferralInvitesMy(
     ResponseErrorConfig<
       | GetApiV1ReferralInvitesMy400
       | GetApiV1ReferralInvitesMy401
+      | GetApiV1ReferralInvitesMy402
       | GetApiV1ReferralInvitesMy403
       | GetApiV1ReferralInvitesMy404
       | GetApiV1ReferralInvitesMy500

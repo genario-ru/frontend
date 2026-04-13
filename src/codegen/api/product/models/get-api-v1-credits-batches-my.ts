@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyCreditsBatchesResponseSchema } from "./get-my-credits-batches-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1CreditsBatchesMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1CreditsBatchesMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1CreditsBatchesMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1CreditsBatchesMyQuery = {
   Errors:
     | GetApiV1CreditsBatchesMy400
     | GetApiV1CreditsBatchesMy401
+    | GetApiV1CreditsBatchesMy402
     | GetApiV1CreditsBatchesMy403
     | GetApiV1CreditsBatchesMy404
     | GetApiV1CreditsBatchesMy500;

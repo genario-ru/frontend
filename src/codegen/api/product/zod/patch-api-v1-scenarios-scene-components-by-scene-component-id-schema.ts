@@ -9,6 +9,7 @@ import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-sc
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 import { updateScenarioSceneComponentBodySchemaSchema } from "./update-scenario-scene-component-body-schema-schema.ts";
 import { updateScenarioSceneComponentResponseSchemaSchema } from "./update-scenario-scene-component-response-schema-schema.ts";
@@ -38,6 +39,13 @@ export const patchApiV1ScenariosSceneComponentsBySceneComponentId400Schema = z
 export const patchApiV1ScenariosSceneComponentsBySceneComponentId401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
+
+/**
+ * @description Payment required
+ */
+export const patchApiV1ScenariosSceneComponentsBySceneComponentId402Schema = z
+  .lazy(() => paymentRequiredResponseSchemaSchema)
+  .describe("Payment required response description");
 
 /**
  * @description Forbidden

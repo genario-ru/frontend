@@ -11,6 +11,7 @@ import { createScenarioResponseSchemaSchema } from "./create-scenario-response-s
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
 /**
@@ -33,6 +34,13 @@ export const postApiV1Scenarios400Schema = z
 export const postApiV1Scenarios401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
+
+/**
+ * @description Payment required
+ */
+export const postApiV1Scenarios402Schema = z
+  .lazy(() => paymentRequiredResponseSchemaSchema)
+  .describe("Payment required response description");
 
 /**
  * @description Forbidden

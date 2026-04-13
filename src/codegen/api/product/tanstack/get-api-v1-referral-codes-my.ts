@@ -21,6 +21,7 @@ import { getApiV1ReferralCodesMy } from "../clients/get-api-v1-referral-codes-my
 import type {
   GetApiV1ReferralCodesMy400,
   GetApiV1ReferralCodesMy401,
+  GetApiV1ReferralCodesMy402,
   GetApiV1ReferralCodesMy403,
   GetApiV1ReferralCodesMy404,
   GetApiV1ReferralCodesMy500,
@@ -43,6 +44,7 @@ export function getApiV1ReferralCodesMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ReferralCodesMy400
       | GetApiV1ReferralCodesMy401
+      | GetApiV1ReferralCodesMy402
       | GetApiV1ReferralCodesMy403
       | GetApiV1ReferralCodesMy404
       | GetApiV1ReferralCodesMy500
@@ -75,6 +77,7 @@ export function useGetApiV1ReferralCodesMy<
         ResponseErrorConfig<
           | GetApiV1ReferralCodesMy400
           | GetApiV1ReferralCodesMy401
+          | GetApiV1ReferralCodesMy402
           | GetApiV1ReferralCodesMy403
           | GetApiV1ReferralCodesMy404
           | GetApiV1ReferralCodesMy500
@@ -104,6 +107,7 @@ export function useGetApiV1ReferralCodesMy<
     ResponseErrorConfig<
       | GetApiV1ReferralCodesMy400
       | GetApiV1ReferralCodesMy401
+      | GetApiV1ReferralCodesMy402
       | GetApiV1ReferralCodesMy403
       | GetApiV1ReferralCodesMy404
       | GetApiV1ReferralCodesMy500

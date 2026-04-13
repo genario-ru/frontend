@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-channels-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,13 @@ export type GetApiV1ProfilesChannelsPlatforms400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ProfilesChannelsPlatforms401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ProfilesChannelsPlatforms402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -56,6 +64,7 @@ export type GetApiV1ProfilesChannelsPlatformsQuery = {
   Errors:
     | GetApiV1ProfilesChannelsPlatforms400
     | GetApiV1ProfilesChannelsPlatforms401
+    | GetApiV1ProfilesChannelsPlatforms402
     | GetApiV1ProfilesChannelsPlatforms403
     | GetApiV1ProfilesChannelsPlatforms404
     | GetApiV1ProfilesChannelsPlatforms500;

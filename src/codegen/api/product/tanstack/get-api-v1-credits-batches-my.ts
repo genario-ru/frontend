@@ -21,6 +21,7 @@ import { getApiV1CreditsBatchesMy } from "../clients/get-api-v1-credits-batches-
 import type {
   GetApiV1CreditsBatchesMy400,
   GetApiV1CreditsBatchesMy401,
+  GetApiV1CreditsBatchesMy402,
   GetApiV1CreditsBatchesMy403,
   GetApiV1CreditsBatchesMy404,
   GetApiV1CreditsBatchesMy500,
@@ -43,6 +44,7 @@ export function getApiV1CreditsBatchesMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1CreditsBatchesMy400
       | GetApiV1CreditsBatchesMy401
+      | GetApiV1CreditsBatchesMy402
       | GetApiV1CreditsBatchesMy403
       | GetApiV1CreditsBatchesMy404
       | GetApiV1CreditsBatchesMy500
@@ -75,6 +77,7 @@ export function useGetApiV1CreditsBatchesMy<
         ResponseErrorConfig<
           | GetApiV1CreditsBatchesMy400
           | GetApiV1CreditsBatchesMy401
+          | GetApiV1CreditsBatchesMy402
           | GetApiV1CreditsBatchesMy403
           | GetApiV1CreditsBatchesMy404
           | GetApiV1CreditsBatchesMy500
@@ -104,6 +107,7 @@ export function useGetApiV1CreditsBatchesMy<
     ResponseErrorConfig<
       | GetApiV1CreditsBatchesMy400
       | GetApiV1CreditsBatchesMy401
+      | GetApiV1CreditsBatchesMy402
       | GetApiV1CreditsBatchesMy403
       | GetApiV1CreditsBatchesMy404
       | GetApiV1CreditsBatchesMy500

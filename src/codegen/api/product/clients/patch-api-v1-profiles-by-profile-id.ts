@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PatchApiV1ProfilesByProfileId400,
   PatchApiV1ProfilesByProfileId401,
+  PatchApiV1ProfilesByProfileId402,
   PatchApiV1ProfilesByProfileId403,
   PatchApiV1ProfilesByProfileId404,
   PatchApiV1ProfilesByProfileId500,
@@ -62,6 +63,7 @@ export async function patchApiV1ProfilesByProfileId(
     ResponseErrorConfig<
       | PatchApiV1ProfilesByProfileId400
       | PatchApiV1ProfilesByProfileId401
+      | PatchApiV1ProfilesByProfileId402
       | PatchApiV1ProfilesByProfileId403
       | PatchApiV1ProfilesByProfileId404
       | PatchApiV1ProfilesByProfileId500

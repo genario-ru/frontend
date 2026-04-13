@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1CreditsPackagesInitiatePayment400,
   PostApiV1CreditsPackagesInitiatePayment401,
+  PostApiV1CreditsPackagesInitiatePayment402,
   PostApiV1CreditsPackagesInitiatePayment403,
   PostApiV1CreditsPackagesInitiatePayment404,
   PostApiV1CreditsPackagesInitiatePayment500,
@@ -51,6 +52,7 @@ export async function postApiV1CreditsPackagesInitiatePayment(
     ResponseErrorConfig<
       | PostApiV1CreditsPackagesInitiatePayment400
       | PostApiV1CreditsPackagesInitiatePayment401
+      | PostApiV1CreditsPackagesInitiatePayment402
       | PostApiV1CreditsPackagesInitiatePayment403
       | PostApiV1CreditsPackagesInitiatePayment404
       | PostApiV1CreditsPackagesInitiatePayment500

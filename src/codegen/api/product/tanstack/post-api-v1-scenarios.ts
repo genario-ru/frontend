@@ -20,6 +20,7 @@ import { postApiV1Scenarios } from "../clients/post-api-v1-scenarios.ts";
 import type {
   PostApiV1Scenarios400,
   PostApiV1Scenarios401,
+  PostApiV1Scenarios402,
   PostApiV1Scenarios403,
   PostApiV1Scenarios404,
   PostApiV1Scenarios500,
@@ -45,6 +46,7 @@ export function postApiV1ScenariosMutationOptions<TContext = unknown>(
     ResponseErrorConfig<
       | PostApiV1Scenarios400
       | PostApiV1Scenarios401
+      | PostApiV1Scenarios402
       | PostApiV1Scenarios403
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
@@ -69,6 +71,7 @@ export function usePostApiV1Scenarios<TContext>(
       ResponseErrorConfig<
         | PostApiV1Scenarios400
         | PostApiV1Scenarios401
+        | PostApiV1Scenarios402
         | PostApiV1Scenarios403
         | PostApiV1Scenarios404
         | PostApiV1Scenarios500
@@ -93,6 +96,7 @@ export function usePostApiV1Scenarios<TContext>(
     ResponseErrorConfig<
       | PostApiV1Scenarios400
       | PostApiV1Scenarios401
+      | PostApiV1Scenarios402
       | PostApiV1Scenarios403
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
@@ -106,6 +110,7 @@ export function usePostApiV1Scenarios<TContext>(
     ResponseErrorConfig<
       | PostApiV1Scenarios400
       | PostApiV1Scenarios401
+      | PostApiV1Scenarios402
       | PostApiV1Scenarios403
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500
@@ -124,6 +129,7 @@ export function usePostApiV1Scenarios<TContext>(
     ResponseErrorConfig<
       | PostApiV1Scenarios400
       | PostApiV1Scenarios401
+      | PostApiV1Scenarios402
       | PostApiV1Scenarios403
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500

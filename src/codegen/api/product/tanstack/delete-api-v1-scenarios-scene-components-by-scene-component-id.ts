@@ -20,6 +20,7 @@ import { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "../client
 import type {
   DeleteApiV1ScenariosSceneComponentsBySceneComponentId400,
   DeleteApiV1ScenariosSceneComponentsBySceneComponentId401,
+  DeleteApiV1ScenariosSceneComponentsBySceneComponentId402,
   DeleteApiV1ScenariosSceneComponentsBySceneComponentId403,
   DeleteApiV1ScenariosSceneComponentsBySceneComponentId404,
   DeleteApiV1ScenariosSceneComponentsBySceneComponentId500,
@@ -46,6 +47,7 @@ export function deleteApiV1ScenariosSceneComponentsBySceneComponentIdMutationOpt
     ResponseErrorConfig<
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId400
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId401
+      | DeleteApiV1ScenariosSceneComponentsBySceneComponentId402
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId403
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId404
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -77,6 +79,7 @@ export function useDeleteApiV1ScenariosSceneComponentsBySceneComponentId<
       ResponseErrorConfig<
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId400
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId401
+        | DeleteApiV1ScenariosSceneComponentsBySceneComponentId402
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId403
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId404
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -103,6 +106,7 @@ export function useDeleteApiV1ScenariosSceneComponentsBySceneComponentId<
       ResponseErrorConfig<
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId400
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId401
+        | DeleteApiV1ScenariosSceneComponentsBySceneComponentId402
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId403
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId404
         | DeleteApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -118,6 +122,7 @@ export function useDeleteApiV1ScenariosSceneComponentsBySceneComponentId<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId400
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId401
+      | DeleteApiV1ScenariosSceneComponentsBySceneComponentId402
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId403
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId404
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId500
@@ -138,6 +143,7 @@ export function useDeleteApiV1ScenariosSceneComponentsBySceneComponentId<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId400
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId401
+      | DeleteApiV1ScenariosSceneComponentsBySceneComponentId402
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId403
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId404
       | DeleteApiV1ScenariosSceneComponentsBySceneComponentId500

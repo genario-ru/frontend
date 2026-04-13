@@ -20,6 +20,7 @@ import { postApiV1SubscriptionsBySubscriptionIdCancel } from "../clients/post-ap
 import type {
   PostApiV1SubscriptionsBySubscriptionIdCancel400,
   PostApiV1SubscriptionsBySubscriptionIdCancel401,
+  PostApiV1SubscriptionsBySubscriptionIdCancel402,
   PostApiV1SubscriptionsBySubscriptionIdCancel403,
   PostApiV1SubscriptionsBySubscriptionIdCancel404,
   PostApiV1SubscriptionsBySubscriptionIdCancel500,
@@ -42,6 +43,7 @@ export function postApiV1SubscriptionsBySubscriptionIdCancelMutationOptions<
     ResponseErrorConfig<
       | PostApiV1SubscriptionsBySubscriptionIdCancel400
       | PostApiV1SubscriptionsBySubscriptionIdCancel401
+      | PostApiV1SubscriptionsBySubscriptionIdCancel402
       | PostApiV1SubscriptionsBySubscriptionIdCancel403
       | PostApiV1SubscriptionsBySubscriptionIdCancel404
       | PostApiV1SubscriptionsBySubscriptionIdCancel500
@@ -71,6 +73,7 @@ export function usePostApiV1SubscriptionsBySubscriptionIdCancel<TContext>(
       ResponseErrorConfig<
         | PostApiV1SubscriptionsBySubscriptionIdCancel400
         | PostApiV1SubscriptionsBySubscriptionIdCancel401
+        | PostApiV1SubscriptionsBySubscriptionIdCancel402
         | PostApiV1SubscriptionsBySubscriptionIdCancel403
         | PostApiV1SubscriptionsBySubscriptionIdCancel404
         | PostApiV1SubscriptionsBySubscriptionIdCancel500
@@ -97,6 +100,7 @@ export function usePostApiV1SubscriptionsBySubscriptionIdCancel<TContext>(
       ResponseErrorConfig<
         | PostApiV1SubscriptionsBySubscriptionIdCancel400
         | PostApiV1SubscriptionsBySubscriptionIdCancel401
+        | PostApiV1SubscriptionsBySubscriptionIdCancel402
         | PostApiV1SubscriptionsBySubscriptionIdCancel403
         | PostApiV1SubscriptionsBySubscriptionIdCancel404
         | PostApiV1SubscriptionsBySubscriptionIdCancel500
@@ -112,6 +116,7 @@ export function usePostApiV1SubscriptionsBySubscriptionIdCancel<TContext>(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsBySubscriptionIdCancel400
       | PostApiV1SubscriptionsBySubscriptionIdCancel401
+      | PostApiV1SubscriptionsBySubscriptionIdCancel402
       | PostApiV1SubscriptionsBySubscriptionIdCancel403
       | PostApiV1SubscriptionsBySubscriptionIdCancel404
       | PostApiV1SubscriptionsBySubscriptionIdCancel500
@@ -132,6 +137,7 @@ export function usePostApiV1SubscriptionsBySubscriptionIdCancel<TContext>(
     ResponseErrorConfig<
       | PostApiV1SubscriptionsBySubscriptionIdCancel400
       | PostApiV1SubscriptionsBySubscriptionIdCancel401
+      | PostApiV1SubscriptionsBySubscriptionIdCancel402
       | PostApiV1SubscriptionsBySubscriptionIdCancel403
       | PostApiV1SubscriptionsBySubscriptionIdCancel404
       | PostApiV1SubscriptionsBySubscriptionIdCancel500

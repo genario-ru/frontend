@@ -21,6 +21,7 @@ import { getApiV1ProfilesChannelsJobsMy } from "../clients/get-api-v1-profiles-c
 import type {
   GetApiV1ProfilesChannelsJobsMy400,
   GetApiV1ProfilesChannelsJobsMy401,
+  GetApiV1ProfilesChannelsJobsMy402,
   GetApiV1ProfilesChannelsJobsMy403,
   GetApiV1ProfilesChannelsJobsMy404,
   GetApiV1ProfilesChannelsJobsMy500,
@@ -43,6 +44,7 @@ export function getApiV1ProfilesChannelsJobsMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ProfilesChannelsJobsMy400
       | GetApiV1ProfilesChannelsJobsMy401
+      | GetApiV1ProfilesChannelsJobsMy402
       | GetApiV1ProfilesChannelsJobsMy403
       | GetApiV1ProfilesChannelsJobsMy404
       | GetApiV1ProfilesChannelsJobsMy500
@@ -75,6 +77,7 @@ export function useGetApiV1ProfilesChannelsJobsMy<
         ResponseErrorConfig<
           | GetApiV1ProfilesChannelsJobsMy400
           | GetApiV1ProfilesChannelsJobsMy401
+          | GetApiV1ProfilesChannelsJobsMy402
           | GetApiV1ProfilesChannelsJobsMy403
           | GetApiV1ProfilesChannelsJobsMy404
           | GetApiV1ProfilesChannelsJobsMy500
@@ -104,6 +107,7 @@ export function useGetApiV1ProfilesChannelsJobsMy<
     ResponseErrorConfig<
       | GetApiV1ProfilesChannelsJobsMy400
       | GetApiV1ProfilesChannelsJobsMy401
+      | GetApiV1ProfilesChannelsJobsMy402
       | GetApiV1ProfilesChannelsJobsMy403
       | GetApiV1ProfilesChannelsJobsMy404
       | GetApiV1ProfilesChannelsJobsMy500

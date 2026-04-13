@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PatchApiV1ScenariosSceneComponentsBySceneComponentId400,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId401,
+  PatchApiV1ScenariosSceneComponentsBySceneComponentId402,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId403,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId404,
   PatchApiV1ScenariosSceneComponentsBySceneComponentId500,
@@ -64,6 +65,7 @@ export async function patchApiV1ScenariosSceneComponentsBySceneComponentId(
     ResponseErrorConfig<
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId400
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId401
+      | PatchApiV1ScenariosSceneComponentsBySceneComponentId402
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId403
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId404
       | PatchApiV1ScenariosSceneComponentsBySceneComponentId500

@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { SaveIdeaBodySchema } from "./save-idea-body-schema.ts";
 import type { SaveIdeaResponseSchema } from "./save-idea-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
@@ -35,6 +36,12 @@ export type PatchApiV1IdeasByIdeaIdSave400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PatchApiV1IdeasByIdeaIdSave401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PatchApiV1IdeasByIdeaIdSave402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -69,6 +76,7 @@ export type PatchApiV1IdeasByIdeaIdSaveMutation = {
   Errors:
     | PatchApiV1IdeasByIdeaIdSave400
     | PatchApiV1IdeasByIdeaIdSave401
+    | PatchApiV1IdeasByIdeaIdSave402
     | PatchApiV1IdeasByIdeaIdSave403
     | PatchApiV1IdeasByIdeaIdSave404
     | PatchApiV1IdeasByIdeaIdSave500;

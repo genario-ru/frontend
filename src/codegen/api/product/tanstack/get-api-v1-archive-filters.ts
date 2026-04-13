@@ -21,6 +21,7 @@ import { getApiV1ArchiveFilters } from "../clients/get-api-v1-archive-filters.ts
 import type {
   GetApiV1ArchiveFilters400,
   GetApiV1ArchiveFilters401,
+  GetApiV1ArchiveFilters402,
   GetApiV1ArchiveFilters403,
   GetApiV1ArchiveFilters404,
   GetApiV1ArchiveFilters500,
@@ -43,6 +44,7 @@ export function getApiV1ArchiveFiltersQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ArchiveFilters400
       | GetApiV1ArchiveFilters401
+      | GetApiV1ArchiveFilters402
       | GetApiV1ArchiveFilters403
       | GetApiV1ArchiveFilters404
       | GetApiV1ArchiveFilters500
@@ -75,6 +77,7 @@ export function useGetApiV1ArchiveFilters<
         ResponseErrorConfig<
           | GetApiV1ArchiveFilters400
           | GetApiV1ArchiveFilters401
+          | GetApiV1ArchiveFilters402
           | GetApiV1ArchiveFilters403
           | GetApiV1ArchiveFilters404
           | GetApiV1ArchiveFilters500
@@ -104,6 +107,7 @@ export function useGetApiV1ArchiveFilters<
     ResponseErrorConfig<
       | GetApiV1ArchiveFilters400
       | GetApiV1ArchiveFilters401
+      | GetApiV1ArchiveFilters402
       | GetApiV1ArchiveFilters403
       | GetApiV1ArchiveFilters404
       | GetApiV1ArchiveFilters500

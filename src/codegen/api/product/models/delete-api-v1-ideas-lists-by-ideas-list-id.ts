@@ -8,6 +8,7 @@ import type { DeleteIdeasListResponseSchema } from "./delete-ideas-list-response
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export type DeleteApiV1IdeasListsByIdeasListIdPathParams = {
@@ -37,6 +38,13 @@ export type DeleteApiV1IdeasListsByIdeasListId400 = BadRequestResponseSchema;
 export type DeleteApiV1IdeasListsByIdeasListId401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type DeleteApiV1IdeasListsByIdeasListId402 =
+  PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -64,6 +72,7 @@ export type DeleteApiV1IdeasListsByIdeasListIdMutation = {
   Errors:
     | DeleteApiV1IdeasListsByIdeasListId400
     | DeleteApiV1IdeasListsByIdeasListId401
+    | DeleteApiV1IdeasListsByIdeasListId402
     | DeleteApiV1IdeasListsByIdeasListId403
     | DeleteApiV1IdeasListsByIdeasListId404
     | DeleteApiV1IdeasListsByIdeasListId500;

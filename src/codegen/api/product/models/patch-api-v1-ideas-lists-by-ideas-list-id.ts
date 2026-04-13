@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 import type { UpdateIdeasListBodySchema } from "./update-ideas-list-body-schema.ts";
 import type { UpdateIdeasListResponseSchema } from "./update-ideas-list-response-schema.ts";
@@ -36,6 +37,13 @@ export type PatchApiV1IdeasListsByIdeasListId400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PatchApiV1IdeasListsByIdeasListId401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PatchApiV1IdeasListsByIdeasListId402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -72,6 +80,7 @@ export type PatchApiV1IdeasListsByIdeasListIdMutation = {
   Errors:
     | PatchApiV1IdeasListsByIdeasListId400
     | PatchApiV1IdeasListsByIdeasListId401
+    | PatchApiV1IdeasListsByIdeasListId402
     | PatchApiV1IdeasListsByIdeasListId403
     | PatchApiV1IdeasListsByIdeasListId404
     | PatchApiV1IdeasListsByIdeasListId500;

@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ArchiveFilters400,
   GetApiV1ArchiveFilters401,
+  GetApiV1ArchiveFilters402,
   GetApiV1ArchiveFilters403,
   GetApiV1ArchiveFilters404,
   GetApiV1ArchiveFilters500,
@@ -38,6 +39,7 @@ export async function getApiV1ArchiveFilters(
     ResponseErrorConfig<
       | GetApiV1ArchiveFilters400
       | GetApiV1ArchiveFilters401
+      | GetApiV1ArchiveFilters402
       | GetApiV1ArchiveFilters403
       | GetApiV1ArchiveFilters404
       | GetApiV1ArchiveFilters500

@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ArchiveItemsMy400,
   GetApiV1ArchiveItemsMy401,
+  GetApiV1ArchiveItemsMy402,
   GetApiV1ArchiveItemsMy403,
   GetApiV1ArchiveItemsMy404,
   GetApiV1ArchiveItemsMy500,
@@ -40,6 +41,7 @@ export async function getApiV1ArchiveItemsMy(
     ResponseErrorConfig<
       | GetApiV1ArchiveItemsMy400
       | GetApiV1ArchiveItemsMy401
+      | GetApiV1ArchiveItemsMy402
       | GetApiV1ArchiveItemsMy403
       | GetApiV1ArchiveItemsMy404
       | GetApiV1ArchiveItemsMy500

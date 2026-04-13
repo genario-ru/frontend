@@ -20,6 +20,7 @@ import { patchApiV1ProfilesByProfileId } from "../clients/patch-api-v1-profiles-
 import type {
   PatchApiV1ProfilesByProfileId400,
   PatchApiV1ProfilesByProfileId401,
+  PatchApiV1ProfilesByProfileId402,
   PatchApiV1ProfilesByProfileId403,
   PatchApiV1ProfilesByProfileId404,
   PatchApiV1ProfilesByProfileId500,
@@ -48,6 +49,7 @@ export function patchApiV1ProfilesByProfileIdMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ProfilesByProfileId400
       | PatchApiV1ProfilesByProfileId401
+      | PatchApiV1ProfilesByProfileId402
       | PatchApiV1ProfilesByProfileId403
       | PatchApiV1ProfilesByProfileId404
       | PatchApiV1ProfilesByProfileId500
@@ -75,6 +77,7 @@ export function usePatchApiV1ProfilesByProfileId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ProfilesByProfileId400
         | PatchApiV1ProfilesByProfileId401
+        | PatchApiV1ProfilesByProfileId402
         | PatchApiV1ProfilesByProfileId403
         | PatchApiV1ProfilesByProfileId404
         | PatchApiV1ProfilesByProfileId500
@@ -102,6 +105,7 @@ export function usePatchApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ProfilesByProfileId400
       | PatchApiV1ProfilesByProfileId401
+      | PatchApiV1ProfilesByProfileId402
       | PatchApiV1ProfilesByProfileId403
       | PatchApiV1ProfilesByProfileId404
       | PatchApiV1ProfilesByProfileId500
@@ -118,6 +122,7 @@ export function usePatchApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ProfilesByProfileId400
       | PatchApiV1ProfilesByProfileId401
+      | PatchApiV1ProfilesByProfileId402
       | PatchApiV1ProfilesByProfileId403
       | PatchApiV1ProfilesByProfileId404
       | PatchApiV1ProfilesByProfileId500
@@ -139,6 +144,7 @@ export function usePatchApiV1ProfilesByProfileId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ProfilesByProfileId400
       | PatchApiV1ProfilesByProfileId401
+      | PatchApiV1ProfilesByProfileId402
       | PatchApiV1ProfilesByProfileId403
       | PatchApiV1ProfilesByProfileId404
       | PatchApiV1ProfilesByProfileId500

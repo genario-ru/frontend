@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PatchApiV1ScenariosByScenarioIdCurrentVersion400,
   PatchApiV1ScenariosByScenarioIdCurrentVersion401,
+  PatchApiV1ScenariosByScenarioIdCurrentVersion402,
   PatchApiV1ScenariosByScenarioIdCurrentVersion403,
   PatchApiV1ScenariosByScenarioIdCurrentVersion404,
   PatchApiV1ScenariosByScenarioIdCurrentVersion500,
@@ -64,6 +65,7 @@ export async function patchApiV1ScenariosByScenarioIdCurrentVersion(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdCurrentVersion400
       | PatchApiV1ScenariosByScenarioIdCurrentVersion401
+      | PatchApiV1ScenariosByScenarioIdCurrentVersion402
       | PatchApiV1ScenariosByScenarioIdCurrentVersion403
       | PatchApiV1ScenariosByScenarioIdCurrentVersion404
       | PatchApiV1ScenariosByScenarioIdCurrentVersion500

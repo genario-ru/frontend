@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ProfilesTypes400,
   GetApiV1ProfilesTypes401,
+  GetApiV1ProfilesTypes402,
   GetApiV1ProfilesTypes403,
   GetApiV1ProfilesTypes404,
   GetApiV1ProfilesTypes500,
@@ -38,6 +39,7 @@ export async function getApiV1ProfilesTypes(
     ResponseErrorConfig<
       | GetApiV1ProfilesTypes400
       | GetApiV1ProfilesTypes401
+      | GetApiV1ProfilesTypes402
       | GetApiV1ProfilesTypes403
       | GetApiV1ProfilesTypes404
       | GetApiV1ProfilesTypes500

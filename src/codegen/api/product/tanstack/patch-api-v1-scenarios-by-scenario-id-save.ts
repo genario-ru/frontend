@@ -20,6 +20,7 @@ import { patchApiV1ScenariosByScenarioIdSave } from "../clients/patch-api-v1-sce
 import type {
   PatchApiV1ScenariosByScenarioIdSave400,
   PatchApiV1ScenariosByScenarioIdSave401,
+  PatchApiV1ScenariosByScenarioIdSave402,
   PatchApiV1ScenariosByScenarioIdSave403,
   PatchApiV1ScenariosByScenarioIdSave404,
   PatchApiV1ScenariosByScenarioIdSave500,
@@ -48,6 +49,7 @@ export function patchApiV1ScenariosByScenarioIdSaveMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdSave400
       | PatchApiV1ScenariosByScenarioIdSave401
+      | PatchApiV1ScenariosByScenarioIdSave402
       | PatchApiV1ScenariosByScenarioIdSave403
       | PatchApiV1ScenariosByScenarioIdSave404
       | PatchApiV1ScenariosByScenarioIdSave500
@@ -75,6 +77,7 @@ export function usePatchApiV1ScenariosByScenarioIdSave<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosByScenarioIdSave400
         | PatchApiV1ScenariosByScenarioIdSave401
+        | PatchApiV1ScenariosByScenarioIdSave402
         | PatchApiV1ScenariosByScenarioIdSave403
         | PatchApiV1ScenariosByScenarioIdSave404
         | PatchApiV1ScenariosByScenarioIdSave500
@@ -103,6 +106,7 @@ export function usePatchApiV1ScenariosByScenarioIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdSave400
       | PatchApiV1ScenariosByScenarioIdSave401
+      | PatchApiV1ScenariosByScenarioIdSave402
       | PatchApiV1ScenariosByScenarioIdSave403
       | PatchApiV1ScenariosByScenarioIdSave404
       | PatchApiV1ScenariosByScenarioIdSave500
@@ -119,6 +123,7 @@ export function usePatchApiV1ScenariosByScenarioIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdSave400
       | PatchApiV1ScenariosByScenarioIdSave401
+      | PatchApiV1ScenariosByScenarioIdSave402
       | PatchApiV1ScenariosByScenarioIdSave403
       | PatchApiV1ScenariosByScenarioIdSave404
       | PatchApiV1ScenariosByScenarioIdSave500
@@ -140,6 +145,7 @@ export function usePatchApiV1ScenariosByScenarioIdSave<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosByScenarioIdSave400
       | PatchApiV1ScenariosByScenarioIdSave401
+      | PatchApiV1ScenariosByScenarioIdSave402
       | PatchApiV1ScenariosByScenarioIdSave403
       | PatchApiV1ScenariosByScenarioIdSave404
       | PatchApiV1ScenariosByScenarioIdSave500

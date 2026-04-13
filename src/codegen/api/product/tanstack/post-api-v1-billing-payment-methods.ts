@@ -20,6 +20,7 @@ import { postApiV1BillingPaymentMethods } from "../clients/post-api-v1-billing-p
 import type {
   PostApiV1BillingPaymentMethods400,
   PostApiV1BillingPaymentMethods401,
+  PostApiV1BillingPaymentMethods402,
   PostApiV1BillingPaymentMethods403,
   PostApiV1BillingPaymentMethods404,
   PostApiV1BillingPaymentMethods500,
@@ -47,6 +48,7 @@ export function postApiV1BillingPaymentMethodsMutationOptions<
     ResponseErrorConfig<
       | PostApiV1BillingPaymentMethods400
       | PostApiV1BillingPaymentMethods401
+      | PostApiV1BillingPaymentMethods402
       | PostApiV1BillingPaymentMethods403
       | PostApiV1BillingPaymentMethods404
       | PostApiV1BillingPaymentMethods500
@@ -71,6 +73,7 @@ export function usePostApiV1BillingPaymentMethods<TContext>(
       ResponseErrorConfig<
         | PostApiV1BillingPaymentMethods400
         | PostApiV1BillingPaymentMethods401
+        | PostApiV1BillingPaymentMethods402
         | PostApiV1BillingPaymentMethods403
         | PostApiV1BillingPaymentMethods404
         | PostApiV1BillingPaymentMethods500
@@ -95,6 +98,7 @@ export function usePostApiV1BillingPaymentMethods<TContext>(
     ResponseErrorConfig<
       | PostApiV1BillingPaymentMethods400
       | PostApiV1BillingPaymentMethods401
+      | PostApiV1BillingPaymentMethods402
       | PostApiV1BillingPaymentMethods403
       | PostApiV1BillingPaymentMethods404
       | PostApiV1BillingPaymentMethods500
@@ -108,6 +112,7 @@ export function usePostApiV1BillingPaymentMethods<TContext>(
     ResponseErrorConfig<
       | PostApiV1BillingPaymentMethods400
       | PostApiV1BillingPaymentMethods401
+      | PostApiV1BillingPaymentMethods402
       | PostApiV1BillingPaymentMethods403
       | PostApiV1BillingPaymentMethods404
       | PostApiV1BillingPaymentMethods500
@@ -126,6 +131,7 @@ export function usePostApiV1BillingPaymentMethods<TContext>(
     ResponseErrorConfig<
       | PostApiV1BillingPaymentMethods400
       | PostApiV1BillingPaymentMethods401
+      | PostApiV1BillingPaymentMethods402
       | PostApiV1BillingPaymentMethods403
       | PostApiV1BillingPaymentMethods404
       | PostApiV1BillingPaymentMethods500

@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetReferralInfoResponseSchema } from "./get-referral-info-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -27,6 +28,12 @@ export type GetApiV1ReferralInfo400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ReferralInfo401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ReferralInfo402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -53,6 +60,7 @@ export type GetApiV1ReferralInfoQuery = {
   Errors:
     | GetApiV1ReferralInfo400
     | GetApiV1ReferralInfo401
+    | GetApiV1ReferralInfo402
     | GetApiV1ReferralInfo403
     | GetApiV1ReferralInfo404
     | GetApiV1ReferralInfo500;

@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ScenariosMy400,
   GetApiV1ScenariosMy401,
+  GetApiV1ScenariosMy402,
   GetApiV1ScenariosMy403,
   GetApiV1ScenariosMy404,
   GetApiV1ScenariosMy500,
@@ -38,6 +39,7 @@ export async function getApiV1ScenariosMy(
     ResponseErrorConfig<
       | GetApiV1ScenariosMy400
       | GetApiV1ScenariosMy401
+      | GetApiV1ScenariosMy402
       | GetApiV1ScenariosMy403
       | GetApiV1ScenariosMy404
       | GetApiV1ScenariosMy500

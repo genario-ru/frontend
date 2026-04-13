@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1Templates400,
   GetApiV1Templates401,
+  GetApiV1Templates402,
   GetApiV1Templates403,
   GetApiV1Templates404,
   GetApiV1Templates500,
@@ -38,6 +39,7 @@ export async function getApiV1Templates(
     ResponseErrorConfig<
       | GetApiV1Templates400
       | GetApiV1Templates401
+      | GetApiV1Templates402
       | GetApiV1Templates403
       | GetApiV1Templates404
       | GetApiV1Templates500

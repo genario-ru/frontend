@@ -21,6 +21,7 @@ import { getApiV1Platforms } from "../clients/get-api-v1-platforms.ts";
 import type {
   GetApiV1Platforms400,
   GetApiV1Platforms401,
+  GetApiV1Platforms402,
   GetApiV1Platforms403,
   GetApiV1Platforms404,
   GetApiV1Platforms500,
@@ -43,6 +44,7 @@ export function getApiV1PlatformsQueryOptions(
     ResponseErrorConfig<
       | GetApiV1Platforms400
       | GetApiV1Platforms401
+      | GetApiV1Platforms402
       | GetApiV1Platforms403
       | GetApiV1Platforms404
       | GetApiV1Platforms500
@@ -72,6 +74,7 @@ export function useGetApiV1Platforms<
         ResponseErrorConfig<
           | GetApiV1Platforms400
           | GetApiV1Platforms401
+          | GetApiV1Platforms402
           | GetApiV1Platforms403
           | GetApiV1Platforms404
           | GetApiV1Platforms500
@@ -100,6 +103,7 @@ export function useGetApiV1Platforms<
     ResponseErrorConfig<
       | GetApiV1Platforms400
       | GetApiV1Platforms401
+      | GetApiV1Platforms402
       | GetApiV1Platforms403
       | GetApiV1Platforms404
       | GetApiV1Platforms500

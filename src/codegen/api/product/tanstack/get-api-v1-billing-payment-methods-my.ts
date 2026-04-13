@@ -21,6 +21,7 @@ import { getApiV1BillingPaymentMethodsMy } from "../clients/get-api-v1-billing-p
 import type {
   GetApiV1BillingPaymentMethodsMy400,
   GetApiV1BillingPaymentMethodsMy401,
+  GetApiV1BillingPaymentMethodsMy402,
   GetApiV1BillingPaymentMethodsMy403,
   GetApiV1BillingPaymentMethodsMy404,
   GetApiV1BillingPaymentMethodsMy500,
@@ -43,6 +44,7 @@ export function getApiV1BillingPaymentMethodsMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1BillingPaymentMethodsMy400
       | GetApiV1BillingPaymentMethodsMy401
+      | GetApiV1BillingPaymentMethodsMy402
       | GetApiV1BillingPaymentMethodsMy403
       | GetApiV1BillingPaymentMethodsMy404
       | GetApiV1BillingPaymentMethodsMy500
@@ -75,6 +77,7 @@ export function useGetApiV1BillingPaymentMethodsMy<
         ResponseErrorConfig<
           | GetApiV1BillingPaymentMethodsMy400
           | GetApiV1BillingPaymentMethodsMy401
+          | GetApiV1BillingPaymentMethodsMy402
           | GetApiV1BillingPaymentMethodsMy403
           | GetApiV1BillingPaymentMethodsMy404
           | GetApiV1BillingPaymentMethodsMy500
@@ -104,6 +107,7 @@ export function useGetApiV1BillingPaymentMethodsMy<
     ResponseErrorConfig<
       | GetApiV1BillingPaymentMethodsMy400
       | GetApiV1BillingPaymentMethodsMy401
+      | GetApiV1BillingPaymentMethodsMy402
       | GetApiV1BillingPaymentMethodsMy403
       | GetApiV1BillingPaymentMethodsMy404
       | GetApiV1BillingPaymentMethodsMy500

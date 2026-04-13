@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyProfilesFromChannelsJobResponseSchema } from "./get-my-profiles-from-channels-job-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,12 @@ export type GetApiV1ProfilesChannelsJobsMy400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type GetApiV1ProfilesChannelsJobsMy401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1ProfilesChannelsJobsMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -56,6 +63,7 @@ export type GetApiV1ProfilesChannelsJobsMyQuery = {
   Errors:
     | GetApiV1ProfilesChannelsJobsMy400
     | GetApiV1ProfilesChannelsJobsMy401
+    | GetApiV1ProfilesChannelsJobsMy402
     | GetApiV1ProfilesChannelsJobsMy403
     | GetApiV1ProfilesChannelsJobsMy404
     | GetApiV1ProfilesChannelsJobsMy500;

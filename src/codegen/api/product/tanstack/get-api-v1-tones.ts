@@ -21,6 +21,7 @@ import { getApiV1Tones } from "../clients/get-api-v1-tones.ts";
 import type {
   GetApiV1Tones400,
   GetApiV1Tones401,
+  GetApiV1Tones402,
   GetApiV1Tones403,
   GetApiV1Tones404,
   GetApiV1Tones500,
@@ -40,6 +41,7 @@ export function getApiV1TonesQueryOptions(
     ResponseErrorConfig<
       | GetApiV1Tones400
       | GetApiV1Tones401
+      | GetApiV1Tones402
       | GetApiV1Tones403
       | GetApiV1Tones404
       | GetApiV1Tones500
@@ -69,6 +71,7 @@ export function useGetApiV1Tones<
         ResponseErrorConfig<
           | GetApiV1Tones400
           | GetApiV1Tones401
+          | GetApiV1Tones402
           | GetApiV1Tones403
           | GetApiV1Tones404
           | GetApiV1Tones500
@@ -97,6 +100,7 @@ export function useGetApiV1Tones<
     ResponseErrorConfig<
       | GetApiV1Tones400
       | GetApiV1Tones401
+      | GetApiV1Tones402
       | GetApiV1Tones403
       | GetApiV1Tones404
       | GetApiV1Tones500

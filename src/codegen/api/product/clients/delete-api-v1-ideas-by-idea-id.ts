@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   DeleteApiV1IdeasByIdeaId400,
   DeleteApiV1IdeasByIdeaId401,
+  DeleteApiV1IdeasByIdeaId402,
   DeleteApiV1IdeasByIdeaId403,
   DeleteApiV1IdeasByIdeaId404,
   DeleteApiV1IdeasByIdeaId500,
@@ -44,6 +45,7 @@ export async function deleteApiV1IdeasByIdeaId(
     ResponseErrorConfig<
       | DeleteApiV1IdeasByIdeaId400
       | DeleteApiV1IdeasByIdeaId401
+      | DeleteApiV1IdeasByIdeaId402
       | DeleteApiV1IdeasByIdeaId403
       | DeleteApiV1IdeasByIdeaId404
       | DeleteApiV1IdeasByIdeaId500

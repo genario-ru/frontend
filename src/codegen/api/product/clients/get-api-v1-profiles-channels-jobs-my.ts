@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ProfilesChannelsJobsMy400,
   GetApiV1ProfilesChannelsJobsMy401,
+  GetApiV1ProfilesChannelsJobsMy402,
   GetApiV1ProfilesChannelsJobsMy403,
   GetApiV1ProfilesChannelsJobsMy404,
   GetApiV1ProfilesChannelsJobsMy500,
@@ -41,6 +42,7 @@ export async function getApiV1ProfilesChannelsJobsMy(
     ResponseErrorConfig<
       | GetApiV1ProfilesChannelsJobsMy400
       | GetApiV1ProfilesChannelsJobsMy401
+      | GetApiV1ProfilesChannelsJobsMy402
       | GetApiV1ProfilesChannelsJobsMy403
       | GetApiV1ProfilesChannelsJobsMy404
       | GetApiV1ProfilesChannelsJobsMy500

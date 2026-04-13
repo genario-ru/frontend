@@ -9,6 +9,7 @@ import type { CreateScenarioResponseSchema } from "./create-scenario-response-sc
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -28,6 +29,12 @@ export type PostApiV1Scenarios400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PostApiV1Scenarios401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1Scenarios402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -60,6 +67,7 @@ export type PostApiV1ScenariosMutation = {
   Errors:
     | PostApiV1Scenarios400
     | PostApiV1Scenarios401
+    | PostApiV1Scenarios402
     | PostApiV1Scenarios403
     | PostApiV1Scenarios404
     | PostApiV1Scenarios500;

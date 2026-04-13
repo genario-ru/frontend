@@ -21,6 +21,7 @@ import { getApiV1AttachmentsByAttachmentIdDownload } from "../clients/get-api-v1
 import type {
   GetApiV1AttachmentsByAttachmentIdDownload400,
   GetApiV1AttachmentsByAttachmentIdDownload401,
+  GetApiV1AttachmentsByAttachmentIdDownload402,
   GetApiV1AttachmentsByAttachmentIdDownload403,
   GetApiV1AttachmentsByAttachmentIdDownload404,
   GetApiV1AttachmentsByAttachmentIdDownload500,
@@ -60,6 +61,7 @@ export function getApiV1AttachmentsByAttachmentIdDownloadQueryOptions(
     ResponseErrorConfig<
       | GetApiV1AttachmentsByAttachmentIdDownload400
       | GetApiV1AttachmentsByAttachmentIdDownload401
+      | GetApiV1AttachmentsByAttachmentIdDownload402
       | GetApiV1AttachmentsByAttachmentIdDownload403
       | GetApiV1AttachmentsByAttachmentIdDownload404
       | GetApiV1AttachmentsByAttachmentIdDownload500
@@ -99,6 +101,7 @@ export function useGetApiV1AttachmentsByAttachmentIdDownload<
         ResponseErrorConfig<
           | GetApiV1AttachmentsByAttachmentIdDownload400
           | GetApiV1AttachmentsByAttachmentIdDownload401
+          | GetApiV1AttachmentsByAttachmentIdDownload402
           | GetApiV1AttachmentsByAttachmentIdDownload403
           | GetApiV1AttachmentsByAttachmentIdDownload404
           | GetApiV1AttachmentsByAttachmentIdDownload500
@@ -132,6 +135,7 @@ export function useGetApiV1AttachmentsByAttachmentIdDownload<
     ResponseErrorConfig<
       | GetApiV1AttachmentsByAttachmentIdDownload400
       | GetApiV1AttachmentsByAttachmentIdDownload401
+      | GetApiV1AttachmentsByAttachmentIdDownload402
       | GetApiV1AttachmentsByAttachmentIdDownload403
       | GetApiV1AttachmentsByAttachmentIdDownload404
       | GetApiV1AttachmentsByAttachmentIdDownload500

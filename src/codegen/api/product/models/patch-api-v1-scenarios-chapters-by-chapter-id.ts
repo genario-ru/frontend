@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 import type { UpdateScenarioChapterBodySchema } from "./update-scenario-chapter-body-schema.ts";
 import type { UpdateScenarioChapterResponseSchema } from "./update-scenario-chapter-response-schema.ts";
@@ -38,6 +39,13 @@ export type PatchApiV1ScenariosChaptersByChapterId400 =
  */
 export type PatchApiV1ScenariosChaptersByChapterId401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PatchApiV1ScenariosChaptersByChapterId402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -74,6 +82,7 @@ export type PatchApiV1ScenariosChaptersByChapterIdMutation = {
   Errors:
     | PatchApiV1ScenariosChaptersByChapterId400
     | PatchApiV1ScenariosChaptersByChapterId401
+    | PatchApiV1ScenariosChaptersByChapterId402
     | PatchApiV1ScenariosChaptersByChapterId403
     | PatchApiV1ScenariosChaptersByChapterId404
     | PatchApiV1ScenariosChaptersByChapterId500;

@@ -21,6 +21,7 @@ import { getApiV1ScenariosVersionsByVersionIdExports } from "../clients/get-api-
 import type {
   GetApiV1ScenariosVersionsByVersionIdExports400,
   GetApiV1ScenariosVersionsByVersionIdExports401,
+  GetApiV1ScenariosVersionsByVersionIdExports402,
   GetApiV1ScenariosVersionsByVersionIdExports403,
   GetApiV1ScenariosVersionsByVersionIdExports404,
   GetApiV1ScenariosVersionsByVersionIdExports500,
@@ -60,6 +61,7 @@ export function getApiV1ScenariosVersionsByVersionIdExportsQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ScenariosVersionsByVersionIdExports400
       | GetApiV1ScenariosVersionsByVersionIdExports401
+      | GetApiV1ScenariosVersionsByVersionIdExports402
       | GetApiV1ScenariosVersionsByVersionIdExports403
       | GetApiV1ScenariosVersionsByVersionIdExports404
       | GetApiV1ScenariosVersionsByVersionIdExports500
@@ -99,6 +101,7 @@ export function useGetApiV1ScenariosVersionsByVersionIdExports<
         ResponseErrorConfig<
           | GetApiV1ScenariosVersionsByVersionIdExports400
           | GetApiV1ScenariosVersionsByVersionIdExports401
+          | GetApiV1ScenariosVersionsByVersionIdExports402
           | GetApiV1ScenariosVersionsByVersionIdExports403
           | GetApiV1ScenariosVersionsByVersionIdExports404
           | GetApiV1ScenariosVersionsByVersionIdExports500
@@ -132,6 +135,7 @@ export function useGetApiV1ScenariosVersionsByVersionIdExports<
     ResponseErrorConfig<
       | GetApiV1ScenariosVersionsByVersionIdExports400
       | GetApiV1ScenariosVersionsByVersionIdExports401
+      | GetApiV1ScenariosVersionsByVersionIdExports402
       | GetApiV1ScenariosVersionsByVersionIdExports403
       | GetApiV1ScenariosVersionsByVersionIdExports404
       | GetApiV1ScenariosVersionsByVersionIdExports500

@@ -21,6 +21,7 @@ import { getApiV1ScenariosMy } from "../clients/get-api-v1-scenarios-my.ts";
 import type {
   GetApiV1ScenariosMy400,
   GetApiV1ScenariosMy401,
+  GetApiV1ScenariosMy402,
   GetApiV1ScenariosMy403,
   GetApiV1ScenariosMy404,
   GetApiV1ScenariosMy500,
@@ -43,6 +44,7 @@ export function getApiV1ScenariosMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ScenariosMy400
       | GetApiV1ScenariosMy401
+      | GetApiV1ScenariosMy402
       | GetApiV1ScenariosMy403
       | GetApiV1ScenariosMy404
       | GetApiV1ScenariosMy500
@@ -75,6 +77,7 @@ export function useGetApiV1ScenariosMy<
         ResponseErrorConfig<
           | GetApiV1ScenariosMy400
           | GetApiV1ScenariosMy401
+          | GetApiV1ScenariosMy402
           | GetApiV1ScenariosMy403
           | GetApiV1ScenariosMy404
           | GetApiV1ScenariosMy500
@@ -103,6 +106,7 @@ export function useGetApiV1ScenariosMy<
     ResponseErrorConfig<
       | GetApiV1ScenariosMy400
       | GetApiV1ScenariosMy401
+      | GetApiV1ScenariosMy402
       | GetApiV1ScenariosMy403
       | GetApiV1ScenariosMy404
       | GetApiV1ScenariosMy500

@@ -64,5 +64,5 @@ export type CreditsUsageExtendedSchema = {
    * @description Credits batch description
    * @type object
    */
-  creditsBatch: CreditsBatchSchema;
+  batch: CreditsBatchSchema;
 };

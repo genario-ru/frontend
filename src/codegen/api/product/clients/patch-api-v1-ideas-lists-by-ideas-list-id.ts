@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PatchApiV1IdeasListsByIdeasListId400,
   PatchApiV1IdeasListsByIdeasListId401,
+  PatchApiV1IdeasListsByIdeasListId402,
   PatchApiV1IdeasListsByIdeasListId403,
   PatchApiV1IdeasListsByIdeasListId404,
   PatchApiV1IdeasListsByIdeasListId500,
@@ -62,6 +63,7 @@ export async function patchApiV1IdeasListsByIdeasListId(
     ResponseErrorConfig<
       | PatchApiV1IdeasListsByIdeasListId400
       | PatchApiV1IdeasListsByIdeasListId401
+      | PatchApiV1IdeasListsByIdeasListId402
       | PatchApiV1IdeasListsByIdeasListId403
       | PatchApiV1IdeasListsByIdeasListId404
       | PatchApiV1IdeasListsByIdeasListId500

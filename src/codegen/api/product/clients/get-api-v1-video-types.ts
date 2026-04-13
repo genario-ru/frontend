@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1VideoTypes400,
   GetApiV1VideoTypes401,
+  GetApiV1VideoTypes402,
   GetApiV1VideoTypes403,
   GetApiV1VideoTypes404,
   GetApiV1VideoTypes500,
@@ -38,6 +39,7 @@ export async function getApiV1VideoTypes(
     ResponseErrorConfig<
       | GetApiV1VideoTypes400
       | GetApiV1VideoTypes401
+      | GetApiV1VideoTypes402
       | GetApiV1VideoTypes403
       | GetApiV1VideoTypes404
       | GetApiV1VideoTypes500

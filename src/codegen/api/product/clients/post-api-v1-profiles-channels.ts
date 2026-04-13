@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1ProfilesChannels400,
   PostApiV1ProfilesChannels401,
+  PostApiV1ProfilesChannels402,
   PostApiV1ProfilesChannels403,
   PostApiV1ProfilesChannels404,
   PostApiV1ProfilesChannels500,
@@ -48,6 +49,7 @@ export async function postApiV1ProfilesChannels(
     ResponseErrorConfig<
       | PostApiV1ProfilesChannels400
       | PostApiV1ProfilesChannels401
+      | PostApiV1ProfilesChannels402
       | PostApiV1ProfilesChannels403
       | PostApiV1ProfilesChannels404
       | PostApiV1ProfilesChannels500

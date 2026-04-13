@@ -7,6 +7,7 @@ import type { BadRequestResponseSchema } from "./bad-request-response-schema.ts"
 import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 import type { UpdateIdeaBodySchema } from "./update-idea-body-schema.ts";
 import type { UpdateIdeaResponseSchema } from "./update-idea-response-schema.ts";
@@ -35,6 +36,12 @@ export type PatchApiV1IdeasByIdeaId400 = BadRequestResponseSchema;
  * @description Unauthorized
  */
 export type PatchApiV1IdeasByIdeaId401 = UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PatchApiV1IdeasByIdeaId402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -69,6 +76,7 @@ export type PatchApiV1IdeasByIdeaIdMutation = {
   Errors:
     | PatchApiV1IdeasByIdeaId400
     | PatchApiV1IdeasByIdeaId401
+    | PatchApiV1IdeasByIdeaId402
     | PatchApiV1IdeasByIdeaId403
     | PatchApiV1IdeasByIdeaId404
     | PatchApiV1IdeasByIdeaId500;

@@ -21,6 +21,7 @@ import { getApiV1ProfilesByProfileId } from "../clients/get-api-v1-profiles-by-p
 import type {
   GetApiV1ProfilesByProfileId400,
   GetApiV1ProfilesByProfileId401,
+  GetApiV1ProfilesByProfileId402,
   GetApiV1ProfilesByProfileId403,
   GetApiV1ProfilesByProfileId404,
   GetApiV1ProfilesByProfileId500,
@@ -53,6 +54,7 @@ export function getApiV1ProfilesByProfileIdQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ProfilesByProfileId400
       | GetApiV1ProfilesByProfileId401
+      | GetApiV1ProfilesByProfileId402
       | GetApiV1ProfilesByProfileId403
       | GetApiV1ProfilesByProfileId404
       | GetApiV1ProfilesByProfileId500
@@ -89,6 +91,7 @@ export function useGetApiV1ProfilesByProfileId<
         ResponseErrorConfig<
           | GetApiV1ProfilesByProfileId400
           | GetApiV1ProfilesByProfileId401
+          | GetApiV1ProfilesByProfileId402
           | GetApiV1ProfilesByProfileId403
           | GetApiV1ProfilesByProfileId404
           | GetApiV1ProfilesByProfileId500
@@ -119,6 +122,7 @@ export function useGetApiV1ProfilesByProfileId<
     ResponseErrorConfig<
       | GetApiV1ProfilesByProfileId400
       | GetApiV1ProfilesByProfileId401
+      | GetApiV1ProfilesByProfileId402
       | GetApiV1ProfilesByProfileId403
       | GetApiV1ProfilesByProfileId404
       | GetApiV1ProfilesByProfileId500

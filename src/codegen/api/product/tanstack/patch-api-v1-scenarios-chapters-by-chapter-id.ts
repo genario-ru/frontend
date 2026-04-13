@@ -20,6 +20,7 @@ import { patchApiV1ScenariosChaptersByChapterId } from "../clients/patch-api-v1-
 import type {
   PatchApiV1ScenariosChaptersByChapterId400,
   PatchApiV1ScenariosChaptersByChapterId401,
+  PatchApiV1ScenariosChaptersByChapterId402,
   PatchApiV1ScenariosChaptersByChapterId403,
   PatchApiV1ScenariosChaptersByChapterId404,
   PatchApiV1ScenariosChaptersByChapterId500,
@@ -48,6 +49,7 @@ export function patchApiV1ScenariosChaptersByChapterIdMutationOptions<
     ResponseErrorConfig<
       | PatchApiV1ScenariosChaptersByChapterId400
       | PatchApiV1ScenariosChaptersByChapterId401
+      | PatchApiV1ScenariosChaptersByChapterId402
       | PatchApiV1ScenariosChaptersByChapterId403
       | PatchApiV1ScenariosChaptersByChapterId404
       | PatchApiV1ScenariosChaptersByChapterId500
@@ -78,6 +80,7 @@ export function usePatchApiV1ScenariosChaptersByChapterId<TContext>(
       ResponseErrorConfig<
         | PatchApiV1ScenariosChaptersByChapterId400
         | PatchApiV1ScenariosChaptersByChapterId401
+        | PatchApiV1ScenariosChaptersByChapterId402
         | PatchApiV1ScenariosChaptersByChapterId403
         | PatchApiV1ScenariosChaptersByChapterId404
         | PatchApiV1ScenariosChaptersByChapterId500
@@ -106,6 +109,7 @@ export function usePatchApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosChaptersByChapterId400
       | PatchApiV1ScenariosChaptersByChapterId401
+      | PatchApiV1ScenariosChaptersByChapterId402
       | PatchApiV1ScenariosChaptersByChapterId403
       | PatchApiV1ScenariosChaptersByChapterId404
       | PatchApiV1ScenariosChaptersByChapterId500
@@ -122,6 +126,7 @@ export function usePatchApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosChaptersByChapterId400
       | PatchApiV1ScenariosChaptersByChapterId401
+      | PatchApiV1ScenariosChaptersByChapterId402
       | PatchApiV1ScenariosChaptersByChapterId403
       | PatchApiV1ScenariosChaptersByChapterId404
       | PatchApiV1ScenariosChaptersByChapterId500
@@ -143,6 +148,7 @@ export function usePatchApiV1ScenariosChaptersByChapterId<TContext>(
     ResponseErrorConfig<
       | PatchApiV1ScenariosChaptersByChapterId400
       | PatchApiV1ScenariosChaptersByChapterId401
+      | PatchApiV1ScenariosChaptersByChapterId402
       | PatchApiV1ScenariosChaptersByChapterId403
       | PatchApiV1ScenariosChaptersByChapterId404
       | PatchApiV1ScenariosChaptersByChapterId500

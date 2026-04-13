@@ -21,6 +21,7 @@ import { getApiV1ScenariosChaptersByChapterId } from "../clients/get-api-v1-scen
 import type {
   GetApiV1ScenariosChaptersByChapterId400,
   GetApiV1ScenariosChaptersByChapterId401,
+  GetApiV1ScenariosChaptersByChapterId402,
   GetApiV1ScenariosChaptersByChapterId403,
   GetApiV1ScenariosChaptersByChapterId404,
   GetApiV1ScenariosChaptersByChapterId500,
@@ -56,6 +57,7 @@ export function getApiV1ScenariosChaptersByChapterIdQueryOptions(
     ResponseErrorConfig<
       | GetApiV1ScenariosChaptersByChapterId400
       | GetApiV1ScenariosChaptersByChapterId401
+      | GetApiV1ScenariosChaptersByChapterId402
       | GetApiV1ScenariosChaptersByChapterId403
       | GetApiV1ScenariosChaptersByChapterId404
       | GetApiV1ScenariosChaptersByChapterId500
@@ -92,6 +94,7 @@ export function useGetApiV1ScenariosChaptersByChapterId<
         ResponseErrorConfig<
           | GetApiV1ScenariosChaptersByChapterId400
           | GetApiV1ScenariosChaptersByChapterId401
+          | GetApiV1ScenariosChaptersByChapterId402
           | GetApiV1ScenariosChaptersByChapterId403
           | GetApiV1ScenariosChaptersByChapterId404
           | GetApiV1ScenariosChaptersByChapterId500
@@ -125,6 +128,7 @@ export function useGetApiV1ScenariosChaptersByChapterId<
     ResponseErrorConfig<
       | GetApiV1ScenariosChaptersByChapterId400
       | GetApiV1ScenariosChaptersByChapterId401
+      | GetApiV1ScenariosChaptersByChapterId402
       | GetApiV1ScenariosChaptersByChapterId403
       | GetApiV1ScenariosChaptersByChapterId404
       | GetApiV1ScenariosChaptersByChapterId500

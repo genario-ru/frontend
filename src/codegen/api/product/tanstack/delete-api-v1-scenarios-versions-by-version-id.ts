@@ -20,6 +20,7 @@ import { deleteApiV1ScenariosVersionsByVersionId } from "../clients/delete-api-v
 import type {
   DeleteApiV1ScenariosVersionsByVersionId400,
   DeleteApiV1ScenariosVersionsByVersionId401,
+  DeleteApiV1ScenariosVersionsByVersionId402,
   DeleteApiV1ScenariosVersionsByVersionId403,
   DeleteApiV1ScenariosVersionsByVersionId404,
   DeleteApiV1ScenariosVersionsByVersionId500,
@@ -43,6 +44,7 @@ export function deleteApiV1ScenariosVersionsByVersionIdMutationOptions<
     ResponseErrorConfig<
       | DeleteApiV1ScenariosVersionsByVersionId400
       | DeleteApiV1ScenariosVersionsByVersionId401
+      | DeleteApiV1ScenariosVersionsByVersionId402
       | DeleteApiV1ScenariosVersionsByVersionId403
       | DeleteApiV1ScenariosVersionsByVersionId404
       | DeleteApiV1ScenariosVersionsByVersionId500
@@ -69,6 +71,7 @@ export function useDeleteApiV1ScenariosVersionsByVersionId<TContext>(
       ResponseErrorConfig<
         | DeleteApiV1ScenariosVersionsByVersionId400
         | DeleteApiV1ScenariosVersionsByVersionId401
+        | DeleteApiV1ScenariosVersionsByVersionId402
         | DeleteApiV1ScenariosVersionsByVersionId403
         | DeleteApiV1ScenariosVersionsByVersionId404
         | DeleteApiV1ScenariosVersionsByVersionId500
@@ -94,6 +97,7 @@ export function useDeleteApiV1ScenariosVersionsByVersionId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosVersionsByVersionId400
       | DeleteApiV1ScenariosVersionsByVersionId401
+      | DeleteApiV1ScenariosVersionsByVersionId402
       | DeleteApiV1ScenariosVersionsByVersionId403
       | DeleteApiV1ScenariosVersionsByVersionId404
       | DeleteApiV1ScenariosVersionsByVersionId500
@@ -109,6 +113,7 @@ export function useDeleteApiV1ScenariosVersionsByVersionId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosVersionsByVersionId400
       | DeleteApiV1ScenariosVersionsByVersionId401
+      | DeleteApiV1ScenariosVersionsByVersionId402
       | DeleteApiV1ScenariosVersionsByVersionId403
       | DeleteApiV1ScenariosVersionsByVersionId404
       | DeleteApiV1ScenariosVersionsByVersionId500
@@ -129,6 +134,7 @@ export function useDeleteApiV1ScenariosVersionsByVersionId<TContext>(
     ResponseErrorConfig<
       | DeleteApiV1ScenariosVersionsByVersionId400
       | DeleteApiV1ScenariosVersionsByVersionId401
+      | DeleteApiV1ScenariosVersionsByVersionId402
       | DeleteApiV1ScenariosVersionsByVersionId403
       | DeleteApiV1ScenariosVersionsByVersionId404
       | DeleteApiV1ScenariosVersionsByVersionId500

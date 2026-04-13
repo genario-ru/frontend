@@ -8,6 +8,7 @@ import type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 import type { GetMyIdeasListsResponseSchema } from "./get-my-ideas-lists-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 export const getApiV1IdeasListsMyQueryParamsSortOrderEnum = {
@@ -76,6 +77,12 @@ export type GetApiV1IdeasListsMy400 = BadRequestResponseSchema;
 export type GetApiV1IdeasListsMy401 = UnauthorizedResponseSchema;
 
 /**
+ * Payment required response
+ * @description Payment required
+ */
+export type GetApiV1IdeasListsMy402 = PaymentRequiredResponseSchema;
+
+/**
  * Forbidden response
  * @description Forbidden
  */
@@ -101,6 +108,7 @@ export type GetApiV1IdeasListsMyQuery = {
   Errors:
     | GetApiV1IdeasListsMy400
     | GetApiV1IdeasListsMy401
+    | GetApiV1IdeasListsMy402
     | GetApiV1IdeasListsMy403
     | GetApiV1IdeasListsMy404
     | GetApiV1IdeasListsMy500;

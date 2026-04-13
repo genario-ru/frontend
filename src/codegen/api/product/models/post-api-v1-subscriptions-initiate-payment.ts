@@ -9,6 +9,7 @@ import type { InitiateSubscriptionPaymentBodySchema } from "./initiate-subscript
 import type { InitiateSubscriptionPaymentResponseSchema } from "./initiate-subscription-payment-response-schema.ts";
 import type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
 import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
+import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
 /**
@@ -30,6 +31,13 @@ export type PostApiV1SubscriptionsInitiatePayment400 = BadRequestResponseSchema;
  */
 export type PostApiV1SubscriptionsInitiatePayment401 =
   UnauthorizedResponseSchema;
+
+/**
+ * Payment required response
+ * @description Payment required
+ */
+export type PostApiV1SubscriptionsInitiatePayment402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
@@ -65,6 +73,7 @@ export type PostApiV1SubscriptionsInitiatePaymentMutation = {
   Errors:
     | PostApiV1SubscriptionsInitiatePayment400
     | PostApiV1SubscriptionsInitiatePayment401
+    | PostApiV1SubscriptionsInitiatePayment402
     | PostApiV1SubscriptionsInitiatePayment403
     | PostApiV1SubscriptionsInitiatePayment404
     | PostApiV1SubscriptionsInitiatePayment500;

@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   PostApiV1Scenarios400,
   PostApiV1Scenarios401,
+  PostApiV1Scenarios402,
   PostApiV1Scenarios403,
   PostApiV1Scenarios404,
   PostApiV1Scenarios500,
@@ -47,6 +48,7 @@ export async function postApiV1Scenarios(
     ResponseErrorConfig<
       | PostApiV1Scenarios400
       | PostApiV1Scenarios401
+      | PostApiV1Scenarios402
       | PostApiV1Scenarios403
       | PostApiV1Scenarios404
       | PostApiV1Scenarios500

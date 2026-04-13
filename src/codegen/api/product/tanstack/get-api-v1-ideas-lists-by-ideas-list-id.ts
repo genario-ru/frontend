@@ -21,6 +21,7 @@ import { getApiV1IdeasListsByIdeasListId } from "../clients/get-api-v1-ideas-lis
 import type {
   GetApiV1IdeasListsByIdeasListId400,
   GetApiV1IdeasListsByIdeasListId401,
+  GetApiV1IdeasListsByIdeasListId402,
   GetApiV1IdeasListsByIdeasListId403,
   GetApiV1IdeasListsByIdeasListId404,
   GetApiV1IdeasListsByIdeasListId500,
@@ -66,6 +67,7 @@ export function getApiV1IdeasListsByIdeasListIdQueryOptions(
     ResponseErrorConfig<
       | GetApiV1IdeasListsByIdeasListId400
       | GetApiV1IdeasListsByIdeasListId401
+      | GetApiV1IdeasListsByIdeasListId402
       | GetApiV1IdeasListsByIdeasListId403
       | GetApiV1IdeasListsByIdeasListId404
       | GetApiV1IdeasListsByIdeasListId500
@@ -106,6 +108,7 @@ export function useGetApiV1IdeasListsByIdeasListId<
         ResponseErrorConfig<
           | GetApiV1IdeasListsByIdeasListId400
           | GetApiV1IdeasListsByIdeasListId401
+          | GetApiV1IdeasListsByIdeasListId402
           | GetApiV1IdeasListsByIdeasListId403
           | GetApiV1IdeasListsByIdeasListId404
           | GetApiV1IdeasListsByIdeasListId500
@@ -139,6 +142,7 @@ export function useGetApiV1IdeasListsByIdeasListId<
     ResponseErrorConfig<
       | GetApiV1IdeasListsByIdeasListId400
       | GetApiV1IdeasListsByIdeasListId401
+      | GetApiV1IdeasListsByIdeasListId402
       | GetApiV1IdeasListsByIdeasListId403
       | GetApiV1IdeasListsByIdeasListId404
       | GetApiV1IdeasListsByIdeasListId500

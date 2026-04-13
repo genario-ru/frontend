@@ -13,6 +13,7 @@ import fetch from "@/lib/api/client";
 import type {
   GetApiV1ScenariosVersionsByVersionIdExports400,
   GetApiV1ScenariosVersionsByVersionIdExports401,
+  GetApiV1ScenariosVersionsByVersionIdExports402,
   GetApiV1ScenariosVersionsByVersionIdExports403,
   GetApiV1ScenariosVersionsByVersionIdExports404,
   GetApiV1ScenariosVersionsByVersionIdExports500,
@@ -51,6 +52,7 @@ export async function getApiV1ScenariosVersionsByVersionIdExports(
     ResponseErrorConfig<
       | GetApiV1ScenariosVersionsByVersionIdExports400
       | GetApiV1ScenariosVersionsByVersionIdExports401
+      | GetApiV1ScenariosVersionsByVersionIdExports402
       | GetApiV1ScenariosVersionsByVersionIdExports403
       | GetApiV1ScenariosVersionsByVersionIdExports404
       | GetApiV1ScenariosVersionsByVersionIdExports500

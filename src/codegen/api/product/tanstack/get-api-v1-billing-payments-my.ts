@@ -21,6 +21,7 @@ import { getApiV1BillingPaymentsMy } from "../clients/get-api-v1-billing-payment
 import type {
   GetApiV1BillingPaymentsMy400,
   GetApiV1BillingPaymentsMy401,
+  GetApiV1BillingPaymentsMy402,
   GetApiV1BillingPaymentsMy403,
   GetApiV1BillingPaymentsMy404,
   GetApiV1BillingPaymentsMy500,
@@ -43,6 +44,7 @@ export function getApiV1BillingPaymentsMyQueryOptions(
     ResponseErrorConfig<
       | GetApiV1BillingPaymentsMy400
       | GetApiV1BillingPaymentsMy401
+      | GetApiV1BillingPaymentsMy402
       | GetApiV1BillingPaymentsMy403
       | GetApiV1BillingPaymentsMy404
       | GetApiV1BillingPaymentsMy500
@@ -75,6 +77,7 @@ export function useGetApiV1BillingPaymentsMy<
         ResponseErrorConfig<
           | GetApiV1BillingPaymentsMy400
           | GetApiV1BillingPaymentsMy401
+          | GetApiV1BillingPaymentsMy402
           | GetApiV1BillingPaymentsMy403
           | GetApiV1BillingPaymentsMy404
           | GetApiV1BillingPaymentsMy500
@@ -104,6 +107,7 @@ export function useGetApiV1BillingPaymentsMy<
     ResponseErrorConfig<
       | GetApiV1BillingPaymentsMy400
       | GetApiV1BillingPaymentsMy401
+      | GetApiV1BillingPaymentsMy402
       | GetApiV1BillingPaymentsMy403
       | GetApiV1BillingPaymentsMy404
       | GetApiV1BillingPaymentsMy500

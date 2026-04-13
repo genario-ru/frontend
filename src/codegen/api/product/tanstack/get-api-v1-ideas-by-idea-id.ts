@@ -21,6 +21,7 @@ import { getApiV1IdeasByIdeaId } from "../clients/get-api-v1-ideas-by-idea-id.ts
 import type {
   GetApiV1IdeasByIdeaId400,
   GetApiV1IdeasByIdeaId401,
+  GetApiV1IdeasByIdeaId402,
   GetApiV1IdeasByIdeaId403,
   GetApiV1IdeasByIdeaId404,
   GetApiV1IdeasByIdeaId500,
@@ -48,6 +49,7 @@ export function getApiV1IdeasByIdeaIdQueryOptions(
     ResponseErrorConfig<
       | GetApiV1IdeasByIdeaId400
       | GetApiV1IdeasByIdeaId401
+      | GetApiV1IdeasByIdeaId402
       | GetApiV1IdeasByIdeaId403
       | GetApiV1IdeasByIdeaId404
       | GetApiV1IdeasByIdeaId500
@@ -82,6 +84,7 @@ export function useGetApiV1IdeasByIdeaId<
         ResponseErrorConfig<
           | GetApiV1IdeasByIdeaId400
           | GetApiV1IdeasByIdeaId401
+          | GetApiV1IdeasByIdeaId402
           | GetApiV1IdeasByIdeaId403
           | GetApiV1IdeasByIdeaId404
           | GetApiV1IdeasByIdeaId500
@@ -111,6 +114,7 @@ export function useGetApiV1IdeasByIdeaId<
     ResponseErrorConfig<
       | GetApiV1IdeasByIdeaId400
       | GetApiV1IdeasByIdeaId401
+      | GetApiV1IdeasByIdeaId402
       | GetApiV1IdeasByIdeaId403
       | GetApiV1IdeasByIdeaId404
       | GetApiV1IdeasByIdeaId500
