@@ -42,7 +42,7 @@ export type CreditsUsageRowView = {
 export function formatCreditsUsageRow(
   usage: CreditsUsageExtendedSchema,
 ): CreditsUsageRowView {
-  const batchName = usage.creditsBatch.name;
+  const batchName = usage.batch.name;
 
   return {
     id: usage.id,
