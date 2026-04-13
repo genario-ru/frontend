@@ -20,10 +20,6 @@ import type {
   PostRequestPasswordResetMutationRequest,
   PostRequestPasswordResetMutationResponse,
 } from "../models/post-request-password-reset.ts";
-import {
-  postRequestPasswordResetMutationRequestSchema,
-  postRequestPasswordResetMutationResponseSchema,
-} from "../zod/post-request-password-reset-schema.ts";
 
 function getPostRequestPasswordResetUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function postRequestPasswordReset(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postRequestPasswordResetMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostRequestPasswordResetMutationResponse,
@@ -64,5 +60,5 @@ export async function postRequestPasswordReset(
     data: requestData,
     ...requestConfig,
   });
-  return postRequestPasswordResetMutationResponseSchema.parse(res.data);
+  return res.data;
 }

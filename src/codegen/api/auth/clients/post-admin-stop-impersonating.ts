@@ -19,7 +19,6 @@ import type {
   PostAdminStopImpersonating500,
   PostAdminStopImpersonatingMutationResponse,
 } from "../models/post-admin-stop-impersonating.ts";
-import { postAdminStopImpersonatingMutationResponseSchema } from "../zod/post-admin-stop-impersonating-schema.ts";
 
 function getPostAdminStopImpersonatingUrl() {
   const res = {
@@ -53,5 +52,5 @@ export async function postAdminStopImpersonating(
     url: getPostAdminStopImpersonatingUrl().url.toString(),
     ...requestConfig,
   });
-  return postAdminStopImpersonatingMutationResponseSchema.parse(res.data);
+  return res.data;
 }

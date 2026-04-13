@@ -20,7 +20,6 @@ import type {
   GetApiV1AttachmentsByAttachmentIdDownloadPathParams,
   GetApiV1AttachmentsByAttachmentIdDownloadQueryResponse,
 } from "../models/get-api-v1-attachments-by-attachment-id-download.ts";
-import { getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema } from "../zod/get-api-v1-attachments-by-attachment-id-download-schema.ts";
 
 function getGetApiV1AttachmentsByAttachmentIdDownloadUrl({
   attachmentId,
@@ -65,7 +64,5 @@ export async function getApiV1AttachmentsByAttachmentIdDownload(
     }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

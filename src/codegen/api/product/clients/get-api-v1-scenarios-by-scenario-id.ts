@@ -20,7 +20,6 @@ import type {
   GetApiV1ScenariosByScenarioIdPathParams,
   GetApiV1ScenariosByScenarioIdQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id.ts";
-import { getApiV1ScenariosByScenarioIdQueryResponseSchema } from "../zod/get-api-v1-scenarios-by-scenario-id-schema.ts";
 
 function getGetApiV1ScenariosByScenarioIdUrl({
   scenarioId,
@@ -61,5 +60,5 @@ export async function getApiV1ScenariosByScenarioId(
     url: getGetApiV1ScenariosByScenarioIdUrl({ scenarioId }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1ScenariosByScenarioIdQueryResponseSchema.parse(res.data);
+  return res.data;
 }

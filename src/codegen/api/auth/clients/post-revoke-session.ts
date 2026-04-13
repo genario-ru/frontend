@@ -20,10 +20,6 @@ import type {
   PostRevokeSessionMutationRequest,
   PostRevokeSessionMutationResponse,
 } from "../models/post-revoke-session.ts";
-import {
-  postRevokeSessionMutationRequestSchema,
-  postRevokeSessionMutationResponseSchema,
-} from "../zod/post-revoke-session-schema.ts";
 
 function getPostRevokeSessionUrl() {
   const res = { method: "POST", url: `/api/auth/revoke-session` as const };
@@ -42,7 +38,7 @@ export async function postRevokeSession(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postRevokeSessionMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostRevokeSessionMutationResponse,
@@ -61,5 +57,5 @@ export async function postRevokeSession(
     data: requestData,
     ...requestConfig,
   });
-  return postRevokeSessionMutationResponseSchema.parse(res.data);
+  return res.data;
 }

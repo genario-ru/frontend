@@ -20,10 +20,6 @@ import type {
   UnbanUserMutationRequest,
   UnbanUserMutationResponse,
 } from "../models/unban-user.ts";
-import {
-  unbanUserMutationRequestSchema,
-  unbanUserMutationResponseSchema,
-} from "../zod/unban-user-schema.ts";
 
 function getUnbanUserUrl() {
   const res = { method: "POST", url: `/api/auth/admin/unban-user` as const };
@@ -42,7 +38,7 @@ export async function unbanUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = unbanUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     UnbanUserMutationResponse,
@@ -61,5 +57,5 @@ export async function unbanUser(
     data: requestData,
     ...requestConfig,
   });
-  return unbanUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

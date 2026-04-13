@@ -19,7 +19,6 @@ import type {
   GetApiV1BillingPaymentMethodsMy500,
   GetApiV1BillingPaymentMethodsMyQueryResponse,
 } from "../models/get-api-v1-billing-payment-methods-my.ts";
-import { getApiV1BillingPaymentMethodsMyQueryResponseSchema } from "../zod/get-api-v1-billing-payment-methods-my-schema.ts";
 
 function getGetApiV1BillingPaymentMethodsMyUrl() {
   const res = {
@@ -53,5 +52,5 @@ export async function getApiV1BillingPaymentMethodsMy(
     url: getGetApiV1BillingPaymentMethodsMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1BillingPaymentMethodsMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

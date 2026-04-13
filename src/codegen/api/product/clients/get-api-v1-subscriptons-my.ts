@@ -19,7 +19,6 @@ import type {
   GetApiV1SubscriptonsMy500,
   GetApiV1SubscriptonsMyQueryResponse,
 } from "../models/get-api-v1-subscriptons-my.ts";
-import { getApiV1SubscriptonsMyQueryResponseSchema } from "../zod/get-api-v1-subscriptons-my-schema.ts";
 
 function getGetApiV1SubscriptonsMyUrl() {
   const res = { method: "GET", url: `/api/v1/subscriptons/my` as const };
@@ -50,5 +49,5 @@ export async function getApiV1SubscriptonsMy(
     url: getGetApiV1SubscriptonsMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1SubscriptonsMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

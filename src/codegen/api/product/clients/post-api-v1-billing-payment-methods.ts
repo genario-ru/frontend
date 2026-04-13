@@ -20,10 +20,6 @@ import type {
   PostApiV1BillingPaymentMethodsMutationRequest,
   PostApiV1BillingPaymentMethodsMutationResponse,
 } from "../models/post-api-v1-billing-payment-methods.ts";
-import {
-  postApiV1BillingPaymentMethodsMutationRequestSchema,
-  postApiV1BillingPaymentMethodsMutationResponseSchema,
-} from "../zod/post-api-v1-billing-payment-methods-schema.ts";
 
 function getPostApiV1BillingPaymentMethodsUrl() {
   const res = {
@@ -44,8 +40,7 @@ export async function postApiV1BillingPaymentMethods(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1BillingPaymentMethodsMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1BillingPaymentMethodsMutationResponse,
@@ -64,5 +59,5 @@ export async function postApiV1BillingPaymentMethods(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1BillingPaymentMethodsMutationResponseSchema.parse(res.data);
+  return res.data;
 }

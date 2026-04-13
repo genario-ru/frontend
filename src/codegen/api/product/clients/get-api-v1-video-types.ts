@@ -19,7 +19,6 @@ import type {
   GetApiV1VideoTypes500,
   GetApiV1VideoTypesQueryResponse,
 } from "../models/get-api-v1-video-types.ts";
-import { getApiV1VideoTypesQueryResponseSchema } from "../zod/get-api-v1-video-types-schema.ts";
 
 function getGetApiV1VideoTypesUrl() {
   const res = { method: "GET", url: `/api/v1/video-types` as const };
@@ -50,5 +49,5 @@ export async function getApiV1VideoTypes(
     url: getGetApiV1VideoTypesUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1VideoTypesQueryResponseSchema.parse(res.data);
+  return res.data;
 }

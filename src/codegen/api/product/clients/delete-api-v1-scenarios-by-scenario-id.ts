@@ -20,7 +20,6 @@ import type {
   DeleteApiV1ScenariosByScenarioIdMutationResponse,
   DeleteApiV1ScenariosByScenarioIdPathParams,
 } from "../models/delete-api-v1-scenarios-by-scenario-id.ts";
-import { deleteApiV1ScenariosByScenarioIdMutationResponseSchema } from "../zod/delete-api-v1-scenarios-by-scenario-id-schema.ts";
 
 function getDeleteApiV1ScenariosByScenarioIdUrl({
   scenarioId,
@@ -61,5 +60,5 @@ export async function deleteApiV1ScenariosByScenarioId(
     url: getDeleteApiV1ScenariosByScenarioIdUrl({ scenarioId }).url.toString(),
     ...requestConfig,
   });
-  return deleteApiV1ScenariosByScenarioIdMutationResponseSchema.parse(res.data);
+  return res.data;
 }

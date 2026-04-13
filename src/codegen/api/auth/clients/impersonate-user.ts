@@ -20,10 +20,6 @@ import type {
   ImpersonateUserMutationRequest,
   ImpersonateUserMutationResponse,
 } from "../models/impersonate-user.ts";
-import {
-  impersonateUserMutationRequestSchema,
-  impersonateUserMutationResponseSchema,
-} from "../zod/impersonate-user-schema.ts";
 
 function getImpersonateUserUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function impersonateUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = impersonateUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     ImpersonateUserMutationResponse,
@@ -64,5 +60,5 @@ export async function impersonateUser(
     data: requestData,
     ...requestConfig,
   });
-  return impersonateUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

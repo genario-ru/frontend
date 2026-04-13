@@ -20,7 +20,6 @@ import type {
   GetApiV1IdeasListsMyQueryParams,
   GetApiV1IdeasListsMyQueryResponse,
 } from "../models/get-api-v1-ideas-lists-my.ts";
-import { getApiV1IdeasListsMyQueryResponseSchema } from "../zod/get-api-v1-ideas-lists-my-schema.ts";
 
 function getGetApiV1IdeasListsMyUrl() {
   const res = { method: "GET", url: `/api/v1/ideas-lists/my` as const };
@@ -53,5 +52,5 @@ export async function getApiV1IdeasListsMy(
     params,
     ...requestConfig,
   });
-  return getApiV1IdeasListsMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

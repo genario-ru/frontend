@@ -19,7 +19,6 @@ import type {
   GetListAccounts500,
   GetListAccountsQueryResponse,
 } from "../models/get-list-accounts.ts";
-import { getListAccountsQueryResponseSchema } from "../zod/get-list-accounts-schema.ts";
 
 function getGetListAccountsUrl() {
   const res = { method: "GET", url: `/api/auth/list-accounts` as const };
@@ -51,5 +50,5 @@ export async function getListAccounts(
     url: getGetListAccountsUrl().url.toString(),
     ...requestConfig,
   });
-  return getListAccountsQueryResponseSchema.parse(res.data);
+  return res.data;
 }

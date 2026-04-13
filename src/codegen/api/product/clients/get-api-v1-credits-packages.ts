@@ -19,7 +19,6 @@ import type {
   GetApiV1CreditsPackages500,
   GetApiV1CreditsPackagesQueryResponse,
 } from "../models/get-api-v1-credits-packages.ts";
-import { getApiV1CreditsPackagesQueryResponseSchema } from "../zod/get-api-v1-credits-packages-schema.ts";
 
 function getGetApiV1CreditsPackagesUrl() {
   const res = { method: "GET", url: `/api/v1/credits/packages` as const };
@@ -50,5 +49,5 @@ export async function getApiV1CreditsPackages(
     url: getGetApiV1CreditsPackagesUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1CreditsPackagesQueryResponseSchema.parse(res.data);
+  return res.data;
 }

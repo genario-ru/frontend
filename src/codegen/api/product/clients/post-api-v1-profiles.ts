@@ -20,10 +20,6 @@ import type {
   PostApiV1ProfilesMutationRequest,
   PostApiV1ProfilesMutationResponse,
 } from "../models/post-api-v1-profiles.ts";
-import {
-  postApiV1ProfilesMutationRequestSchema,
-  postApiV1ProfilesMutationResponseSchema,
-} from "../zod/post-api-v1-profiles-schema.ts";
 
 function getPostApiV1ProfilesUrl() {
   const res = { method: "POST", url: `/api/v1/profiles` as const };
@@ -41,7 +37,7 @@ export async function postApiV1Profiles(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postApiV1ProfilesMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1ProfilesMutationResponse,
@@ -60,5 +56,5 @@ export async function postApiV1Profiles(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1ProfilesMutationResponseSchema.parse(res.data);
+  return res.data;
 }

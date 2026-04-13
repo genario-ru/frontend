@@ -21,10 +21,6 @@ import type {
   PostChangeEmailMutationRequest,
   PostChangeEmailMutationResponse,
 } from "../models/post-change-email.ts";
-import {
-  postChangeEmailMutationRequestSchema,
-  postChangeEmailMutationResponseSchema,
-} from "../zod/post-change-email-schema.ts";
 
 function getPostChangeEmailUrl() {
   const res = { method: "POST", url: `/api/auth/change-email` as const };
@@ -42,7 +38,7 @@ export async function postChangeEmail(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postChangeEmailMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostChangeEmailMutationResponse,
@@ -62,5 +58,5 @@ export async function postChangeEmail(
     data: requestData,
     ...requestConfig,
   });
-  return postChangeEmailMutationResponseSchema.parse(res.data);
+  return res.data;
 }

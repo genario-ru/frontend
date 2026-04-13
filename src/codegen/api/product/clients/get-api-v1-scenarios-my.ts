@@ -19,7 +19,6 @@ import type {
   GetApiV1ScenariosMy500,
   GetApiV1ScenariosMyQueryResponse,
 } from "../models/get-api-v1-scenarios-my.ts";
-import { getApiV1ScenariosMyQueryResponseSchema } from "../zod/get-api-v1-scenarios-my-schema.ts";
 
 function getGetApiV1ScenariosMyUrl() {
   const res = { method: "GET", url: `/api/v1/scenarios/my` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ScenariosMy(
     url: getGetApiV1ScenariosMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ScenariosMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -19,7 +19,6 @@ import type {
   GetApiV1ProfilesChannelsJobsMy500,
   GetApiV1ProfilesChannelsJobsMyQueryResponse,
 } from "../models/get-api-v1-profiles-channels-jobs-my.ts";
-import { getApiV1ProfilesChannelsJobsMyQueryResponseSchema } from "../zod/get-api-v1-profiles-channels-jobs-my-schema.ts";
 
 function getGetApiV1ProfilesChannelsJobsMyUrl() {
   const res = {
@@ -53,5 +52,5 @@ export async function getApiV1ProfilesChannelsJobsMy(
     url: getGetApiV1ProfilesChannelsJobsMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ProfilesChannelsJobsMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

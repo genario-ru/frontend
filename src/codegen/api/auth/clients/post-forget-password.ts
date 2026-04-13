@@ -20,10 +20,6 @@ import type {
   PostForgetPasswordMutationRequest,
   PostForgetPasswordMutationResponse,
 } from "../models/post-forget-password.ts";
-import {
-  postForgetPasswordMutationRequestSchema,
-  postForgetPasswordMutationResponseSchema,
-} from "../zod/post-forget-password-schema.ts";
 
 function getPostForgetPasswordUrl() {
   const res = { method: "POST", url: `/api/auth/forget-password` as const };
@@ -42,7 +38,7 @@ export async function postForgetPassword(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postForgetPasswordMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostForgetPasswordMutationResponse,
@@ -61,5 +57,5 @@ export async function postForgetPassword(
     data: requestData,
     ...requestConfig,
   });
-  return postForgetPasswordMutationResponseSchema.parse(res.data);
+  return res.data;
 }

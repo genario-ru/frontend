@@ -20,10 +20,6 @@ import type {
   PostUnlinkAccountMutationRequest,
   PostUnlinkAccountMutationResponse,
 } from "../models/post-unlink-account.ts";
-import {
-  postUnlinkAccountMutationRequestSchema,
-  postUnlinkAccountMutationResponseSchema,
-} from "../zod/post-unlink-account-schema.ts";
 
 function getPostUnlinkAccountUrl() {
   const res = { method: "POST", url: `/api/auth/unlink-account` as const };
@@ -42,7 +38,7 @@ export async function postUnlinkAccount(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postUnlinkAccountMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostUnlinkAccountMutationResponse,
@@ -61,5 +57,5 @@ export async function postUnlinkAccount(
     data: requestData,
     ...requestConfig,
   });
-  return postUnlinkAccountMutationResponseSchema.parse(res.data);
+  return res.data;
 }

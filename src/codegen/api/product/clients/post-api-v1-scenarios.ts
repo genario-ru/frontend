@@ -20,10 +20,6 @@ import type {
   PostApiV1ScenariosMutationRequest,
   PostApiV1ScenariosMutationResponse,
 } from "../models/post-api-v1-scenarios.ts";
-import {
-  postApiV1ScenariosMutationRequestSchema,
-  postApiV1ScenariosMutationResponseSchema,
-} from "../zod/post-api-v1-scenarios-schema.ts";
 
 function getPostApiV1ScenariosUrl() {
   const res = { method: "POST", url: `/api/v1/scenarios` as const };
@@ -41,7 +37,7 @@ export async function postApiV1Scenarios(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postApiV1ScenariosMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1ScenariosMutationResponse,
@@ -60,5 +56,5 @@ export async function postApiV1Scenarios(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1ScenariosMutationResponseSchema.parse(res.data);
+  return res.data;
 }

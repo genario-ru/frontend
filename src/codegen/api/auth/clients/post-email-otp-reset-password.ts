@@ -20,10 +20,6 @@ import type {
   PostEmailOtpResetPasswordMutationRequest,
   PostEmailOtpResetPasswordMutationResponse,
 } from "../models/post-email-otp-reset-password.ts";
-import {
-  postEmailOtpResetPasswordMutationRequestSchema,
-  postEmailOtpResetPasswordMutationResponseSchema,
-} from "../zod/post-email-otp-reset-password-schema.ts";
 
 function getPostEmailOtpResetPasswordUrl() {
   const res = {
@@ -45,8 +41,7 @@ export async function postEmailOtpResetPassword(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postEmailOtpResetPasswordMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostEmailOtpResetPasswordMutationResponse,
@@ -65,5 +60,5 @@ export async function postEmailOtpResetPassword(
     data: requestData,
     ...requestConfig,
   });
-  return postEmailOtpResetPasswordMutationResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -20,7 +20,6 @@ import type {
   GetDeleteUserCallbackQueryParams,
   GetDeleteUserCallbackQueryResponse,
 } from "../models/get-delete-user-callback.ts";
-import { getDeleteUserCallbackQueryResponseSchema } from "../zod/get-delete-user-callback-schema.ts";
 
 function getGetDeleteUserCallbackUrl() {
   const res = { method: "GET", url: `/api/auth/delete-user/callback` as const };
@@ -54,5 +53,5 @@ export async function getDeleteUserCallback(
     params,
     ...requestConfig,
   });
-  return getDeleteUserCallbackQueryResponseSchema.parse(res.data);
+  return res.data;
 }

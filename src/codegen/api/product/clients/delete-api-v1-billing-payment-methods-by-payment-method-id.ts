@@ -20,7 +20,6 @@ import type {
   DeleteApiV1BillingPaymentMethodsByPaymentMethodIdMutationResponse,
   DeleteApiV1BillingPaymentMethodsByPaymentMethodIdPathParams,
 } from "../models/delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
-import { deleteApiV1BillingPaymentMethodsByPaymentMethodIdMutationResponseSchema } from "../zod/delete-api-v1-billing-payment-methods-by-payment-method-id-schema.ts";
 
 function getDeleteApiV1BillingPaymentMethodsByPaymentMethodIdUrl({
   paymentMethodId,
@@ -65,7 +64,5 @@ export async function deleteApiV1BillingPaymentMethodsByPaymentMethodId(
     }).url.toString(),
     ...requestConfig,
   });
-  return deleteApiV1BillingPaymentMethodsByPaymentMethodIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

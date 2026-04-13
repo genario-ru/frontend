@@ -21,10 +21,6 @@ import type {
   PatchApiV1ProfilesByProfileIdMutationResponse,
   PatchApiV1ProfilesByProfileIdPathParams,
 } from "../models/patch-api-v1-profiles-by-profile-id.ts";
-import {
-  patchApiV1ProfilesByProfileIdMutationRequestSchema,
-  patchApiV1ProfilesByProfileIdMutationResponseSchema,
-} from "../zod/patch-api-v1-profiles-by-profile-id-schema.ts";
 
 function getPatchApiV1ProfilesByProfileIdUrl({
   profileId,
@@ -55,8 +51,7 @@ export async function patchApiV1ProfilesByProfileId(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1ProfilesByProfileIdMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PatchApiV1ProfilesByProfileIdMutationResponse,
@@ -75,5 +70,5 @@ export async function patchApiV1ProfilesByProfileId(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1ProfilesByProfileIdMutationResponseSchema.parse(res.data);
+  return res.data;
 }

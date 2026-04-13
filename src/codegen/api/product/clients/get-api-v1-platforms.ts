@@ -19,7 +19,6 @@ import type {
   GetApiV1Platforms500,
   GetApiV1PlatformsQueryResponse,
 } from "../models/get-api-v1-platforms.ts";
-import { getApiV1PlatformsQueryResponseSchema } from "../zod/get-api-v1-platforms-schema.ts";
 
 function getGetApiV1PlatformsUrl() {
   const res = { method: "GET", url: `/api/v1/platforms` as const };
@@ -50,5 +49,5 @@ export async function getApiV1Platforms(
     url: getGetApiV1PlatformsUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1PlatformsQueryResponseSchema.parse(res.data);
+  return res.data;
 }

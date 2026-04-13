@@ -20,7 +20,6 @@ import type {
   GetVerifyEmailQueryParams,
   GetVerifyEmailQueryResponse,
 } from "../models/get-verify-email.ts";
-import { getVerifyEmailQueryResponseSchema } from "../zod/get-verify-email-schema.ts";
 
 function getGetVerifyEmailUrl() {
   const res = { method: "GET", url: `/api/auth/verify-email` as const };
@@ -54,5 +53,5 @@ export async function getVerifyEmail(
     params,
     ...requestConfig,
   });
-  return getVerifyEmailQueryResponseSchema.parse(res.data);
+  return res.data;
 }

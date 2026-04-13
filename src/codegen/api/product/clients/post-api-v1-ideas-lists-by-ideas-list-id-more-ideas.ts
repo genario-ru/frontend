@@ -21,10 +21,6 @@ import type {
   PostApiV1IdeasListsByIdeasListIdMoreIdeasMutationResponse,
   PostApiV1IdeasListsByIdeasListIdMoreIdeasPathParams,
 } from "../models/post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
-import {
-  postApiV1IdeasListsByIdeasListIdMoreIdeasMutationRequestSchema,
-  postApiV1IdeasListsByIdeasListIdMoreIdeasMutationResponseSchema,
-} from "../zod/post-api-v1-ideas-lists-by-ideas-list-id-more-ideas-schema.ts";
 
 function getPostApiV1IdeasListsByIdeasListIdMoreIdeasUrl({
   ideasListId,
@@ -55,8 +51,7 @@ export async function postApiV1IdeasListsByIdeasListIdMoreIdeas(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1IdeasListsByIdeasListIdMoreIdeasMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1IdeasListsByIdeasListIdMoreIdeasMutationResponse,
@@ -77,7 +72,5 @@ export async function postApiV1IdeasListsByIdeasListIdMoreIdeas(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1IdeasListsByIdeasListIdMoreIdeasMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

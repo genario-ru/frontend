@@ -20,7 +20,6 @@ import type {
   GetApiV1ScenariosVersionsByVersionIdExportsPathParams,
   GetApiV1ScenariosVersionsByVersionIdExportsQueryResponse,
 } from "../models/get-api-v1-scenarios-versions-by-version-id-exports.ts";
-import { getApiV1ScenariosVersionsByVersionIdExportsQueryResponseSchema } from "../zod/get-api-v1-scenarios-versions-by-version-id-exports-schema.ts";
 
 function getGetApiV1ScenariosVersionsByVersionIdExportsUrl({
   versionId,
@@ -65,7 +64,5 @@ export async function getApiV1ScenariosVersionsByVersionIdExports(
     }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1ScenariosVersionsByVersionIdExportsQueryResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

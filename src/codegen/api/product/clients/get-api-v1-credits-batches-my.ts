@@ -19,7 +19,6 @@ import type {
   GetApiV1CreditsBatchesMy500,
   GetApiV1CreditsBatchesMyQueryResponse,
 } from "../models/get-api-v1-credits-batches-my.ts";
-import { getApiV1CreditsBatchesMyQueryResponseSchema } from "../zod/get-api-v1-credits-batches-my-schema.ts";
 
 function getGetApiV1CreditsBatchesMyUrl() {
   const res = { method: "GET", url: `/api/v1/credits/batches/my` as const };
@@ -50,5 +49,5 @@ export async function getApiV1CreditsBatchesMy(
     url: getGetApiV1CreditsBatchesMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1CreditsBatchesMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

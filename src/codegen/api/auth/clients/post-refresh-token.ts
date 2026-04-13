@@ -20,10 +20,6 @@ import type {
   PostRefreshTokenMutationRequest,
   PostRefreshTokenMutationResponse,
 } from "../models/post-refresh-token.ts";
-import {
-  postRefreshTokenMutationRequestSchema,
-  postRefreshTokenMutationResponseSchema,
-} from "../zod/post-refresh-token-schema.ts";
 
 function getPostRefreshTokenUrl() {
   const res = { method: "POST", url: `/api/auth/refresh-token` as const };
@@ -42,7 +38,7 @@ export async function postRefreshToken(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postRefreshTokenMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostRefreshTokenMutationResponse,
@@ -61,5 +57,5 @@ export async function postRefreshToken(
     data: requestData,
     ...requestConfig,
   });
-  return postRefreshTokenMutationResponseSchema.parse(res.data);
+  return res.data;
 }

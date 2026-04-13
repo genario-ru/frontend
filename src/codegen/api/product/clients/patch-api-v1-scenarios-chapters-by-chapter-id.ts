@@ -21,10 +21,6 @@ import type {
   PatchApiV1ScenariosChaptersByChapterIdMutationResponse,
   PatchApiV1ScenariosChaptersByChapterIdPathParams,
 } from "../models/patch-api-v1-scenarios-chapters-by-chapter-id.ts";
-import {
-  patchApiV1ScenariosChaptersByChapterIdMutationRequestSchema,
-  patchApiV1ScenariosChaptersByChapterIdMutationResponseSchema,
-} from "../zod/patch-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 
 function getPatchApiV1ScenariosChaptersByChapterIdUrl({
   chapterId,
@@ -55,8 +51,7 @@ export async function patchApiV1ScenariosChaptersByChapterId(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1ScenariosChaptersByChapterIdMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PatchApiV1ScenariosChaptersByChapterIdMutationResponse,
@@ -77,7 +72,5 @@ export async function patchApiV1ScenariosChaptersByChapterId(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1ScenariosChaptersByChapterIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

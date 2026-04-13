@@ -20,10 +20,6 @@ import type {
   PostRevokeOtherSessionsMutationRequest,
   PostRevokeOtherSessionsMutationResponse,
 } from "../models/post-revoke-other-sessions.ts";
-import {
-  postRevokeOtherSessionsMutationRequestSchema,
-  postRevokeOtherSessionsMutationResponseSchema,
-} from "../zod/post-revoke-other-sessions-schema.ts";
 
 function getPostRevokeOtherSessionsUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function postRevokeOtherSessions(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postRevokeOtherSessionsMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostRevokeOtherSessionsMutationResponse,
@@ -64,5 +60,5 @@ export async function postRevokeOtherSessions(
     data: requestData,
     ...requestConfig,
   });
-  return postRevokeOtherSessionsMutationResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -20,10 +20,6 @@ import type {
   PostEmailOtpCheckVerificationOtpMutationRequest,
   PostEmailOtpCheckVerificationOtpMutationResponse,
 } from "../models/post-email-otp-check-verification-otp.ts";
-import {
-  postEmailOtpCheckVerificationOtpMutationRequestSchema,
-  postEmailOtpCheckVerificationOtpMutationResponseSchema,
-} from "../zod/post-email-otp-check-verification-otp-schema.ts";
 
 function getPostEmailOtpCheckVerificationOtpUrl() {
   const res = {
@@ -45,8 +41,7 @@ export async function postEmailOtpCheckVerificationOtp(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postEmailOtpCheckVerificationOtpMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostEmailOtpCheckVerificationOtpMutationResponse,
@@ -65,5 +60,5 @@ export async function postEmailOtpCheckVerificationOtp(
     data: requestData,
     ...requestConfig,
   });
-  return postEmailOtpCheckVerificationOtpMutationResponseSchema.parse(res.data);
+  return res.data;
 }

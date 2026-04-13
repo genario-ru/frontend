@@ -21,10 +21,6 @@ import type {
   PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
   PostApiV1ScenariosVersionsByVersionIdExportPathParams,
 } from "../models/post-api-v1-scenarios-versions-by-version-id-export.ts";
-import {
-  postApiV1ScenariosVersionsByVersionIdExportMutationRequestSchema,
-  postApiV1ScenariosVersionsByVersionIdExportMutationResponseSchema,
-} from "../zod/post-api-v1-scenarios-versions-by-version-id-export-schema.ts";
 
 function getPostApiV1ScenariosVersionsByVersionIdExportUrl({
   versionId,
@@ -55,10 +51,7 @@ export async function postApiV1ScenariosVersionsByVersionIdExport(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1ScenariosVersionsByVersionIdExportMutationRequestSchema.parse(
-      data,
-    );
+  const requestData = data;
 
   const res = await request<
     PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
@@ -79,7 +72,5 @@ export async function postApiV1ScenariosVersionsByVersionIdExport(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1ScenariosVersionsByVersionIdExportMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

@@ -20,7 +20,6 @@ import type {
   GetApiV1CreditsUsageMyQueryParams,
   GetApiV1CreditsUsageMyQueryResponse,
 } from "../models/get-api-v1-credits-usage-my.ts";
-import { getApiV1CreditsUsageMyQueryResponseSchema } from "../zod/get-api-v1-credits-usage-my-schema.ts";
 
 function getGetApiV1CreditsUsageMyUrl() {
   const res = { method: "GET", url: `/api/v1/credits/usage/my` as const };
@@ -53,5 +52,5 @@ export async function getApiV1CreditsUsageMy(
     params,
     ...requestConfig,
   });
-  return getApiV1CreditsUsageMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

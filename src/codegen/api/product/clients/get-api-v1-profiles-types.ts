@@ -19,7 +19,6 @@ import type {
   GetApiV1ProfilesTypes500,
   GetApiV1ProfilesTypesQueryResponse,
 } from "../models/get-api-v1-profiles-types.ts";
-import { getApiV1ProfilesTypesQueryResponseSchema } from "../zod/get-api-v1-profiles-types-schema.ts";
 
 function getGetApiV1ProfilesTypesUrl() {
   const res = { method: "GET", url: `/api/v1/profiles/types` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ProfilesTypes(
     url: getGetApiV1ProfilesTypesUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ProfilesTypesQueryResponseSchema.parse(res.data);
+  return res.data;
 }

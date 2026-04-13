@@ -20,10 +20,6 @@ import type {
   PostSignInEmailMutationRequest,
   PostSignInEmailMutationResponse,
 } from "../models/post-sign-in-email.ts";
-import {
-  postSignInEmailMutationRequestSchema,
-  postSignInEmailMutationResponseSchema,
-} from "../zod/post-sign-in-email-schema.ts";
 
 function getPostSignInEmailUrl() {
   const res = { method: "POST", url: `/api/auth/sign-in/email` as const };
@@ -42,7 +38,7 @@ export async function postSignInEmail(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postSignInEmailMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostSignInEmailMutationResponse,
@@ -61,5 +57,5 @@ export async function postSignInEmail(
     data: requestData,
     ...requestConfig,
   });
-  return postSignInEmailMutationResponseSchema.parse(res.data);
+  return res.data;
 }

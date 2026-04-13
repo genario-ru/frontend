@@ -19,7 +19,6 @@ import type {
   GetOk500,
   GetOkQueryResponse,
 } from "../models/get-ok.ts";
-import { getOkQueryResponseSchema } from "../zod/get-ok-schema.ts";
 
 function getGetOkUrl() {
   const res = { method: "GET", url: `/api/auth/ok` as const };
@@ -42,5 +41,5 @@ export async function getOk(
     >,
     unknown
   >({ method: "GET", url: getGetOkUrl().url.toString(), ...requestConfig });
-  return getOkQueryResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -20,10 +20,6 @@ import type {
   SetRoleMutationRequest,
   SetRoleMutationResponse,
 } from "../models/set-role.ts";
-import {
-  setRoleMutationRequestSchema,
-  setRoleMutationResponseSchema,
-} from "../zod/set-role-schema.ts";
 
 function getSetRoleUrl() {
   const res = { method: "POST", url: `/api/auth/admin/set-role` as const };
@@ -42,7 +38,7 @@ export async function setRole(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = setRoleMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     SetRoleMutationResponse,
@@ -61,5 +57,5 @@ export async function setRole(
     data: requestData,
     ...requestConfig,
   });
-  return setRoleMutationResponseSchema.parse(res.data);
+  return res.data;
 }

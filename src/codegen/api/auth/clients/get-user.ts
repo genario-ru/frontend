@@ -20,7 +20,6 @@ import type {
   GetUserQueryParams,
   GetUserQueryResponse,
 } from "../models/get-user.ts";
-import { getUserQueryResponseSchema } from "../zod/get-user-schema.ts";
 
 function getGetUserUrl() {
   const res = { method: "GET", url: `/api/auth/admin/get-user` as const };
@@ -54,5 +53,5 @@ export async function getUser(
     params,
     ...requestConfig,
   });
-  return getUserQueryResponseSchema.parse(res.data);
+  return res.data;
 }

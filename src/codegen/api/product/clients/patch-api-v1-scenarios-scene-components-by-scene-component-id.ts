@@ -21,10 +21,6 @@ import type {
   PatchApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponse,
   PatchApiV1ScenariosSceneComponentsBySceneComponentIdPathParams,
 } from "../models/patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
-import {
-  patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationRequestSchema,
-  patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponseSchema,
-} from "../zod/patch-api-v1-scenarios-scene-components-by-scene-component-id-schema.ts";
 
 function getPatchApiV1ScenariosSceneComponentsBySceneComponentIdUrl({
   sceneComponentId,
@@ -55,10 +51,7 @@ export async function patchApiV1ScenariosSceneComponentsBySceneComponentId(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationRequestSchema.parse(
-      data,
-    );
+  const requestData = data;
 
   const res = await request<
     PatchApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponse,
@@ -79,7 +72,5 @@ export async function patchApiV1ScenariosSceneComponentsBySceneComponentId(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1ScenariosSceneComponentsBySceneComponentIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

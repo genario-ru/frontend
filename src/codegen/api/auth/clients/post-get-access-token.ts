@@ -20,10 +20,6 @@ import type {
   PostGetAccessTokenMutationRequest,
   PostGetAccessTokenMutationResponse,
 } from "../models/post-get-access-token.ts";
-import {
-  postGetAccessTokenMutationRequestSchema,
-  postGetAccessTokenMutationResponseSchema,
-} from "../zod/post-get-access-token-schema.ts";
 
 function getPostGetAccessTokenUrl() {
   const res = { method: "POST", url: `/api/auth/get-access-token` as const };
@@ -42,7 +38,7 @@ export async function postGetAccessToken(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postGetAccessTokenMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostGetAccessTokenMutationResponse,
@@ -61,5 +57,5 @@ export async function postGetAccessToken(
     data: requestData,
     ...requestConfig,
   });
-  return postGetAccessTokenMutationResponseSchema.parse(res.data);
+  return res.data;
 }

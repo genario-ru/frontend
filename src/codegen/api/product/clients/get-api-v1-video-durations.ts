@@ -19,7 +19,6 @@ import type {
   GetApiV1VideoDurations500,
   GetApiV1VideoDurationsQueryResponse,
 } from "../models/get-api-v1-video-durations.ts";
-import { getApiV1VideoDurationsQueryResponseSchema } from "../zod/get-api-v1-video-durations-schema.ts";
 
 function getGetApiV1VideoDurationsUrl() {
   const res = { method: "GET", url: `/api/v1/video-durations` as const };
@@ -50,5 +49,5 @@ export async function getApiV1VideoDurations(
     url: getGetApiV1VideoDurationsUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1VideoDurationsQueryResponseSchema.parse(res.data);
+  return res.data;
 }

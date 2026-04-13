@@ -20,10 +20,6 @@ import type {
   PostDeleteUserMutationRequest,
   PostDeleteUserMutationResponse,
 } from "../models/post-delete-user.ts";
-import {
-  postDeleteUserMutationRequestSchema,
-  postDeleteUserMutationResponseSchema,
-} from "../zod/post-delete-user-schema.ts";
 
 function getPostDeleteUserUrl() {
   const res = { method: "POST", url: `/api/auth/delete-user` as const };
@@ -42,7 +38,7 @@ export async function postDeleteUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postDeleteUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostDeleteUserMutationResponse,
@@ -61,5 +57,5 @@ export async function postDeleteUser(
     data: requestData,
     ...requestConfig,
   });
-  return postDeleteUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

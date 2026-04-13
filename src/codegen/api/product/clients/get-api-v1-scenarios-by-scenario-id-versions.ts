@@ -20,7 +20,6 @@ import type {
   GetApiV1ScenariosByScenarioIdVersionsPathParams,
   GetApiV1ScenariosByScenarioIdVersionsQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id-versions.ts";
-import { getApiV1ScenariosByScenarioIdVersionsQueryResponseSchema } from "../zod/get-api-v1-scenarios-by-scenario-id-versions-schema.ts";
 
 function getGetApiV1ScenariosByScenarioIdVersionsUrl({
   scenarioId,
@@ -65,7 +64,5 @@ export async function getApiV1ScenariosByScenarioIdVersions(
     }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1ScenariosByScenarioIdVersionsQueryResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

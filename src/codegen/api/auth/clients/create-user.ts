@@ -20,10 +20,6 @@ import type {
   CreateUserMutationRequest,
   CreateUserMutationResponse,
 } from "../models/create-user.ts";
-import {
-  createUserMutationRequestSchema,
-  createUserMutationResponseSchema,
-} from "../zod/create-user-schema.ts";
 
 function getCreateUserUrl() {
   const res = { method: "POST", url: `/api/auth/admin/create-user` as const };
@@ -42,7 +38,7 @@ export async function createUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = createUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     CreateUserMutationResponse,
@@ -61,5 +57,5 @@ export async function createUser(
     data: requestData,
     ...requestConfig,
   });
-  return createUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

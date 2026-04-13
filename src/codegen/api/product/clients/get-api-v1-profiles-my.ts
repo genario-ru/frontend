@@ -19,7 +19,6 @@ import type {
   GetApiV1ProfilesMy500,
   GetApiV1ProfilesMyQueryResponse,
 } from "../models/get-api-v1-profiles-my.ts";
-import { getApiV1ProfilesMyQueryResponseSchema } from "../zod/get-api-v1-profiles-my-schema.ts";
 
 function getGetApiV1ProfilesMyUrl() {
   const res = { method: "GET", url: `/api/v1/profiles/my` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ProfilesMy(
     url: getGetApiV1ProfilesMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ProfilesMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

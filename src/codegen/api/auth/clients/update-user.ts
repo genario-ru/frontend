@@ -20,10 +20,6 @@ import type {
   UpdateUserMutationRequest,
   UpdateUserMutationResponse,
 } from "../models/update-user.ts";
-import {
-  updateUserMutationRequestSchema,
-  updateUserMutationResponseSchema,
-} from "../zod/update-user-schema.ts";
 
 function getUpdateUserUrl() {
   const res = { method: "POST", url: `/api/auth/admin/update-user` as const };
@@ -42,7 +38,7 @@ export async function updateUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = updateUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     UpdateUserMutationResponse,
@@ -61,5 +57,5 @@ export async function updateUser(
     data: requestData,
     ...requestConfig,
   });
-  return updateUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

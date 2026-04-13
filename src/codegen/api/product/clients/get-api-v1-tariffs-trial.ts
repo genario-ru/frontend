@@ -19,7 +19,6 @@ import type {
   GetApiV1TariffsTrial500,
   GetApiV1TariffsTrialQueryResponse,
 } from "../models/get-api-v1-tariffs-trial.ts";
-import { getApiV1TariffsTrialQueryResponseSchema } from "../zod/get-api-v1-tariffs-trial-schema.ts";
 
 function getGetApiV1TariffsTrialUrl() {
   const res = { method: "GET", url: `/api/v1/tariffs/trial` as const };
@@ -50,5 +49,5 @@ export async function getApiV1TariffsTrial(
     url: getGetApiV1TariffsTrialUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1TariffsTrialQueryResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -20,10 +20,6 @@ import type {
   RevokeUserSessionMutationRequest,
   RevokeUserSessionMutationResponse,
 } from "../models/revoke-user-session.ts";
-import {
-  revokeUserSessionMutationRequestSchema,
-  revokeUserSessionMutationResponseSchema,
-} from "../zod/revoke-user-session-schema.ts";
 
 function getRevokeUserSessionUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function revokeUserSession(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = revokeUserSessionMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     RevokeUserSessionMutationResponse,
@@ -64,5 +60,5 @@ export async function revokeUserSession(
     data: requestData,
     ...requestConfig,
   });
-  return revokeUserSessionMutationResponseSchema.parse(res.data);
+  return res.data;
 }

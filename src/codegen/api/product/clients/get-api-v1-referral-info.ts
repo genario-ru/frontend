@@ -19,7 +19,6 @@ import type {
   GetApiV1ReferralInfo500,
   GetApiV1ReferralInfoQueryResponse,
 } from "../models/get-api-v1-referral-info.ts";
-import { getApiV1ReferralInfoQueryResponseSchema } from "../zod/get-api-v1-referral-info-schema.ts";
 
 function getGetApiV1ReferralInfoUrl() {
   const res = { method: "GET", url: `/api/v1/referral/info` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ReferralInfo(
     url: getGetApiV1ReferralInfoUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ReferralInfoQueryResponseSchema.parse(res.data);
+  return res.data;
 }

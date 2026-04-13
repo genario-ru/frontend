@@ -20,10 +20,6 @@ import type {
   PostAdminHasPermissionMutationRequest,
   PostAdminHasPermissionMutationResponse,
 } from "../models/post-admin-has-permission.ts";
-import {
-  postAdminHasPermissionMutationRequestSchema,
-  postAdminHasPermissionMutationResponseSchema,
-} from "../zod/post-admin-has-permission-schema.ts";
 
 function getPostAdminHasPermissionUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function postAdminHasPermission(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postAdminHasPermissionMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostAdminHasPermissionMutationResponse,
@@ -64,5 +60,5 @@ export async function postAdminHasPermission(
     data: requestData,
     ...requestConfig,
   });
-  return postAdminHasPermissionMutationResponseSchema.parse(res.data);
+  return res.data;
 }

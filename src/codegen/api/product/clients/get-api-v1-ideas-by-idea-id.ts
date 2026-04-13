@@ -20,7 +20,6 @@ import type {
   GetApiV1IdeasByIdeaIdPathParams,
   GetApiV1IdeasByIdeaIdQueryResponse,
 } from "../models/get-api-v1-ideas-by-idea-id.ts";
-import { getApiV1IdeasByIdeaIdQueryResponseSchema } from "../zod/get-api-v1-ideas-by-idea-id-schema.ts";
 
 function getGetApiV1IdeasByIdeaIdUrl({
   ideaId,
@@ -56,5 +55,5 @@ export async function getApiV1IdeasByIdeaId(
     url: getGetApiV1IdeasByIdeaIdUrl({ ideaId }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1IdeasByIdeaIdQueryResponseSchema.parse(res.data);
+  return res.data;
 }

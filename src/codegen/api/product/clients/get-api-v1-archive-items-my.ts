@@ -20,7 +20,6 @@ import type {
   GetApiV1ArchiveItemsMyQueryParams,
   GetApiV1ArchiveItemsMyQueryResponse,
 } from "../models/get-api-v1-archive-items-my.ts";
-import { getApiV1ArchiveItemsMyQueryResponseSchema } from "../zod/get-api-v1-archive-items-my-schema.ts";
 
 function getGetApiV1ArchiveItemsMyUrl() {
   const res = { method: "GET", url: `/api/v1/archive/items/my` as const };
@@ -53,5 +52,5 @@ export async function getApiV1ArchiveItemsMy(
     params,
     ...requestConfig,
   });
-  return getApiV1ArchiveItemsMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

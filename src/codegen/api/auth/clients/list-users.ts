@@ -20,7 +20,6 @@ import type {
   ListUsersQueryParams,
   ListUsersQueryResponse,
 } from "../models/list-users.ts";
-import { listUsersQueryResponseSchema } from "../zod/list-users-schema.ts";
 
 function getListUsersUrl() {
   const res = { method: "GET", url: `/api/auth/admin/list-users` as const };
@@ -54,5 +53,5 @@ export async function listUsers(
     params,
     ...requestConfig,
   });
-  return listUsersQueryResponseSchema.parse(res.data);
+  return res.data;
 }

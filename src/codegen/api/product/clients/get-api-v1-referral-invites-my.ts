@@ -20,7 +20,6 @@ import type {
   GetApiV1ReferralInvitesMyQueryParams,
   GetApiV1ReferralInvitesMyQueryResponse,
 } from "../models/get-api-v1-referral-invites-my.ts";
-import { getApiV1ReferralInvitesMyQueryResponseSchema } from "../zod/get-api-v1-referral-invites-my-schema.ts";
 
 function getGetApiV1ReferralInvitesMyUrl() {
   const res = { method: "GET", url: `/api/v1/referral/invites/my` as const };
@@ -53,5 +52,5 @@ export async function getApiV1ReferralInvitesMy(
     params,
     ...requestConfig,
   });
-  return getApiV1ReferralInvitesMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

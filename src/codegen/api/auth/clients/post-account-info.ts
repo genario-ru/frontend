@@ -20,10 +20,6 @@ import type {
   PostAccountInfoMutationRequest,
   PostAccountInfoMutationResponse,
 } from "../models/post-account-info.ts";
-import {
-  postAccountInfoMutationRequestSchema,
-  postAccountInfoMutationResponseSchema,
-} from "../zod/post-account-info-schema.ts";
 
 function getPostAccountInfoUrl() {
   const res = { method: "POST", url: `/api/auth/account-info` as const };
@@ -42,7 +38,7 @@ export async function postAccountInfo(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postAccountInfoMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostAccountInfoMutationResponse,
@@ -61,5 +57,5 @@ export async function postAccountInfo(
     data: requestData,
     ...requestConfig,
   });
-  return postAccountInfoMutationResponseSchema.parse(res.data);
+  return res.data;
 }

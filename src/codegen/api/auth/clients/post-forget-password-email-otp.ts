@@ -20,10 +20,6 @@ import type {
   PostForgetPasswordEmailOtpMutationRequest,
   PostForgetPasswordEmailOtpMutationResponse,
 } from "../models/post-forget-password-email-otp.ts";
-import {
-  postForgetPasswordEmailOtpMutationRequestSchema,
-  postForgetPasswordEmailOtpMutationResponseSchema,
-} from "../zod/post-forget-password-email-otp-schema.ts";
 
 function getPostForgetPasswordEmailOtpUrl() {
   const res = {
@@ -45,8 +41,7 @@ export async function postForgetPasswordEmailOtp(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postForgetPasswordEmailOtpMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostForgetPasswordEmailOtpMutationResponse,
@@ -65,5 +60,5 @@ export async function postForgetPasswordEmailOtp(
     data: requestData,
     ...requestConfig,
   });
-  return postForgetPasswordEmailOtpMutationResponseSchema.parse(res.data);
+  return res.data;
 }

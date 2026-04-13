@@ -20,10 +20,6 @@ import type {
   BanUserMutationRequest,
   BanUserMutationResponse,
 } from "../models/ban-user.ts";
-import {
-  banUserMutationRequestSchema,
-  banUserMutationResponseSchema,
-} from "../zod/ban-user-schema.ts";
 
 function getBanUserUrl() {
   const res = { method: "POST", url: `/api/auth/admin/ban-user` as const };
@@ -42,7 +38,7 @@ export async function banUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = banUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     BanUserMutationResponse,
@@ -61,5 +57,5 @@ export async function banUser(
     data: requestData,
     ...requestConfig,
   });
-  return banUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

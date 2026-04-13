@@ -19,7 +19,6 @@ import type {
   GetApiV1Tones500,
   GetApiV1TonesQueryResponse,
 } from "../models/get-api-v1-tones.ts";
-import { getApiV1TonesQueryResponseSchema } from "../zod/get-api-v1-tones-schema.ts";
 
 function getGetApiV1TonesUrl() {
   const res = { method: "GET", url: `/api/v1/tones` as const };
@@ -50,5 +49,5 @@ export async function getApiV1Tones(
     url: getGetApiV1TonesUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1TonesQueryResponseSchema.parse(res.data);
+  return res.data;
 }

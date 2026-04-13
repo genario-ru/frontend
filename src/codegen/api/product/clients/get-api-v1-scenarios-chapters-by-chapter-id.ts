@@ -20,7 +20,6 @@ import type {
   GetApiV1ScenariosChaptersByChapterIdPathParams,
   GetApiV1ScenariosChaptersByChapterIdQueryResponse,
 } from "../models/get-api-v1-scenarios-chapters-by-chapter-id.ts";
-import { getApiV1ScenariosChaptersByChapterIdQueryResponseSchema } from "../zod/get-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 
 function getGetApiV1ScenariosChaptersByChapterIdUrl({
   chapterId,
@@ -63,7 +62,5 @@ export async function getApiV1ScenariosChaptersByChapterId(
     }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1ScenariosChaptersByChapterIdQueryResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

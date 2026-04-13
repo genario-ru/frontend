@@ -19,7 +19,6 @@ import type {
   GetListSessions500,
   GetListSessionsQueryResponse,
 } from "../models/get-list-sessions.ts";
-import { getListSessionsQueryResponseSchema } from "../zod/get-list-sessions-schema.ts";
 
 function getGetListSessionsUrl() {
   const res = { method: "GET", url: `/api/auth/list-sessions` as const };
@@ -51,5 +50,5 @@ export async function getListSessions(
     url: getGetListSessionsUrl().url.toString(),
     ...requestConfig,
   });
-  return getListSessionsQueryResponseSchema.parse(res.data);
+  return res.data;
 }

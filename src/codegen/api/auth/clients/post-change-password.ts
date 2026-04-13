@@ -20,10 +20,6 @@ import type {
   PostChangePasswordMutationRequest,
   PostChangePasswordMutationResponse,
 } from "../models/post-change-password.ts";
-import {
-  postChangePasswordMutationRequestSchema,
-  postChangePasswordMutationResponseSchema,
-} from "../zod/post-change-password-schema.ts";
 
 function getPostChangePasswordUrl() {
   const res = { method: "POST", url: `/api/auth/change-password` as const };
@@ -42,7 +38,7 @@ export async function postChangePassword(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postChangePasswordMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostChangePasswordMutationResponse,
@@ -61,5 +57,5 @@ export async function postChangePassword(
     data: requestData,
     ...requestConfig,
   });
-  return postChangePasswordMutationResponseSchema.parse(res.data);
+  return res.data;
 }

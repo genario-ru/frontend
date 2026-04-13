@@ -20,10 +20,6 @@ import type {
   PostApiV1ProfilesChannelsValidateMutationRequest,
   PostApiV1ProfilesChannelsValidateMutationResponse,
 } from "../models/post-api-v1-profiles-channels-validate.ts";
-import {
-  postApiV1ProfilesChannelsValidateMutationRequestSchema,
-  postApiV1ProfilesChannelsValidateMutationResponseSchema,
-} from "../zod/post-api-v1-profiles-channels-validate-schema.ts";
 
 function getPostApiV1ProfilesChannelsValidateUrl() {
   const res = {
@@ -44,8 +40,7 @@ export async function postApiV1ProfilesChannelsValidate(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1ProfilesChannelsValidateMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1ProfilesChannelsValidateMutationResponse,
@@ -64,7 +59,5 @@ export async function postApiV1ProfilesChannelsValidate(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1ProfilesChannelsValidateMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

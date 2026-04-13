@@ -20,7 +20,6 @@ import type {
   DeleteApiV1ProfilesByProfileIdMutationResponse,
   DeleteApiV1ProfilesByProfileIdPathParams,
 } from "../models/delete-api-v1-profiles-by-profile-id.ts";
-import { deleteApiV1ProfilesByProfileIdMutationResponseSchema } from "../zod/delete-api-v1-profiles-by-profile-id-schema.ts";
 
 function getDeleteApiV1ProfilesByProfileIdUrl({
   profileId,
@@ -61,5 +60,5 @@ export async function deleteApiV1ProfilesByProfileId(
     url: getDeleteApiV1ProfilesByProfileIdUrl({ profileId }).url.toString(),
     ...requestConfig,
   });
-  return deleteApiV1ProfilesByProfileIdMutationResponseSchema.parse(res.data);
+  return res.data;
 }

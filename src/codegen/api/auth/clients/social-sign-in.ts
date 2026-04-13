@@ -20,10 +20,6 @@ import type {
   SocialSignInMutationRequest,
   SocialSignInMutationResponse,
 } from "../models/social-sign-in.ts";
-import {
-  socialSignInMutationRequestSchema,
-  socialSignInMutationResponseSchema,
-} from "../zod/social-sign-in-schema.ts";
 
 function getSocialSignInUrl() {
   const res = { method: "POST", url: `/api/auth/sign-in/social` as const };
@@ -42,7 +38,7 @@ export async function socialSignIn(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = socialSignInMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     SocialSignInMutationResponse,
@@ -61,5 +57,5 @@ export async function socialSignIn(
     data: requestData,
     ...requestConfig,
   });
-  return socialSignInMutationResponseSchema.parse(res.data);
+  return res.data;
 }

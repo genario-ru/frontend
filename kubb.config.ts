@@ -54,7 +54,6 @@ function createConfig({
 }: CreateConfigParams): UserConfig {
   const clientConfig: Parameters<typeof pluginClient>[0] = {
     baseURL: prefixUrl,
-    parser: "zod",
     pathParamsType: "object",
     paramsType: "object",
     importPath: "@/lib/api/client",
@@ -83,8 +82,6 @@ function createConfig({
     plugins: [
       pluginOas({
         discriminator: "inherit",
-        // ← ЭТО ОТКЛЮЧАЕТ ВСЕ JSON-схемы полностью
-        // (в старых версиях было output: false, сейчас — generators: [])
         generators: [],
       }),
       pluginTs({
@@ -109,7 +106,6 @@ function createConfig({
         output: {
           path: "tanstack",
         },
-        parser: "zod",
         pathParamsType: "object",
         paramsType: "object",
         client: clientConfig,

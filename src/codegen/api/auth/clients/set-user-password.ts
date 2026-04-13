@@ -20,10 +20,6 @@ import type {
   SetUserPasswordMutationRequest,
   SetUserPasswordMutationResponse,
 } from "../models/set-user-password.ts";
-import {
-  setUserPasswordMutationRequestSchema,
-  setUserPasswordMutationResponseSchema,
-} from "../zod/set-user-password-schema.ts";
 
 function getSetUserPasswordUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function setUserPassword(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = setUserPasswordMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     SetUserPasswordMutationResponse,
@@ -64,5 +60,5 @@ export async function setUserPassword(
     data: requestData,
     ...requestConfig,
   });
-  return setUserPasswordMutationResponseSchema.parse(res.data);
+  return res.data;
 }

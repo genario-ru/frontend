@@ -20,10 +20,6 @@ import type {
   PostLinkSocialMutationRequest,
   PostLinkSocialMutationResponse,
 } from "../models/post-link-social.ts";
-import {
-  postLinkSocialMutationRequestSchema,
-  postLinkSocialMutationResponseSchema,
-} from "../zod/post-link-social-schema.ts";
 
 function getPostLinkSocialUrl() {
   const res = { method: "POST", url: `/api/auth/link-social` as const };
@@ -42,7 +38,7 @@ export async function postLinkSocial(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postLinkSocialMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostLinkSocialMutationResponse,
@@ -61,5 +57,5 @@ export async function postLinkSocial(
     data: requestData,
     ...requestConfig,
   });
-  return postLinkSocialMutationResponseSchema.parse(res.data);
+  return res.data;
 }

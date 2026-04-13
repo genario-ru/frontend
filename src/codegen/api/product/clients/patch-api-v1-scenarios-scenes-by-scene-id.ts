@@ -21,10 +21,6 @@ import type {
   PatchApiV1ScenariosScenesBySceneIdMutationResponse,
   PatchApiV1ScenariosScenesBySceneIdPathParams,
 } from "../models/patch-api-v1-scenarios-scenes-by-scene-id.ts";
-import {
-  patchApiV1ScenariosScenesBySceneIdMutationRequestSchema,
-  patchApiV1ScenariosScenesBySceneIdMutationResponseSchema,
-} from "../zod/patch-api-v1-scenarios-scenes-by-scene-id-schema.ts";
 
 function getPatchApiV1ScenariosScenesBySceneIdUrl({
   sceneId,
@@ -55,8 +51,7 @@ export async function patchApiV1ScenariosScenesBySceneId(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1ScenariosScenesBySceneIdMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PatchApiV1ScenariosScenesBySceneIdMutationResponse,
@@ -75,7 +70,5 @@ export async function patchApiV1ScenariosScenesBySceneId(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1ScenariosScenesBySceneIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

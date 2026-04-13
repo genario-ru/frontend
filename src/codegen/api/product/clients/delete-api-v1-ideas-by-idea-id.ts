@@ -20,7 +20,6 @@ import type {
   DeleteApiV1IdeasByIdeaIdMutationResponse,
   DeleteApiV1IdeasByIdeaIdPathParams,
 } from "../models/delete-api-v1-ideas-by-idea-id.ts";
-import { deleteApiV1IdeasByIdeaIdMutationResponseSchema } from "../zod/delete-api-v1-ideas-by-idea-id-schema.ts";
 
 function getDeleteApiV1IdeasByIdeaIdUrl({
   ideaId,
@@ -56,5 +55,5 @@ export async function deleteApiV1IdeasByIdeaId(
     url: getDeleteApiV1IdeasByIdeaIdUrl({ ideaId }).url.toString(),
     ...requestConfig,
   });
-  return deleteApiV1IdeasByIdeaIdMutationResponseSchema.parse(res.data);
+  return res.data;
 }

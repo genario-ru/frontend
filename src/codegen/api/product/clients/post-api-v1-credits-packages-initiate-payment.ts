@@ -20,10 +20,6 @@ import type {
   PostApiV1CreditsPackagesInitiatePaymentMutationRequest,
   PostApiV1CreditsPackagesInitiatePaymentMutationResponse,
 } from "../models/post-api-v1-credits-packages-initiate-payment.ts";
-import {
-  postApiV1CreditsPackagesInitiatePaymentMutationRequestSchema,
-  postApiV1CreditsPackagesInitiatePaymentMutationResponseSchema,
-} from "../zod/post-api-v1-credits-packages-initiate-payment-schema.ts";
 
 function getPostApiV1CreditsPackagesInitiatePaymentUrl() {
   const res = {
@@ -44,8 +40,7 @@ export async function postApiV1CreditsPackagesInitiatePayment(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1CreditsPackagesInitiatePaymentMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1CreditsPackagesInitiatePaymentMutationResponse,
@@ -64,7 +59,5 @@ export async function postApiV1CreditsPackagesInitiatePayment(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1CreditsPackagesInitiatePaymentMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

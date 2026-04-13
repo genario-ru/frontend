@@ -19,7 +19,6 @@ import type {
   GetError500,
   GetErrorQueryResponse,
 } from "../models/get-error.ts";
-import { getErrorQueryResponseSchema } from "../zod/get-error-schema.ts";
 
 function getGetErrorUrl() {
   const res = { method: "GET", url: `/api/auth/error` as const };
@@ -47,5 +46,5 @@ export async function getError(
     >,
     unknown
   >({ method: "GET", url: getGetErrorUrl().url.toString(), ...requestConfig });
-  return getErrorQueryResponseSchema.parse(res.data);
+  return res.data;
 }

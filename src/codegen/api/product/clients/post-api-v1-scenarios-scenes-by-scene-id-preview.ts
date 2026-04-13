@@ -20,7 +20,6 @@ import type {
   PostApiV1ScenariosScenesBySceneIdPreviewMutationResponse,
   PostApiV1ScenariosScenesBySceneIdPreviewPathParams,
 } from "../models/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
-import { postApiV1ScenariosScenesBySceneIdPreviewMutationResponseSchema } from "../zod/post-api-v1-scenarios-scenes-by-scene-id-preview-schema.ts";
 
 function getPostApiV1ScenariosScenesBySceneIdPreviewUrl({
   sceneId,
@@ -63,7 +62,5 @@ export async function postApiV1ScenariosScenesBySceneIdPreview(
     }).url.toString(),
     ...requestConfig,
   });
-  return postApiV1ScenariosScenesBySceneIdPreviewMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

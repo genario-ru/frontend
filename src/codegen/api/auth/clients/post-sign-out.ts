@@ -20,10 +20,6 @@ import type {
   PostSignOutMutationRequest,
   PostSignOutMutationResponse,
 } from "../models/post-sign-out.ts";
-import {
-  postSignOutMutationRequestSchema,
-  postSignOutMutationResponseSchema,
-} from "../zod/post-sign-out-schema.ts";
 
 function getPostSignOutUrl() {
   const res = { method: "POST", url: `/api/auth/sign-out` as const };
@@ -42,7 +38,7 @@ export async function postSignOut(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postSignOutMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostSignOutMutationResponse,
@@ -61,5 +57,5 @@ export async function postSignOut(
     data: requestData,
     ...requestConfig,
   });
-  return postSignOutMutationResponseSchema.parse(res.data);
+  return res.data;
 }

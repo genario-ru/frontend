@@ -20,10 +20,6 @@ import type {
   PostSendVerificationEmailMutationRequest,
   PostSendVerificationEmailMutationResponse,
 } from "../models/post-send-verification-email.ts";
-import {
-  postSendVerificationEmailMutationRequestSchema,
-  postSendVerificationEmailMutationResponseSchema,
-} from "../zod/post-send-verification-email-schema.ts";
 
 function getPostSendVerificationEmailUrl() {
   const res = {
@@ -45,8 +41,7 @@ export async function postSendVerificationEmail(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postSendVerificationEmailMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostSendVerificationEmailMutationResponse,
@@ -65,5 +60,5 @@ export async function postSendVerificationEmail(
     data: requestData,
     ...requestConfig,
   });
-  return postSendVerificationEmailMutationResponseSchema.parse(res.data);
+  return res.data;
 }

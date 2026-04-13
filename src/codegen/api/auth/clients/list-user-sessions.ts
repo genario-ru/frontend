@@ -20,10 +20,6 @@ import type {
   ListUserSessionsMutationRequest,
   ListUserSessionsMutationResponse,
 } from "../models/list-user-sessions.ts";
-import {
-  listUserSessionsMutationRequestSchema,
-  listUserSessionsMutationResponseSchema,
-} from "../zod/list-user-sessions-schema.ts";
 
 function getListUserSessionsUrl() {
   const res = {
@@ -45,7 +41,7 @@ export async function listUserSessions(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = listUserSessionsMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     ListUserSessionsMutationResponse,
@@ -64,5 +60,5 @@ export async function listUserSessions(
     data: requestData,
     ...requestConfig,
   });
-  return listUserSessionsMutationResponseSchema.parse(res.data);
+  return res.data;
 }

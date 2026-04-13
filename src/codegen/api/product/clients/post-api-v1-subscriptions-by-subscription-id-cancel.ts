@@ -20,7 +20,6 @@ import type {
   PostApiV1SubscriptionsBySubscriptionIdCancelMutationResponse,
   PostApiV1SubscriptionsBySubscriptionIdCancelPathParams,
 } from "../models/post-api-v1-subscriptions-by-subscription-id-cancel.ts";
-import { postApiV1SubscriptionsBySubscriptionIdCancelMutationResponseSchema } from "../zod/post-api-v1-subscriptions-by-subscription-id-cancel-schema.ts";
 
 function getPostApiV1SubscriptionsBySubscriptionIdCancelUrl({
   subscriptionId,
@@ -65,7 +64,5 @@ export async function postApiV1SubscriptionsBySubscriptionIdCancel(
     }).url.toString(),
     ...requestConfig,
   });
-  return postApiV1SubscriptionsBySubscriptionIdCancelMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

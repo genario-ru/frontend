@@ -21,10 +21,6 @@ import type {
   PatchApiV1IdeasListsByIdeasListIdMutationResponse,
   PatchApiV1IdeasListsByIdeasListIdPathParams,
 } from "../models/patch-api-v1-ideas-lists-by-ideas-list-id.ts";
-import {
-  patchApiV1IdeasListsByIdeasListIdMutationRequestSchema,
-  patchApiV1IdeasListsByIdeasListIdMutationResponseSchema,
-} from "../zod/patch-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 
 function getPatchApiV1IdeasListsByIdeasListIdUrl({
   ideasListId,
@@ -55,8 +51,7 @@ export async function patchApiV1IdeasListsByIdeasListId(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1IdeasListsByIdeasListIdMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PatchApiV1IdeasListsByIdeasListIdMutationResponse,
@@ -77,7 +72,5 @@ export async function patchApiV1IdeasListsByIdeasListId(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1IdeasListsByIdeasListIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

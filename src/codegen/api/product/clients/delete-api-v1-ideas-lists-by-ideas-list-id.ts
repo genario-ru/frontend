@@ -20,7 +20,6 @@ import type {
   DeleteApiV1IdeasListsByIdeasListIdMutationResponse,
   DeleteApiV1IdeasListsByIdeasListIdPathParams,
 } from "../models/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
-import { deleteApiV1IdeasListsByIdeasListIdMutationResponseSchema } from "../zod/delete-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 
 function getDeleteApiV1IdeasListsByIdeasListIdUrl({
   ideasListId,
@@ -65,7 +64,5 @@ export async function deleteApiV1IdeasListsByIdeasListId(
     }).url.toString(),
     ...requestConfig,
   });
-  return deleteApiV1IdeasListsByIdeasListIdMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

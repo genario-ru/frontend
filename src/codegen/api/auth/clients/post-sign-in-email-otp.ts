@@ -20,10 +20,6 @@ import type {
   PostSignInEmailOtpMutationRequest,
   PostSignInEmailOtpMutationResponse,
 } from "../models/post-sign-in-email-otp.ts";
-import {
-  postSignInEmailOtpMutationRequestSchema,
-  postSignInEmailOtpMutationResponseSchema,
-} from "../zod/post-sign-in-email-otp-schema.ts";
 
 function getPostSignInEmailOtpUrl() {
   const res = { method: "POST", url: `/api/auth/sign-in/email-otp` as const };
@@ -42,7 +38,7 @@ export async function postSignInEmailOtp(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postSignInEmailOtpMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostSignInEmailOtpMutationResponse,
@@ -61,5 +57,5 @@ export async function postSignInEmailOtp(
     data: requestData,
     ...requestConfig,
   });
-  return postSignInEmailOtpMutationResponseSchema.parse(res.data);
+  return res.data;
 }

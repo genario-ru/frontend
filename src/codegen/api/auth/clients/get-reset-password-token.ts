@@ -21,7 +21,6 @@ import type {
   GetResetPasswordTokenQueryParams,
   GetResetPasswordTokenQueryResponse,
 } from "../models/get-reset-password-token.ts";
-import { getResetPasswordTokenQueryResponseSchema } from "../zod/get-reset-password-token-schema.ts";
 
 function getGetResetPasswordTokenUrl({
   token,
@@ -68,5 +67,5 @@ export async function getResetPasswordToken(
     params,
     ...requestConfig,
   });
-  return getResetPasswordTokenQueryResponseSchema.parse(res.data);
+  return res.data;
 }

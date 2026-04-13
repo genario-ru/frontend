@@ -20,10 +20,6 @@ import type {
   PostApiV1ProfilesChannelsMutationRequest,
   PostApiV1ProfilesChannelsMutationResponse,
 } from "../models/post-api-v1-profiles-channels.ts";
-import {
-  postApiV1ProfilesChannelsMutationRequestSchema,
-  postApiV1ProfilesChannelsMutationResponseSchema,
-} from "../zod/post-api-v1-profiles-channels-schema.ts";
 
 function getPostApiV1ProfilesChannelsUrl() {
   const res = { method: "POST", url: `/api/v1/profiles/channels` as const };
@@ -41,8 +37,7 @@ export async function postApiV1ProfilesChannels(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    postApiV1ProfilesChannelsMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1ProfilesChannelsMutationResponse,
@@ -61,5 +56,5 @@ export async function postApiV1ProfilesChannels(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1ProfilesChannelsMutationResponseSchema.parse(res.data);
+  return res.data;
 }

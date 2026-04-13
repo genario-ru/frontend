@@ -19,7 +19,6 @@ import type {
   GetApiV1ReferralCodesMy500,
   GetApiV1ReferralCodesMyQueryResponse,
 } from "../models/get-api-v1-referral-codes-my.ts";
-import { getApiV1ReferralCodesMyQueryResponseSchema } from "../zod/get-api-v1-referral-codes-my-schema.ts";
 
 function getGetApiV1ReferralCodesMyUrl() {
   const res = { method: "GET", url: `/api/v1/referral/codes/my` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ReferralCodesMy(
     url: getGetApiV1ReferralCodesMyUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ReferralCodesMyQueryResponseSchema.parse(res.data);
+  return res.data;
 }

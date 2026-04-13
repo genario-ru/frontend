@@ -19,7 +19,6 @@ import type {
   GetApiV1ProfilesChannelsPlatforms500,
   GetApiV1ProfilesChannelsPlatformsQueryResponse,
 } from "../models/get-api-v1-profiles-channels-platforms.ts";
-import { getApiV1ProfilesChannelsPlatformsQueryResponseSchema } from "../zod/get-api-v1-profiles-channels-platforms-schema.ts";
 
 function getGetApiV1ProfilesChannelsPlatformsUrl() {
   const res = {
@@ -53,5 +52,5 @@ export async function getApiV1ProfilesChannelsPlatforms(
     url: getGetApiV1ProfilesChannelsPlatformsUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ProfilesChannelsPlatformsQueryResponseSchema.parse(res.data);
+  return res.data;
 }

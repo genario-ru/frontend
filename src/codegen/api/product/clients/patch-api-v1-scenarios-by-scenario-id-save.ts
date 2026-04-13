@@ -21,10 +21,6 @@ import type {
   PatchApiV1ScenariosByScenarioIdSaveMutationResponse,
   PatchApiV1ScenariosByScenarioIdSavePathParams,
 } from "../models/patch-api-v1-scenarios-by-scenario-id-save.ts";
-import {
-  patchApiV1ScenariosByScenarioIdSaveMutationRequestSchema,
-  patchApiV1ScenariosByScenarioIdSaveMutationResponseSchema,
-} from "../zod/patch-api-v1-scenarios-by-scenario-id-save-schema.ts";
 
 function getPatchApiV1ScenariosByScenarioIdSaveUrl({
   scenarioId,
@@ -55,8 +51,7 @@ export async function patchApiV1ScenariosByScenarioIdSave(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData =
-    patchApiV1ScenariosByScenarioIdSaveMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PatchApiV1ScenariosByScenarioIdSaveMutationResponse,
@@ -77,7 +72,5 @@ export async function patchApiV1ScenariosByScenarioIdSave(
     data: requestData,
     ...requestConfig,
   });
-  return patchApiV1ScenariosByScenarioIdSaveMutationResponseSchema.parse(
-    res.data,
-  );
+  return res.data;
 }

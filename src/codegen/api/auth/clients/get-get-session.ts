@@ -19,7 +19,6 @@ import type {
   GetSession500,
   GetSessionQueryResponse,
 } from "../models/get-get-session.ts";
-import { getSessionQueryResponseSchema } from "../zod/get-get-session-schema.ts";
 
 function getGetGetSessionUrl() {
   const res = { method: "GET", url: `/api/auth/get-session` as const };
@@ -51,5 +50,5 @@ export async function getGetSession(
     url: getGetGetSessionUrl().url.toString(),
     ...requestConfig,
   });
-  return getSessionQueryResponseSchema.parse(res.data);
+  return res.data;
 }

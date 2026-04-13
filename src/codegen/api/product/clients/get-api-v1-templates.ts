@@ -19,7 +19,6 @@ import type {
   GetApiV1Templates500,
   GetApiV1TemplatesQueryResponse,
 } from "../models/get-api-v1-templates.ts";
-import { getApiV1TemplatesQueryResponseSchema } from "../zod/get-api-v1-templates-schema.ts";
 
 function getGetApiV1TemplatesUrl() {
   const res = { method: "GET", url: `/api/v1/templates` as const };
@@ -50,5 +49,5 @@ export async function getApiV1Templates(
     url: getGetApiV1TemplatesUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1TemplatesQueryResponseSchema.parse(res.data);
+  return res.data;
 }

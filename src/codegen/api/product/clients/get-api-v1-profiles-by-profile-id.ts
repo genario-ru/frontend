@@ -20,7 +20,6 @@ import type {
   GetApiV1ProfilesByProfileIdPathParams,
   GetApiV1ProfilesByProfileIdQueryResponse,
 } from "../models/get-api-v1-profiles-by-profile-id.ts";
-import { getApiV1ProfilesByProfileIdQueryResponseSchema } from "../zod/get-api-v1-profiles-by-profile-id-schema.ts";
 
 function getGetApiV1ProfilesByProfileIdUrl({
   profileId,
@@ -58,5 +57,5 @@ export async function getApiV1ProfilesByProfileId(
     url: getGetApiV1ProfilesByProfileIdUrl({ profileId }).url.toString(),
     ...requestConfig,
   });
-  return getApiV1ProfilesByProfileIdQueryResponseSchema.parse(res.data);
+  return res.data;
 }

@@ -20,10 +20,6 @@ import type {
   RemoveUserMutationRequest,
   RemoveUserMutationResponse,
 } from "../models/remove-user.ts";
-import {
-  removeUserMutationRequestSchema,
-  removeUserMutationResponseSchema,
-} from "../zod/remove-user-schema.ts";
 
 function getRemoveUserUrl() {
   const res = { method: "POST", url: `/api/auth/admin/remove-user` as const };
@@ -42,7 +38,7 @@ export async function removeUser(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = removeUserMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     RemoveUserMutationResponse,
@@ -61,5 +57,5 @@ export async function removeUser(
     data: requestData,
     ...requestConfig,
   });
-  return removeUserMutationResponseSchema.parse(res.data);
+  return res.data;
 }

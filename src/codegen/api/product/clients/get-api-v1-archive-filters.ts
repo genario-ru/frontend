@@ -19,7 +19,6 @@ import type {
   GetApiV1ArchiveFilters500,
   GetApiV1ArchiveFiltersQueryResponse,
 } from "../models/get-api-v1-archive-filters.ts";
-import { getApiV1ArchiveFiltersQueryResponseSchema } from "../zod/get-api-v1-archive-filters-schema.ts";
 
 function getGetApiV1ArchiveFiltersUrl() {
   const res = { method: "GET", url: `/api/v1/archive/filters` as const };
@@ -50,5 +49,5 @@ export async function getApiV1ArchiveFilters(
     url: getGetApiV1ArchiveFiltersUrl().url.toString(),
     ...requestConfig,
   });
-  return getApiV1ArchiveFiltersQueryResponseSchema.parse(res.data);
+  return res.data;
 }

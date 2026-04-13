@@ -20,10 +20,6 @@ import type {
   PostApiV1IdeasListsMutationRequest,
   PostApiV1IdeasListsMutationResponse,
 } from "../models/post-api-v1-ideas-lists.ts";
-import {
-  postApiV1IdeasListsMutationRequestSchema,
-  postApiV1IdeasListsMutationResponseSchema,
-} from "../zod/post-api-v1-ideas-lists-schema.ts";
 
 function getPostApiV1IdeasListsUrl() {
   const res = { method: "POST", url: `/api/v1/ideas-lists` as const };
@@ -41,7 +37,7 @@ export async function postApiV1IdeasLists(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = postApiV1IdeasListsMutationRequestSchema.parse(data);
+  const requestData = data;
 
   const res = await request<
     PostApiV1IdeasListsMutationResponse,
@@ -60,5 +56,5 @@ export async function postApiV1IdeasLists(
     data: requestData,
     ...requestConfig,
   });
-  return postApiV1IdeasListsMutationResponseSchema.parse(res.data);
+  return res.data;
 }
