@@ -6,12 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseSaveIdeaParams = {
-  onError?: () => void;
-  onSuccess?: () => void;
-};
-
-export function useSaveIdea({ onError, onSuccess }: UseSaveIdeaParams) {
+export function useSaveIdea() {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
 
@@ -23,8 +18,6 @@ export function useSaveIdea({ onError, onSuccess }: UseSaveIdeaParams) {
             description:
               "Произошла ошибка при сохранении идеи. Попробуйте еще раз чуть позже",
           });
-
-          onError?.();
         },
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
@@ -32,8 +25,6 @@ export function useSaveIdea({ onError, onSuccess }: UseSaveIdeaParams) {
               ideasListId: data.ideasListId,
             }),
           });
-
-          onSuccess?.();
         },
       },
     });

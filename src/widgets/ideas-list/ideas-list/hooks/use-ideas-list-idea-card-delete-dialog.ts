@@ -12,17 +12,19 @@ export function useIdeasListIdeaCardDeleteDialog({
   setIsMenuOpen,
 }: UseIdeasListIdeaCardDeleteDialogParams) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-
-  const { deleteIdea, isDeleteIdeaPending } = useDeleteIdea({
-    onSuccess: () => {
-      setIsDeleteDialogOpen(false);
-      setIsMenuOpen(false);
-    },
-  });
+  const { deleteIdea, isDeleteIdeaPending } = useDeleteIdea();
 
   const handleConfirmDeleteButtonClick = useCallback(() => {
-    deleteIdea({ ideaId });
-  }, [ideaId, deleteIdea]);
+    deleteIdea(
+      { ideaId },
+      {
+        onSuccess: () => {
+          setIsDeleteDialogOpen(false);
+          setIsMenuOpen(false);
+        },
+      },
+    );
+  }, [ideaId, deleteIdea, setIsMenuOpen]);
 
   return {
     isDeleteDialogOpen,

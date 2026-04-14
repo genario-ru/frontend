@@ -6,12 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseSaveScenarioParams = {
-  onError?: () => void;
-  onSuccess?: () => void;
-};
-
-export function useSaveScenario({ onError, onSuccess }: UseSaveScenarioParams) {
+export function useSaveScenario() {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
 
@@ -23,8 +18,6 @@ export function useSaveScenario({ onError, onSuccess }: UseSaveScenarioParams) {
             description:
               "Произошла ошибка при сохранении сценария. Попробуйте еще раз чуть позже",
           });
-
-          onError?.();
         },
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
@@ -32,8 +25,6 @@ export function useSaveScenario({ onError, onSuccess }: UseSaveScenarioParams) {
               scenarioId: data.id,
             }),
           });
-
-          onSuccess?.();
         },
       },
     });

@@ -39,37 +39,9 @@ export function useScenarioSettingsForm({
     ideaData,
   });
 
-  const { createScenario, isCreateScenarioPending } = useCreateScenario({
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ArchiveItemsMyQueryKey(),
-      });
+  const { createScenario, isCreateScenarioPending } = useCreateScenario();
 
-      navigate({
-        to: "/scenarios/$scenarioId",
-        params: { scenarioId: data.data.id },
-      });
-    },
-  });
-
-  const { updateScenario, isUpdateScenarioPending } = useUpdateScenario({
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ArchiveItemsMyQueryKey(),
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ScenariosByScenarioIdQueryKey({
-          scenarioId: data.data.id,
-        }),
-      });
-
-      navigate({
-        to: "/scenarios/$scenarioId",
-        params: { scenarioId: data.data.id },
-      });
-    },
-  });
+  const { updateScenario, isUpdateScenarioPending } = useUpdateScenario();
 
   const form = useAppForm({
     ...formOptions,
@@ -100,15 +72,49 @@ export function useScenarioSettingsForm({
           };
 
           if (scenarioData) {
-            updateScenario({
-              scenarioId: scenarioData.data.id,
-              data: {
-                ...commonScenarioParams,
-                regenerate: meta.submitAction === "regenerate",
+            updateScenario(
+              {
+                scenarioId: scenarioData.data.id,
+                data: {
+                  ...commonScenarioParams,
+                  regenerate: meta.submitAction === "regenerate",
+                },
               },
-            });
+              {
+                onSuccess: (data) => {
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1ArchiveItemsMyQueryKey(),
+                  });
+
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1ScenariosByScenarioIdQueryKey({
+                      scenarioId: data.data.id,
+                    }),
+                  });
+
+                  navigate({
+                    to: "/scenarios/$scenarioId",
+                    params: { scenarioId: data.data.id },
+                  });
+                },
+              },
+            );
           } else {
-            createScenario({ data: commonScenarioParams });
+            createScenario(
+              { data: commonScenarioParams },
+              {
+                onSuccess: (data) => {
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1ArchiveItemsMyQueryKey(),
+                  });
+
+                  navigate({
+                    to: "/scenarios/$scenarioId",
+                    params: { scenarioId: data.data.id },
+                  });
+                },
+              },
+            );
           }
 
           break;

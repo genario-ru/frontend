@@ -12,14 +12,17 @@ export function useMyProfileActions(params: UseMyProfileActionsParams) {
   const [isDeleteProfileDialogOpened, setIsDeleteProfileDialogOpened] =
     useState(false);
 
-  const { deleteProfile, isDeleteProfilePending } = useDeleteProfile({
-    onSuccess: () => {
-      setIsDeleteProfileDialogOpened(false);
-    },
-  });
+  const { deleteProfile, isDeleteProfilePending } = useDeleteProfile();
 
   const handleDeleteProfile = () => {
-    deleteProfile({ profileId });
+    deleteProfile(
+      { profileId },
+      {
+        onSuccess: () => {
+          setIsDeleteProfileDialogOpened(false);
+        },
+      },
+    );
   };
 
   return {

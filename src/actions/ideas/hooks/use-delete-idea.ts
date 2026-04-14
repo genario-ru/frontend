@@ -6,13 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseDeleteIdeaParams = {
-  onError?: () => void;
-  onSuccess?: () => void;
-};
-
-export function useDeleteIdea(params?: UseDeleteIdeaParams) {
-  const { onError, onSuccess } = params ?? {};
+export function useDeleteIdea() {
   const queryClient = useQueryClient();
   const { showErrorToast, showSuccessToast } = useToast();
 
@@ -24,8 +18,6 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
             description:
               "Произошла ошиюка во время удаления идеи. Попробуйте еще раз чуть позже",
           });
-
-          onError?.();
         },
         onSuccess: ({ data }) => {
           showSuccessToast({
@@ -37,8 +29,6 @@ export function useDeleteIdea(params?: UseDeleteIdeaParams) {
               ideasListId: data.ideasListId,
             }),
           });
-
-          onSuccess?.();
         },
       },
     });

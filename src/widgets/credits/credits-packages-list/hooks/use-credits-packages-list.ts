@@ -34,12 +34,19 @@ export function useCreditsPackagesList() {
   );
 
   const handlePurchase = (packageId: string) => {
-    initiateCreditsPackagePayment({
-      data: {
-        creditsPackageId: packageId,
-        redirect: `${window.location.origin}/billing/credits`,
+    initiateCreditsPackagePayment(
+      {
+        data: {
+          creditsPackageId: packageId,
+          redirect: `${window.location.origin}/billing/credits`,
+        },
       },
-    });
+      {
+        onSuccess: ({ data }) => {
+          window.location.href = data.paymentLink;
+        },
+      },
+    );
   };
 
   return {

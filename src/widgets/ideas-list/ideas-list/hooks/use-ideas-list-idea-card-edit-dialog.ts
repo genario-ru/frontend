@@ -24,12 +24,7 @@ export function useIdeasListIdeaCardEditDialog({
   const { showErrorToast } = useToast();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-  const { updateIdea, isUpdateIdeaPending } = useUpdateIdea({
-    onSuccess: () => {
-      handleCloseMenu();
-      setIsEditDialogOpen(false);
-    },
-  });
+  const { updateIdea, isUpdateIdeaPending } = useUpdateIdea();
 
   const form = useAppForm({
     defaultValues: {
@@ -51,10 +46,18 @@ export function useIdeasListIdeaCardEditDialog({
       onSubmit: ideasListIdeaCardEditFormMatchValidateFn,
     },
     onSubmit: ({ value }) => {
-      updateIdea({
-        ideaId: ideaId,
-        data: value,
-      });
+      updateIdea(
+        {
+          ideaId: ideaId,
+          data: value,
+        },
+        {
+          onSuccess: () => {
+            handleCloseMenu();
+            setIsEditDialogOpen(false);
+          },
+        },
+      );
     },
   });
 

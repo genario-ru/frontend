@@ -6,12 +6,7 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseUpdateIdeaParams = {
-  onError?: () => void;
-  onSuccess?: () => void;
-};
-
-export function useUpdateIdea({ onError, onSuccess }: UseUpdateIdeaParams) {
+export function useUpdateIdea() {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
 
@@ -23,8 +18,6 @@ export function useUpdateIdea({ onError, onSuccess }: UseUpdateIdeaParams) {
             description:
               "Произошла ошибка при обновлении идеи. Попробуйте еще раз чуть позже",
           });
-
-          onError?.();
         },
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
@@ -32,8 +25,6 @@ export function useUpdateIdea({ onError, onSuccess }: UseUpdateIdeaParams) {
               ideasListId: data.ideasListId,
             }),
           });
-
-          onSuccess?.();
         },
       },
     });

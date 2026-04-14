@@ -13,23 +13,26 @@ export function useScenarioAppMenubarSave({
 }: UseScenarioAppMenubarSaveParams) {
   const [isOptimisticSaved, setIsOptimisticSaved] = useState(initialSaved);
 
-  const { saveScenario, isSaveScenarioPending } = useSaveScenario({
-    onError: () => {
-      setIsOptimisticSaved(isOptimisticSaved);
-    },
-  });
+  const { saveScenario, isSaveScenarioPending } = useSaveScenario();
 
   const handleSaveButtonClick = useCallback(() => {
     const newSaved = !isOptimisticSaved;
 
     setIsOptimisticSaved(newSaved);
 
-    saveScenario({
-      scenarioId,
-      data: {
-        saved: newSaved,
+    saveScenario(
+      {
+        scenarioId,
+        data: {
+          saved: newSaved,
+        },
       },
-    });
+      {
+        onError: () => {
+          setIsOptimisticSaved(isOptimisticSaved);
+        },
+      },
+    );
   }, [scenarioId, isOptimisticSaved, saveScenario]);
 
   return {

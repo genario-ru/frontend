@@ -6,13 +6,8 @@ import {
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseDeleteProfileParams = {
-  onSuccess?: () => void;
-};
-
-export function useDeleteProfile(params?: UseDeleteProfileParams) {
+export function useDeleteProfile() {
   const queryClient = useQueryClient();
-  const { onSuccess } = params ?? {};
   const { showErrorToast, showSuccessToast } = useToast();
 
   const { mutate: deleteProfile, isPending: isDeleteProfilePending } =
@@ -33,8 +28,6 @@ export function useDeleteProfile(params?: UseDeleteProfileParams) {
             title: "Профиль удален",
             description: `Профиль "${data.name}" был успешно удален`,
           });
-
-          onSuccess?.();
         },
       },
     });

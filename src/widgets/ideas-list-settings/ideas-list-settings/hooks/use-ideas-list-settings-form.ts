@@ -33,37 +33,9 @@ export function useIdeasListSettingsForm({
     ideasListData,
   });
 
-  const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList({
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ArchiveItemsMyQueryKey(),
-      });
+  const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList();
 
-      navigate({
-        to: "/ideas-lists/$ideasListId",
-        params: { ideasListId: data.data.id },
-      });
-    },
-  });
-
-  const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList({
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({
-        queryKey: getApiV1ArchiveItemsMyQueryKey(),
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
-          ideasListId: data.data.id,
-        }),
-      });
-
-      navigate({
-        to: "/ideas-lists/$ideasListId",
-        params: { ideasListId: data.data.id },
-      });
-    },
-  });
+  const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList();
 
   const form = useAppForm({
     ...formOptions,
@@ -94,15 +66,49 @@ export function useIdeasListSettingsForm({
           };
 
           if (ideasListData) {
-            updateIdeasList({
-              ideasListId: ideasListData.data.id,
-              data: {
-                ...commonIdeasListParams,
-                regenerate: meta.submitAction === "regenerate",
+            updateIdeasList(
+              {
+                ideasListId: ideasListData.data.id,
+                data: {
+                  ...commonIdeasListParams,
+                  regenerate: meta.submitAction === "regenerate",
+                },
               },
-            });
+              {
+                onSuccess: (data) => {
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1ArchiveItemsMyQueryKey(),
+                  });
+
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
+                      ideasListId: data.data.id,
+                    }),
+                  });
+
+                  navigate({
+                    to: "/ideas-lists/$ideasListId",
+                    params: { ideasListId: data.data.id },
+                  });
+                },
+              },
+            );
           } else {
-            createIdeasList({ data: commonIdeasListParams });
+            createIdeasList(
+              { data: commonIdeasListParams },
+              {
+                onSuccess: (data) => {
+                  queryClient.invalidateQueries({
+                    queryKey: getApiV1ArchiveItemsMyQueryKey(),
+                  });
+
+                  navigate({
+                    to: "/ideas-lists/$ideasListId",
+                    params: { ideasListId: data.data.id },
+                  });
+                },
+              },
+            );
           }
 
           break;

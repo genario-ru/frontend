@@ -22,22 +22,7 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
   const { showErrorToast } = useToast();
 
   const { generateMoreIdeas, isGenerateMoreIdeasPending } =
-    useGenerateMoreIdeas({
-      onSuccess: () => {
-        setIsMoreIdeasDialogOpen(false);
-
-        queryClient.invalidateQueries({
-          queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
-            ideasListId: ideasListId,
-          }),
-        });
-      },
-      onError: () => {
-        showErrorToast({
-          description: "Произошла ошибка при выполнении данной операции",
-        });
-      },
-    });
+    useGenerateMoreIdeas();
 
   const form = useAppForm({
     defaultValues: {
@@ -58,10 +43,23 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
       onSubmit: ideasListAppMenubarMoreIdeasFormValidateFn,
     },
     onSubmit: ({ value }) => {
-      generateMoreIdeas({
-        ideasListId: ideasListId,
-        data: value,
-      });
+      generateMoreIdeas(
+        {
+          ideasListId: ideasListId,
+          data: value,
+        },
+        {
+          onSuccess: () => {
+            setIsMoreIdeasDialogOpen(false);
+
+            queryClient.invalidateQueries({
+              queryKey: getApiV1IdeasListsByIdeasListIdQueryKey({
+                ideasListId: ideasListId,
+              }),
+            });
+          },
+        },
+      );
     },
   });
 

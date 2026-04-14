@@ -8,14 +8,10 @@ import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateScenarioScenePreviewParams = {
   chapterId: string;
-  onSuccess?: () => void;
-  onError?: () => void;
 };
 
 export function useCreateScenarioScenePreview({
   chapterId,
-  onSuccess,
-  onError,
 }: UseCreateScenarioScenePreviewParams) {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
@@ -26,16 +22,12 @@ export function useCreateScenarioScenePreview({
   } = usePostApiV1ScenariosScenesBySceneIdPreview({
     mutation: {
       onError: () => {
-        onError?.();
-
         showErrorToast({
           title: "Произошла ошибка при создании превью сцены",
           description: "Попробуйте еще раз немного позже",
         });
       },
       onSuccess: () => {
-        onSuccess?.();
-
         queryClient.invalidateQueries({
           queryKey: getApiV1ScenariosChaptersByChapterIdQueryKey({
             chapterId,

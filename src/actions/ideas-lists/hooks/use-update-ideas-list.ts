@@ -1,31 +1,17 @@
-import {
-  type PatchApiV1IdeasListsByIdeasListIdMutationResponse,
-  usePatchApiV1IdeasListsByIdeasListId,
-} from "@/codegen/api/product";
+import { usePatchApiV1IdeasListsByIdeasListId } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
-type UseUpdateIdeasListParams = {
-  onSuccess?: (data: PatchApiV1IdeasListsByIdeasListIdMutationResponse) => void;
-  onError?: () => void;
-};
-
-export function useUpdateIdeasList(params?: UseUpdateIdeasListParams) {
-  const { onSuccess, onError } = params ?? {};
+export function useUpdateIdeasList() {
   const { showErrorToast } = useToast();
 
   const { mutate: updateIdeasList, isPending: isUpdateIdeasListPending } =
     usePatchApiV1IdeasListsByIdeasListId({
       mutation: {
-        onSuccess: (data) => {
-          onSuccess?.(data);
-        },
         onError: () => {
           showErrorToast({
             title: "Произошла ошибка при обновлении списка идей",
             description: "Попробуйте еще раз немного позже",
           });
-
-          onError?.();
         },
       },
     });

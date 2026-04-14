@@ -13,11 +13,7 @@ export function useSettingsChangeEmailForm() {
   const [isEmailSentDialogOpen, setIsEmailSentDialogOpen] = useState(false);
   const { sessionData } = useGetSession();
 
-  const { changeEmailAsync } = useChangeEmail({
-    onSuccess: () => {
-      setIsEmailSentDialogOpen(true);
-    },
-  });
+  const { changeEmailAsync } = useChangeEmail();
 
   const form = useAppForm({
     defaultValues: {
@@ -40,6 +36,8 @@ export function useSettingsChangeEmailForm() {
           callbackURL,
         },
       });
+
+      setIsEmailSentDialogOpen(true);
     },
   });
 

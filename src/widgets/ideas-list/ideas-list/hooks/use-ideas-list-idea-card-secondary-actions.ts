@@ -14,24 +14,26 @@ export function useIdeasListIdeaCardSecondaryActions({
 }: UseIdeasListIdeaCardSecondaryActionsParams) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOptimisticSaved, setIsOptimisticSaved] = useState(initialSaved);
-
-  const { saveIdea } = useSaveIdea({
-    onError: () => {
-      setIsOptimisticSaved(isOptimisticSaved);
-    },
-  });
+  const { saveIdea } = useSaveIdea();
 
   const handleSaveButtonClick = useCallback(() => {
     const newSaved = !isOptimisticSaved;
 
     setIsOptimisticSaved(newSaved);
 
-    saveIdea({
-      ideaId,
-      data: {
-        saved: newSaved,
+    saveIdea(
+      {
+        ideaId,
+        data: {
+          saved: newSaved,
+        },
       },
-    });
+      {
+        onError: () => {
+          setIsOptimisticSaved(isOptimisticSaved);
+        },
+      },
+    );
   }, [ideaId, isOptimisticSaved, saveIdea]);
 
   const handleCloseMenu = useCallback(() => {

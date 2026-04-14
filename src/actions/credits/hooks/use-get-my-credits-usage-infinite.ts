@@ -1,25 +1,8 @@
-import { isEmpty } from "es-toolkit/compat";
-
-import {
-  type GetApiV1CreditsUsageMyQueryParams,
-  useGetApiV1CreditsUsageMyInfinite,
-} from "@/codegen/api/product";
-import { removeUndefinedFields } from "@/shared/utils/remove-undefined-fields";
+import { useGetApiV1CreditsUsageMyInfinite } from "@/codegen/api/product";
 
 const DEFAULT_PER_PAGE = 20;
 
-type UseGetMyCreditsUsageInfiniteParams = Pick<
-  GetApiV1CreditsUsageMyQueryParams,
-  "perPage"
->;
-
-export function useGetMyCreditsUsageInfinite(
-  params: UseGetMyCreditsUsageInfiniteParams = {},
-) {
-  const perPage = params.perPage ?? DEFAULT_PER_PAGE;
-  const cleaned = removeUndefinedFields({ perPage });
-  const queryParams = isEmpty(cleaned) ? undefined : cleaned;
-
+export function useGetMyCreditsUsageInfinite() {
   const {
     data: creditsUsageItems = [],
     hasNextPage: hasNextCreditsUsagePage,
@@ -29,7 +12,9 @@ export function useGetMyCreditsUsageInfinite(
     fetchNextPage: fetchNextCreditsUsagePage,
   } = useGetApiV1CreditsUsageMyInfinite(
     {
-      params: queryParams,
+      params: {
+        perPage: DEFAULT_PER_PAGE,
+      },
     },
     {
       query: {
