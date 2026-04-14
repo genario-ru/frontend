@@ -5,7 +5,6 @@ import { useGenerateMoreIdeas } from "@/actions/ideas-lists/hooks/use-generate-m
 import { getApiV1IdeasListsByIdeasListIdQueryKey } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
-import { useToast } from "@/shared/hooks/use-toast";
 
 import type { IdeasListAppMenubarMoreIdeasFormSchema } from "../types/ideas-list-app-menubar-more-ideas-form-types";
 import { ideasListAppMenubarMoreIdeasFormValidateFn } from "../utils/ideas-list-app-menubar-more-ideas-form-helpers";
@@ -19,7 +18,6 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
 }: UseIdeasListAppMenubarMoreIdeasDialogParams) {
   const queryClient = useQueryClient();
   const [isMoreIdeasDialogOpen, setIsMoreIdeasDialogOpen] = useState(false);
-  const { showErrorToast } = useToast();
 
   const { generateMoreIdeas, isGenerateMoreIdeasPending } =
     useGenerateMoreIdeas();
@@ -28,12 +26,6 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
     defaultValues: {
       userPrompt: "",
     } as IdeasListAppMenubarMoreIdeasFormSchema,
-    onSubmitInvalid: ({ formApi }) => {
-      showErrorToast({
-        description:
-          `${formApi.state.errors[0]}` || "Произошла ошибка при улучшении идеи",
-      });
-    },
     validators: {
       onChange: (data) => {
         if (form.state.submissionAttempts > 0) {
@@ -57,13 +49,6 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
                 ideasListId: ideasListId,
               }),
             });
-          },
-          onError: (error) => {
-            if (error.cause.status === 402) {
-              showErrorToast({
-                description: "Недостаточно кредитов для генерации новых идей",
-              });
-            }
           },
         },
       );

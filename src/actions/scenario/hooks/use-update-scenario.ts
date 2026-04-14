@@ -1,4 +1,5 @@
 import { usePatchApiV1ScenariosByScenarioId } from "@/codegen/api/product";
+import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useUpdateScenario() {
@@ -7,11 +8,12 @@ export function useUpdateScenario() {
   const { mutate: updateScenario, isPending: isUpdateScenarioPending } =
     usePatchApiV1ScenariosByScenarioId({
       mutation: {
-        onError: () => {
-          showErrorToast({
-            title: "Произошла ошибка при обновлении сценария",
-            description: "Попробуйте еще раз немного позже",
-          });
+        onError: (error) => {
+          const description = isPaymentRequiredError(error)
+            ? "Недостаточно кредитов для генерации новой версии сценария"
+            : "Произошла ошибка при обновлении сценария";
+
+          showErrorToast({ description });
         },
       },
     });

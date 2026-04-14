@@ -8,7 +8,9 @@ export async function parseResponseData<T>(
     throw new Error("Content type is required");
   }
 
-  switch (contentType) {
+  const cleanedContentType = contentType.split(";")[0].trim();
+
+  switch (cleanedContentType) {
     case documentTypes.json:
       return (await response.json()) as T;
 

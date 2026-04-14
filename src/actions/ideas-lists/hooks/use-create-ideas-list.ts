@@ -1,4 +1,5 @@
 import { usePostApiV1IdeasLists } from "@/codegen/api/product";
+import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useCreateIdeasList() {
@@ -7,11 +8,12 @@ export function useCreateIdeasList() {
   const { mutate: createIdeasList, isPending: isCreateIdeasListPending } =
     usePostApiV1IdeasLists({
       mutation: {
-        onError: () => {
-          showErrorToast({
-            title: "Произошла ошибка при создании сценария",
-            description: "Попробуйте еще раз немного позже",
-          });
+        onError: (error) => {
+          const description = isPaymentRequiredError(error)
+            ? "Недостаточно кредитов для генерации новых идей"
+            : "Произошла ошибка при создании списка идей";
+
+          showErrorToast({ description });
         },
       },
     });

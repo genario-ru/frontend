@@ -4,6 +4,7 @@ import {
   getApiV1ScenariosChaptersByChapterIdQueryKey,
   usePostApiV1ScenariosScenesBySceneIdPreview,
 } from "@/codegen/api/product";
+import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateScenarioScenePreviewParams = {
@@ -21,11 +22,12 @@ export function useCreateScenarioScenePreview({
     isPending: isCreateScenarioScenePreviewPending,
   } = usePostApiV1ScenariosScenesBySceneIdPreview({
     mutation: {
-      onError: () => {
-        showErrorToast({
-          title: "Произошла ошибка при создании превью сцены",
-          description: "Попробуйте еще раз немного позже",
-        });
+      onError: (error) => {
+        const description = isPaymentRequiredError(error)
+          ? "Недостаточно кредитов для генерации превью сцены"
+          : "Произошла ошибка при создании превью сцены";
+
+        showErrorToast({ description: description });
       },
       onSuccess: () => {
         queryClient.invalidateQueries({

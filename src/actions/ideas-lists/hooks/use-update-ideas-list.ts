@@ -1,4 +1,5 @@
 import { usePatchApiV1IdeasListsByIdeasListId } from "@/codegen/api/product";
+import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useUpdateIdeasList() {
@@ -7,11 +8,12 @@ export function useUpdateIdeasList() {
   const { mutate: updateIdeasList, isPending: isUpdateIdeasListPending } =
     usePatchApiV1IdeasListsByIdeasListId({
       mutation: {
-        onError: () => {
-          showErrorToast({
-            title: "Произошла ошибка при обновлении списка идей",
-            description: "Попробуйте еще раз немного позже",
-          });
+        onError: (error) => {
+          const description = isPaymentRequiredError(error)
+            ? "Недостаточно кредитов для генерации новых идей"
+            : "Произошла ошибка при обновлении списка идей";
+
+          showErrorToast({ description });
         },
       },
     });
