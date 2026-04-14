@@ -14,6 +14,7 @@ import {
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useToast } from "@/shared/hooks/use-toast";
 
 import { prepareScenarioSettingsFormOptions } from "../utils/prepare-scenario-settings-forn-options";
 import { ScenarioSettingsFormSteps } from "../utils/scenario-settings-form-helpers";
@@ -32,16 +33,15 @@ export function useScenarioSettingsForm({
 }: UseScenarioSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { showErrorToast } = useToast();
+  const { createScenario, isCreateScenarioPending } = useCreateScenario();
+  const { updateScenario, isUpdateScenarioPending } = useUpdateScenario();
 
   const formOptions = prepareScenarioSettingsFormOptions({
     templateId,
     scenarioData,
     ideaData,
   });
-
-  const { createScenario, isCreateScenarioPending } = useCreateScenario();
-
-  const { updateScenario, isUpdateScenarioPending } = useUpdateScenario();
 
   const form = useAppForm({
     ...formOptions,
@@ -97,6 +97,14 @@ export function useScenarioSettingsForm({
                     params: { scenarioId: data.data.id },
                   });
                 },
+                onError: (error) => {
+                  if (error.cause.status === 402) {
+                    showErrorToast({
+                      description:
+                        "Недостаточно кредитов для генерации новой версии сценария",
+                    });
+                  }
+                },
               },
             );
           } else {
@@ -112,6 +120,14 @@ export function useScenarioSettingsForm({
                     to: "/scenarios/$scenarioId",
                     params: { scenarioId: data.data.id },
                   });
+                },
+                onError: (error) => {
+                  if (error.cause.status === 402) {
+                    showErrorToast({
+                      description:
+                        "Недостаточно кредитов для генерации нового сценария",
+                    });
+                  }
                 },
               },
             );

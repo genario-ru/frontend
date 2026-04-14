@@ -58,6 +58,13 @@ export function useIdeasListAppMenubarMoreIdeasDialog({
               }),
             });
           },
+          onError: (error) => {
+            if (error.cause.status === 402) {
+              showErrorToast({
+                description: "Недостаточно кредитов для генерации новых идей",
+              });
+            }
+          },
         },
       );
     },

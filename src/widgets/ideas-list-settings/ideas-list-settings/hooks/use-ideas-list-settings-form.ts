@@ -11,6 +11,7 @@ import {
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useToast } from "@/shared/hooks/use-toast";
 
 import { IdeasListSettingsFormSteps } from "../utils/ideas-list-settings-form-helpers";
 import { prepareIdeasListSettingsFormOptions } from "../utils/prepare-ideas-list-settings-form-options";
@@ -27,15 +28,14 @@ export function useIdeasListSettingsForm({
 }: UseIdeasListSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { showErrorToast } = useToast();
+  const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList();
+  const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList();
 
   const formOptions = prepareIdeasListSettingsFormOptions({
     templateId,
     ideasListData,
   });
-
-  const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList();
-
-  const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList();
 
   const form = useAppForm({
     ...formOptions,
@@ -91,6 +91,14 @@ export function useIdeasListSettingsForm({
                     params: { ideasListId: data.data.id },
                   });
                 },
+                onError: (error) => {
+                  if (error.cause.status === 402) {
+                    showErrorToast({
+                      description:
+                        "Недостаточно кредитов для генерации новых идей",
+                    });
+                  }
+                },
               },
             );
           } else {
@@ -106,6 +114,14 @@ export function useIdeasListSettingsForm({
                     to: "/ideas-lists/$ideasListId",
                     params: { ideasListId: data.data.id },
                   });
+                },
+                onError: (error) => {
+                  if (error.cause.status === 402) {
+                    showErrorToast({
+                      description:
+                        "Недостаточно кредитов для генерации новых идей",
+                    });
+                  }
                 },
               },
             );

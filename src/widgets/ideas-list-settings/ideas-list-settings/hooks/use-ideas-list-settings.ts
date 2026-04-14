@@ -8,9 +8,7 @@ export function useIdeasListSettings({
   ideasListId,
 }: UseIdeasListSettingsParams) {
   const { ideasListData, isIdeasListLoading, isIdeasListError } =
-    useGetIdeasList({
-      ideasListId,
-    });
+    useGetIdeasList({ ideasListId });
 
   return {
     ideasListData,
