@@ -1,16 +1,17 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 
-import { useCreateScenarioVersionExport } from "@/actions/scenario/hooks/use-create-scenario-version-export";
-import { useGetScenarioVersionExports } from "@/actions/scenario/hooks/use-get-scenario-version-exports";
-import { getApiV1ScenariosVersionsByVersionIdExportsQueryKey } from "@/codegen/api/product";
-import type { GetApiV1ScenariosVersionsByVersionIdExportsQueryResponse } from "@/codegen/api/product/models";
+import { useCreateScenarioExport } from "@/actions/scenario/hooks/use-create-scenario-export";
+import { useGetScenarioExports } from "@/actions/scenario/hooks/use-get-scenario-exports";
+import { getApiV1ScenariosByScenarioIdExportsQueryKey } from "@/codegen/api/product";
+import type { GetApiV1ScenariosByScenarioIdExportsQueryResponse } from "@/codegen/api/product/models";
 import { useToast } from "@/shared/hooks/use-toast";
 import { downloadFileByUrl } from "@/shared/utils/download-file-by-url";
 
 const WAITING_FOR_EXPORT_REFRESH_INTERVAL = 1000;
 
 type UseScenarioAppMenubarExportSubmenuParams = {
+  scenarioId: string;
   scenarioVersionId: string;
   handleDropdownMenuClose: () => void;
 };
@@ -20,18 +21,21 @@ type ExportJob = {
 };
 
 export function useScenarioAppMenubarExportSubmenu({
+  scenarioId,
   scenarioVersionId,
   handleDropdownMenuClose,
 }: UseScenarioAppMenubarExportSubmenuParams) {
   const queryClient = useQueryClient();
   const [exportJob, setExportJob] = useState<ExportJob | null>(null);
   const { showErrorToast } = useToast();
-  const { createScenarioVersionExport, isCreateScenarioVersionExportPending } =
-    useCreateScenarioVersionExport();
+
+  const { createScenarioExport, isCreateScenarioExportPending } =
+    useCreateScenarioExport();
 
   const { scenarioVersionExportsData, isGetScenarioVersionExportsLoading } =
-    useGetScenarioVersionExports({
-      scenarioVersionId,
+    useGetScenarioExports({
+      scenarioId,
+      versionId: scenarioVersionId,
       refetchInterval: exportJob
         ? WAITING_FOR_EXPORT_REFRESH_INTERVAL
         : undefined,
@@ -70,17 +74,16 @@ export function useScenarioAppMenubarExportSubmenu({
         return;
       }
 
-      createScenarioVersionExport(
-        { versionId: scenarioVersionId, data: { format } },
+      createScenarioExport(
+        { scenarioId, params: { versionId: scenarioVersionId, format } },
         {
           onSuccess: ({ data: mutationData }) => {
             queryClient.setQueryData(
-              getApiV1ScenariosVersionsByVersionIdExportsQueryKey({
-                versionId: scenarioVersionId,
-              }),
-              (
-                oldData: GetApiV1ScenariosVersionsByVersionIdExportsQueryResponse,
-              ) => {
+              getApiV1ScenariosByScenarioIdExportsQueryKey(
+                { scenarioId },
+                { versionId: scenarioVersionId },
+              ),
+              (oldData: GetApiV1ScenariosByScenarioIdExportsQueryResponse) => {
                 return {
                   ...oldData,
                   data: oldData.data.map((exportData) => {
@@ -109,11 +112,12 @@ export function useScenarioAppMenubarExportSubmenu({
       );
     },
     [
+      scenarioId,
       scenarioVersionId,
       queryClient,
       exportJob,
       scenarioVersionExportsData,
-      createScenarioVersionExport,
+      createScenarioExport,
       handleDownloadScenarioVersion,
       handleDownloadScenarioVersionError,
     ],
@@ -143,7 +147,7 @@ export function useScenarioAppMenubarExportSubmenu({
   return {
     exportJob,
     exportsData: scenarioVersionExportsData,
-    isCreateExportPending: isCreateScenarioVersionExportPending,
+    isCreateExportPending: isCreateScenarioExportPending,
     isGetExportsLoading: isGetScenarioVersionExportsLoading,
     handleCreateExport,
   };

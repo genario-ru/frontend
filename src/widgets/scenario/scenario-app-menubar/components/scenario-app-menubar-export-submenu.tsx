@@ -13,16 +13,19 @@ import { SPACE } from "@/shared/constants/unicode";
 import { useScenarioAppMenubarExportSubmenu } from "../hooks/use-scenario-app-menubar-export-submenu";
 
 type ScenarioAppMenubarExportSubmenuProps = {
+  scenarioId: string;
   scenarioVersionId: string;
   handleDropdownMenuClose: () => void;
 };
 
 export function ScenarioAppMenubarExportSubmenu({
+  scenarioId,
   scenarioVersionId,
   handleDropdownMenuClose,
 }: ScenarioAppMenubarExportSubmenuProps) {
   const { exportJob, exportsData, handleCreateExport } =
     useScenarioAppMenubarExportSubmenu({
+      scenarioId,
       scenarioVersionId,
       handleDropdownMenuClose,
     });

@@ -49,6 +49,7 @@ export function ScenarioAppMenubarMoreActions({
           </AppMenubarButtonLink>
           {isExportAvailable && scenarioVersionId && (
             <ScenarioAppMenubarExportSubmenu
+              scenarioId={scenarioId}
               scenarioVersionId={scenarioVersionId}
               handleDropdownMenuClose={handleDropdownMenuClose}
             />
