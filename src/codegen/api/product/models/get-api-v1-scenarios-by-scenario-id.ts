@@ -18,6 +18,13 @@ export type GetApiV1ScenariosByScenarioIdPathParams = {
   scenarioId: string;
 };
 
+export type GetApiV1ScenariosByScenarioIdQueryParams = {
+  /**
+   * @type string | undefined, uuid
+   */
+  versionId?: string;
+};
+
 /**
  * Get scenario response
  * @description Scenario retrieved successfully
@@ -67,6 +74,7 @@ export type GetApiV1ScenariosByScenarioIdQueryResponse =
 export type GetApiV1ScenariosByScenarioIdQuery = {
   Response: GetApiV1ScenariosByScenarioId200;
   PathParams: GetApiV1ScenariosByScenarioIdPathParams;
+  QueryParams: GetApiV1ScenariosByScenarioIdQueryParams;
   Errors:
     | GetApiV1ScenariosByScenarioId400
     | GetApiV1ScenariosByScenarioId401

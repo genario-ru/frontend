@@ -51,6 +51,7 @@ export type ScenarioExtendedSchema = {
    * @type string
    */
   updatedAt: string;
+  version?: ScenarioVersionExtendedSchema | null;
   currentVersion?: ScenarioVersionExtendedSchema | null;
   profile?: ProfileSchema | null;
   template?: TemplateSchema | null;

@@ -26,19 +26,22 @@ import type {
   GetApiV1ScenariosByScenarioId404,
   GetApiV1ScenariosByScenarioId500,
   GetApiV1ScenariosByScenarioIdPathParams,
+  GetApiV1ScenariosByScenarioIdQueryParams,
   GetApiV1ScenariosByScenarioIdQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id.ts";
 
-export const getApiV1ScenariosByScenarioIdQueryKey = ({
-  scenarioId,
-}: {
-  scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"];
-}) =>
+export const getApiV1ScenariosByScenarioIdQueryKey = (
+  {
+    scenarioId,
+  }: { scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"] },
+  params?: GetApiV1ScenariosByScenarioIdQueryParams,
+) =>
   [
     {
       url: "/api/v1/scenarios/:scenarioId",
       params: { scenarioId: scenarioId },
     },
+    ...(params ? [params] : []),
   ] as const;
 
 export type GetApiV1ScenariosByScenarioIdQueryKey = ReturnType<
@@ -48,10 +51,17 @@ export type GetApiV1ScenariosByScenarioIdQueryKey = ReturnType<
 export function getApiV1ScenariosByScenarioIdQueryOptions(
   {
     scenarioId,
-  }: { scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"] },
+    params,
+  }: {
+    scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdQueryParams;
+  },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
-  const queryKey = getApiV1ScenariosByScenarioIdQueryKey({ scenarioId });
+  const queryKey = getApiV1ScenariosByScenarioIdQueryKey(
+    { scenarioId },
+    params,
+  );
   return queryOptions<
     GetApiV1ScenariosByScenarioIdQueryResponse,
     ResponseErrorConfig<
@@ -69,7 +79,7 @@ export function getApiV1ScenariosByScenarioIdQueryOptions(
     queryKey,
     queryFn: async ({ signal }) => {
       return getApiV1ScenariosByScenarioId(
-        { scenarioId: scenarioId },
+        { scenarioId: scenarioId, params: params },
         { ...config, signal: config.signal ?? signal },
       );
     },
@@ -86,7 +96,11 @@ export function useGetApiV1ScenariosByScenarioId<
 >(
   {
     scenarioId,
-  }: { scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"] },
+    params,
+  }: {
+    scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdQueryParams;
+  },
   options: {
     query?: Partial<
       QueryObserverOptions<
@@ -111,11 +125,14 @@ export function useGetApiV1ScenariosByScenarioId<
   const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
     resolvedOptions?.queryKey ??
-    getApiV1ScenariosByScenarioIdQueryKey({ scenarioId });
+    getApiV1ScenariosByScenarioIdQueryKey({ scenarioId }, params);
 
   const query = useQuery(
     {
-      ...getApiV1ScenariosByScenarioIdQueryOptions({ scenarioId }, config),
+      ...getApiV1ScenariosByScenarioIdQueryOptions(
+        { scenarioId, params },
+        config,
+      ),
       ...resolvedOptions,
       queryKey,
     } as unknown as QueryObserverOptions,

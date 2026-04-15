@@ -18,6 +18,7 @@ import type {
   GetApiV1ScenariosByScenarioId404,
   GetApiV1ScenariosByScenarioId500,
   GetApiV1ScenariosByScenarioIdPathParams,
+  GetApiV1ScenariosByScenarioIdQueryParams,
   GetApiV1ScenariosByScenarioIdQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id.ts";
 
@@ -39,7 +40,11 @@ function getGetApiV1ScenariosByScenarioIdUrl({
 export async function getApiV1ScenariosByScenarioId(
   {
     scenarioId,
-  }: { scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"] },
+    params,
+  }: {
+    scenarioId: GetApiV1ScenariosByScenarioIdPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdQueryParams;
+  },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
   const { client: request = fetch, ...requestConfig } = config;
@@ -58,6 +63,7 @@ export async function getApiV1ScenariosByScenarioId(
   >({
     method: "GET",
     url: getGetApiV1ScenariosByScenarioIdUrl({ scenarioId }).url.toString(),
+    params,
     ...requestConfig,
   });
   return res.data;
