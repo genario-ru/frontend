@@ -18,6 +18,7 @@ import type {
   GetApiV1ScenariosByScenarioIdCurrentVersion404,
   GetApiV1ScenariosByScenarioIdCurrentVersion500,
   GetApiV1ScenariosByScenarioIdCurrentVersionPathParams,
+  GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams,
   GetApiV1ScenariosByScenarioIdCurrentVersionQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id-current-version.ts";
 
@@ -39,8 +40,10 @@ function getGetApiV1ScenariosByScenarioIdCurrentVersionUrl({
 export async function getApiV1ScenariosByScenarioIdCurrentVersion(
   {
     scenarioId,
+    params,
   }: {
     scenarioId: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams;
   },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
@@ -62,6 +65,7 @@ export async function getApiV1ScenariosByScenarioIdCurrentVersion(
     url: getGetApiV1ScenariosByScenarioIdCurrentVersionUrl({
       scenarioId,
     }).url.toString(),
+    params,
     ...requestConfig,
   });
   return res.data;

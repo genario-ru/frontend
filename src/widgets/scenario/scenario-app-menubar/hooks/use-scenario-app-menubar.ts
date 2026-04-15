@@ -14,8 +14,8 @@ export function useScenarioAppMenubar({
   });
 
   const scenarioVersionId = useMemo(() => {
-    if (scenarioData?.data?.currentVersionId) {
-      return scenarioData.data.currentVersionId;
+    if (scenarioData?.data?.currentVersion?.id) {
+      return scenarioData.data.currentVersion.id;
     }
   }, [scenarioData]);
 

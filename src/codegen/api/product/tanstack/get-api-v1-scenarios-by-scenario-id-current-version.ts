@@ -26,19 +26,24 @@ import type {
   GetApiV1ScenariosByScenarioIdCurrentVersion404,
   GetApiV1ScenariosByScenarioIdCurrentVersion500,
   GetApiV1ScenariosByScenarioIdCurrentVersionPathParams,
+  GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams,
   GetApiV1ScenariosByScenarioIdCurrentVersionQueryResponse,
 } from "../models/get-api-v1-scenarios-by-scenario-id-current-version.ts";
 
-export const getApiV1ScenariosByScenarioIdCurrentVersionQueryKey = ({
-  scenarioId,
-}: {
-  scenarioId: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams["scenarioId"];
-}) =>
+export const getApiV1ScenariosByScenarioIdCurrentVersionQueryKey = (
+  {
+    scenarioId,
+  }: {
+    scenarioId: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams["scenarioId"];
+  },
+  params?: GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams,
+) =>
   [
     {
       url: "/api/v1/scenarios/:scenarioId/current-version",
       params: { scenarioId: scenarioId },
     },
+    ...(params ? [params] : []),
   ] as const;
 
 export type GetApiV1ScenariosByScenarioIdCurrentVersionQueryKey = ReturnType<
@@ -48,14 +53,17 @@ export type GetApiV1ScenariosByScenarioIdCurrentVersionQueryKey = ReturnType<
 export function getApiV1ScenariosByScenarioIdCurrentVersionQueryOptions(
   {
     scenarioId,
+    params,
   }: {
     scenarioId: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams;
   },
   config: Partial<RequestConfig> & { client?: Client } = {},
 ) {
-  const queryKey = getApiV1ScenariosByScenarioIdCurrentVersionQueryKey({
-    scenarioId,
-  });
+  const queryKey = getApiV1ScenariosByScenarioIdCurrentVersionQueryKey(
+    { scenarioId },
+    params,
+  );
   return queryOptions<
     GetApiV1ScenariosByScenarioIdCurrentVersionQueryResponse,
     ResponseErrorConfig<
@@ -73,7 +81,7 @@ export function getApiV1ScenariosByScenarioIdCurrentVersionQueryOptions(
     queryKey,
     queryFn: async ({ signal }) => {
       return getApiV1ScenariosByScenarioIdCurrentVersion(
-        { scenarioId: scenarioId },
+        { scenarioId: scenarioId, params: params },
         { ...config, signal: config.signal ?? signal },
       );
     },
@@ -91,8 +99,10 @@ export function useGetApiV1ScenariosByScenarioIdCurrentVersion<
 >(
   {
     scenarioId,
+    params,
   }: {
     scenarioId: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams["scenarioId"];
+    params?: GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams;
   },
   options: {
     query?: Partial<
@@ -118,12 +128,12 @@ export function useGetApiV1ScenariosByScenarioIdCurrentVersion<
   const { client: queryClient, ...resolvedOptions } = queryConfig;
   const queryKey =
     resolvedOptions?.queryKey ??
-    getApiV1ScenariosByScenarioIdCurrentVersionQueryKey({ scenarioId });
+    getApiV1ScenariosByScenarioIdCurrentVersionQueryKey({ scenarioId }, params);
 
   const query = useQuery(
     {
       ...getApiV1ScenariosByScenarioIdCurrentVersionQueryOptions(
-        { scenarioId },
+        { scenarioId, params },
         config,
       ),
       ...resolvedOptions,

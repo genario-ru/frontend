@@ -18,6 +18,12 @@ export const getApiV1ScenariosByScenarioIdCurrentVersionPathParamsSchema =
     scenarioId: z.uuid(),
   });
 
+export const getApiV1ScenariosByScenarioIdCurrentVersionQueryParamsSchema = z
+  .object({
+    versionId: z.optional(z.uuid()),
+  })
+  .optional();
+
 /**
  * @description Scenario current version retrieved successfully
  */

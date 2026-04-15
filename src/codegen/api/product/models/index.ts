@@ -141,18 +141,6 @@ export type {
   DeleteApiV1ScenariosScenesBySceneIdMutationResponse,
   DeleteApiV1ScenariosScenesBySceneIdPathParams,
 } from "./delete-api-v1-scenarios-scenes-by-scene-id.ts";
-export type {
-  DeleteApiV1ScenariosVersionsByVersionId200,
-  DeleteApiV1ScenariosVersionsByVersionId400,
-  DeleteApiV1ScenariosVersionsByVersionId401,
-  DeleteApiV1ScenariosVersionsByVersionId402,
-  DeleteApiV1ScenariosVersionsByVersionId403,
-  DeleteApiV1ScenariosVersionsByVersionId404,
-  DeleteApiV1ScenariosVersionsByVersionId500,
-  DeleteApiV1ScenariosVersionsByVersionIdMutation,
-  DeleteApiV1ScenariosVersionsByVersionIdMutationResponse,
-  DeleteApiV1ScenariosVersionsByVersionIdPathParams,
-} from "./delete-api-v1-scenarios-versions-by-version-id.ts";
 export type { DeleteIdeaResponseSchema } from "./delete-idea-response-schema.ts";
 export type { DeleteIdeasListResponseSchema } from "./delete-ideas-list-response-schema.ts";
 export type { DeletePaymentMethodResponseSchema } from "./delete-payment-method-response-schema.ts";
@@ -161,7 +149,6 @@ export type { DeleteScenarioChapterResponseSchema } from "./delete-scenario-chap
 export type { DeleteScenarioResponseSchema } from "./delete-scenario-response-schema.ts";
 export type { DeleteScenarioSceneComponentResponseSchema } from "./delete-scenario-scene-component-response-schema.ts";
 export type { DeleteScenarioSceneResponseSchema } from "./delete-scenario-scene-response-schema.ts";
-export type { DeleteScenarioVersionResponseSchema } from "./delete-scenario-version-response-schema.ts";
 export type {
   ExportDocumentShortSchema,
   ExportDocumentShortSchemaDocumentStatusEnumKey,
@@ -439,6 +426,7 @@ export type {
   GetApiV1ScenariosByScenarioIdCurrentVersion500,
   GetApiV1ScenariosByScenarioIdCurrentVersionPathParams,
   GetApiV1ScenariosByScenarioIdCurrentVersionQuery,
+  GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams,
   GetApiV1ScenariosByScenarioIdCurrentVersionQueryResponse,
 } from "./get-api-v1-scenarios-by-scenario-id-current-version.ts";
 export type {
@@ -489,30 +477,6 @@ export type {
   GetApiV1ScenariosMyQuery,
   GetApiV1ScenariosMyQueryResponse,
 } from "./get-api-v1-scenarios-my.ts";
-export type {
-  GetApiV1ScenariosVersionsByVersionId200,
-  GetApiV1ScenariosVersionsByVersionId400,
-  GetApiV1ScenariosVersionsByVersionId401,
-  GetApiV1ScenariosVersionsByVersionId402,
-  GetApiV1ScenariosVersionsByVersionId403,
-  GetApiV1ScenariosVersionsByVersionId404,
-  GetApiV1ScenariosVersionsByVersionId500,
-  GetApiV1ScenariosVersionsByVersionIdPathParams,
-  GetApiV1ScenariosVersionsByVersionIdQuery,
-  GetApiV1ScenariosVersionsByVersionIdQueryResponse,
-} from "./get-api-v1-scenarios-versions-by-version-id.ts";
-export type {
-  GetApiV1ScenariosVersionsByVersionIdExports200,
-  GetApiV1ScenariosVersionsByVersionIdExports400,
-  GetApiV1ScenariosVersionsByVersionIdExports401,
-  GetApiV1ScenariosVersionsByVersionIdExports402,
-  GetApiV1ScenariosVersionsByVersionIdExports403,
-  GetApiV1ScenariosVersionsByVersionIdExports404,
-  GetApiV1ScenariosVersionsByVersionIdExports500,
-  GetApiV1ScenariosVersionsByVersionIdExportsPathParams,
-  GetApiV1ScenariosVersionsByVersionIdExportsQuery,
-  GetApiV1ScenariosVersionsByVersionIdExportsQueryResponse,
-} from "./get-api-v1-scenarios-versions-by-version-id-exports.ts";
 export type {
   GetApiV1SubscriptonsMy200,
   GetApiV1SubscriptonsMy400,
@@ -630,9 +594,6 @@ export type { GetScenarioChapterResponseSchema } from "./get-scenario-chapter-re
 export type { GetScenarioCurrentVersionResponseSchema } from "./get-scenario-current-version-response-schema.ts";
 export type { GetScenarioExportsResponseSchema } from "./get-scenario-exports-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./get-scenario-response-schema.ts";
-export type { GetScenarioVersionExportResponseSchema } from "./get-scenario-version-export-response-schema.ts";
-export type { GetScenarioVersionExportsResponseSchema } from "./get-scenario-version-exports-response-schema.ts";
-export type { GetScenarioVersionResponseSchema } from "./get-scenario-version-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./get-scenario-versions-response-schema.ts";
 export type { GetTariffsResponseSchema } from "./get-tariffs-response-schema.ts";
 export type { GetTemplatesResponseSchema } from "./get-templates-response-schema.ts";
@@ -723,19 +684,6 @@ export type {
   PatchApiV1ScenariosByScenarioIdMutationResponse,
   PatchApiV1ScenariosByScenarioIdPathParams,
 } from "./patch-api-v1-scenarios-by-scenario-id.ts";
-export type {
-  PatchApiV1ScenariosByScenarioIdCurrentVersion200,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion400,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion401,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion402,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion403,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion404,
-  PatchApiV1ScenariosByScenarioIdCurrentVersion500,
-  PatchApiV1ScenariosByScenarioIdCurrentVersionMutation,
-  PatchApiV1ScenariosByScenarioIdCurrentVersionMutationRequest,
-  PatchApiV1ScenariosByScenarioIdCurrentVersionMutationResponse,
-  PatchApiV1ScenariosByScenarioIdCurrentVersionPathParams,
-} from "./patch-api-v1-scenarios-by-scenario-id-current-version.ts";
 export type {
   PatchApiV1ScenariosByScenarioIdSave200,
   PatchApiV1ScenariosByScenarioIdSave400,
@@ -951,19 +899,6 @@ export type {
   PostApiV1ScenariosScenesBySceneIdPreviewPathParams,
 } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export type {
-  PostApiV1ScenariosVersionsByVersionIdExport200,
-  PostApiV1ScenariosVersionsByVersionIdExport400,
-  PostApiV1ScenariosVersionsByVersionIdExport401,
-  PostApiV1ScenariosVersionsByVersionIdExport402,
-  PostApiV1ScenariosVersionsByVersionIdExport403,
-  PostApiV1ScenariosVersionsByVersionIdExport404,
-  PostApiV1ScenariosVersionsByVersionIdExport500,
-  PostApiV1ScenariosVersionsByVersionIdExportMutation,
-  PostApiV1ScenariosVersionsByVersionIdExportMutationRequest,
-  PostApiV1ScenariosVersionsByVersionIdExportMutationResponse,
-  PostApiV1ScenariosVersionsByVersionIdExportPathParams,
-} from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
-export type {
   PostApiV1SubscriptionsBySubscriptionIdCancel201,
   PostApiV1SubscriptionsBySubscriptionIdCancel400,
   PostApiV1SubscriptionsBySubscriptionIdCancel401,
@@ -1086,8 +1021,6 @@ export type { UpdateProfileResponseSchema } from "./update-profile-response-sche
 export type { UpdateScenarioBodySchema } from "./update-scenario-body-schema.ts";
 export type { UpdateScenarioChapterBodySchema } from "./update-scenario-chapter-body-schema.ts";
 export type { UpdateScenarioChapterResponseSchema } from "./update-scenario-chapter-response-schema.ts";
-export type { UpdateScenarioCurrentVersionBodySchema } from "./update-scenario-current-version-body-schema.ts";
-export type { UpdateScenarioCurrentVersionResponseSchema } from "./update-scenario-current-version-response-schema.ts";
 export type { UpdateScenarioResponseSchema } from "./update-scenario-response-schema.ts";
 export type { UpdateScenarioSceneBodySchema } from "./update-scenario-scene-body-schema.ts";
 export type { UpdateScenarioSceneComponentBodySchema } from "./update-scenario-scene-component-body-schema.ts";

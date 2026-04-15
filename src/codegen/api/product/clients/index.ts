@@ -6,7 +6,6 @@ export { deleteApiV1ScenariosByScenarioId } from "./delete-api-v1-scenarios-by-s
 export { deleteApiV1ScenariosChaptersByChapterId } from "./delete-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "./delete-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { deleteApiV1ScenariosScenesBySceneId } from "./delete-api-v1-scenarios-scenes-by-scene-id.ts";
-export { deleteApiV1ScenariosVersionsByVersionId } from "./delete-api-v1-scenarios-versions-by-version-id.ts";
 export { getApiV1ArchiveFilters } from "./get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./get-api-v1-archive-items-my.ts";
 export { getApiV1AttachmentsByAttachmentIdDownload } from "./get-api-v1-attachments-by-attachment-id-download.ts";
@@ -34,8 +33,6 @@ export { getApiV1ScenariosByScenarioIdExports } from "./get-api-v1-scenarios-by-
 export { getApiV1ScenariosByScenarioIdVersions } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosChaptersByChapterId } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosMy } from "./get-api-v1-scenarios-my.ts";
-export { getApiV1ScenariosVersionsByVersionId } from "./get-api-v1-scenarios-versions-by-version-id.ts";
-export { getApiV1ScenariosVersionsByVersionIdExports } from "./get-api-v1-scenarios-versions-by-version-id-exports.ts";
 export { getApiV1SubscriptonsMy } from "./get-api-v1-subscriptons-my.ts";
 export { getApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./get-api-v1-tariffs-trial.ts";
@@ -48,7 +45,6 @@ export { patchApiV1IdeasByIdeaIdSave } from "./patch-api-v1-ideas-by-idea-id-sav
 export { patchApiV1IdeasListsByIdeasListId } from "./patch-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { patchApiV1ProfilesByProfileId } from "./patch-api-v1-profiles-by-profile-id.ts";
 export { patchApiV1ScenariosByScenarioId } from "./patch-api-v1-scenarios-by-scenario-id.ts";
-export { patchApiV1ScenariosByScenarioIdCurrentVersion } from "./patch-api-v1-scenarios-by-scenario-id-current-version.ts";
 export { patchApiV1ScenariosByScenarioIdSave } from "./patch-api-v1-scenarios-by-scenario-id-save.ts";
 export { patchApiV1ScenariosChaptersByChapterId } from "./patch-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "./patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
@@ -65,6 +61,5 @@ export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channe
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosByScenarioIdExport } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
-export { postApiV1ScenariosVersionsByVersionIdExport } from "./post-api-v1-scenarios-versions-by-version-id-export.ts";
 export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./post-api-v1-subscriptions-initiate-payment.ts";

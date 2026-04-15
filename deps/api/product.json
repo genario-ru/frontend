@@ -4177,108 +4177,17 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             },
             "required": true
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "patchApiV1ScenariosByScenarioIdCurrentVersion",
-        "tags": [
-          "Scenarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "Scenario current version updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateScenarioCurrentVersionResponseSchema"
-                }
-              }
-            }
           },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponseSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponseSchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
           {
-            "in": "path",
-            "name": "scenarioId",
+            "in": "query",
+            "name": "versionId",
             "schema": {
               "type": "string",
               "format": "uuid",
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateScenarioCurrentVersionBodySchema"
-              }
             }
           }
-        }
+        ]
       }
     },
     "/api/v1/scenarios/{scenarioId}/save": {
@@ -4381,390 +4290,6 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/scenarios/versions/{versionId}": {
-      "delete": {
-        "operationId": "deleteApiV1ScenariosVersionsByVersionId",
-        "tags": [
-          "Scenarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "Scenario version deleted successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeleteScenarioVersionResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponseSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponseSchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "in": "path",
-            "name": "versionId",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ]
-      },
-      "get": {
-        "operationId": "getApiV1ScenariosVersionsByVersionId",
-        "tags": [
-          "Scenarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "Scenario version retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetScenarioVersionResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponseSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponseSchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "in": "path",
-            "name": "versionId",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ]
-      }
-    },
-    "/api/v1/scenarios/versions/{versionId}/export": {
-      "post": {
-        "operationId": "postApiV1ScenariosVersionsByVersionIdExport",
-        "tags": [
-          "Scenarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "Scenario version export retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetScenarioVersionExportResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponseSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponseSchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "in": "path",
-            "name": "versionId",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "format": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "format"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/scenarios/versions/{versionId}/exports": {
-      "get": {
-        "operationId": "getApiV1ScenariosVersionsByVersionIdExports",
-        "tags": [
-          "Scenarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "Scenario version exports retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetScenarioVersionExportsResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponseSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponseSchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "in": "path",
-            "name": "versionId",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ]
       }
     },
     "/api/v1/scenarios/{scenarioId}/versions": {
@@ -9221,18 +8746,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "currentVersionId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "profileId": {
             "anyOf": [
               {
@@ -9318,16 +8831,6 @@
           "updatedAt": {
             "type": "string"
           },
-          "version": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ScenarioVersionExtendedSchema"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "currentVersion": {
             "anyOf": [
               {
@@ -9405,7 +8908,6 @@
         "required": [
           "id",
           "userId",
-          "currentVersionId",
           "profileId",
           "templateId",
           "platformId",
@@ -10976,18 +10478,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "currentVersionId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "profileId": {
             "anyOf": [
               {
@@ -11077,7 +10567,6 @@
         "required": [
           "id",
           "userId",
-          "currentVersionId",
           "profileId",
           "templateId",
           "platformId",
@@ -11266,34 +10755,6 @@
         ],
         "title": "Get scenario current version response",
         "description": "Get scenario current version response description"
-      },
-      "UpdateScenarioCurrentVersionResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ScenarioSchema"
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Update scenario current version response",
-        "description": "Update scenario current version response description"
-      },
-      "UpdateScenarioCurrentVersionBodySchema": {
-        "type": "object",
-        "properties": {
-          "currentVersionId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          }
-        },
-        "required": [
-          "currentVersionId"
-        ],
-        "title": "Update scenario current version body",
-        "description": "Update scenario current version body description"
       },
       "UpdateScenarioResponseSchema": {
         "type": "object",
@@ -11488,61 +10949,6 @@
         ],
         "title": "Scenario version",
         "description": "Scenario version description"
-      },
-      "DeleteScenarioVersionResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ScenarioVersionSchema"
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Delete scenario version response",
-        "description": "Delete scenario version response description"
-      },
-      "GetScenarioVersionExportResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ExportDocumentShortSchema"
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Get scenario version export response",
-        "description": "Get scenario version export response description"
-      },
-      "GetScenarioVersionExportsResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExportDocumentShortSchema"
-            }
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Get scenario version exports response",
-        "description": "Get scenario version exports response description"
-      },
-      "GetScenarioVersionResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ScenarioVersionExtendedSchema"
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Get scenario version response",
-        "description": "Get scenario version response description"
       },
       "GetScenarioVersionsResponseSchema": {
         "type": "object",

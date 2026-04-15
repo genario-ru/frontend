@@ -16,7 +16,6 @@ export type ScenarioSchema = {
    * @type string, uuid
    */
   userId: string;
-  currentVersionId: string | null;
   profileId: string | null;
   templateId: string | null;
   platformId: string | null;

@@ -18,6 +18,13 @@ export type GetApiV1ScenariosByScenarioIdCurrentVersionPathParams = {
   scenarioId: string;
 };
 
+export type GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams = {
+  /**
+   * @type string | undefined, uuid
+   */
+  versionId?: string;
+};
+
 /**
  * Get scenario current version response
  * @description Scenario current version retrieved successfully
@@ -73,6 +80,7 @@ export type GetApiV1ScenariosByScenarioIdCurrentVersionQueryResponse =
 export type GetApiV1ScenariosByScenarioIdCurrentVersionQuery = {
   Response: GetApiV1ScenariosByScenarioIdCurrentVersion200;
   PathParams: GetApiV1ScenariosByScenarioIdCurrentVersionPathParams;
+  QueryParams: GetApiV1ScenariosByScenarioIdCurrentVersionQueryParams;
   Errors:
     | GetApiV1ScenariosByScenarioIdCurrentVersion400
     | GetApiV1ScenariosByScenarioIdCurrentVersion401

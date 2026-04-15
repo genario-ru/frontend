@@ -24,7 +24,6 @@ export type ScenarioExtendedSchema = {
    * @type string, uuid
    */
   userId: string;
-  currentVersionId: string | null;
   profileId: string | null;
   templateId: string | null;
   platformId: string | null;
@@ -51,7 +50,6 @@ export type ScenarioExtendedSchema = {
    * @type string
    */
   updatedAt: string;
-  version?: ScenarioVersionExtendedSchema | null;
   currentVersion?: ScenarioVersionExtendedSchema | null;
   profile?: ProfileSchema | null;
   template?: TemplateSchema | null;

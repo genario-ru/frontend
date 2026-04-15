@@ -12,7 +12,6 @@ export const scenarioSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
-    currentVersionId: z.union([z.uuid(), z.null()]),
     profileId: z.union([z.uuid(), z.null()]),
     templateId: z.union([z.uuid(), z.null()]),
     platformId: z.union([z.uuid(), z.null()]),

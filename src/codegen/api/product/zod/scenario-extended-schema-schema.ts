@@ -20,7 +20,6 @@ export const scenarioExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
-    currentVersionId: z.union([z.uuid(), z.null()]),
     profileId: z.union([z.uuid(), z.null()]),
     templateId: z.union([z.uuid(), z.null()]),
     platformId: z.union([z.uuid(), z.null()]),
@@ -32,11 +31,6 @@ export const scenarioExtendedSchemaSchema = z
     targetAudience: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
-    get version() {
-      return z
-        .union([scenarioVersionExtendedSchemaSchema, z.null()])
-        .optional();
-    },
     get currentVersion() {
       return z
         .union([scenarioVersionExtendedSchemaSchema, z.null()])
