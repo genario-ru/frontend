@@ -287,22 +287,6 @@ export type {
   GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
 } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export type {
-  GetApiV1IdeasListsMy200,
-  GetApiV1IdeasListsMy400,
-  GetApiV1IdeasListsMy401,
-  GetApiV1IdeasListsMy402,
-  GetApiV1IdeasListsMy403,
-  GetApiV1IdeasListsMy404,
-  GetApiV1IdeasListsMy500,
-  GetApiV1IdeasListsMyQuery,
-  GetApiV1IdeasListsMyQueryParams,
-  GetApiV1IdeasListsMyQueryParamsSortByEnumKey,
-  GetApiV1IdeasListsMyQueryParamsSortOrderEnumKey,
-  GetApiV1IdeasListsMyQueryResponse,
-} from "./get-api-v1-ideas-lists-my.ts";
-export { getApiV1IdeasListsMyQueryParamsSortByEnum } from "./get-api-v1-ideas-lists-my.ts";
-export { getApiV1IdeasListsMyQueryParamsSortOrderEnum } from "./get-api-v1-ideas-lists-my.ts";
-export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
   GetApiV1Platforms401,
@@ -481,17 +465,6 @@ export type {
   GetApiV1ScenariosChaptersByChapterIdQueryResponse,
 } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export type {
-  GetApiV1ScenariosMy200,
-  GetApiV1ScenariosMy400,
-  GetApiV1ScenariosMy401,
-  GetApiV1ScenariosMy402,
-  GetApiV1ScenariosMy403,
-  GetApiV1ScenariosMy404,
-  GetApiV1ScenariosMy500,
-  GetApiV1ScenariosMyQuery,
-  GetApiV1ScenariosMyQueryResponse,
-} from "./get-api-v1-scenarios-my.ts";
-export type {
   GetApiV1SubscriptonsMy200,
   GetApiV1SubscriptonsMy400,
   GetApiV1SubscriptonsMy401,
@@ -582,14 +555,6 @@ export type { GetMyArchiveItemsResponseSchema } from "./get-my-archive-items-res
 export type { GetMyCreditsBatchesResponseSchema } from "./get-my-credits-batches-response-schema.ts";
 export type { GetMyCreditsUsageResponseMetaSchema } from "./get-my-credits-usage-response-meta-schema.ts";
 export type { GetMyCreditsUsageResponseSchema } from "./get-my-credits-usage-response-schema.ts";
-export type {
-  GetMyIdeasListResponseMetaSchema,
-  GetMyIdeasListResponseMetaSchemaSortByEnumKey,
-  GetMyIdeasListResponseMetaSchemaSortOrderEnumKey,
-} from "./get-my-ideas-list-response-meta-schema.ts";
-export { getMyIdeasListResponseMetaSchemaSortByEnum } from "./get-my-ideas-list-response-meta-schema.ts";
-export { getMyIdeasListResponseMetaSchemaSortOrderEnum } from "./get-my-ideas-list-response-meta-schema.ts";
-export type { GetMyIdeasListsResponseSchema } from "./get-my-ideas-lists-response-schema.ts";
 export type { GetMyPaymentMethodsResponseSchema } from "./get-my-payment-methods-response-schema.ts";
 export type { GetMyPaymentsResponseSchema } from "./get-my-payments-response-schema.ts";
 export type { GetMyProfilesFromChannelsJobResponseSchema } from "./get-my-profiles-from-channels-job-response-schema.ts";
@@ -597,7 +562,6 @@ export type { GetMyProfilesResponseSchema } from "./get-my-profiles-response-sch
 export type { GetMyReferralCodesResponseSchema } from "./get-my-referral-codes-response-schema.ts";
 export type { GetMyReferralInvitesResponseMetaSchema } from "./get-my-referral-invites-response-meta-schema.ts";
 export type { GetMyReferralInvitesResponseSchema } from "./get-my-referral-invites-response-schema.ts";
-export type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";

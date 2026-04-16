@@ -82,14 +82,6 @@ export type { GetApiV1IdeasListsByIdeasListIdExportsQueryKey } from "./get-api-v
 export { getApiV1IdeasListsByIdeasListIdExportsQueryKey } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsByIdeasListIdExportsQueryOptions } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { useGetApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
-export type { GetApiV1IdeasListsMyQueryKey } from "./get-api-v1-ideas-lists-my.ts";
-export { getApiV1IdeasListsMyQueryKey } from "./get-api-v1-ideas-lists-my.ts";
-export { getApiV1IdeasListsMyQueryOptions } from "./get-api-v1-ideas-lists-my.ts";
-export { useGetApiV1IdeasListsMy } from "./get-api-v1-ideas-lists-my.ts";
-export type { GetApiV1IdeasListsMyInfiniteQueryKey } from "./get-api-v1-ideas-lists-my-infinite.ts";
-export { getApiV1IdeasListsMyInfiniteQueryKey } from "./get-api-v1-ideas-lists-my-infinite.ts";
-export { getApiV1IdeasListsMyInfiniteQueryOptions } from "./get-api-v1-ideas-lists-my-infinite.ts";
-export { useGetApiV1IdeasListsMyInfinite } from "./get-api-v1-ideas-lists-my-infinite.ts";
 export type { GetApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./get-api-v1-platforms.ts";
@@ -154,10 +146,6 @@ export type { GetApiV1ScenariosChaptersByChapterIdQueryKey } from "./get-api-v1-
 export { getApiV1ScenariosChaptersByChapterIdQueryKey } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosChaptersByChapterIdQueryOptions } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { useGetApiV1ScenariosChaptersByChapterId } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
-export type { GetApiV1ScenariosMyQueryKey } from "./get-api-v1-scenarios-my.ts";
-export { getApiV1ScenariosMyQueryKey } from "./get-api-v1-scenarios-my.ts";
-export { getApiV1ScenariosMyQueryOptions } from "./get-api-v1-scenarios-my.ts";
-export { useGetApiV1ScenariosMy } from "./get-api-v1-scenarios-my.ts";
 export type { GetApiV1SubscriptonsMyQueryKey } from "./get-api-v1-subscriptons-my.ts";
 export { getApiV1SubscriptonsMyQueryKey } from "./get-api-v1-subscriptons-my.ts";
 export { getApiV1SubscriptonsMyQueryOptions } from "./get-api-v1-subscriptons-my.ts";

@@ -246,17 +246,6 @@ export {
   getApiV1IdeasListsByIdeasListIdQueryResponseSchema,
 } from "./get-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
-  getApiV1IdeasListsMy200Schema,
-  getApiV1IdeasListsMy400Schema,
-  getApiV1IdeasListsMy401Schema,
-  getApiV1IdeasListsMy402Schema,
-  getApiV1IdeasListsMy403Schema,
-  getApiV1IdeasListsMy404Schema,
-  getApiV1IdeasListsMy500Schema,
-  getApiV1IdeasListsMyQueryParamsSchema,
-  getApiV1IdeasListsMyQueryResponseSchema,
-} from "./get-api-v1-ideas-lists-my-schema.ts";
-export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
   getApiV1Platforms401Schema,
@@ -418,16 +407,6 @@ export {
   getApiV1ScenariosChaptersByChapterIdQueryResponseSchema,
 } from "./get-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 export {
-  getApiV1ScenariosMy200Schema,
-  getApiV1ScenariosMy400Schema,
-  getApiV1ScenariosMy401Schema,
-  getApiV1ScenariosMy402Schema,
-  getApiV1ScenariosMy403Schema,
-  getApiV1ScenariosMy404Schema,
-  getApiV1ScenariosMy500Schema,
-  getApiV1ScenariosMyQueryResponseSchema,
-} from "./get-api-v1-scenarios-my-schema.ts";
-export {
   getApiV1SubscriptonsMy200Schema,
   getApiV1SubscriptonsMy400Schema,
   getApiV1SubscriptonsMy401Schema,
@@ -507,8 +486,6 @@ export { getMyArchiveItemsResponseSchemaSchema } from "./get-my-archive-items-re
 export { getMyCreditsBatchesResponseSchemaSchema } from "./get-my-credits-batches-response-schema-schema.ts";
 export { getMyCreditsUsageResponseMetaSchemaSchema } from "./get-my-credits-usage-response-meta-schema-schema.ts";
 export { getMyCreditsUsageResponseSchemaSchema } from "./get-my-credits-usage-response-schema-schema.ts";
-export { getMyIdeasListResponseMetaSchemaSchema } from "./get-my-ideas-list-response-meta-schema-schema.ts";
-export { getMyIdeasListsResponseSchemaSchema } from "./get-my-ideas-lists-response-schema-schema.ts";
 export { getMyPaymentMethodsResponseSchemaSchema } from "./get-my-payment-methods-response-schema-schema.ts";
 export { getMyPaymentsResponseSchemaSchema } from "./get-my-payments-response-schema-schema.ts";
 export { getMyProfilesFromChannelsJobResponseSchemaSchema } from "./get-my-profiles-from-channels-job-response-schema-schema.ts";
@@ -516,7 +493,6 @@ export { getMyProfilesResponseSchemaSchema } from "./get-my-profiles-response-sc
 export { getMyReferralCodesResponseSchemaSchema } from "./get-my-referral-codes-response-schema-schema.ts";
 export { getMyReferralInvitesResponseMetaSchemaSchema } from "./get-my-referral-invites-response-meta-schema-schema.ts";
 export { getMyReferralInvitesResponseSchemaSchema } from "./get-my-referral-invites-response-schema-schema.ts";
-export { getMyScenariosResponseSchemaSchema } from "./get-my-scenarios-response-schema-schema.ts";
 export { getMySubscriptionsResponseSchemaSchema } from "./get-my-subscriptions-response-schema-schema.ts";
 export { getPlatformsForChannelsResponseSchemaSchema } from "./get-platforms-for-channels-response-schema-schema.ts";
 export { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";

@@ -17,7 +17,6 @@ export { getApiV1CreditsUsageMy } from "./get-api-v1-credits-usage-my.ts";
 export { getApiV1IdeasByIdeaId } from "./get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
-export { getApiV1IdeasListsMy } from "./get-api-v1-ideas-lists-my.ts";
 export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
 export { getApiV1ProductionStatuses } from "./get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
@@ -33,7 +32,6 @@ export { getApiV1ScenariosByScenarioIdCurrentVersion } from "./get-api-v1-scenar
 export { getApiV1ScenariosByScenarioIdExports } from "./get-api-v1-scenarios-by-scenario-id-exports.ts";
 export { getApiV1ScenariosByScenarioIdVersions } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosChaptersByChapterId } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
-export { getApiV1ScenariosMy } from "./get-api-v1-scenarios-my.ts";
 export { getApiV1SubscriptonsMy } from "./get-api-v1-subscriptons-my.ts";
 export { getApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./get-api-v1-tariffs-trial.ts";
