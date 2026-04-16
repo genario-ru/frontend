@@ -3,6 +3,7 @@
  * Do not edit manually.
  */
 
+import type { ProductionStatusSchema } from "./production-status-schema.ts";
 import type { ScenarioSceneExtendedSchema } from "./scenario-scene-extended-schema.ts";
 
 export const scenarioChapterExtendedSchemaStatusEnum = {
@@ -28,6 +29,7 @@ export type ScenarioChapterExtendedSchema = {
    * @type string, uuid
    */
   scenarioVersionId: string;
+  productionStatusId: string | null;
   /**
    * @type string
    */
@@ -60,6 +62,7 @@ export type ScenarioChapterExtendedSchema = {
    * @type string
    */
   updatedAt: string;
+  productionStatus?: ProductionStatusSchema | null;
   /**
    * @type array
    */

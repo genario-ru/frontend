@@ -25,6 +25,7 @@ export type UpdateScenarioBodySchema = {
   videoDurationId?: string | null;
   platformId?: string | null;
   profileId?: string | null;
+  productionStatusId?: string | null;
   targetAudience?: string | null;
   toneIds?: string[] | null;
   regenerate?: boolean | null;

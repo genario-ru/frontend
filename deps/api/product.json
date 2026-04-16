@@ -395,6 +395,100 @@
         }
       }
     },
+    "/api/v1/production-statuses": {
+      "get": {
+        "operationId": "getApiV1ProductionStatuses",
+        "tags": [
+          "Platforms"
+        ],
+        "responses": {
+          "200": {
+            "description": "Production statuses retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProductionStatusesResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "entity",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "scenario",
+                "scenarioChapter"
+              ]
+            },
+            "required": true
+          }
+        ]
+      }
+    },
     "/api/v1/attachments/{attachmentId}/download": {
       "get": {
         "operationId": "getApiV1AttachmentsByAttachmentIdDownload",
@@ -6773,6 +6867,98 @@
         "title": "Save idea body",
         "description": "Save idea body description"
       },
+      "ProductionStatusSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "forScenario": {
+            "type": "boolean"
+          },
+          "forScenarioChapter": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "description",
+          "icon",
+          "color",
+          "isDefault",
+          "forScenario",
+          "forScenarioChapter",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Production status",
+        "description": "Production status description"
+      },
+      "GetProductionStatusesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductionStatusSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get production statuses response",
+        "description": "Get production statuses response description"
+      },
       "AddPaymentMethodResponseSchema": {
         "type": "object",
         "properties": {
@@ -8582,6 +8768,18 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
+          "productionStatusId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "name": {
             "type": "string"
           },
@@ -8617,6 +8815,7 @@
         "required": [
           "id",
           "scenarioVersionId",
+          "productionStatusId",
           "name",
           "description",
           "status",
@@ -8806,6 +9005,18 @@
               }
             ]
           },
+          "productionStatusId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "saved": {
             "type": "boolean"
           },
@@ -8891,6 +9102,16 @@
               }
             ]
           },
+          "productionStatus": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProductionStatusSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tones": {
             "anyOf": [
               {
@@ -8913,6 +9134,7 @@
           "platformId",
           "videoTypeId",
           "videoDurationId",
+          "productionStatusId",
           "saved",
           "name",
           "description",
@@ -10538,6 +10760,18 @@
               }
             ]
           },
+          "productionStatusId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "saved": {
             "type": "boolean"
           },
@@ -10572,6 +10806,7 @@
           "platformId",
           "videoTypeId",
           "videoDurationId",
+          "productionStatusId",
           "saved",
           "name",
           "description",
@@ -10831,6 +11066,18 @@
             ]
           },
           "profileId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "productionStatusId": {
             "anyOf": [
               {
                 "type": "string",
@@ -11256,7 +11503,6 @@
           "endTime",
           "createdAt",
           "updatedAt",
-          "preview",
           "components"
         ],
         "title": "Scenario scene extended",
@@ -11274,6 +11520,18 @@
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "productionStatusId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "name": {
             "type": "string"
@@ -11306,6 +11564,16 @@
           "updatedAt": {
             "type": "string"
           },
+          "productionStatus": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProductionStatusSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "scenes": {
             "type": "array",
             "items": {
@@ -11316,6 +11584,7 @@
         "required": [
           "id",
           "scenarioVersionId",
+          "productionStatusId",
           "name",
           "description",
           "status",
@@ -11366,6 +11635,11 @@
             "type": "string",
             "minLength": 16,
             "maxLength": 4096
+          },
+          "productionStatusId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
         "required": [

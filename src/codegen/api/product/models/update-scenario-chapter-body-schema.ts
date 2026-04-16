@@ -20,4 +20,8 @@ export type UpdateScenarioChapterBodySchema = {
    * @type string
    */
   description: string;
+  /**
+   * @type string | undefined, uuid
+   */
+  productionStatusId?: string;
 };

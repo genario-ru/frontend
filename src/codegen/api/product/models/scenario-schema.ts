@@ -21,6 +21,7 @@ export type ScenarioSchema = {
   platformId: string | null;
   videoTypeId: string | null;
   videoDurationId: string | null;
+  productionStatusId: string | null;
   /**
    * @type boolean
    */

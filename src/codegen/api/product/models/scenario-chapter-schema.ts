@@ -26,6 +26,7 @@ export type ScenarioChapterSchema = {
    * @type string, uuid
    */
   scenarioVersionId: string;
+  productionStatusId: string | null;
   /**
    * @type string
    */

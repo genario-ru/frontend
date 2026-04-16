@@ -43,7 +43,7 @@ export type ScenarioSceneExtendedSchema = {
    * @type string
    */
   updatedAt: string;
-  preview: ScenarioScenePreviewSchema | null;
+  preview?: ScenarioScenePreviewSchema | null;
   /**
    * @type array
    */

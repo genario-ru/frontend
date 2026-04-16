@@ -21,7 +21,7 @@ export const scenarioSceneExtendedSchemaSchema = z
     createdAt: z.string(),
     updatedAt: z.string(),
     get preview() {
-      return z.union([scenarioScenePreviewSchemaSchema, z.null()]);
+      return z.union([scenarioScenePreviewSchemaSchema, z.null()]).optional();
     },
     get components() {
       return z.array(

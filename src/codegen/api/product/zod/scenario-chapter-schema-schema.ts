@@ -12,6 +12,7 @@ export const scenarioChapterSchemaSchema = z
   .object({
     id: z.uuid(),
     scenarioVersionId: z.uuid(),
+    productionStatusId: z.union([z.uuid(), z.null()]),
     name: z.string(),
     description: z.string(),
     status: z.enum(["pending", "generation", "failed", "ready"]),

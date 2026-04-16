@@ -19,6 +19,7 @@ export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ide
 export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsMy } from "./get-api-v1-ideas-lists-my.ts";
 export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
+export { getApiV1ProductionStatuses } from "./get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
 export { getApiV1ProfilesChannelsJobsMy } from "./get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsPlatforms } from "./get-api-v1-profiles-channels-platforms.ts";

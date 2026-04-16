@@ -6,6 +6,7 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { platformSchemaSchema } from "./platform-schema-schema.ts";
+import { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
 import { profileSchemaSchema } from "./profile-schema-schema.ts";
 import { scenarioVersionExtendedSchemaSchema } from "./scenario-version-extended-schema-schema.ts";
 import { templateSchemaSchema } from "./template-schema-schema.ts";
@@ -25,6 +26,7 @@ export const scenarioExtendedSchemaSchema = z
     platformId: z.union([z.uuid(), z.null()]),
     videoTypeId: z.union([z.uuid(), z.null()]),
     videoDurationId: z.union([z.uuid(), z.null()]),
+    productionStatusId: z.union([z.uuid(), z.null()]),
     saved: z.boolean(),
     name: z.string(),
     description: z.string(),
@@ -50,6 +52,9 @@ export const scenarioExtendedSchemaSchema = z
     },
     get videoDuration() {
       return z.union([videoDurationSchemaSchema, z.null()]).optional();
+    },
+    get productionStatus() {
+      return z.union([productionStatusSchemaSchema, z.null()]).optional();
     },
     get tones() {
       return z

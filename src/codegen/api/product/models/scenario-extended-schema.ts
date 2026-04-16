@@ -4,6 +4,7 @@
  */
 
 import type { PlatformSchema } from "./platform-schema.ts";
+import type { ProductionStatusSchema } from "./production-status-schema.ts";
 import type { ProfileSchema } from "./profile-schema.ts";
 import type { ScenarioVersionExtendedSchema } from "./scenario-version-extended-schema.ts";
 import type { TemplateSchema } from "./template-schema.ts";
@@ -29,6 +30,7 @@ export type ScenarioExtendedSchema = {
   platformId: string | null;
   videoTypeId: string | null;
   videoDurationId: string | null;
+  productionStatusId: string | null;
   /**
    * @type boolean
    */
@@ -56,5 +58,6 @@ export type ScenarioExtendedSchema = {
   platform?: PlatformSchema | null;
   videoType?: VideoTypeSchema | null;
   videoDuration?: VideoDurationSchema | null;
+  productionStatus?: ProductionStatusSchema | null;
   tones?: ToneSchema[] | null;
 };

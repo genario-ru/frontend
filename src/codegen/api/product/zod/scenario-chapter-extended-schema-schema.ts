@@ -5,6 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
 import { scenarioSceneExtendedSchemaSchema } from "./scenario-scene-extended-schema-schema.ts";
 
 /**
@@ -14,6 +15,7 @@ export const scenarioChapterExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
     scenarioVersionId: z.uuid(),
+    productionStatusId: z.union([z.uuid(), z.null()]),
     name: z.string(),
     description: z.string(),
     status: z.enum(["pending", "generation", "failed", "ready"]),
@@ -21,6 +23,9 @@ export const scenarioChapterExtendedSchemaSchema = z
     endTime: z.int().min(-9007199254740991).max(9007199254740991),
     createdAt: z.string(),
     updatedAt: z.string(),
+    get productionStatus() {
+      return z.union([productionStatusSchemaSchema, z.null()]).optional();
+    },
     get scenes() {
       return z.array(
         scenarioSceneExtendedSchemaSchema.describe(
