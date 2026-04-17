@@ -10,6 +10,10 @@ export function useScenarioAppMenubarMoreActions() {
     return activeSubscriptionTariff?.exportAvailable ?? false;
   }, [activeSubscriptionTariff]);
 
+  const isVersionHistoryAvailable = useMemo(() => {
+    return activeSubscriptionTariff?.versionHistoryAvailable ?? false;
+  }, [activeSubscriptionTariff]);
+
   const handleDropdownMenuClose = useCallback(() => {
     setIsDropdownMenuOpen(false);
   }, []);
@@ -17,6 +21,7 @@ export function useScenarioAppMenubarMoreActions() {
   return {
     isDropdownMenuOpen,
     isExportAvailable,
+    isVersionHistoryAvailable,
     setIsDropdownMenuOpen,
     handleDropdownMenuClose,
   };

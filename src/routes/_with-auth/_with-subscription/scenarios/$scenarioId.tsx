@@ -5,6 +5,7 @@ import { ScenarioComponent } from "@/entrypoints/scenario/component";
 import { z } from "@/lib/zod";
 
 const scenarioSearchSchema = z.object({
+  versionId: z.string().optional(),
   chapterId: z.string().optional(),
   sceneId: z.string().optional(),
   tab: z.string().optional(),

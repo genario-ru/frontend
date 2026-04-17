@@ -5,10 +5,12 @@ const REFRESH_INTERVAL = 3000;
 
 type UseGetCurrentScenarioVersionParams = {
   scenarioId?: string | null;
+  versionId?: string;
 };
 
 export function useGetCurrentScenarioVersion({
   scenarioId,
+  versionId,
 }: UseGetCurrentScenarioVersionParams) {
   const {
     data: scenarioCurrentVersionData,
@@ -17,6 +19,7 @@ export function useGetCurrentScenarioVersion({
   } = useGetApiV1ScenariosByScenarioIdCurrentVersion(
     {
       scenarioId: scenarioId as string,
+      params: { versionId },
     },
     {
       query: {

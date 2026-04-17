@@ -12,7 +12,7 @@ type UseScenarioChaptersParams = {
 export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
   const navigate = useNavigate();
 
-  const { chapterId } = useSearch({
+  const { chapterId, versionId } = useSearch({
     from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
   });
 
@@ -22,6 +22,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
     isScenarioCurrentVersionError,
   } = useGetCurrentScenarioVersion({
     scenarioId,
+    versionId,
   });
 
   const scenarioVideoType = useMemo(() => {
@@ -101,7 +102,7 @@ export function useScenarioChapters({ scenarioId }: UseScenarioChaptersParams) {
       navigate({
         to: "/scenarios/$scenarioId",
         params: { scenarioId },
-        search: { chapterId },
+        search: (prev) => ({ ...prev, chapterId }),
         replace: true,
       });
     },

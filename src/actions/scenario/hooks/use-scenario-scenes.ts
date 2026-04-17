@@ -101,7 +101,7 @@ export function useScenarioScenes({
       navigate({
         to: "/scenarios/$scenarioId",
         params: { scenarioId },
-        search: { chapterId, sceneId },
+        search: (prev) => ({ ...prev, chapterId, sceneId }),
         replace: true,
         resetScroll: false,
       });

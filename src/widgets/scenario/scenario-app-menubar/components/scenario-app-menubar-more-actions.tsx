@@ -12,6 +12,7 @@ import {
 import { useScenarioAppMenubarMoreActions } from "../hooks/use-scenario-app-menubar-more-actions";
 import { ScenarioAppMenubarDeleteDialog } from "./scenario-app-menubar-delete-dialog";
 import { ScenarioAppMenubarExportSubmenu } from "./scenario-app-menubar-export-submenu";
+import { ScenarioAppMenubarVersionsSubmenu } from "./scenario-app-menubar-versions-submenu";
 
 type ScenarioAppMenubarMoreActionsProps = {
   scenarioId: string;
@@ -25,6 +26,7 @@ export function ScenarioAppMenubarMoreActions({
   const {
     isDropdownMenuOpen,
     isExportAvailable,
+    isVersionHistoryAvailable,
     setIsDropdownMenuOpen,
     handleDropdownMenuClose,
   } = useScenarioAppMenubarMoreActions();
@@ -47,6 +49,12 @@ export function ScenarioAppMenubarMoreActions({
           >
             Редактировать
           </AppMenubarButtonLink>
+          {isVersionHistoryAvailable && (
+            <ScenarioAppMenubarVersionsSubmenu
+              scenarioId={scenarioId}
+              handleDropdownMenuClose={handleDropdownMenuClose}
+            />
+          )}
           {isExportAvailable && scenarioVersionId && (
             <ScenarioAppMenubarExportSubmenu
               scenarioId={scenarioId}

@@ -33,7 +33,11 @@ export function useScenarioChapterIntersectingScene({
       navigate({
         to: "/scenarios/$scenarioId",
         params: { scenarioId },
-        search: { chapterId, sceneId: intersectingSceneId },
+        search: (prev) => ({
+          ...prev,
+          chapterId,
+          sceneId: intersectingSceneId,
+        }),
         replace: true,
         resetScroll: false,
       });

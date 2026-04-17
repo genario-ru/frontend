@@ -1,3 +1,4 @@
+import { useSearch } from "@tanstack/react-router";
 import { useMemo } from "react";
 
 import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
@@ -9,15 +10,23 @@ type UseScenarioAppMenubarParams = {
 export function useScenarioAppMenubar({
   scenarioId,
 }: UseScenarioAppMenubarParams) {
+  const { versionId: selectedVersionId } = useSearch({
+    from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
+  });
+
   const { scenarioData, isScenarioLoading, isScenarioError } = useGetScenario({
     scenarioId,
   });
 
   const scenarioVersionId = useMemo(() => {
+    if (selectedVersionId) {
+      return selectedVersionId;
+    }
+
     if (scenarioData?.data?.currentVersion?.id) {
       return scenarioData.data.currentVersion.id;
     }
-  }, [scenarioData]);
+  }, [scenarioData, selectedVersionId]);
 
   const scenarioTitle = useMemo(() => {
     if (!scenarioData) {
