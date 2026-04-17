@@ -24,7 +24,7 @@ export function ArchiveItemBadges({ archiveItem }: ArchiveItemBadgesProps) {
           archiveItem.data.template,
           archiveItem.data.videoType,
           archiveItem.data.videoDuration,
-          archiveItem.data.platform,
+          archiveItem.data.platforms,
         ]}
         badgeProps={{ size: "sm", variant: "tertiary" }}
       />

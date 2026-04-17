@@ -39,7 +39,7 @@ export const scenarioSettingsParamsConfigurationSubformSchema =
   createScenarioSchema.pick({
     videoTypeId: true,
     videoDurationId: true,
-    platformId: true,
+    platformIds: true,
     profileId: true,
     targetAudience: true,
     toneIds: true,

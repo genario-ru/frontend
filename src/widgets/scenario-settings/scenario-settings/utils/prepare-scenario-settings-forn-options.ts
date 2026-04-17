@@ -44,7 +44,8 @@ export const prepareScenarioSettingsFormOptions = ({
         videoTypeId:
           scenarioData?.data.videoTypeId ?? ideaData?.data.videoType.id,
         videoDurationId: scenarioData?.data.videoDurationId,
-        platformId: scenarioData?.data.platformId,
+        platformIds:
+          scenarioData?.data.platforms?.map((platform) => platform.id) ?? [],
         profileId:
           scenarioData?.data.profileId ?? ideaData?.data.ideasList.profileId,
         targetAudience:

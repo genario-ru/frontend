@@ -88,20 +88,15 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
           )}
         </form.AppField>
         <form.AppField
-          name={`${ScenarioSettingsFormSteps.ParamsConfiguration}.platformId`}
+          name={`${ScenarioSettingsFormSteps.ParamsConfiguration}.platformIds`}
         >
           {(field) => (
-            <field.SelectField
-              label="Платформа"
-              itemGroups={[
-                {
-                  items: platformsData.data.map((item) => ({
-                    value: item.id,
-                    label: item.name,
-                  })),
-                },
-              ]}
-              buttonProps={{ size: "lg" }}
+            <field.CheckboxChipsField
+              title="Платформы"
+              items={platformsData.data.map((platform) => ({
+                value: platform.id,
+                children: platform.name,
+              }))}
             />
           )}
         </form.AppField>
