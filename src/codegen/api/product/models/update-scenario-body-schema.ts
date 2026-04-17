@@ -23,10 +23,10 @@ export type UpdateScenarioBodySchema = {
   templateId?: string | null;
   videoTypeId?: string | null;
   videoDurationId?: string | null;
-  platformId?: string | null;
   profileId?: string | null;
   productionStatusId?: string | null;
   targetAudience?: string | null;
+  platformIds?: string[] | null;
   toneIds?: string[] | null;
   regenerate?: boolean | null;
 };

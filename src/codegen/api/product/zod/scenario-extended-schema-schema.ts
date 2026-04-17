@@ -23,7 +23,6 @@ export const scenarioExtendedSchemaSchema = z
     userId: z.uuid(),
     profileId: z.union([z.uuid(), z.null()]),
     templateId: z.union([z.uuid(), z.null()]),
-    platformId: z.union([z.uuid(), z.null()]),
     videoTypeId: z.union([z.uuid(), z.null()]),
     videoDurationId: z.union([z.uuid(), z.null()]),
     productionStatusId: z.union([z.uuid(), z.null()]),
@@ -44,9 +43,6 @@ export const scenarioExtendedSchemaSchema = z
     get template() {
       return z.union([templateSchemaSchema, z.null()]).optional();
     },
-    get platform() {
-      return z.union([platformSchemaSchema, z.null()]).optional();
-    },
     get videoType() {
       return z.union([videoTypeSchemaSchema, z.null()]).optional();
     },
@@ -55,6 +51,14 @@ export const scenarioExtendedSchemaSchema = z
     },
     get productionStatus() {
       return z.union([productionStatusSchemaSchema, z.null()]).optional();
+    },
+    get platforms() {
+      return z
+        .union([
+          z.array(platformSchemaSchema.describe("Platform description")),
+          z.null(),
+        ])
+        .optional();
     },
     get tones() {
       return z

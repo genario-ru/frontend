@@ -8276,6 +8276,67 @@
         "title": "Archive ideas list",
         "description": "Archive ideas list description"
       },
+      "VideoDurationSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minSeconds": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "maxSeconds": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "description",
+          "minSeconds",
+          "maxSeconds",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Video duration",
+        "description": "Video duration description"
+      },
       "PlatformSchema": {
         "type": "object",
         "properties": {
@@ -8376,67 +8437,6 @@
         ],
         "title": "Platform",
         "description": "Platform description"
-      },
-      "VideoDurationSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "minSeconds": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
-          },
-          "maxSeconds": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": -9007199254740991,
-                "maximum": 9007199254740991
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "slug",
-          "name",
-          "description",
-          "minSeconds",
-          "maxSeconds",
-          "createdAt",
-          "updatedAt"
-        ],
-        "title": "Video duration",
-        "description": "Video duration description"
       },
       "ScenarioChapterSchema": {
         "type": "object",
@@ -8548,16 +8548,6 @@
               }
             ]
           },
-          "platform": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/PlatformSchema"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "videoType": {
             "anyOf": [
               {
@@ -8572,6 +8562,19 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/VideoDurationSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "platforms": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PlatformSchema"
+                }
               },
               {
                 "type": "null"
@@ -8641,18 +8644,6 @@
             ]
           },
           "templateId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "platformId": {
             "anyOf": [
               {
                 "type": "string",
@@ -8755,16 +8746,6 @@
               }
             ]
           },
-          "platform": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/PlatformSchema"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "videoType": {
             "anyOf": [
               {
@@ -8795,6 +8776,19 @@
               }
             ]
           },
+          "platforms": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PlatformSchema"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tones": {
             "anyOf": [
               {
@@ -8814,7 +8808,6 @@
           "userId",
           "profileId",
           "templateId",
-          "platformId",
           "videoTypeId",
           "videoDurationId",
           "productionStatusId",
@@ -10407,18 +10400,6 @@
               }
             ]
           },
-          "platformId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "videoTypeId": {
             "anyOf": [
               {
@@ -10486,7 +10467,6 @@
           "userId",
           "profileId",
           "templateId",
-          "platformId",
           "videoTypeId",
           "videoDurationId",
           "productionStatusId",
@@ -10552,18 +10532,6 @@
               }
             ]
           },
-          "platformId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "profileId": {
             "anyOf": [
               {
@@ -10595,6 +10563,21 @@
             "type": "string",
             "minLength": 16,
             "maxLength": 4096
+          },
+          "platformIds": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "toneIds": {
             "anyOf": [
@@ -10720,18 +10703,6 @@
               }
             ]
           },
-          "platformId": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid",
-                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "profileId": {
             "anyOf": [
               {
@@ -10760,6 +10731,21 @@
             "anyOf": [
               {
                 "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "platformIds": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                }
               },
               {
                 "type": "null"

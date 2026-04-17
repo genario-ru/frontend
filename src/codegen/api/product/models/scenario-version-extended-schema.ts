@@ -46,9 +46,9 @@ export type ScenarioVersionExtendedSchema = {
    */
   updatedAt: string;
   profile?: ProfileSchema | null;
-  platform?: PlatformSchema | null;
   videoType?: VideoTypeSchema | null;
   videoDuration?: VideoDurationSchema | null;
+  platforms?: PlatformSchema[] | null;
   tones?: ToneSchema[] | null;
   scenarioChapters?: ScenarioChapterSchema[] | null;
 };

@@ -25,14 +25,19 @@ export const scenarioVersionExtendedSchemaSchema = z
     get profile() {
       return z.union([profileSchemaSchema, z.null()]).optional();
     },
-    get platform() {
-      return z.union([platformSchemaSchema, z.null()]).optional();
-    },
     get videoType() {
       return z.union([videoTypeSchemaSchema, z.null()]).optional();
     },
     get videoDuration() {
       return z.union([videoDurationSchemaSchema, z.null()]).optional();
+    },
+    get platforms() {
+      return z
+        .union([
+          z.array(platformSchemaSchema.describe("Platform description")),
+          z.null(),
+        ])
+        .optional();
     },
     get tones() {
       return z

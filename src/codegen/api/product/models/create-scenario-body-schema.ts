@@ -11,7 +11,6 @@ export type CreateScenarioBodySchema = {
   templateId?: string | null;
   videoTypeId?: string | null;
   videoDurationId?: string | null;
-  platformId?: string | null;
   profileId?: string | null;
   targetAudience?: string | null;
   /**
@@ -26,5 +25,6 @@ export type CreateScenarioBodySchema = {
    * @type string
    */
   description: string;
+  platformIds?: string[] | null;
   toneIds?: string[] | null;
 };

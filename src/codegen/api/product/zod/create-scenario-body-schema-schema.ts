@@ -13,11 +13,11 @@ export const createScenarioBodySchemaSchema = z
     templateId: z.optional(z.union([z.uuid(), z.null()])),
     videoTypeId: z.optional(z.union([z.uuid(), z.null()])),
     videoDurationId: z.optional(z.union([z.uuid(), z.null()])),
-    platformId: z.optional(z.union([z.uuid(), z.null()])),
     profileId: z.optional(z.union([z.uuid(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
     name: z.string().min(3).max(256),
     description: z.string().min(16).max(4096),
+    platformIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
     toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
   })
   .describe("Create scenario body description");

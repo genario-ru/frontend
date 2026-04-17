@@ -18,7 +18,6 @@ export type ScenarioSchema = {
   userId: string;
   profileId: string | null;
   templateId: string | null;
-  platformId: string | null;
   videoTypeId: string | null;
   videoDurationId: string | null;
   productionStatusId: string | null;

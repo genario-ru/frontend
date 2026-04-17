@@ -14,7 +14,6 @@ export const scenarioSchemaSchema = z
     userId: z.uuid(),
     profileId: z.union([z.uuid(), z.null()]),
     templateId: z.union([z.uuid(), z.null()]),
-    platformId: z.union([z.uuid(), z.null()]),
     videoTypeId: z.union([z.uuid(), z.null()]),
     videoDurationId: z.union([z.uuid(), z.null()]),
     productionStatusId: z.union([z.uuid(), z.null()]),

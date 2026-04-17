@@ -27,7 +27,6 @@ export type ScenarioExtendedSchema = {
   userId: string;
   profileId: string | null;
   templateId: string | null;
-  platformId: string | null;
   videoTypeId: string | null;
   videoDurationId: string | null;
   productionStatusId: string | null;
@@ -55,9 +54,9 @@ export type ScenarioExtendedSchema = {
   currentVersion?: ScenarioVersionExtendedSchema | null;
   profile?: ProfileSchema | null;
   template?: TemplateSchema | null;
-  platform?: PlatformSchema | null;
   videoType?: VideoTypeSchema | null;
   videoDuration?: VideoDurationSchema | null;
   productionStatus?: ProductionStatusSchema | null;
+  platforms?: PlatformSchema[] | null;
   tones?: ToneSchema[] | null;
 };
