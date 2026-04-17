@@ -10,6 +10,7 @@ import type {
 } from "@/codegen/api/product";
 import {
   getApiV1ArchiveItemsMyQueryKey,
+  getApiV1ScenariosByScenarioIdCurrentVersionQueryKey,
   getApiV1ScenariosByScenarioIdQueryKey,
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
@@ -88,6 +89,14 @@ export function useScenarioSettingsForm({
                     queryKey: getApiV1ScenariosByScenarioIdQueryKey({
                       scenarioId: data.data.id,
                     }),
+                    refetchType: "none",
+                  });
+
+                  queryClient.invalidateQueries({
+                    queryKey:
+                      getApiV1ScenariosByScenarioIdCurrentVersionQueryKey({
+                        scenarioId: data.data.id,
+                      }),
                     refetchType: "none",
                   });
 
