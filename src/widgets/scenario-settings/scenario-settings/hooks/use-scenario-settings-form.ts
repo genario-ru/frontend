@@ -88,6 +88,7 @@ export function useScenarioSettingsForm({
                     queryKey: getApiV1ScenariosByScenarioIdQueryKey({
                       scenarioId: data.data.id,
                     }),
+                    refetchType: "none",
                   });
 
                   navigate({

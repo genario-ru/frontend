@@ -103,6 +103,7 @@ export const ScenarioSettingsFormButtons = withForm({
         return (
           <div className="flex items-center gap-2">
             <Button
+              type="submit"
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
@@ -110,6 +111,7 @@ export const ScenarioSettingsFormButtons = withForm({
               Сохранить
             </Button>
             <Button
+              type="button"
               priority="primary"
               size="lg"
               disabled={isLoading}
