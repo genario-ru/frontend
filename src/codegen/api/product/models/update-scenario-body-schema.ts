@@ -11,15 +11,15 @@ export type UpdateScenarioBodySchema = {
   /**
    * @minLength 3
    * @maxLength 256
-   * @type string
+   * @type string | undefined
    */
-  name: string;
+  name?: string;
   /**
    * @minLength 16
    * @maxLength 4096
-   * @type string
+   * @type string | undefined
    */
-  description: string;
+  description?: string;
   templateId?: string | null;
   videoTypeId?: string | null;
   videoDurationId?: string | null;

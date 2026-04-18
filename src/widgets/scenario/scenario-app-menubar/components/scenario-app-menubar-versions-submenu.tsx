@@ -5,6 +5,7 @@ import { AppMenubarDropdownMenuButton } from "@/features/navigation/app-menubar/
 import { ScenarioVersionRadioIndicator } from "@/features/scenario/scenario-app-menubar/components/scenario-version-radio-indicator";
 import {
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -14,12 +15,10 @@ import { useScenarioAppMenubarVersionsSubmenu } from "../hooks/use-scenario-app-
 
 type ScenarioAppMenubarVersionsSubmenuProps = {
   scenarioId: string;
-  handleDropdownMenuClose: () => void;
 };
 
 export function ScenarioAppMenubarVersionsSubmenu({
   scenarioId,
-  handleDropdownMenuClose,
 }: ScenarioAppMenubarVersionsSubmenuProps) {
   const { versionItems, activeVersionId } =
     useScenarioAppMenubarVersionsSubmenu({ scenarioId });
@@ -37,19 +36,19 @@ export function ScenarioAppMenubarVersionsSubmenu({
             const isActive = version.id === activeVersionId;
 
             return (
-              <AppMenubarButtonLink
-                key={version.id}
-                to="/scenarios/$scenarioId"
-                params={{ scenarioId }}
-                search={(prev) => ({ ...prev, versionId: version.id })}
-                align="start"
-                iconPosition="left"
-                className="w-full"
-                icon={<ScenarioVersionRadioIndicator checked={isActive} />}
-                onClick={handleDropdownMenuClose}
-              >
-                {version.label}
-              </AppMenubarButtonLink>
+              <DropdownMenuItem key={version.id} asChild>
+                <AppMenubarButtonLink
+                  to="/scenarios/$scenarioId"
+                  params={{ scenarioId }}
+                  search={(prev) => ({ ...prev, versionId: version.id })}
+                  align="start"
+                  iconPosition="left"
+                  className="w-full"
+                  icon={<ScenarioVersionRadioIndicator checked={isActive} />}
+                >
+                  {version.label}
+                </AppMenubarButtonLink>
+              </DropdownMenuItem>
             );
           })}
         </DropdownMenuGroup>

@@ -10,8 +10,8 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const updateScenarioBodySchemaSchema = z
   .object({
-    name: z.string().min(3).max(256),
-    description: z.string().min(16).max(4096),
+    name: z.optional(z.string().min(3).max(256)),
+    description: z.optional(z.string().min(16).max(4096)),
     templateId: z.optional(z.union([z.uuid(), z.null()])),
     videoTypeId: z.optional(z.union([z.uuid(), z.null()])),
     videoDurationId: z.optional(z.union([z.uuid(), z.null()])),

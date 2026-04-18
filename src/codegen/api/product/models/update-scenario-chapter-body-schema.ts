@@ -11,15 +11,15 @@ export type UpdateScenarioChapterBodySchema = {
   /**
    * @minLength 3
    * @maxLength 256
-   * @type string
+   * @type string | undefined
    */
-  name: string;
+  name?: string;
   /**
    * @minLength 16
    * @maxLength 4096
-   * @type string
+   * @type string | undefined
    */
-  description: string;
+  description?: string;
   /**
    * @type string | undefined, uuid
    */

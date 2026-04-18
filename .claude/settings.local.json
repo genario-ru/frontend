@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pnpm lint:typescript)"
+      "Bash(pnpm lint:typescript)",
+      "Bash(pnpm lint:fix)"
     ]
   }
 }

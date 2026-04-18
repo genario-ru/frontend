@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useMemo } from "react";
 
 import { Badge } from "@/shared/components/ui/badge";
@@ -13,6 +14,7 @@ type ScenarioChapterHeaderProps = {
   description: string | null | undefined;
   startTime: number;
   endTime: number;
+  status?: ReactNode;
 };
 
 export function ScenarioChapterHeader({
@@ -21,6 +23,7 @@ export function ScenarioChapterHeader({
   startTime,
   endTime,
   description,
+  status,
 }: ScenarioChapterHeaderProps) {
   const time = useMemo(() => {
     return `${formatTime({ time: startTime })} - ${formatTime({ time: endTime })}`;
@@ -35,6 +38,7 @@ export function ScenarioChapterHeader({
           </Heading>
         )}
         <Badge>{time}</Badge>
+        {status}
       </div>
       {description && <p className="text-neutral-7 text-sm">{description}</p>}
     </Island>

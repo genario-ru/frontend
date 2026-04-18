@@ -12,6 +12,7 @@ import {
 import { useScenarioAppMenubarMoreActions } from "../hooks/use-scenario-app-menubar-more-actions";
 import { ScenarioAppMenubarDeleteDialog } from "./scenario-app-menubar-delete-dialog";
 import { ScenarioAppMenubarExportSubmenu } from "./scenario-app-menubar-export-submenu";
+import { ScenarioAppMenubarStatusSubmenu } from "./scenario-app-menubar-status-submenu";
 import { ScenarioAppMenubarVersionsSubmenu } from "./scenario-app-menubar-versions-submenu";
 
 type ScenarioAppMenubarMoreActionsProps = {
@@ -49,11 +50,12 @@ export function ScenarioAppMenubarMoreActions({
           >
             Редактировать
           </AppMenubarButtonLink>
+          <ScenarioAppMenubarStatusSubmenu
+            scenarioId={scenarioId}
+            handleDropdownMenuClose={handleDropdownMenuClose}
+          />
           {isVersionHistoryAvailable && (
-            <ScenarioAppMenubarVersionsSubmenu
-              scenarioId={scenarioId}
-              handleDropdownMenuClose={handleDropdownMenuClose}
-            />
+            <ScenarioAppMenubarVersionsSubmenu scenarioId={scenarioId} />
           )}
           {isExportAvailable && scenarioVersionId && (
             <ScenarioAppMenubarExportSubmenu

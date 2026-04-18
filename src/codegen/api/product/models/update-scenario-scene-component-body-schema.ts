@@ -9,13 +9,13 @@
  */
 export type UpdateScenarioSceneComponentBodySchema = {
   /**
-   * @minLength 3
+   * @minLength 1
    * @maxLength 256
    * @type string
    */
   name: string;
   /**
-   * @minLength 16
+   * @minLength 1
    * @maxLength 4096
    * @type string
    */

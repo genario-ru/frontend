@@ -11,6 +11,7 @@ import {
   ScenarioChapterScenes,
   ScenarioChapterScenesSkeleton,
 } from "./scenario-chapter-scenes";
+import { ScenarioChapterStatus } from "./scenario-chapter-status";
 
 type ScenarioChapterProps = {
   scenarioId: string;
@@ -58,6 +59,7 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         description={activeScenarioChapter.description}
         startTime={activeScenarioChapter.startTime}
         endTime={activeScenarioChapter.endTime}
+        status={<ScenarioChapterStatus chapterId={activeScenarioChapter.id} />}
       />
       <ScenarioChapterScenes
         chapterId={activeScenarioChapter.id}

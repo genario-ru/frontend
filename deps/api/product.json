@@ -10778,10 +10778,6 @@
             ]
           }
         },
-        "required": [
-          "name",
-          "description"
-        ],
         "title": "Update scenario body",
         "description": "Update scenario body description"
       },
@@ -11295,10 +11291,6 @@
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           }
         },
-        "required": [
-          "name",
-          "description"
-        ],
         "title": "Update scenario chapter body",
         "description": "Update scenario chapter body description"
       },
@@ -11482,12 +11474,12 @@
         "properties": {
           "name": {
             "type": "string",
-            "minLength": 3,
+            "minLength": 1,
             "maxLength": 256
           },
           "content": {
             "type": "string",
-            "minLength": 16,
+            "minLength": 1,
             "maxLength": 4096
           }
         },
