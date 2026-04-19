@@ -1,17 +1,16 @@
 import { Outlet } from "@tanstack/react-router";
 
 import { AppSidebar } from "@/widgets/navigation/app-sidebar/components/app-sidebar";
-import { AppSidebarProvider } from "@/widgets/navigation/app-sidebar/components/app-sidebar-provider";
 
 export function AppComponent() {
   return (
-    <AppSidebarProvider defaultOpen={true}>
-      <aside className="sticky top-0 bottom-0 flex h-full w-fit flex-col py-8 pl-8">
+    <>
+      <aside className="sticky top-0 bottom-0 hidden h-full w-fit flex-col py-8 pl-8 md:flex">
         <AppSidebar />
       </aside>
-      <div className="flex h-fit min-h-full max-w-7xl min-w-0 flex-1 flex-col pr-8 pl-5">
+      <div className="flex h-fit min-h-full max-w-7xl min-w-0 flex-1 flex-col md:pr-8 md:pl-5">
         <Outlet />
       </div>
-    </AppSidebarProvider>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import { BadgesList } from "@/features/badges/badges-list/badges-list";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
+import { BackButton } from "@/shared/components/common/back-button";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
@@ -66,7 +67,7 @@ export function IdeasListAppMenubar({
 
   return (
     <AppMenubar
-      backButton
+      actions={<BackButton />}
       title={title}
       description={description}
       left={left}

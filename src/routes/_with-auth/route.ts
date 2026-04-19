@@ -1,7 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { getGetSessionQueryOptions } from "@/codegen/api/auth";
-import { signOutUser } from "@/lib/auth/utils/logout-user";
 
 export const Route = createFileRoute("/_with-auth")({
   beforeLoad: async ({ context, location }) => {
@@ -10,7 +9,14 @@ export const Route = createFileRoute("/_with-auth")({
     );
 
     if (!sessionData) {
-      signOutUser({ redirect: location.pathname });
+      throw redirect({
+        replace: true,
+        reloadDocument: true,
+        to: "/sign-in",
+        search: {
+          redirect: location.pathname,
+        },
+      });
     }
 
     return {

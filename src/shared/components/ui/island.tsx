@@ -13,8 +13,8 @@ export type IslandProps = ComponentProps<"div"> & {
   row?: boolean;
   noGap?: boolean;
   noPadding?: boolean;
-  as?: ElementType;
   actions?: ReactNode;
+  as?: ElementType;
 };
 
 export type IslandSectionProps = ComponentProps<"section"> & {
@@ -44,8 +44,8 @@ export const Island = ({
       className={cn(
         "bg-neutral-1 flex w-full flex-col",
         {
-          "rounded-t-5": roundedTop,
-          "rounded-b-5": roundedBottom,
+          "rounded-t-4": roundedTop,
+          "rounded-b-4": roundedBottom,
           "grow": grow,
           "flex-row": row,
           "p-5": !noPadding,

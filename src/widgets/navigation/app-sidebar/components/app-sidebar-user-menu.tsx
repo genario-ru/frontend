@@ -9,7 +9,7 @@ import {
 import { useGetSession } from "@/actions/auth/hooks/use-get-session";
 import { useSignOut } from "@/actions/auth/hooks/use-sign-out";
 import { AppSidebarUserMenuButtonLink } from "@/features/navigation/app-sidebar/components/app-sidebar-user-menu-button-link";
-import { ProfileImage } from "@/shared/components/common/profile-image";
+import { UserInfo } from "@/features/navigation/user-info/components/user-info";
 import { Button } from "@/shared/components/ui/button";
 import {
   DropdownMenu,
@@ -30,34 +30,29 @@ export const AppSidebarUserMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="min-w-64">
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink
-              to="/settings"
-              className="flex items-center gap-2 py-3"
-            >
-              <ProfileImage
-                alt={sessionData?.user.name}
-                uuid={sessionData?.user.id}
-                size="lg"
+          {sessionData && (
+            <DropdownMenuItem asChild>
+              <UserInfo
+                id={sessionData?.user.id}
+                name={sessionData?.user.name}
+                email={sessionData?.user.email}
               />
-              <div className="flex flex-col">
-                <p className="font-medium">{sessionData?.user.name}</p>
-                <p className="text-neutral-7 text-sm">
-                  {sessionData?.user.email}
-                </p>
-              </div>
-            </AppSidebarUserMenuButtonLink>
-          </DropdownMenuItem>
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink to="/settings" icon={<BoltIcon />}>
+            <AppSidebarUserMenuButtonLink icon={<BoltIcon />}>
               Настройки
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink to="/home" icon={<WalletCardsIcon />}>
+            <AppSidebarUserMenuButtonLink
+              priority="tertiary"
+              to="/billing"
+              icon={<WalletCardsIcon />}
+            >
               Платежи
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>

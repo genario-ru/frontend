@@ -1,8 +1,5 @@
-import { useRouter } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
-import { memo, type ReactNode, useCallback } from "react";
+import { memo, type ReactNode } from "react";
 
-import { Button } from "@/shared/components/ui/button";
 import { Heading } from "@/shared/components/ui/heading";
 import { Island } from "@/shared/components/ui/island";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
@@ -10,9 +7,9 @@ import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
 export type AppMenubarProps = PropsWithClassName<{
+  actions?: ReactNode;
   title: ReactNode;
   description?: ReactNode;
-  backButton?: boolean;
   sticky?: boolean;
   left?: ReactNode;
   right?: ReactNode;
@@ -20,23 +17,18 @@ export type AppMenubarProps = PropsWithClassName<{
 
 export const AppMenubar = memo(
   ({
+    actions,
     title,
     description,
-    backButton = false,
     sticky = true,
     left,
     right,
     className,
     ...props
   }: AppMenubarProps) => {
-    const router = useRouter();
     const hasDescription = Boolean(description);
     const hasLeft = Boolean(left);
     const { isScrolled } = usePageCheckScroll();
-
-    const onBackButtonClick = useCallback(() => {
-      router.history.back();
-    }, [router]);
 
     return (
       <Island
@@ -66,14 +58,8 @@ export const AppMenubar = memo(
               "justify-center": !hasDescription && !hasLeft,
             })}
           >
-            <div className="flex items-center gap-2">
-              {backButton && (
-                <Button
-                  priority="tertiary"
-                  icon={<ArrowLeft />}
-                  onClick={onBackButtonClick}
-                />
-              )}
+            <div className="flex items-center gap-1">
+              {actions}
               <Heading variant="h1" className="truncate">
                 {title}
               </Heading>

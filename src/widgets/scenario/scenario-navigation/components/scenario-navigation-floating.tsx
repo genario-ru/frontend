@@ -27,7 +27,7 @@ export function ScenarioNavigationFloating({
       <ScenarioNavigation
         size="sm"
         scenarioId={scenarioId}
-        className="shadow-bottom-2"
+        className="shadow-bottom-1"
       />
     </AnimatedDiv>
   );

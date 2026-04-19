@@ -1,12 +1,9 @@
-import { BellIcon, MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { BellIcon } from "lucide-react";
 
 import { AppSidebarContent } from "@/features/navigation/app-sidebar/components/app-sidebar-content";
 import { AppSidebarFooter } from "@/features/navigation/app-sidebar/components/app-sidebar-footer";
-import { AppSidebarHeader } from "@/features/navigation/app-sidebar/components/app-sidebar-header";
-import { AppSidebarMenu } from "@/features/navigation/app-sidebar/components/app-sidebar-menu";
-import { AppSidebarMenuItem } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-item";
 import { AppSidebarMenuLink } from "@/features/navigation/app-sidebar/components/app-sidebar-menu-link";
+import { ThemeToggle } from "@/features/navigation/theme-toggle/components/theme-toggle";
 import { LogoLink } from "@/shared/components/common/logo-link";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
@@ -17,65 +14,33 @@ import { AppSidebarLayout } from "./app-sidebar-layout";
 import { AppSidebarUserMenu } from "./app-sidebar-user-menu";
 
 export const AppSidebar = () => {
-  const { resolvedTheme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "light" ? "dark" : "light");
-  };
-
   return (
     <AppSidebarLayout>
-      <AppSidebarHeader>
-        <AppSidebarMenu>
-          <AppSidebarMenuItem>
-            <LogoLink
-              href="/home"
-              className="rounded-t-5 flex h-full w-full items-center justify-center p-5"
-            />
-          </AppSidebarMenuItem>
-        </AppSidebarMenu>
-      </AppSidebarHeader>
+      <LogoLink
+        href="/home"
+        className="rounded-t-5 flex w-full items-center justify-center p-5"
+      />
       <AppSidebarContent>
-        <AppSidebarMenu>
-          {appSidebarItems.map(({ Icon, label, to, soon, active = true }) => (
-            <AppSidebarMenuItem key={to}>
-              <AppSidebarMenuLink
-                to={to}
-                className={cn({ "pointer-events-none": !active })}
-              >
-                <Icon />
-                {label}
-                {soon && (
-                  <Badge size="sm" variant="secondary">
-                    Скоро
-                  </Badge>
-                )}
-              </AppSidebarMenuLink>
-            </AppSidebarMenuItem>
-          ))}
-        </AppSidebarMenu>
+        {appSidebarItems.map(({ Icon, label, to, soon, active = true }) => (
+          <AppSidebarMenuLink
+            to={to}
+            key={to}
+            className={cn({ "pointer-events-none": !active })}
+          >
+            <Icon />
+            {label}
+            {soon && (
+              <Badge size="sm" variant="secondary">
+                Скоро
+              </Badge>
+            )}
+          </AppSidebarMenuLink>
+        ))}
       </AppSidebarContent>
-      <AppSidebarFooter className="gap-2">
-        <AppSidebarMenu className="flex-row justify-between gap-1">
-          <AppSidebarMenuItem>
-            <AppSidebarUserMenu />
-          </AppSidebarMenuItem>
-          <AppSidebarMenuItem>
-            <Button
-              priority="tertiary"
-              onClick={toggleTheme}
-              icon={
-                <>
-                  <MoonIcon className="dark:opacity-0" />
-                  <SunIcon className="absolute opacity-0 dark:opacity-100" />
-                </>
-              }
-            />
-          </AppSidebarMenuItem>
-          <AppSidebarMenuItem>
-            <Button priority="tertiary" icon={<BellIcon />} />
-          </AppSidebarMenuItem>
-        </AppSidebarMenu>
+      <AppSidebarFooter>
+        <AppSidebarUserMenu />
+        <ThemeToggle />
+        <Button priority="tertiary" icon={<BellIcon />} />
       </AppSidebarFooter>
     </AppSidebarLayout>
   );

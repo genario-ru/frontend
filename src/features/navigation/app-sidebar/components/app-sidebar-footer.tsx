@@ -9,7 +9,7 @@ export const AppSidebarFooter = ({
   return (
     <footer
       data-sidebar="footer"
-      className={cn("flex flex-col p-3", className)}
+      className={cn("flex gap-2 p-3", className)}
       {...props}
     />
   );

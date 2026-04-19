@@ -9,7 +9,7 @@ export const AppSidebarContent = ({
   return (
     <div
       data-sidebar="content"
-      className={cn("flex flex-1 flex-col overflow-auto px-2", className)}
+      className={cn("flex flex-1 flex-col gap-2 overflow-auto px-2", className)}
       {...props}
     />
   );
