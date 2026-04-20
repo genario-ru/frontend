@@ -7,7 +7,7 @@ export function ArchiveComponent() {
   return (
     <>
       <ArchiveAppMenubar filters={<ArchiveFilters />} />
-      <PageLayout className="flex-1 pb-5">
+      <PageLayout className="flex-1 pb-2">
         <ArchiveItems />
       </PageLayout>
       <CommonFooter className="mt-auto" />

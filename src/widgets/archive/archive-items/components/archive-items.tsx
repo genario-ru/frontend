@@ -42,7 +42,7 @@ export const ArchiveItems = () => {
 
     return (
       <>
-        <div className="grid w-full grid-cols-3 gap-4">
+        <div className="grid w-full grid-cols-3 gap-2">
           {archiveItemsData.map((item) => (
             <ArchiveItem
               key={item.data.id}

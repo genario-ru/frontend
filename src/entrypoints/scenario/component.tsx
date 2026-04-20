@@ -25,7 +25,7 @@ export function ScenarioComponent() {
     }
 
     return (
-      <ContentLayout className="flex-1 gap-4">
+      <ContentLayout className="flex-1 gap-2">
         <ScenarioGenerationAlert scenarioId={scenarioId} />
         <ScenarioChapter scenarioId={scenarioId} />
         <ScenarioNavigation scenarioId={scenarioId} />

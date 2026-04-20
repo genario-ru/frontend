@@ -49,7 +49,7 @@ export const Island = ({
           "grow": grow,
           "flex-row": row,
           "p-5": !noPadding,
-          "gap-4": !noGap,
+          "gap-5": !noGap,
         },
         className,
       )}

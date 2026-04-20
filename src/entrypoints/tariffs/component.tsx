@@ -7,7 +7,7 @@ import { TariffsList } from "@/widgets/tariffs/components/tariffs-list";
 export function TariffsComponent() {
   return (
     <PageLayout className="pt-0">
-      <ContentLayout size="xl" className="gap-6">
+      <ContentLayout size="xl" className="gap-2">
         <TariffsHeader />
         <TariffsList />
         <CommonFooter />

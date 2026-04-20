@@ -9,8 +9,8 @@ export function HomeComponent() {
   return (
     <>
       <HomeAppMenubar />
-      <PageLayout className="pb-5">
-        <ContentLayout className="gap-4">
+      <PageLayout className="pb-2">
+        <ContentLayout className="gap-2">
           <HomeTemplatesCarousel />
           <HomeArchiveItemsCarousel />
         </ContentLayout>

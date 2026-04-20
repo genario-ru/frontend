@@ -38,7 +38,7 @@ export const AppMenubar = memo(
         className={cn(
           "z-1 min-h-16 w-full shrink-0 gap-3 py-4 duration-200",
           {
-            "shadow-bottom-1": isScrolled,
+            "shadow-bottom-1": isScrolled && sticky,
             "sticky top-0": sticky,
           },
           className,

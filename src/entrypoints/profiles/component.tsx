@@ -8,7 +8,7 @@ export function ProfilesComponent() {
   return (
     <>
       <ProfilesAppMenubar />
-      <PageLayout className="flex-1 gap-4 pb-5">
+      <PageLayout className="flex-1 gap-2 pb-2">
         <ProfilesImportJobAlert />
         <MyProfilesList />
       </PageLayout>

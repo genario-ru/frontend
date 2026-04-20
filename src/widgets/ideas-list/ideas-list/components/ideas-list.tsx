@@ -72,7 +72,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   }, [ideasListData, isIdeasListLoading, isIdeasListError]);
 
   return (
-    <ContentLayout className="flex-1 gap-4">
+    <ContentLayout className="flex-1 gap-2">
       {alert}
       {body}
     </ContentLayout>
@@ -81,7 +81,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
 
 export function IdeasListBodyLayout({ children }: PropsWithChildren) {
   return (
-    <div className="grid w-full flex-1 auto-rows-fr grid-cols-2 gap-4">
+    <div className="grid w-full flex-1 auto-rows-fr grid-cols-2 gap-2">
       {children}
     </div>
   );
