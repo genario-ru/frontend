@@ -46,6 +46,11 @@
   --color-accent-7: var(--accent-7);
   --color-accent-8: var(--accent-8);
 
+  /* Shadows */
+  --shadow-top-1: var(--shadow-top-1);
+  --shadow-bottom-1: var(--shadow-bottom-1);
+  --shadow-bottom-2: var(--shadow-bottom-2);
+
   /* Font */
   --font-sans: "Inter Variable", sans-serif;
 
@@ -59,11 +64,6 @@
   --animate-caret-blink: caret-blink 1.2s ease-out infinite;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  /* Shadows */
-  --shadow-top-1: 0px -8px 12px 4px rgba(34, 60, 80, 0.05);
-  --shadow-bottom-1: 0px 8px 12px 4px rgba(34, 60, 80, 0.05);
-  --shadow-bottom-2: 0px 16px 24px 8px rgba(34, 60, 80, 0.1);
 
   /* Border radius */
   --radius-0: 0px;

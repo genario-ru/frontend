@@ -18,6 +18,7 @@ import { HomeArchiveItemsSeeAll } from "./home-archive-items-see-all";
 export function HomeArchiveItemsCarousel() {
   const {
     archiveItemsData,
+    slidesPerView,
     showSeeAllButton,
     isLoadingArchiveItems,
     hasPreviousSlide,
@@ -34,7 +35,6 @@ export function HomeArchiveItemsCarousel() {
 
   const slides = useMemo(() => {
     if (isLoadingArchiveItems) {
-      // TODO: Поисследовать странное отображение скелетонов, когда выносим этот код в отдельный компонент
       return (
         <>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -72,7 +72,7 @@ export function HomeArchiveItemsCarousel() {
         onSwiper={onSwiper}
         onSlideChange={onSlideChange}
         spaceBetween={8}
-        slidesPerView={3.2}
+        slidesPerView={slidesPerView}
         style={{ overflow: "visible" }}
         className="w-full"
         wrapperClass="grid min-h-[176px] w-full auto-cols-fr auto-rows-fr"
@@ -86,10 +86,11 @@ export function HomeArchiveItemsCarousel() {
       </Swiper>
     );
   }, [
+    slides,
+    slidesPerView,
     showSeeAllButton,
     isLoadingArchiveItems,
     isEmptyArchiveItems,
-    slides,
     onSwiper,
     onSlideChange,
   ]);

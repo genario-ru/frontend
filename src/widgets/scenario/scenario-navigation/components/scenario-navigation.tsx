@@ -31,7 +31,7 @@ export function ScenarioNavigation({ scenarioId }: ScenarioNavigationProps) {
       noPadding
       noGap
       roundedBottom={false}
-      className={cn("sticky bottom-0", {
+      className={cn("sticky bottom-0 duration-200", {
         "shadow-top-1": !isScrolledToBottom,
       })}
     >

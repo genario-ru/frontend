@@ -14,10 +14,13 @@ export function CommonFooter({ className }: CommonFooterProps) {
       row
       as="footer"
       roundedBottom={false}
-      className={cn("flex w-full justify-between", className)}
+      className={cn(
+        "flex w-full flex-col justify-between gap-6 lg:flex-row lg:gap-12",
+        className,
+      )}
     >
       <CommonFooterLegalInfo />
-      <nav className="flex gap-12">
+      <nav className="flex flex-col gap-6 lg:flex-row lg:gap-12">
         {commonFooterLinks.map((column, index) => (
           <CommonFooterLinksColumn
             key={`footer-links-column-${index}`}

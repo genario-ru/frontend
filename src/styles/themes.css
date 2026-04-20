@@ -38,6 +38,11 @@
   --accent-6: #4f46e5;
   --accent-7: #4338ca;
   --accent-8: #3730a3;
+
+  /* Shadows */
+  --shadow-top-1: 0px -8px 12px 4px rgba(34, 60, 80, 0.05);
+  --shadow-bottom-1: 0px 8px 12px 4px rgba(34, 60, 80, 0.05);
+  --shadow-bottom-2: 0px 16px 24px 8px rgba(34, 60, 80, 0.1);
 }
 
 .dark {
@@ -80,4 +85,9 @@
   --accent-6: #6366f1;
   --accent-7: #818cf8;
   --accent-8: #a5b4fc;
+
+  /* Shadows */
+  --shadow-top-1: 0px -8px 12px 4px rgba(180, 180, 180, 0.05);
+  --shadow-bottom-1: 0px 8px 12px 4px rgba(180, 180, 180, 0.05);
+  --shadow-bottom-2: 0px 16px 24px 8px rgba(180, 180, 180, 0.1);
 }

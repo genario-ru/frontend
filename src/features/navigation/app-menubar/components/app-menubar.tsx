@@ -13,6 +13,7 @@ export type AppMenubarProps = PropsWithClassName<{
   sticky?: boolean;
   left?: ReactNode;
   right?: ReactNode;
+  bottom?: ReactNode;
 }>;
 
 export const AppMenubar = memo(
@@ -23,6 +24,7 @@ export const AppMenubar = memo(
     sticky = true,
     left,
     right,
+    bottom,
     className,
     ...props
   }: AppMenubarProps) => {
@@ -33,7 +35,6 @@ export const AppMenubar = memo(
     return (
       <Island
         as="header"
-        row
         roundedTop={false}
         className={cn(
           "z-1 min-h-16 w-full shrink-0 gap-3 py-4 duration-200",
@@ -45,32 +46,33 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <section
-          className={cn(
-            "flex flex-1 flex-col justify-between gap-4 overflow-hidden",
-            {
-              "justify-center": !hasLeft,
-            },
-          )}
-        >
-          <div
-            className={cn("flex flex-1 flex-col justify-between gap-1", {
-              "justify-center": !hasDescription && !hasLeft,
-            })}
-          >
-            <div className="flex items-center gap-1">
-              {actions}
-              <Heading variant="h1" className="truncate">
-                {title}
-              </Heading>
-            </div>
-            {description && (
-              <div className="text-neutral-7 line-clamp-2">{description}</div>
+        <div className="flex w-full gap-3">
+          <section
+            className={cn(
+              "flex flex-1 flex-col justify-between gap-4 overflow-hidden",
+              { "justify-center": !hasLeft },
             )}
-          </div>
-          {left}
-        </section>
-        <section className="flex flex-col gap-3">{right}</section>
+          >
+            <div
+              className={cn("flex flex-1 flex-col justify-between gap-1", {
+                "justify-center": !hasDescription && !hasLeft,
+              })}
+            >
+              <div className="flex items-center gap-1">
+                {actions}
+                <Heading variant="h1" className="truncate">
+                  {title}
+                </Heading>
+              </div>
+              {description && (
+                <div className="text-neutral-7 line-clamp-2">{description}</div>
+              )}
+            </div>
+            {left}
+          </section>
+          <section className="flex flex-col gap-3">{right}</section>
+        </div>
+        {bottom}
       </Island>
     );
   },

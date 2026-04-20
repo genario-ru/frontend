@@ -27,7 +27,7 @@ export function MyProfilesList() {
   }
 
   return (
-    <ContentLayout className="grid grid-cols-2 gap-2">
+    <ContentLayout className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {myProfilesData.data.map((profile) => (
         <ProfileCard
           key={profile.id}

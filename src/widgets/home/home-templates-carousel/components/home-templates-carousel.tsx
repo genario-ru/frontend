@@ -14,6 +14,7 @@ import { HomeTemplatesCarouselSlideMenu } from "./home-templates-carousel-slide-
 export function HomeTemplatesCarousel() {
   const {
     templatesData,
+    slidesPerView,
     isTemplatesLoading,
     hasPreviousSlide,
     hasNextSlide,
@@ -72,7 +73,7 @@ export function HomeTemplatesCarousel() {
         onSwiper={onSwiper}
         onSlideChange={onSlideChange}
         spaceBetween={8}
-        slidesPerView={4.2}
+        slidesPerView={slidesPerView}
         style={{ overflow: "visible" }}
         className="h-[160px] w-full"
       >
