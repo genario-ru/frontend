@@ -45,7 +45,7 @@ export function ScenarioChapterScene({
     <section
       id={`scenario-chapter-scene-${scene.id}`}
       ref={sceneRef}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 py-4"
     >
       <ScenarioChapterSceneHeader
         key={scene.id}
@@ -81,7 +81,7 @@ export function ScenarioChapterSceneSkeleton({
   videoTypeSlug,
 }: ScenarioChapterSceneSkeletonProps) {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 py-4">
       <ScenarioChapterSceneHeaderSkeleton />
       <div
         className={cn("grid w-full gap-4", {

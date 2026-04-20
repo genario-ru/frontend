@@ -61,6 +61,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
 
   return (
     <AppMenubar
+      sticky={false}
       actions={<BackButton />}
       title={title}
       description={description}
@@ -92,7 +93,7 @@ function ScenarioAppMenubarLeftSkeleton() {
       row
       count={6}
       gap={4}
-      item={<Skeleton className="rounded-2.5 h-[30px] w-24" />}
+      item={<Skeleton className="rounded-2.5 h-8 w-24" />}
       className="flex-wrap"
     />
   );

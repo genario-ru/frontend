@@ -6,17 +6,14 @@ import {
   RadioCardsGroupItem,
 } from "@/shared/components/ui/radio-cards-group";
 import { Skeleton } from "@/shared/components/ui/skeleton";
-import { cn } from "@/shared/utils/cn";
 
 import { useScenarioNavigationScenes } from "../hooks/use-scenario-navigation-scenes";
 
 type ScenarioNavigationScenesProps = {
-  size?: "sm" | "base";
   scenarioId: string;
 };
 
 export function ScenarioNavigationScenes({
-  size = "base",
   scenarioId,
 }: ScenarioNavigationScenesProps) {
   const {
@@ -31,24 +28,21 @@ export function ScenarioNavigationScenes({
   } = useScenarioNavigationScenes({ scenarioId });
 
   if (isScenarioNavigationScenesLoading) {
-    return <ScenarioNavigationScenesSkeleton size={size} />;
+    return <ScenarioNavigationScenesSkeleton />;
   }
 
   if (isScenarioNavigationScenesError) {
-    return <ScenarioNavigationScenesErrorPlug size={size} />;
+    return <ScenarioNavigationScenesErrorPlug />;
   }
 
   if (!radioCardsScenesList?.length || !activeScenarioChapterPosition) {
-    return <ScenarioNavigationScenesEmptyPlug size={size} />;
+    return <ScenarioNavigationScenesEmptyPlug />;
   }
 
   return (
     <div
       ref={containerRef}
-      className={cn("hide-scrollbar flex w-full overflow-auto", {
-        "p-4": size === "sm",
-        "p-5": size === "base",
-      })}
+      className="hide-scrollbar flex w-full overflow-auto p-5"
     >
       <RadioCardsGroup
         value={activeScenarioChapterScene?.id}
@@ -62,7 +56,6 @@ export function ScenarioNavigationScenes({
             className="items-start"
           >
             <ScenarioNavigationScene
-              size={size}
               ref={(el) => sceneRefCallback(el, scene.id)}
               chapterPosition={activeScenarioChapterPosition}
               position={scene.position}
@@ -77,64 +70,36 @@ export function ScenarioNavigationScenes({
   );
 }
 
-export function ScenarioNavigationScenesSkeleton({
-  size = "base",
-}: Pick<ScenarioNavigationScenesProps, "size">) {
+export function ScenarioNavigationScenesSkeleton() {
   return (
     <ItemsList
       row
       gap={8}
       count={8}
-      item={
-        <Skeleton
-          className={cn("w-48", {
-            "h-9 rounded-xl": size === "sm",
-            "h-[58px] rounded-2xl": size === "base",
-          })}
-        />
-      }
-      className={cn("flex flex-1 overflow-hidden", {
-        "p-4": size === "sm",
-        "p-5": size === "base",
-      })}
+      item={<Skeleton className="h-[58px] w-48 rounded-2xl" />}
+      className="flex flex-1 overflow-hidden p-5"
     />
   );
 }
 
-export function ScenarioNavigationScenesErrorPlug({
-  size = "base",
-}: Pick<ScenarioNavigationScenesProps, "size">) {
-  const title =
-    size === "base" ? "Ошибка" : "Произошла ошибка при загрузке сцен";
-
-  const description =
-    size === "base" ? "Произошла ошибка при загрузке сцен" : undefined;
-
+export function ScenarioNavigationScenesErrorPlug() {
   return (
     <Plug
       variant="negative"
       direction="row"
-      title={title}
-      description={description}
-      className={cn({
-        "h-[68px]": size === "sm",
-        "h-[98px]": size === "base",
-      })}
+      title="Ошибка"
+      description="Произошла ошибка при загрузке сцен"
+      className="h-[98px]"
     />
   );
 }
 
-export function ScenarioNavigationScenesEmptyPlug({
-  size = "base",
-}: Pick<ScenarioNavigationScenesProps, "size">) {
+export function ScenarioNavigationScenesEmptyPlug() {
   return (
     <Plug
       direction="row"
       title="В данном разделе пока нет сцен"
-      className={cn({
-        "h-[68px]": size === "sm",
-        "h-[98px]": size === "base",
-      })}
+      className="h-[98px]"
     />
   );
 }

@@ -90,7 +90,7 @@ export function useScenarioScenes({
     if (sceneElement) {
       sceneElement.scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
+        block: "start",
         inline: "center",
       });
     }

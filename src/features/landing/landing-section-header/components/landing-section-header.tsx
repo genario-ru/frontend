@@ -77,7 +77,7 @@ export function LandingSectionHeaderSkeleton({
         "items-center": isAlignCenter,
       })}
     >
-      <Skeleton className="rounded-3 h-[30px] w-32" />
+      <Skeleton className="rounded-3 h-8 w-32" />
       <TextSkeleton fontSize={30} lineHeight={36} className="w-80" />
       <TextSkeleton
         fontSize={20}

@@ -6,19 +6,16 @@ import {
   TabsUnderlineTrigger,
 } from "@/shared/components/ui/tabs-underline";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
-import { cn } from "@/shared/utils/cn";
 
 import { useScenarioNavigationChapters } from "../hooks/use-scenario-navigation-chapters";
 
 type ScenarioNavigationChaptersProps = {
-  size?: "sm" | "base";
   scenarioId: string;
   chapterRefCallback: (el: Element | null, chapterId: string) => void;
   handleChapterScrollIntoView: (chapterId: string) => void;
 };
 
 export function ScenarioNavigationChapters({
-  size = "base",
   scenarioId,
   chapterRefCallback,
   handleChapterScrollIntoView,
@@ -36,15 +33,15 @@ export function ScenarioNavigationChapters({
   });
 
   if (isScenarioChaptersLoading) {
-    return <ScenarioNavigationChaptersSkeleton size={size} />;
+    return <ScenarioNavigationChaptersSkeleton />;
   }
 
   if (isScenarioChaptersError) {
-    return <ScenarioNavigationChaptersError size={size} />;
+    return <ScenarioNavigationChaptersError />;
   }
 
   if (!scenarioChaptersList?.length) {
-    return <ScenarioNavigationChaptersEmptyPlug size={size} />;
+    return <ScenarioNavigationChaptersEmptyPlug />;
   }
 
   return (
@@ -55,19 +52,12 @@ export function ScenarioNavigationChapters({
     >
       <TabsUnderlineList
         ref={containerRef}
-        className={cn(
-          "border-neutral-3 hide-scrollbar flex-1 overflow-auto border-b",
-          {
-            "px-4": size === "sm",
-            "px-5": size === "base",
-          },
-        )}
+        className="border-neutral-3 hide-scrollbar flex-1 overflow-auto border-b px-5"
       >
         {scenarioChaptersList.map((chapter, index) => (
           <TabsUnderlineTrigger
             key={chapter.id}
             id={chapter.id}
-            size={size}
             value={chapter.id}
             ref={(el) => chapterRefCallback(el, chapter.id)}
           >
@@ -79,23 +69,16 @@ export function ScenarioNavigationChapters({
   );
 }
 
-export function ScenarioNavigationChaptersSkeleton({
-  size = "base",
-}: Pick<ScenarioNavigationChaptersProps, "size">) {
+export function ScenarioNavigationChaptersSkeleton() {
   return (
     <ItemsList
       row
       count={6}
       item={
-        <div
-          className={cn("rounded-2.5 flex flex-1 items-center justify-center", {
-            "h-[52px] px-4": size === "sm",
-            "h-[64px] px-5": size === "base",
-          })}
-        >
+        <div className="rounded-2.5 flex h-16 flex-1 items-center justify-center px-5">
           <TextSkeleton
-            fontSize={size === "sm" ? 14 : 16}
-            lineHeight={size === "sm" ? 20 : 24}
+            fontSize={16}
+            lineHeight={24}
             linesCount={1}
             className="w-48"
           />
@@ -106,40 +89,24 @@ export function ScenarioNavigationChaptersSkeleton({
   );
 }
 
-export function ScenarioNavigationChaptersError({
-  size = "base",
-}: Pick<ScenarioNavigationChaptersProps, "size">) {
-  const title =
-    size === "base" ? "Ошибка" : "Произошла ошибка при загрузке разделов";
-
-  const description =
-    size === "base" ? "Произошла ошибка при загрузке разделов" : undefined;
-
+export function ScenarioNavigationChaptersError() {
   return (
     <Plug
       variant="negative"
       direction="row"
-      title={title}
-      description={description}
-      className={cn("border-neutral-3 flex-1 border-b", {
-        "h-[52px]": size === "sm",
-        "h-[64px]": size === "base",
-      })}
+      title="Ошибка"
+      description="Произошла ошибка при загрузке разделов"
+      className="border-neutral-3 h-16 flex-1 border-b"
     />
   );
 }
 
-export function ScenarioNavigationChaptersEmptyPlug({
-  size = "base",
-}: Pick<ScenarioNavigationChaptersProps, "size">) {
+export function ScenarioNavigationChaptersEmptyPlug() {
   return (
     <Plug
       direction="row"
       title="В данном сценарии пока нет разделов"
-      className={cn("border-neutral-3 border-b", {
-        "h-[52px]": size === "sm",
-        "h-[64px]": size === "base",
-      })}
+      className="border-neutral-3 h-16 flex-1 border-b"
     />
   );
 }

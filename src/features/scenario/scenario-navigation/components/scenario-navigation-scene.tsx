@@ -4,7 +4,6 @@ import { cn } from "@/shared/utils/cn";
 import { formatTime } from "@/shared/utils/format-time";
 
 type ScenarioNavigationSceneProps = ComponentProps<"div"> & {
-  size?: "sm" | "base";
   chapterPosition: number;
   position: number;
   name: string;
@@ -13,7 +12,6 @@ type ScenarioNavigationSceneProps = ComponentProps<"div"> & {
 };
 
 export function ScenarioNavigationScene({
-  size = "base",
   chapterPosition,
   position,
   name,
@@ -31,11 +29,9 @@ export function ScenarioNavigationScene({
       <p className="text-left text-sm font-semibold whitespace-nowrap">
         {chapterPosition}.{position}. {name}
       </p>
-      {size !== "sm" && (
-        <p className="text-neutral-7 text-left text-xs whitespace-nowrap">
-          {time}
-        </p>
-      )}
+      <p className="text-neutral-7 text-left text-xs whitespace-nowrap">
+        {time}
+      </p>
     </div>
   );
 }

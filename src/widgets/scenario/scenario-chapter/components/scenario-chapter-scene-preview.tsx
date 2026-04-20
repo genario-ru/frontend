@@ -86,7 +86,7 @@ export function ScenarioChapterScenePreview({
       <ScenarioChapterScenePreviewLayout
         actions={actions}
         videoTypeSlug={videoTypeSlug}
-        className="sticky top-50"
+        className="sticky top-8"
         contentClassName="flex justify-center items-center"
       >
         {body}

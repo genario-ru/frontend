@@ -52,7 +52,7 @@ export function ScenarioChapterScenes({
   }
 
   return (
-    <Island roundedTop={false} className="gap-8 py-8">
+    <Island roundedTop={false}>
       {scenarioChapterScenesList.map((scene, index) => (
         <ScenarioChapterScene
           key={`scenario-chapter-scene-${scene.id}`}
@@ -85,7 +85,7 @@ export function ScenarioChapterScenesSkeleton({
   videoTypeSlug,
 }: ScenarioChapterScenesSkeletonProps) {
   return (
-    <Island roundedTop={false} className="gap-8 py-8">
+    <Island roundedTop={false}>
       <ItemsList
         noParent
         count={2}
