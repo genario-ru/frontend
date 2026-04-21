@@ -7,18 +7,20 @@ import { AppDrawer } from "@/widgets/navigation/app-drawer/components/app-drawer
 import { ArchiveAppMenubarActions } from "./archive-app-menubar-actions";
 
 type ArchiveAppMenubarProps = {
+  search: ReactNode;
   filters: ReactNode;
 };
 
-export function ArchiveAppMenubar({ filters }: ArchiveAppMenubarProps) {
+export function ArchiveAppMenubar({ search, filters }: ArchiveAppMenubarProps) {
   const { isMobile } = useBreakpoints();
 
   return (
     <AppMenubar
       actions={isMobile && <AppDrawer />}
       title="Архив"
-      left={filters}
+      center={search}
       right={<ArchiveAppMenubarActions />}
+      bottom={filters}
     />
   );
 }

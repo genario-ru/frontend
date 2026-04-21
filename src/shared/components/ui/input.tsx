@@ -68,7 +68,7 @@ export type InputProps = Omit<ComponentProps<"input">, "size"> &
 export const Input = ({
   id,
   name,
-  size,
+  size = "base",
   variant,
   state,
   Icon,
@@ -90,8 +90,8 @@ export const Input = ({
         className={cn(
           inputVariants({ size, variant, state }),
           {
-            "pl-12": Boolean(Icon) && size === "lg",
-            "pl-10": Boolean(Icon) && size === "base",
+            "pl-14": Boolean(Icon) && size === "lg",
+            "pl-11": Boolean(Icon) && size === "base",
             "pl-8": Boolean(Icon) && size === "sm",
           },
           className,

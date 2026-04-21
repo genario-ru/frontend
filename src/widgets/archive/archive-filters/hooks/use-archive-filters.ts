@@ -1,6 +1,5 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { debounce } from "es-toolkit";
-import { type ChangeEvent, useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 import { useGetArchiveFilters } from "@/actions/archive/hooks/use-get-archive-filters";
 
@@ -16,7 +15,7 @@ type HandleDeleteArchiveFilterParams = {
 export function useArchiveFilters() {
   const navigate = useNavigate();
 
-  const activeFilters = useSearch({
+  const { q: _searchQuery, ...activeFilters } = useSearch({
     from: "/_with-auth/_with-subscription/archive",
   });
 
@@ -28,57 +27,38 @@ export function useArchiveFilters() {
   const { archiveFiltersData, isArchiveFiltersLoading, isArchiveFiltersError } =
     useGetArchiveFilters();
 
-  const handleApplyArchiveSearch = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      navigate({
-        to: "/archive",
-        search: {
-          ...activeFilters,
-          q: event.target.value,
-        },
-        replace: true,
-      });
-    },
-    [navigate, activeFilters],
-  );
-
-  const handleApplyArchiveSearchDebounced = debounce(
-    handleApplyArchiveSearch,
-    1000,
-  );
-
   const handleApplyArchiveFilter = useCallback(
     ({ name, value }: HandleApplyArchiveFilterParams) => {
       navigate({
         to: "/archive",
-        search: {
-          ...activeFilters,
+        search: (prev) => ({
+          ...prev,
           [name]: value.length ? value : undefined,
-        },
+        }),
         replace: true,
       });
     },
-    [navigate, activeFilters],
+    [navigate],
   );
 
   const handleDeleteArchiveFilter = useCallback(
     ({ name }: HandleDeleteArchiveFilterParams) => {
       navigate({
         to: "/archive",
-        search: {
-          ...activeFilters,
+        search: (prev) => ({
+          ...prev,
           [name]: undefined,
-        },
+        }),
         replace: true,
       });
     },
-    [navigate, activeFilters],
+    [navigate],
   );
 
   const handleResetArchiveFilters = useCallback(() => {
     navigate({
       to: "/archive",
-      search: {},
+      search: ({ q }) => ({ q }),
       replace: true,
     });
   }, [navigate]);
@@ -89,7 +69,6 @@ export function useArchiveFilters() {
     hasActiveFilters,
     isArchiveFiltersLoading,
     isArchiveFiltersError,
-    handleApplyArchiveSearchDebounced,
     handleApplyArchiveFilter,
     handleDeleteArchiveFilter,
     handleResetArchiveFilters,

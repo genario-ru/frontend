@@ -12,6 +12,7 @@ export type AppMenubarProps = PropsWithClassName<{
   description?: ReactNode;
   sticky?: boolean;
   left?: ReactNode;
+  center?: ReactNode;
   right?: ReactNode;
   bottom?: ReactNode;
 }>;
@@ -23,6 +24,7 @@ export const AppMenubar = memo(
     description,
     sticky = true,
     left,
+    center,
     right,
     bottom,
     className,
@@ -46,19 +48,20 @@ export const AppMenubar = memo(
         )}
         {...props}
       >
-        <div className="flex w-full gap-3">
+        <div className="flex w-full justify-between gap-4">
           <section
             className={cn(
-              "flex flex-1 flex-col justify-between gap-4 overflow-hidden",
+              "flex flex-col justify-between gap-4 overflow-hidden",
               { "justify-center": !hasLeft },
             )}
           >
             <div
-              className={cn("flex flex-1 flex-col justify-between gap-1", {
-                "justify-center": !hasDescription && !hasLeft,
-              })}
+              className={cn(
+                "flex flex-1 flex-col justify-between gap-1 overflow-hidden",
+                { "justify-center": !hasDescription && !hasLeft },
+              )}
             >
-              <div className="flex items-center gap-1">
+              <div className="flex flex-1 items-center gap-1">
                 {actions}
                 <Heading variant="h1" className="truncate">
                   {title}
@@ -70,7 +73,8 @@ export const AppMenubar = memo(
             </div>
             {left}
           </section>
-          <section className="flex flex-col gap-3">{right}</section>
+          {center}
+          <section className="flex shrink-0 flex-col gap-3">{right}</section>
         </div>
         {bottom}
       </Island>
