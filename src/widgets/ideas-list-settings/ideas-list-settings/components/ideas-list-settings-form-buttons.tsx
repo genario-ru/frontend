@@ -122,7 +122,7 @@ export const IdeasListSettingsFormButtons = withForm({
               icon={<LightbulbIcon />}
               onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
             >
-              Сохранить и придумать новые идеи
+              Сохранить и сгенерировать
             </Button>
           </div>
         );

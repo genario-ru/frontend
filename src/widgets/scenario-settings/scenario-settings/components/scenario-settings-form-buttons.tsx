@@ -123,7 +123,7 @@ export const ScenarioSettingsFormButtons = withForm({
               icon={<BookImageIcon />}
               onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
             >
-              Сохранить и сгенерировать новую версию
+              Сохранить и сгенерировать
             </Button>
           </div>
         );
