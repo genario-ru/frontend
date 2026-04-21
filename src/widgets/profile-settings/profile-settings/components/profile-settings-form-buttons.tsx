@@ -1,11 +1,15 @@
 import { withForm } from "@/lib/tanstack-form";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
 import type { ProfileSettingsFormValues } from "../schemas/profile-settings-form-schema";
 
 type ProfileSettingsFormButtonsProps = {
+  formId: string;
   isEditMode: boolean;
   isLoading: boolean;
   isScrolledToBottom: boolean;
@@ -17,6 +21,7 @@ export const ProfileSettingsFormButtons = withForm({
   props: {} as ProfileSettingsFormButtonsProps,
   render: ({
     form,
+    formId,
     isEditMode,
     isLoading,
     isScrolledToBottom,
@@ -25,10 +30,9 @@ export const ProfileSettingsFormButtons = withForm({
     return (
       <Island
         row
-        roundedTop={false}
-        roundedBottom={isScrolledToBottom}
+        roundedBottom={false}
         className={cn("sticky bottom-0 z-1 justify-between duration-200", {
-          "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
+          "shadow-top-1": !isScrolledToBottom,
         })}
       >
         <Button
@@ -41,6 +45,7 @@ export const ProfileSettingsFormButtons = withForm({
         </Button>
         <form.AppForm>
           <form.SubmitButton
+            form={formId}
             size="lg"
             state={isLoading ? "loading" : "default"}
             className="ml-auto"
@@ -52,3 +57,24 @@ export const ProfileSettingsFormButtons = withForm({
     );
   },
 });
+
+export function ProfileSettingsFormButtonsSkeleton() {
+  const { isScrolledToBottom } = usePageCheckScroll();
+
+  return (
+    <Island
+      row
+      roundedBottom={false}
+      className={cn("sticky bottom-0 justify-between duration-200", {
+        "shadow-top-1": !isScrolledToBottom,
+      })}
+    >
+      <ItemsList
+        row
+        noParent
+        count={2}
+        item={<Skeleton className="rounded-4 h-12 w-32" />}
+      />
+    </Island>
+  );
+}

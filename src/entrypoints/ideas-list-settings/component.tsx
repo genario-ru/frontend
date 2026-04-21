@@ -12,7 +12,7 @@ export function IdeasListSettingsComponent() {
   return (
     <>
       <IdeasListSettingsAppMenubar />
-      <PageLayout className="flex-1">
+      <PageLayout className="flex-1 pb-0">
         <IdeasListSettings templateId={templateId} ideasListId={ideasListId} />
       </PageLayout>
     </>

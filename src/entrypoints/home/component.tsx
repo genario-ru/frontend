@@ -10,7 +10,7 @@ export function HomeComponent() {
     <>
       <HomeAppMenubar />
       <PageLayout className="pb-2">
-        <ContentLayout className="gap-2">
+        <ContentLayout>
           <HomeTemplatesCarousel />
           <HomeArchiveItemsCarousel />
         </ContentLayout>

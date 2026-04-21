@@ -13,7 +13,7 @@ import { LandingTrialTariff } from "@/widgets/landing/landing-trial-tariff/compo
 export function LandingComponent() {
   return (
     <PageLayout className="max-w-7xl py-0">
-      <ContentLayout className="gap-2">
+      <ContentLayout>
         <LandingHeader />
         <LandingHero />
         <LandingPossibilities />

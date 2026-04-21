@@ -16,6 +16,7 @@ import {
 } from "../utils/ideas-list-settings-form-helpers";
 
 type IdeasListSettingsFormButtonsProps = {
+  formId: string;
   currentStep: IdeasListSettingsFormSteps;
   editMode: boolean;
   isCreateIdeasListPending: boolean;
@@ -27,6 +28,7 @@ export const IdeasListSettingsFormButtons = withForm({
   props: {} as IdeasListSettingsFormButtonsProps,
   render: ({
     form,
+    formId,
     currentStep,
     editMode,
     isCreateIdeasListPending,
@@ -89,6 +91,7 @@ export const IdeasListSettingsFormButtons = withForm({
         if (!editMode) {
           return (
             <Button
+              form={formId}
               priority="primary"
               size="lg"
               disabled={isLoading}
@@ -103,6 +106,7 @@ export const IdeasListSettingsFormButtons = withForm({
         return (
           <div className="flex items-center gap-2">
             <Button
+              form={formId}
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
@@ -110,6 +114,7 @@ export const IdeasListSettingsFormButtons = withForm({
               Сохранить
             </Button>
             <Button
+              type="button"
               priority="primary"
               size="lg"
               disabled={isLoading}
@@ -124,19 +129,23 @@ export const IdeasListSettingsFormButtons = withForm({
       }
 
       return (
-        <Button size="lg" disabled={isLoading} icon={<ArrowRightIcon />}>
+        <Button
+          form={formId}
+          size="lg"
+          disabled={isLoading}
+          icon={<ArrowRightIcon />}
+        >
           Далее
         </Button>
       );
-    }, [currentStep, editMode, form, isLoading]);
+    }, [currentStep, editMode, form, formId, isLoading]);
 
     return (
       <Island
         row
-        roundedTop={false}
-        roundedBottom={isScrolledToBottom}
+        roundedBottom={false}
         className={cn("sticky bottom-0 z-1 justify-between duration-200", {
-          "shadow-[0_-8px_12px_-4px_rgba(0,0,0,0.10)]": !isScrolledToBottom,
+          "shadow-top-1": !isScrolledToBottom,
         })}
       >
         {leftButton}
@@ -147,13 +156,21 @@ export const IdeasListSettingsFormButtons = withForm({
 });
 
 export function IdeasListSettingsFormButtonsSkeleton() {
+  const { isScrolledToBottom } = usePageCheckScroll();
+
   return (
-    <Island row roundedTop={false}>
+    <Island
+      row
+      roundedBottom={false}
+      className={cn("sticky bottom-0 justify-between duration-200", {
+        "shadow-top-1": !isScrolledToBottom,
+      })}
+    >
       <ItemsList
         row
+        noParent
         count={2}
-        item={<Skeleton className="rounded-4 h-10 w-32" />}
-        className="w-full items-center justify-between"
+        item={<Skeleton className="rounded-4 h-12 w-32" />}
       />
     </Island>
   );

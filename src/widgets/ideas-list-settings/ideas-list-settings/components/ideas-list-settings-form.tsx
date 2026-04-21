@@ -15,6 +15,8 @@ import {
 import { IdeasListSettingsFormNavigationStepsListener } from "./ideas-list-settings-form-navigation-steps-listener";
 import { IdeasListSettingsTemplatesSelectionSubformSkeleton } from "./ideas-list-settings-templates-selection-subform";
 
+const IDEAS_LIST_SETTINGS_FORM_ID = "ideas-list-settings-form";
+
 type IdeasListSettingsFormProps = {
   templateId: string | undefined;
   ideasListData: GetApiV1IdeasListsByIdeasListIdQueryResponse | undefined;
@@ -33,44 +35,51 @@ export function IdeasListSettingsForm({
   } = useIdeasListSettingsForm({ templateId, ideasListData });
 
   return (
-    <form onSubmit={onFormSubmit} className="flex flex-1 flex-col">
-      <IdeasListSettingsFormNavigationStepsListener
-        form={form}
-        currentStep={currentStep}
-      />
-      <Island roundedBottom={false} className="flex-1 gap-6">
-        <IdeasListSettingsFormNavigationSteps form={form} />
-        <IdeasListSettingsCurrentSubform
+    <>
+      <form
+        id={IDEAS_LIST_SETTINGS_FORM_ID}
+        onSubmit={onFormSubmit}
+        className="flex flex-1 flex-col"
+      >
+        <IdeasListSettingsFormNavigationStepsListener
           form={form}
           currentStep={currentStep}
         />
-      </Island>
+        <Island className="flex-1 gap-6">
+          <IdeasListSettingsFormNavigationSteps form={form} />
+          <IdeasListSettingsCurrentSubform
+            form={form}
+            currentStep={currentStep}
+          />
+        </Island>
+      </form>
       <IdeasListSettingsFormButtons
         form={form}
+        formId={IDEAS_LIST_SETTINGS_FORM_ID}
         editMode={Boolean(ideasListData)}
         currentStep={currentStep}
         isCreateIdeasListPending={isCreateIdeasListPending}
         isUpdateIdeasListPending={isUpdateIdeasListPending}
       />
-    </form>
+    </>
   );
 }
 
 export function IdeasListSettingsFormSkeleton() {
   return (
-    <div className="flex w-full flex-1 flex-col">
-      <Island roundedBottom={false} className="flex-1 gap-6">
+    <>
+      <Island className="flex-1 gap-6">
         <IdeasListSettingsFormNavigationStepsSkeleton />
         <IdeasListSettingsTemplatesSelectionSubformSkeleton />
       </Island>
       <IdeasListSettingsFormButtonsSkeleton />
-    </div>
+    </>
   );
 }
 
 export function IdeasListSettingsFormErrorPlug() {
   return (
-    <Island className="flex-1">
+    <Island className="flex-1" roundedBottom={false}>
       <Plug
         variant="negative"
         className="flex-1"

@@ -20,7 +20,7 @@ export const ProfileSettingsFormFields = withForm({
   props: {} as ProfileSettingsFormFieldsProps,
   render: ({ form, profileTypesData, tonesData, platformsData }) => {
     return (
-      <Island roundedBottom={false} className="flex-1 gap-6">
+      <Island className="flex-1 gap-6">
         <form.AppField name="name">
           {(field) => (
             <field.InputField

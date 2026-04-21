@@ -11,8 +11,13 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useProfileSettingsForm } from "../hooks/use-profile-settings-form";
-import { ProfileSettingsFormButtons } from "./profile-settings-form-buttons";
+import {
+  ProfileSettingsFormButtons,
+  ProfileSettingsFormButtonsSkeleton,
+} from "./profile-settings-form-buttons";
 import { ProfileSettingsFormFields } from "./profile-settings-form-fields";
+
+const PROFILE_SETTINGS_FORM_ID = "profile-settings-form";
 
 type ProfileSettingsFormProps = {
   profileData: GetApiV1ProfilesByProfileIdQueryResponse | undefined;
@@ -37,28 +42,35 @@ export function ProfileSettingsForm({
   } = useProfileSettingsForm({ profileData });
 
   return (
-    <form onSubmit={onFormSubmit} className="flex w-full flex-1 flex-col">
-      <ProfileSettingsFormFields
-        form={form}
-        profileTypesData={profileTypesData}
-        tonesData={tonesData}
-        platformsData={platformsData}
-      />
+    <>
+      <form
+        id={PROFILE_SETTINGS_FORM_ID}
+        onSubmit={onFormSubmit}
+        className="flex w-full flex-1 flex-col"
+      >
+        <ProfileSettingsFormFields
+          form={form}
+          profileTypesData={profileTypesData}
+          tonesData={tonesData}
+          platformsData={platformsData}
+        />
+      </form>
       <ProfileSettingsFormButtons
         form={form}
+        formId={PROFILE_SETTINGS_FORM_ID}
         isEditMode={isEditMode}
         isLoading={isLoading}
         isScrolledToBottom={isScrolledToBottom}
         onCancelClick={onCancelClick}
       />
-    </form>
+    </>
   );
 }
 
 export function ProfileSettingsFormSkeleton() {
   return (
-    <div className="flex w-full flex-1 flex-col">
-      <Island roundedBottom={false} className="flex-1">
+    <>
+      <Island className="flex-1">
         <ItemsList
           count={6}
           gap={24}
@@ -71,21 +83,14 @@ export function ProfileSettingsFormSkeleton() {
           className="w-full"
         />
       </Island>
-      <Island row roundedTop={false}>
-        <ItemsList
-          row
-          count={2}
-          item={<Skeleton className="rounded-4 h-10 w-32" />}
-          className="w-full items-center justify-between"
-        />
-      </Island>
-    </div>
+      <ProfileSettingsFormButtonsSkeleton />
+    </>
   );
 }
 
 export function ProfileSettingsFormErrorPlug() {
   return (
-    <Island className="flex-1">
+    <Island className="flex-1" roundedBottom={false}>
       <Plug
         variant="negative"
         className="flex-1"
@@ -98,7 +103,7 @@ export function ProfileSettingsFormErrorPlug() {
 
 export function ProfileSettingsFormNotEnoughDataPlug() {
   return (
-    <Island className="flex-1">
+    <Island className="flex-1" roundedBottom={false}>
       <Plug
         variant="negative"
         className="flex-1"

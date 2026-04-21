@@ -5,7 +5,7 @@ import { CreditsUsage } from "@/widgets/credits/credits-usage-list/components/cr
 
 export function BillingCreditsComponent() {
   return (
-    <ContentLayout className="grid flex-1 grid-cols-2 gap-2">
+    <ContentLayout className="grid flex-1 grid-cols-2">
       <div className="flex flex-1 flex-col gap-2">
         <CreditsMyBalance />
         <CreditsPackages />

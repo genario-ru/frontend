@@ -12,7 +12,7 @@ export function ProfileSettingsComponent() {
   return (
     <>
       <ProfileSettingsAppMenubar profileId={profileId} />
-      <PageLayout className="flex-1">
+      <PageLayout className="flex-1 pb-0">
         <ProfileSettings profileId={profileId} />
       </PageLayout>
     </>

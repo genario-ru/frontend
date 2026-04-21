@@ -18,6 +18,8 @@ import {
 import { ScenarioSettingsFormNavigationStepsListener } from "./scenario-settings-form-navigation-steps-listener";
 import { ScenarioSettingsTemplatesSelectionSubformSkeleton } from "./scenario-settings-templates-selection-subform";
 
+const SCENARIO_SETTINGS_FORM_ID = "scenario-settings-form";
+
 type ScenarioSettingsFormProps = {
   templateId: string | undefined;
   scenarioData: GetApiV1ScenariosByScenarioIdQueryResponse | undefined;
@@ -38,41 +40,51 @@ export function ScenarioSettingsForm({
   } = useScenarioSettingsForm({ templateId, scenarioData, ideaData });
 
   return (
-    <form onSubmit={onFormSubmit} className="flex w-full flex-1 flex-col">
-      <ScenarioSettingsFormNavigationStepsListener
-        form={form}
-        currentStep={currentStep}
-      />
-      <Island roundedBottom={false} className="flex-1 gap-6">
-        <ScenarioSettingsFormNavigationSteps form={form} />
-        <ScenarioSettingsCurrentSubform form={form} currentStep={currentStep} />
-      </Island>
+    <>
+      <form
+        id={SCENARIO_SETTINGS_FORM_ID}
+        onSubmit={onFormSubmit}
+        className="flex w-full flex-1 flex-col"
+      >
+        <ScenarioSettingsFormNavigationStepsListener
+          form={form}
+          currentStep={currentStep}
+        />
+        <Island className="flex-1 gap-6">
+          <ScenarioSettingsFormNavigationSteps form={form} />
+          <ScenarioSettingsCurrentSubform
+            form={form}
+            currentStep={currentStep}
+          />
+        </Island>
+      </form>
       <ScenarioSettingsFormButtons
         form={form}
+        formId={SCENARIO_SETTINGS_FORM_ID}
         editMode={Boolean(scenarioData)}
         currentStep={currentStep}
         isCreateScenarioPending={isCreateScenarioPending}
         isUpdateScenarioPending={isUpdateScenarioPending}
       />
-    </form>
+    </>
   );
 }
 
 export function ScenarioSettingsFormSkeleton() {
   return (
-    <div className="flex w-full flex-1 flex-col">
-      <Island roundedBottom={false} className="flex-1 gap-6">
+    <>
+      <Island className="flex-1 gap-6">
         <ScenarioSettingsFormNavigationStepsSkeleton />
         <ScenarioSettingsTemplatesSelectionSubformSkeleton />
       </Island>
       <ScenarioSettingsFormButtonsSkeleton />
-    </div>
+    </>
   );
 }
 
 export function ScenarioSettingsFormErrorPlug() {
   return (
-    <Island className="flex-1">
+    <Island className="flex-1" roundedBottom={false}>
       <Plug
         variant="negative"
         title="Ошибка загрузки"

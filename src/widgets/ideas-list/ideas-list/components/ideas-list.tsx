@@ -72,7 +72,7 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
   }, [ideasListData, isIdeasListLoading, isIdeasListError]);
 
   return (
-    <ContentLayout className="flex-1 gap-2">
+    <ContentLayout className="flex-1">
       {alert}
       {body}
     </ContentLayout>

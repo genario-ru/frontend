@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
-const contentLayoutVariants = cva("flex w-full flex-col", {
+const contentLayoutVariants = cva("flex w-full flex-col gap-2", {
   variants: {
     size: {
       max: "",

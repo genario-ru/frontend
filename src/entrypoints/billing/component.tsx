@@ -5,7 +5,7 @@ import { BillingMySubscriptions } from "@/widgets/billing/billing-my-subscriptio
 
 export function BillingComponent() {
   return (
-    <ContentLayout size="md" className="gap-2">
+    <ContentLayout size="md">
       <BillingMySubscriptions />
       <BillingMyPaymentMethods />
       <BillingMyRecentOperations />
