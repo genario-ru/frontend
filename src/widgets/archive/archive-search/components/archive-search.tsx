@@ -17,7 +17,10 @@ export function ArchiveSearch() {
     <form onSubmit={onFormSubmit} className="flex flex-1 gap-2">
       <form.AppField name="q">
         {(field) => (
-          <field.InputField placeholder="Заголовок или описание..." />
+          <field.InputField
+            Icon={SearchIcon}
+            placeholder="Заголовок или описание..."
+          />
         )}
       </form.AppField>
       {isDraftDirty && (
