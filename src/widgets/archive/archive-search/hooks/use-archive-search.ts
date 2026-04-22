@@ -1,34 +1,42 @@
+import { useStore } from "@tanstack/react-form";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { debounce } from "es-toolkit";
-import { type ChangeEvent, useCallback, useRef } from "react";
+import { useCallback } from "react";
+
+import { useAppForm } from "@/lib/tanstack-form";
+import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+
+import type { ArchiveSearchFormSchema } from "../types/archive-search-form-types";
 
 export function useArchiveSearch() {
-  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
-  const { q: currentSearch } = useSearch({
+  const { q: urlQuery = "" } = useSearch({
     from: "/_with-auth/_with-subscription/archive",
   });
 
-  const handleApplyArchiveSearch = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+  const form = useAppForm({
+    defaultValues: {
+      q: urlQuery,
+    } satisfies ArchiveSearchFormSchema,
+    onSubmit: ({ value }) => {
       navigate({
         to: "/archive",
         search: (prev) => ({
           ...prev,
-          q: event.target.value,
+          q: value.q === "" ? undefined : value.q,
         }),
         replace: true,
       });
     },
-    [navigate],
-  );
+  });
 
-  const handleResetArchiveSearch = useCallback(() => {
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
+  const { onFormSubmit } = useFormHandlers({ form });
+  const draftQuery = useStore(form.store, (state) => state.values.q);
+  const isDraftDirty = draftQuery !== urlQuery;
+  const hasCommittedQuery = urlQuery !== "";
 
+  const resetArchiveSearch = useCallback(() => {
+    form.reset({ q: "" });
     navigate({
       to: "/archive",
       search: (prev) => ({
@@ -37,17 +45,13 @@ export function useArchiveSearch() {
       }),
       replace: true,
     });
-  }, [navigate]);
-
-  const handleApplyArchiveSearchDebounced = debounce(
-    handleApplyArchiveSearch,
-    1000,
-  );
+  }, [form, navigate]);
 
   return {
-    inputRef,
-    currentSearch,
-    handleApplyArchiveSearchDebounced,
-    handleResetArchiveSearch,
+    form,
+    hasCommittedQuery,
+    isDraftDirty,
+    onFormSubmit,
+    resetArchiveSearch,
   };
 }

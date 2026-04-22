@@ -1,30 +1,35 @@
 import { SearchIcon, XIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
 
 import { useArchiveSearch } from "../hooks/use-archive-search";
 
 export function ArchiveSearch() {
   const {
-    inputRef,
-    currentSearch,
-    handleApplyArchiveSearchDebounced,
-    handleResetArchiveSearch,
+    form,
+    hasCommittedQuery,
+    isDraftDirty,
+    onFormSubmit,
+    resetArchiveSearch,
   } = useArchiveSearch();
 
   return (
-    <div className="flex flex-1 gap-2">
-      <Input
-        placeholder="Заголовок или описание..."
-        ref={inputRef}
-        Icon={SearchIcon}
-        defaultValue={currentSearch}
-        onChange={handleApplyArchiveSearchDebounced}
-      />
-      {currentSearch && (
-        <Button icon={<XIcon />} onClick={handleResetArchiveSearch} />
+    <form onSubmit={onFormSubmit} className="flex min-w-0 flex-1 gap-2">
+      <div className="min-w-0 flex-1">
+        <form.AppField name="q">
+          {(field) => (
+            <field.InputField placeholder="Заголовок или описание..." />
+          )}
+        </form.AppField>
+      </div>
+      {isDraftDirty && (
+        <form.AppForm>
+          <form.SubmitButton priority="secondary" icon={<SearchIcon />} />
+        </form.AppForm>
       )}
-    </div>
+      {hasCommittedQuery && (
+        <Button type="button" icon={<XIcon />} onClick={resetArchiveSearch} />
+      )}
+    </form>
   );
 }
