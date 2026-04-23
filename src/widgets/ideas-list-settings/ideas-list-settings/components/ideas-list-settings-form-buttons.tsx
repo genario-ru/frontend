@@ -1,7 +1,8 @@
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
-  LightbulbIcon,
+  SaveIcon,
+  WandSparklesIcon,
   XIcon,
 } from "lucide-react";
 import { useCallback, useMemo } from "react";
@@ -52,7 +53,6 @@ export const IdeasListSettingsFormButtons = withForm({
             "currentStep",
             IdeasListSettingsFormSteps.TemplateSelection,
           );
-
           break;
 
         case IdeasListSettingsFormSteps.ParamsConfiguration:
@@ -60,7 +60,6 @@ export const IdeasListSettingsFormButtons = withForm({
             "currentStep",
             IdeasListSettingsFormSteps.PrimaryInfo,
           );
-
           break;
 
         default:
@@ -102,14 +101,14 @@ export const IdeasListSettingsFormButtons = withForm({
         if (!editMode) {
           return (
             <Button
-              form={formId}
               priority="primary"
               size="lg"
+              form={formId}
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<LightbulbIcon />}
+              icon={<WandSparklesIcon />}
             >
-              Сгенерировать идеи
+              Сгенерировать
             </Button>
           );
         }
@@ -117,12 +116,13 @@ export const IdeasListSettingsFormButtons = withForm({
         return (
           <div className="flex items-center gap-2">
             <Button
-              form={formId}
               size="lg"
+              form={formId}
+              icon={isMobile ? <SaveIcon /> : null}
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
             >
-              Сохранить
+              {!isMobile ? "Сохранить" : null}
             </Button>
             <Button
               type="button"
@@ -130,10 +130,10 @@ export const IdeasListSettingsFormButtons = withForm({
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<LightbulbIcon />}
+              icon={<WandSparklesIcon />}
               onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
             >
-              Сохранить и сгенерировать
+              Сгенерировать
             </Button>
           </div>
         );
@@ -149,7 +149,7 @@ export const IdeasListSettingsFormButtons = withForm({
           Далее
         </Button>
       );
-    }, [currentStep, editMode, form, formId, isLoading]);
+    }, [currentStep, editMode, form, formId, isLoading, isMobile]);
 
     return (
       <Island

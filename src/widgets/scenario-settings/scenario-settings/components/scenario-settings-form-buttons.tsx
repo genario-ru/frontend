@@ -53,7 +53,6 @@ export const ScenarioSettingsFormButtons = withForm({
             "currentStep",
             ScenarioSettingsFormSteps.TemplateSelection,
           );
-
           break;
 
         case ScenarioSettingsFormSteps.ParamsConfiguration:
@@ -61,7 +60,6 @@ export const ScenarioSettingsFormButtons = withForm({
             "currentStep",
             ScenarioSettingsFormSteps.PrimaryInfo,
           );
-
           break;
 
         default:
