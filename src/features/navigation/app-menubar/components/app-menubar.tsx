@@ -7,10 +7,11 @@ import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
 export type AppMenubarProps = PropsWithClassName<{
+  sticky?: boolean;
+  wrapCenter?: boolean;
   actions?: ReactNode;
   title: ReactNode;
   description?: ReactNode;
-  sticky?: boolean;
   left?: ReactNode;
   center?: ReactNode;
   right?: ReactNode;
@@ -19,10 +20,11 @@ export type AppMenubarProps = PropsWithClassName<{
 
 export const AppMenubar = memo(
   ({
+    sticky = true,
+    wrapCenter = false,
     actions,
     title,
     description,
-    sticky = true,
     left,
     center,
     right,
@@ -73,9 +75,10 @@ export const AppMenubar = memo(
             </div>
             {left}
           </section>
-          {center}
+          {!wrapCenter && center}
           <section className="flex shrink-0 flex-col gap-3">{right}</section>
         </div>
+        {wrapCenter && center}
         {bottom}
       </Island>
     );

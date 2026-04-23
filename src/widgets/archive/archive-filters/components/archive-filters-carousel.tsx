@@ -1,14 +1,16 @@
+import "swiper/swiper.css";
+
 import { XIcon } from "lucide-react";
 import { useMemo } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ArchiveFilterSkeleton } from "@/features/archive/archive-filters/components/archive-filter-skeleton";
-import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 
 import { useArchiveFilters } from "../hooks/use-archive-filters";
 import { ArchiveFilter } from "./archive-filter";
 
-export function ArchiveFilters() {
+export function ArchiveFiltersCarousel() {
   const {
     archiveFiltersData,
     hasActiveFilters,
@@ -18,19 +20,39 @@ export function ArchiveFilters() {
 
   const filters = useMemo(() => {
     if (isArchiveFiltersLoading) {
-      return <ItemsList noParent count={8} item={<ArchiveFilterSkeleton />} />;
+      return (
+        <>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <SwiperSlide
+              key={`swiper-skeleton-${index}`}
+              style={{ width: "auto" }}
+            >
+              <ArchiveFilterSkeleton />
+            </SwiperSlide>
+          ))}
+        </>
+      );
     }
 
     if (!archiveFiltersData) return null;
 
     return archiveFiltersData.data.map((filter) => (
-      <ArchiveFilter key={filter.slug} filter={filter} />
+      <SwiperSlide key={filter.slug} style={{ width: "auto" }}>
+        <ArchiveFilter filter={filter} />
+      </SwiperSlide>
     ));
   }, [archiveFiltersData, isArchiveFiltersLoading]);
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {filters}
+    <div className="flex w-full gap-2">
+      <Swiper
+        spaceBetween={8}
+        slidesPerView="auto"
+        style={{ overflow: "visible" }}
+        className="w-full"
+      >
+        {filters}
+      </Swiper>
       {hasActiveFilters && (
         <Button size="sm" icon={<XIcon />} onClick={handleResetArchiveFilters}>
           Сбросить
