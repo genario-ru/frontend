@@ -44,7 +44,7 @@ export function ArchiveFiltersCarousel() {
   }, [archiveFiltersData, isArchiveFiltersLoading]);
 
   return (
-    <div className="flex w-full gap-2">
+    <>
       <Swiper
         spaceBetween={8}
         slidesPerView="auto"
@@ -58,6 +58,6 @@ export function ArchiveFiltersCarousel() {
           Сбросить
         </Button>
       )}
-    </div>
+    </>
   );
 }

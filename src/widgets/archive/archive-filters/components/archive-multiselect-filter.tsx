@@ -3,12 +3,8 @@ import {
   CheckboxGroup,
   CheckboxGroupItem,
 } from "@/shared/components/ui/checkbox-group";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+import { DragSafeDropdownMenu } from "@/shared/components/ui/drag-safe-dropdown-menu";
+import { DropdownMenuGroup } from "@/shared/components/ui/dropdown-menu";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { cn } from "@/shared/utils/cn";
 
@@ -30,8 +26,8 @@ export function ArchiveMultiselectFilter({
   handleChange,
 }: ArchiveMultiselectFilterProps) {
   return (
-    <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
+    <DragSafeDropdownMenu
+      trigger={
         <Button
           size="sm"
           iconPosition="left"
@@ -42,26 +38,25 @@ export function ArchiveMultiselectFilter({
         >
           {name}
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuGroup>
-          <CheckboxGroup
-            id={slug}
-            value={currentValues}
-            onValueChange={handleChange}
-          >
-            {options.map((option) => (
-              <CheckboxGroupItem
-                key={option.value}
-                value={option.value}
-                rounding="base"
-              >
-                {option.label}
-              </CheckboxGroupItem>
-            ))}
-          </CheckboxGroup>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      }
+    >
+      <DropdownMenuGroup>
+        <CheckboxGroup
+          id={slug}
+          value={currentValues}
+          onValueChange={handleChange}
+        >
+          {options.map((option) => (
+            <CheckboxGroupItem
+              key={option.value}
+              value={option.value}
+              rounding="base"
+            >
+              {option.label}
+            </CheckboxGroupItem>
+          ))}
+        </CheckboxGroup>
+      </DropdownMenuGroup>
+    </DragSafeDropdownMenu>
   );
 }

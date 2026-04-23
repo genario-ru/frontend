@@ -1,10 +1,6 @@
 import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+import { DragSafeDropdownMenu } from "@/shared/components/ui/drag-safe-dropdown-menu";
+import { DropdownMenuGroup } from "@/shared/components/ui/dropdown-menu";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
 import { cn } from "@/shared/utils/cn";
@@ -27,8 +23,8 @@ export function ArchiveSelectFilter({
   handleChange,
 }: ArchiveSelectFilterProps) {
   return (
-    <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
+    <DragSafeDropdownMenu
+      trigger={
         <Button
           size="sm"
           iconPosition="left"
@@ -39,26 +35,25 @@ export function ArchiveSelectFilter({
         >
           {name}
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuGroup>
-          <RadioGroup
-            id={slug}
-            value={currentValue}
-            onValueChange={(value) => handleChange(value as string)}
-          >
-            {options.map((option) => (
-              <RadioGroupItem
-                key={option.value}
-                value={option.value}
-                rounding="base"
-              >
-                {option.label}
-              </RadioGroupItem>
-            ))}
-          </RadioGroup>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      }
+    >
+      <DropdownMenuGroup>
+        <RadioGroup
+          id={slug}
+          value={currentValue}
+          onValueChange={(value) => handleChange(value as string)}
+        >
+          {options.map((option) => (
+            <RadioGroupItem
+              key={option.value}
+              value={option.value}
+              rounding="base"
+            >
+              {option.label}
+            </RadioGroupItem>
+          ))}
+        </RadioGroup>
+      </DropdownMenuGroup>
+    </DragSafeDropdownMenu>
   );
 }
