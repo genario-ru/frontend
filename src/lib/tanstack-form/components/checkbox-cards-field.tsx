@@ -17,6 +17,7 @@ type CheckboxCardsFieldProps = Omit<
 > & {
   title?: string | null;
   items: { value: string; children: ReactNode }[];
+  direction?: "horizontal" | "vertical";
   onCheckedChangeCallback?: (
     shouldBeChecked: CheckedState,
     value: string,

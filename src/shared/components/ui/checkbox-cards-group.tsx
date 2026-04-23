@@ -25,7 +25,9 @@ const checkboxCardsGroupItemVariants = cva(
   },
 );
 
-type CheckboxCardsGroupProps = ComponentProps<"div">;
+type CheckboxCardsGroupProps = ComponentProps<"div"> & {
+  direction?: "horizontal" | "vertical";
+};
 
 type CheckboxCardsGroupItemProps = ComponentProps<
   typeof CheckboxPrimitive.Root
@@ -33,10 +35,23 @@ type CheckboxCardsGroupItemProps = ComponentProps<
   VariantProps<typeof checkboxCardsGroupItemVariants>;
 
 export const CheckboxCardsGroup = ({
+  direction = "horizontal",
   className,
   ...props
 }: CheckboxCardsGroupProps) => {
-  return <div className={cn("flex w-full gap-2", className)} {...props} />;
+  return (
+    <div
+      className={cn(
+        "flex w-full gap-2",
+        {
+          "flex-col": direction === "vertical",
+          "flex-row": direction === "horizontal",
+        },
+        className,
+      )}
+      {...props}
+    />
+  );
 };
 
 export const CheckboxCardsGroupItem = ({

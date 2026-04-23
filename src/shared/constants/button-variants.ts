@@ -120,6 +120,11 @@ export const buttonVariants = cva(
       },
       // Icon
       {
+        size: "lg",
+        content: "icon",
+        className: "size-12 px-0",
+      },
+      {
         size: "base",
         content: "icon",
         className: "size-10 px-0",

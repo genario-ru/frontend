@@ -1,5 +1,9 @@
-import { useRouter } from "@tanstack/react-router";
-import { ArrowLeftIcon, ArrowRightIcon, LightbulbIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  LightbulbIcon,
+  XIcon,
+} from "lucide-react";
 import { useCallback, useMemo } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
@@ -7,6 +11,8 @@ import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { useGoBack } from "@/shared/hooks/use-go-back";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
@@ -34,13 +40,10 @@ export const IdeasListSettingsFormButtons = withForm({
     isCreateIdeasListPending,
     isUpdateIdeasListPending,
   }) => {
-    const router = useRouter();
+    const goBack = useGoBack();
+    const { isMobile } = useBreakpoints();
     const { isScrolledToBottom } = usePageCheckScroll();
     const isLoading = isCreateIdeasListPending || isUpdateIdeasListPending;
-
-    const onCancelButtonClick = useCallback(() => {
-      router.history.back();
-    }, [router]);
 
     const onBackButtonClick = useCallback(() => {
       if (currentStep === IdeasListSettingsFormSteps.PrimaryInfo) {
@@ -64,10 +67,11 @@ export const IdeasListSettingsFormButtons = withForm({
           <Button
             type="button"
             size="lg"
+            icon={isMobile ? <XIcon /> : null}
             disabled={isLoading}
-            onClick={onCancelButtonClick}
+            onClick={goBack}
           >
-            Отмена
+            {!isMobile ? "Отмена" : null}
           </Button>
         );
       }
@@ -78,13 +82,13 @@ export const IdeasListSettingsFormButtons = withForm({
           type="button"
           iconPosition="left"
           disabled={isLoading}
-          icon={<ArrowLeftIcon />}
+          icon={isMobile ? <ArrowLeftIcon /> : null}
           onClick={onBackButtonClick}
         >
-          Назад
+          {!isMobile ? "Назад" : null}
         </Button>
       );
-    }, [currentStep, isLoading, onCancelButtonClick, onBackButtonClick]);
+    }, [currentStep, isMobile, isLoading, goBack, onBackButtonClick]);
 
     const rightButtons = useMemo(() => {
       if (currentStep === IdeasListSettingsFormSteps.ParamsConfiguration) {

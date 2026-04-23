@@ -29,9 +29,10 @@ export function IdeasListSettingsForm({
   const {
     form,
     currentStep,
-    onFormSubmit,
+    isMobile,
     isCreateIdeasListPending,
     isUpdateIdeasListPending,
+    onFormSubmit,
   } = useIdeasListSettingsForm({ templateId, ideasListData });
 
   return (
@@ -46,7 +47,7 @@ export function IdeasListSettingsForm({
           currentStep={currentStep}
         />
         <Island className="flex-1 gap-6">
-          <IdeasListSettingsFormNavigationSteps form={form} />
+          {!isMobile && <IdeasListSettingsFormNavigationSteps form={form} />}
           <IdeasListSettingsCurrentSubform
             form={form}
             currentStep={currentStep}

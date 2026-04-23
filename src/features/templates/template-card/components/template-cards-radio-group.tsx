@@ -26,7 +26,10 @@ export const TemplateCardsRadioGroup = ({
 }: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("grid w-full auto-rows-fr grid-cols-2 gap-3", className)}
+      className={cn(
+        "grid w-full auto-rows-fr grid-cols-1 gap-2 md:grid-cols-2",
+        className,
+      )}
       {...props}
     />
   );

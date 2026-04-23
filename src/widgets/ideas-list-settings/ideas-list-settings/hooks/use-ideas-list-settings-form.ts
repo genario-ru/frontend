@@ -11,6 +11,7 @@ import {
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import { IdeasListSettingsFormSteps } from "../utils/ideas-list-settings-form-helpers";
 import { prepareIdeasListSettingsFormOptions } from "../utils/prepare-ideas-list-settings-form-options";
@@ -25,8 +26,9 @@ export function useIdeasListSettingsForm({
   templateId,
   ideasListData,
 }: UseIdeasListSettingsFormParams) {
-  const navigate = useNavigate();
+  const { isMobile } = useBreakpoints();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { createIdeasList, isCreateIdeasListPending } = useCreateIdeasList();
   const { updateIdeasList, isUpdateIdeasListPending } = useUpdateIdeasList();
 
@@ -125,6 +127,7 @@ export function useIdeasListSettingsForm({
   return {
     form,
     currentStep,
+    isMobile,
     isCreateIdeasListPending,
     isUpdateIdeasListPending,
     onFormSubmit,

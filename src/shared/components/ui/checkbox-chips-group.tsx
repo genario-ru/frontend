@@ -1,13 +1,17 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import type { ComponentProps } from "react";
 
+import { buttonVariants } from "@/shared/constants/button-variants";
 import { cn } from "@/shared/utils/cn";
+
+import type { ButtonProps } from "./button";
 
 type CheckboxChipsGroupProps = ComponentProps<"div">;
 
-type CheckboxChipsGroupItemProps = ComponentProps<
+export type CheckboxChipsGroupItemProps = ComponentProps<
   typeof CheckboxPrimitive.Root
->;
+> &
+  Pick<ButtonProps, "size" | "rounding">;
 
 export const CheckboxChipsGroup = ({
   className,
@@ -15,24 +19,23 @@ export const CheckboxChipsGroup = ({
 }: CheckboxChipsGroupProps) => {
   return (
     <div
-      className={cn("flex flex-wrap items-center gap-3", className)}
+      className={cn("flex flex-wrap items-center gap-2", className)}
       {...props}
     />
   );
 };
 
 export const CheckboxChipsGroupItem = ({
+  size,
+  rounding,
   className,
   ...props
 }: CheckboxChipsGroupItemProps) => {
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        "rounded-4 flex min-h-12 w-fit shrink-0 items-center gap-2 px-5 py-2.5 font-medium duration-200 outline-none",
-        "bg-neutral-2 hover:bg-neutral-3 active:bg-neutral-3",
-        "focus-visible:ring-neutral-8 focus-visible:ring-2",
+        buttonVariants({ size, rounding }),
         "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2",
-        "disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}

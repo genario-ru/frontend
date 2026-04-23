@@ -1,5 +1,10 @@
 import { type VariantProps } from "class-variance-authority";
-import type { ComponentProps, CSSProperties, ReactNode } from "react";
+import {
+  Children,
+  type ComponentProps,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 import { buttonVariants } from "@/shared/constants/button-variants";
 import { cn } from "@/shared/utils/cn";
@@ -33,11 +38,12 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const isLoading = state === "loading";
-  const withChildren = Boolean(children);
+  const withChildren = Children.count(children) > 0;
   const withIcon = Boolean(icon);
   const withIconColor = Boolean(iconColor);
   let leftIcon: ReactNode | null = null;
   let rightIcon: ReactNode | null = null;
+  const content = withChildren ? "mixed" : "icon";
 
   if (iconPosition === "left") {
     leftIcon = isLoading ? <Spinner /> : withIcon ? icon : null;
@@ -46,9 +52,7 @@ export const Button = ({
   }
 
   const style = iconColor
-    ? ({
-        "--button-icon-color": iconColor,
-      } as CSSProperties)
+    ? ({ "--button-icon-color": iconColor } as CSSProperties)
     : undefined;
 
   return (
@@ -61,14 +65,12 @@ export const Button = ({
           priority,
           size,
           rounding,
-          content: withChildren ? "mixed" : "icon",
+          content,
           state,
           direction,
           align,
         }),
-        {
-          "[&_svg]:stroke-(--button-icon-color)!": withIconColor,
-        },
+        { "[&_svg]:stroke-(--button-icon-color)!": withIconColor },
         className,
       )}
       {...props}

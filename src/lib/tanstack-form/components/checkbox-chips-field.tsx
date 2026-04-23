@@ -6,6 +6,7 @@ import { FieldLayout } from "@/shared/components/layouts/field-layout";
 import {
   CheckboxChipsGroup,
   CheckboxChipsGroupItem,
+  type CheckboxChipsGroupItemProps,
 } from "@/shared/components/ui/checkbox-chips-group";
 
 import { useFieldContext } from "..";
@@ -16,6 +17,7 @@ type CheckboxChipsFieldProps = Omit<
 > & {
   title?: string | null;
   items: { value: string; children: ReactNode }[];
+  itemProps?: CheckboxChipsGroupItemProps;
   onCheckedChangeCallback?: (
     shouldBeChecked: CheckedState,
     value: string,
@@ -25,6 +27,7 @@ type CheckboxChipsFieldProps = Omit<
 export const CheckboxChipsField = ({
   title,
   items,
+  itemProps,
   onCheckedChangeCallback = noop,
   ...props
 }: CheckboxChipsFieldProps) => {
@@ -71,6 +74,7 @@ export const CheckboxChipsField = ({
               onCheckedChange(shouldBeChecked, item.value);
               onCheckedChangeCallback(shouldBeChecked, item.value);
             }}
+            {...itemProps}
           >
             {item.children}
           </CheckboxChipsGroupItem>
