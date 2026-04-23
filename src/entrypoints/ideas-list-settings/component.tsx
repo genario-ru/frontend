@@ -11,7 +11,7 @@ export function IdeasListSettingsComponent() {
 
   return (
     <>
-      <IdeasListSettingsAppMenubar />
+      <IdeasListSettingsAppMenubar ideasListId={ideasListId} />
       <PageLayout className="flex-1 pb-0">
         <IdeasListSettings templateId={templateId} ideasListId={ideasListId} />
       </PageLayout>

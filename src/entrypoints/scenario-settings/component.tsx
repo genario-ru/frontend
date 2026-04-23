@@ -11,7 +11,7 @@ export function ScenarioSettingsComponent() {
 
   return (
     <>
-      <ScenarioSettingsAppMenubar />
+      <ScenarioSettingsAppMenubar scenarioId={scenarioId} />
       <PageLayout className="flex-1 pb-0">
         <ScenarioSettings
           templateId={templateId}
