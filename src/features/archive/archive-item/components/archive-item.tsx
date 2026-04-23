@@ -4,6 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 
 import { ProfileImage } from "@/shared/components/common/profile-image";
 import { DOT } from "@/shared/constants/unicode";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 import { cn } from "@/shared/utils/cn";
 
 import { getArchiveItemLinkOptions } from "../utils/get-archive-item-link-options";
@@ -33,12 +34,19 @@ export const ArchiveItem = ({
   className,
   ...props
 }: ArchiveItemProps) => {
+  const isTouchScreen = checkTouchScreen();
+
   return (
     <div
       className={cn("group bg-neutral-2 relative rounded-2xl", className)}
       {...props}
     >
-      <div className="pointer-events-none absolute top-2.5 right-2.5 flex gap-2 opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100">
+      <div
+        className={cn("absolute top-2.5 right-2.5", {
+          "pointer-events-none opacity-0 duration-200 group-hover:pointer-events-auto group-hover:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100":
+            !isTouchScreen,
+        })}
+      >
         {actions}
       </div>
       <Link

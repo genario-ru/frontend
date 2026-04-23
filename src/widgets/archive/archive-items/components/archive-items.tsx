@@ -61,11 +61,7 @@ export const ArchiveItems = () => {
             />
           ))}
           {isFetchingNextArchiveItemsPage && (
-            <ItemsList
-              noParent={true}
-              count={6}
-              item={<ArchiveItemSkeleton />}
-            />
+            <ItemsList noParent count={6} item={<ArchiveItemSkeleton />} />
           )}
         </div>
         <InfiniteScroll
@@ -100,7 +96,7 @@ export function ArchiveItemsSkeleton() {
     <ItemsList
       count={12}
       item={<ArchiveItemSkeleton />}
-      className="grid w-full grid-cols-3 gap-4"
+      className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2 xl:grid-cols-3"
     />
   );
 }

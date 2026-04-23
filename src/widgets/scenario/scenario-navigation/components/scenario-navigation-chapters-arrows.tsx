@@ -24,7 +24,7 @@ export function ScenarioNavigationChaptersArrows({
   });
 
   return (
-    <div className="border-neutral-3 flex h-16 shrink-0 items-center gap-1 border-b border-l px-5">
+    <div className="border-neutral-3 flex h-16 shrink-0 items-center gap-1 border-b border-l px-4">
       <ScenarioNavigationChaptersArrowsButton
         icon={<ArrowLeftIcon />}
         disabled={!previousScenarioChapter}

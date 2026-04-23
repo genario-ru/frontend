@@ -16,7 +16,7 @@ const radioCardsGroupItemVariants = cva(
       size: {
         sm: "gap-1 rounded-xl px-3 py-2",
         base: "gap-1 rounded-2xl p-3.5",
-        lg: "gap-1.5 rounded-3xl p-5",
+        lg: "gap-1.5 rounded-3xl p-4",
       },
     },
     defaultVariants: {

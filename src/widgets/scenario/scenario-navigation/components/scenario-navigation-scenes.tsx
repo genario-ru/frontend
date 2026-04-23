@@ -42,7 +42,7 @@ export function ScenarioNavigationScenes({
   return (
     <div
       ref={containerRef}
-      className="hide-scrollbar flex w-full overflow-auto p-5"
+      className="hide-scrollbar flex w-full overflow-auto p-4"
     >
       <RadioCardsGroup
         value={activeScenarioChapterScene?.id}
@@ -77,7 +77,7 @@ export function ScenarioNavigationScenesSkeleton() {
       gap={8}
       count={8}
       item={<Skeleton className="h-[58px] w-48 rounded-2xl" />}
-      className="flex flex-1 overflow-hidden p-5"
+      className="flex flex-1 overflow-hidden p-4"
     />
   );
 }

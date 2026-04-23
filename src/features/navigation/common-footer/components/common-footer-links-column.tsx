@@ -5,15 +5,15 @@ import type { CommonFooterLinksColumn } from "../types/common-footer-links";
 type CommonFooterLinksColumnProps = CommonFooterLinksColumn;
 
 const commonFooterLinkClassName =
-  "text-neutral-6 hover:text-neutral-8 duration-200 hover:underline";
+  "text-neutral-6 hover:text-neutral-8 text-sm duration-200 hover:underline";
 
 export function CommonFooterLinksColumn({
   title,
   items,
 }: CommonFooterLinksColumnProps) {
   return (
-    <div className="flex flex-col gap-3">
-      <p className="font-medium">{title}</p>
+    <div className="flex flex-col gap-2">
+      <p className="text-sm font-medium">{title}</p>
       {items.map((item, index) => {
         const isExternalLink = "href" in item;
 

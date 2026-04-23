@@ -48,8 +48,8 @@ export const Island = ({
           "rounded-b-4": roundedBottom,
           "grow": grow,
           "flex-row": row,
-          "p-5": !noPadding,
-          "gap-5": !noGap,
+          "p-4": !noPadding,
+          "gap-4": !noGap,
         },
         className,
       )}

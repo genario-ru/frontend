@@ -1,18 +1,17 @@
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
-  DialogBody,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogTitle,
+  DialogPredefinedHeader,
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 import { IslandSection } from "@/shared/components/ui/island";
 
 import { useSettingsDeleteAccountForm } from "../hooks/use-settings-delete-account-form";
 
+const DIALOG_TITLE = "Вы уверены?";
 const ISLAND_SECTION_TITLE = "Удаление аккаунта";
 const ISLAND_SECTION_DESCRIPTION =
   "При удалении вашего аккаунта все ваши данные будут безвозвратно удалены и не смогут быть восстановлены.";
@@ -34,10 +33,10 @@ export function SettingsDeleteAccountForm() {
           </Button>
         </DialogTrigger>
         <DialogContent>
-          <DialogBody>
-            <DialogTitle>Вы уверены?</DialogTitle>
-            <DialogDescription>{ISLAND_SECTION_DESCRIPTION}</DialogDescription>
-          </DialogBody>
+          <DialogPredefinedHeader
+            title={DIALOG_TITLE}
+            description={ISLAND_SECTION_DESCRIPTION}
+          />
           <DialogFooter>
             <DialogClose asChild>
               <Button type="button">Отмена</Button>

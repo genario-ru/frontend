@@ -10,13 +10,15 @@ import { AppDrawer } from "@/widgets/navigation/app-drawer/components/app-drawer
 
 export function ArchiveComponent() {
   const { isMobile } = useBreakpoints();
+  const actions = isMobile && <AppDrawer />;
+  const filters = isMobile ? <ArchiveFiltersCarousel /> : <ArchiveFilters />;
 
   return (
     <>
       <ArchiveAppMenubar
-        actions={isMobile && <AppDrawer />}
+        actions={actions}
         search={<ArchiveSearch />}
-        filters={isMobile ? <ArchiveFiltersCarousel /> : <ArchiveFilters />}
+        filters={filters}
         wrapCenter={isMobile}
       />
       <PageLayout className="flex-1 pb-2">

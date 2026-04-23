@@ -93,7 +93,7 @@ export const DialogBody = ({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex w-full flex-col gap-4 p-5", className)} {...props} />
+  <div className={cn("flex w-full flex-col gap-4 p-4", className)} {...props} />
 );
 
 export const DialogFooter = ({
@@ -102,7 +102,7 @@ export const DialogFooter = ({
 }: HTMLAttributes<HTMLDivElement>) => (
   <footer
     className={cn(
-      "bg-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-5",
+      "bg-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-4",
       className,
     )}
     {...props}
@@ -149,7 +149,7 @@ export const DialogPredefinedHeader = ({
 
   return (
     <DialogHeader
-      className={cn("flex w-full justify-between gap-4 px-5 pt-5", className)}
+      className={cn("flex w-full justify-between gap-4 px-4 pt-4", className)}
       {...props}
     >
       <div
@@ -161,7 +161,7 @@ export const DialogPredefinedHeader = ({
       </div>
       {hasCloseButton && (
         <DialogCloseButton
-          className={cn("relative -top-2 -right-2", closeButtonClassName)}
+          className={cn("relative -top-1.5 -right-1.5", closeButtonClassName)}
           {...restCloseButtonProps}
         />
       )}

@@ -52,7 +52,7 @@ export function ScenarioNavigationChapters({
     >
       <TabsUnderlineList
         ref={containerRef}
-        className="border-neutral-3 hide-scrollbar flex-1 overflow-auto border-b px-5"
+        className="border-neutral-3 hide-scrollbar flex-1 overflow-auto border-b px-4"
       >
         {scenarioChaptersList.map((chapter, index) => (
           <TabsUnderlineTrigger
@@ -75,7 +75,7 @@ export function ScenarioNavigationChaptersSkeleton() {
       row
       count={6}
       item={
-        <div className="rounded-2.5 flex h-16 flex-1 items-center justify-center px-5">
+        <div className="rounded-2.5 flex h-16 flex-1 items-center justify-center px-4">
           <TextSkeleton
             fontSize={16}
             lineHeight={24}
