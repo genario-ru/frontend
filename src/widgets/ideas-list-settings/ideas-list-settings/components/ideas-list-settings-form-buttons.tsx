@@ -46,18 +46,25 @@ export const IdeasListSettingsFormButtons = withForm({
     const isLoading = isCreateIdeasListPending || isUpdateIdeasListPending;
 
     const onBackButtonClick = useCallback(() => {
-      if (currentStep === IdeasListSettingsFormSteps.PrimaryInfo) {
-        form.setFieldValue(
-          "currentStep",
-          IdeasListSettingsFormSteps.TemplateSelection,
-        );
-      } else if (
-        currentStep === IdeasListSettingsFormSteps.ParamsConfiguration
-      ) {
-        form.setFieldValue(
-          "currentStep",
-          IdeasListSettingsFormSteps.PrimaryInfo,
-        );
+      switch (currentStep) {
+        case IdeasListSettingsFormSteps.PrimaryInfo:
+          form.setFieldValue(
+            "currentStep",
+            IdeasListSettingsFormSteps.TemplateSelection,
+          );
+
+          break;
+
+        case IdeasListSettingsFormSteps.ParamsConfiguration:
+          form.setFieldValue(
+            "currentStep",
+            IdeasListSettingsFormSteps.PrimaryInfo,
+          );
+
+          break;
+
+        default:
+          break;
       }
     }, [currentStep, form]);
 

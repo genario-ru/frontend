@@ -26,7 +26,7 @@ export const CheckboxChipsGroup = ({
 };
 
 export const CheckboxChipsGroupItem = ({
-  size,
+  size = "lg",
   rounding,
   className,
   ...props

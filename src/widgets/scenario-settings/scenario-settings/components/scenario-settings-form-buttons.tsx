@@ -1,5 +1,10 @@
-import { useRouter } from "@tanstack/react-router";
-import { ArrowLeftIcon, ArrowRightIcon, BookImageIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  SaveIcon,
+  WandSparklesIcon,
+  XIcon,
+} from "lucide-react";
 import { useCallback, useMemo } from "react";
 
 import { withForm } from "@/lib/tanstack-form";
@@ -7,6 +12,8 @@ import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { useGoBack } from "@/shared/hooks/use-go-back";
 import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
@@ -34,27 +41,31 @@ export const ScenarioSettingsFormButtons = withForm({
     isCreateScenarioPending,
     isUpdateScenarioPending,
   }) => {
-    const router = useRouter();
+    const goBack = useGoBack();
+    const { isMobile } = useBreakpoints();
     const { isScrolledToBottom } = usePageCheckScroll();
     const isLoading = isCreateScenarioPending || isUpdateScenarioPending;
 
-    const onCancelButtonClick = useCallback(() => {
-      router.history.back();
-    }, [router]);
-
     const onBackButtonClick = useCallback(() => {
-      if (currentStep === ScenarioSettingsFormSteps.PrimaryInfo) {
-        form.setFieldValue(
-          "currentStep",
-          ScenarioSettingsFormSteps.TemplateSelection,
-        );
-      } else if (
-        currentStep === ScenarioSettingsFormSteps.ParamsConfiguration
-      ) {
-        form.setFieldValue(
-          "currentStep",
-          ScenarioSettingsFormSteps.PrimaryInfo,
-        );
+      switch (currentStep) {
+        case ScenarioSettingsFormSteps.PrimaryInfo:
+          form.setFieldValue(
+            "currentStep",
+            ScenarioSettingsFormSteps.TemplateSelection,
+          );
+
+          break;
+
+        case ScenarioSettingsFormSteps.ParamsConfiguration:
+          form.setFieldValue(
+            "currentStep",
+            ScenarioSettingsFormSteps.PrimaryInfo,
+          );
+
+          break;
+
+        default:
+          break;
       }
     }, [currentStep, form]);
 
@@ -64,10 +75,11 @@ export const ScenarioSettingsFormButtons = withForm({
           <Button
             type="button"
             size="lg"
+            icon={isMobile ? <XIcon /> : null}
             disabled={isLoading}
-            onClick={onCancelButtonClick}
+            onClick={goBack}
           >
-            Отмена
+            {!isMobile ? "Отмена" : null}
           </Button>
         );
       }
@@ -78,27 +90,27 @@ export const ScenarioSettingsFormButtons = withForm({
           type="button"
           iconPosition="left"
           disabled={isLoading}
-          icon={<ArrowLeftIcon />}
+          icon={isMobile ? <ArrowLeftIcon /> : null}
           onClick={onBackButtonClick}
         >
-          Назад
+          {!isMobile ? "Назад" : null}
         </Button>
       );
-    }, [currentStep, isLoading, onCancelButtonClick, onBackButtonClick]);
+    }, [currentStep, isMobile, isLoading, goBack, onBackButtonClick]);
 
     const rightButtons = useMemo(() => {
       if (currentStep === ScenarioSettingsFormSteps.ParamsConfiguration) {
         if (!editMode) {
           return (
             <Button
-              form={formId}
               priority="primary"
               size="lg"
+              form={formId}
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<BookImageIcon />}
+              icon={<WandSparklesIcon />}
             >
-              Сгенерировать сценарий
+              Сгенерировать
             </Button>
           );
         }
@@ -107,12 +119,13 @@ export const ScenarioSettingsFormButtons = withForm({
           <div className="flex items-center gap-2">
             <Button
               type="submit"
-              form={formId}
               size="lg"
+              form={formId}
+              icon={isMobile ? <SaveIcon /> : null}
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
             >
-              Сохранить
+              {!isMobile ? "Сохранить" : null}
             </Button>
             <Button
               type="button"
@@ -120,10 +133,10 @@ export const ScenarioSettingsFormButtons = withForm({
               size="lg"
               disabled={isLoading}
               state={isLoading ? "loading" : "default"}
-              icon={<BookImageIcon />}
+              icon={<WandSparklesIcon />}
               onClick={() => form.handleSubmit({ submitAction: "regenerate" })}
             >
-              Сохранить и сгенерировать
+              Сгенерировать
             </Button>
           </div>
         );
@@ -131,15 +144,15 @@ export const ScenarioSettingsFormButtons = withForm({
 
       return (
         <Button
-          form={formId}
           size="lg"
+          form={formId}
           disabled={isLoading}
           icon={<ArrowRightIcon />}
         >
           Далее
         </Button>
       );
-    }, [currentStep, editMode, form, formId, isLoading]);
+    }, [currentStep, editMode, form, formId, isLoading, isMobile]);
 
     return (
       <Island

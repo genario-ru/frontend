@@ -34,6 +34,7 @@ export function ScenarioSettingsForm({
   const {
     form,
     currentStep,
+    isMobile,
     isCreateScenarioPending,
     isUpdateScenarioPending,
     onFormSubmit,
@@ -51,7 +52,7 @@ export function ScenarioSettingsForm({
           currentStep={currentStep}
         />
         <Island className="flex-1 gap-6">
-          <ScenarioSettingsFormNavigationSteps form={form} />
+          {!isMobile && <ScenarioSettingsFormNavigationSteps form={form} />}
           <ScenarioSettingsCurrentSubform
             form={form}
             currentStep={currentStep}

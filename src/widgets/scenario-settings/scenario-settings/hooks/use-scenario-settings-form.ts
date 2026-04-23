@@ -15,6 +15,7 @@ import {
 } from "@/codegen/api/product";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import { prepareScenarioSettingsFormOptions } from "../utils/prepare-scenario-settings-forn-options";
 import { ScenarioSettingsFormSteps } from "../utils/scenario-settings-form-helpers";
@@ -33,6 +34,7 @@ export function useScenarioSettingsForm({
 }: UseScenarioSettingsFormParams) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { isMobile } = useBreakpoints();
   const { createScenario, isCreateScenarioPending } = useCreateScenario();
   const { updateScenario, isUpdateScenarioPending } = useUpdateScenario();
 
@@ -141,6 +143,7 @@ export function useScenarioSettingsForm({
   return {
     form,
     currentStep,
+    isMobile,
     isCreateScenarioPending,
     isUpdateScenarioPending,
     onFormSubmit,

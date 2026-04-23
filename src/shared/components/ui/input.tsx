@@ -9,8 +9,8 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        lg: "px-5 h-12 rounded-4",
-        base: "px-4 h-10 rounded-3",
+        lg: "px-4 h-12 rounded-4",
+        base: "px-3.5 h-10 rounded-3",
         sm: "px-3 h-8 text-sm rounded-2",
       },
       variant: {
