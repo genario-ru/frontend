@@ -10,12 +10,16 @@ import { Button } from "@/shared/components/ui/button";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
+import { SwipeableActions } from "@/shared/components/ui/swipeable-actions";
 import { CRLF } from "@/shared/constants/unicode";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 import { useArchiveItems } from "../hooks/use-archive-items";
 import { ArchiveItemActions } from "./archive-item-actions";
 import { ArchiveItemBadges } from "./archive-item-badges";
+import { ArchiveItemSwipeActions } from "./archive-item-swipe-actions";
 
 export const ArchiveItems = () => {
   const {
@@ -26,6 +30,9 @@ export const ArchiveItems = () => {
     isFetchingNextArchiveItemsPage,
     fetchNextArchiveItemsPage,
   } = useArchiveItems();
+
+  const { isDesktop } = useBreakpoints();
+  const showSwipeActions = !isDesktop && checkTouchScreen();
 
   const body = useMemo(() => {
     if (isLoadingArchiveItems) {
@@ -43,23 +50,49 @@ export const ArchiveItems = () => {
     return (
       <>
         <div className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2 xl:grid-cols-3">
-          {archiveItemsData.map((item) => (
-            <ArchiveItem
-              key={item.data.id}
-              id={item.data.id}
-              entity={item.entity}
-              createdAt={item.data.createdAt}
-              title={item.data.name}
-              description={item.data.description}
-              profileName={item.data.profile?.name}
-              profileId={item.data.profile?.id}
-              actions={
-                <ArchiveItemActions id={item.data.id} entity={item.entity} />
-              }
-              badges={<ArchiveItemBadges archiveItem={item} />}
-              className="row-span-1"
-            />
-          ))}
+          {archiveItemsData.map((item) => {
+            const archiveItemProps = {
+              id: item.data.id,
+              entity: item.entity,
+              createdAt: item.data.createdAt,
+              title: item.data.name,
+              description: item.data.description,
+              profileName: item.data.profile?.name,
+              profileId: item.data.profile?.id,
+              badges: <ArchiveItemBadges archiveItem={item} />,
+            };
+
+            if (showSwipeActions) {
+              return (
+                <SwipeableActions
+                  key={item.data.id}
+                  actions={
+                    <ArchiveItemSwipeActions
+                      id={item.data.id}
+                      entity={item.entity}
+                    />
+                  }
+                  className="h-full min-h-0 rounded-2xl"
+                >
+                  <ArchiveItem
+                    className="h-full min-h-0"
+                    {...archiveItemProps}
+                  />
+                </SwipeableActions>
+              );
+            }
+
+            return (
+              <ArchiveItem
+                key={item.data.id}
+                actions={
+                  <ArchiveItemActions id={item.data.id} entity={item.entity} />
+                }
+                className="row-span-1"
+                {...archiveItemProps}
+              />
+            );
+          })}
           {isFetchingNextArchiveItemsPage && (
             <ItemsList noParent count={6} item={<ArchiveItemSkeleton />} />
           )}
@@ -80,6 +113,7 @@ export const ArchiveItems = () => {
     isLoadingArchiveItems,
     isErrorArchiveItems,
     fetchNextArchiveItemsPage,
+    showSwipeActions,
   ]);
 
   return (
