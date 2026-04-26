@@ -10,7 +10,7 @@ import { Button } from "@/shared/components/ui/button";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
-import { SwipeableActions } from "@/shared/components/ui/swipeable-actions";
+import { SwipeActions } from "@/shared/components/ui/swipe-actions";
 import { CRLF } from "@/shared/constants/unicode";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
@@ -64,7 +64,7 @@ export const ArchiveItems = () => {
 
             if (showSwipeActions) {
               return (
-                <SwipeableActions
+                <SwipeActions
                   key={item.data.id}
                   beforeInset={8}
                   actions={
@@ -79,7 +79,7 @@ export const ArchiveItems = () => {
                     className="h-full min-h-0"
                     {...archiveItemProps}
                   />
-                </SwipeableActions>
+                </SwipeActions>
               );
             }
 

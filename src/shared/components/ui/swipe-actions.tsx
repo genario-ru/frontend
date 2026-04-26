@@ -1,5 +1,5 @@
 /**
- * Swipeable row: main content (`children`) slides horizontally over a right-aligned
+ * Swipe row: main content (`children`) slides horizontally over a right-aligned
  * actions strip. Spring `x` is the content offset (≤ 0); `width` mirrors |x| for the
  * actions panel clip. Drag uses @use-gesture + @react-spring; sizes come from ResizeObserver.
  */
@@ -22,7 +22,7 @@ import { cn } from "@/shared/utils/cn";
 const AnimatedActions = animated("div");
 const AnimatedContent = animated("div");
 
-type SwipeableActionsProps = Omit<ComponentProps<"div">, "children"> & {
+type SwipeActionsProps = Omit<ComponentProps<"div">, "children"> & {
   actions: ReactNode;
   children: ReactNode;
   disabled?: boolean;
@@ -33,7 +33,7 @@ type SwipeableActionsProps = Omit<ComponentProps<"div">, "children"> & {
 const DEFAULT_BEFORE_INSET = 0;
 const DEFAULT_AFTER_INSET = 0;
 
-export function SwipeableActions({
+export function SwipeActions({
   actions,
   children,
   disabled = false,
@@ -41,7 +41,7 @@ export function SwipeableActions({
   afterInset = DEFAULT_AFTER_INSET,
   className,
   ...props
-}: SwipeableActionsProps) {
+}: SwipeActionsProps) {
   if (disabled) {
     return (
       <div className={className} {...props}>
@@ -51,7 +51,7 @@ export function SwipeableActions({
   }
 
   return (
-    <SwipeableActionsInteractive
+    <SwipeActionsInteractive
       actions={actions}
       beforeInset={beforeInset}
       afterInset={afterInset}
@@ -59,21 +59,21 @@ export function SwipeableActions({
       {...props}
     >
       {children}
-    </SwipeableActionsInteractive>
+    </SwipeActionsInteractive>
   );
 }
 
-type SwipeableActionsInteractiveProps = Omit<SwipeableActionsProps, "disabled">;
+type SwipeActionsInteractiveProps = Omit<SwipeActionsProps, "disabled">;
 
-function SwipeableActionsInteractive({
+function SwipeActionsInteractive({
   actions,
   children,
   beforeInset = DEFAULT_BEFORE_INSET,
   afterInset = DEFAULT_AFTER_INSET,
   className,
   ...props
-}: SwipeableActionsInteractiveProps) {
-  const shell = useSwipeableShell();
+}: SwipeActionsInteractiveProps) {
+  const shell = useSwipeShell();
   const beforeInsetPx = Math.max(0, beforeInset);
   const afterInsetPx = Math.max(0, afterInset);
 
@@ -197,7 +197,7 @@ function snapToCloserEnd(endX: number, openX: number): number {
 /**
  * Drag bounds, spring sync, measure guards, and tap-to-close on the foreground layer.
  */
-function useSwipeableShell() {
+function useSwipeShell() {
   const rootRef = useRef<HTMLDivElement>(null);
   const actionsRowRef = useRef<HTMLDivElement>(null);
   const dragStartXRef = useRef(0);

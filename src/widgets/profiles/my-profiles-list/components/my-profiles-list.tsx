@@ -7,7 +7,7 @@ import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
-import { SwipeableActions } from "@/shared/components/ui/swipeable-actions";
+import { SwipeActions } from "@/shared/components/ui/swipe-actions";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
@@ -46,7 +46,7 @@ export function MyProfilesList() {
 
         if (showSwipeActions) {
           return (
-            <SwipeableActions
+            <SwipeActions
               key={profile.id}
               beforeInset={8}
               afterInset={8}
@@ -59,7 +59,7 @@ export function MyProfilesList() {
               className="rounded-4 h-full min-h-0"
             >
               <ProfileCard className="h-full min-h-0" {...cardProps} />
-            </SwipeableActions>
+            </SwipeActions>
           );
         }
 
