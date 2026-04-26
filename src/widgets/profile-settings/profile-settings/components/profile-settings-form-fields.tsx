@@ -1,7 +1,7 @@
 import type {
-  GetApiV1PlatformsQueryResponse,
-  GetApiV1ProfilesTypesQueryResponse,
-  GetApiV1TonesQueryResponse,
+  GetPlatformsResponseSchema,
+  GetProfileTypesResponseSchema,
+  GetTonesResponseSchema,
 } from "@/codegen/api/product";
 import { withForm } from "@/lib/tanstack-form";
 import { Island } from "@/shared/components/ui/island";
@@ -10,9 +10,9 @@ import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import type { ProfileSettingsFormValues } from "../schemas/profile-settings-form-schema";
 
 type ProfileSettingsFormFieldsProps = {
-  profileTypesData: GetApiV1ProfilesTypesQueryResponse;
-  tonesData: GetApiV1TonesQueryResponse;
-  platformsData: GetApiV1PlatformsQueryResponse;
+  profileTypesData: GetProfileTypesResponseSchema;
+  tonesData: GetTonesResponseSchema;
+  platformsData: GetPlatformsResponseSchema;
 };
 
 export const ProfileSettingsFormFields = withForm({
@@ -65,6 +65,7 @@ export const ProfileSettingsFormFields = withForm({
           {(field) => (
             <field.CheckboxChipsField
               title="Тональность"
+              defaultMaxVisibleItems={6}
               items={tonesData.data.map((tone) => ({
                 value: tone.id,
                 children: (

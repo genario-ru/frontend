@@ -41,17 +41,10 @@ export function useProfileSettingsForm({
       if (profileData) {
         updateProfile(
           { profileId: profileData.data.id, data: value },
-          {
-            onSuccess: navigateToProfiles,
-          },
+          { onSuccess: navigateToProfiles },
         );
       } else {
-        createProfile(
-          { data: value },
-          {
-            onSuccess: navigateToProfiles,
-          },
-        );
+        createProfile({ data: value }, { onSuccess: navigateToProfiles });
       }
     },
   });
