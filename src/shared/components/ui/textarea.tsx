@@ -24,7 +24,7 @@ const textareaWrapperVariants = cva(
 );
 
 const textareaVariants = cva(
-  "h-full w-full resize-none truncate overflow-auto whitespace-normal outline-none placeholder:text-neutral-6",
+  "h-full w-full resize-none truncate overflow-auto caret-neutral-8 whitespace-normal outline-none placeholder:text-neutral-6",
   {
     variants: {
       size: {

@@ -113,7 +113,7 @@ export const CommandGroup = ({
 }: ComponentProps<typeof CommandPrimitive.Group>) => (
   <CommandPrimitive.Group
     className={cn(
-      "**:[[cmdk-group-heading]]:text-neutral-7 overflow-hidden p-1.5 outline-none [&_input]:caret-transparent **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-items]]:flex **:[[cmdk-group-items]]:flex-col **:[[cmdk-group-items]]:gap-1",
+      "**:[[cmdk-group-heading]]:text-neutral-7 overflow-hidden p-1.5 outline-none **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-items]]:flex **:[[cmdk-group-items]]:flex-col **:[[cmdk-group-items]]:gap-1",
       className,
     )}
     {...props}
