@@ -12,12 +12,12 @@ export function ProfilesImport() {
       title="Ссылки на ваши каналы"
       description="Описание сценария, где будет описываться описание сценария, в котором мы опишем сам сценари, писие сценария, где будет описываться описание сценар..."
     >
-      <div className="flex w-full gap-8">
-        <section className="flex flex-1 flex-col gap-6">
+      <div className="flex w-full flex-col gap-4 lg:flex-row">
+        <section className="flex flex-1 flex-col gap-4">
           <ProfilesImportForm />
           <ProfilesImportFeatures />
         </section>
-        <section className="flex flex-1 flex-col gap-6">
+        <section className="flex flex-1 flex-col gap-4">
           <ProfilesImportPlatformsList />
           <ProfilesImportOtherPlatforms />
         </section>

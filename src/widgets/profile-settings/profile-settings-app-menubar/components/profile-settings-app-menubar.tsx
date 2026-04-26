@@ -12,7 +12,6 @@ export function ProfileSettingsAppMenubar({
     <AppMenubar
       actions={<BackButton />}
       title={profileId ? "Редактирование профиля" : "Новый профиль"}
-      description="Введите всю релевантную информацию о вашем профиле / канале, которая будет полезна при генерации контента"
     />
   );
 }

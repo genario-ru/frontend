@@ -51,7 +51,7 @@ export const ProfileCard = ({
           {actions}
         </div>
         {description && (
-          <p className="text-new-neutral-6 line-clamp-4">{description}</p>
+          <p className="text-new-neutral-6 line-clamp-3">{description}</p>
         )}
         <div className="flex w-full flex-wrap gap-1">
           {tones.map((tone) => (

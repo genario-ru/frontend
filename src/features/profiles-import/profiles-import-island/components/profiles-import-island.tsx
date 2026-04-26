@@ -22,7 +22,7 @@ export function ProfilesImportIsland({
   return (
     <Island className={cn("bg-neutral-2 p-4", className)} {...props}>
       <header className="flex w-full flex-col gap-2">
-        <div className="flex w-full items-center gap-2">
+        <div className="flex w-full gap-2">
           <LucideIcon icon={icon} />
           <Heading variant="h3">{title}</Heading>
         </div>

@@ -5,7 +5,7 @@ import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 export const ProfileCardSkeleton = () => {
   return (
-    <Island className="gap-0 p-0">
+    <Island noGap noPadding className="overflow-hidden">
       <header className="relative w-full p-2">
         <Skeleton className="rounded-3.5 h-16 w-full" />
         <div className="ring-neutral-1 bg-neutral-1 absolute -bottom-2 left-5 rounded-full ring-6">
@@ -28,7 +28,7 @@ export const ProfileCardSkeleton = () => {
         <TextSkeleton
           fontSize={16}
           lineHeight={24}
-          linesCount={2}
+          linesCount={3}
           className="w-full"
         />
         <ItemsList

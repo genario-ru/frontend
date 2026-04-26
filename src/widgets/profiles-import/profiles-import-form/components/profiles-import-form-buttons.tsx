@@ -19,12 +19,12 @@ export const ProfilesImportFormButtons = withForm({
     handleAddProfileChannel,
   }) => {
     return (
-      <div className="flex w-full gap-2">
+      <div className="flex w-full flex-col gap-2 md:flex-row">
         <Button
           type="button"
           icon={<PlusIcon />}
           onClick={handleAddProfileChannel}
-          className="flex-1"
+          className="w-full flex-1 md:w-auto"
         >
           Добавить канал
         </Button>
@@ -32,7 +32,7 @@ export const ProfilesImportFormButtons = withForm({
           <form.SubmitButton
             variant="accent"
             state={isCreateProfilesFromChannelsPending ? "loading" : "default"}
-            className="flex-1"
+            className="w-full flex-1 md:w-auto"
           >
             Создать профили
           </form.SubmitButton>
