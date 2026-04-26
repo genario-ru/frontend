@@ -33,6 +33,11 @@ export function useProfileSettingsForm({
   const form = useAppForm({
     defaultValues: prepareDefaultProfileSettingsFormValues({ profileData }),
     validators: {
+      onChange: (data) => {
+        if (data.formApi.state.submissionAttempts > 0) {
+          return profileSettingsFormValidateFn(data);
+        }
+      },
       onSubmit: profileData
         ? profileSettingsFormMatchValidateFn
         : profileSettingsFormValidateFn,
