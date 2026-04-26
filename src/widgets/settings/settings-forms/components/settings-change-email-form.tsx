@@ -29,14 +29,16 @@ export function SettingsChangeEmailForm() {
 
   return (
     <IslandSection title={ISLAND_TITLE} description={ISLAND_DESCRIPTION}>
-      <form onSubmit={onFormSubmit} className="flex flex-row gap-3">
+      <form onSubmit={onFormSubmit} className="flex flex-col gap-2 md:flex-row">
         <form.AppField name="newEmail">
           {(field) => (
             <field.InputField type="text" placeholder="new-email@example.ru" />
           )}
         </form.AppField>
         <form.AppForm>
-          <form.SubmitButton>Сохранить</form.SubmitButton>
+          <form.SubmitButton className="w-full md:w-fit">
+            Сохранить
+          </form.SubmitButton>
         </form.AppForm>
       </form>
       <Dialog

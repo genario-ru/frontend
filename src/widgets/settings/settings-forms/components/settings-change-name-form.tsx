@@ -7,12 +7,14 @@ export function SettingsChangeNameForm() {
 
   return (
     <IslandSection title="Имя">
-      <form onSubmit={onFormSubmit} className="flex flex-row gap-3">
+      <form onSubmit={onFormSubmit} className="flex flex-col gap-2 md:flex-row">
         <form.AppField name="name">
           {(field) => <field.InputField placeholder="Иван Иванов" />}
         </form.AppField>
         <form.AppForm>
-          <form.SubmitButton>Сохранить</form.SubmitButton>
+          <form.SubmitButton className="w-full md:w-fit">
+            Сохранить
+          </form.SubmitButton>
         </form.AppForm>
       </form>
     </IslandSection>

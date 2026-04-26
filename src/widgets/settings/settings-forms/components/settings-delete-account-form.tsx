@@ -28,7 +28,11 @@ export function SettingsDeleteAccountForm() {
     >
       <Dialog>
         <DialogTrigger asChild>
-          <Button priority="secondary" variant="negative">
+          <Button
+            priority="secondary"
+            variant="negative"
+            className="w-full md:w-fit"
+          >
             Удалить аккаунт
           </Button>
         </DialogTrigger>

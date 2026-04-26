@@ -9,11 +9,11 @@ import { SettingsSignOutForm } from "./settings-sign-out-form";
 export function SettingsForms() {
   return (
     <ContentLayout size="md">
-      <Island>
+      <Island className="gap-6">
         <SettingsChangeNameForm />
         <SettingsChangeEmailForm />
       </Island>
-      <Island>
+      <Island className="gap-6">
         <SettingsSignOutForm />
         <SettingsDeleteAccountForm />
       </Island>

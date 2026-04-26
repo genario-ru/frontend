@@ -4,7 +4,7 @@ import { IslandSection } from "@/shared/components/ui/island";
 
 const ISLAND_SECTION_TITLE = "Выход из аккаунта";
 const ISLAND_SECTION_DESCRIPTION =
-  "После выхода из аккаунта все ваши данные останутся надежно сохранены. Вы сможете войти в свой аккаунт по указанной при регистрации электронной почте";
+  "Все ваши данные останутся надежно сохранены. Вы сможете войти в свой аккаунт по указанной при привязанной электронной почте";
 
 export function SettingsSignOutForm() {
   const signOut = useSignOut();
@@ -15,7 +15,11 @@ export function SettingsSignOutForm() {
       description={ISLAND_SECTION_DESCRIPTION}
       className="gap-4"
     >
-      <Button priority="secondary" onClick={signOut}>
+      <Button
+        priority="secondary"
+        className="w-full md:w-fit"
+        onClick={signOut}
+      >
         Выйти из аккаунта
       </Button>
     </IslandSection>
