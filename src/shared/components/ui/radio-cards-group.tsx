@@ -6,10 +6,7 @@ import { cn } from "@/shared/utils/cn";
 
 const radioCardsGroupItemVariants = cva(
   cn(
-    "flex flex-col items-center font-medium ring ring-neutral-4 bg-neutral-1 duration-200",
-    "[&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 ",
-    "hover:ring-neutral-5 active:ring-neutral-5",
-    "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
+    "flex flex-col items-center font-medium ring ring-neutral-4 bg-neutral-1 duration-200 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 hover:ring-neutral-5 active:ring-neutral-5 data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
   ),
   {
     variants: {
@@ -30,24 +27,24 @@ type RadioCardsGroupItemProps = ComponentProps<
 > &
   VariantProps<typeof radioCardsGroupItemVariants>;
 
-export const RadioCardsGroup = ({
+export function RadioCardsGroup({
   className,
   ...props
-}: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
+}: ComponentProps<typeof RadioGroupPrimitive.Root>) {
   return (
     <RadioGroupPrimitive.Root
       className={cn("flex items-center gap-2", className)}
       {...props}
     />
   );
-};
+}
 
-export const RadioCardsGroupItem = ({
+export function RadioCardsGroupItem({
   className,
   children,
   size,
   ...props
-}: RadioCardsGroupItemProps) => {
+}: RadioCardsGroupItemProps) {
   return (
     <RadioGroupPrimitive.Item
       className={cn(radioCardsGroupItemVariants({ size }), className)}
@@ -56,4 +53,4 @@ export const RadioCardsGroupItem = ({
       {children}
     </RadioGroupPrimitive.Item>
   );
-};
+}
