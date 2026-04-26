@@ -22,7 +22,7 @@ export type IslandSectionProps = ComponentProps<"section"> & {
   description?: string;
 };
 
-export const Island = ({
+export function Island({
   title,
   description,
   roundedTop = true,
@@ -36,7 +36,7 @@ export const Island = ({
   className,
   children,
   ...props
-}: IslandProps) => {
+}: IslandProps) {
   const withHeader = Boolean(title || description || actions);
 
   return (
@@ -67,19 +67,19 @@ export const Island = ({
       {children}
     </Comp>
   );
-};
+}
 
-export const IslandSection = ({
+export function IslandSection({
   title,
   description,
   className,
   children,
   ...props
-}: IslandSectionProps) => {
+}: IslandSectionProps) {
   const withHeader = Boolean(title || description);
 
   return (
-    <section className={cn("flex flex-col gap-3", className)} {...props}>
+    <section className={cn("flex flex-col gap-4", className)} {...props}>
       {withHeader && (
         <header className="flex flex-col gap-1">
           {title && (
@@ -93,4 +93,4 @@ export const IslandSection = ({
       {children}
     </section>
   );
-};
+}
