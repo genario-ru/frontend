@@ -14,7 +14,7 @@ export function ProfilesImportForm() {
   } = useProfilesImportForm();
 
   return (
-    <form onSubmit={onFormSubmit} className="flex w-full flex-col gap-4">
+    <form onSubmit={onFormSubmit} className="flex w-full flex-col gap-2">
       <ProfilesImportFormFields
         form={form}
         successValidationFields={successValidationFields}
