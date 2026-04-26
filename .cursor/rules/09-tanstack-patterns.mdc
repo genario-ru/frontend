@@ -87,5 +87,5 @@ const form = useAppForm({
 ```
 
 Available field components: `InputField`, `TextareaField`, `SelectField`,
-`CheckboxChipsField`, `MultiSelectField`, `CheckboxCardsField`, `RadioCardsGroupField`.
+`CheckboxChipsField`, `MultiSelectField`, `RadioCardsGroupField`.
 Form components: `SubmitButton`, `ResetButton`.

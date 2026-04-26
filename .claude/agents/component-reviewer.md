@@ -30,7 +30,7 @@ const form = useAppForm({ defaultValues: {...}, validators: {...}, onSubmit: ...
 ```
 
 Available field components: `InputField`, `TextareaField`, `SelectField`,
-`CheckboxChipsField`, `MultiSelectField`, `CheckboxCardsField`, `RadioCardsGroupField`.
+`CheckboxChipsField`, `MultiSelectField`, `RadioCardsGroupField`.
 
 ### 3. Data fetching in components
 

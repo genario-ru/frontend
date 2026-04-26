@@ -15,14 +15,8 @@ import {
 export const IdeasListSettingsParamsConfigurationSubform = withForm({
   defaultValues: {} as IdeasListSettingsFormSchema,
   render: ({ form }) => {
-    const {
-      myProfilesData,
-      videoTypesData,
-      tonesData,
-      isMobile,
-      isLoading,
-      isError,
-    } = useIdeasListSettingsParamsConfigurationData();
+    const { myProfilesData, videoTypesData, tonesData, isLoading, isError } =
+      useIdeasListSettingsParamsConfigurationData();
 
     const isDataAvailable = myProfilesData && videoTypesData && tonesData;
 
@@ -44,12 +38,17 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
           name={`${IdeasListSettingsFormSteps.ParamsConfiguration}.videoTypeIds`}
         >
           {(field) => (
-            <field.CheckboxCardsField
+            <field.CheckboxChipsField
               title="Тип видео"
-              direction={isMobile ? "vertical" : "horizontal"}
+              itemProps={{ size: "lg", className: "flex-1" }}
               items={videoTypesData.data.map((item) => ({
                 value: item.id,
-                children: item.name,
+                children: (
+                  <>
+                    {item.icon && <LucideIcon icon={item.icon} />}
+                    {item.name}
+                  </>
+                ),
               }))}
             />
           )}
@@ -97,6 +96,7 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
             <field.CheckboxChipsField
               title="Тональность"
               itemProps={{ size: "lg" }}
+              defaultMaxVisibleItems={6}
               items={tonesData.data.map((item) => ({
                 value: item.id,
                 children: (
