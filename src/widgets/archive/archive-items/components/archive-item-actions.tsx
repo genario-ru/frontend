@@ -33,10 +33,10 @@ export function ArchiveItemActions({ id, entity }: ArchiveItemActionsProps) {
       open={isArchiveItemActionsOpened}
       onOpenChange={setIsArchiveItemActionsOpened}
     >
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger data-ignore-parent-link asChild>
         <Button size="sm" icon={<EllipsisIcon />} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent data-ignore-parent-link align="end">
         <DropdownMenuGroup>
           <ArchiveItemEditLink id={id} entity={entity} />
           <ArchiveItemActionsDeleteDialog

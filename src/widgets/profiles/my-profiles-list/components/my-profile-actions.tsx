@@ -13,9 +13,9 @@ type MyProfileProps = {
 
 export function MyProfileActions({ profileId, profileName }: MyProfileProps) {
   const {
-    handleDeleteProfile,
     isDeleteProfilePending,
     isDeleteProfileDialogOpened,
+    handleDeleteProfile,
     setIsDeleteProfileDialogOpened,
   } = useMyProfileActions({
     profileId,

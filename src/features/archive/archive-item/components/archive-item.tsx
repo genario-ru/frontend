@@ -1,15 +1,17 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkComponentProps } from "@tanstack/react-router";
 import { format } from "date-fns";
-import type { ComponentProps, ReactNode } from "react";
+import { type MouseEventHandler, type ReactNode, useCallback } from "react";
 
 import { ProfileImage } from "@/shared/components/common/profile-image";
 import { DOT } from "@/shared/constants/unicode";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { checkIgnoreParentLink } from "@/shared/utils/check-ignore-parent-link";
 import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 import { cn } from "@/shared/utils/cn";
 
 import { getArchiveItemLinkOptions } from "../utils/get-archive-item-link-options";
 
-type ArchiveItemProps = Omit<ComponentProps<"div">, "title"> & {
+type ArchiveItemProps = Omit<LinkComponentProps, "title"> & {
   id: string;
   entity: "ideasList" | "scenario";
   createdAt: string;
@@ -34,43 +36,55 @@ export const ArchiveItem = ({
   className,
   ...props
 }: ArchiveItemProps) => {
+  const { isMobile } = useBreakpoints();
   const isTouchScreen = checkTouchScreen();
+  const hideActions = isMobile && isTouchScreen;
+
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = useCallback(
+    (event) => {
+      const shouldIgnoreParentLink = checkIgnoreParentLink(event);
+
+      if (!hideActions && shouldIgnoreParentLink) {
+        event.preventDefault();
+      }
+    },
+    [hideActions],
+  );
 
   return (
-    <div
-      className={cn("group bg-neutral-2 relative rounded-2xl", className)}
+    <Link
+      {...getArchiveItemLinkOptions({ id, entity })}
+      onClick={handleClick}
+      className={cn(
+        "bg-neutral-2 rounded-4 flex flex-col justify-between gap-4 p-4",
+        className,
+      )}
       {...props}
     >
-      <div
-        className={cn("absolute top-2.5 right-2.5", {
-          "pointer-events-none opacity-0 duration-200 group-hover:pointer-events-auto group-hover:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100":
-            !isTouchScreen,
-        })}
-      >
-        {actions}
-      </div>
-      <Link
-        {...getArchiveItemLinkOptions({ id, entity })}
-        className="flex h-full w-full flex-col justify-between gap-4 p-4"
-      >
-        <header className="flex w-full flex-col gap-1">
-          <p className="text-neutral-7 text-xs font-medium">
-            {format(createdAt, "dd.MM.yyyy")}
-            <span className="px-1">{DOT}</span>
-            {entity === "ideasList" ? "Идеи" : "Сценарий"}
-          </p>
-          <p className="text-lg font-semibold">{title || "Без названия"}</p>
-          {description && (
-            <p className="text-neutral-7 line-clamp-3 text-sm">{description}</p>
-          )}
-        </header>
-        <footer className="flex w-full items-end justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-2">{badges}</div>
-          {profileName && profileId && (
-            <ProfileImage size="sm" alt={profileName} uuid={profileId} />
-          )}
-        </footer>
-      </Link>
-    </div>
+      <header className="flex w-full flex-col gap-1">
+        <div className="flex w-full justify-between gap-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-neutral-7 text-xs font-medium">
+              {format(createdAt, "dd.MM.yyyy")}
+              <span className="px-1">{DOT}</span>
+              {entity === "ideasList" ? "Идеи" : "Сценарий"}
+            </p>
+            <p className="line-clamp-3 text-lg font-semibold">
+              {title || "Без названия"}
+            </p>
+          </div>
+          {!hideActions && actions}
+        </div>
+        {description && (
+          <p className="text-neutral-7 line-clamp-3 text-sm">{description}</p>
+        )}
+      </header>
+      <footer className="flex w-full items-end justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-2">{badges}</div>
+        {profileName && profileId && (
+          <ProfileImage size="sm" alt={profileName} uuid={profileId} />
+        )}
+      </footer>
+    </Link>
   );
 };

@@ -1,11 +1,6 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
-import type {
-  ComponentProps,
-  ForwardedRef,
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
@@ -13,7 +8,8 @@ import { Button, type ButtonProps } from "./button";
 import { Heading, type HeadingProps } from "./heading";
 
 type DialogContentProps = ComponentProps<typeof DialogPrimitive.Content> & {
-  overlayRef?: ForwardedRef<HTMLDivElement>;
+  overlayProps?: ComponentProps<typeof DialogPrimitive.Overlay>;
+  ignoreParentLink?: boolean;
 };
 
 type DialogPredefinedHeaderProps = HTMLAttributes<HTMLElement> & {
@@ -32,29 +28,30 @@ export const DialogPortal = DialogPrimitive.Portal;
 
 export const DialogClose = DialogPrimitive.Close;
 
-export const DialogOverlay = ({
+export function DialogOverlay({
   className,
   ...props
-}: ComponentProps<typeof DialogPrimitive.Overlay>) => (
-  <DialogPrimitive.Overlay
-    className={cn(
-      "bg-neutral-7/30 dark:bg-neutral-3/60 fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto p-10 backdrop-blur duration-200",
-      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className,
-    )}
-    {...props}
-  />
-);
+}: ComponentProps<typeof DialogPrimitive.Overlay>) {
+  return (
+    <DialogPrimitive.Overlay
+      className={cn(
+        "bg-neutral-7/30 dark:bg-neutral-3/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto p-10 backdrop-blur duration-200",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
-export const DialogContent = ({
-  overlayRef,
+export function DialogContent({
+  overlayProps,
   className,
   children,
   ...props
-}: DialogContentProps) => {
+}: DialogContentProps) {
   return (
     <DialogPortal>
-      <DialogOverlay ref={overlayRef}>
+      <DialogOverlay data-ignore-parent-link {...overlayProps}>
         <DialogPrimitive.Content
           onPointerDownOutside={(e) => {
             const currentTarget = e.currentTarget as HTMLElement;
@@ -64,8 +61,7 @@ export const DialogContent = ({
             }
           }}
           className={cn(
-            "bg-neutral-1 isolate m-auto flex w-full max-w-lg flex-col rounded-3xl duration-200",
-            "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-[0.98] data-[state=open]:zoom-in-[0.98]",
+            "bg-neutral-1 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-[0.98] data-[state=open]:zoom-in-[0.98] isolate m-auto flex w-full max-w-lg flex-col rounded-3xl duration-200",
             className,
           )}
           {...props}
@@ -75,64 +71,75 @@ export const DialogContent = ({
       </DialogOverlay>
     </DialogPortal>
   );
-};
+}
 
-export const DialogCloseButton = (props: ButtonProps) => {
+export function DialogCloseButton(props: ButtonProps) {
   return (
     <DialogClose asChild>
       <Button priority="tertiary" icon={<XIcon />} {...props} />
     </DialogClose>
   );
-};
+}
 
-export const DialogHeader = (props: HTMLAttributes<HTMLDivElement>) => (
-  <header {...props} />
-);
+export function DialogHeader(props: HTMLAttributes<HTMLDivElement>) {
+  return <header {...props} />;
+}
 
-export const DialogBody = ({
+export function DialogBody({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex w-full flex-col gap-4 p-4", className)} {...props} />
-);
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn("flex w-full flex-col gap-4 p-4", className)}
+      {...props}
+    />
+  );
+}
 
-export const DialogFooter = ({
+export function DialogFooter({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <footer
-    className={cn(
-      "bg-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-4",
-      className,
-    )}
-    {...props}
-  />
-);
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <footer
+      className={cn(
+        "bg-neutral-1 flex w-full justify-between gap-4 rounded-b-3xl p-4",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
-export const DialogTitle = ({
+export function DialogTitle({
   variant,
   children,
   ...props
 }: ComponentProps<typeof DialogPrimitive.Title> &
-  Pick<HeadingProps, "variant">) => (
-  <DialogPrimitive.Title {...props} asChild>
-    <Heading as="h1" variant={variant ?? "h2"}>
-      {children}
-    </Heading>
-  </DialogPrimitive.Title>
-);
+  Pick<HeadingProps, "variant">) {
+  return (
+    <DialogPrimitive.Title {...props} asChild>
+      <Heading as="h1" variant={variant ?? "h2"}>
+        {children}
+      </Heading>
+    </DialogPrimitive.Title>
+  );
+}
 
-export const DialogDescription = ({
+export function DialogDescription({
   className,
   ...props
-}: ComponentProps<typeof DialogPrimitive.Description>) => (
-  <DialogPrimitive.Description
-    className={cn("text-neutral-7 w-fit text-left", className)}
-    {...props}
-  />
-);
+}: ComponentProps<typeof DialogPrimitive.Description>) {
+  return (
+    <DialogPrimitive.Description
+      className={cn("text-neutral-7 w-fit text-left", className)}
+      {...props}
+    />
+  );
+}
 
-export const DialogPredefinedHeader = ({
+export function DialogPredefinedHeader({
   title,
   description,
   hasCloseButton = true,
@@ -140,7 +147,7 @@ export const DialogPredefinedHeader = ({
   headerContentProps = {},
   className,
   ...props
-}: DialogPredefinedHeaderProps) => {
+}: DialogPredefinedHeaderProps) {
   const { className: closeButtonClassName, ...restCloseButtonProps } =
     closeButtonProps;
 
@@ -167,4 +174,4 @@ export const DialogPredefinedHeader = ({
       )}
     </DialogHeader>
   );
-};
+}

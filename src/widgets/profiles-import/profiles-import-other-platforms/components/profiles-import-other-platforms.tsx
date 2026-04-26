@@ -11,7 +11,6 @@ export function ProfilesImportOtherPlatforms() {
       description="Ничего страшного, для этого просто перейдите в режим ручного создания профиля вашего канала"
     >
       <ButtonLink
-        size="lg"
         to="/profiles/settings"
         priority="tertiary"
         icon={<ArrowUpRightIcon />}

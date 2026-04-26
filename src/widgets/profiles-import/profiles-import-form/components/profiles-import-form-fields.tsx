@@ -51,7 +51,6 @@ export const ProfilesImportFormFields = withForm({
                     className="flex flex-row gap-2"
                   >
                     <subfield.InputField
-                      size="lg"
                       state={isSuccessValidation ? "success" : "default"}
                       placeholder="Введите ссылку на канал"
                       fieldLayoutProps={{
@@ -61,7 +60,6 @@ export const ProfilesImportFormFields = withForm({
                     />
                     {isValid && (
                       <Button
-                        size="lg"
                         type="button"
                         icon={<SearchIcon />}
                         state={isValidationInProgress ? "loading" : "default"}
@@ -75,7 +73,6 @@ export const ProfilesImportFormFields = withForm({
                     )}
                     {isRemoveAvailable && (
                       <Button
-                        size="lg"
                         type="button"
                         icon={<TrashIcon />}
                         onClick={() => field.removeValue(index)}
