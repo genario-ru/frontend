@@ -5,8 +5,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
 import { TemplateCard } from "@/features/templates/template-card/components/template-card";
+import { TemplateCardDrawerMenu } from "@/features/templates/template-card/components/template-card-drawer-menu";
+import { Drawer, DrawerTrigger } from "@/shared/components/ui/drawer";
 import { Island } from "@/shared/components/ui/island";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { cn } from "@/shared/utils/cn";
 
 import { useHomeTemplatesCarousel } from "../hooks/use-home-templates-carousel";
 import { HomeTemplatesCarouselSlideMenu } from "./home-templates-carousel-slide-menu";
@@ -15,6 +18,7 @@ export function HomeTemplatesCarousel() {
   const {
     templatesData,
     slidesPerView,
+    isTouchScreen,
     isTemplatesLoading,
     hasPreviousSlide,
     hasNextSlide,
@@ -37,8 +41,38 @@ export function HomeTemplatesCarousel() {
       );
     }
 
-    if (templatesData) {
-      return templatesData.data.map((template) => (
+    if (!templatesData) {
+      return null;
+    }
+
+    return templatesData.data.map((template) => {
+      if (isTouchScreen) {
+        return (
+          <SwiperSlide key={template.id}>
+            <Drawer>
+              <DrawerTrigger
+                nativeButton={false}
+                render={({ className, ...props }) => (
+                  <TemplateCard
+                    icon={template.icon}
+                    title={template.name}
+                    description={template.description}
+                    color={template.color}
+                    className={cn("group relative h-full", className)}
+                    {...props}
+                  />
+                )}
+              />
+              <TemplateCardDrawerMenu
+                templateId={template.id}
+                templateName={template.name}
+              />
+            </Drawer>
+          </SwiperSlide>
+        );
+      }
+
+      return (
         <SwiperSlide key={template.id}>
           <TemplateCard
             icon={template.icon}
@@ -50,11 +84,9 @@ export function HomeTemplatesCarousel() {
             <HomeTemplatesCarouselSlideMenu templateId={template.id} />
           </TemplateCard>
         </SwiperSlide>
-      ));
-    }
-
-    return null;
-  }, [templatesData, isTemplatesLoading]);
+      );
+    });
+  }, [templatesData, isTemplatesLoading, isTouchScreen]);
 
   return (
     <Island

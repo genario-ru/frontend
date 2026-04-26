@@ -3,10 +3,12 @@ import { useMemo } from "react";
 import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
 import { useSwiper } from "@/lib/swiper/hooks/use-swiper";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 export function useHomeTemplatesCarousel() {
   const { isMobile, isTablet } = useBreakpoints();
   const { templatesData, isTemplatesLoading } = useGetTemplates();
+  const isTouchScreen = checkTouchScreen();
 
   const {
     hasPreviousSlide,
@@ -32,6 +34,7 @@ export function useHomeTemplatesCarousel() {
   return {
     templatesData,
     slidesPerView,
+    isTouchScreen,
     isTemplatesLoading,
     hasPreviousSlide,
     hasNextSlide,

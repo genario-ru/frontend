@@ -18,7 +18,7 @@ export function TemplateCardMenu({
   return (
     <div
       className={cn(
-        "rounded-4 bg-neutral-8/10 flex flex-col items-center justify-center gap-2 p-4 backdrop-blur-sm",
+        "rounded-4 bg-neutral-8/10 flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
         className,
       )}
       {...props}
@@ -27,6 +27,7 @@ export function TemplateCardMenu({
         to="/ideas-lists/settings"
         search={{ templateId }}
         icon={<LucideIcon icon={LightbulbIcon} />}
+        className="w-full flex-1"
       >
         Новые идеи
       </TemplateCardMenuButtonLink>
@@ -34,6 +35,7 @@ export function TemplateCardMenu({
         to="/scenarios/settings"
         search={{ templateId }}
         icon={<LucideIcon icon={BookImageIcon} />}
+        className="w-full flex-1"
       >
         Новый сценарий
       </TemplateCardMenuButtonLink>

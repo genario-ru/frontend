@@ -24,7 +24,7 @@ export const DrawerDescription = DrawerBase.Description;
 
 export function DrawerHeader({
   title = "Без названия",
-  description = "Без описания",
+  description,
   left: leftProp,
   right: rightProp,
   className,
@@ -38,9 +38,11 @@ export function DrawerHeader({
         <DrawerBase.Title className="text-xl font-semibold">
           {title}
         </DrawerBase.Title>
-        <DrawerBase.Description className="text-neutral-7">
-          {description}
-        </DrawerBase.Description>
+        {description && (
+          <DrawerBase.Description className="text-neutral-7">
+            {description}
+          </DrawerBase.Description>
+        )}
       </div>
     );
   }, [title, description, leftProp]);
@@ -59,7 +61,7 @@ export function DrawerHeader({
     <Island
       as="header"
       row
-      className={cn("items-center justify-between", className)}
+      className={cn("justify-between", className)}
       {...props}
     >
       {left}

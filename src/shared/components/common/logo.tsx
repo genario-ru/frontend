@@ -7,8 +7,8 @@ import { cn } from "@/shared/utils/cn";
 const logoVariantProps = cva("", {
   variants: {
     size: {
-      sm: "h-8 w-fit",
-      base: "h-9 w-fit",
+      sm: "h-8 w-auto",
+      base: "h-9 w-auto",
     },
   },
   defaultVariants: {

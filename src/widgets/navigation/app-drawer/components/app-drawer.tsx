@@ -29,7 +29,7 @@ export function AppDrawer() {
         )}
       />
       <DrawerContent>
-        <DrawerHeader left={<Logo />} className="py-3 pr-3 pl-4" />
+        <DrawerHeader left={<Logo />} className="items-center py-3 pr-3 pl-4" />
         <Island className="p-1">
           <UserInfo
             id={sessionData.user.id}
