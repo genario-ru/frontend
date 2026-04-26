@@ -33,14 +33,17 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
     }
 
     return (
-      <div className="flex flex-col gap-6">
+      <div className="flex w-full flex-col gap-6">
         <form.AppField
           name={`${IdeasListSettingsFormSteps.ParamsConfiguration}.videoTypeIds`}
         >
           {(field) => (
             <field.CheckboxChipsField
               title="Тип видео"
-              itemProps={{ size: "lg", className: "flex-1" }}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit flex-1",
+              }}
               items={videoTypesData.data.map((item) => ({
                 value: item.id,
                 children: (
@@ -50,6 +53,7 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
                   </>
                 ),
               }))}
+              className="flex-col md:flex-row"
             />
           )}
         </form.AppField>
@@ -95,8 +99,11 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
           {(field) => (
             <field.CheckboxChipsField
               title="Тональность"
-              itemProps={{ size: "lg" }}
               defaultMaxVisibleItems={6}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit",
+              }}
               items={tonesData.data.map((item) => ({
                 value: item.id,
                 children: (
@@ -106,6 +113,7 @@ export const IdeasListSettingsParamsConfigurationSubform = withForm({
                   </>
                 ),
               }))}
+              className="flex-col md:flex-row"
             />
           )}
         </form.AppField>

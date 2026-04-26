@@ -56,9 +56,7 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
                 {
                   items: videoTypesData.data.map((item) => ({
                     value: item.id,
-                    icon: item.icon ? (
-                      <LucideIcon icon={item.icon} />
-                    ) : undefined,
+                    icon: item.icon && <LucideIcon icon={item.icon} />,
                     label: item.name,
                     description: item.description,
                   })),
@@ -84,19 +82,6 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
                 },
               ]}
               buttonProps={{ size: "lg" }}
-            />
-          )}
-        </form.AppField>
-        <form.AppField
-          name={`${ScenarioSettingsFormSteps.ParamsConfiguration}.platformIds`}
-        >
-          {(field) => (
-            <field.CheckboxChipsField
-              title="Платформы"
-              items={platformsData.data.map((platform) => ({
-                value: platform.id,
-                children: platform.name,
-              }))}
             />
           )}
         </form.AppField>
@@ -137,11 +122,30 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
           )}
         </form.AppField>
         <form.AppField
+          name={`${ScenarioSettingsFormSteps.ParamsConfiguration}.platformIds`}
+        >
+          {(field) => (
+            <field.CheckboxChipsField
+              title="Платформы"
+              items={platformsData.data.map((platform) => ({
+                value: platform.id,
+                children: platform.name,
+              }))}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit",
+              }}
+              className="flex-col md:flex-row"
+            />
+          )}
+        </form.AppField>
+        <form.AppField
           name={`${ScenarioSettingsFormSteps.ParamsConfiguration}.toneIds`}
         >
           {(field) => (
             <field.CheckboxChipsField
               title="Тональность"
+              defaultMaxVisibleItems={6}
               items={tonesData.data.map((item) => ({
                 value: item.id,
                 children: (
@@ -151,6 +155,11 @@ export const ScenarioSettingsParamsConfigurationSubform = withForm({
                   </>
                 ),
               }))}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit",
+              }}
+              className="flex-col md:flex-row"
             />
           )}
         </form.AppField>

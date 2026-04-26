@@ -63,9 +63,10 @@ export function TemplateCardsRadioGroupSkeleton({
 }: TemplateCardsRadioGroupSkeletonProps) {
   return (
     <ItemsList
+      gap={8}
       count={count}
       item={<TemplateCardsRadioGroupItemSkeleton />}
-      className="grid w-full auto-rows-fr grid-cols-2 gap-3"
+      className="grid w-full auto-rows-fr grid-cols-1 md:grid-cols-2"
     />
   );
 }

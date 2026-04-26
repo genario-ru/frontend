@@ -61,6 +61,22 @@ export const ProfileSettingsFormFields = withForm({
             />
           )}
         </form.AppField>
+        <form.AppField name="platformIds">
+          {(field) => (
+            <field.CheckboxChipsField
+              title="Платформы"
+              items={platformsData.data.map((platform) => ({
+                value: platform.id,
+                children: platform.name,
+              }))}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit",
+              }}
+              className="flex-col md:flex-row"
+            />
+          )}
+        </form.AppField>
         <form.AppField name="toneIds">
           {(field) => (
             <field.CheckboxChipsField
@@ -75,17 +91,11 @@ export const ProfileSettingsFormFields = withForm({
                   </>
                 ),
               }))}
-            />
-          )}
-        </form.AppField>
-        <form.AppField name="platformIds">
-          {(field) => (
-            <field.CheckboxChipsField
-              title="Платформы"
-              items={platformsData.data.map((platform) => ({
-                value: platform.id,
-                children: platform.name,
-              }))}
+              itemProps={{
+                size: "lg",
+                className: "w-full md:w-fit",
+              }}
+              className="flex-col md:flex-row"
             />
           )}
         </form.AppField>

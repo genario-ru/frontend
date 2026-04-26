@@ -5,13 +5,11 @@ import type { ComponentProps, ReactNode } from "react";
 import { useCallback, useMemo, useState } from "react";
 
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
-import { Button } from "@/shared/components/ui/button";
+import { Button, type ButtonProps } from "@/shared/components/ui/button";
 import {
   CheckboxChipsGroup,
   CheckboxChipsGroupItem,
-  type CheckboxChipsGroupItemProps,
 } from "@/shared/components/ui/checkbox-chips-group";
-import { cn } from "@/shared/utils/cn";
 
 import { useFieldContext } from "..";
 
@@ -21,7 +19,7 @@ type CheckboxChipsFieldProps = Omit<
 > & {
   title?: string | null;
   items: { value: string; children: ReactNode }[];
-  itemProps?: CheckboxChipsGroupItemProps;
+  itemProps?: ButtonProps;
   lastItem?: ReactNode;
   defaultMaxVisibleItems?: number;
   onCheckedChangeCallback?: (
@@ -43,7 +41,6 @@ export const CheckboxChipsField = ({
   itemProps,
   lastItem,
   defaultMaxVisibleItems,
-  className,
   onCheckedChangeCallback = noop,
   ...props
 }: CheckboxChipsFieldProps) => {
@@ -61,10 +58,7 @@ export const CheckboxChipsField = ({
 
   return (
     <FieldLayout labelText={title}>
-      <CheckboxChipsGroup
-        {...props}
-        className={cn("flex-col md:flex-row", className)}
-      >
+      <CheckboxChipsGroup {...props}>
         {visibleItems.map((item) => (
           <CheckboxChipsGroupItem
             key={item.value}
@@ -78,7 +72,6 @@ export const CheckboxChipsField = ({
               onCheckedChange(shouldBeChecked, item.value);
               onCheckedChangeCallback(shouldBeChecked, item.value);
             }}
-            className={cn("w-full md:w-fit", itemProps?.className)}
             {...itemProps}
           >
             {item.children}
@@ -88,9 +81,9 @@ export const CheckboxChipsField = ({
           <Button
             type="button"
             size="lg"
-            className="w-full md:w-fit"
             icon={<ChevronRightIcon />}
             onClick={showAll}
+            {...itemProps}
           >
             Показать все
           </Button>
