@@ -26,12 +26,19 @@ type SwipeableActionsProps = Omit<ComponentProps<"div">, "children"> & {
   actions: ReactNode;
   children: ReactNode;
   disabled?: boolean;
+  beforeInset?: number;
+  afterInset?: number;
 };
+
+const DEFAULT_BEFORE_INSET = 0;
+const DEFAULT_AFTER_INSET = 0;
 
 export function SwipeableActions({
   actions,
   children,
   disabled = false,
+  beforeInset = DEFAULT_BEFORE_INSET,
+  afterInset = DEFAULT_AFTER_INSET,
   className,
   ...props
 }: SwipeableActionsProps) {
@@ -46,6 +53,8 @@ export function SwipeableActions({
   return (
     <SwipeableActionsInteractive
       actions={actions}
+      beforeInset={beforeInset}
+      afterInset={afterInset}
       className={className}
       {...props}
     >
@@ -59,10 +68,14 @@ type SwipeableActionsInteractiveProps = Omit<SwipeableActionsProps, "disabled">;
 function SwipeableActionsInteractive({
   actions,
   children,
+  beforeInset = DEFAULT_BEFORE_INSET,
+  afterInset = DEFAULT_AFTER_INSET,
   className,
   ...props
 }: SwipeableActionsInteractiveProps) {
   const shell = useSwipeableShell();
+  const beforeInsetPx = Math.max(0, beforeInset);
+  const afterInsetPx = Math.max(0, afterInset);
 
   useResizeObserver(shell.actionsRowRef, { onChange: shell.measureActionsRow });
   useResizeObserver(shell.rootRef, { onChange: shell.measureRoot });
@@ -81,9 +94,17 @@ function SwipeableActionsInteractive({
           ref={shell.actionsRowRef}
           className="flex h-full min-h-0 w-full flex-row items-stretch"
         >
-          {/* Included in scrollWidth so swipe distance matches visible gap to the card */}
-          <div className="w-2 shrink-0" aria-hidden />
+          <div
+            className="shrink-0"
+            style={{ width: beforeInsetPx }}
+            aria-hidden
+          />
           <div className={ACTIONS_ROW_SLOT_CLASS}>{actions}</div>
+          <div
+            className="shrink-0"
+            style={{ width: afterInsetPx }}
+            aria-hidden
+          />
         </div>
       </AnimatedActions>
       <AnimatedContent

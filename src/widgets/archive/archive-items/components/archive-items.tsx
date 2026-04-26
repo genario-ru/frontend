@@ -66,6 +66,7 @@ export const ArchiveItems = () => {
               return (
                 <SwipeableActions
                   key={item.data.id}
+                  beforeInset={8}
                   actions={
                     <ArchiveItemSwipeActions
                       id={item.data.id}

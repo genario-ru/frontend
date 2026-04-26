@@ -3,18 +3,19 @@ import type { ReactNode } from "react";
 import { ProfileImage } from "@/shared/components/common/profile-image";
 import { Badge } from "@/shared/components/ui/badge";
 import { Island } from "@/shared/components/ui/island";
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 import { getProfileTailwindColorFromUuid } from "@/shared/utils/get-profile-tailwind-color-from-uuid";
 
-export type ProfileCardProps = {
+export type ProfileCardProps = PropsWithClassName<{
   id: string;
   name: string;
   description: string | null;
   typeName?: string | null;
   tones: string[];
   platforms: string[];
-  actions: ReactNode;
-};
+  actions?: ReactNode;
+}>;
 
 export const ProfileCard = ({
   id,
@@ -24,9 +25,10 @@ export const ProfileCard = ({
   tones,
   platforms,
   actions,
+  className,
 }: ProfileCardProps) => {
   return (
-    <Island className="gap-0 p-0">
+    <Island noGap noPadding className={className}>
       <header className="relative w-full p-2">
         <div
           className={cn(

@@ -7,12 +7,18 @@ import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
+import { SwipeableActions } from "@/shared/components/ui/swipeable-actions";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 import { useMyProfilesList } from "../hooks/use-my-profiles-list";
 import { MyProfileActions } from "./my-profile-actions";
+import { MyProfileSwipeActions } from "./my-profile-swipe-actions";
 
 export function MyProfilesList() {
   const { myProfilesData, isMyProfilesLoading } = useMyProfilesList();
+  const { isDesktop } = useBreakpoints();
+  const showSwipeActions = !isDesktop && checkTouchScreen();
 
   if (isMyProfilesLoading) {
     return <MyProfilesListSkeleton />;
@@ -28,23 +34,48 @@ export function MyProfilesList() {
 
   return (
     <ContentLayout className="grid grid-cols-1 lg:grid-cols-2">
-      {myProfilesData.data.map((profile) => (
-        <ProfileCard
-          key={profile.id}
-          id={profile.id}
-          name={profile.name}
-          description={profile.description}
-          typeName={profile.type?.name}
-          tones={profile.tones.map((tone) => tone.name)}
-          platforms={profile.platforms.map((platform) => platform.name)}
-          actions={
-            <MyProfileActions
-              profileId={profile.id}
-              profileName={profile.name}
-            />
-          }
-        />
-      ))}
+      {myProfilesData.data.map((profile) => {
+        const cardProps = {
+          id: profile.id,
+          name: profile.name,
+          description: profile.description,
+          typeName: profile.type?.name,
+          tones: profile.tones.map((tone) => tone.name),
+          platforms: profile.platforms.map((platform) => platform.name),
+        };
+
+        if (showSwipeActions) {
+          return (
+            <SwipeableActions
+              key={profile.id}
+              beforeInset={8}
+              afterInset={8}
+              actions={
+                <MyProfileSwipeActions
+                  profileId={profile.id}
+                  profileName={profile.name}
+                />
+              }
+              className="rounded-4 h-full min-h-0"
+            >
+              <ProfileCard className="h-full min-h-0" {...cardProps} />
+            </SwipeableActions>
+          );
+        }
+
+        return (
+          <ProfileCard
+            key={profile.id}
+            actions={
+              <MyProfileActions
+                profileId={profile.id}
+                profileName={profile.name}
+              />
+            }
+            {...cardProps}
+          />
+        );
+      })}
     </ContentLayout>
   );
 }
