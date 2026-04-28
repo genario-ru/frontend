@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import { BadgesList } from "@/features/badges/badges-list/badges-list";
+import { BadgesList } from "@/features/badges/badges-list/components/badges-list";
+import { BadgesListCarousel } from "@/features/badges/badges-list/components/badges-list-carousel";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { BackButton } from "@/shared/components/common/back-button";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -9,6 +10,7 @@ import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useIdeasListAppMenubar } from "../hooks/use-ideas-list-app-menubar";
 import { IdeasListAppMenubarActions } from "./ideas-list-app-menubar-actions";
+import { IdeasListAppMenubarMoreActions } from "./ideas-list-app-menubar-more-actions";
 import { IdeasListAppMenubarTabs } from "./ideas-list-app-menubar-tabs";
 
 type IdeasListAppMenubarParams = {
@@ -22,6 +24,7 @@ export function IdeasListAppMenubar({
     ideasListData,
     ideasListTitle,
     ideasListDescription,
+    isMobile,
     isIdeasListLoading,
   } = useIdeasListAppMenubar({ ideasListId });
 
@@ -54,16 +57,53 @@ export function IdeasListAppMenubar({
       );
     }
 
+    if (!isMobile) {
+      return (
+        <BadgesList
+          badgesData={[
+            ideasListData?.data.template,
+            ideasListData?.data.videoTypes,
+            ideasListData?.data.tones,
+          ]}
+        />
+      );
+    }
+  }, [ideasListData, isIdeasListLoading, isMobile]);
+
+  const right = useMemo(() => {
+    if (isMobile) {
+      return (
+        <IdeasListAppMenubarMoreActions
+          withMoreIdeasAction
+          ideasListId={ideasListId}
+        />
+      );
+    }
+
     return (
-      <BadgesList
-        badgesData={[
-          ideasListData?.data.template,
-          ideasListData?.data.videoTypes,
-          ideasListData?.data.tones,
-        ]}
-      />
+      <div className="flex h-full flex-col items-end justify-between gap-8">
+        <IdeasListAppMenubarActions ideasListId={ideasListId} />
+        <IdeasListAppMenubarTabs ideasListId={ideasListId} />
+      </div>
     );
-  }, [ideasListData, isIdeasListLoading]);
+  }, [ideasListId, isMobile]);
+
+  const bottom = useMemo(() => {
+    if (isMobile) {
+      return (
+        <>
+          <BadgesListCarousel
+            badgesData={[
+              ideasListData?.data.template,
+              ideasListData?.data.videoTypes,
+              ideasListData?.data.tones,
+            ]}
+          />
+          <IdeasListAppMenubarTabs expand ideasListId={ideasListId} />
+        </>
+      );
+    }
+  }, [ideasListData, ideasListId, isMobile]);
 
   return (
     <AppMenubar
@@ -71,12 +111,8 @@ export function IdeasListAppMenubar({
       title={title}
       description={description}
       left={left}
-      right={
-        <div className="flex h-full flex-col items-end justify-between gap-8">
-          <IdeasListAppMenubarActions ideasListId={ideasListId} />
-          <IdeasListAppMenubarTabs ideasListId={ideasListId} />
-        </div>
-      }
+      right={right}
+      bottom={bottom}
     />
   );
 }

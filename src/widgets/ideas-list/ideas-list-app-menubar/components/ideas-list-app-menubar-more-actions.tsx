@@ -12,13 +12,16 @@ import {
 import { useIdeasListAppMenubarMoreActions } from "../hooks/use-ideas-list-app-menubar-more-actions";
 import { IdeasListAppMenubarDeleteIdeaDialog } from "./ideas-list-app-menubar-delete-idea-dialog";
 import { IdeasListAppMenubarExportSubmenu } from "./ideas-list-app-menubar-export-submenu";
+import { IdeasListAppMenubarMoreIdeasDialog } from "./ideas-list-app-menubar-more-ideas-dialog";
 
 type IdeasListAppMenubarMoreActionsProps = {
   ideasListId: string;
+  withMoreIdeasAction?: boolean;
 };
 
 export function IdeasListAppMenubarMoreActions({
   ideasListId,
+  withMoreIdeasAction = false,
 }: IdeasListAppMenubarMoreActionsProps) {
   const {
     isDropdownMenuOpen,
@@ -45,6 +48,15 @@ export function IdeasListAppMenubarMoreActions({
           >
             Редактировать
           </AppMenubarButtonLink>
+          {withMoreIdeasAction && (
+            <IdeasListAppMenubarMoreIdeasDialog
+              ideasListId={ideasListId}
+              triggerProps={{
+                align: "between",
+                className: "w-full",
+              }}
+            />
+          )}
           {isExportAvailable && (
             <IdeasListAppMenubarExportSubmenu
               ideasListId={ideasListId}

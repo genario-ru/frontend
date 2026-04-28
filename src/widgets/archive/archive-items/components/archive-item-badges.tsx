@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import type { GetApiV1ArchiveItemsMyQueryResponse } from "@/codegen/api/product";
-import { BadgesList } from "@/features/badges/badges-list/badges-list";
+import { BadgesList } from "@/features/badges/badges-list/components/badges-list";
 
 type ArchiveItemBadgesProps = {
   archiveItem: GetApiV1ArchiveItemsMyQueryResponse["data"][number];

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { BadgesList } from "@/features/badges/badges-list/badges-list";
+import { BadgesList } from "@/features/badges/badges-list/components/badges-list";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { BackButton } from "@/shared/components/common/back-button";
 import { ItemsList } from "@/shared/components/common/items-list";

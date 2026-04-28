@@ -17,16 +17,12 @@ export function IdeasListIdeaCardPrimaryActions({
   });
 
   return (
-    <div className="flex items-center justify-end gap-4">
-      {/* <IdeasListIdeaCardImproveDialog /> */}
-      <ButtonLink
-        size="sm"
-        priority="primary"
-        {...createScenarioLinkOptions}
-        icon={<BookImageIcon />}
-      >
-        Создать сценарий
-      </ButtonLink>
-    </div>
+    <ButtonLink
+      icon={<BookImageIcon />}
+      className="w-full"
+      {...createScenarioLinkOptions}
+    >
+      Создать сценарий
+    </ButtonLink>
   );
 }

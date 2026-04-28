@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { useGetIdeasList } from "@/actions/ideas-lists/hooks/use-get-ideas-list";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 type UseIdeasListAppMenubarParams = {
   ideasListId: string;
@@ -9,10 +10,10 @@ type UseIdeasListAppMenubarParams = {
 export function useIdeasListAppMenubar({
   ideasListId,
 }: UseIdeasListAppMenubarParams) {
+  const { isMobile } = useBreakpoints();
+
   const { ideasListData, isIdeasListLoading, isIdeasListError } =
-    useGetIdeasList({
-      ideasListId,
-    });
+    useGetIdeasList({ ideasListId });
 
   const ideasListTitle = useMemo(() => {
     if (!ideasListData) {
@@ -34,6 +35,7 @@ export function useIdeasListAppMenubar({
     ideasListData,
     ideasListTitle,
     ideasListDescription,
+    isMobile,
     isIdeasListLoading,
     isIdeasListError,
   };

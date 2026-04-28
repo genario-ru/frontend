@@ -1,7 +1,7 @@
 import { WandSparklesIcon } from "lucide-react";
 
 import { AppMenubarButton } from "@/features/navigation/app-menubar/components/app-menubar-button";
-import { Button } from "@/shared/components/ui/button";
+import { Button, type ButtonProps } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogBody,
@@ -16,10 +16,12 @@ import { useIdeasListAppMenubarMoreIdeasDialog } from "../hooks/use-ideas-list-a
 
 type IdeasListAppMenubarMoreIdeasDialogProps = {
   ideasListId: string;
+  triggerProps?: ButtonProps;
 };
 
 export function IdeasListAppMenubarMoreIdeasDialog({
   ideasListId,
+  triggerProps,
 }: IdeasListAppMenubarMoreIdeasDialogProps) {
   const {
     form,
@@ -35,7 +37,7 @@ export function IdeasListAppMenubarMoreIdeasDialog({
       onOpenChange={setIsMoreIdeasDialogOpen}
     >
       <DialogTrigger asChild>
-        <AppMenubarButton icon={<WandSparklesIcon />}>
+        <AppMenubarButton icon={<WandSparklesIcon />} {...triggerProps}>
           Больше идей
         </AppMenubarButton>
       </DialogTrigger>

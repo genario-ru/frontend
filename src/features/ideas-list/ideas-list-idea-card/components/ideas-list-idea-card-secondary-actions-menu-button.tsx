@@ -7,9 +7,7 @@ export function IdeasListIdeaCardSecondaryActionsMenuButton({
 }: ButtonProps) {
   return (
     <Button
-      size="sm"
       priority="tertiary"
-      rounding="base"
       className={cn("w-full justify-start", className)}
       {...props}
     />
