@@ -1,6 +1,7 @@
 import type { GetApiV1IdeasListsByIdeasListIdQueryResponse } from "@/codegen/api/product";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import { useIdeasListSettingsForm } from "../hooks/use-ideas-list-settings-form";
 import { IdeasListSettingsCurrentSubform } from "./ideas-list-settings-current-subform";
@@ -67,10 +68,12 @@ export function IdeasListSettingsForm({
 }
 
 export function IdeasListSettingsFormSkeleton() {
+  const { isMobile } = useBreakpoints();
+
   return (
     <>
       <Island className="flex-1 gap-6">
-        <IdeasListSettingsFormNavigationStepsSkeleton />
+        {!isMobile && <IdeasListSettingsFormNavigationStepsSkeleton />}
         <IdeasListSettingsTemplatesSelectionSubformSkeleton />
       </Island>
       <IdeasListSettingsFormButtonsSkeleton />

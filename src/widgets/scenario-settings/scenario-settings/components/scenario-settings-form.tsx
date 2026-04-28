@@ -4,6 +4,7 @@ import type {
 } from "@/codegen/api/product";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import { useScenarioSettingsForm } from "../hooks/use-scenario-settings-form";
 import { ScenarioSettingsCurrentSubform } from "./scenario-settings-current-subform";
@@ -72,10 +73,12 @@ export function ScenarioSettingsForm({
 }
 
 export function ScenarioSettingsFormSkeleton() {
+  const { isMobile } = useBreakpoints();
+
   return (
     <>
       <Island className="flex-1 gap-6">
-        <ScenarioSettingsFormNavigationStepsSkeleton />
+        {!isMobile && <ScenarioSettingsFormNavigationStepsSkeleton />}
         <ScenarioSettingsTemplatesSelectionSubformSkeleton />
       </Island>
       <ScenarioSettingsFormButtonsSkeleton />
