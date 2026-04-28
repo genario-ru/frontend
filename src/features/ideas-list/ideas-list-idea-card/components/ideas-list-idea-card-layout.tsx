@@ -1,5 +1,5 @@
 import { FlameIcon, ScrollTextIcon } from "lucide-react";
-import type { ReactNode, RefObject } from "react";
+import type { ReactNode } from "react";
 
 import { Card } from "@/shared/components/ui/card";
 import { Heading } from "@/shared/components/ui/heading";
@@ -7,28 +7,28 @@ import { Island } from "@/shared/components/ui/island";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 
-type IdeasListIdeaCardLayoutProps = {
-  descriptionRef?: RefObject<HTMLParagraphElement | null>;
+type IdeasListIdeaCardLayoutProps = PropsWithClassName<{
   name?: string | null;
   description?: string | null;
   reason?: string | null;
-  secondaryActions: ReactNode;
+  secondaryActions?: ReactNode;
   primaryActions: ReactNode;
-};
+}>;
 
 export function IdeasListIdeaCardLayout({
   name,
   description,
-  descriptionRef,
   reason,
   secondaryActions,
   primaryActions,
+  className,
 }: IdeasListIdeaCardLayoutProps) {
   const computedName = name ?? "Без названия";
 
   return (
-    <Island>
+    <Island className={className}>
       <header className="flex justify-between gap-4">
         <Heading variant="h2">{computedName}</Heading>
         {secondaryActions}
@@ -37,7 +37,6 @@ export function IdeasListIdeaCardLayout({
         <Card
           title="Описание"
           headerIcon={<LucideIcon icon={ScrollTextIcon} className="size-5" />}
-          contentRef={descriptionRef}
           className="flex-1"
         >
           {description}

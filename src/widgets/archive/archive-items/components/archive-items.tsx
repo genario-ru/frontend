@@ -73,12 +73,9 @@ export const ArchiveItems = () => {
                       entity={item.entity}
                     />
                   }
-                  className="h-full min-h-0 rounded-2xl"
+                  className="rounded-4 h-full"
                 >
-                  <ArchiveItem
-                    className="h-full min-h-0"
-                    {...archiveItemProps}
-                  />
+                  <ArchiveItem className="h-full" {...archiveItemProps} />
                 </SwipeActions>
               );
             }

@@ -4,12 +4,12 @@ import { useDeleteIdea } from "@/actions/ideas/hooks/use-delete-idea";
 
 type UseIdeasListIdeaCardDeleteDialogParams = {
   ideaId: string;
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
+  handleCloseMenu?: () => void;
 };
 
 export function useIdeasListIdeaCardDeleteDialog({
   ideaId,
-  setIsMenuOpen,
+  handleCloseMenu,
 }: UseIdeasListIdeaCardDeleteDialogParams) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const { deleteIdea, isDeleteIdeaPending } = useDeleteIdea();
@@ -20,11 +20,11 @@ export function useIdeasListIdeaCardDeleteDialog({
       {
         onSuccess: () => {
           setIsDeleteDialogOpen(false);
-          setIsMenuOpen(false);
+          handleCloseMenu?.();
         },
       },
     );
-  }, [ideaId, deleteIdea, setIsMenuOpen]);
+  }, [ideaId, deleteIdea, handleCloseMenu]);
 
   return {
     isDeleteDialogOpen,

@@ -1,11 +1,10 @@
-import { type RefObject, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { useSaveIdea } from "@/actions/ideas/hooks/use-save-idea";
 
 type UseIdeasListIdeaCardSecondaryActionsParams = {
   ideaId: string;
   initialSaved: boolean;
-  copyElementRef: RefObject<HTMLParagraphElement | null>;
 };
 
 export function useIdeasListIdeaCardSecondaryActions({

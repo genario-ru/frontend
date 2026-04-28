@@ -12,7 +12,7 @@ type UseIdeasListIdeaCardEditDialogParams = {
   ideaId: string;
   initialName?: string | null;
   initialDescription?: string | null;
-  handleCloseMenu: () => void;
+  handleCloseMenu?: () => void;
 };
 
 export function useIdeasListIdeaCardEditDialog({
@@ -53,7 +53,7 @@ export function useIdeasListIdeaCardEditDialog({
         },
         {
           onSuccess: () => {
-            handleCloseMenu();
+            handleCloseMenu?.();
             setIsEditDialogOpen(false);
           },
         },

@@ -1,15 +1,23 @@
 import { type PropsWithChildren, useMemo } from "react";
 
-import { IdeasListIdeaCardLayoutSkeleton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-layout";
+import {
+  IdeasListIdeaCardLayout,
+  IdeasListIdeaCardLayoutSkeleton,
+} from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-layout";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
+import { SwipeActions } from "@/shared/components/ui/swipe-actions";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 import { useIdeasList } from "../hooks/use-ideas-list";
-import { IdeasListIdeaCard } from "./ideas-list-idea-card";
+import { IdeasListIdeaCardPrimaryActions } from "./ideas-list-idea-card-primary-actions";
+import { IdeasListIdeaCardSecondaryActions } from "./ideas-list-idea-card-secondary-actions";
+import { IdeasListIdeaCardSwipeActions } from "./ideas-list-idea-card-swipe-actions";
 
 type IdeasListProps = {
   ideasListId: string;
@@ -21,6 +29,9 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
     ideasListId,
     tab,
   });
+
+  const { isMobile } = useBreakpoints();
+  const showSwipeActions = isMobile && checkTouchScreen();
 
   const alert = useMemo(() => {
     if (checkIsGenerationStatus(ideasListData?.data.status)) {
@@ -57,19 +68,58 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
 
     return (
       <IdeasListBodyLayout>
-        {ideasListData.data.ideas.map((idea) => (
-          <IdeasListIdeaCard
-            key={idea.id}
-            id={idea.id}
-            name={idea.name}
-            description={idea.description}
-            reason={idea.reason}
-            saved={idea.saved}
-          />
-        ))}
+        {ideasListData.data.ideas.map((idea) => {
+          if (showSwipeActions) {
+            return (
+              <SwipeActions
+                key={idea.id}
+                beforeInset={8}
+                afterInset={8}
+                actions={
+                  <IdeasListIdeaCardSwipeActions
+                    ideaId={idea.id}
+                    initialSaved={idea.saved}
+                    initialName={idea.name}
+                    initialDescription={idea.description}
+                  />
+                }
+              >
+                <IdeasListIdeaCardLayout
+                  className="h-full"
+                  name={idea.name}
+                  description={idea.description}
+                  reason={idea.reason}
+                  primaryActions={
+                    <IdeasListIdeaCardPrimaryActions ideaId={idea.id} />
+                  }
+                />
+              </SwipeActions>
+            );
+          }
+
+          return (
+            <IdeasListIdeaCardLayout
+              key={idea.id}
+              name={idea.name}
+              description={idea.description}
+              reason={idea.reason}
+              primaryActions={
+                <IdeasListIdeaCardPrimaryActions ideaId={idea.id} />
+              }
+              secondaryActions={
+                <IdeasListIdeaCardSecondaryActions
+                  ideaId={idea.id}
+                  initialSaved={idea.saved}
+                  initialName={idea.name}
+                  initialDescription={idea.description}
+                />
+              }
+            />
+          );
+        })}
       </IdeasListBodyLayout>
     );
-  }, [ideasListData, isIdeasListLoading, isIdeasListError]);
+  }, [ideasListData, isIdeasListLoading, isIdeasListError, showSwipeActions]);
 
   return (
     <ContentLayout className="flex-1">

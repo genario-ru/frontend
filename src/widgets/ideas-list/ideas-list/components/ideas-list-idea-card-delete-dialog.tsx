@@ -1,6 +1,5 @@
-import { TrashIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
-import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -15,12 +14,14 @@ import { useIdeasListIdeaCardDeleteDialog } from "../hooks/use-ideas-list-idea-c
 
 type IdeasListIdeaCardDeleteDialogProps = {
   ideaId: string;
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
+  trigger: ReactNode;
+  handleCloseMenu?: () => void;
 };
 
 export function IdeasListIdeaCardDeleteDialog({
   ideaId,
-  setIsMenuOpen,
+  trigger,
+  handleCloseMenu,
 }: IdeasListIdeaCardDeleteDialogProps) {
   const {
     isDeleteDialogOpen,
@@ -29,19 +30,12 @@ export function IdeasListIdeaCardDeleteDialog({
     handleConfirmDeleteButtonClick,
   } = useIdeasListIdeaCardDeleteDialog({
     ideaId,
-    setIsMenuOpen,
+    handleCloseMenu,
   });
 
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-      <DialogTrigger asChild>
-        <IdeasListIdeaCardSecondaryActionsMenuButton
-          variant="negative"
-          icon={<TrashIcon />}
-        >
-          Удалить
-        </IdeasListIdeaCardSecondaryActionsMenuButton>
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
           title="Вы уверены?"

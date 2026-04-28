@@ -44,7 +44,7 @@ export function IdeasListAppMenubarMoreIdeasDialog({
       <DialogContent>
         <DialogPredefinedHeader
           title="Сгенерировать еще идей"
-          description="Опишите, что вас не устраивает в текущих идеях или что бы вы хотели улучшить. Если же просто хотите больше вариантов, просто нажмите кнопку."
+          description="Опищите ниже, если бы вы хотели как-то изменить или улучшить в резултаты"
         />
         <form onSubmit={onFormSubmit} className="flex flex-col">
           <DialogBody>

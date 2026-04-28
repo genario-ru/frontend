@@ -1,5 +1,9 @@
-import { BookmarkIcon, BookmarkXIcon } from "lucide-react";
-import type { RefObject } from "react";
+import {
+  BookmarkIcon,
+  BookmarkXIcon,
+  PencilIcon,
+  TrashIcon,
+} from "lucide-react";
 
 import { IdeasListIdeaCardSecondaryActionsMenu } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu";
 import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
@@ -13,7 +17,6 @@ type IdeasListIdeaCardSecondaryActionsProps = {
   initialSaved: boolean;
   initialName?: string | null;
   initialDescription?: string | null;
-  copyElementRef: RefObject<HTMLParagraphElement | null>;
 };
 
 export function IdeasListIdeaCardSecondaryActions({
@@ -21,7 +24,6 @@ export function IdeasListIdeaCardSecondaryActions({
   initialSaved,
   initialName,
   initialDescription,
-  copyElementRef,
 }: IdeasListIdeaCardSecondaryActionsProps) {
   const {
     isOptimisticSaved,
@@ -32,7 +34,6 @@ export function IdeasListIdeaCardSecondaryActions({
   } = useIdeasListIdeaCardSecondaryActions({
     ideaId,
     initialSaved,
-    copyElementRef,
   });
 
   return (
@@ -45,6 +46,11 @@ export function IdeasListIdeaCardSecondaryActions({
         initialName={initialName}
         initialDescription={initialDescription}
         handleCloseMenu={handleCloseMenu}
+        trigger={
+          <IdeasListIdeaCardSecondaryActionsMenuButton icon={<PencilIcon />}>
+            Редактировать
+          </IdeasListIdeaCardSecondaryActionsMenuButton>
+        }
       />
       <IdeasListIdeaCardSecondaryActionsMenuButton
         icon={isOptimisticSaved ? <BookmarkXIcon /> : <BookmarkIcon />}
@@ -54,7 +60,15 @@ export function IdeasListIdeaCardSecondaryActions({
       </IdeasListIdeaCardSecondaryActionsMenuButton>
       <IdeasListIdeaCardDeleteDialog
         ideaId={ideaId}
-        setIsMenuOpen={setIsMenuOpen}
+        handleCloseMenu={handleCloseMenu}
+        trigger={
+          <IdeasListIdeaCardSecondaryActionsMenuButton
+            variant="negative"
+            icon={<TrashIcon />}
+          >
+            Удалить
+          </IdeasListIdeaCardSecondaryActionsMenuButton>
+        }
       />
     </IdeasListIdeaCardSecondaryActionsMenu>
   );

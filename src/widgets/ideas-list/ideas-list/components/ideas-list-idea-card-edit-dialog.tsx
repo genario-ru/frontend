@@ -1,6 +1,5 @@
-import { PencilIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
-import { IdeasListIdeaCardSecondaryActionsMenuButton } from "@/features/ideas-list/ideas-list-idea-card/components/ideas-list-idea-card-secondary-actions-menu-button";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -18,13 +17,15 @@ type IdeasListIdeaCardEditDialogProps = {
   ideaId: string;
   initialName?: string | null;
   initialDescription?: string | null;
-  handleCloseMenu: () => void;
+  trigger: ReactNode;
+  handleCloseMenu?: () => void;
 };
 
 export function IdeasListIdeaCardEditDialog({
   ideaId,
   initialName,
   initialDescription,
+  trigger,
   handleCloseMenu,
 }: IdeasListIdeaCardEditDialogProps) {
   const {
@@ -42,11 +43,7 @@ export function IdeasListIdeaCardEditDialog({
 
   return (
     <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-      <DialogTrigger asChild>
-        <IdeasListIdeaCardSecondaryActionsMenuButton icon={<PencilIcon />}>
-          Редактировать
-        </IdeasListIdeaCardSecondaryActionsMenuButton>
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-3xl">
         <DialogPredefinedHeader
           title="Редактировать идею"

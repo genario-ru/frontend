@@ -56,9 +56,9 @@ export function MyProfilesList() {
                   profileName={profile.name}
                 />
               }
-              className="rounded-4 h-full min-h-0"
+              className="h-full"
             >
-              <ProfileCard className="h-full min-h-0" {...cardProps} />
+              <ProfileCard className="h-full" {...cardProps} />
             </SwipeActions>
           );
         }
