@@ -21,6 +21,8 @@ export const scenarioSchemaSchema = z
     name: z.string(),
     description: z.string(),
     targetAudience: z.union([z.string(), z.null()]),
+    scheduledStartAt: z.union([z.string(), z.null()]),
+    scheduledEndAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

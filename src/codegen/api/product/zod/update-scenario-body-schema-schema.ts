@@ -18,6 +18,8 @@ export const updateScenarioBodySchemaSchema = z
     profileId: z.optional(z.union([z.uuid(), z.null()])),
     productionStatusId: z.optional(z.union([z.uuid(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
+    scheduledStartAt: z.optional(z.union([z.string(), z.null()])),
+    scheduledEndAt: z.optional(z.union([z.string(), z.null()])),
     platformIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
     toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
     regenerate: z.optional(z.union([z.boolean(), z.null()])),

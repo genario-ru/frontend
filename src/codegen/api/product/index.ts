@@ -6,6 +6,7 @@ export { deleteApiV1ScenariosByScenarioId } from "./clients/delete-api-v1-scenar
 export { deleteApiV1ScenariosChaptersByChapterId } from "./clients/delete-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "./clients/delete-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { deleteApiV1ScenariosScenesBySceneId } from "./clients/delete-api-v1-scenarios-scenes-by-scene-id.ts";
+export { getApiV1Alerts } from "./clients/get-api-v1-alerts.ts";
 export { getApiV1ArchiveFilters } from "./clients/get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./clients/get-api-v1-archive-items-my.ts";
 export { getApiV1AttachmentsByAttachmentIdDownload } from "./clients/get-api-v1-attachments-by-attachment-id-download.ts";
@@ -15,8 +16,10 @@ export { getApiV1CreditsBatchesMy } from "./clients/get-api-v1-credits-batches-m
 export { getApiV1CreditsPackages } from "./clients/get-api-v1-credits-packages.ts";
 export { getApiV1CreditsUsageMy } from "./clients/get-api-v1-credits-usage-my.ts";
 export { getApiV1IdeasByIdeaId } from "./clients/get-api-v1-ideas-by-idea-id.ts";
+export { getApiV1IdeasLists } from "./clients/get-api-v1-ideas-lists.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
+export { getApiV1IdeasListsFilters } from "./clients/get-api-v1-ideas-lists-filters.ts";
 export { getApiV1Platforms } from "./clients/get-api-v1-platforms.ts";
 export { getApiV1ProductionStatuses } from "./clients/get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./clients/get-api-v1-profiles-by-profile-id.ts";
@@ -27,11 +30,13 @@ export { getApiV1ProfilesTypes } from "./clients/get-api-v1-profiles-types.ts";
 export { getApiV1ReferralCodesMy } from "./clients/get-api-v1-referral-codes-my.ts";
 export { getApiV1ReferralInfo } from "./clients/get-api-v1-referral-info.ts";
 export { getApiV1ReferralInvitesMy } from "./clients/get-api-v1-referral-invites-my.ts";
+export { getApiV1Scenarios } from "./clients/get-api-v1-scenarios.ts";
 export { getApiV1ScenariosByScenarioId } from "./clients/get-api-v1-scenarios-by-scenario-id.ts";
 export { getApiV1ScenariosByScenarioIdCurrentVersion } from "./clients/get-api-v1-scenarios-by-scenario-id-current-version.ts";
 export { getApiV1ScenariosByScenarioIdExports } from "./clients/get-api-v1-scenarios-by-scenario-id-exports.ts";
 export { getApiV1ScenariosByScenarioIdVersions } from "./clients/get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosChaptersByChapterId } from "./clients/get-api-v1-scenarios-chapters-by-chapter-id.ts";
+export { getApiV1ScenariosFilters } from "./clients/get-api-v1-scenarios-filters.ts";
 export { getApiV1SubscriptonsMy } from "./clients/get-api-v1-subscriptons-my.ts";
 export { getApiV1Tariffs } from "./clients/get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./clients/get-api-v1-tariffs-trial.ts";
@@ -64,6 +69,13 @@ export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./clients/post-api
 export { postApiV1SubscriptionsInitiatePayment } from "./clients/post-api-v1-subscriptions-initiate-payment.ts";
 export type { AddPaymentMethodBodySchema } from "./models/add-payment-method-body-schema.ts";
 export type { AddPaymentMethodResponseSchema } from "./models/add-payment-method-response-schema.ts";
+export type {
+  AlertSchema,
+  AlertSchemaStatusEnumKey,
+  AlertSchemaTypeEnumKey,
+} from "./models/alert-schema.ts";
+export { alertSchemaStatusEnum } from "./models/alert-schema.ts";
+export { alertSchemaTypeEnum } from "./models/alert-schema.ts";
 export type { ArchiveFilterOptionSchema } from "./models/archive-filter-option-schema.ts";
 export type {
   ArchiveFilterSchema,
@@ -221,6 +233,18 @@ export { exportDocumentShortSchemaDocumentStatusEnum } from "./models/export-doc
 export type { ForbiddenResponseSchema } from "./models/forbidden-response-schema.ts";
 export type { GenerateMoreIdeasBodySchema } from "./models/generate-more-ideas-body-schema.ts";
 export type { GenerateMoreIdeasResponseSchema } from "./models/generate-more-ideas-response-schema.ts";
+export type { GetAlertsResponseSchema } from "./models/get-alerts-response-schema.ts";
+export type {
+  GetApiV1Alerts200,
+  GetApiV1Alerts400,
+  GetApiV1Alerts401,
+  GetApiV1Alerts402,
+  GetApiV1Alerts403,
+  GetApiV1Alerts404,
+  GetApiV1Alerts500,
+  GetApiV1AlertsQuery,
+  GetApiV1AlertsQueryResponse,
+} from "./models/get-api-v1-alerts.ts";
 export type {
   GetApiV1ArchiveFilters200,
   GetApiV1ArchiveFilters400,
@@ -325,6 +349,18 @@ export type {
   GetApiV1IdeasByIdeaIdQueryResponse,
 } from "./models/get-api-v1-ideas-by-idea-id.ts";
 export type {
+  GetApiV1IdeasLists200,
+  GetApiV1IdeasLists400,
+  GetApiV1IdeasLists401,
+  GetApiV1IdeasLists402,
+  GetApiV1IdeasLists403,
+  GetApiV1IdeasLists404,
+  GetApiV1IdeasLists500,
+  GetApiV1IdeasListsQuery,
+  GetApiV1IdeasListsQueryParams,
+  GetApiV1IdeasListsQueryResponse,
+} from "./models/get-api-v1-ideas-lists.ts";
+export type {
   GetApiV1IdeasListsByIdeasListId200,
   GetApiV1IdeasListsByIdeasListId400,
   GetApiV1IdeasListsByIdeasListId401,
@@ -350,6 +386,17 @@ export type {
   GetApiV1IdeasListsByIdeasListIdExportsQueryParams,
   GetApiV1IdeasListsByIdeasListIdExportsQueryResponse,
 } from "./models/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
+export type {
+  GetApiV1IdeasListsFilters200,
+  GetApiV1IdeasListsFilters400,
+  GetApiV1IdeasListsFilters401,
+  GetApiV1IdeasListsFilters402,
+  GetApiV1IdeasListsFilters403,
+  GetApiV1IdeasListsFilters404,
+  GetApiV1IdeasListsFilters500,
+  GetApiV1IdeasListsFiltersQuery,
+  GetApiV1IdeasListsFiltersQueryResponse,
+} from "./models/get-api-v1-ideas-lists-filters.ts";
 export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
@@ -466,6 +513,20 @@ export type {
   GetApiV1ReferralInvitesMyQueryResponse,
 } from "./models/get-api-v1-referral-invites-my.ts";
 export type {
+  GetApiV1Scenarios200,
+  GetApiV1Scenarios400,
+  GetApiV1Scenarios401,
+  GetApiV1Scenarios402,
+  GetApiV1Scenarios403,
+  GetApiV1Scenarios404,
+  GetApiV1Scenarios500,
+  GetApiV1ScenariosQuery,
+  GetApiV1ScenariosQueryParams,
+  GetApiV1ScenariosQueryParamsIsScheduledEnumKey,
+  GetApiV1ScenariosQueryResponse,
+} from "./models/get-api-v1-scenarios.ts";
+export { getApiV1ScenariosQueryParamsIsScheduledEnum } from "./models/get-api-v1-scenarios.ts";
+export type {
   GetApiV1ScenariosByScenarioId200,
   GetApiV1ScenariosByScenarioId400,
   GetApiV1ScenariosByScenarioId401,
@@ -528,6 +589,17 @@ export type {
   GetApiV1ScenariosChaptersByChapterIdQuery,
   GetApiV1ScenariosChaptersByChapterIdQueryResponse,
 } from "./models/get-api-v1-scenarios-chapters-by-chapter-id.ts";
+export type {
+  GetApiV1ScenariosFilters200,
+  GetApiV1ScenariosFilters400,
+  GetApiV1ScenariosFilters401,
+  GetApiV1ScenariosFilters402,
+  GetApiV1ScenariosFilters403,
+  GetApiV1ScenariosFilters404,
+  GetApiV1ScenariosFilters500,
+  GetApiV1ScenariosFiltersQuery,
+  GetApiV1ScenariosFiltersQueryResponse,
+} from "./models/get-api-v1-scenarios-filters.ts";
 export type {
   GetApiV1SubscriptonsMy200,
   GetApiV1SubscriptonsMy400,
@@ -614,11 +686,14 @@ export type {
   GetIdeasListResponseSchema,
 } from "./models/get-ideas-list-response-schema.ts";
 export { dataStatusEnum } from "./models/get-ideas-list-response-schema.ts";
+export type { GetIdeasListsFiltersResponseSchema } from "./models/get-ideas-lists-filters-response-schema.ts";
 export type { GetMyArchiveItemsResponseMetaSchema } from "./models/get-my-archive-items-response-meta-schema.ts";
 export type { GetMyArchiveItemsResponseSchema } from "./models/get-my-archive-items-response-schema.ts";
 export type { GetMyCreditsBatchesResponseSchema } from "./models/get-my-credits-batches-response-schema.ts";
 export type { GetMyCreditsUsageResponseMetaSchema } from "./models/get-my-credits-usage-response-meta-schema.ts";
 export type { GetMyCreditsUsageResponseSchema } from "./models/get-my-credits-usage-response-schema.ts";
+export type { GetMyIdeasListsResponseMetaSchema } from "./models/get-my-ideas-lists-response-meta-schema.ts";
+export type { GetMyIdeasListsResponseSchema } from "./models/get-my-ideas-lists-response-schema.ts";
 export type { GetMyPaymentMethodsResponseSchema } from "./models/get-my-payment-methods-response-schema.ts";
 export type { GetMyPaymentsResponseSchema } from "./models/get-my-payments-response-schema.ts";
 export type { GetMyProfilesFromChannelsJobResponseSchema } from "./models/get-my-profiles-from-channels-job-response-schema.ts";
@@ -626,6 +701,8 @@ export type { GetMyProfilesResponseSchema } from "./models/get-my-profiles-respo
 export type { GetMyReferralCodesResponseSchema } from "./models/get-my-referral-codes-response-schema.ts";
 export type { GetMyReferralInvitesResponseMetaSchema } from "./models/get-my-referral-invites-response-meta-schema.ts";
 export type { GetMyReferralInvitesResponseSchema } from "./models/get-my-referral-invites-response-schema.ts";
+export type { GetMyScenariosResponseMetaSchema } from "./models/get-my-scenarios-response-meta-schema.ts";
+export type { GetMyScenariosResponseSchema } from "./models/get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./models/get-my-subscriptions-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./models/get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./models/get-platforms-response-schema.ts";
@@ -638,6 +715,7 @@ export type { GetScenarioCurrentVersionResponseSchema } from "./models/get-scena
 export type { GetScenarioExportsResponseSchema } from "./models/get-scenario-exports-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./models/get-scenario-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./models/get-scenario-versions-response-schema.ts";
+export type { GetScenariosFiltersResponseSchema } from "./models/get-scenarios-filters-response-schema.ts";
 export type { GetTariffsResponseSchema } from "./models/get-tariffs-response-schema.ts";
 export type { GetTemplatesResponseSchema } from "./models/get-templates-response-schema.ts";
 export type { GetTonesResponseSchema } from "./models/get-tones-response-schema.ts";
@@ -656,6 +734,15 @@ export type {
   IdeasListSchemaStatusEnumKey,
 } from "./models/ideas-list-schema.ts";
 export { ideasListSchemaStatusEnum } from "./models/ideas-list-schema.ts";
+export type { IdeasListsFilterOptionSchema } from "./models/ideas-lists-filter-option-schema.ts";
+export type {
+  IdeasListsFilterSchema,
+  IdeasListsFilterSchemaSlugEnumKey,
+  IdeasListsFilterSchemaTypeEnumKey,
+} from "./models/ideas-lists-filter-schema.ts";
+export { ideasListsFilterSchemaSlugEnum } from "./models/ideas-lists-filter-schema.ts";
+export { ideasListsFilterSchemaTypeEnum } from "./models/ideas-lists-filter-schema.ts";
+export type { IdeasListsFiltersSchema } from "./models/ideas-lists-filters-schema.ts";
 export type { InitiateCreditsPackagePaymentBodySchema } from "./models/initiate-credits-package-payment-body-schema.ts";
 export type { InitiateCreditsPackagePaymentResponseSchema } from "./models/initiate-credits-package-payment-response-schema.ts";
 export type { InitiateSubscriptionPaymentBodySchema } from "./models/initiate-subscription-payment-body-schema.ts";
@@ -1024,6 +1111,15 @@ export type {
   ScenarioVersionSchemaStatusEnumKey,
 } from "./models/scenario-version-schema.ts";
 export { scenarioVersionSchemaStatusEnum } from "./models/scenario-version-schema.ts";
+export type { ScenariosFilterOptionSchema } from "./models/scenarios-filter-option-schema.ts";
+export type {
+  ScenariosFilterSchema,
+  ScenariosFilterSchemaSlugEnumKey,
+  ScenariosFilterSchemaTypeEnumKey,
+} from "./models/scenarios-filter-schema.ts";
+export { scenariosFilterSchemaSlugEnum } from "./models/scenarios-filter-schema.ts";
+export { scenariosFilterSchemaTypeEnum } from "./models/scenarios-filter-schema.ts";
+export type { ScenariosFiltersSchema } from "./models/scenarios-filters-schema.ts";
 export type {
   SubscriptionExtendedSchema,
   SubscriptionExtendedSchemaStatusEnumKey,
@@ -1111,6 +1207,10 @@ export type { DeleteApiV1ScenariosScenesBySceneIdMutationKey } from "./tanstack/
 export { deleteApiV1ScenariosScenesBySceneIdMutationKey } from "./tanstack/delete-api-v1-scenarios-scenes-by-scene-id.ts";
 export { deleteApiV1ScenariosScenesBySceneIdMutationOptions } from "./tanstack/delete-api-v1-scenarios-scenes-by-scene-id.ts";
 export { useDeleteApiV1ScenariosScenesBySceneId } from "./tanstack/delete-api-v1-scenarios-scenes-by-scene-id.ts";
+export type { GetApiV1AlertsQueryKey } from "./tanstack/get-api-v1-alerts.ts";
+export { getApiV1AlertsQueryKey } from "./tanstack/get-api-v1-alerts.ts";
+export { getApiV1AlertsQueryOptions } from "./tanstack/get-api-v1-alerts.ts";
+export { useGetApiV1Alerts } from "./tanstack/get-api-v1-alerts.ts";
 export type { GetApiV1ArchiveFiltersQueryKey } from "./tanstack/get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveFiltersQueryKey } from "./tanstack/get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveFiltersQueryOptions } from "./tanstack/get-api-v1-archive-filters.ts";
@@ -1155,6 +1255,10 @@ export type { GetApiV1IdeasByIdeaIdQueryKey } from "./tanstack/get-api-v1-ideas-
 export { getApiV1IdeasByIdeaIdQueryKey } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
 export { getApiV1IdeasByIdeaIdQueryOptions } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
 export { useGetApiV1IdeasByIdeaId } from "./tanstack/get-api-v1-ideas-by-idea-id.ts";
+export type { GetApiV1IdeasListsQueryKey } from "./tanstack/get-api-v1-ideas-lists.ts";
+export { getApiV1IdeasListsQueryKey } from "./tanstack/get-api-v1-ideas-lists.ts";
+export { getApiV1IdeasListsQueryOptions } from "./tanstack/get-api-v1-ideas-lists.ts";
+export { useGetApiV1IdeasLists } from "./tanstack/get-api-v1-ideas-lists.ts";
 export type { GetApiV1IdeasListsByIdeasListIdQueryKey } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdQueryKey } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdQueryOptions } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id.ts";
@@ -1163,6 +1267,14 @@ export type { GetApiV1IdeasListsByIdeasListIdExportsQueryKey } from "./tanstack/
 export { getApiV1IdeasListsByIdeasListIdExportsQueryKey } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsByIdeasListIdExportsQueryOptions } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { useGetApiV1IdeasListsByIdeasListIdExports } from "./tanstack/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
+export type { GetApiV1IdeasListsFiltersQueryKey } from "./tanstack/get-api-v1-ideas-lists-filters.ts";
+export { getApiV1IdeasListsFiltersQueryKey } from "./tanstack/get-api-v1-ideas-lists-filters.ts";
+export { getApiV1IdeasListsFiltersQueryOptions } from "./tanstack/get-api-v1-ideas-lists-filters.ts";
+export { useGetApiV1IdeasListsFilters } from "./tanstack/get-api-v1-ideas-lists-filters.ts";
+export type { GetApiV1IdeasListsInfiniteQueryKey } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
+export { getApiV1IdeasListsInfiniteQueryKey } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
+export { getApiV1IdeasListsInfiniteQueryOptions } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
+export { useGetApiV1IdeasListsInfinite } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
 export type { GetApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./tanstack/get-api-v1-platforms.ts";
@@ -1207,6 +1319,10 @@ export type { GetApiV1ReferralInvitesMyInfiniteQueryKey } from "./tanstack/get-a
 export { getApiV1ReferralInvitesMyInfiniteQueryKey } from "./tanstack/get-api-v1-referral-invites-my-infinite.ts";
 export { getApiV1ReferralInvitesMyInfiniteQueryOptions } from "./tanstack/get-api-v1-referral-invites-my-infinite.ts";
 export { useGetApiV1ReferralInvitesMyInfinite } from "./tanstack/get-api-v1-referral-invites-my-infinite.ts";
+export type { GetApiV1ScenariosQueryKey } from "./tanstack/get-api-v1-scenarios.ts";
+export { getApiV1ScenariosQueryKey } from "./tanstack/get-api-v1-scenarios.ts";
+export { getApiV1ScenariosQueryOptions } from "./tanstack/get-api-v1-scenarios.ts";
+export { useGetApiV1Scenarios } from "./tanstack/get-api-v1-scenarios.ts";
 export type { GetApiV1ScenariosByScenarioIdQueryKey } from "./tanstack/get-api-v1-scenarios-by-scenario-id.ts";
 export { getApiV1ScenariosByScenarioIdQueryKey } from "./tanstack/get-api-v1-scenarios-by-scenario-id.ts";
 export { getApiV1ScenariosByScenarioIdQueryOptions } from "./tanstack/get-api-v1-scenarios-by-scenario-id.ts";
@@ -1227,6 +1343,14 @@ export type { GetApiV1ScenariosChaptersByChapterIdQueryKey } from "./tanstack/ge
 export { getApiV1ScenariosChaptersByChapterIdQueryKey } from "./tanstack/get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosChaptersByChapterIdQueryOptions } from "./tanstack/get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { useGetApiV1ScenariosChaptersByChapterId } from "./tanstack/get-api-v1-scenarios-chapters-by-chapter-id.ts";
+export type { GetApiV1ScenariosFiltersQueryKey } from "./tanstack/get-api-v1-scenarios-filters.ts";
+export { getApiV1ScenariosFiltersQueryKey } from "./tanstack/get-api-v1-scenarios-filters.ts";
+export { getApiV1ScenariosFiltersQueryOptions } from "./tanstack/get-api-v1-scenarios-filters.ts";
+export { useGetApiV1ScenariosFilters } from "./tanstack/get-api-v1-scenarios-filters.ts";
+export type { GetApiV1ScenariosInfiniteQueryKey } from "./tanstack/get-api-v1-scenarios-infinite.ts";
+export { getApiV1ScenariosInfiniteQueryKey } from "./tanstack/get-api-v1-scenarios-infinite.ts";
+export { getApiV1ScenariosInfiniteQueryOptions } from "./tanstack/get-api-v1-scenarios-infinite.ts";
+export { useGetApiV1ScenariosInfinite } from "./tanstack/get-api-v1-scenarios-infinite.ts";
 export type { GetApiV1SubscriptonsMyQueryKey } from "./tanstack/get-api-v1-subscriptons-my.ts";
 export { getApiV1SubscriptonsMyQueryKey } from "./tanstack/get-api-v1-subscriptons-my.ts";
 export { getApiV1SubscriptonsMyQueryOptions } from "./tanstack/get-api-v1-subscriptons-my.ts";
@@ -1349,6 +1473,7 @@ export { postApiV1SubscriptionsInitiatePaymentMutationOptions } from "./tanstack
 export { usePostApiV1SubscriptionsInitiatePayment } from "./tanstack/post-api-v1-subscriptions-initiate-payment.ts";
 export { addPaymentMethodBodySchemaSchema } from "./zod/add-payment-method-body-schema-schema.ts";
 export { addPaymentMethodResponseSchemaSchema } from "./zod/add-payment-method-response-schema-schema.ts";
+export { alertSchemaSchema } from "./zod/alert-schema-schema.ts";
 export { archiveFilterOptionSchemaSchema } from "./zod/archive-filter-option-schema-schema.ts";
 export { archiveFilterSchemaSchema } from "./zod/archive-filter-schema-schema.ts";
 export { archiveFiltersSchemaSchema } from "./zod/archive-filters-schema-schema.ts";
@@ -1476,6 +1601,17 @@ export { exportDocumentShortSchemaSchema } from "./zod/export-document-short-sch
 export { forbiddenResponseSchemaSchema } from "./zod/forbidden-response-schema-schema.ts";
 export { generateMoreIdeasBodySchemaSchema } from "./zod/generate-more-ideas-body-schema-schema.ts";
 export { generateMoreIdeasResponseSchemaSchema } from "./zod/generate-more-ideas-response-schema-schema.ts";
+export { getAlertsResponseSchemaSchema } from "./zod/get-alerts-response-schema-schema.ts";
+export {
+  getApiV1Alerts200Schema,
+  getApiV1Alerts400Schema,
+  getApiV1Alerts401Schema,
+  getApiV1Alerts402Schema,
+  getApiV1Alerts403Schema,
+  getApiV1Alerts404Schema,
+  getApiV1Alerts500Schema,
+  getApiV1AlertsQueryResponseSchema,
+} from "./zod/get-api-v1-alerts-schema.ts";
 export {
   getApiV1ArchiveFilters200Schema,
   getApiV1ArchiveFilters400Schema,
@@ -1594,6 +1730,27 @@ export {
   getApiV1IdeasListsByIdeasListIdQueryParamsSchema,
   getApiV1IdeasListsByIdeasListIdQueryResponseSchema,
 } from "./zod/get-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
+export {
+  getApiV1IdeasListsFilters200Schema,
+  getApiV1IdeasListsFilters400Schema,
+  getApiV1IdeasListsFilters401Schema,
+  getApiV1IdeasListsFilters402Schema,
+  getApiV1IdeasListsFilters403Schema,
+  getApiV1IdeasListsFilters404Schema,
+  getApiV1IdeasListsFilters500Schema,
+  getApiV1IdeasListsFiltersQueryResponseSchema,
+} from "./zod/get-api-v1-ideas-lists-filters-schema.ts";
+export {
+  getApiV1IdeasLists200Schema,
+  getApiV1IdeasLists400Schema,
+  getApiV1IdeasLists401Schema,
+  getApiV1IdeasLists402Schema,
+  getApiV1IdeasLists403Schema,
+  getApiV1IdeasLists404Schema,
+  getApiV1IdeasLists500Schema,
+  getApiV1IdeasListsQueryParamsSchema,
+  getApiV1IdeasListsQueryResponseSchema,
+} from "./zod/get-api-v1-ideas-lists-schema.ts";
 export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
@@ -1756,6 +1913,27 @@ export {
   getApiV1ScenariosChaptersByChapterIdQueryResponseSchema,
 } from "./zod/get-api-v1-scenarios-chapters-by-chapter-id-schema.ts";
 export {
+  getApiV1ScenariosFilters200Schema,
+  getApiV1ScenariosFilters400Schema,
+  getApiV1ScenariosFilters401Schema,
+  getApiV1ScenariosFilters402Schema,
+  getApiV1ScenariosFilters403Schema,
+  getApiV1ScenariosFilters404Schema,
+  getApiV1ScenariosFilters500Schema,
+  getApiV1ScenariosFiltersQueryResponseSchema,
+} from "./zod/get-api-v1-scenarios-filters-schema.ts";
+export {
+  getApiV1Scenarios200Schema,
+  getApiV1Scenarios400Schema,
+  getApiV1Scenarios401Schema,
+  getApiV1Scenarios402Schema,
+  getApiV1Scenarios403Schema,
+  getApiV1Scenarios404Schema,
+  getApiV1Scenarios500Schema,
+  getApiV1ScenariosQueryParamsSchema,
+  getApiV1ScenariosQueryResponseSchema,
+} from "./zod/get-api-v1-scenarios-schema.ts";
+export {
   getApiV1SubscriptonsMy200Schema,
   getApiV1SubscriptonsMy400Schema,
   getApiV1SubscriptonsMy401Schema,
@@ -1830,11 +2008,14 @@ export { getCreditsPackagesResponseSchemaSchema } from "./zod/get-credits-packag
 export { getIdeaResponseSchemaSchema } from "./zod/get-idea-response-schema-schema.ts";
 export { getIdeasListExportsResponseSchemaSchema } from "./zod/get-ideas-list-exports-response-schema-schema.ts";
 export { getIdeasListResponseSchemaSchema } from "./zod/get-ideas-list-response-schema-schema.ts";
+export { getIdeasListsFiltersResponseSchemaSchema } from "./zod/get-ideas-lists-filters-response-schema-schema.ts";
 export { getMyArchiveItemsResponseMetaSchemaSchema } from "./zod/get-my-archive-items-response-meta-schema-schema.ts";
 export { getMyArchiveItemsResponseSchemaSchema } from "./zod/get-my-archive-items-response-schema-schema.ts";
 export { getMyCreditsBatchesResponseSchemaSchema } from "./zod/get-my-credits-batches-response-schema-schema.ts";
 export { getMyCreditsUsageResponseMetaSchemaSchema } from "./zod/get-my-credits-usage-response-meta-schema-schema.ts";
 export { getMyCreditsUsageResponseSchemaSchema } from "./zod/get-my-credits-usage-response-schema-schema.ts";
+export { getMyIdeasListsResponseMetaSchemaSchema } from "./zod/get-my-ideas-lists-response-meta-schema-schema.ts";
+export { getMyIdeasListsResponseSchemaSchema } from "./zod/get-my-ideas-lists-response-schema-schema.ts";
 export { getMyPaymentMethodsResponseSchemaSchema } from "./zod/get-my-payment-methods-response-schema-schema.ts";
 export { getMyPaymentsResponseSchemaSchema } from "./zod/get-my-payments-response-schema-schema.ts";
 export { getMyProfilesFromChannelsJobResponseSchemaSchema } from "./zod/get-my-profiles-from-channels-job-response-schema-schema.ts";
@@ -1842,6 +2023,8 @@ export { getMyProfilesResponseSchemaSchema } from "./zod/get-my-profiles-respons
 export { getMyReferralCodesResponseSchemaSchema } from "./zod/get-my-referral-codes-response-schema-schema.ts";
 export { getMyReferralInvitesResponseMetaSchemaSchema } from "./zod/get-my-referral-invites-response-meta-schema-schema.ts";
 export { getMyReferralInvitesResponseSchemaSchema } from "./zod/get-my-referral-invites-response-schema-schema.ts";
+export { getMyScenariosResponseMetaSchemaSchema } from "./zod/get-my-scenarios-response-meta-schema-schema.ts";
+export { getMyScenariosResponseSchemaSchema } from "./zod/get-my-scenarios-response-schema-schema.ts";
 export { getMySubscriptionsResponseSchemaSchema } from "./zod/get-my-subscriptions-response-schema-schema.ts";
 export { getPlatformsForChannelsResponseSchemaSchema } from "./zod/get-platforms-for-channels-response-schema-schema.ts";
 export { getPlatformsResponseSchemaSchema } from "./zod/get-platforms-response-schema-schema.ts";
@@ -1854,6 +2037,7 @@ export { getScenarioCurrentVersionResponseSchemaSchema } from "./zod/get-scenari
 export { getScenarioExportsResponseSchemaSchema } from "./zod/get-scenario-exports-response-schema-schema.ts";
 export { getScenarioResponseSchemaSchema } from "./zod/get-scenario-response-schema-schema.ts";
 export { getScenarioVersionsResponseSchemaSchema } from "./zod/get-scenario-versions-response-schema-schema.ts";
+export { getScenariosFiltersResponseSchemaSchema } from "./zod/get-scenarios-filters-response-schema-schema.ts";
 export { getTariffsResponseSchemaSchema } from "./zod/get-tariffs-response-schema-schema.ts";
 export { getTemplatesResponseSchemaSchema } from "./zod/get-templates-response-schema-schema.ts";
 export { getTonesResponseSchemaSchema } from "./zod/get-tones-response-schema-schema.ts";
@@ -1864,6 +2048,9 @@ export { ideaExtendedSchemaSchema } from "./zod/idea-extended-schema-schema.ts";
 export { ideaSchemaSchema } from "./zod/idea-schema-schema.ts";
 export { ideasListExtendedSchemaSchema } from "./zod/ideas-list-extended-schema-schema.ts";
 export { ideasListSchemaSchema } from "./zod/ideas-list-schema-schema.ts";
+export { ideasListsFilterOptionSchemaSchema } from "./zod/ideas-lists-filter-option-schema-schema.ts";
+export { ideasListsFilterSchemaSchema } from "./zod/ideas-lists-filter-schema-schema.ts";
+export { ideasListsFiltersSchemaSchema } from "./zod/ideas-lists-filters-schema-schema.ts";
 export { initiateCreditsPackagePaymentBodySchemaSchema } from "./zod/initiate-credits-package-payment-body-schema-schema.ts";
 export { initiateCreditsPackagePaymentResponseSchemaSchema } from "./zod/initiate-credits-package-payment-response-schema-schema.ts";
 export { initiateSubscriptionPaymentBodySchemaSchema } from "./zod/initiate-subscription-payment-body-schema-schema.ts";
@@ -2167,6 +2354,9 @@ export { scenarioSceneSchemaSchema } from "./zod/scenario-scene-schema-schema.ts
 export { scenarioSchemaSchema } from "./zod/scenario-schema-schema.ts";
 export { scenarioVersionExtendedSchemaSchema } from "./zod/scenario-version-extended-schema-schema.ts";
 export { scenarioVersionSchemaSchema } from "./zod/scenario-version-schema-schema.ts";
+export { scenariosFilterOptionSchemaSchema } from "./zod/scenarios-filter-option-schema-schema.ts";
+export { scenariosFilterSchemaSchema } from "./zod/scenarios-filter-schema-schema.ts";
+export { scenariosFiltersSchemaSchema } from "./zod/scenarios-filters-schema-schema.ts";
 export { subscriptionExtendedSchemaSchema } from "./zod/subscription-extended-schema-schema.ts";
 export { subscriptionSchemaSchema } from "./zod/subscription-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./zod/tariff-discount-schema-schema.ts";

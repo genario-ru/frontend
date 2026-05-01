@@ -43,6 +43,8 @@ export type ScenarioExtendedSchema = {
    */
   description: string;
   targetAudience: string | null;
+  scheduledStartAt: string | null;
+  scheduledEndAt: string | null;
   /**
    * @type string
    */

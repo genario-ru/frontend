@@ -11,6 +11,86 @@
     }
   ],
   "paths": {
+    "/api/v1/alerts": {
+      "get": {
+        "operationId": "getApiV1Alerts",
+        "tags": [
+          "Alerts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Active alerts retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAlertsResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/ideas/{ideaId}": {
       "delete": {
         "operationId": "deleteApiV1IdeasByIdeaId",
@@ -1360,6 +1440,185 @@
             }
           }
         }
+      },
+      "get": {
+        "operationId": "getApiV1IdeasLists",
+        "tags": [
+          "Ideas lists"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ideas lists retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyIdeasListsResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Строка поиска"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Номер страницы"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Количество элементов в одной странице ответа"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "templateIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "profileIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "toneIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "videoTypeIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     "/api/v1/ideas-lists/{ideasListId}": {
@@ -2051,6 +2310,86 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateIdeaBodySchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ideas-lists/filters": {
+      "get": {
+        "operationId": "getApiV1IdeasListsFilters",
+        "tags": [
+          "Ideas lists"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ideas lists filters retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetIdeasListsFiltersResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
               }
             }
           }
@@ -3668,6 +4007,352 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateScenarioBodySchema"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getApiV1Scenarios",
+        "tags": [
+          "Scenarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "Scenarios retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMyScenariosResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Строка поиска"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Номер страницы"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Количество элементов в одной странице ответа"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "templateIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "profileIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "toneIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "videoTypeIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "platformIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "videoDurationIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "productionStatusIds",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "scheduledStartAtFrom",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            }
+          },
+          {
+            "in": "query",
+            "name": "scheduledStartAtTo",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            }
+          },
+          {
+            "in": "query",
+            "name": "isScheduled",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "true",
+                    "false"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/scenarios/filters": {
+      "get": {
+        "operationId": "getApiV1ScenariosFilters",
+        "tags": [
+          "Scenarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "Scenarios filters retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetScenariosFiltersResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
               }
             }
           }
@@ -5983,6 +6668,130 @@
   },
   "components": {
     "schemas": {
+      "AlertSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning",
+              "negative",
+              "positive"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "expiresAt": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "type",
+          "status",
+          "expiresAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Alert",
+        "description": "Alert description"
+      },
+      "GetAlertsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlertSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get alerts response",
+        "description": "Get alerts response description"
+      },
+      "BadRequestResponseSchema": {
+        "type": "string",
+        "title": "Bad request response",
+        "description": "Bad request response description",
+        "examples": [
+          "Invalid request data"
+        ]
+      },
+      "UnauthorizedResponseSchema": {
+        "type": "string",
+        "title": "Unauthorized response",
+        "description": "Unauthorized response description",
+        "examples": [
+          "You have to authenticate to access this resource"
+        ]
+      },
+      "PaymentRequiredResponseSchema": {
+        "type": "string",
+        "title": "Payment required response",
+        "description": "Payment required response description",
+        "examples": [
+          "Active subscription or sufficient credits are required"
+        ]
+      },
+      "ForbiddenResponseSchema": {
+        "type": "string",
+        "title": "Forbidden response",
+        "description": "Forbidden response description",
+        "examples": [
+          "You are not authorized to access this resource"
+        ]
+      },
+      "NotFoundResponseSchema": {
+        "type": "string",
+        "title": "Not found response",
+        "description": "Not found response description",
+        "examples": [
+          "Resource not found"
+        ]
+      },
+      "InternalServerErrorResponseSchema": {
+        "type": "string",
+        "title": "Internal server error response",
+        "description": "Internal server error response description",
+        "examples": [
+          "You have to authenticate to access this resource"
+        ]
+      },
       "IdeaSchema": {
         "type": "object",
         "properties": {
@@ -6064,54 +6873,6 @@
         ],
         "title": "Delete idea response",
         "description": "Delete idea response description"
-      },
-      "BadRequestResponseSchema": {
-        "type": "string",
-        "title": "Bad request response",
-        "description": "Bad request response description",
-        "examples": [
-          "Invalid request data"
-        ]
-      },
-      "UnauthorizedResponseSchema": {
-        "type": "string",
-        "title": "Unauthorized response",
-        "description": "Unauthorized response description",
-        "examples": [
-          "You have to authenticate to access this resource"
-        ]
-      },
-      "PaymentRequiredResponseSchema": {
-        "type": "string",
-        "title": "Payment required response",
-        "description": "Payment required response description",
-        "examples": [
-          "Active subscription or sufficient credits are required"
-        ]
-      },
-      "ForbiddenResponseSchema": {
-        "type": "string",
-        "title": "Forbidden response",
-        "description": "Forbidden response description",
-        "examples": [
-          "You are not authorized to access this resource"
-        ]
-      },
-      "NotFoundResponseSchema": {
-        "type": "string",
-        "title": "Not found response",
-        "description": "Not found response description",
-        "examples": [
-          "Resource not found"
-        ]
-      },
-      "InternalServerErrorResponseSchema": {
-        "type": "string",
-        "title": "Internal server error response",
-        "description": "Internal server error response description",
-        "examples": [
-          "You have to authenticate to access this resource"
-        ]
       },
       "TemplateSchema": {
         "type": "object",
@@ -8258,6 +9019,175 @@
         "title": "Create idea body",
         "description": "Create idea body description"
       },
+      "GetMyIdeasListsResponseMetaSchema": {
+        "type": "object",
+        "properties": {
+          "previousPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер предыдущей страницы"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Номер текущей страницы"
+          },
+          "nextPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер следующей страницы"
+          },
+          "perPage": {
+            "type": "number",
+            "description": "Количество элементов в одной странице ответа"
+          },
+          "totalItems": {
+            "type": "number",
+            "description": "Общее количество элементов по запросу"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Общее количество страниц по запросу"
+          },
+          "q": {
+            "description": "Строка поиска",
+            "type": "string"
+          },
+          "sort": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "previousPage",
+          "currentPage",
+          "nextPage",
+          "perPage",
+          "totalItems",
+          "totalPages",
+          "sort"
+        ],
+        "title": "Get my ideas lists response meta",
+        "description": "Get my ideas lists response meta description"
+      },
+      "GetMyIdeasListsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdeasListExtendedSchema"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/GetMyIdeasListsResponseMetaSchema"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Get my ideas lists response",
+        "description": "Ideas lists response payload"
+      },
+      "IdeasListsFilterOptionSchema": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ],
+        "title": "Ideas lists filter option",
+        "description": "Ideas lists filter option description"
+      },
+      "IdeasListsFilterSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "enum": [
+              "sort",
+              "templateIds",
+              "profileIds",
+              "toneIds",
+              "videoTypeIds"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "select",
+              "multiselect"
+            ]
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdeasListsFilterOptionSchema"
+            }
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "icon",
+          "type",
+          "options"
+        ],
+        "title": "Ideas lists filter",
+        "description": "Ideas lists filter description"
+      },
+      "IdeasListsFiltersSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/IdeasListsFilterSchema"
+        },
+        "title": "Ideas lists filters",
+        "description": "Ideas lists filters description"
+      },
+      "GetIdeasListsFiltersResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/IdeasListsFiltersSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get ideas lists filters response",
+        "description": "Ideas lists filters response payload"
+      },
       "ArchiveIdeasListSchema": {
         "type": "object",
         "properties": {
@@ -8710,6 +9640,26 @@
               }
             ]
           },
+          "scheduledStartAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheduledEndAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8815,6 +9765,8 @@
           "name",
           "description",
           "targetAudience",
+          "scheduledStartAt",
+          "scheduledEndAt",
           "createdAt",
           "updatedAt"
         ],
@@ -10455,6 +11407,26 @@
               }
             ]
           },
+          "scheduledStartAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheduledEndAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "createdAt": {
             "type": "string"
           },
@@ -10474,6 +11446,8 @@
           "name",
           "description",
           "targetAudience",
+          "scheduledStartAt",
+          "scheduledEndAt",
           "createdAt",
           "updatedAt"
         ],
@@ -10602,6 +11576,178 @@
         "title": "Create scenario body",
         "description": "Create scenario body description"
       },
+      "GetMyScenariosResponseMetaSchema": {
+        "type": "object",
+        "properties": {
+          "previousPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер предыдущей страницы"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Номер текущей страницы"
+          },
+          "nextPage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Номер следующей страницы"
+          },
+          "perPage": {
+            "type": "number",
+            "description": "Количество элементов в одной странице ответа"
+          },
+          "totalItems": {
+            "type": "number",
+            "description": "Общее количество элементов по запросу"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Общее количество страниц по запросу"
+          },
+          "q": {
+            "description": "Строка поиска",
+            "type": "string"
+          },
+          "sort": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "previousPage",
+          "currentPage",
+          "nextPage",
+          "perPage",
+          "totalItems",
+          "totalPages",
+          "sort"
+        ],
+        "title": "Get my scenarios response meta",
+        "description": "Get my scenarios response meta description"
+      },
+      "GetMyScenariosResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScenarioExtendedSchema"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/GetMyScenariosResponseMetaSchema"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "Get my scenarios response",
+        "description": "Scenarios response payload"
+      },
+      "ScenariosFilterOptionSchema": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ],
+        "title": "Scenarios filter option",
+        "description": "Scenarios filter option description"
+      },
+      "ScenariosFilterSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "enum": [
+              "sort",
+              "templateIds",
+              "profileIds",
+              "toneIds",
+              "videoTypeIds",
+              "platformIds",
+              "videoDurationIds",
+              "productionStatusIds"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "select",
+              "multiselect"
+            ]
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScenariosFilterOptionSchema"
+            }
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "icon",
+          "type",
+          "options"
+        ],
+        "title": "Scenarios filter",
+        "description": "Scenarios filter description"
+      },
+      "ScenariosFiltersSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ScenariosFilterSchema"
+        },
+        "title": "Scenarios filters",
+        "description": "Scenarios filters description"
+      },
+      "GetScenariosFiltersResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ScenariosFiltersSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get scenarios filters response",
+        "description": "Scenarios filters response payload"
+      },
       "DeleteScenarioResponseSchema": {
         "type": "object",
         "properties": {
@@ -10728,6 +11874,26 @@
             ]
           },
           "targetAudience": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheduledStartAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheduledEndAt": {
             "anyOf": [
               {
                 "type": "string"

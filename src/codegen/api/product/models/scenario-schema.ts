@@ -34,6 +34,8 @@ export type ScenarioSchema = {
    */
   description: string;
   targetAudience: string | null;
+  scheduledStartAt: string | null;
+  scheduledEndAt: string | null;
   /**
    * @type string
    */
