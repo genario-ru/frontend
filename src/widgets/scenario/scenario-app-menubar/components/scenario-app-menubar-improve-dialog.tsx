@@ -1,6 +1,6 @@
 import { WandSparklesIcon } from "lucide-react";
 
-import { Button } from "@/shared/components/ui/button";
+import { Button, type ButtonProps } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogBody,
@@ -15,10 +15,12 @@ import { useScenarioAppMenubarImproveDialog } from "../hooks/use-scenario-app-me
 
 type ScenarioAppMenubarImproveDialogParams = {
   scenarioId: string;
+  triggerProps?: ButtonProps;
 };
 
 export function ScenarioAppMenubarImproveDialog({
   scenarioId,
+  triggerProps,
 }: ScenarioAppMenubarImproveDialogParams) {
   const {
     form,
@@ -31,7 +33,11 @@ export function ScenarioAppMenubarImproveDialog({
   return (
     <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
       <DialogTrigger asChild>
-        <Button priority="tertiary" icon={<WandSparklesIcon />}>
+        <Button
+          priority="tertiary"
+          icon={<WandSparklesIcon />}
+          {...triggerProps}
+        >
           Улучшить
         </Button>
       </DialogTrigger>

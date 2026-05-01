@@ -2,6 +2,7 @@ import { useSearch } from "@tanstack/react-router";
 import { useMemo } from "react";
 
 import { useGetScenario } from "@/actions/scenario/hooks/use-get-scenario";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 type UseScenarioAppMenubarParams = {
   scenarioId: string;
@@ -10,6 +11,8 @@ type UseScenarioAppMenubarParams = {
 export function useScenarioAppMenubar({
   scenarioId,
 }: UseScenarioAppMenubarParams) {
+  const { isMobile } = useBreakpoints();
+
   const { versionId: selectedVersionId } = useSearch({
     from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
   });
@@ -49,6 +52,7 @@ export function useScenarioAppMenubar({
     scenarioVersionId,
     scenarioTitle,
     scenarioDescription,
+    isMobile,
     isScenarioLoading,
     isScenarioError,
   };

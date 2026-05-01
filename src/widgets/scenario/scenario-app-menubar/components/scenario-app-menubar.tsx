@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { BadgesList } from "@/features/badges/badges-list/components/badges-list";
+import { BadgesListCarousel } from "@/features/badges/badges-list/components/badges-list-carousel";
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
 import { BackButton } from "@/shared/components/common/back-button";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -9,6 +10,7 @@ import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import { useScenarioAppMenubar } from "../hooks/use-scenario-app-menubar";
 import { ScenarioAppMenubarActions } from "./scenario-app-menubar-actions";
+import { ScenarioAppMenubarMoreActions } from "./scenario-app-menubar-more-actions";
 import { ScenarioAppMenubarTabs } from "./scenario-app-menubar-tabs";
 
 type ScenarioAppMenubarParams = {
@@ -21,6 +23,7 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
     scenarioVersionId,
     scenarioTitle,
     scenarioDescription,
+    isMobile,
     isScenarioLoading,
   } = useScenarioAppMenubar({ scenarioId });
 
@@ -45,19 +48,61 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
       return <ScenarioAppMenubarLeftSkeleton />;
     }
 
+    if (!isMobile) {
+      return (
+        <BadgesList
+          badgesData={[
+            scenarioData?.data.template,
+            scenarioData?.data.platforms,
+            scenarioData?.data.videoType,
+            scenarioData?.data.videoDuration,
+            scenarioData?.data.tones,
+          ]}
+        />
+      );
+    }
+  }, [scenarioData, isScenarioLoading, isMobile]);
+
+  const right = useMemo(() => {
+    if (isMobile) {
+      return (
+        <ScenarioAppMenubarMoreActions
+          withImproveAction
+          scenarioId={scenarioId}
+          scenarioVersionId={scenarioVersionId}
+        />
+      );
+    }
+
     return (
-      <BadgesList
-        clamp={4}
-        badgesData={[
-          scenarioData?.data.template,
-          scenarioData?.data.platforms,
-          scenarioData?.data.videoType,
-          scenarioData?.data.videoDuration,
-          scenarioData?.data.tones,
-        ]}
-      />
+      <div className="flex h-full flex-col items-end justify-between gap-4">
+        <ScenarioAppMenubarActions
+          scenarioId={scenarioId}
+          scenarioVersionId={scenarioVersionId}
+        />
+        <ScenarioAppMenubarTabs scenarioId={scenarioId} />
+      </div>
     );
-  }, [scenarioData, isScenarioLoading]);
+  }, [scenarioId, scenarioVersionId, isMobile]);
+
+  const bottom = useMemo(() => {
+    if (isMobile) {
+      return (
+        <>
+          <BadgesListCarousel
+            badgesData={[
+              scenarioData?.data.template,
+              scenarioData?.data.platforms,
+              scenarioData?.data.videoType,
+              scenarioData?.data.videoDuration,
+              scenarioData?.data.tones,
+            ]}
+          />
+          <ScenarioAppMenubarTabs expand scenarioId={scenarioId} />
+        </>
+      );
+    }
+  }, [scenarioData, scenarioId, isMobile]);
 
   return (
     <AppMenubar
@@ -66,15 +111,8 @@ export function ScenarioAppMenubar({ scenarioId }: ScenarioAppMenubarParams) {
       title={title}
       description={description}
       left={left}
-      right={
-        <div className="flex h-full flex-col items-end justify-between gap-4">
-          <ScenarioAppMenubarActions
-            scenarioId={scenarioId}
-            scenarioVersionId={scenarioVersionId}
-          />
-          <ScenarioAppMenubarTabs scenarioId={scenarioId} />
-        </div>
-      }
+      right={right}
+      bottom={bottom}
     />
   );
 }
