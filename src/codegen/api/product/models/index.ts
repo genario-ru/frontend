@@ -164,6 +164,11 @@ export { exportDocumentShortSchemaDocumentStatusEnum } from "./export-document-s
 export type { ForbiddenResponseSchema } from "./forbidden-response-schema.ts";
 export type { GenerateMoreIdeasBodySchema } from "./generate-more-ideas-body-schema.ts";
 export type { GenerateMoreIdeasResponseSchema } from "./generate-more-ideas-response-schema.ts";
+export type {
+  DataMetadataStatusEnumKey,
+  GenerateScenarioMetadataResponseSchema,
+} from "./generate-scenario-metadata-response-schema.ts";
+export { dataMetadataStatusEnum } from "./generate-scenario-metadata-response-schema.ts";
 export type { GetAlertsResponseSchema } from "./get-alerts-response-schema.ts";
 export type {
   GetApiV1Alerts200,
@@ -497,6 +502,18 @@ export type {
   GetApiV1ScenariosByScenarioIdExportsQueryResponse,
 } from "./get-api-v1-scenarios-by-scenario-id-exports.ts";
 export type {
+  GetApiV1ScenariosByScenarioIdMetadata200,
+  GetApiV1ScenariosByScenarioIdMetadata400,
+  GetApiV1ScenariosByScenarioIdMetadata401,
+  GetApiV1ScenariosByScenarioIdMetadata402,
+  GetApiV1ScenariosByScenarioIdMetadata403,
+  GetApiV1ScenariosByScenarioIdMetadata404,
+  GetApiV1ScenariosByScenarioIdMetadata500,
+  GetApiV1ScenariosByScenarioIdMetadataPathParams,
+  GetApiV1ScenariosByScenarioIdMetadataQuery,
+  GetApiV1ScenariosByScenarioIdMetadataQueryResponse,
+} from "./get-api-v1-scenarios-by-scenario-id-metadata.ts";
+export type {
   GetApiV1ScenariosByScenarioIdVersions200,
   GetApiV1ScenariosByScenarioIdVersions400,
   GetApiV1ScenariosByScenarioIdVersions401,
@@ -644,6 +661,11 @@ export type { GetReferralInfoResponseSchema } from "./get-referral-info-response
 export type { GetScenarioChapterResponseSchema } from "./get-scenario-chapter-response-schema.ts";
 export type { GetScenarioCurrentVersionResponseSchema } from "./get-scenario-current-version-response-schema.ts";
 export type { GetScenarioExportsResponseSchema } from "./get-scenario-exports-response-schema.ts";
+export type {
+  DataStatusEnum2Key,
+  GetScenarioMetadataResponseSchema,
+} from "./get-scenario-metadata-response-schema.ts";
+export { dataStatusEnum2 } from "./get-scenario-metadata-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./get-scenario-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./get-scenario-versions-response-schema.ts";
 export type { GetScenariosFiltersResponseSchema } from "./get-scenarios-filters-response-schema.ts";
@@ -947,6 +969,18 @@ export type {
   PostApiV1ScenariosByScenarioIdExportQueryParams,
 } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export type {
+  PostApiV1ScenariosByScenarioIdMetadataGenerate202,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate400,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate401,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate402,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate403,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate404,
+  PostApiV1ScenariosByScenarioIdMetadataGenerate500,
+  PostApiV1ScenariosByScenarioIdMetadataGenerateMutation,
+  PostApiV1ScenariosByScenarioIdMetadataGenerateMutationResponse,
+  PostApiV1ScenariosByScenarioIdMetadataGeneratePathParams,
+} from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export type {
   PostApiV1ScenariosScenesBySceneIdPreview200,
   PostApiV1ScenariosScenesBySceneIdPreview201,
   PostApiV1ScenariosScenesBySceneIdPreview400,
@@ -1020,7 +1054,12 @@ export type {
   ScenarioChapterSchemaStatusEnumKey,
 } from "./scenario-chapter-schema.ts";
 export { scenarioChapterSchemaStatusEnum } from "./scenario-chapter-schema.ts";
-export type { ScenarioExtendedSchema } from "./scenario-extended-schema.ts";
+export type {
+  ScenarioExtendedSchema,
+  ScenarioExtendedSchemaMetadataStatusEnumKey,
+} from "./scenario-extended-schema.ts";
+export { scenarioExtendedSchemaMetadataStatusEnum } from "./scenario-extended-schema.ts";
+export type { ScenarioMetadataExtendedSchema } from "./scenario-metadata-extended-schema.ts";
 export type { ScenarioSceneComponentExtendedSchema } from "./scenario-scene-component-extended-schema.ts";
 export type { ScenarioSceneComponentSchema } from "./scenario-scene-component-schema.ts";
 export type { ScenarioSceneComponentTypeSchema } from "./scenario-scene-component-type-schema.ts";
@@ -1031,7 +1070,11 @@ export type {
 } from "./scenario-scene-preview-schema.ts";
 export { scenarioScenePreviewSchemaStatusEnum } from "./scenario-scene-preview-schema.ts";
 export type { ScenarioSceneSchema } from "./scenario-scene-schema.ts";
-export type { ScenarioSchema } from "./scenario-schema.ts";
+export type {
+  ScenarioSchema,
+  ScenarioSchemaMetadataStatusEnumKey,
+} from "./scenario-schema.ts";
+export { scenarioSchemaMetadataStatusEnum } from "./scenario-schema.ts";
 export type {
   ScenarioVersionExtendedSchema,
   ScenarioVersionExtendedSchemaStatusEnumKey,

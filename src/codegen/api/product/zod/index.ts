@@ -128,6 +128,7 @@ export { exportDocumentShortSchemaSchema } from "./export-document-short-schema-
 export { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 export { generateMoreIdeasBodySchemaSchema } from "./generate-more-ideas-body-schema-schema.ts";
 export { generateMoreIdeasResponseSchemaSchema } from "./generate-more-ideas-response-schema-schema.ts";
+export { generateScenarioMetadataResponseSchemaSchema } from "./generate-scenario-metadata-response-schema-schema.ts";
 export { getAlertsResponseSchemaSchema } from "./get-alerts-response-schema-schema.ts";
 export {
   getApiV1Alerts200Schema,
@@ -406,6 +407,17 @@ export {
   getApiV1ScenariosByScenarioIdExportsQueryResponseSchema,
 } from "./get-api-v1-scenarios-by-scenario-id-exports-schema.ts";
 export {
+  getApiV1ScenariosByScenarioIdMetadata200Schema,
+  getApiV1ScenariosByScenarioIdMetadata400Schema,
+  getApiV1ScenariosByScenarioIdMetadata401Schema,
+  getApiV1ScenariosByScenarioIdMetadata402Schema,
+  getApiV1ScenariosByScenarioIdMetadata403Schema,
+  getApiV1ScenariosByScenarioIdMetadata404Schema,
+  getApiV1ScenariosByScenarioIdMetadata500Schema,
+  getApiV1ScenariosByScenarioIdMetadataPathParamsSchema,
+  getApiV1ScenariosByScenarioIdMetadataQueryResponseSchema,
+} from "./get-api-v1-scenarios-by-scenario-id-metadata-schema.ts";
+export {
   getApiV1ScenariosByScenarioId200Schema,
   getApiV1ScenariosByScenarioId400Schema,
   getApiV1ScenariosByScenarioId401Schema,
@@ -562,6 +574,7 @@ export { getReferralInfoResponseSchemaSchema } from "./get-referral-info-respons
 export { getScenarioChapterResponseSchemaSchema } from "./get-scenario-chapter-response-schema-schema.ts";
 export { getScenarioCurrentVersionResponseSchemaSchema } from "./get-scenario-current-version-response-schema-schema.ts";
 export { getScenarioExportsResponseSchemaSchema } from "./get-scenario-exports-response-schema-schema.ts";
+export { getScenarioMetadataResponseSchemaSchema } from "./get-scenario-metadata-response-schema-schema.ts";
 export { getScenarioResponseSchemaSchema } from "./get-scenario-response-schema-schema.ts";
 export { getScenarioVersionsResponseSchemaSchema } from "./get-scenario-versions-response-schema-schema.ts";
 export { getScenariosFiltersResponseSchemaSchema } from "./get-scenarios-filters-response-schema-schema.ts";
@@ -812,6 +825,17 @@ export {
   postApiV1ScenariosByScenarioIdExportQueryParamsSchema,
 } from "./post-api-v1-scenarios-by-scenario-id-export-schema.ts";
 export {
+  postApiV1ScenariosByScenarioIdMetadataGenerate202Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate400Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate401Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate402Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate403Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate404Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerate500Schema,
+  postApiV1ScenariosByScenarioIdMetadataGenerateMutationResponseSchema,
+  postApiV1ScenariosByScenarioIdMetadataGeneratePathParamsSchema,
+} from "./post-api-v1-scenarios-by-scenario-id-metadata-generate-schema.ts";
+export {
   postApiV1ScenariosScenesBySceneIdPreview200Schema,
   postApiV1ScenariosScenesBySceneIdPreview201Schema,
   postApiV1ScenariosScenesBySceneIdPreview400Schema,
@@ -872,6 +896,7 @@ export { saveScenarioResponseSchemaSchema } from "./save-scenario-response-schem
 export { scenarioChapterExtendedSchemaSchema } from "./scenario-chapter-extended-schema-schema.ts";
 export { scenarioChapterSchemaSchema } from "./scenario-chapter-schema-schema.ts";
 export { scenarioExtendedSchemaSchema } from "./scenario-extended-schema-schema.ts";
+export { scenarioMetadataExtendedSchemaSchema } from "./scenario-metadata-extended-schema-schema.ts";
 export { scenarioSceneComponentExtendedSchemaSchema } from "./scenario-scene-component-extended-schema-schema.ts";
 export { scenarioSceneComponentSchemaSchema } from "./scenario-scene-component-schema-schema.ts";
 export { scenarioSceneComponentTypeSchemaSchema } from "./scenario-scene-component-type-schema-schema.ts";

@@ -158,6 +158,10 @@ export type { GetApiV1ScenariosByScenarioIdExportsQueryKey } from "./get-api-v1-
 export { getApiV1ScenariosByScenarioIdExportsQueryKey } from "./get-api-v1-scenarios-by-scenario-id-exports.ts";
 export { getApiV1ScenariosByScenarioIdExportsQueryOptions } from "./get-api-v1-scenarios-by-scenario-id-exports.ts";
 export { useGetApiV1ScenariosByScenarioIdExports } from "./get-api-v1-scenarios-by-scenario-id-exports.ts";
+export type { GetApiV1ScenariosByScenarioIdMetadataQueryKey } from "./get-api-v1-scenarios-by-scenario-id-metadata.ts";
+export { getApiV1ScenariosByScenarioIdMetadataQueryKey } from "./get-api-v1-scenarios-by-scenario-id-metadata.ts";
+export { getApiV1ScenariosByScenarioIdMetadataQueryOptions } from "./get-api-v1-scenarios-by-scenario-id-metadata.ts";
+export { useGetApiV1ScenariosByScenarioIdMetadata } from "./get-api-v1-scenarios-by-scenario-id-metadata.ts";
 export type { GetApiV1ScenariosByScenarioIdVersionsQueryKey } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosByScenarioIdVersionsQueryKey } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosByScenarioIdVersionsQueryOptions } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
@@ -282,6 +286,10 @@ export type { PostApiV1ScenariosByScenarioIdExportMutationKey } from "./post-api
 export { postApiV1ScenariosByScenarioIdExportMutationKey } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export { postApiV1ScenariosByScenarioIdExportMutationOptions } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export { usePostApiV1ScenariosByScenarioIdExport } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
+export type { PostApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationOptions } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export { usePostApiV1ScenariosByScenarioIdMetadataGenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export type { PostApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationOptions } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";

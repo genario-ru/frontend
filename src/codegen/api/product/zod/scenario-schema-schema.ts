@@ -18,6 +18,7 @@ export const scenarioSchemaSchema = z
     videoDurationId: z.union([z.uuid(), z.null()]),
     productionStatusId: z.union([z.uuid(), z.null()]),
     saved: z.boolean(),
+    metadataStatus: z.enum(["pending", "generation", "failed", "ready"]),
     name: z.string(),
     description: z.string(),
     targetAudience: z.union([z.string(), z.null()]),

@@ -3,6 +3,16 @@
  * Do not edit manually.
  */
 
+export const scenarioSchemaMetadataStatusEnum = {
+  pending: "pending",
+  generation: "generation",
+  failed: "failed",
+  ready: "ready",
+} as const;
+
+export type ScenarioSchemaMetadataStatusEnumKey =
+  (typeof scenarioSchemaMetadataStatusEnum)[keyof typeof scenarioSchemaMetadataStatusEnum];
+
 /**
  * Scenario
  * @description Scenario description
@@ -25,6 +35,10 @@ export type ScenarioSchema = {
    * @type boolean
    */
   saved: boolean;
+  /**
+   * @type string
+   */
+  metadataStatus: ScenarioSchemaMetadataStatusEnumKey;
   /**
    * @type string
    */

@@ -17,6 +17,7 @@ export const platformExtendedSchemaSchema = z
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     details: z.union([z.string(), z.null()]),
+    metadataDetails: z.union([z.string(), z.null()]),
     logoUrl: z.union([z.string(), z.null()]),
     baseUrl: z.union([z.string(), z.null()]),
     urlRegex: z.union([z.string(), z.null()]),

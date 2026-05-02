@@ -12,6 +12,16 @@ import type { ToneSchema } from "./tone-schema.ts";
 import type { VideoDurationSchema } from "./video-duration-schema.ts";
 import type { VideoTypeSchema } from "./video-type-schema.ts";
 
+export const scenarioExtendedSchemaMetadataStatusEnum = {
+  pending: "pending",
+  generation: "generation",
+  failed: "failed",
+  ready: "ready",
+} as const;
+
+export type ScenarioExtendedSchemaMetadataStatusEnumKey =
+  (typeof scenarioExtendedSchemaMetadataStatusEnum)[keyof typeof scenarioExtendedSchemaMetadataStatusEnum];
+
 /**
  * Scenario extended
  * @description Scenario extended description
@@ -34,6 +44,10 @@ export type ScenarioExtendedSchema = {
    * @type boolean
    */
   saved: boolean;
+  /**
+   * @type string
+   */
+  metadataStatus: ScenarioExtendedSchemaMetadataStatusEnumKey;
   /**
    * @type string
    */

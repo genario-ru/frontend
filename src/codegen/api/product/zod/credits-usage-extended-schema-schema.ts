@@ -20,6 +20,7 @@ export const creditsUsageExtendedSchemaSchema = z
       "scenario-chapters",
       "scenario-chapter-scenes",
       "scenario-scene-preview",
+      "scenario-metadata",
     ]),
     entityId: z.uuid(),
     creditsAmount: z.number().min(-8388608).max(8388607),

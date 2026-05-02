@@ -22,6 +22,7 @@ export type PlatformSchema = {
   name: string;
   description: string | null;
   details: string | null;
+  metadataDetails: string | null;
   logoUrl: string | null;
   baseUrl: string | null;
   urlRegex: string | null;
