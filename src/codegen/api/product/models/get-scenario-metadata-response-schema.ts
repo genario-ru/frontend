@@ -6,6 +6,7 @@
 import type { ScenarioMetadataExtendedSchema } from "./scenario-metadata-extended-schema.ts";
 
 export const dataStatusEnum2 = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

@@ -4,6 +4,7 @@
  */
 
 export const ideasListSchemaStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

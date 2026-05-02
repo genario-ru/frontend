@@ -9,6 +9,7 @@ import type { ToneSchema } from "./tone-schema.ts";
 import type { VideoTypeSchema } from "./video-type-schema.ts";
 
 export const ideasListExtendedSchemaStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

@@ -4,6 +4,7 @@
  */
 
 export const scenarioSchemaMetadataStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

@@ -21,7 +21,7 @@ export const getIdeasListResponseSchemaSchema = z
       userId: z.uuid(),
       profileId: z.union([z.uuid(), z.null()]),
       templateId: z.union([z.uuid(), z.null()]),
-      status: z.enum(["pending", "generation", "failed", "ready"]),
+      status: z.enum(["idle", "pending", "generation", "failed", "ready"]),
       name: z.string(),
       description: z.string(),
       targetAudience: z.union([z.string(), z.null()]),

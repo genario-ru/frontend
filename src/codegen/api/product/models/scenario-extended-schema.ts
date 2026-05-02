@@ -13,6 +13,7 @@ import type { VideoDurationSchema } from "./video-duration-schema.ts";
 import type { VideoTypeSchema } from "./video-type-schema.ts";
 
 export const scenarioExtendedSchemaMetadataStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

@@ -11,7 +11,13 @@ import { z } from "@/lib/zod/index.ts";
 export const generateScenarioMetadataResponseSchemaSchema = z
   .object({
     data: z.object({
-      metadataStatus: z.enum(["pending", "generation", "failed", "ready"]),
+      metadataStatus: z.enum([
+        "idle",
+        "pending",
+        "generation",
+        "failed",
+        "ready",
+      ]),
     }),
   })
   .describe("Generate scenario metadata response description");

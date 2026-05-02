@@ -13,7 +13,7 @@ import { scenarioMetadataExtendedSchemaSchema } from "./scenario-metadata-extend
 export const getScenarioMetadataResponseSchemaSchema = z
   .object({
     data: z.object({
-      status: z.enum(["pending", "generation", "failed", "ready"]),
+      status: z.enum(["idle", "pending", "generation", "failed", "ready"]),
       get items() {
         return z.array(
           scenarioMetadataExtendedSchemaSchema.describe(

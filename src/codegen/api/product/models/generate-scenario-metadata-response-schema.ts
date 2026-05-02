@@ -4,6 +4,7 @@
  */
 
 export const dataMetadataStatusEnum = {
+  idle: "idle",
   pending: "pending",
   generation: "generation",
   failed: "failed",

@@ -7340,6 +7340,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -8720,6 +8721,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -9061,6 +9063,7 @@
               "status": {
                 "type": "string",
                 "enum": [
+                  "idle",
                   "pending",
                   "generation",
                   "failed",
@@ -9652,6 +9655,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -9823,6 +9827,7 @@
           "metadataStatus": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -11611,6 +11616,7 @@
           "metadataStatus": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -12216,6 +12222,7 @@
           "status": {
             "type": "string",
             "enum": [
+              "idle",
               "pending",
               "generation",
               "failed",
@@ -12921,6 +12928,7 @@
               "metadataStatus": {
                 "type": "string",
                 "enum": [
+                  "idle",
                   "pending",
                   "generation",
                   "failed",
@@ -12999,6 +13007,7 @@
               "status": {
                 "type": "string",
                 "enum": [
+                  "idle",
                   "pending",
                   "generation",
                   "failed",

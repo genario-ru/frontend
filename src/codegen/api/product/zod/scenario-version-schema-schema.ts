@@ -12,7 +12,7 @@ export const scenarioVersionSchemaSchema = z
   .object({
     id: z.uuid(),
     scenarioId: z.uuid(),
-    status: z.enum(["pending", "generation", "failed", "ready"]),
+    status: z.enum(["idle", "pending", "generation", "failed", "ready"]),
     createdAt: z.string(),
     updatedAt: z.string(),
   })
