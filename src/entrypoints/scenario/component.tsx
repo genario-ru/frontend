@@ -7,8 +7,8 @@ import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 import { ScenarioChapter } from "@/widgets/scenario/scenario-chapter/components/scenario-chapter";
 import { ScenarioGenerationAlert } from "@/widgets/scenario/scenario-generation-alert/components/scenario-generation-alert";
+import { ScenarioMetadata } from "@/widgets/scenario/scenario-metadata/components/scenario-metadata";
 import { ScenarioNavigation } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation";
-import { ScenarioReferences } from "@/widgets/scenario/scenario-references/components/scenario-references";
 
 export function ScenarioComponent() {
   const { scenarioId } = useParams({
@@ -20,8 +20,12 @@ export function ScenarioComponent() {
   });
 
   const body = useMemo(() => {
-    if (tab === scenarioTabs.reference) {
-      return <ScenarioReferences />;
+    if (tab === scenarioTabs.metadata) {
+      return (
+        <ContentLayout className="flex-1">
+          <ScenarioMetadata scenarioId={scenarioId} />
+        </ContentLayout>
+      );
     }
 
     return (
@@ -36,7 +40,7 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="flex-1 pb-0">{body}</PageLayout>
+      <PageLayout className="flex-1">{body}</PageLayout>
     </>
   );
 }

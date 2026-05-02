@@ -1,0 +1,90 @@
+import { useMemo } from "react";
+
+import type { ScenarioMetadataExtendedSchema } from "@/codegen/api/product";
+import { ItemsList } from "@/shared/components/common/items-list";
+import { Badge } from "@/shared/components/ui/badge";
+import { Card } from "@/shared/components/ui/card";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
+
+import { parseMetadataTags } from "../utils/parse-metadata-tags";
+
+type ScenarioMetadataCardProps = {
+  metadata: ScenarioMetadataExtendedSchema;
+};
+
+export function ScenarioMetadataCard({ metadata }: ScenarioMetadataCardProps) {
+  const { platform, title, body, tags } = metadata;
+  const tagItems = parseMetadataTags(tags);
+
+  const headerIcon = useMemo(() => {
+    if (platform.logoUrl) {
+      return (
+        <img
+          src={platform.logoUrl}
+          alt={platform.name}
+          className="size-6 rounded-md object-contain"
+        />
+      );
+    }
+
+    return null;
+  }, [platform.logoUrl, platform.name]);
+
+  return (
+    <Card title={platform.name} headerIcon={headerIcon}>
+      <div className="flex flex-col gap-3">
+        <ScenarioMetadataCardSection label="Заголовок" value={title} />
+        <ScenarioMetadataCardSection label="Описание" value={body} multiline />
+        {tagItems.length > 0 && (
+          <div className="flex flex-col gap-1.5">
+            <div className="text-neutral-6 text-sm">Теги</div>
+            <div className="flex flex-wrap gap-1.5">
+              {tagItems.map((tag, index) => (
+                <Badge key={`${tag}-${index.toString()}`} size="sm">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </Card>
+  );
+}
+
+export function ScenarioMetadataCardSkeleton() {
+  return (
+    <Card
+      title={<TextSkeleton fontSize={16} lineHeight={24} className="w-32" />}
+      headerIcon={<Skeleton className="size-6 rounded-md" />}
+    >
+      <ItemsList
+        count={3}
+        gap={12}
+        item={<TextSkeleton fontSize={14} lineHeight={20} linesCount={4} />}
+      />
+    </Card>
+  );
+}
+
+type ScenarioMetadataCardSectionProps = {
+  label: string;
+  value: string;
+  multiline?: boolean;
+};
+
+function ScenarioMetadataCardSection({
+  label,
+  value,
+  multiline = false,
+}: ScenarioMetadataCardSectionProps) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <div className="text-neutral-6 text-sm">{label}</div>
+      <div className={multiline ? "whitespace-pre-line" : undefined}>
+        {value}
+      </div>
+    </div>
+  );
+}

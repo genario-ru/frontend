@@ -8,6 +8,7 @@ const ENTITY_TITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
   "scenario-chapters": "Сценарий",
   "scenario-chapter-scenes": "Сценарий",
   "scenario-scene-preview": "Превью сцены",
+  "scenario-metadata": "Метаданные сценария",
 };
 
 const ENTITY_SUBTITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
@@ -15,6 +16,7 @@ const ENTITY_SUBTITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
   "scenario-chapters": "Работа с главами сценария",
   "scenario-chapter-scenes": "Работа со сценами",
   "scenario-scene-preview": "Генерация превью сцены",
+  "scenario-metadata": "Генерация метаданных сценария",
 };
 
 function formatUsageDate(dateString: string): string {

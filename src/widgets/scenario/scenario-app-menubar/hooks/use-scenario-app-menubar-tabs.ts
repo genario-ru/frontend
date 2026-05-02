@@ -30,9 +30,9 @@ export function useScenarioAppMenubarTabs({
         active: search.tab === undefined,
       },
       {
-        slug: scenarioTabs.reference,
-        name: "Референсы",
-        active: search.tab === scenarioTabs.reference,
+        slug: scenarioTabs.metadata,
+        name: "Метаданные",
+        active: search.tab === scenarioTabs.metadata,
       },
     ],
     [search.tab],
