@@ -76,7 +76,7 @@ export function ScenarioMetadata({ scenarioId }: ScenarioMetadataProps) {
     }
 
     return (
-      <div className="grid w-full grid-cols-2 gap-2">
+      <div className="grid w-full gap-2 lg:grid-cols-2">
         {metadataItems.map((item) => (
           <ScenarioMetadataCard key={item.id} metadata={item} />
         ))}
@@ -107,11 +107,10 @@ export function ScenarioMetadata({ scenarioId }: ScenarioMetadataProps) {
 export function ScenarioMetadataSkeleton() {
   return (
     <ItemsList
-      row
       count={2}
       gap={8}
       item={<ScenarioMetadataCardSkeleton />}
-      className="w-full"
+      className="w-full lg:flex-row"
       itemClassName="flex-1"
     />
   );

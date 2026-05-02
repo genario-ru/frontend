@@ -6,7 +6,7 @@ import { ScenarioMetadataCardSkeleton } from "../../scenario-metadata-card/compo
 const FADE_MASK =
   "linear-gradient(to bottom, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / 0) 100%)";
 
-const PREVIEW_HEIGHT_PX = 120;
+const PREVIEW_HEIGHT_PX = 96;
 
 type ScenarioMetadataPlaceholderProps = {
   title: string;
@@ -32,7 +32,7 @@ export function ScenarioMetadataPlaceholder({
       {hasFadeCards && (
         <div
           aria-hidden
-          className="-mb-4 grid w-full max-w-2xl grid-cols-2 gap-3 overflow-hidden"
+          className="-mb-4 grid w-full max-w-2xl gap-3 overflow-hidden md:grid-cols-2"
           style={{
             height: `${PREVIEW_HEIGHT_PX.toString()}px`,
             maskImage: FADE_MASK,
@@ -40,7 +40,7 @@ export function ScenarioMetadataPlaceholder({
           }}
         >
           <ScenarioMetadataCardSkeleton />
-          <ScenarioMetadataCardSkeleton />
+          <ScenarioMetadataCardSkeleton className="hidden md:flex" />
         </div>
       )}
       <Plug

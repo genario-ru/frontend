@@ -6,6 +6,7 @@ import { Badge } from "@/shared/components/ui/badge";
 import { Card } from "@/shared/components/ui/card";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
+import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 
 import { parseMetadataTags } from "../utils/parse-metadata-tags";
 
@@ -53,11 +54,14 @@ export function ScenarioMetadataCard({ metadata }: ScenarioMetadataCardProps) {
   );
 }
 
-export function ScenarioMetadataCardSkeleton() {
+export function ScenarioMetadataCardSkeleton({
+  className,
+}: PropsWithClassName) {
   return (
     <Card
       title={<TextSkeleton fontSize={16} lineHeight={24} className="w-32" />}
       headerIcon={<Skeleton className="size-6 rounded-md" />}
+      className={className}
     >
       <ItemsList
         count={3}
