@@ -56,9 +56,8 @@ export function ScenarioChapterScene({
         endTime={scene.endTime}
       />
       <div
-        className={cn("grid w-full gap-4", {
-          "grid-cols-8": videoTypeSlug === "short",
-          "grid-cols-2": videoTypeSlug === "long",
+        className={cn("grid w-full gap-2 md:grid-cols-2", {
+          "lg:grid-cols-8": videoTypeSlug === "short",
         })}
       >
         <ScenarioChapterScenePreview
@@ -84,9 +83,8 @@ export function ScenarioChapterSceneSkeleton({
     <section className="flex flex-col gap-4 py-4">
       <ScenarioChapterSceneHeaderSkeleton />
       <div
-        className={cn("grid w-full gap-4", {
-          "grid-cols-8": videoTypeSlug === "short",
-          "grid-cols-2": videoTypeSlug === "long",
+        className={cn("grid w-full gap-2 md:grid-cols-2", {
+          "lg:grid-cols-8": videoTypeSlug === "short",
         })}
       >
         <ScenarioChapterScenePreviewSkeleton videoTypeSlug={videoTypeSlug} />

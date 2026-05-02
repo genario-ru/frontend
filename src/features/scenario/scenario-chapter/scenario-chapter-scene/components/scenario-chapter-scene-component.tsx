@@ -22,6 +22,9 @@ type ScenarioChapterSceneComponentProps = PropsWithClassName<{
   handleEditButtonClick: () => void;
 }>;
 
+const NOT_TOUCH_SCREEN_BUTTON_CLASSNAME =
+  "opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100 disabled:opacity-0 group-hover/scenario-chapter-scene:disabled:opacity-60";
+
 export function ScenarioChapterSceneComponent({
   name,
   content,
@@ -30,7 +33,7 @@ export function ScenarioChapterSceneComponent({
   className,
   handleEditButtonClick,
 }: ScenarioChapterSceneComponentProps) {
-  const { contentRef, isCopied, handleCopyButtonClick } =
+  const { contentRef, isCopied, isTouchScreen, handleCopyButtonClick } =
     useScenarioChapterSceneComponent();
 
   const iconEl = useMemo(() => {
@@ -54,13 +57,15 @@ export function ScenarioChapterSceneComponent({
   const actionsEl = useMemo(() => {
     if (content) {
       return (
-        <div className="flex items-center gap-1">
+        <>
           <Button
             size="sm"
             priority="tertiary"
             icon={<PencilIcon />}
             onClick={handleEditButtonClick}
-            className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100"
+            className={cn({
+              [NOT_TOUCH_SCREEN_BUTTON_CLASSNAME]: !isTouchScreen,
+            })}
           />
           <Button
             size="sm"
@@ -68,14 +73,22 @@ export function ScenarioChapterSceneComponent({
             icon={isCopied ? <CheckIcon /> : <CopyIcon />}
             disabled={isCopied}
             onClick={handleCopyButtonClick}
-            className="opacity-0 duration-200 group-hover/scenario-chapter-scene:opacity-100 disabled:opacity-0 group-hover/scenario-chapter-scene:disabled:opacity-60"
+            className={cn({
+              [NOT_TOUCH_SCREEN_BUTTON_CLASSNAME]: !isTouchScreen,
+            })}
           />
-        </div>
+        </>
       );
     }
 
     return null;
-  }, [content, isCopied, handleCopyButtonClick]);
+  }, [
+    content,
+    isCopied,
+    isTouchScreen,
+    handleCopyButtonClick,
+    handleEditButtonClick,
+  ]);
 
   return (
     <Card

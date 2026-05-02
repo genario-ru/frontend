@@ -8,6 +8,7 @@ import { cn } from "@/shared/utils/cn";
 
 type ScenarioChapterScenePreviewLayoutProps = PropsWithChildren<
   PropsWithClassName<{
+    expandable?: boolean;
     actions?: ReactNode;
     videoTypeSlug?: string;
     contentClassName?: string;
@@ -15,6 +16,7 @@ type ScenarioChapterScenePreviewLayoutProps = PropsWithChildren<
 >;
 
 export function ScenarioChapterScenePreviewLayout({
+  expandable,
   actions,
   videoTypeSlug,
   contentClassName,
@@ -27,6 +29,7 @@ export function ScenarioChapterScenePreviewLayout({
       title="Превью сцены"
       headerIcon={<LucideIcon icon={ImagePlayIcon} />}
       headerActions={actions}
+      expandable={expandable}
       contentClassName={cn(
         "overflow-hidden p-0",
         {

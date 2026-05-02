@@ -52,7 +52,7 @@ export function ScenarioChapterScenes({
   }
 
   return (
-    <Island roundedTop={false}>
+    <Island noGap roundedTop={false}>
       {scenarioChapterScenesList.map((scene, index) => (
         <ScenarioChapterScene
           key={`scenario-chapter-scene-${scene.id}`}

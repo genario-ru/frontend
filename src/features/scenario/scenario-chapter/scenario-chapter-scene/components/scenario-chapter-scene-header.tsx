@@ -26,7 +26,7 @@ export function ScenarioChapterSceneHeader({
   }, [startTime, endTime]);
 
   return (
-    <header className="flex items-center gap-2">
+    <header className="flex flex-col gap-2 md:flex-row md:items-center">
       <Heading variant="h3">
         {chapterPosition}.{position}. {name}
       </Heading>
@@ -39,7 +39,7 @@ export function ScenarioChapterSceneHeader({
 
 export function ScenarioChapterSceneHeaderSkeleton() {
   return (
-    <header className="flex items-center gap-2">
+    <header className="flex flex-col gap-2 md:flex-row md:items-center">
       <TextSkeleton fontSize={16} lineHeight={24} className="w-64" />
       <Skeleton className="rounded-2 h-6 w-24" />
     </header>

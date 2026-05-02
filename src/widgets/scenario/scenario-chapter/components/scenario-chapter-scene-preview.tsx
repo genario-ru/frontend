@@ -31,8 +31,9 @@ export function ScenarioChapterScenePreview({
   scene,
 }: ScenarioChapterScenePreviewProps) {
   const {
-    handleCreateScenarioScenePreview,
+    isExpandablePreview,
     isCreateScenarioScenePreviewPending,
+    handleCreateScenarioScenePreview,
   } = useScenarioChapterScenePreview({ chapterId, sceneId });
 
   const actions = useMemo(() => {
@@ -79,15 +80,18 @@ export function ScenarioChapterScenePreview({
   return (
     <div
       className={cn("flex h-full flex-col", {
-        "col-span-2": videoTypeSlug === "short",
+        "lg:col-span-2": videoTypeSlug === "short",
         "col-span-1": videoTypeSlug === "long",
       })}
     >
       <ScenarioChapterScenePreviewLayout
         actions={actions}
         videoTypeSlug={videoTypeSlug}
+        expandable={isExpandablePreview}
         className="sticky top-8"
-        contentClassName="flex justify-center items-center"
+        contentClassName={cn("flex justify-center items-center", {
+          "p-4": !scene.preview,
+        })}
       >
         {body}
       </ScenarioChapterScenePreviewLayout>

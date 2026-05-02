@@ -31,16 +31,18 @@ export function ScenarioChapterHeader({
 
   return (
     <Island roundedBottom={false} className="w-full gap-2 pb-0">
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-2 md:flex-row md:items-center">
         {name && (
           <Heading variant="h2">
             {position}. {name}
           </Heading>
         )}
-        <Badge>{time}</Badge>
-        {status}
+        <div className="flex items-center gap-2">
+          <Badge>{time}</Badge>
+          {status}
+        </div>
       </div>
-      {description && <p className="text-neutral-7 text-sm">{description}</p>}
+      {description && <p className="text-neutral-7">{description}</p>}
     </Island>
   );
 }

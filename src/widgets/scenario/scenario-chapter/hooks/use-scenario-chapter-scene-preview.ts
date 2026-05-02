@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import { useCreateScenarioScenePreview } from "@/actions/scenario/hooks/use-create-scenario-scene-preview";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 type UseScenarioChapterScenePreviewParams = {
   chapterId: string;
@@ -11,6 +12,8 @@ export function useScenarioChapterScenePreview({
   chapterId,
   sceneId,
 }: UseScenarioChapterScenePreviewParams) {
+  const { isMobile } = useBreakpoints();
+
   const { createScenarioScenePreview, isCreateScenarioScenePreviewPending } =
     useCreateScenarioScenePreview({ chapterId });
 
@@ -19,7 +22,8 @@ export function useScenarioChapterScenePreview({
   }, [sceneId, createScenarioScenePreview]);
 
   return {
-    handleCreateScenarioScenePreview,
+    isExpandablePreview: isMobile,
     isCreateScenarioScenePreviewPending,
+    handleCreateScenarioScenePreview,
   };
 }

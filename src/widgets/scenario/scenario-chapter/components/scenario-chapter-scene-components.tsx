@@ -22,8 +22,8 @@ export function ScenarioChapterSceneComponents({
 }: ScenarioChapterSceneComponentsProps) {
   return (
     <div
-      className={cn("grid flex-1 gap-4", {
-        "col-span-6 grid-cols-2": videoTypeSlug === "short",
+      className={cn("grid flex-1 gap-2", {
+        "col-span-1 lg:col-span-6 lg:grid-cols-2": videoTypeSlug === "short",
         "col-span-1": videoTypeSlug === "long",
       })}
     >

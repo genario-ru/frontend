@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { scenarioTabs } from "@/shared/constants/scenario-tabs";
+import { cn } from "@/shared/utils/cn";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 import { ScenarioChapter } from "@/widgets/scenario/scenario-chapter/components/scenario-chapter";
 import { ScenarioGenerationAlert } from "@/widgets/scenario/scenario-generation-alert/components/scenario-generation-alert";
@@ -40,7 +41,13 @@ export function ScenarioComponent() {
   return (
     <>
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="flex-1">{body}</PageLayout>
+      <PageLayout
+        className={cn("flex-1", {
+          "pb-0": tab !== scenarioTabs.metadata,
+        })}
+      >
+        {body}
+      </PageLayout>
     </>
   );
 }
