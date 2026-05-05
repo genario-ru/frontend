@@ -5,6 +5,17 @@
 
 import type { PlatformSchema } from "./platform-schema.ts";
 
+export const scenarioMetadataExtendedSchemaStatusEnum = {
+  idle: "idle",
+  pending: "pending",
+  generation: "generation",
+  failed: "failed",
+  ready: "ready",
+} as const;
+
+export type ScenarioMetadataExtendedSchemaStatusEnumKey =
+  (typeof scenarioMetadataExtendedSchemaStatusEnum)[keyof typeof scenarioMetadataExtendedSchemaStatusEnum];
+
 /**
  * Scenario metadata extended
  * @description Scenario metadata extended description
@@ -22,6 +33,10 @@ export type ScenarioMetadataExtendedSchema = {
    * @type string, uuid
    */
   platformId: string;
+  /**
+   * @type string
+   */
+  status: ScenarioMetadataExtendedSchemaStatusEnumKey;
   /**
    * @type string
    */

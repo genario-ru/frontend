@@ -981,6 +981,19 @@ export type {
   PostApiV1ScenariosByScenarioIdMetadataGeneratePathParams,
 } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export type {
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate202,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate400,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate401,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate402,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate403,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate404,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate500,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutation,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationRequest,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationResponse,
+  PostApiV1ScenariosByScenarioIdMetadataRegeneratePathParams,
+} from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export type {
   PostApiV1ScenariosScenesBySceneIdPreview200,
   PostApiV1ScenariosScenesBySceneIdPreview201,
   PostApiV1ScenariosScenesBySceneIdPreview400,
@@ -1040,6 +1053,8 @@ export type {
 } from "./referral-reward-schema.ts";
 export { referralRewardSchemaTypeEnum } from "./referral-reward-schema.ts";
 export { referralRewardSchemaUserTypeEnum } from "./referral-reward-schema.ts";
+export type { RegenerateScenarioMetadataBodySchema } from "./regenerate-scenario-metadata-body-schema.ts";
+export type { RegenerateScenarioMetadataResponseSchema } from "./regenerate-scenario-metadata-response-schema.ts";
 export type { SaveIdeaBodySchema } from "./save-idea-body-schema.ts";
 export type { SaveIdeaResponseSchema } from "./save-idea-response-schema.ts";
 export type { SaveScenarioBodySchema } from "./save-scenario-body-schema.ts";
@@ -1059,7 +1074,11 @@ export type {
   ScenarioExtendedSchemaMetadataStatusEnumKey,
 } from "./scenario-extended-schema.ts";
 export { scenarioExtendedSchemaMetadataStatusEnum } from "./scenario-extended-schema.ts";
-export type { ScenarioMetadataExtendedSchema } from "./scenario-metadata-extended-schema.ts";
+export type {
+  ScenarioMetadataExtendedSchema,
+  ScenarioMetadataExtendedSchemaStatusEnumKey,
+} from "./scenario-metadata-extended-schema.ts";
+export { scenarioMetadataExtendedSchemaStatusEnum } from "./scenario-metadata-extended-schema.ts";
 export type { ScenarioSceneComponentExtendedSchema } from "./scenario-scene-component-extended-schema.ts";
 export type { ScenarioSceneComponentSchema } from "./scenario-scene-component-schema.ts";
 export type { ScenarioSceneComponentTypeSchema } from "./scenario-scene-component-type-schema.ts";

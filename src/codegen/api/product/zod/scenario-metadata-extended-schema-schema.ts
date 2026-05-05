@@ -15,6 +15,7 @@ export const scenarioMetadataExtendedSchemaSchema = z
     id: z.uuid(),
     scenarioId: z.uuid(),
     platformId: z.uuid(),
+    status: z.enum(["idle", "pending", "generation", "failed", "ready"]),
     title: z.string(),
     body: z.string(),
     tags: z.string(),

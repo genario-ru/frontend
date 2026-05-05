@@ -836,6 +836,18 @@ export {
   postApiV1ScenariosByScenarioIdMetadataGeneratePathParamsSchema,
 } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate-schema.ts";
 export {
+  postApiV1ScenariosByScenarioIdMetadataRegenerate202Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate400Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate401Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate402Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate403Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate404Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate500Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerateMutationRequestSchema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerateMutationResponseSchema,
+  postApiV1ScenariosByScenarioIdMetadataRegeneratePathParamsSchema,
+} from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate-schema.ts";
+export {
   postApiV1ScenariosScenesBySceneIdPreview200Schema,
   postApiV1ScenariosScenesBySceneIdPreview201Schema,
   postApiV1ScenariosScenesBySceneIdPreview400Schema,
@@ -889,6 +901,8 @@ export { profilesFromChannelsJobSchemaSchema } from "./profiles-from-channels-jo
 export { referralCodeSchemaSchema } from "./referral-code-schema-schema.ts";
 export { referralInviteExtendedSchemaSchema } from "./referral-invite-extended-schema-schema.ts";
 export { referralRewardSchemaSchema } from "./referral-reward-schema-schema.ts";
+export { regenerateScenarioMetadataBodySchemaSchema } from "./regenerate-scenario-metadata-body-schema-schema.ts";
+export { regenerateScenarioMetadataResponseSchemaSchema } from "./regenerate-scenario-metadata-response-schema-schema.ts";
 export { saveIdeaBodySchemaSchema } from "./save-idea-body-schema-schema.ts";
 export { saveIdeaResponseSchemaSchema } from "./save-idea-response-schema-schema.ts";
 export { saveScenarioBodySchemaSchema } from "./save-scenario-body-schema-schema.ts";

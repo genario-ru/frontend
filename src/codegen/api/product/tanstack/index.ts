@@ -290,6 +290,10 @@ export type { PostApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "
 export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationOptions } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export { usePostApiV1ScenariosByScenarioIdMetadataGenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export type { PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationKey } from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerateMutationKey } from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerateMutationOptions } from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { usePostApiV1ScenariosByScenarioIdMetadataRegenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
 export type { PostApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationOptions } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";

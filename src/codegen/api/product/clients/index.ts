@@ -66,6 +66,7 @@ export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channe
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosByScenarioIdExport } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export { postApiV1ScenariosByScenarioIdMetadataGenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./post-api-v1-subscriptions-initiate-payment.ts";

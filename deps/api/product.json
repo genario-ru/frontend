@@ -6107,6 +6107,108 @@
         ]
       }
     },
+    "/api/v1/scenarios/{scenarioId}/metadata/regenerate": {
+      "post": {
+        "operationId": "postApiV1ScenariosByScenarioIdMetadataRegenerate",
+        "tags": [
+          "Scenarios"
+        ],
+        "responses": {
+          "202": {
+            "description": "Scenario metadata regeneration enqueued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegenerateScenarioMetadataResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "scenarioId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateScenarioMetadataBodySchema"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/subscriptons/my": {
       "get": {
         "operationId": "getApiV1SubscriptonsMy",
@@ -13006,6 +13108,16 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
+          "status": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "pending",
+              "generation",
+              "failed",
+              "ready"
+            ]
+          },
           "title": {
             "type": "string"
           },
@@ -13029,6 +13141,7 @@
           "id",
           "scenarioId",
           "platformId",
+          "status",
           "title",
           "body",
           "tags",
@@ -13073,6 +13186,44 @@
         ],
         "title": "Get scenario metadata response",
         "description": "Get scenario metadata response description"
+      },
+      "RegenerateScenarioMetadataResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ScenarioMetadataExtendedSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Regenerate scenario metadata response",
+        "description": "Regenerate scenario metadata response description"
+      },
+      "RegenerateScenarioMetadataBodySchema": {
+        "type": "object",
+        "properties": {
+          "platformId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "prompt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "platformId"
+        ],
+        "title": "Regenerate scenario metadata body",
+        "description": "Regenerate scenario metadata body description"
       },
       "TariffExtendedSchema": {
         "type": "object",

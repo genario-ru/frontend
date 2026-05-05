@@ -66,6 +66,7 @@ export { postApiV1ProfilesChannelsValidate } from "./clients/post-api-v1-profile
 export { postApiV1Scenarios } from "./clients/post-api-v1-scenarios.ts";
 export { postApiV1ScenariosByScenarioIdExport } from "./clients/post-api-v1-scenarios-by-scenario-id-export.ts";
 export { postApiV1ScenariosByScenarioIdMetadataGenerate } from "./clients/post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerate } from "./clients/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./clients/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./clients/post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./clients/post-api-v1-subscriptions-initiate-payment.ts";
@@ -1052,6 +1053,19 @@ export type {
   PostApiV1ScenariosByScenarioIdMetadataGeneratePathParams,
 } from "./models/post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export type {
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate202,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate400,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate401,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate402,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate403,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate404,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerate500,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutation,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationRequest,
+  PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationResponse,
+  PostApiV1ScenariosByScenarioIdMetadataRegeneratePathParams,
+} from "./models/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export type {
   PostApiV1ScenariosScenesBySceneIdPreview200,
   PostApiV1ScenariosScenesBySceneIdPreview201,
   PostApiV1ScenariosScenesBySceneIdPreview400,
@@ -1111,6 +1125,8 @@ export type {
 } from "./models/referral-reward-schema.ts";
 export { referralRewardSchemaTypeEnum } from "./models/referral-reward-schema.ts";
 export { referralRewardSchemaUserTypeEnum } from "./models/referral-reward-schema.ts";
+export type { RegenerateScenarioMetadataBodySchema } from "./models/regenerate-scenario-metadata-body-schema.ts";
+export type { RegenerateScenarioMetadataResponseSchema } from "./models/regenerate-scenario-metadata-response-schema.ts";
 export type { SaveIdeaBodySchema } from "./models/save-idea-body-schema.ts";
 export type { SaveIdeaResponseSchema } from "./models/save-idea-response-schema.ts";
 export type { SaveScenarioBodySchema } from "./models/save-scenario-body-schema.ts";
@@ -1130,7 +1146,11 @@ export type {
   ScenarioExtendedSchemaMetadataStatusEnumKey,
 } from "./models/scenario-extended-schema.ts";
 export { scenarioExtendedSchemaMetadataStatusEnum } from "./models/scenario-extended-schema.ts";
-export type { ScenarioMetadataExtendedSchema } from "./models/scenario-metadata-extended-schema.ts";
+export type {
+  ScenarioMetadataExtendedSchema,
+  ScenarioMetadataExtendedSchemaStatusEnumKey,
+} from "./models/scenario-metadata-extended-schema.ts";
+export { scenarioMetadataExtendedSchemaStatusEnum } from "./models/scenario-metadata-extended-schema.ts";
 export type { ScenarioSceneComponentExtendedSchema } from "./models/scenario-scene-component-extended-schema.ts";
 export type { ScenarioSceneComponentSchema } from "./models/scenario-scene-component-schema.ts";
 export type { ScenarioSceneComponentTypeSchema } from "./models/scenario-scene-component-type-schema.ts";
@@ -1512,6 +1532,10 @@ export type { PostApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "
 export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationKey } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export { postApiV1ScenariosByScenarioIdMetadataGenerateMutationOptions } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
 export { usePostApiV1ScenariosByScenarioIdMetadataGenerate } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";
+export type { PostApiV1ScenariosByScenarioIdMetadataRegenerateMutationKey } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerateMutationKey } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { postApiV1ScenariosByScenarioIdMetadataRegenerateMutationOptions } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
+export { usePostApiV1ScenariosByScenarioIdMetadataRegenerate } from "./tanstack/post-api-v1-scenarios-by-scenario-id-metadata-regenerate.ts";
 export type { PostApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./tanstack/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationKey } from "./tanstack/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1ScenariosScenesBySceneIdPreviewMutationOptions } from "./tanstack/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
@@ -2362,6 +2386,18 @@ export {
   postApiV1ScenariosByScenarioIdMetadataGeneratePathParamsSchema,
 } from "./zod/post-api-v1-scenarios-by-scenario-id-metadata-generate-schema.ts";
 export {
+  postApiV1ScenariosByScenarioIdMetadataRegenerate202Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate400Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate401Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate402Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate403Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate404Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerate500Schema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerateMutationRequestSchema,
+  postApiV1ScenariosByScenarioIdMetadataRegenerateMutationResponseSchema,
+  postApiV1ScenariosByScenarioIdMetadataRegeneratePathParamsSchema,
+} from "./zod/post-api-v1-scenarios-by-scenario-id-metadata-regenerate-schema.ts";
+export {
   postApiV1ScenariosScenesBySceneIdPreview200Schema,
   postApiV1ScenariosScenesBySceneIdPreview201Schema,
   postApiV1ScenariosScenesBySceneIdPreview400Schema,
@@ -2415,6 +2451,8 @@ export { profilesFromChannelsJobSchemaSchema } from "./zod/profiles-from-channel
 export { referralCodeSchemaSchema } from "./zod/referral-code-schema-schema.ts";
 export { referralInviteExtendedSchemaSchema } from "./zod/referral-invite-extended-schema-schema.ts";
 export { referralRewardSchemaSchema } from "./zod/referral-reward-schema-schema.ts";
+export { regenerateScenarioMetadataBodySchemaSchema } from "./zod/regenerate-scenario-metadata-body-schema-schema.ts";
+export { regenerateScenarioMetadataResponseSchemaSchema } from "./zod/regenerate-scenario-metadata-response-schema-schema.ts";
 export { saveIdeaBodySchemaSchema } from "./zod/save-idea-body-schema-schema.ts";
 export { saveIdeaResponseSchemaSchema } from "./zod/save-idea-response-schema-schema.ts";
 export { saveScenarioBodySchemaSchema } from "./zod/save-scenario-body-schema-schema.ts";
