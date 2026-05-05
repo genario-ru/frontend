@@ -7347,11 +7347,28 @@
               "ready"
             ]
           },
-          "name": {
+          "prompt": {
             "type": "string"
           },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "description": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "targetAudience": {
             "anyOf": [
@@ -7408,6 +7425,7 @@
           "profileId",
           "templateId",
           "status",
+          "prompt",
           "name",
           "description",
           "targetAudience",
@@ -8728,11 +8746,28 @@
               "ready"
             ]
           },
-          "name": {
+          "prompt": {
             "type": "string"
           },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "description": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "targetAudience": {
             "anyOf": [
@@ -8757,6 +8792,7 @@
           "profileId",
           "templateId",
           "status",
+          "prompt",
           "name",
           "description",
           "targetAudience",
@@ -8816,14 +8852,9 @@
               }
             ]
           },
-          "name": {
+          "prompt": {
             "type": "string",
             "minLength": 3,
-            "maxLength": 256
-          },
-          "description": {
-            "type": "string",
-            "minLength": 16,
             "maxLength": 4096
           },
           "toneIds": {
@@ -8852,8 +8883,7 @@
           }
         },
         "required": [
-          "name",
-          "description",
+          "prompt",
           "videoTypeIds"
         ],
         "title": "Create ideas list body",
@@ -9070,11 +9100,28 @@
                   "ready"
                 ]
               },
-              "name": {
+              "prompt": {
                 "type": "string"
               },
+              "name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
               "description": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "targetAudience": {
                 "anyOf": [
@@ -9137,6 +9184,7 @@
               "profileId",
               "templateId",
               "status",
+              "prompt",
               "name",
               "description",
               "targetAudience",
@@ -10247,14 +10295,9 @@
               }
             ]
           },
-          "name": {
+          "prompt": {
             "type": "string",
             "minLength": 3,
-            "maxLength": 256
-          },
-          "description": {
-            "type": "string",
-            "minLength": 16,
             "maxLength": 4096
           },
           "toneIds": {
@@ -10293,8 +10336,6 @@
           }
         },
         "required": [
-          "name",
-          "description",
           "videoTypeIds"
         ],
         "title": "Update ideas list body",

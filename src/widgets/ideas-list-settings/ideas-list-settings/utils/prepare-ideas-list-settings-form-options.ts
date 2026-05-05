@@ -28,8 +28,7 @@ export const prepareIdeasListSettingsFormOptions = ({
         templateId: templateId ?? ideasListData?.data.templateId,
       },
       [IdeasListSettingsFormSteps.PrimaryInfo]: {
-        name: ideasListData?.data.name ?? "",
-        description: ideasListData?.data.description ?? "",
+        prompt: ideasListData?.data.prompt ?? "",
       },
       [IdeasListSettingsFormSteps.ParamsConfiguration]: {
         profileId: ideasListData?.data.profileId,

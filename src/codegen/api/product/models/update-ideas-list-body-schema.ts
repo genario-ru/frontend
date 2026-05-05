@@ -13,16 +13,10 @@ export type UpdateIdeasListBodySchema = {
   targetAudience?: string | null;
   /**
    * @minLength 3
-   * @maxLength 256
-   * @type string
-   */
-  name: string;
-  /**
-   * @minLength 16
    * @maxLength 4096
-   * @type string
+   * @type string | undefined
    */
-  description: string;
+  prompt?: string;
   toneIds?: string[] | null;
   /**
    * @type array

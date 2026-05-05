@@ -26,23 +26,24 @@ export function IdeasListAppMenubar({
     ideasListDescription,
     isMobile,
     isIdeasListLoading,
+    isGenerating,
   } = useIdeasListAppMenubar({ ideasListId });
 
   const title = useMemo(() => {
-    if (isIdeasListLoading) {
+    if (isIdeasListLoading || isGenerating) {
       return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
     }
 
     return ideasListTitle;
-  }, [ideasListTitle, isIdeasListLoading]);
+  }, [ideasListTitle, isIdeasListLoading, isGenerating]);
 
   const description = useMemo(() => {
-    if (isIdeasListLoading) {
+    if (isIdeasListLoading || isGenerating) {
       return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
     }
 
     return ideasListDescription;
-  }, [ideasListDescription, isIdeasListLoading]);
+  }, [ideasListDescription, isIdeasListLoading, isGenerating]);
 
   const left = useMemo(() => {
     if (isIdeasListLoading) {

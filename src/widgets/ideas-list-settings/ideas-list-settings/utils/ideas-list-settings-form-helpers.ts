@@ -26,8 +26,7 @@ export type IdeasListSettingsTemplateSelectionSubformSchema = z.infer<
 // 2. Основная информация
 export const ideasListSettingsPrimaryInfoSubformSchema =
   createIdeasListSchema.pick({
-    name: true,
-    description: true,
+    prompt: true,
   });
 
 export type IdeasListSettingsPrimaryInfoSubformSchema = z.infer<

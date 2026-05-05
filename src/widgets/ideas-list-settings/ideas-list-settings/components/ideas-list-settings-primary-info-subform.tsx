@@ -10,21 +10,12 @@ export const IdeasListSettingsPrimaryInfoSubform = withForm({
   render: ({ form }) => {
     return (
       <div className="flex flex-col gap-6">
-        <form.AppField name={`${IdeasListSettingsFormSteps.PrimaryInfo}.name`}>
-          {(field) => (
-            <field.InputField
-              label="Название"
-              size="lg"
-              placeholder="Мой новый крутой список идей..."
-            />
-          )}
-        </form.AppField>
         <form.AppField
-          name={`${IdeasListSettingsFormSteps.PrimaryInfo}.description`}
+          name={`${IdeasListSettingsFormSteps.PrimaryInfo}.prompt`}
         >
           {(field) => (
             <field.TextareaField
-              label="Идея"
+              label="Промпт"
               placeholder="Список идей для видео про приготовление еды..."
             />
           )}

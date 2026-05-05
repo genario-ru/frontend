@@ -36,11 +36,9 @@ export type IdeasListSchema = {
   /**
    * @type string
    */
-  name: string;
-  /**
-   * @type string
-   */
-  description: string;
+  prompt: string;
+  name: string | null;
+  description: string | null;
   targetAudience: string | null;
   /**
    * @type string

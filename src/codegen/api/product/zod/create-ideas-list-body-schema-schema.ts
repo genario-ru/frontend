@@ -13,8 +13,7 @@ export const createIdeasListBodySchemaSchema = z
     templateId: z.optional(z.union([z.uuid(), z.null()])),
     profileId: z.optional(z.union([z.uuid(), z.null()])),
     targetAudience: z.optional(z.union([z.string(), z.null()])),
-    name: z.string().min(3).max(256),
-    description: z.string().min(16).max(4096),
+    prompt: z.string().min(3).max(4096),
     toneIds: z.optional(z.union([z.array(z.uuid()), z.null()])),
     videoTypeIds: z.array(z.uuid()).min(1),
   })
