@@ -56,7 +56,7 @@ export function Island({
       {...props}
     >
       {withHeader && (
-        <header className="flex justify-between gap-4">
+        <header className="top-0 flex justify-between gap-4">
           <div className="flex flex-col gap-1">
             {title && <Heading variant="h2">{title}</Heading>}
             {description && <p className="text-neutral-7">{description}</p>}

@@ -11,6 +11,7 @@ export const creditsUsageExtendedSchemaEntityEnum = {
   "scenario-chapter-scenes": "scenario-chapter-scenes",
   "scenario-scene-preview": "scenario-scene-preview",
   "scenario-metadata": "scenario-metadata",
+  "scenario-metadata-item": "scenario-metadata-item",
 } as const;
 
 export type CreditsUsageExtendedSchemaEntityEnumKey =

@@ -1,12 +1,15 @@
-import type { ReactNode } from "react";
+import type { LucideIcon as LucideIconType } from "lucide-react";
 
 import { Badge } from "@/shared/components/ui/badge";
+import { Island } from "@/shared/components/ui/island";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { DOT } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
 type CreditsUsageRowProps = {
-  icon: ReactNode;
+  icon: LucideIconType;
   title: string;
-  subtitle: string;
   creditsAmount: number;
   footerLeft: string;
   formattedDate: string;
@@ -14,9 +17,8 @@ type CreditsUsageRowProps = {
 };
 
 export function CreditsUsageRow({
-  icon,
+  icon: Icon,
   title,
-  subtitle,
   creditsAmount,
   footerLeft,
   formattedDate,
@@ -25,36 +27,27 @@ export function CreditsUsageRow({
   const amountLabel = `-${Math.abs(creditsAmount).toLocaleString("ru-RU")}`;
 
   return (
-    <div
-      className={cn(
-        "bg-neutral-1 border-neutral-3 flex flex-col gap-2 rounded-2xl border px-4 py-3",
-        className,
-      )}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex gap-3">
-          <div className="bg-neutral-2 mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl">
-            {icon}
-          </div>
-          <div className="flex flex-col gap-0.5">
-            <span className="font-semibold">{title}</span>
-            <span className="text-neutral-6 text-sm">{subtitle}</span>
-          </div>
-        </div>
-        <Badge
-          color="neutral"
-          variant="secondary"
-          size="sm"
-          className="shrink-0"
-        >
-          {amountLabel}
-        </Badge>
+    <Island row className={cn("bg-neutral-2 items-center", className)}>
+      <div className="bg-neutral-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+        <LucideIcon icon={Icon} />
       </div>
-      <p className="text-neutral-6 pl-12 text-xs">
-        {footerLeft}
-        <span className="mx-2">·</span>
-        {formattedDate}
-      </p>
-    </div>
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <p className="overflow-hidden font-semibold text-ellipsis whitespace-nowrap">
+          {title}
+        </p>
+        <p className="text-neutral-6 text-sm">
+          {footerLeft}
+          <span className="mx-1">{DOT}</span>
+          {formattedDate}
+        </p>
+      </div>
+      <Badge color="neutral" variant="tertiary" className="ml-auto shrink-0">
+        {amountLabel}
+      </Badge>
+    </Island>
   );
+}
+
+export function CreditsUsageRowSkeleton() {
+  return <Skeleton className="h-[76px] w-full rounded-2xl" />;
 }

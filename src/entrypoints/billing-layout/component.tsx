@@ -7,7 +7,7 @@ export function BillingLayoutComponent() {
   return (
     <>
       <BillingAppMenubar />
-      <PageLayout className="flex-1">
+      <PageLayout className="min-h-0 flex-1">
         <Outlet />
       </PageLayout>
     </>

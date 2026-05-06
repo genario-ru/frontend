@@ -1,76 +1,86 @@
 import { RotateCwIcon } from "lucide-react";
+import { useMemo } from "react";
 
-import { CreditsUsageRow } from "@/features/credits/credits-usage-row/components/credits-usage-row";
+import {
+  CreditsUsageRow,
+  CreditsUsageRowSkeleton,
+} from "@/features/credits/credits-usage-row/components/credits-usage-row";
+import { InfiniteScroll } from "@/shared/components/common/infinite-scroll";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
+import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
 
 import { useCreditsUsageList } from "../hooks/use-credits-usage-list";
-import { CreditsUsageEntityIcon } from "../utils/credits-usage-entity-icon";
 
 export function CreditsUsageList() {
   const {
     rows,
     hasNextCreditsUsagePage,
+    isFetchingNextCreditsUsagePage,
     isCreditsUsageLoading,
     isCreditsUsageError,
-    isFetchingNextCreditsUsagePage,
     fetchNextCreditsUsagePage,
   } = useCreditsUsageList();
 
-  if (isCreditsUsageLoading) {
-    return <CreditsUsageListSkeleton />;
-  }
+  const body = useMemo(() => {
+    if (isCreditsUsageLoading) {
+      return <CreditsUsageListSkeleton />;
+    }
 
-  if (isCreditsUsageError) {
-    return <CreditsUsageListError />;
-  }
+    if (isCreditsUsageError) {
+      return <CreditsUsageListError />;
+    }
 
-  if (rows.length === 0) {
-    return <CreditsUsageListEmpty />;
-  }
+    if (rows.length === 0) {
+      return <CreditsUsageListEmpty />;
+    }
 
-  return (
-    <div className="flex flex-col gap-3">
-      <div className="flex max-h-[min(70vh,640px)] flex-col gap-2 overflow-y-auto pr-1">
+    return (
+      <>
         {rows.map((row) => (
           <CreditsUsageRow
             key={row.id}
-            icon={<CreditsUsageEntityIcon entity={row.entity} />}
+            icon={row.icon}
             title={row.title}
-            subtitle={row.subtitle}
             creditsAmount={row.creditsAmount}
             footerLeft={row.footerLeft}
             formattedDate={row.formattedDate}
           />
         ))}
-      </div>
-      {hasNextCreditsUsagePage && (
-        <Button
-          variant="neutral"
-          priority="secondary"
-          size="sm"
-          className="w-full"
-          state={isFetchingNextCreditsUsagePage ? "loading" : "default"}
-          onClick={() => fetchNextCreditsUsagePage()}
-        >
-          Показать ещё
-        </Button>
-      )}
-    </div>
+        {isFetchingNextCreditsUsagePage && <CreditsUsageListSkeleton />}
+        <InfiniteScroll
+          signature={rows.length}
+          isLoading={isFetchingNextCreditsUsagePage}
+          hasNextPage={hasNextCreditsUsagePage}
+          fetchNextPage={fetchNextCreditsUsagePage}
+        />
+      </>
+    );
+  }, [
+    rows,
+    isCreditsUsageLoading,
+    isCreditsUsageError,
+    isFetchingNextCreditsUsagePage,
+    hasNextCreditsUsagePage,
+    fetchNextCreditsUsagePage,
+  ]);
+
+  return (
+    <Island
+      grow
+      roundedBottom={false}
+      roundedTop={false}
+      className="gap-2 pt-0"
+    >
+      {body}
+    </Island>
   );
 }
 
 export function CreditsUsageListSkeleton() {
-  return (
-    <ItemsList
-      count={4}
-      gap={8}
-      item={<Skeleton className="h-[100px] w-full rounded-2xl" />}
-    />
-  );
+  return <ItemsList noParent count={4} item={<CreditsUsageRowSkeleton />} />;
 }
 
 export function CreditsUsageListError() {
@@ -82,11 +92,11 @@ export function CreditsUsageListError() {
       title="Не удалось загрузить расход"
       description="Произошла ошибка при загрузке данных"
       actions={
-        <Button icon={<RotateCwIcon />} size="sm" onClick={reloadPage}>
+        <Button icon={<RotateCwIcon />} onClick={reloadPage} className="mt-2">
           Обновить
         </Button>
       }
-      className="m-auto py-8"
+      className="m-auto"
     />
   );
 }

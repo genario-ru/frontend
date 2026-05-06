@@ -7,7 +7,7 @@ export function CreditsPackages() {
   const state = useCreditsPackagesList();
 
   return (
-    <Island title="Пакеты кредитов" className="flex-1">
+    <Island grow title="Пакеты кредитов" className="flex-1">
       <CreditsPackagesList
         cardViews={state.cardViews}
         popularPackageId={state.popularPackageId}

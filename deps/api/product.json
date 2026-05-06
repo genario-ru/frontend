@@ -8644,7 +8644,8 @@
               "scenario-chapters",
               "scenario-chapter-scenes",
               "scenario-scene-preview",
-              "scenario-metadata"
+              "scenario-metadata",
+              "scenario-metadata-item"
             ]
           },
           "entityId": {

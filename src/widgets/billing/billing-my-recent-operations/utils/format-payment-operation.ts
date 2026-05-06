@@ -19,9 +19,11 @@ function formatOperationTitle(payment: PaymentExtendedSchema): string {
   if (payment.tariff) {
     return "Оплата подписки";
   }
+
   if (payment.creditsPackage) {
     return "Покупка кредитов";
   }
+
   return "Платёж";
 }
 
@@ -36,9 +38,11 @@ function formatDate(dateString: string): string {
   if (isToday(date)) {
     return `Сегодня, ${format(date, "HH:mm:ss")}`;
   }
+
   if (isYesterday(date)) {
     return `Вчера, ${format(date, "HH:mm:ss")}`;
   }
+
   return format(date, "d MMMM yyyy, HH:mm:ss", { locale: ru });
 }
 

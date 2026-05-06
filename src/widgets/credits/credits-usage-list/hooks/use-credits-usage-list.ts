@@ -6,11 +6,11 @@ import { formatCreditsUsageRow } from "../utils/format-credits-usage-row";
 
 export function useCreditsUsageList() {
   const {
-    creditsUsageItems,
     hasNextCreditsUsagePage,
+    isFetchingNextCreditsUsagePage,
+    creditsUsageItems,
     isCreditsUsageLoading,
     isCreditsUsageError,
-    isFetchingNextCreditsUsagePage,
     fetchNextCreditsUsagePage,
   } = useGetMyCreditsUsageInfinite();
 
@@ -22,9 +22,9 @@ export function useCreditsUsageList() {
   return {
     rows,
     hasNextCreditsUsagePage,
+    isFetchingNextCreditsUsagePage,
     isCreditsUsageLoading,
     isCreditsUsageError,
-    isFetchingNextCreditsUsagePage,
     fetchNextCreditsUsagePage,
   };
 }

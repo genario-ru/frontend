@@ -1,23 +1,11 @@
 import { format, isToday, isYesterday } from "date-fns";
 import { ru } from "date-fns/locale";
+import type { LucideIcon } from "lucide-react";
 
 import type { CreditsUsageExtendedSchema } from "@/codegen/api/product";
 
-const ENTITY_TITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
-  "ideas-list": "Список идей",
-  "scenario-chapters": "Сценарий",
-  "scenario-chapter-scenes": "Сценарий",
-  "scenario-scene-preview": "Превью сцены",
-  "scenario-metadata": "Метаданные сценария",
-};
-
-const ENTITY_SUBTITLE: Record<CreditsUsageExtendedSchema["entity"], string> = {
-  "ideas-list": "Генерация контента списка идей",
-  "scenario-chapters": "Работа с главами сценария",
-  "scenario-chapter-scenes": "Работа со сценами",
-  "scenario-scene-preview": "Генерация превью сцены",
-  "scenario-metadata": "Генерация метаданных сценария",
-};
+import { entityIconMap } from "../constants/entity-icon-map";
+import { entityTitleMap } from "../constants/entity-title-map";
 
 function formatUsageDate(dateString: string): string {
   const date = new Date(dateString);
@@ -35,7 +23,7 @@ export type CreditsUsageRowView = {
   id: string;
   entity: CreditsUsageExtendedSchema["entity"];
   title: string;
-  subtitle: string;
+  icon: LucideIcon;
   creditsAmount: number;
   footerLeft: string;
   formattedDate: string;
@@ -49,8 +37,8 @@ export function formatCreditsUsageRow(
   return {
     id: usage.id,
     entity: usage.entity,
-    title: ENTITY_TITLE[usage.entity],
-    subtitle: ENTITY_SUBTITLE[usage.entity],
+    title: entityTitleMap[usage.entity],
+    icon: entityIconMap[usage.entity],
     creditsAmount: usage.creditsAmount,
     footerLeft: batchName,
     formattedDate: formatUsageDate(usage.createdAt),
