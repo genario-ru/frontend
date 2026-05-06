@@ -102,6 +102,7 @@ export function ScenarioMetadataCard({
       headerIcon={headerIcon}
       headerActions={headerActions}
       className="group/scenario-metadata-card"
+      contentClassName="h-full"
     >
       {content}
     </Card>
