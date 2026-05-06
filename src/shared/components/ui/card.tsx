@@ -53,8 +53,8 @@ export function Card({
       <div
         data-slot="card-header"
         className={cn(
-          "group/card-header border-neutral-3 @container/card-header flex min-h-[52px] items-center gap-2 px-3",
-          { "border-b-transparent": isContentVisible },
+          "group/card-header border-neutral-3 @container/card-header flex min-h-[52px] items-center gap-2 border-b px-3",
+          { "border-b-transparent": !isContentVisible },
           headerClassName,
         )}
       >
@@ -102,7 +102,7 @@ export function Card({
         <div
           ref={contentRef}
           data-slot="card-content"
-          className={cn("px-4 py-3", contentClassName)}
+          className={cn("flex px-4 py-3", contentClassName)}
         >
           {children}
         </div>

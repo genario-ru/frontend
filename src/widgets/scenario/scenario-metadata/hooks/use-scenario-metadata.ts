@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useGenerateScenarioMetadata } from "@/actions/scenario/hooks/use-generate-scenario-metadata";
 import { useGetScenarioMetadata } from "@/actions/scenario/hooks/use-get-scenario-metadata";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
 
 type UseScenarioMetadataParams = {
   scenarioId: string;
@@ -23,26 +24,25 @@ export function useScenarioMetadata({ scenarioId }: UseScenarioMetadataParams) {
     [scenarioMetadataData],
   );
 
-  // Tracks whether the user has triggered generation in this session.
-  // Backend's "pending" status is the initial idle state for never-generated
-  // scenarios — we must NOT treat it as "generating" until the user clicks.
+  const hasGeneratingItems = useMemo(
+    () => metadataItems.some((item) => checkIsGenerationStatus(item.status)),
+    [metadataItems],
+  );
+
   const [hasTriggeredGeneration, setHasTriggeredGeneration] = useState(false);
 
   useEffect(() => {
-    if (metadataStatus === "ready" || metadataStatus === "failed") {
+    if (!checkIsGenerationStatus(metadataStatus)) {
       setHasTriggeredGeneration(false);
     }
   }, [metadataStatus]);
 
   const isLoading = isScenarioMetadataLoading;
   const isError = isScenarioMetadataError;
-  const isFailed = metadataStatus === "failed";
+  const isFailed = metadataStatus === "failed" && metadataItems.length === 0;
   const isGenerating =
-    hasTriggeredGeneration || metadataStatus === "generation";
-  const isEmpty =
-    !isGenerating &&
-    !isFailed &&
-    (metadataStatus === "pending" || metadataItems.length === 0);
+    hasTriggeredGeneration || checkIsGenerationStatus(metadataStatus);
+  const isEmpty = !isGenerating && !isFailed && metadataItems.length === 0;
 
   const generateMetadata = useCallback(() => {
     generateScenarioMetadata(
@@ -57,12 +57,13 @@ export function useScenarioMetadata({ scenarioId }: UseScenarioMetadataParams) {
 
   return {
     metadataItems,
+    hasGeneratingItems,
     isLoading,
     isError,
     isGenerating,
     isFailed,
     isEmpty,
-    generateMetadata,
     isGenerateMetadataPending: isGenerateScenarioMetadataPending,
+    generateMetadata,
   };
 }

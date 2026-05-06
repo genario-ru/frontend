@@ -1,21 +1,33 @@
+import { RotateCcwIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import type { ScenarioMetadataExtendedSchema } from "@/codegen/api/product";
+import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Badge } from "@/shared/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
 import { Card } from "@/shared/components/ui/card";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
+import { checkIsGenerationStatus } from "@/shared/utils/check-is-generation-status";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
+import { cn } from "@/shared/utils/cn";
 
 import { parseMetadataTags } from "../utils/parse-metadata-tags";
 
 type ScenarioMetadataCardProps = {
   metadata: ScenarioMetadataExtendedSchema;
+  onRegenerateButtonClick?: () => void;
 };
 
-export function ScenarioMetadataCard({ metadata }: ScenarioMetadataCardProps) {
-  const { platform, title, body, tags } = metadata;
+export function ScenarioMetadataCard({
+  metadata,
+  onRegenerateButtonClick,
+}: ScenarioMetadataCardProps) {
+  const { platform, status, title, body, tags } = metadata;
+  const isTouchScreen = checkTouchScreen();
+  const isGenerating = checkIsGenerationStatus(status);
   const tagItems = parseMetadataTags(tags);
 
   const headerIcon = useMemo(() => {
@@ -32,8 +44,39 @@ export function ScenarioMetadataCard({ metadata }: ScenarioMetadataCardProps) {
     return null;
   }, [platform.logoUrl, platform.name]);
 
-  return (
-    <Card title={platform.name} headerIcon={headerIcon}>
+  const headerActions = useMemo(() => {
+    if (isGenerating || !onRegenerateButtonClick) {
+      return null;
+    }
+
+    return (
+      <Button
+        size="sm"
+        priority="tertiary"
+        icon={<RotateCcwIcon />}
+        aria-label={`Повторно сгенерировать метаданные для ${platform.name}`}
+        onClick={onRegenerateButtonClick}
+        className={cn({
+          "opacity-0 duration-200 group-hover/scenario-metadata-card:opacity-100 disabled:opacity-0 group-hover/scenario-metadata-card:disabled:opacity-60":
+            !isTouchScreen,
+        })}
+      />
+    );
+  }, [isGenerating, isTouchScreen, platform, onRegenerateButtonClick]);
+
+  const content = useMemo(() => {
+    if (isGenerating) {
+      return (
+        <GenerationAlert
+          hasGradient={false}
+          title="Генерируем метаданные"
+          description={`Обновляем данные для ${platform.name}, подождите несколько секунд`}
+          className="m-auto"
+        />
+      );
+    }
+
+    return (
       <div className="flex flex-col gap-3">
         <ScenarioMetadataCardSection label="Заголовок" value={title} />
         <ScenarioMetadataCardSection label="Описание" value={body} multiline />
@@ -50,6 +93,17 @@ export function ScenarioMetadataCard({ metadata }: ScenarioMetadataCardProps) {
           </div>
         )}
       </div>
+    );
+  }, [isGenerating, body, platform, tagItems, title]);
+
+  return (
+    <Card
+      title={platform.name}
+      headerIcon={headerIcon}
+      headerActions={headerActions}
+      className="group/scenario-metadata-card"
+    >
+      {content}
     </Card>
   );
 }

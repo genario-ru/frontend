@@ -1,9 +1,6 @@
 import { useMemo } from "react";
 
-import {
-  ScenarioMetadataCard,
-  ScenarioMetadataCardSkeleton,
-} from "@/features/scenario/scenario-metadata/scenario-metadata-card/components/scenario-metadata-card";
+import { ScenarioMetadataCardSkeleton } from "@/features/scenario/scenario-metadata/scenario-metadata-card/components/scenario-metadata-card";
 import { ScenarioMetadataPlaceholder } from "@/features/scenario/scenario-metadata/scenario-metadata-placeholder/components/scenario-metadata-placeholder";
 import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { ItemsList } from "@/shared/components/common/items-list";
@@ -12,6 +9,7 @@ import { Plug } from "@/shared/components/ui/plug";
 import { CRLF } from "@/shared/constants/unicode";
 
 import { useScenarioMetadata } from "../hooks/use-scenario-metadata";
+import { ScenarioMetadataCardWithDialog } from "./scenario-metadata-card-with-dialog";
 
 type ScenarioMetadataProps = {
   scenarioId: string;
@@ -78,19 +76,24 @@ export function ScenarioMetadata({ scenarioId }: ScenarioMetadataProps) {
     return (
       <div className="grid w-full gap-2 lg:grid-cols-2">
         {metadataItems.map((item) => (
-          <ScenarioMetadataCard key={item.id} metadata={item} />
+          <ScenarioMetadataCardWithDialog
+            key={item.id}
+            scenarioId={scenarioId}
+            metadata={item}
+          />
         ))}
       </div>
     );
   }, [
-    isLoading,
-    isError,
-    isGenerating,
-    isFailed,
-    isEmpty,
-    metadataItems,
-    isGenerateMetadataPending,
     generateMetadata,
+    isEmpty,
+    isError,
+    isFailed,
+    isGenerateMetadataPending,
+    isGenerating,
+    isLoading,
+    metadataItems,
+    scenarioId,
   ]);
 
   return (

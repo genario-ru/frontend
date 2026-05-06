@@ -20,7 +20,17 @@ export function useGetScenarioMetadata({
       query: {
         enabled: Boolean(scenarioId),
         refetchInterval: (query) => {
-          if (checkIsGenerationStatus(query.state.data?.data.status)) {
+          const scenarioMetadata = query.state.data?.data;
+
+          const isGenerating = checkIsGenerationStatus(
+            scenarioMetadata?.status,
+          );
+
+          const hasGeneratingItems = scenarioMetadata?.items.some((item) =>
+            checkIsGenerationStatus(item.status),
+          );
+
+          if (isGenerating || hasGeneratingItems) {
             return REFRESH_INTERVAL;
           }
 
