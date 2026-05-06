@@ -49,7 +49,7 @@ export function ScenarioChapterSceneComponentsSkeleton({
     <ItemsList
       count={videoTypeSlug === "long" ? 3 : 4}
       item={<ScenarioChapterSceneComponentSkeleton />}
-      className={cn("grid flex-1 gap-4", {
+      className={cn("grid flex-1 gap-2", {
         "col-span-6 grid-cols-2": videoTypeSlug === "short",
         "col-span-1": videoTypeSlug === "long",
       })}

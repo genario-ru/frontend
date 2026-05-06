@@ -42,7 +42,7 @@ export function ItemsList({
     <div
       style={{ gap }}
       className={cn(
-        "flex flex-col",
+        "flex w-full flex-col",
         {
           "flex-row": row,
         },
