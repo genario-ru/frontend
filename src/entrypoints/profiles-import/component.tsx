@@ -6,13 +6,11 @@ import { ProfilesImportJobAlert } from "@/widgets/profiles-import/profiles-impor
 
 export function ProfilesImportComponent() {
   return (
-    <>
+    <PageLayout className="h-fit min-h-full">
       <ProfilesImportAppMenubar />
-      <PageLayout className="flex-1 gap-4 pb-2">
-        <ProfilesImportJobAlert />
-        <ProfilesImport />
-      </PageLayout>
+      <ProfilesImportJobAlert />
+      <ProfilesImport />
       <CommonFooter className="mt-auto" />
-    </>
+    </PageLayout>
   );
 }

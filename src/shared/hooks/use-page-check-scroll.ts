@@ -11,7 +11,7 @@ export function usePageCheckScroll(params?: UsePageCheckScrollParams) {
   const pageContentRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const pageContent = document.getElementById("root-content");
+    const pageContent = document.getElementById("root");
 
     if (pageContent) {
       pageContentRef.current = pageContent;

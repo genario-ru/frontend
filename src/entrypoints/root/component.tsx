@@ -10,12 +10,7 @@ export function RootComponent() {
     <>
       <HeadContent />
       <Scripts />
-      <div
-        id="root-content"
-        className="bg-neutral-2 relative isolate flex h-full min-h-dvh w-full justify-center overflow-auto"
-      >
-        <Outlet />
-      </div>
+      <Outlet />
       <Toaster />
       <TanstackDevtools
         config={{

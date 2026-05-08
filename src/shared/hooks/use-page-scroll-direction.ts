@@ -13,7 +13,7 @@ export function usePageScrollDirection() {
   const lastScrollTopRef = useRef(0);
 
   useEffect(() => {
-    const pageContent = document.getElementById("root-content");
+    const pageContent = document.getElementById("root");
 
     if (pageContent) {
       pageContentRef.current = pageContent;

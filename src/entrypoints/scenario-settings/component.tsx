@@ -10,15 +10,13 @@ export function ScenarioSettingsComponent() {
   });
 
   return (
-    <>
+    <PageLayout className="h-fit min-h-full">
       <ScenarioSettingsAppMenubar scenarioId={scenarioId} />
-      <PageLayout className="flex-1 pb-0">
-        <ScenarioSettings
-          templateId={templateId}
-          scenarioId={scenarioId}
-          fromIdeaId={fromIdeaId}
-        />
-      </PageLayout>
-    </>
+      <ScenarioSettings
+        templateId={templateId}
+        scenarioId={scenarioId}
+        fromIdeaId={fromIdeaId}
+      />
+    </PageLayout>
   );
 }

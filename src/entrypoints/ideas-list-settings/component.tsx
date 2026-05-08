@@ -10,11 +10,9 @@ export function IdeasListSettingsComponent() {
   });
 
   return (
-    <>
+    <PageLayout className="h-fit min-h-full">
       <IdeasListSettingsAppMenubar ideasListId={ideasListId} />
-      <PageLayout className="flex-1 pb-0">
-        <IdeasListSettings templateId={templateId} ideasListId={ideasListId} />
-      </PageLayout>
-    </>
+      <IdeasListSettings templateId={templateId} ideasListId={ideasListId} />
+    </PageLayout>
   );
 }

@@ -114,7 +114,11 @@
   html,
   body,
   #root {
-    @apply text-neutral-8 border-neutral-5 h-full w-full font-sans;
+    @apply text-neutral-8 h-full w-full font-sans;
+  }
+
+  #root {
+    @apply bg-neutral-2 isolate relative min-h-dvh justify-center flex overflow-auto;
   }
 
   .hide-scrollbar {

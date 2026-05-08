@@ -17,7 +17,7 @@ export function createRouter({ queryClient }: CreateRouterParams) {
     context: routerContext,
     unmaskOnReload: false,
     scrollRestoration: true,
-    scrollToTopSelectors: ["#root-content"],
+    scrollToTopSelectors: ["#root"],
     defaultPreload: "intent",
     defaultStructuralSharing: true,
     defaultPreloadStaleTime: 0,

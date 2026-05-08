@@ -7,15 +7,13 @@ import { HomeTemplatesCarousel } from "@/widgets/home/home-templates-carousel/co
 
 export function HomeComponent() {
   return (
-    <>
+    <PageLayout>
       <HomeAppMenubar />
-      <PageLayout className="pb-2">
-        <ContentLayout>
-          <HomeTemplatesCarousel />
-          <HomeArchiveItemsCarousel />
-        </ContentLayout>
-      </PageLayout>
+      <ContentLayout>
+        <HomeTemplatesCarousel />
+        <HomeArchiveItemsCarousel />
+      </ContentLayout>
       <CommonFooter className="mt-auto" />
-    </>
+    </PageLayout>
   );
 }

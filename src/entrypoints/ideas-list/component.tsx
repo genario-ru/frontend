@@ -14,11 +14,9 @@ export function IdeasListComponent() {
   });
 
   return (
-    <>
+    <PageLayout className="h-fit min-h-full pb-8">
       <IdeasListAppMenubar ideasListId={ideasListId} />
-      <PageLayout className="flex-1">
-        <IdeasList ideasListId={ideasListId} tab={tab} />
-      </PageLayout>
-    </>
+      <IdeasList ideasListId={ideasListId} tab={tab} />
+    </PageLayout>
   );
 }

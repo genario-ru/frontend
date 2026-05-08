@@ -39,15 +39,13 @@ export function ScenarioComponent() {
   }, [tab, scenarioId]);
 
   return (
-    <>
+    <PageLayout
+      className={cn("h-fit min-h-full pb-8", {
+        "pb-0": tab !== scenarioTabs.metadata,
+      })}
+    >
       <ScenarioAppMenubar scenarioId={scenarioId} />
-      <PageLayout
-        className={cn("flex-1", {
-          "pb-0": tab !== scenarioTabs.metadata,
-        })}
-      >
-        {body}
-      </PageLayout>
-    </>
+      {body}
+    </PageLayout>
   );
 }

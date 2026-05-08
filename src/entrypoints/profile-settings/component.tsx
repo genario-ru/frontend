@@ -10,11 +10,9 @@ export function ProfileSettingsComponent() {
   });
 
   return (
-    <>
+    <PageLayout className="h-fit min-h-full">
       <ProfileSettingsAppMenubar profileId={profileId} />
-      <PageLayout className="flex-1 pb-0">
-        <ProfileSettings profileId={profileId} />
-      </PageLayout>
-    </>
+      <ProfileSettings profileId={profileId} />
+    </PageLayout>
   );
 }

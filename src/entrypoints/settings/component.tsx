@@ -4,11 +4,9 @@ import { SettingsForms } from "@/widgets/settings/settings-forms/components/sett
 
 export function SettingsComponent() {
   return (
-    <>
+    <PageLayout className="h-fit min-h-full pb-8">
       <SettingsAppMenubar />
-      <PageLayout>
-        <SettingsForms />
-      </PageLayout>
-    </>
+      <SettingsForms />
+    </PageLayout>
   );
 }

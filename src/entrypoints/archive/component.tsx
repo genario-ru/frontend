@@ -14,17 +14,15 @@ export function ArchiveComponent() {
   const filters = isMobile ? <ArchiveFiltersCarousel /> : <ArchiveFilters />;
 
   return (
-    <>
+    <PageLayout className="h-fit min-h-full">
       <ArchiveAppMenubar
         actions={actions}
         search={<ArchiveSearch />}
         filters={filters}
         wrapCenter={isMobile}
       />
-      <PageLayout className="flex-1 pb-2">
-        <ArchiveItems />
-      </PageLayout>
+      <ArchiveItems />
       <CommonFooter className="mt-auto" />
-    </>
+    </PageLayout>
   );
 }

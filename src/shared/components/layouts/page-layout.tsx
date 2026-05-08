@@ -11,7 +11,10 @@ export const PageLayout = ({
 }: PageLayoutProps) => {
   return (
     <main
-      className={cn("flex w-full flex-col items-center pt-2 pb-8", className)}
+      className={cn(
+        "flex w-full max-w-7xl min-w-0 flex-col items-center gap-2 md:pr-8 md:pl-5",
+        className,
+      )}
       {...props}
     >
       {children}

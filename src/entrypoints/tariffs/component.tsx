@@ -6,9 +6,9 @@ import { TariffsList } from "@/widgets/tariffs/components/tariffs-list";
 
 export function TariffsComponent() {
   return (
-    <PageLayout className="pt-0">
+    <PageLayout>
+      <TariffsHeader />
       <ContentLayout size="xl">
-        <TariffsHeader />
         <TariffsList />
         <CommonFooter />
       </ContentLayout>

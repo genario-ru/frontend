@@ -6,10 +6,10 @@ import { PaymentRedirectHeader } from "@/widgets/payment-redirect/components/pay
 
 export function PaymentRedirectPendingComponent() {
   return (
-    <PageLayout className="pt-0">
+    <PageLayout>
       <ContentLayout>
         <PaymentRedirectHeader />
-        <Island className="flex-1"></Island>
+        <Island className="flex-1">Something</Island>
         <PaymentRedirectFooter />
       </ContentLayout>
     </PageLayout>
