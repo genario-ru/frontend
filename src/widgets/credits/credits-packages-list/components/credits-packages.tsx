@@ -1,23 +1,19 @@
-import { Island } from "@/shared/components/ui/island";
+import { ScrollContainer } from "@/shared/components/ui/scroll-container";
 
-import { useCreditsPackagesList } from "../hooks/use-credits-packages-list";
+import { useCreditsPackages } from "../hooks/use-credits-packages";
+import { CreditsPackagesHeader } from "./credits-packages-header";
 import { CreditsPackagesList } from "./credits-packages-list";
 
 export function CreditsPackages() {
-  const state = useCreditsPackagesList();
+  const { isScrolled, scrollContainerRef } = useCreditsPackages();
 
   return (
-    <Island grow title="Пакеты кредитов" className="flex-1">
-      <CreditsPackagesList
-        cardViews={state.cardViews}
-        popularPackageId={state.popularPackageId}
-        isCreditsPackagesLoading={state.isCreditsPackagesLoading}
-        isCreditsPackagesError={state.isCreditsPackagesError}
-        isInitiateCreditsPackagePaymentPending={
-          state.isInitiateCreditsPackagePaymentPending
-        }
-        onPurchase={state.handlePurchase}
-      />
-    </Island>
+    <ScrollContainer
+      outerProps={{ className: "rounded-4 flex-1 bg-neutral-1" }}
+      innerProps={{ ref: scrollContainerRef }}
+    >
+      <CreditsPackagesHeader hasShadow={isScrolled} />
+      <CreditsPackagesList />
+    </ScrollContainer>
   );
 }

@@ -15,7 +15,7 @@ export function CreditsMyBalance() {
   });
 
   return (
-    <Island grow title={title} className="flex-1">
+    <Island title={title}>
       <CreditsMyBalanceList />
     </Island>
   );

@@ -14,7 +14,7 @@ export function ScrollContainer({
 }: ScrollContainerProps) {
   return (
     <div
-      className={cn("flex h-full flex-col overflow-hidden", outerClassName)}
+      className={cn("flex flex-col overflow-hidden", outerClassName)}
       {...outerProps}
     >
       <div

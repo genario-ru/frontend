@@ -9,7 +9,7 @@ export function CreditsUsage() {
 
   return (
     <ScrollContainer
-      outerProps={{ className: "rounded-4 bg-neutral-1" }}
+      outerProps={{ className: "rounded-4 bg-neutral-1 h-full" }}
       innerProps={{ ref: scrollContainerRef }}
     >
       <CreditsUsageHeader hasShadow={isScrolled} />

@@ -12,7 +12,7 @@ type CreditsPackageCardProps = {
   metricBadges: ReactNode;
   purchaseButtonLabel: string;
   isHighlighted: boolean;
-  isPopular: boolean;
+  isPreferred: boolean;
   isPurchasePending: boolean;
   onPurchase: () => void;
 };
@@ -24,7 +24,7 @@ export function CreditsPackageCard({
   metricBadges,
   purchaseButtonLabel,
   isHighlighted,
-  isPopular,
+  isPreferred,
   isPurchasePending,
   onPurchase,
 }: CreditsPackageCardProps) {
@@ -32,13 +32,15 @@ export function CreditsPackageCard({
     <div
       className={cn(
         "border-neutral-3 bg-neutral-1 flex flex-col gap-3 rounded-2xl border p-4",
-        isHighlighted && "border-accent-6 ring-accent-6/25 ring-2",
+        {
+          "ring-accent-6 border-transparent ring-2": isHighlighted,
+        },
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1">
           <span className="text-lg font-semibold">{title}</span>
-          {isPopular && (
+          {isPreferred && (
             <Badge
               color="custom"
               customColor="var(--color-accent-6)"

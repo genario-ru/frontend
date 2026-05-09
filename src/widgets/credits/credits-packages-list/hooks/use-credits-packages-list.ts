@@ -4,7 +4,6 @@ import { useGetCreditsPackages } from "@/actions/credits/hooks/use-get-credits-p
 import { useInitiateCreditsPackagePayment } from "@/actions/credits/hooks/use-initiate-credits-package-payment";
 
 import { formatCreditsPackageCard } from "../utils/format-credits-package-card";
-import { pickPopularCreditsPackageId } from "../utils/pick-popular-credits-package-id";
 
 export function useCreditsPackagesList() {
   const {
@@ -18,19 +17,9 @@ export function useCreditsPackagesList() {
     isInitiateCreditsPackagePaymentPending,
   } = useInitiateCreditsPackagePayment();
 
-  const purchasablePackages = useMemo(() => {
-    const list = creditsPackagesData?.data ?? [];
-    return list.filter((pkg) => pkg.forPurchase);
-  }, [creditsPackagesData]);
-
-  const popularPackageId = useMemo(
-    () => pickPopularCreditsPackageId(creditsPackagesData?.data ?? []),
+  const creditsPackageViews = useMemo(
+    () => creditsPackagesData?.data?.map(formatCreditsPackageCard) ?? [],
     [creditsPackagesData],
-  );
-
-  const cardViews = useMemo(
-    () => purchasablePackages.map(formatCreditsPackageCard),
-    [purchasablePackages],
   );
 
   const handlePurchase = (packageId: string) => {
@@ -50,9 +39,7 @@ export function useCreditsPackagesList() {
   };
 
   return {
-    cardViews,
-    purchasablePackages,
-    popularPackageId,
+    creditsPackageViews,
     isCreditsPackagesLoading,
     isCreditsPackagesError,
     isInitiateCreditsPackagePaymentPending,

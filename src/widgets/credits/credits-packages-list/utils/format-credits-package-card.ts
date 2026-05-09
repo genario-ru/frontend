@@ -13,6 +13,7 @@ export type CreditsPackageCardView = {
   purchaseButtonLabel: string;
   description: string | null;
   metricBadgeLabels: string[];
+  isPreferred: boolean;
 };
 
 function formatRub(value: number): string {
@@ -43,5 +44,6 @@ export function formatCreditsPackageCard(
     purchaseButtonLabel: `Купить за ${formatRub(pkg.price)}`,
     description: pkg.description,
     metricBadgeLabels,
+    isPreferred: pkg.isPreferred,
   };
 }
