@@ -17,6 +17,7 @@ export const creditsPackageSchemaSchema = z
     price: z.number().min(-8388608).max(8388607),
     oldPrice: z.union([z.number(), z.null()]),
     forPurchase: z.boolean(),
+    isPreferred: z.boolean(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

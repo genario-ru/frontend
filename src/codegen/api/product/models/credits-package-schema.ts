@@ -35,6 +35,10 @@ export type CreditsPackageSchema = {
    */
   forPurchase: boolean;
   /**
+   * @type boolean
+   */
+  isPreferred: boolean;
+  /**
    * @type string
    */
   createdAt: string;
