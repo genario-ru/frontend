@@ -33,7 +33,7 @@ export function CreditsUsageList() {
       return <CreditsUsageListError />;
     }
 
-    if (rows.length === 0) {
+    if (!rows.length) {
       return <CreditsUsageListEmpty />;
     }
 

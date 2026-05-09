@@ -30,7 +30,7 @@ export function CreditsPackagesList() {
       return <CreditsPackagesListError />;
     }
 
-    if (creditsPackageViews.length === 0) {
+    if (!creditsPackageViews.length) {
       return <CreditsPackagesListEmpty />;
     }
 
@@ -109,7 +109,7 @@ export function CreditsPackagesListEmpty() {
     <Plug
       variant="neutral"
       title="Нет доступных пакетов"
-      description="Здесь появятся операции списания кредитов"
+      description="Здесь появятся доступные пакеты для покупки"
       className="m-auto py-8"
     />
   );

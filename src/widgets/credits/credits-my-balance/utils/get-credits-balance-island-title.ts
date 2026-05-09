@@ -1,3 +1,5 @@
+import { numberFormatter } from "@/shared/utils/number-formatter";
+
 export type CreditsBalanceIslandTitleInput = {
   isMyCreditsBatchesLoading: boolean;
   isMyCreditsBatchesError: boolean;
@@ -11,5 +13,5 @@ export function getCreditsBalanceIslandTitle(
     return "Баланс кредитов";
   }
 
-  return `Баланс кредитов: ${state.totalRemaining.toLocaleString("ru-RU")}`;
+  return `Баланс кредитов: ${numberFormatter.format(state.totalRemaining)}`;
 }

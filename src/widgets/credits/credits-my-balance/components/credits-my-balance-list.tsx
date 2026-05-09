@@ -21,12 +21,12 @@ export function CreditsMyBalanceList() {
     return <CreditsMyBalanceListError />;
   }
 
-  if (rows.length === 0) {
+  if (!rows.length) {
     return <CreditsMyBalanceListEmpty />;
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <>
       {rows.map((row) => (
         <CreditsBatchProgressRow
           key={row.id}
@@ -36,14 +36,14 @@ export function CreditsMyBalanceList() {
           rightCaption={row.rightCaption}
         />
       ))}
-    </div>
+    </>
   );
 }
 
 export function CreditsMyBalanceListSkeleton() {
   return (
     <ItemsList
-      count={3}
+      count={2}
       gap={8}
       item={<Skeleton className="h-[88px] w-full rounded-2xl" />}
     />
@@ -72,8 +72,8 @@ export function CreditsMyBalanceListEmpty() {
   return (
     <Plug
       variant="neutral"
-      title="Нет активных батчей кредитов"
-      description="Кредиты появятся после оформления подписки или покупки пакета"
+      title="Нет приобретенных пакетов"
+      description="Здесь появятся приобретенные пакеты кредитов"
       className="m-auto py-8"
     />
   );

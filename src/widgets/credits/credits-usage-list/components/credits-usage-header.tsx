@@ -11,7 +11,7 @@ export function CreditsUsageHeader({
   return (
     <Island
       title="Расход кредитов"
-      className={cn("sticky top-0 duration-200", {
+      className={cn("sticky top-0 z-1 duration-200", {
         "shadow-bottom-1": hasShadow,
       })}
     />
