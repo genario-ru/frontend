@@ -1,16 +1,33 @@
-import { useRouterState } from "@tanstack/react-router";
+import { useMemo } from "react";
 
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
+import { AppDrawer } from "@/widgets/navigation/app-drawer/components/app-drawer";
 
-import { getBillingLayoutTitle } from "../utils/get-billing-layout-title";
+import { useBillingAppMenubar } from "../hooks/use-billing-app-menubar";
 import { BillingAppMenubarTabs } from "./billing-app-menubar-tabs";
 
 export function BillingAppMenubar() {
-  const pathname = useRouterState({
-    select: (routerState) => routerState.location.pathname,
-  });
+  const { title, isMobile } = useBillingAppMenubar();
 
-  const title = getBillingLayoutTitle(pathname);
+  const actions = useMemo(() => {
+    if (isMobile) {
+      return <AppDrawer />;
+    }
+  }, [isMobile]);
 
-  return <AppMenubar title={title} right={<BillingAppMenubarTabs />} />;
+  const right = useMemo(() => {
+    if (!isMobile) {
+      return <BillingAppMenubarTabs />;
+    }
+  }, [isMobile]);
+
+  const bottom = useMemo(() => {
+    if (isMobile) {
+      return <BillingAppMenubarTabs expand />;
+    }
+  }, [isMobile]);
+
+  return (
+    <AppMenubar actions={actions} title={title} right={right} bottom={bottom} />
+  );
 }
