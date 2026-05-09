@@ -11,7 +11,6 @@ type CreditsPackageCardProps = {
   description: string | null;
   metricBadges: ReactNode;
   purchaseButtonLabel: string;
-  isHighlighted: boolean;
   isPreferred: boolean;
   isPurchasePending: boolean;
   onPurchase: () => void;
@@ -23,7 +22,6 @@ export function CreditsPackageCard({
   description,
   metricBadges,
   purchaseButtonLabel,
-  isHighlighted,
   isPreferred,
   isPurchasePending,
   onPurchase,
@@ -33,34 +31,36 @@ export function CreditsPackageCard({
       className={cn(
         "border-neutral-3 bg-neutral-1 flex flex-col gap-3 rounded-2xl border p-4",
         {
-          "ring-accent-6 border-transparent ring-2": isHighlighted,
+          "bg-neutral-2 border-transparent": isPreferred,
         },
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex flex-col gap-1">
-          <span className="text-lg font-semibold">{title}</span>
-          {isPreferred && (
-            <Badge
-              color="custom"
-              customColor="var(--color-accent-6)"
-              size="sm"
-              icon={<StarIcon />}
-              className="w-fit"
-            >
-              Самый популярный
-            </Badge>
-          )}
+      <div className="flex flex-col">
+        <div className="flex items-start justify-between">
+          <p className="text-lg font-semibold">{title}</p>
+          <p className="text-lg font-semibold whitespace-nowrap">
+            {priceLabel}
+          </p>
         </div>
-        <span className="text-lg font-semibold whitespace-nowrap">
-          {priceLabel}
-        </span>
+        {description && <p className="text-neutral-6 text-sm">{description}</p>}
       </div>
-      {description && <p className="text-neutral-6 text-sm">{description}</p>}
-      <div className="flex flex-wrap gap-2">{metricBadges}</div>
+      <div className="flex flex-wrap gap-1">
+        {isPreferred && (
+          <Badge
+            color="custom"
+            customColor="var(--color-accent-6)"
+            size="sm"
+            icon={<StarIcon />}
+            className="w-fit"
+          >
+            Самый популярный
+          </Badge>
+        )}
+        {metricBadges}
+      </div>
       <Button
-        variant={isHighlighted ? "accent" : "neutral"}
-        priority={isHighlighted ? "primary" : "secondary"}
+        variant={isPreferred ? "accent" : "neutral"}
+        priority={isPreferred ? "primary" : "secondary"}
         size="base"
         className="w-full"
         state={isPurchasePending ? "loading" : "default"}

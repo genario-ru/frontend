@@ -44,11 +44,15 @@ export function CreditsPackagesList() {
             description={view.description}
             purchaseButtonLabel={view.purchaseButtonLabel}
             isPreferred={view.isPreferred}
-            isHighlighted={view.isPreferred}
             isPurchasePending={isInitiateCreditsPackagePaymentPending}
             onPurchase={() => handlePurchase(view.id)}
             metricBadges={view.metricBadgeLabels.map((label) => (
-              <Badge key={label} color="neutral" variant="secondary" size="sm">
+              <Badge
+                key={label}
+                color="neutral"
+                variant={view.isPreferred ? "tertiary" : "secondary"}
+                size="sm"
+              >
                 {label}
               </Badge>
             ))}
