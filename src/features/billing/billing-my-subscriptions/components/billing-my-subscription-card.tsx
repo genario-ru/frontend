@@ -17,6 +17,7 @@ type BillingMySubscriptionCardProps = {
   durationDays: number | null;
   dateRange: string;
   isCancellable: boolean;
+  hideCancelAction?: boolean;
   onCancelButtonClick: () => void;
 };
 
@@ -29,6 +30,7 @@ export function BillingMySubscriptionCard({
   durationDays,
   dateRange,
   isCancellable,
+  hideCancelAction = false,
   onCancelButtonClick,
 }: BillingMySubscriptionCardProps) {
   const suffix = billingPeriod ? billingPeriodSuffix[billingPeriod] : null;
@@ -61,7 +63,7 @@ export function BillingMySubscriptionCard({
             dateRange={dateRange}
           />
         </div>
-        {isCancellable && (
+        {isCancellable && !hideCancelAction && (
           <Button
             variant="negative"
             size="sm"

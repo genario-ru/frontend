@@ -2,14 +2,16 @@ import { useCallback, useMemo, useState } from "react";
 
 import { useCancelSubscription } from "@/actions/subscriptions/hooks/use-cancel-subscription";
 import { useGetMySubscriptions } from "@/actions/subscriptions/hooks/use-get-my-subscriptions";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 import { subscriptionCancellableStatuses } from "../constants/subscription-cancellable-statuses";
 import { formatSubscriptionRow } from "../utils/format-subscription-row";
 import { isVisibleSubscription } from "../utils/is-visible-subscription";
 
 export function useBillingMySubscriptionsList() {
+  const { isDesktop } = useBreakpoints();
   const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
-
   const [selectedSubscriptionId, setSelectedSubscriptionId] = useState<
     string | null
   >(null);
@@ -22,6 +24,8 @@ export function useBillingMySubscriptionsList() {
 
   const { cancelSubscription, isCancelSubscriptionPending } =
     useCancelSubscription();
+
+  const showSwipeActions = !isDesktop && checkTouchScreen();
 
   const visibleSubscriptions = useMemo(() => {
     if (!mySubscriptionsData?.data) return [];
@@ -80,6 +84,7 @@ export function useBillingMySubscriptionsList() {
     visibleSubscriptions,
     selectedSubscription,
     showCancelDialog,
+    showSwipeActions,
     isMySubscriptionsLoading,
     isMySubscriptionsError,
     isCancelSubscriptionPending,

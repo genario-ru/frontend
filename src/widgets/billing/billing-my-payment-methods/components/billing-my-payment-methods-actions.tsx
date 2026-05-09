@@ -13,7 +13,6 @@ export function BillingMyPaymentMethodsActions() {
       <Button
         variant="neutral"
         priority="secondary"
-        size="sm"
         icon={<PlusIcon />}
         iconPosition="right"
         state={isAddPaymentMethodPending ? "loading" : "default"}

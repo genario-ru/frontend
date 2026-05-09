@@ -18,7 +18,7 @@ export const billingAppMenubarTabsDefinition: readonly BillingAppMenubarTabDefin
   [
     {
       slug: billingAppMenubarTabSlugs.subscription,
-      label: "Тариф и оплата",
+      label: "Подписка и оплата",
       to: "/billing",
     },
     {

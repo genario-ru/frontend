@@ -6,16 +6,19 @@ import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Plug } from "@/shared/components/ui/plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { SwipeActions } from "@/shared/components/ui/swipe-actions";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
 
 import { subscriptionCancellableStatuses } from "../constants/subscription-cancellable-statuses";
 import { useBillingMySubscriptionsList } from "../hooks/use-billing-my-subscriptions-list";
+import { BillingMySubscriptionSwipeActions } from "./billing-my-subscription-swipe-actions";
 
 export function BillingMySubscriptionsList() {
   const {
     visibleSubscriptions,
     selectedSubscription,
     showCancelDialog,
+    showSwipeActions,
     isMySubscriptionsLoading,
     isMySubscriptionsError,
     isCancelSubscriptionPending,
@@ -48,7 +51,7 @@ export function BillingMySubscriptionsList() {
             subscription.status,
           );
 
-          return (
+          const card = (
             <BillingMySubscriptionCard
               key={subscription.id}
               name={subscription.name}
@@ -59,9 +62,29 @@ export function BillingMySubscriptionsList() {
               durationDays={subscription.durationDays}
               dateRange={subscription.dateRange}
               isCancellable={isCancellable}
+              hideCancelAction={showSwipeActions}
               onCancelButtonClick={onCancelButtonClick}
             />
           );
+
+          if (showSwipeActions && isCancellable) {
+            return (
+              <SwipeActions
+                key={subscription.id}
+                beforeInset={8}
+                actions={
+                  <BillingMySubscriptionSwipeActions
+                    onCancelButtonClick={onCancelButtonClick}
+                  />
+                }
+                className="rounded-2xl"
+              >
+                {card}
+              </SwipeActions>
+            );
+          }
+
+          return card;
         })}
       </div>
       {showCancelDialog && selectedSubscription && (

@@ -1,3 +1,5 @@
+import { ArrowUpRightIcon } from "lucide-react";
+
 import { ButtonLink } from "@/shared/components/ui/button-link";
 
 import { useBillingMySubscriptionsActions } from "../hooks/use-billing-my-subscriptions-actions";
@@ -8,15 +10,15 @@ export function BillingMySubscriptionsActions() {
   return (
     <div className="flex w-full items-center justify-end gap-2">
       <ButtonLink
+        icon={<ArrowUpRightIcon />}
         to="/tariffs"
         variant="neutral"
         priority="secondary"
-        size="sm"
       >
         Все доступные тарифы
       </ButtonLink>
       {showUpgradeButton && (
-        <ButtonLink to="/tariffs" variant="accent" priority="primary" size="sm">
+        <ButtonLink to="/tariffs" variant="accent" priority="primary">
           Улучшить
         </ButtonLink>
       )}
