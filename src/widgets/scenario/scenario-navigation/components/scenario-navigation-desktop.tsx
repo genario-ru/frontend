@@ -1,26 +1,24 @@
-import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapters";
 import { Island } from "@/shared/components/ui/island";
-import { usePageCheckScroll } from "@/shared/hooks/use-page-check-scroll";
 import { cn } from "@/shared/utils/cn";
 
-import { useScenarioNavigationChaptersScroll } from "../hooks/use-scenario-navigation-chapters-scroll";
+import { useScenarioNavigationDesktop } from "../hooks/use-scenario-navigation-desktop";
 import { ScenarioNavigationChapters } from "./scenario-navigation-chapters";
 import { ScenarioNavigationChaptersArrows } from "./scenario-navigation-chapters-arrows";
 import { ScenarioNavigationScenes } from "./scenario-navigation-scenes";
 
-type ScenarioNavigationProps = {
+type ScenarioNavigationDesktopProps = {
   scenarioId: string;
 };
 
-export function ScenarioNavigation({ scenarioId }: ScenarioNavigationProps) {
-  const { isScenarioChaptersGenerating } = useScenarioChapters({ scenarioId });
-
-  const { isScrolledToBottom } = usePageCheckScroll({
-    scrollOffsetBottom: 1,
-  });
-
-  const { chapterRefCallback, handleChapterScrollIntoView } =
-    useScenarioNavigationChaptersScroll();
+export function ScenarioNavigationDesktop({
+  scenarioId,
+}: ScenarioNavigationDesktopProps) {
+  const {
+    isScenarioChaptersGenerating,
+    isScrolledToBottom,
+    chapterRefCallback,
+    handleChapterScrollIntoView,
+  } = useScenarioNavigationDesktop({ scenarioId });
 
   if (isScenarioChaptersGenerating) {
     return null;

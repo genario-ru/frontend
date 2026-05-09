@@ -4,7 +4,7 @@ import { useScenarioChapters } from "@/actions/scenario/hooks/use-scenario-chapt
 
 type UseScenarioNavigationChaptersParams = {
   scenarioId: string;
-  handleChapterScrollIntoView: (chapterId: string) => void;
+  handleChapterScrollIntoView?: (chapterId: string) => void;
 };
 
 export function useScenarioNavigationChapters({
@@ -16,6 +16,7 @@ export function useScenarioNavigationChapters({
   const {
     scenarioChaptersList,
     activeScenarioChapter,
+    isScenarioChaptersGenerating,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
     handleSetActiveScenarioChapter,
@@ -24,7 +25,7 @@ export function useScenarioNavigationChapters({
   const handleScenarioValueChange = useCallback(
     (chapterId: string) => {
       handleSetActiveScenarioChapter(chapterId);
-      handleChapterScrollIntoView(chapterId);
+      handleChapterScrollIntoView?.(chapterId);
     },
     [handleSetActiveScenarioChapter, handleChapterScrollIntoView],
   );
@@ -33,6 +34,7 @@ export function useScenarioNavigationChapters({
     containerRef,
     scenarioChaptersList,
     activeScenarioChapter,
+    isScenarioChaptersGenerating,
     isScenarioChaptersLoading,
     isScenarioChaptersError,
     handleScenarioValueChange,

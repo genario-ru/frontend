@@ -48,7 +48,7 @@ export function ScenarioNavigationScenes({
         value={activeScenarioChapterScene?.id}
         onValueChange={handleSceneValueChange}
       >
-        {radioCardsScenesList?.map((scene) => (
+        {radioCardsScenesList.map((scene) => (
           <RadioCardsGroupItem
             key={scene.id}
             value={scene.id}

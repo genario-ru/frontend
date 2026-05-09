@@ -4,14 +4,18 @@ import { useMemo } from "react";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { scenarioTabs } from "@/shared/constants/scenario-tabs";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { cn } from "@/shared/utils/cn";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 import { ScenarioChapter } from "@/widgets/scenario/scenario-chapter/components/scenario-chapter";
 import { ScenarioGenerationAlert } from "@/widgets/scenario/scenario-generation-alert/components/scenario-generation-alert";
 import { ScenarioMetadata } from "@/widgets/scenario/scenario-metadata/components/scenario-metadata";
-import { ScenarioNavigation } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation";
+import { ScenarioNavigationDesktop } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation-desktop";
+import { ScenarioNavigationMobile } from "@/widgets/scenario/scenario-navigation/components/scenario-navigation-mobile";
 
 export function ScenarioComponent() {
+  const { isMobile } = useBreakpoints();
+
   const { scenarioId } = useParams({
     from: "/_with-auth/_with-subscription/scenarios/$scenarioId",
   });
@@ -33,10 +37,14 @@ export function ScenarioComponent() {
       <ContentLayout className="flex-1">
         <ScenarioGenerationAlert scenarioId={scenarioId} />
         <ScenarioChapter scenarioId={scenarioId} />
-        <ScenarioNavigation scenarioId={scenarioId} />
+        {isMobile ? (
+          <ScenarioNavigationMobile scenarioId={scenarioId} />
+        ) : (
+          <ScenarioNavigationDesktop scenarioId={scenarioId} />
+        )}
       </ContentLayout>
     );
-  }, [tab, scenarioId]);
+  }, [isMobile, tab, scenarioId]);
 
   return (
     <PageLayout
