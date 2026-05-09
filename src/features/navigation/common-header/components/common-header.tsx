@@ -34,7 +34,7 @@ export function CommonHeader({
       )}
       {...props}
     >
-      <div className="flex items-center gap-6">
+      <div className="flex min-w-0 items-center gap-3 sm:gap-4 lg:gap-6">
         {logo}
         {left}
       </div>

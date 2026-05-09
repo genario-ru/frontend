@@ -5,7 +5,10 @@ import { LandingTemplatesCarousel } from "./landing-templates-carousel";
 
 export function LandingTemplates() {
   return (
-    <LandingIsland className="isolate items-center gap-8 overflow-hidden">
+    <LandingIsland
+      id="templates"
+      className="isolate items-center gap-6 overflow-hidden sm:gap-8"
+    >
       <LandingTemplatesHeader />
       <LandingTemplatesCarousel />
     </LandingIsland>

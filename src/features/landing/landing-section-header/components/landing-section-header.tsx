@@ -43,7 +43,7 @@ export function LandingSectionHeader({
     >
       {badge}
       <h2
-        className={cn("text-3xl font-semibold", {
+        className={cn("text-2xl font-semibold sm:text-3xl", {
           "text-neutral-8": !inverseColors,
           "text-neutral-1 dark:text-neutral-8": inverseColors,
           "text-center": isAlignCenter,
@@ -53,7 +53,7 @@ export function LandingSectionHeader({
       </h2>
       {description && (
         <p
-          className={cn("text-xl", {
+          className={cn("text-base sm:text-lg lg:text-xl", {
             "text-neutral-8/60": !inverseColors,
             "text-neutral-1/60 dark:text-neutral-8/60": inverseColors,
             "text-center": isAlignCenter,

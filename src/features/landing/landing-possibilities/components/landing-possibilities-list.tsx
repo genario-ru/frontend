@@ -5,7 +5,7 @@ import { LandingPossibilitiesCard } from "./landing-possibilities-card";
 
 export function LandingPossibilitiesList() {
   return (
-    <div className="flex w-full items-center gap-3">
+    <div className="flex w-full flex-col gap-3 lg:flex-row">
       {landingPossibilitiesList.map(
         ({ icon, iconColor, title, description, disabled, soon }, index) => (
           <LandingPossibilitiesCard

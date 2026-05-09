@@ -3,7 +3,7 @@ import { LandingPersonalizationFeatures } from "@/features/landing/landing-perso
 
 export function LandingPersonalization() {
   return (
-    <LandingIsland>
+    <LandingIsland id="personalization">
       <LandingPersonalizationFeatures />
     </LandingIsland>
   );

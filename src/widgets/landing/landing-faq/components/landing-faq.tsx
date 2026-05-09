@@ -4,7 +4,7 @@ import { LandingIsland } from "@/features/landing/landing-island/components/land
 
 export function LandingFaq() {
   return (
-    <LandingIsland row className="gap-24">
+    <LandingIsland id="faq" className="gap-8 lg:flex-row lg:gap-24">
       <LandingFaqHeader />
       <LandingFaqAccordionItems />
     </LandingIsland>

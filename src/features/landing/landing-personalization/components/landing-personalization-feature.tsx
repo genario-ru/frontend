@@ -12,8 +12,8 @@ export function LandingPersonalizationFeature({
   inverseOrder,
 }: LandingPersonalizationFeature) {
   return (
-    <div className="grid w-full grid-cols-2 items-center gap-12">
-      <div className="rounded-6 from-neutral-8 to-accent-6 bg-linear-to-b p-8">
+    <div className="grid w-full gap-6 lg:grid-cols-2 lg:items-center lg:gap-12">
+      <div className="rounded-6 from-neutral-8 to-accent-6 bg-linear-to-b p-4 sm:p-6 lg:p-8">
         <img
           src={image}
           alt="Feature screenshot"
@@ -22,7 +22,7 @@ export function LandingPersonalizationFeature({
       </div>
       <div
         className={cn("flex flex-col gap-6", {
-          "-order-1": inverseOrder,
+          "lg:-order-1": inverseOrder,
         })}
       >
         <LandingSectionHeader
@@ -30,7 +30,7 @@ export function LandingPersonalizationFeature({
           description={description}
           align="left"
         />
-        <ButtonLink size="lg" to="/sign-in">
+        <ButtonLink size="lg" to="/sign-in" className="w-full sm:w-fit">
           {buttonLinkText}
         </ButtonLink>
       </div>

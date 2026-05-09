@@ -23,12 +23,12 @@ export function LandingTrialTariff() {
   }
 
   return (
-    <LandingIsland className="items-center gap-12">
+    <LandingIsland className="items-center gap-8 lg:gap-12">
       <LandingTrialTariffHeader
         title={trialTariffData.data.name}
         description={trialTariffData.data.description}
       />
-      <div className="grid w-full max-w-[1000px] grid-cols-2 gap-6">
+      <div className="grid w-full max-w-[1000px] gap-4 sm:gap-6 md:grid-cols-2">
         {trialTariffData.data.features.map((feature, index) =>
           feature.included ? (
             <LandingTrialTariffFeature
@@ -44,12 +44,12 @@ export function LandingTrialTariff() {
 
 function LandingTrialTariffSkeleton() {
   return (
-    <LandingIsland className="items-center gap-12">
+    <LandingIsland className="items-center gap-8 lg:gap-12">
       <LandingTrialTariffHeaderSkeleton />
       <ItemsList
         count={6}
         item={<LandingTrialTariffFeatureSkeleton />}
-        className="grid w-full max-w-[1000px] grid-cols-2 gap-6"
+        className="grid w-full max-w-[1000px] gap-4 sm:gap-6 md:grid-cols-2"
       />
     </LandingIsland>
   );

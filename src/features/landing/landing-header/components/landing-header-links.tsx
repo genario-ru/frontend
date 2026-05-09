@@ -9,6 +9,7 @@ export function LandingHeaderLinks() {
         <ButtonLink
           priority="tertiary"
           key={`landing-menubar-link-${index}`}
+          className="shrink-0"
           {...navigateOptions}
         >
           {label}

@@ -31,10 +31,10 @@ export function LandingTariffsList() {
       return (
         <ItemsList
           noParent
-          row
           count={3}
           item={<TariffCardSkeleton className="bg-neutral-3/60" />}
-          itemClassName="flex-1 opacity-60"
+          className="flex flex-col gap-3 lg:flex-row"
+          itemClassName="opacity-60 lg:flex-1"
         />
       );
     }
@@ -103,7 +103,7 @@ export function LandingTariffsList() {
             secondaryAction={secondaryAction}
             features={features.map((feature) => feature.text)}
             limitations={limitations.map((limitation) => limitation.text)}
-            className={cn("h-full flex-1", {
+            className={cn("h-full w-full lg:flex-1", {
               "bg-neutral-1/20 dark:bg-neutral-8/20": !isPreferredTariff,
               "bg-neutral-1 dark:bg-neutral-8": isPreferredTariff,
             })}
@@ -122,5 +122,9 @@ export function LandingTariffsList() {
     isTrialTariffLoading,
   ]);
 
-  return <div className="flex w-full items-center gap-2">{list}</div>;
+  return (
+    <div className="flex w-full flex-col items-stretch gap-3 lg:flex-row lg:items-center">
+      {list}
+    </div>
+  );
 }

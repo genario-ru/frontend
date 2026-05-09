@@ -9,10 +9,12 @@ import { landingFaqAccordionItems } from "../constants/landing-faq-accordion-ite
 
 export function LandingFaqAccordionItems() {
   return (
-    <Accordion multiple>
+    <Accordion multiple className="w-full">
       {landingFaqAccordionItems.map((item, index) => (
         <AccordionItem key={`landing-faq-accordion-item-${index}`}>
-          <AccordionTrigger>{item.question}</AccordionTrigger>
+          <AccordionTrigger className="items-start text-left">
+            {item.question}
+          </AccordionTrigger>
           <AccordionPanel>{item.answer}</AccordionPanel>
         </AccordionItem>
       ))}

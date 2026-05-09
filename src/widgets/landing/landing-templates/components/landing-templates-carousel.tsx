@@ -12,7 +12,8 @@ import {
 import { useLandingTemplatesCarousel } from "../hooks/use-landing-templates-carousel";
 
 export function LandingTemplatesCarousel() {
-  const { templatesData, isTemplatesLoading } = useLandingTemplatesCarousel();
+  const { templatesData, isTemplatesLoading, slidesPerView } =
+    useLandingTemplatesCarousel();
 
   const slides = useMemo(() => {
     if (isTemplatesLoading) {
@@ -53,7 +54,7 @@ export function LandingTemplatesCarousel() {
         pauseOnMouseEnter: true,
       }}
       spaceBetween={8}
-      slidesPerView={3.2}
+      slidesPerView={slidesPerView}
       modules={[Autoplay]}
       style={{ overflow: "visible" }}
       className="w-full"

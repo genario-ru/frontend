@@ -4,7 +4,10 @@ import { LandingPossibilitiesList } from "@/features/landing/landing-possibiliti
 
 export function LandingPossibilities() {
   return (
-    <LandingIsland className="from-neutral-8 dark:from-neutral-1 to-accent-6 isolate items-center gap-8 bg-linear-to-r">
+    <LandingIsland
+      id="possibilities"
+      className="from-neutral-8 dark:from-neutral-1 to-accent-6 isolate items-center gap-6 bg-linear-to-r sm:gap-8"
+    >
       <LandingPossibilitiesHeader />
       <LandingPossibilitiesList />
     </LandingIsland>
