@@ -10,16 +10,9 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
+import type { ArchiveItemActionsDeleteProps } from "../types/archive-item-actions-delete";
 import { getArchiveItemActionsDeleteDialogTexts } from "../utils/get-archive-item-actions-delete-dialog-texts";
 import { ArchiveItemActionsButton } from "./archive-item-actions-button";
-
-type ArchiveItemActionsDeleteDialogProps = {
-  entity: "ideasList" | "scenario";
-  isDialogOpened: boolean;
-  isDeleteArchiveItemPending: boolean;
-  setIsDialogOpened: (isDialogOpened: boolean) => void;
-  onConfirmDeleteArchiveItem: () => void;
-};
 
 export function ArchiveItemActionsDeleteDialog({
   entity,
@@ -27,7 +20,7 @@ export function ArchiveItemActionsDeleteDialog({
   isDeleteArchiveItemPending,
   setIsDialogOpened,
   onConfirmDeleteArchiveItem,
-}: ArchiveItemActionsDeleteDialogProps) {
+}: ArchiveItemActionsDeleteProps) {
   const { title, description } = getArchiveItemActionsDeleteDialogTexts(entity);
 
   return (

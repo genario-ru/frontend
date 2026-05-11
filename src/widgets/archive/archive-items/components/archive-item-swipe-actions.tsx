@@ -1,16 +1,9 @@
 import { PencilIcon, TrashIcon } from "lucide-react";
 
-import { getArchiveItemActionsDeleteDialogTexts } from "@/features/archive/archive-item/utils/get-archive-item-actions-delete-dialog-texts";
+import { ArchiveItemActionsDeleteDialogDrawer } from "@/features/archive/archive-item/components/archive-item-actions-delete-drawer";
 import { getArchiveItemActionsEditLinkOptions } from "@/features/archive/archive-item/utils/get-archive-item-actions-edit-link-options";
 import { Button } from "@/shared/components/ui/button";
 import { ButtonLink } from "@/shared/components/ui/button-link";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogPredefinedHeader,
-} from "@/shared/components/ui/dialog";
 
 import { useArchiveItemActions } from "../hooks/use-archive-item-actions";
 
@@ -32,8 +25,6 @@ export function ArchiveItemSwipeActions({
     setIsDeleteArchiveItemDialogOpen,
     handleDeleteArchiveItem,
   } = useArchiveItemActions({ id, entity });
-
-  const { title, description } = getArchiveItemActionsDeleteDialogTexts(entity);
 
   return (
     <>
@@ -61,27 +52,13 @@ export function ArchiveItemSwipeActions({
           Удалить
         </Button>
       </div>
-      <Dialog
-        open={isDeleteArchiveItemDialogOpen}
-        onOpenChange={setIsDeleteArchiveItemDialogOpen}
-      >
-        <DialogContent>
-          <DialogPredefinedHeader title={title} description={description} />
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button>Отмена</Button>
-            </DialogClose>
-            <Button
-              variant="negative"
-              priority="primary"
-              state={isDeleteArchiveItemPending ? "loading" : "default"}
-              onClick={handleDeleteArchiveItem}
-            >
-              Удалить
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <ArchiveItemActionsDeleteDialogDrawer
+        entity={entity}
+        isDialogOpened={isDeleteArchiveItemDialogOpen}
+        isDeleteArchiveItemPending={isDeleteArchiveItemPending}
+        setIsDialogOpened={setIsDeleteArchiveItemDialogOpen}
+        onConfirmDeleteArchiveItem={handleDeleteArchiveItem}
+      />
     </>
   );
 }

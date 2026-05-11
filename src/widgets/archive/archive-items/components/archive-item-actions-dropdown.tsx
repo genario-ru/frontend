@@ -10,23 +10,18 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 
-import { useArchiveItemActions } from "../hooks/use-archive-item-actions";
+import type { ArchiveItemActionsProps } from "../types/archive-item-actions";
 
-type ArchiveItemActionsProps = {
-  id: string;
-  entity: "ideasList" | "scenario";
-};
-
-export function ArchiveItemActions({ id, entity }: ArchiveItemActionsProps) {
-  const {
-    isArchiveItemActionsOpened,
-    isDeleteArchiveItemDialogOpen,
-    isDeleteArchiveItemPending,
-    setIsArchiveItemActionsOpened,
-    setIsDeleteArchiveItemDialogOpen,
-    handleDeleteArchiveItem,
-  } = useArchiveItemActions({ id, entity });
-
+export function ArchiveItemActionsDropdown({
+  id,
+  entity,
+  isArchiveItemActionsOpened,
+  isDeleteArchiveItemDialogOpen,
+  isDeleteArchiveItemPending,
+  setIsArchiveItemActionsOpened,
+  setIsDeleteArchiveItemDialogOpen,
+  handleDeleteArchiveItem,
+}: ArchiveItemActionsProps) {
   return (
     <DropdownMenu
       modal={false}

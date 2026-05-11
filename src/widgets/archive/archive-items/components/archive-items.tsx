@@ -17,8 +17,8 @@ import { useReloadPage } from "@/shared/hooks/use-reload-page";
 import { checkTouchScreen } from "@/shared/utils/check-touch-screen";
 
 import { useArchiveItems } from "../hooks/use-archive-items";
-import { ArchiveItemActions } from "./archive-item-actions";
 import { ArchiveItemBadges } from "./archive-item-badges";
+import { ArchiveItemHoverActions } from "./archive-item-hover-actions";
 import { ArchiveItemSwipeActions } from "./archive-item-swipe-actions";
 
 export const ArchiveItems = () => {
@@ -84,7 +84,10 @@ export const ArchiveItems = () => {
               <ArchiveItem
                 key={item.data.id}
                 actions={
-                  <ArchiveItemActions id={item.data.id} entity={item.entity} />
+                  <ArchiveItemHoverActions
+                    id={item.data.id}
+                    entity={item.entity}
+                  />
                 }
                 className="row-span-1"
                 {...archiveItemProps}
