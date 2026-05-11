@@ -1,9 +1,13 @@
 import { BookImageIcon, LightbulbIcon } from "lucide-react";
 
-import { ButtonLink } from "@/shared/components/ui/button-link";
-import { DrawerContent, DrawerHeader } from "@/shared/components/ui/drawer";
-import { Island } from "@/shared/components/ui/island";
+import {
+  DrawerContent,
+  DrawerHeader,
+  DrawerSection,
+} from "@/shared/components/ui/drawer";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+
+import { TemplateCardMenuButtonLink } from "./template-card-menu-button-link";
 
 type TemplateCardDrawerMenuProps = {
   templateId: string;
@@ -17,9 +21,10 @@ export function TemplateCardDrawerMenu({
   return (
     <DrawerContent>
       <DrawerHeader title={templateName} description="Что создадим?" />
-      <Island roundedBottom={false} className="gap-2 p-2">
-        <ButtonLink
+      <DrawerSection roundedBottom={false}>
+        <TemplateCardMenuButtonLink
           size="lg"
+          align="start"
           to="/ideas-lists/settings"
           search={{ templateId }}
           icon={<LucideIcon icon={LightbulbIcon} />}
@@ -27,9 +32,10 @@ export function TemplateCardDrawerMenu({
           className="w-full"
         >
           Новые идеи
-        </ButtonLink>
-        <ButtonLink
+        </TemplateCardMenuButtonLink>
+        <TemplateCardMenuButtonLink
           size="lg"
+          align="start"
           to="/scenarios/settings"
           search={{ templateId }}
           icon={<LucideIcon icon={BookImageIcon} />}
@@ -37,8 +43,8 @@ export function TemplateCardDrawerMenu({
           className="w-full"
         >
           Новый сценарий
-        </ButtonLink>
-      </Island>
+        </TemplateCardMenuButtonLink>
+      </DrawerSection>
     </DrawerContent>
   );
 }

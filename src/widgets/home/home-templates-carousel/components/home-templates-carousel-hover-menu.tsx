@@ -1,12 +1,12 @@
 import { TemplateCardMenu } from "@/features/templates/template-card/components/template-card-menu";
 
-type HomeTemplatesCarouselSlideMenuProps = {
+type HomeTemplatesCarouselHoverMenuProps = {
   templateId: string;
 };
 
-export function HomeTemplatesCarouselSlideMenu({
+export function HomeTemplatesCarouselHoverMenu({
   templateId,
-}: HomeTemplatesCarouselSlideMenuProps) {
+}: HomeTemplatesCarouselHoverMenuProps) {
   return (
     <TemplateCardMenu
       templateId={templateId}

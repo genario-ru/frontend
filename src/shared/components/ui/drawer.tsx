@@ -14,6 +14,10 @@ type DrawerHeaderProps = IslandProps & {
   right?: ReactNode;
 };
 
+type DrawerSectionProps = IslandProps & {
+  title?: string;
+};
+
 type DrawerContentProps = PropsWithChildren;
 
 export const Drawer = DrawerBase.Root;
@@ -30,6 +34,8 @@ export function DrawerHeader({
   className,
   ...props
 }: DrawerHeaderProps) {
+  const hasDescription = Boolean(description);
+
   const left = useMemo(() => {
     if (leftProp) return leftProp;
 
@@ -61,11 +67,31 @@ export function DrawerHeader({
     <Island
       as="header"
       row
-      className={cn("justify-between", className)}
+      className={cn(
+        "justify-between py-3",
+        {
+          "items-center": !hasDescription,
+        },
+        className,
+      )}
       {...props}
     >
       {left}
       {right}
+    </Island>
+  );
+}
+
+export function DrawerSection({
+  title,
+  className,
+  children,
+  ...props
+}: DrawerSectionProps) {
+  return (
+    <Island className={cn("gap-2 p-2", className)} {...props}>
+      {title && <p className="text-neutral-6 font-medium">{title}</p>}
+      {children}
     </Island>
   );
 }

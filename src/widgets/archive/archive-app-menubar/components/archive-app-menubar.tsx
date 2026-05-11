@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 
 import { AppMenubar } from "@/features/navigation/app-menubar/components/app-menubar";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
-import { ArchiveAppMenubarActions } from "./archive-app-menubar-actions";
+import { ArchiveAppMenubarDrawerActions } from "./archive-app-menubar-drawer-actions";
+import { ArchiveAppMenubarDropdownActions } from "./archive-app-menubar-dropdown-actions";
 
 type ArchiveAppMenubarProps = {
   actions: ReactNode;
@@ -17,13 +19,23 @@ export function ArchiveAppMenubar({
   filters,
   wrapCenter,
 }: ArchiveAppMenubarProps) {
+  const { isMobile } = useBreakpoints();
+
+  const right = useMemo(() => {
+    if (isMobile) {
+      return <ArchiveAppMenubarDrawerActions />;
+    }
+
+    return <ArchiveAppMenubarDropdownActions />;
+  }, [isMobile]);
+
   return (
     <AppMenubar
       title="Архив"
       wrapCenter={wrapCenter}
       actions={actions}
       center={search}
-      right={<ArchiveAppMenubarActions />}
+      right={right}
       bottom={filters}
       className="overflow-hidden"
     />

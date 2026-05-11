@@ -11,9 +11,9 @@ import {
   Drawer,
   DrawerContent,
   DrawerHeader,
+  DrawerSection,
   DrawerTrigger,
 } from "@/shared/components/ui/drawer";
-import { Island } from "@/shared/components/ui/island";
 
 import { appDrawerMenuItems } from "../constants/app-drawer-menu-items";
 
@@ -30,14 +30,14 @@ export function AppDrawer() {
       />
       <DrawerContent>
         <DrawerHeader left={<Logo />} className="items-center py-3 pr-3 pl-4" />
-        <Island className="p-1">
+        <DrawerSection>
           <UserInfo
             id={sessionData.user.id}
             name={sessionData.user.name}
             email={sessionData.user.email}
           />
-        </Island>
-        <Island className="gap-1 p-1">
+        </DrawerSection>
+        <DrawerSection>
           {appDrawerMenuItems.map((item) => (
             <ButtonLink
               key={item.to}
@@ -51,16 +51,16 @@ export function AppDrawer() {
               {item.label}
             </ButtonLink>
           ))}
-        </Island>
-        <Island className="p-1">
+        </DrawerSection>
+        <DrawerSection>
           <ThemeToggle
             withText
             align="start"
             iconPosition="left"
             className="w-full"
           />
-        </Island>
-        <Island grow roundedBottom={false} className="p-1">
+        </DrawerSection>
+        <DrawerSection roundedBottom={false}>
           <Button
             variant="negative"
             priority="tertiary"
@@ -72,7 +72,7 @@ export function AppDrawer() {
           >
             Выйти
           </Button>
-        </Island>
+        </DrawerSection>
       </DrawerContent>
     </Drawer>
   );

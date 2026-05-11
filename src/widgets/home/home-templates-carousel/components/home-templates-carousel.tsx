@@ -12,7 +12,7 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/utils/cn";
 
 import { useHomeTemplatesCarousel } from "../hooks/use-home-templates-carousel";
-import { HomeTemplatesCarouselSlideMenu } from "./home-templates-carousel-slide-menu";
+import { HomeTemplatesCarouselHoverMenu } from "./home-templates-carousel-hover-menu";
 
 export function HomeTemplatesCarousel() {
   const {
@@ -81,7 +81,7 @@ export function HomeTemplatesCarousel() {
             color={template.color}
             className="group relative h-full"
           >
-            <HomeTemplatesCarouselSlideMenu templateId={template.id} />
+            <HomeTemplatesCarouselHoverMenu templateId={template.id} />
           </TemplateCard>
         </SwiperSlide>
       );

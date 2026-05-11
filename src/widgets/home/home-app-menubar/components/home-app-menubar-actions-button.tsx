@@ -14,7 +14,8 @@ export function HomeAppMenubarActionsButtonLink({
     <ButtonLink
       priority="tertiary"
       rounding="base"
-      className={cn("w-full justify-start", className)}
+      align="start"
+      className={cn("w-full", className)}
       {...props}
     />
   );

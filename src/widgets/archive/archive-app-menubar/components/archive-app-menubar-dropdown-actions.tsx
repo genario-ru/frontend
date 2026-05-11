@@ -8,9 +8,9 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 
-import { HomeAppMenubarActionsButtonLink } from "./home-app-menubar-actions-button";
+import { ArchiveAppMenubarActionsButtonLink } from "./archive-app-menubar-actions-button-link";
 
-export function HomeAppMenubarActions() {
+export function ArchiveAppMenubarDropdownActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
@@ -20,18 +20,20 @@ export function HomeAppMenubarActions() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <HomeAppMenubarActionsButtonLink
+          <ArchiveAppMenubarActionsButtonLink
+            priority="tertiary"
             icon={<LightbulbIcon />}
             to="/ideas-lists/settings"
           >
             Новые идеи
-          </HomeAppMenubarActionsButtonLink>
-          <HomeAppMenubarActionsButtonLink
+          </ArchiveAppMenubarActionsButtonLink>
+          <ArchiveAppMenubarActionsButtonLink
+            priority="tertiary"
             icon={<BookImageIcon />}
             to="/scenarios/settings"
           >
             Новый сценарий
-          </HomeAppMenubarActionsButtonLink>
+          </ArchiveAppMenubarActionsButtonLink>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
