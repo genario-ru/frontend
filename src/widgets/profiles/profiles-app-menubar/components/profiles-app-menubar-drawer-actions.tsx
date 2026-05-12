@@ -22,7 +22,7 @@ export function ProfilesAppMenubarDrawerActions() {
         }
       />
       <DrawerContent>
-        <DrawerHeader title="Какой профиль создадим?" />
+        <DrawerHeader title="Как создадим профиль?" />
         <DrawerSection roundedBottom={false}>
           <ProfilesAppMenubarActionsButtonLink
             size="lg"

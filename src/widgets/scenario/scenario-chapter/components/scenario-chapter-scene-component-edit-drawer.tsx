@@ -32,16 +32,17 @@ export function ScenarioChapterSceneComponentEditDialogDrawer({
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
       <DrawerContent>
         <DrawerHeader title={componentName} />
-        <form onSubmit={onFormSubmit} className="flex flex-col">
+        <form onSubmit={onFormSubmit} className="flex flex-col gap-2">
           <DrawerSection>
             <form.AppField name="content">
               {(field) => <field.TextareaField />}
             </form.AppField>
           </DrawerSection>
           <DrawerSection row roundedBottom={false} className="justify-between">
-            <DrawerClose render={<Button>Отмена</Button>} />
+            <DrawerClose render={<Button size="lg">Отмена</Button>} />
             <form.AppForm>
               <form.SubmitButton
+                size="lg"
                 state={
                   isUpdateScenarioSceneComponentPending ? "loading" : "default"
                 }

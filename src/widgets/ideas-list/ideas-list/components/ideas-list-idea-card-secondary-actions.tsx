@@ -32,6 +32,7 @@ export function IdeasListIdeaCardSecondaryActions({
   initialDescription,
 }: IdeasListIdeaCardSecondaryActionsProps) {
   const { isMobile } = useBreakpoints();
+
   const {
     isOptimisticSaved,
     isMenuOpen,
@@ -42,6 +43,7 @@ export function IdeasListIdeaCardSecondaryActions({
     ideaId,
     initialSaved,
   });
+
   const {
     form,
     isUpdateIdeaPending,
@@ -54,6 +56,7 @@ export function IdeasListIdeaCardSecondaryActions({
     initialDescription,
     handleCloseMenu,
   });
+
   const {
     isDeleteDialogOpen,
     isDeleteIdeaPending,

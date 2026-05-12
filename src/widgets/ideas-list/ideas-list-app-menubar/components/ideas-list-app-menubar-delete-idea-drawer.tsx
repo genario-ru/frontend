@@ -34,8 +34,9 @@ export function IdeasListAppMenubarDeleteIdeaDialogDrawer({
           description="Вы уверены, что хотите удалить список идей?"
         />
         <DrawerSection row roundedBottom={false} className="justify-between">
-          <DrawerClose render={<Button>Отмена</Button>} />
+          <DrawerClose render={<Button size="lg">Отмена</Button>} />
           <Button
+            size="lg"
             priority="primary"
             variant="negative"
             state={isDeleteIdeasListPending ? "loading" : "default"}

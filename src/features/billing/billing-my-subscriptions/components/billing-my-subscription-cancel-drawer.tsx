@@ -32,12 +32,13 @@ export function BillingMySubscriptionCancelDialogDrawer({
         <DrawerSection row roundedBottom={false} className="justify-between">
           <DrawerClose
             render={
-              <Button variant="neutral" priority="secondary">
+              <Button size="lg" variant="neutral" priority="secondary">
                 Отмена
               </Button>
             }
           />
           <Button
+            size="lg"
             variant="negative"
             priority="primary"
             state={isPending ? "loading" : "default"}

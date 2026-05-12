@@ -29,8 +29,15 @@ export function SettingsDeleteAccountDrawer({
       <DrawerContent>
         <DrawerHeader title={title} description={description} />
         <DrawerSection row roundedBottom={false} className="justify-between">
-          <DrawerClose render={<Button type="button">Отмена</Button>} />
+          <DrawerClose
+            render={
+              <Button size="lg" type="button">
+                Отмена
+              </Button>
+            }
+          />
           <Button
+            size="lg"
             priority="primary"
             variant="negative"
             className="ml-auto"

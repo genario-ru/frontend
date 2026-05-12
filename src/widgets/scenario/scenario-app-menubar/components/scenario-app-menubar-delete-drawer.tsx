@@ -34,8 +34,9 @@ export function ScenarioAppMenubarDeleteDialogDrawer({
           description="После удаления сценарий нельзя будет восстановить"
         />
         <DrawerSection row roundedBottom={false} className="justify-between">
-          <DrawerClose render={<Button>Отмена</Button>} />
+          <DrawerClose render={<Button size="lg">Отмена</Button>} />
           <Button
+            size="lg"
             variant="negative"
             priority="primary"
             state={isDeleteScenarioPending ? "loading" : "default"}

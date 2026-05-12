@@ -1,4 +1,9 @@
-import { EllipsisIcon, PencilIcon, TrashIcon, WandSparklesIcon } from "lucide-react";
+import {
+  EllipsisIcon,
+  PencilIcon,
+  TrashIcon,
+  WandSparklesIcon,
+} from "lucide-react";
 
 import { AppMenubarButton } from "@/features/navigation/app-menubar/components/app-menubar-button";
 import { AppMenubarButtonLink } from "@/features/navigation/app-menubar/components/app-menubar-button-link";
@@ -15,8 +20,8 @@ import { SPACE } from "@/shared/constants/unicode";
 
 import { useIdeasListAppMenubarDeleteIdeaDialog } from "../hooks/use-ideas-list-app-menubar-delete-idea-dialog";
 import { useIdeasListAppMenubarExportSubmenu } from "../hooks/use-ideas-list-app-menubar-export-submenu";
-import { useIdeasListAppMenubarMoreIdeasDialog } from "../hooks/use-ideas-list-app-menubar-more-ideas-dialog";
 import { useIdeasListAppMenubarMoreActions } from "../hooks/use-ideas-list-app-menubar-more-actions";
+import { useIdeasListAppMenubarMoreIdeasDialog } from "../hooks/use-ideas-list-app-menubar-more-ideas-dialog";
 import { IdeasListAppMenubarDeleteIdeaDialogDrawer } from "./ideas-list-app-menubar-delete-idea-drawer";
 import { IdeasListAppMenubarMoreIdeasDialogDrawer } from "./ideas-list-app-menubar-more-ideas-drawer";
 
@@ -61,7 +66,9 @@ export function IdeasListAppMenubarMoreActionsDrawer({
     <>
       <Drawer open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
         <DrawerTrigger
-          render={<AppMenubarButton priority="tertiary" icon={<EllipsisIcon />} />}
+          render={
+            <AppMenubarButton priority="tertiary" icon={<EllipsisIcon />} />
+          }
         />
         <DrawerContent>
           <DrawerHeader title="Действия" />

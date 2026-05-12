@@ -37,7 +37,7 @@ export function ScenarioAppMenubarImproveDialogDrawer({
           title="Улучшить сценарий"
           description="Опишите, что бы вы хотели улучшить или что вас в нем не устраивает"
         />
-        <form onSubmit={onFormSubmit} className="flex flex-col">
+        <form onSubmit={onFormSubmit} className="flex flex-col gap-2">
           <DrawerSection>
             <form.AppField name="prompt">
               {(field) => (
@@ -46,9 +46,10 @@ export function ScenarioAppMenubarImproveDialogDrawer({
             </form.AppField>
           </DrawerSection>
           <DrawerSection row roundedBottom={false} className="justify-between">
-            <DrawerClose render={<Button>Отмена</Button>} />
+            <DrawerClose render={<Button size="lg">Отмена</Button>} />
             <form.AppForm>
               <form.SubmitButton
+                size="lg"
                 state={isImproveDialogPending ? "loading" : "default"}
               >
                 Улучшить

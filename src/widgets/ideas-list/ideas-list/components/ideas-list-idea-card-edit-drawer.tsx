@@ -37,7 +37,7 @@ export function IdeasListIdeaCardEditDialogDrawer({
           title="Редактировать идею"
           description="Измените название и контент идеи вручную"
         />
-        <form onSubmit={onFormSubmit} className="flex flex-col">
+        <form onSubmit={onFormSubmit} className="flex flex-col gap-2">
           <DrawerSection>
             <form.AppField name="name">
               {(field) => (
@@ -58,9 +58,10 @@ export function IdeasListIdeaCardEditDialogDrawer({
             </form.AppField>
           </DrawerSection>
           <DrawerSection row roundedBottom={false} className="justify-between">
-            <DrawerClose render={<Button>Отмена</Button>} />
+            <DrawerClose render={<Button size="lg">Отмена</Button>} />
             <form.AppForm>
               <form.SubmitButton
+                size="lg"
                 state={isUpdateIdeaPending ? "loading" : "default"}
               >
                 Сохранить

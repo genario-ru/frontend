@@ -30,8 +30,9 @@ export function MyProfileSwipeActionsDeleteDrawer({
           description={`Вы уверены, что хотите удалить профиль "${profileName}"?`}
         />
         <DrawerSection row roundedBottom={false} className="justify-between">
-          <DrawerClose render={<Button>Отмена</Button>} />
+          <DrawerClose render={<Button size="lg">Отмена</Button>} />
           <Button
+            size="lg"
             variant="negative"
             priority="primary"
             state={isPending ? "loading" : "default"}

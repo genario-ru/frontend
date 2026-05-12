@@ -28,7 +28,9 @@ export function SettingsChangeEmailSuccessDrawer({
         <DrawerSection row roundedBottom={false} className="justify-end">
           <DrawerClose
             render={
-              <Button priority="primary">{DIALOG_CLOSE_BUTTON_TEXT}</Button>
+              <Button size="lg" priority="primary">
+                {DIALOG_CLOSE_BUTTON_TEXT}
+              </Button>
             }
           />
         </DrawerSection>

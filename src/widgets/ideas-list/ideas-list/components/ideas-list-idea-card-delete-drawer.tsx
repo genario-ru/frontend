@@ -34,8 +34,9 @@ export function IdeasListIdeaCardDeleteDialogDrawer({
           description="После удаления идею нельзя будет восстановить"
         />
         <DrawerSection row roundedBottom={false} className="justify-between">
-          <DrawerClose render={<Button>Отмена</Button>} />
+          <DrawerClose render={<Button size="lg">Отмена</Button>} />
           <Button
+            size="lg"
             priority="primary"
             variant="negative"
             state={isDeleteIdeaPending ? "loading" : "default"}

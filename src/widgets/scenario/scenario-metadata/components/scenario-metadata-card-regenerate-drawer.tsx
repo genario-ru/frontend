@@ -32,10 +32,10 @@ export function ScenarioMetadataCardRegenerateDrawer({
     <Drawer open={isOpen} onOpenChange={onOpenChange}>
       <DrawerContent>
         <DrawerHeader
-          title={`Повторно сгенерировать метаданные для ${platformName}`}
+          title={`Изменить метаданные для ${platformName}`}
           description="Добавьте необязательные инструкции, если хотите уточнить результат для этой платформы"
         />
-        <form onSubmit={onFormSubmit} className="flex flex-col">
+        <form onSubmit={onFormSubmit} className="flex flex-col gap-2">
           <DrawerSection>
             <form.AppField name="prompt">
               {(field) => (
@@ -44,9 +44,12 @@ export function ScenarioMetadataCardRegenerateDrawer({
             </form.AppField>
           </DrawerSection>
           <DrawerSection row roundedBottom={false} className="justify-between">
-            <DrawerClose render={<Button>Отмена</Button>} />
+            <DrawerClose render={<Button size="lg">Отмена</Button>} />
             <form.AppForm>
-              <form.SubmitButton state={isPending ? "loading" : "default"}>
+              <form.SubmitButton
+                size="lg"
+                state={isPending ? "loading" : "default"}
+              >
                 Сгенерировать повторно
               </form.SubmitButton>
             </form.AppForm>
