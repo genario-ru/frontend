@@ -1,6 +1,7 @@
 import { RotateCwIcon } from "lucide-react";
 
 import { BillingMySubscriptionCancelDialog } from "@/features/billing/billing-my-subscriptions/components/billing-my-subscription-cancel-dialog";
+import { BillingMySubscriptionCancelDialogDrawer } from "@/features/billing/billing-my-subscriptions/components/billing-my-subscription-cancel-drawer";
 import { BillingMySubscriptionCard } from "@/features/billing/billing-my-subscriptions/components/billing-my-subscription-card";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
@@ -16,6 +17,7 @@ import { BillingMySubscriptionSwipeActions } from "./billing-my-subscription-swi
 export function BillingMySubscriptionsList() {
   const {
     visibleSubscriptions,
+    isMobile,
     selectedSubscription,
     showCancelDialog,
     showSwipeActions,
@@ -88,13 +90,25 @@ export function BillingMySubscriptionsList() {
         })}
       </div>
       {showCancelDialog && selectedSubscription && (
-        <BillingMySubscriptionCancelDialog
-          subscriptionName={selectedSubscription.tariff.name}
-          isOpen={isCancelDialogOpen}
-          isPending={isCancelSubscriptionPending}
-          setIsOpen={setIsCancelDialogOpen}
-          onConfirm={handleCancelSubscription}
-        />
+        <>
+          {isMobile ? (
+            <BillingMySubscriptionCancelDialogDrawer
+              subscriptionName={selectedSubscription.tariff.name}
+              isOpen={isCancelDialogOpen}
+              isPending={isCancelSubscriptionPending}
+              setIsOpen={setIsCancelDialogOpen}
+              onConfirm={handleCancelSubscription}
+            />
+          ) : (
+            <BillingMySubscriptionCancelDialog
+              subscriptionName={selectedSubscription.tariff.name}
+              isOpen={isCancelDialogOpen}
+              isPending={isCancelSubscriptionPending}
+              setIsOpen={setIsCancelDialogOpen}
+              onConfirm={handleCancelSubscription}
+            />
+          )}
+        </>
       )}
     </>
   );

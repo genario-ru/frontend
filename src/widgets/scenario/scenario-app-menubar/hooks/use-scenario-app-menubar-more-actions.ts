@@ -1,8 +1,10 @@
 import { useCallback, useMemo, useState } from "react";
 
 import { useGetActiveSubscriptionTariff } from "@/actions/subscriptions/hooks/use-get-active-subscription-tariff";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 export function useScenarioAppMenubarMoreActions() {
+  const { isMobile } = useBreakpoints();
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const { activeSubscriptionTariff } = useGetActiveSubscriptionTariff();
 
@@ -19,6 +21,7 @@ export function useScenarioAppMenubarMoreActions() {
   }, []);
 
   return {
+    isMobile,
     isDropdownMenuOpen,
     isExportAvailable,
     isVersionHistoryAvailable,

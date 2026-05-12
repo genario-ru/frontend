@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -10,29 +10,21 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useIdeasListIdeaCardDeleteDialog } from "../hooks/use-ideas-list-idea-card-delete-dialog";
-
 type IdeasListIdeaCardDeleteDialogProps = {
-  ideaId: string;
-  trigger: ReactNode;
-  handleCloseMenu?: () => void;
+  trigger: ReactElement;
+  isDeleteDialogOpen: boolean;
+  isDeleteIdeaPending: boolean;
+  setIsDeleteDialogOpen: (isOpen: boolean) => void;
+  handleConfirmDeleteButtonClick: () => void;
 };
 
 export function IdeasListIdeaCardDeleteDialog({
-  ideaId,
   trigger,
-  handleCloseMenu,
+  isDeleteDialogOpen,
+  isDeleteIdeaPending,
+  setIsDeleteDialogOpen,
+  handleConfirmDeleteButtonClick,
 }: IdeasListIdeaCardDeleteDialogProps) {
-  const {
-    isDeleteDialogOpen,
-    isDeleteIdeaPending,
-    setIsDeleteDialogOpen,
-    handleConfirmDeleteButtonClick,
-  } = useIdeasListIdeaCardDeleteDialog({
-    ideaId,
-    handleCloseMenu,
-  });
-
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>

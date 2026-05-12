@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { FormEvent, ReactElement } from "react";
 
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -11,36 +11,25 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useIdeasListIdeaCardEditDialog } from "../hooks/use-ideas-list-idea-card-edit-dialog";
+import type { useIdeasListIdeaCardEditDialog } from "../hooks/use-ideas-list-idea-card-edit-dialog";
 
 type IdeasListIdeaCardEditDialogProps = {
-  ideaId: string;
-  initialName?: string | null;
-  initialDescription?: string | null;
-  trigger: ReactNode;
-  handleCloseMenu?: () => void;
+  trigger: ReactElement;
+  form: ReturnType<typeof useIdeasListIdeaCardEditDialog>["form"];
+  isUpdateIdeaPending: boolean;
+  isEditDialogOpen: boolean;
+  setIsEditDialogOpen: (isOpen: boolean) => void;
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
 export function IdeasListIdeaCardEditDialog({
-  ideaId,
-  initialName,
-  initialDescription,
   trigger,
-  handleCloseMenu,
+  form,
+  isUpdateIdeaPending,
+  isEditDialogOpen,
+  setIsEditDialogOpen,
+  onFormSubmit,
 }: IdeasListIdeaCardEditDialogProps) {
-  const {
-    form,
-    isUpdateIdeaPending,
-    isEditDialogOpen,
-    setIsEditDialogOpen,
-    onFormSubmit,
-  } = useIdeasListIdeaCardEditDialog({
-    ideaId,
-    initialName,
-    initialDescription,
-    handleCloseMenu,
-  });
-
   return (
     <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>

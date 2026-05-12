@@ -13,17 +13,27 @@ import {
   CommandList,
   CommandLoading,
 } from "@/shared/components/ui/command";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerSection,
+  DrawerTrigger,
+} from "@/shared/components/ui/drawer";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/shared/components/ui/popover";
+import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { cn } from "@/shared/utils/cn";
 
 import { useFieldContext } from "..";
 
 const DEFAULT_EMPTY_VALUE_PLACEHOLDER = "Выбрать значение";
+const DEFAULT_DRAWER_TITLE = "Выбор значения";
 const EMPTY_CAPTION = "Результатов по запросу не найдено";
 
 type SelectFieldItem = {
@@ -46,22 +56,12 @@ type SelectFieldProps = {
   buttonProps?: ButtonProps;
 };
 
-const SelectFieldOptionData = ({
-  icon,
-  label,
-  description,
-}: SelectFieldItem) => {
-  return (
-    <div className="flex w-full flex-col gap-1">
-      <div className="flex items-center gap-2">
-        {icon}
-        {label}
-      </div>
-      {description && (
-        <p className="text-neutral-6 text-left text-sm">{description}</p>
-      )}
-    </div>
-  );
+type SelectFieldContentProps = {
+  itemGroups: SelectFieldProps["itemGroups"];
+  value: string | undefined;
+  isLoading?: boolean;
+  onSelect: (nextValue: string) => void;
+  onBlur: () => void;
 };
 
 export const SelectField = ({
@@ -71,9 +71,10 @@ export const SelectField = ({
   isLoading,
   className,
   buttonProps,
-  ...props
+  itemGroups,
 }: SelectFieldProps) => {
   const [open, setOpen] = useState(false);
+  const { isMobile } = useBreakpoints();
 
   const {
     state: { value },
@@ -87,80 +88,185 @@ export const SelectField = ({
 
     if (!value) return defaultItem;
 
-    const items = props.itemGroups.map((group) => group.items).flat();
-    const item = items.find((item) => item.value === value);
+    const items = itemGroups.map((group) => group.items).flat();
+    const item = items.find((currentItem) => currentItem.value === value);
 
     return item ?? defaultItem;
-  }, [value, emptyValuePlaceholder, props]);
+  }, [value, emptyValuePlaceholder, itemGroups]);
 
   const errors: string[] = useStore(store, (state) => state.meta.errors);
 
+  const trigger = (
+    <Button
+      type="button"
+      priority="secondary"
+      aria-expanded={open}
+      state={errors.length > 0 ? "error" : "default"}
+      icon={<LucideIcon icon={ChevronDownIcon} />}
+      className={cn("text-neutral-6 w-full justify-between", {
+        "text-neutral-8": value && value.length > 0,
+      })}
+      {...buttonProps}
+    >
+      <SelectFieldOptionData
+        icon={triggerItem.icon}
+        label={triggerItem.label}
+        value={triggerItem.value}
+      />
+    </Button>
+  );
+
   return (
     <FieldLayout labelText={label} message={errors[0]} className={className}>
-      <Popover open={open} onOpenChange={setOpen} modal={false}>
-        <PopoverTrigger asChild>
-          <Button
-            aria-expanded={open}
-            priority="secondary"
-            state={errors.length > 0 ? "error" : "default"}
-            icon={<LucideIcon icon={ChevronDownIcon} />}
-            className={cn("text-neutral-6 w-full justify-between", {
-              "text-neutral-8": value && value.length > 0,
-            })}
-            {...buttonProps}
-          >
-            <SelectFieldOptionData
-              icon={triggerItem.icon}
-              label={triggerItem.label}
-              value={triggerItem.value}
+      {isMobile ? (
+        <Drawer open={open} onOpenChange={setOpen}>
+          <DrawerTrigger render={trigger} />
+          <DrawerContent>
+            <DrawerHeader title={label || DEFAULT_DRAWER_TITLE} />
+            <SelectFieldMobileContent
+              itemGroups={itemGroups}
+              value={value}
+              isLoading={isLoading}
+              onBlur={handleBlur}
+              onSelect={(nextValue) => {
+                handleChange(nextValue);
+                setOpen(false);
+              }}
             />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent
-          className="p-0"
-          sideOffset={8}
-          portalContainerRef={portalContainerRef}
-        >
-          <Command shouldFilter={false} loop={true}>
-            <CommandInput className="sr-only" />
-            <CommandList>
-              {isLoading ? (
-                <CommandLoading />
-              ) : props.itemGroups.length === 0 ? (
-                <CommandEmpty>{EMPTY_CAPTION}</CommandEmpty>
-              ) : (
-                props.itemGroups.map((group) => (
-                  <CommandGroup
-                    key={`command-group-${group.label}`}
-                    heading={group.label}
-                  >
-                    {group.items.map((item) => {
-                      const handleSelect = () => {
-                        if (value === item.value) return;
-
-                        handleChange(item.value);
-                        setOpen(false);
-                      };
-
-                      return (
-                        <CommandItem
-                          key={item.value}
-                          value={item.value}
-                          isActive={value === item.value}
-                          onBlur={handleBlur}
-                          onSelect={handleSelect}
-                        >
-                          <SelectFieldOptionData {...item} />
-                        </CommandItem>
-                      );
-                    })}
-                  </CommandGroup>
-                ))
-              )}
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Popover open={open} onOpenChange={setOpen} modal={false}>
+          <PopoverTrigger asChild>{trigger}</PopoverTrigger>
+          <PopoverContent
+            className="p-0"
+            sideOffset={8}
+            portalContainerRef={portalContainerRef}
+          >
+            <SelectFieldCommandContent
+              itemGroups={itemGroups}
+              value={value}
+              isLoading={isLoading}
+              onBlur={handleBlur}
+              onSelect={(nextValue) => {
+                handleChange(nextValue);
+                setOpen(false);
+              }}
+            />
+          </PopoverContent>
+        </Popover>
+      )}
     </FieldLayout>
   );
 };
+
+function SelectFieldOptionData({ icon, label, description }: SelectFieldItem) {
+  return (
+    <div className="flex w-full flex-col gap-1">
+      <div className="flex items-center gap-2">
+        {icon}
+        {label}
+      </div>
+      {description && (
+        <p className="text-neutral-6 text-left text-sm">{description}</p>
+      )}
+    </div>
+  );
+}
+
+function SelectFieldCommandContent({
+  itemGroups,
+  value,
+  isLoading,
+  onSelect,
+  onBlur,
+}: SelectFieldContentProps) {
+  return (
+    <Command shouldFilter={false} loop={true}>
+      <CommandInput className="sr-only" />
+      <CommandList>
+        {isLoading ? (
+          <CommandLoading />
+        ) : itemGroups.length === 0 ? (
+          <CommandEmpty>{EMPTY_CAPTION}</CommandEmpty>
+        ) : (
+          itemGroups.map((group) => (
+            <CommandGroup
+              key={`command-group-${group.label}`}
+              heading={group.label}
+            >
+              {group.items.map((item) => {
+                const handleSelect = () => {
+                  if (value === item.value) return;
+
+                  onSelect(item.value);
+                };
+
+                return (
+                  <CommandItem
+                    key={item.value}
+                    value={item.value}
+                    isActive={value === item.value}
+                    onBlur={onBlur}
+                    onSelect={handleSelect}
+                  >
+                    <SelectFieldOptionData {...item} />
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          ))
+        )}
+      </CommandList>
+    </Command>
+  );
+}
+
+function SelectFieldMobileContent({
+  itemGroups,
+  value,
+  isLoading,
+  onSelect,
+  onBlur,
+}: SelectFieldContentProps) {
+  if (isLoading) {
+    return <p className="text-neutral-6 px-4 py-3 text-sm">Загрузка...</p>;
+  }
+
+  if (itemGroups.length === 0) {
+    return <p className="text-neutral-6 px-4 py-3 text-sm">{EMPTY_CAPTION}</p>;
+  }
+
+  return (
+    <RadioGroup
+      value={value}
+      onValueChange={(nextValue) => {
+        if (value === nextValue) return;
+
+        onSelect(nextValue as string);
+      }}
+      className="gap-1"
+    >
+      {itemGroups.map((group, groupIndex) => (
+        <DrawerSection
+          key={`mobile-select-group-${group.label}-${groupIndex}`}
+          title={group.label ?? undefined}
+          roundedBottom={
+            groupIndex === itemGroups.length - 1 ? false : undefined
+          }
+        >
+          {group.items.map((item) => (
+            <RadioGroupItem
+              key={item.value}
+              value={item.value}
+              rounding="base"
+              onBlur={onBlur}
+            >
+              <SelectFieldOptionData {...item} />
+            </RadioGroupItem>
+          ))}
+        </DrawerSection>
+      ))}
+    </RadioGroup>
+  );
+}

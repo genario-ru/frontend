@@ -2,7 +2,8 @@ import { AppMenubar } from "@/features/navigation/app-menubar/components/app-men
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { AppDrawer } from "@/widgets/navigation/app-drawer/components/app-drawer";
 
-import { ProfilesAppMenubarActions } from "./profiles-app-menubar-actions";
+import { ProfilesAppMenubarDrawerActions } from "./profiles-app-menubar-drawer-actions";
+import { ProfilesAppMenubarDropdownActions } from "./profiles-app-menubar-dropdown-actions";
 
 export function ProfilesAppMenubar() {
   const { isMobile } = useBreakpoints();
@@ -11,7 +12,13 @@ export function ProfilesAppMenubar() {
     <AppMenubar
       actions={isMobile && <AppDrawer />}
       title="Профили"
-      right={<ProfilesAppMenubarActions />}
+      right={
+        isMobile ? (
+          <ProfilesAppMenubarDrawerActions />
+        ) : (
+          <ProfilesAppMenubarDropdownActions />
+        )
+      }
     />
   );
 }

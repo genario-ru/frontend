@@ -2,15 +2,9 @@ import { PencilIcon, TrashIcon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
 import { ButtonLink } from "@/shared/components/ui/button-link";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogPredefinedHeader,
-} from "@/shared/components/ui/dialog";
 
 import { useMyProfileActions } from "../hooks/use-my-profile-actions";
+import { MyProfileSwipeActionsDeleteDrawer } from "./my-profile-swipe-actions-delete-drawer";
 
 type MyProfileSwipeActionsProps = {
   profileId: string;
@@ -63,30 +57,13 @@ export function MyProfileSwipeActions({
           Удалить
         </Button>
       </div>
-      <Dialog
-        open={isDeleteProfileDialogOpened}
-        onOpenChange={setIsDeleteProfileDialogOpened}
-      >
-        <DialogContent>
-          <DialogPredefinedHeader
-            title="Удаление профиля"
-            description={`Вы уверены, что хотите удалить профиль "${profileName}"?`}
-          />
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button>Отмена</Button>
-            </DialogClose>
-            <Button
-              variant="negative"
-              priority="primary"
-              state={isDeleteProfilePending ? "loading" : "default"}
-              onClick={handleDeleteProfile}
-            >
-              Удалить
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <MyProfileSwipeActionsDeleteDrawer
+        profileName={profileName}
+        isOpen={isDeleteProfileDialogOpened}
+        isPending={isDeleteProfilePending}
+        setIsOpen={setIsDeleteProfileDialogOpened}
+        onConfirm={handleDeleteProfile}
+      />
     </>
   );
 }

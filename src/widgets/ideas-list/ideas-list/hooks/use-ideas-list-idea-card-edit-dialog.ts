@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useUpdateIdea } from "@/actions/ideas/hooks/use-update-idea";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { useToast } from "@/shared/hooks/use-toast";
 
 import type { IdeasListIdeaCardEditFormSchema } from "../types/ideas-list-idea-card-edit-form-types";
@@ -21,6 +22,7 @@ export function useIdeasListIdeaCardEditDialog({
   initialDescription,
   handleCloseMenu,
 }: UseIdeasListIdeaCardEditDialogParams) {
+  const { isMobile } = useBreakpoints();
   const { showErrorToast } = useToast();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
@@ -65,6 +67,7 @@ export function useIdeasListIdeaCardEditDialog({
 
   return {
     form,
+    isMobile,
     isUpdateIdeaPending,
     isEditDialogOpen,
     onFormSubmit,

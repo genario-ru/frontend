@@ -1,27 +1,17 @@
-import { Button } from "@/shared/components/ui/button";
-import {
-  Dialog,
-  DialogBody,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/shared/components/ui/dialog";
 import { IslandSection } from "@/shared/components/ui/island";
 
 import { useSettingsChangeEmailForm } from "../hooks/use-settings-change-email-form";
+import { SettingsChangeEmailSuccessDialog } from "./settings-change-email-success-dialog";
+import { SettingsChangeEmailSuccessDrawer } from "./settings-change-email-success-drawer";
 
 const ISLAND_TITLE = "Email";
 const ISLAND_DESCRIPTION =
   "Вам будет отправлено письмо для подтверждения на новый Email";
-const DIALOG_TITLE = "Подтверждение смены Email";
-const DIALOG_DESCRIPTION =
-  "Письмо для подтверждения было отправлено на ваш новый Email";
-const DIALOG_CLOSE_BUTTON_TEXT = "Хорошо, спасибо";
 
 export function SettingsChangeEmailForm() {
   const {
     form,
+    isMobile,
     isEmailSentDialogOpen,
     setIsEmailSentDialogOpen,
     onFormSubmit,
@@ -41,22 +31,17 @@ export function SettingsChangeEmailForm() {
           </form.SubmitButton>
         </form.AppForm>
       </form>
-      <Dialog
-        open={isEmailSentDialogOpen}
-        onOpenChange={setIsEmailSentDialogOpen}
-      >
-        <DialogContent>
-          <DialogBody>
-            <DialogTitle>{DIALOG_TITLE}</DialogTitle>
-            <DialogDescription>{DIALOG_DESCRIPTION}</DialogDescription>
-            <DialogClose asChild>
-              <Button priority="primary" className="ml-auto">
-                {DIALOG_CLOSE_BUTTON_TEXT}
-              </Button>
-            </DialogClose>
-          </DialogBody>
-        </DialogContent>
-      </Dialog>
+      {isMobile ? (
+        <SettingsChangeEmailSuccessDrawer
+          isOpen={isEmailSentDialogOpen}
+          onOpenChange={setIsEmailSentDialogOpen}
+        />
+      ) : (
+        <SettingsChangeEmailSuccessDialog
+          isOpen={isEmailSentDialogOpen}
+          onOpenChange={setIsEmailSentDialogOpen}
+        />
+      )}
     </IslandSection>
   );
 }

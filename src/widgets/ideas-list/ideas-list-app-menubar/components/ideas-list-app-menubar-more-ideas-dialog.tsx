@@ -1,7 +1,6 @@
-import { WandSparklesIcon } from "lucide-react";
+import type { FormEvent, ReactElement } from "react";
 
-import { AppMenubarButton } from "@/features/navigation/app-menubar/components/app-menubar-button";
-import { Button, type ButtonProps } from "@/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogBody,
@@ -12,39 +11,35 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useIdeasListAppMenubarMoreIdeasDialog } from "../hooks/use-ideas-list-app-menubar-more-ideas-dialog";
+import type { useIdeasListAppMenubarMoreIdeasDialog } from "../hooks/use-ideas-list-app-menubar-more-ideas-dialog";
 
 type IdeasListAppMenubarMoreIdeasDialogProps = {
-  ideasListId: string;
-  triggerProps?: ButtonProps;
+  trigger: ReactElement;
+  form: ReturnType<typeof useIdeasListAppMenubarMoreIdeasDialog>["form"];
+  isMoreIdeasDialogOpen: boolean;
+  isGenerateMoreIdeasPending: boolean;
+  setIsMoreIdeasDialogOpen: (isOpen: boolean) => void;
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
 export function IdeasListAppMenubarMoreIdeasDialog({
-  ideasListId,
-  triggerProps,
+  trigger,
+  form,
+  isMoreIdeasDialogOpen,
+  isGenerateMoreIdeasPending,
+  setIsMoreIdeasDialogOpen,
+  onFormSubmit,
 }: IdeasListAppMenubarMoreIdeasDialogProps) {
-  const {
-    form,
-    isMoreIdeasDialogOpen,
-    isGenerateMoreIdeasPending,
-    setIsMoreIdeasDialogOpen,
-    onFormSubmit,
-  } = useIdeasListAppMenubarMoreIdeasDialog({ ideasListId });
-
   return (
     <Dialog
       open={isMoreIdeasDialogOpen}
       onOpenChange={setIsMoreIdeasDialogOpen}
     >
-      <DialogTrigger asChild>
-        <AppMenubarButton icon={<WandSparklesIcon />} {...triggerProps}>
-          Больше идей
-        </AppMenubarButton>
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
           title="Сгенерировать еще идей"
-          description="Опищите ниже, если бы вы хотели как-то изменить или улучшить в резултаты"
+          description="Опишите ниже, если бы вы хотели как-то изменить или улучшить результаты"
         />
         <form onSubmit={onFormSubmit} className="flex flex-col">
           <DialogBody>

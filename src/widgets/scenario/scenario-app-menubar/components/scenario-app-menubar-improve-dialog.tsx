@@ -1,6 +1,6 @@
-import { WandSparklesIcon } from "lucide-react";
+import type { FormEvent, ReactElement } from "react";
 
-import { Button, type ButtonProps } from "@/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogBody,
@@ -11,36 +11,28 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useScenarioAppMenubarImproveDialog } from "../hooks/use-scenario-app-menubar-improve-dialog";
+import type { useScenarioAppMenubarImproveDialog } from "../hooks/use-scenario-app-menubar-improve-dialog";
 
-type ScenarioAppMenubarImproveDialogParams = {
-  scenarioId: string;
-  triggerProps?: ButtonProps;
+type ScenarioAppMenubarImproveDialogProps = {
+  trigger: ReactElement;
+  form: ReturnType<typeof useScenarioAppMenubarImproveDialog>["form"];
+  isImproveDialogOpen: boolean;
+  isImproveDialogPending: boolean;
+  setIsImproveDialogOpen: (isOpen: boolean) => void;
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
 export function ScenarioAppMenubarImproveDialog({
-  scenarioId,
-  triggerProps,
-}: ScenarioAppMenubarImproveDialogParams) {
-  const {
-    form,
-    isImproveDialogOpen,
-    isImproveDialogPending,
-    setIsImproveDialogOpen,
-    onFormSubmit,
-  } = useScenarioAppMenubarImproveDialog({ scenarioId });
-
+  trigger,
+  form,
+  isImproveDialogOpen,
+  isImproveDialogPending,
+  setIsImproveDialogOpen,
+  onFormSubmit,
+}: ScenarioAppMenubarImproveDialogProps) {
   return (
     <Dialog open={isImproveDialogOpen} onOpenChange={setIsImproveDialogOpen}>
-      <DialogTrigger asChild>
-        <Button
-          priority="tertiary"
-          icon={<WandSparklesIcon />}
-          {...triggerProps}
-        >
-          Улучшить
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader
           title="Улучшить сценарий"

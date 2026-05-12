@@ -10,7 +10,7 @@ import {
 
 import { ProfilesAppMenubarActionsButtonLink } from "./profiles-app-menubar-actions-button-link";
 
-export function ProfilesAppMenubarActions() {
+export function ProfilesAppMenubarDropdownActions() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>

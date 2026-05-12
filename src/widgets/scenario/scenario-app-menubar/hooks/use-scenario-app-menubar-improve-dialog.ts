@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import type { ScenarioAppMenubarImproveFormSchema } from "../types/scenario-app-menubar-improve-form-types";
 import { scenarioAppMenubarImproveFormValidateFn } from "../utils/scenario-app-menubar-improve-form-helpers";
@@ -13,6 +14,7 @@ type UseScenarioAppMenubarImproveDialogParams = {
 export function useScenarioAppMenubarImproveDialog({
   scenarioId: _scenarioId,
 }: UseScenarioAppMenubarImproveDialogParams) {
+  const { isMobile } = useBreakpoints();
   const [isImproveDialogOpen, setIsImproveDialogOpen] = useState(false);
 
   const form = useAppForm({
@@ -36,6 +38,7 @@ export function useScenarioAppMenubarImproveDialog({
 
   return {
     form,
+    isMobile,
     isImproveDialogOpen,
     isImproveDialogPending: false,
     setIsImproveDialogOpen,

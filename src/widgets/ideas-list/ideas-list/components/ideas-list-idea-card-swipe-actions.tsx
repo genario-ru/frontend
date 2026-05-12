@@ -7,9 +7,11 @@ import {
 
 import { Button } from "@/shared/components/ui/button";
 
+import { useIdeasListIdeaCardDeleteDialog } from "../hooks/use-ideas-list-idea-card-delete-dialog";
+import { useIdeasListIdeaCardEditDialog } from "../hooks/use-ideas-list-idea-card-edit-dialog";
 import { useIdeasListIdeaCardSecondaryActions } from "../hooks/use-ideas-list-idea-card-secondary-actions";
-import { IdeasListIdeaCardDeleteDialog } from "./ideas-list-idea-card-delete-dialog";
-import { IdeasListIdeaCardEditDialog } from "./ideas-list-idea-card-edit-dialog";
+import { IdeasListIdeaCardDeleteDialogDrawer } from "./ideas-list-idea-card-delete-drawer";
+import { IdeasListIdeaCardEditDialogDrawer } from "./ideas-list-idea-card-edit-drawer";
 
 const SWIPE_ACTION_CLASS_NAME = "h-full w-full justify-center flex-1";
 
@@ -31,13 +33,29 @@ export function IdeasListIdeaCardSwipeActions({
       ideaId,
       initialSaved,
     });
+  const {
+    form,
+    isUpdateIdeaPending,
+    isEditDialogOpen,
+    setIsEditDialogOpen,
+    onFormSubmit,
+  } = useIdeasListIdeaCardEditDialog({
+    ideaId,
+    initialName,
+    initialDescription,
+  });
+  const {
+    isDeleteDialogOpen,
+    isDeleteIdeaPending,
+    setIsDeleteDialogOpen,
+    handleConfirmDeleteButtonClick,
+  } = useIdeasListIdeaCardDeleteDialog({
+    ideaId,
+  });
 
   return (
     <div className="flex h-full w-full flex-col gap-2">
-      <IdeasListIdeaCardEditDialog
-        ideaId={ideaId}
-        initialName={initialName}
-        initialDescription={initialDescription}
+      <IdeasListIdeaCardEditDialogDrawer
         trigger={
           <Button
             size="sm"
@@ -50,6 +68,11 @@ export function IdeasListIdeaCardSwipeActions({
             Редактировать
           </Button>
         }
+        form={form}
+        isUpdateIdeaPending={isUpdateIdeaPending}
+        isEditDialogOpen={isEditDialogOpen}
+        setIsEditDialogOpen={setIsEditDialogOpen}
+        onFormSubmit={onFormSubmit}
       />
       <Button
         type="button"
@@ -63,8 +86,7 @@ export function IdeasListIdeaCardSwipeActions({
       >
         {isOptimisticSaved ? "Убрать из сохраненных" : "Сохранить"}
       </Button>
-      <IdeasListIdeaCardDeleteDialog
-        ideaId={ideaId}
+      <IdeasListIdeaCardDeleteDialogDrawer
         trigger={
           <Button
             type="button"
@@ -78,6 +100,10 @@ export function IdeasListIdeaCardSwipeActions({
             Удалить
           </Button>
         }
+        isDeleteDialogOpen={isDeleteDialogOpen}
+        isDeleteIdeaPending={isDeleteIdeaPending}
+        setIsDeleteDialogOpen={setIsDeleteDialogOpen}
+        handleConfirmDeleteButtonClick={handleConfirmDeleteButtonClick}
       />
     </div>
   );

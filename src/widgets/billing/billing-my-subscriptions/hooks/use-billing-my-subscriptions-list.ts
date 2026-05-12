@@ -10,7 +10,7 @@ import { formatSubscriptionRow } from "../utils/format-subscription-row";
 import { isVisibleSubscription } from "../utils/is-visible-subscription";
 
 export function useBillingMySubscriptionsList() {
-  const { isDesktop } = useBreakpoints();
+  const { isDesktop, isMobile } = useBreakpoints();
   const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
   const [selectedSubscriptionId, setSelectedSubscriptionId] = useState<
     string | null
@@ -81,6 +81,7 @@ export function useBillingMySubscriptionsList() {
   }, [selectedSubscriptionId, cancelSubscription, handleCloseCancelDialog]);
 
   return {
+    isMobile,
     visibleSubscriptions,
     selectedSubscription,
     showCancelDialog,

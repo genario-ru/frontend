@@ -1,11 +1,9 @@
-import { Button } from "@/shared/components/ui/button";
-import { DragSafeDropdownMenu } from "@/shared/components/ui/drag-safe-dropdown-menu";
-import { DropdownMenuGroup } from "@/shared/components/ui/dropdown-menu";
-import { LucideIcon } from "@/shared/components/ui/lucide-icon";
-import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
-import { cn } from "@/shared/utils/cn";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
-type ArchiveSelectFilterProps = {
+import { ArchiveSelectFilterDrawer } from "./archive-select-filter-drawer";
+import { ArchiveSelectFilterDropdown } from "./archive-select-filter-dropdown";
+
+export type ArchiveSelectFilterProps = {
   slug: string;
   name: string;
   icon: string | null;
@@ -22,38 +20,29 @@ export function ArchiveSelectFilter({
   currentValue,
   handleChange,
 }: ArchiveSelectFilterProps) {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) {
+    return (
+      <ArchiveSelectFilterDrawer
+        slug={slug}
+        name={name}
+        icon={icon}
+        options={options}
+        currentValue={currentValue}
+        handleChange={handleChange}
+      />
+    );
+  }
+
   return (
-    <DragSafeDropdownMenu
-      trigger={
-        <Button
-          size="sm"
-          iconPosition="left"
-          icon={icon && <LucideIcon icon={icon} />}
-          className={cn({
-            "ring-neutral-8 ring-2": currentValue !== undefined,
-          })}
-        >
-          {name}
-        </Button>
-      }
-    >
-      <DropdownMenuGroup>
-        <RadioGroup
-          id={slug}
-          value={currentValue}
-          onValueChange={(value) => handleChange(value as string)}
-        >
-          {options.map((option) => (
-            <RadioGroupItem
-              key={option.value}
-              value={option.value}
-              rounding="base"
-            >
-              {option.label}
-            </RadioGroupItem>
-          ))}
-        </RadioGroup>
-      </DropdownMenuGroup>
-    </DragSafeDropdownMenu>
+    <ArchiveSelectFilterDropdown
+      slug={slug}
+      name={name}
+      icon={icon}
+      options={options}
+      currentValue={currentValue}
+      handleChange={handleChange}
+    />
   );
 }

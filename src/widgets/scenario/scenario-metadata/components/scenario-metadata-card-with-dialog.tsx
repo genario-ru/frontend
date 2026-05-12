@@ -1,8 +1,9 @@
 import type { ScenarioMetadataExtendedSchema } from "@/codegen/api/product";
 import { ScenarioMetadataCard } from "@/features/scenario/scenario-metadata/scenario-metadata-card/components/scenario-metadata-card";
-import { ScenarioMetadataCardRegenerateDialog } from "@/widgets/scenario/scenario-metadata/components/scenario-metadata-card-regenerate-dialog";
 
 import { useScenarioMetadataCardRegenerateDialog } from "../hooks/use-scenario-metadata-card-regenerate-dialog";
+import { ScenarioMetadataCardRegenerateDialog } from "./scenario-metadata-card-regenerate-dialog";
+import { ScenarioMetadataCardRegenerateDrawer } from "./scenario-metadata-card-regenerate-drawer";
 
 type ScenarioMetadataCardWithDialogProps = {
   scenarioId: string;
@@ -15,6 +16,7 @@ export function ScenarioMetadataCardWithDialog({
 }: ScenarioMetadataCardWithDialogProps) {
   const {
     form,
+    isMobile,
     isOpen,
     isRegenerateScenarioMetadataPending,
     handleOpen,
@@ -31,14 +33,25 @@ export function ScenarioMetadataCardWithDialog({
         metadata={metadata}
         onRegenerateButtonClick={handleOpen}
       />
-      <ScenarioMetadataCardRegenerateDialog
-        form={form}
-        platformName={metadata.platform.name}
-        isOpen={isOpen}
-        isPending={isRegenerateScenarioMetadataPending}
-        onOpenChange={handleOpenChange}
-        onFormSubmit={onFormSubmit}
-      />
+      {isMobile ? (
+        <ScenarioMetadataCardRegenerateDrawer
+          form={form}
+          platformName={metadata.platform.name}
+          isOpen={isOpen}
+          isPending={isRegenerateScenarioMetadataPending}
+          onOpenChange={handleOpenChange}
+          onFormSubmit={onFormSubmit}
+        />
+      ) : (
+        <ScenarioMetadataCardRegenerateDialog
+          form={form}
+          platformName={metadata.platform.name}
+          isOpen={isOpen}
+          isPending={isRegenerateScenarioMetadataPending}
+          onOpenChange={handleOpenChange}
+          onFormSubmit={onFormSubmit}
+        />
+      )}
     </>
   );
 }

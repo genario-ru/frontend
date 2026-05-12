@@ -1,13 +1,9 @@
-import { EllipsisIcon } from "lucide-react";
 import type { PropsWithChildren } from "react";
 
-import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+
+import { IdeasListIdeaCardSecondaryActionsMenuDrawer } from "./ideas-list-idea-card-secondary-actions-menu-drawer";
+import { IdeasListIdeaCardSecondaryActionsMenuDropdown } from "./ideas-list-idea-card-secondary-actions-menu-dropdown";
 
 type IdeasListIdeaCardSecondaryActionsMenuProps = PropsWithChildren<{
   isOpen: boolean;
@@ -19,14 +15,25 @@ export function IdeasListIdeaCardSecondaryActionsMenu({
   setIsOpen,
   children,
 }: IdeasListIdeaCardSecondaryActionsMenuProps) {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) {
+    return (
+      <IdeasListIdeaCardSecondaryActionsMenuDrawer
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      >
+        {children}
+      </IdeasListIdeaCardSecondaryActionsMenuDrawer>
+    );
+  }
+
   return (
-    <DropdownMenu modal={false} open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button priority="tertiary" icon={<EllipsisIcon />} />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuGroup>{children}</DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <IdeasListIdeaCardSecondaryActionsMenuDropdown
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+    >
+      {children}
+    </IdeasListIdeaCardSecondaryActionsMenuDropdown>
   );
 }

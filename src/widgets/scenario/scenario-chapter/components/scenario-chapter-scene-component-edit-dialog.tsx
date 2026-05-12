@@ -1,3 +1,5 @@
+import type { FormEvent } from "react";
+
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -8,34 +10,25 @@ import {
   DialogPredefinedHeader,
 } from "@/shared/components/ui/dialog";
 
-import { useScenarioChapterSceneComponentEditDialog } from "../hooks/use-scenario-chapter-scene-component-edit-dialog";
+import type { useScenarioChapterSceneComponentEditDialog } from "../hooks/use-scenario-chapter-scene-component-edit-dialog";
 
 type ScenarioChapterSceneComponentEditDialogProps = {
   isOpen: boolean;
-  componentId: string;
   componentName: string;
-  content: string;
-  chapterId: string;
   setIsOpen: (isOpen: boolean) => void;
+  form: ReturnType<typeof useScenarioChapterSceneComponentEditDialog>["form"];
+  isUpdateScenarioSceneComponentPending: boolean;
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
 export function ScenarioChapterSceneComponentEditDialog({
   isOpen,
-  componentId,
   componentName,
-  content,
-  chapterId,
   setIsOpen,
+  form,
+  isUpdateScenarioSceneComponentPending,
+  onFormSubmit,
 }: ScenarioChapterSceneComponentEditDialogProps) {
-  const { form, isUpdateScenarioSceneComponentPending, onFormSubmit } =
-    useScenarioChapterSceneComponentEditDialog({
-      componentId,
-      componentName,
-      content,
-      chapterId,
-      setIsOpen,
-    });
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent>

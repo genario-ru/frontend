@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { useRegenerateScenarioMetadata } from "@/actions/scenario/hooks/use-regenerate-scenario-metadata";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { transformEmptyStrings } from "@/shared/utils/transform-empty-strings";
 
 type UseScenarioMetadataCardRegenerateDialogParams = {
@@ -18,6 +19,7 @@ export function useScenarioMetadataCardRegenerateDialog({
   scenarioId,
   platformId,
 }: UseScenarioMetadataCardRegenerateDialogParams) {
+  const { isMobile } = useBreakpoints();
   const [isOpen, setIsOpen] = useState(false);
 
   const { regenerateScenarioMetadata, isRegenerateScenarioMetadataPending } =
@@ -59,6 +61,7 @@ export function useScenarioMetadataCardRegenerateDialog({
 
   return {
     form,
+    isMobile,
     isOpen,
     isRegenerateScenarioMetadataPending,
     handleOpen,

@@ -1,4 +1,5 @@
 import { TrashIcon } from "lucide-react";
+import type { ReactElement } from "react";
 
 import { AppMenubarDropdownMenuButton } from "@/features/navigation/app-menubar/components/app-menubar-dropdown-menu-button";
 import { Button } from "@/shared/components/ui/button";
@@ -11,33 +12,32 @@ import {
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
-import { useIdeasListAppMenubarDeleteIdeaDialog } from "../hooks/use-ideas-list-app-menubar-delete-idea-dialog";
-
 type IdeasListAppMenubarDeleteIdeaDialogProps = {
-  ideasListId: string;
-  handleDropdownMenuClose: () => void;
+  trigger?: ReactElement;
+  ideasListId?: string;
+  handleDropdownMenuClose?: () => void;
+  onTriggerClick?: () => void;
+  isDeleteDialogOpen: boolean;
+  isDeleteIdeasListPending: boolean;
+  setIsDeleteDialogOpen: (isOpen: boolean) => void;
+  handleConfirmDeleteButtonClick: () => void;
 };
 
 export function IdeasListAppMenubarDeleteIdeaDialog({
-  ideasListId,
-  handleDropdownMenuClose,
+  trigger,
+  isDeleteDialogOpen,
+  isDeleteIdeasListPending,
+  setIsDeleteDialogOpen,
+  handleConfirmDeleteButtonClick,
 }: IdeasListAppMenubarDeleteIdeaDialogProps) {
-  const {
-    isDeleteDialogOpen,
-    isDeleteIdeasListPending,
-    setIsDeleteDialogOpen,
-    handleConfirmDeleteButtonClick,
-  } = useIdeasListAppMenubarDeleteIdeaDialog({
-    ideasListId,
-    handleDropdownMenuClose,
-  });
-
   return (
     <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
       <DialogTrigger asChild>
-        <AppMenubarDropdownMenuButton variant="negative" icon={<TrashIcon />}>
-          Удалить
-        </AppMenubarDropdownMenuButton>
+        {trigger ?? (
+          <AppMenubarDropdownMenuButton variant="negative" icon={<TrashIcon />}>
+            Удалить
+          </AppMenubarDropdownMenuButton>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogPredefinedHeader

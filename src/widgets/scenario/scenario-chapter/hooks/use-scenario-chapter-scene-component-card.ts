@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
+
 export function useScenarioChapterSceneComponentCard() {
+  const { isMobile } = useBreakpoints();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   const handleOpenEditDialog = useCallback(() => {
@@ -8,6 +11,7 @@ export function useScenarioChapterSceneComponentCard() {
   }, []);
 
   return {
+    isMobile,
     isEditDialogOpen,
     setIsEditDialogOpen,
     handleOpenEditDialog,

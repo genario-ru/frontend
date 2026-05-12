@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 
 import { useDeleteIdea } from "@/actions/ideas/hooks/use-delete-idea";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 type UseIdeasListIdeaCardDeleteDialogParams = {
   ideaId: string;
@@ -11,6 +12,7 @@ export function useIdeasListIdeaCardDeleteDialog({
   ideaId,
   handleCloseMenu,
 }: UseIdeasListIdeaCardDeleteDialogParams) {
+  const { isMobile } = useBreakpoints();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const { deleteIdea, isDeleteIdeaPending } = useDeleteIdea();
 
@@ -27,6 +29,7 @@ export function useIdeasListIdeaCardDeleteDialog({
   }, [ideaId, deleteIdea, handleCloseMenu]);
 
   return {
+    isMobile,
     isDeleteDialogOpen,
     isDeleteIdeaPending,
     setIsDeleteDialogOpen,

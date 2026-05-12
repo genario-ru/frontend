@@ -4,12 +4,14 @@ import { useChangeEmail } from "@/actions/auth/hooks/use-change-email";
 import { useGetSession } from "@/actions/auth/hooks/use-get-session";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { composeFullUrl } from "@/shared/utils/compose-full-url";
 
 import type { SettingsChangeEmailFormSchema } from "../types/settings-change-email-types";
 import { changeEmailFormMatchValidateFn } from "../utils/settings-change-email-form-helpers";
 
 export function useSettingsChangeEmailForm() {
+  const { isMobile } = useBreakpoints();
   const [isEmailSentDialogOpen, setIsEmailSentDialogOpen] = useState(false);
   const { sessionData } = useGetSession();
 
@@ -45,6 +47,7 @@ export function useSettingsChangeEmailForm() {
 
   return {
     form,
+    isMobile,
     isEmailSentDialogOpen,
     setIsEmailSentDialogOpen,
     onFormSubmit,
