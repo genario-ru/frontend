@@ -48,7 +48,7 @@ export function TariffCard({
     >
       <header className="flex w-full flex-col gap-3">
         <div className="flex w-full flex-col gap-1">
-          <p className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-2xl font-semibold">
+          <p className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-xl font-semibold">
             {name}
           </p>
           <p className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">

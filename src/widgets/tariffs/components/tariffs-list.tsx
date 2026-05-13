@@ -110,13 +110,13 @@ export function TariffsList() {
   return (
     <Island className="h-fit min-h-[520px] max-w-7xl items-center justify-between gap-8 p-6">
       <header className="flex max-w-3xl flex-col items-center gap-2">
-        <Heading className="text-3xl font-semibold">Тарифы</Heading>
-        <p className="text-neutral-7 text-center text-lg">
+        <Heading className="text-2xl font-semibold lg:text-3xl">Тарифы</Heading>
+        <p className="text-neutral-7 text-center lg:text-lg">
           Создавайте сценарии для видео за минуты, а не часы, Создавайте
           сценарии для видео за минуты, а не часы, Создавайте сценарии
         </p>
       </header>
-      <div className="flex w-full gap-2">{list}</div>
+      <div className="flex w-full flex-col gap-2 lg:flex-row">{list}</div>
       <NeedSupport className="mx-auto text-sm" />
     </Island>
   );
