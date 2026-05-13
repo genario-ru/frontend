@@ -51,7 +51,7 @@ export function ScenarioMetadataPlaceholder({
           <Button
             size="lg"
             state={isActionPending ? "loading" : "default"}
-            className="mt-3"
+            className="mt-2"
             onClick={onAction}
           >
             {actionLabel}

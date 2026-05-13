@@ -105,7 +105,7 @@ function MyProfilesListEmpty() {
             priority="primary"
             to="/profiles/settings"
             icon={<PlusIcon />}
-            className="mt-3"
+            className="mt-2"
           >
             Создать профиль
           </ButtonLink>

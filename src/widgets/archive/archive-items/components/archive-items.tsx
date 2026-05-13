@@ -150,7 +150,7 @@ export function ArchiveItemsError() {
           size="lg"
           icon={<RotateCwIcon />}
           onClick={reloadPage}
-          className="mt-3"
+          className="mt-2"
         >
           Обновить страницу
         </Button>
@@ -168,7 +168,7 @@ export function ArchiveItemsEmpty() {
       title="Архив пуст"
       description="Создайте свой первый список идей или сценарий"
       actions={
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-2 flex items-center gap-2">
           <ButtonLink
             size="lg"
             to="/ideas-lists/settings"

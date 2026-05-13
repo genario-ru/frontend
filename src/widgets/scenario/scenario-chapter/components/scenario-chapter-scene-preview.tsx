@@ -24,6 +24,12 @@ type ScenarioChapterScenePreviewSkeletonProps = {
   videoTypeSlug: string;
 };
 
+type ScenarioChapterScenePreviewPlugProps = {
+  actionLabel: string;
+  isActionPending: boolean;
+  onAction: () => void;
+};
+
 export function ScenarioChapterScenePreview({
   chapterId,
   sceneId,
@@ -71,11 +77,27 @@ export function ScenarioChapterScenePreview({
     }
 
     if (scene.preview?.status === "failed") {
-      return <ScenarioChapterScenePreviewErrorPlug />;
+      return (
+        <ScenarioChapterScenePreviewErrorPlug
+          actionLabel="Повторить попытку"
+          isActionPending={isCreateScenarioScenePreviewPending}
+          onAction={handleCreateScenarioScenePreview}
+        />
+      );
     }
 
-    return <ScenarioChapterScenePreviewEmptyPlug />;
-  }, [scene.preview]);
+    return (
+      <ScenarioChapterScenePreviewEmptyPlug
+        actionLabel="Сгенерировать превью"
+        isActionPending={isCreateScenarioScenePreviewPending}
+        onAction={handleCreateScenarioScenePreview}
+      />
+    );
+  }, [
+    scene.preview,
+    handleCreateScenarioScenePreview,
+    isCreateScenarioScenePreviewPending,
+  ]);
 
   return (
     <div
@@ -89,7 +111,7 @@ export function ScenarioChapterScenePreview({
         videoTypeSlug={videoTypeSlug}
         expandable={isExpandablePreview}
         className="sticky top-8"
-        contentClassName={cn("flex justify-center items-center", {
+        contentClassName={cn("flex items-center justify-center", {
           "p-4": !scene.preview,
         })}
       >
@@ -112,7 +134,7 @@ export function ScenarioChapterScenePreviewSkeleton({
       <ScenarioChapterScenePreviewLayout
         videoTypeSlug={videoTypeSlug}
         className="sticky top-8"
-        contentClassName="flex justify-center items-center"
+        contentClassName="flex items-center justify-center"
       >
         <Skeleton className="h-full w-full" />
       </ScenarioChapterScenePreviewLayout>
@@ -133,21 +155,47 @@ function ScenarioChapterScenePreviewGeneratingAlert() {
   );
 }
 
-function ScenarioChapterScenePreviewErrorPlug() {
+function ScenarioChapterScenePreviewErrorPlug({
+  actionLabel,
+  isActionPending,
+  onAction,
+}: ScenarioChapterScenePreviewPlugProps) {
   return (
     <Plug
       variant="negative"
       title="Ошибка генерации"
-      description="Не удалось сгенерировать превью. Попробуйте еще раз по кнопке выше"
+      description="Не удалось сгенерировать превью. Попробуйте еще раз."
+      actions={
+        <Button
+          className="mt-2"
+          state={isActionPending ? "loading" : "default"}
+          onClick={onAction}
+        >
+          {actionLabel}
+        </Button>
+      }
     />
   );
 }
 
-function ScenarioChapterScenePreviewEmptyPlug() {
+function ScenarioChapterScenePreviewEmptyPlug({
+  actionLabel,
+  isActionPending,
+  onAction,
+}: ScenarioChapterScenePreviewPlugProps) {
   return (
     <Plug
       title="Превью пока нет"
-      description="Вы можете сгенерировать превью сцены по кнопке выше"
+      description="Вы можете сгенерировать превью сцены."
+      actions={
+        <Button
+          className="mt-2"
+          state={isActionPending ? "loading" : "default"}
+          onClick={onAction}
+        >
+          {actionLabel}
+        </Button>
+      }
     />
   );
 }

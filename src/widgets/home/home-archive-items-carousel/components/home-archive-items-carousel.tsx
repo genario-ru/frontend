@@ -120,7 +120,7 @@ export function HomeArchiveItemsCarouselEmptyPlug() {
       title="Тут пока пусто"
       description="Создайте свой первый список идей или сценарий"
       actions={
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-2 flex items-center gap-2">
           <ButtonLink to="/ideas-lists/settings" icon={<LightbulbIcon />}>
             Новые идеи
           </ButtonLink>
