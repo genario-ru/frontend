@@ -64,6 +64,7 @@ export function BillingMyRecentOperationsListError() {
           Обновить
         </Button>
       }
+      className="m-auto"
     />
   );
 }
@@ -74,7 +75,7 @@ export function BillingMyRecentOperationsListEmpty() {
       variant="neutral"
       title="Операций пока нет"
       description="История платежей будет отображаться здесь"
-      className="py-8"
+      className="m-auto py-8"
     />
   );
 }

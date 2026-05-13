@@ -31,7 +31,7 @@ export function BillingMyPaymentMethodsList() {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-1 flex-col gap-2">
       {paymentMethods.map((paymentMethod) => (
         <BillingMyPaymentMethodCard
           key={paymentMethod.id}
@@ -54,6 +54,7 @@ export function BillingMyPaymentMethodsListSkeleton() {
       count={2}
       gap={8}
       item={<Skeleton className="h-[52px] w-full rounded-2xl" />}
+      className="flex-1"
     />
   );
 }
@@ -66,6 +67,7 @@ export function BillingMyPaymentMethodsListError() {
       variant="negative"
       title="Не удалось загрузить способы оплаты"
       description="Произошла ошибка при загрузке данных"
+      className="flex-1"
       actions={
         <Button icon={<RotateCwIcon />} size="sm" onClick={reloadPage}>
           Обновить
@@ -81,7 +83,7 @@ export function BillingMyPaymentMethodsListEmpty() {
       variant="neutral"
       title="Нет привязанных способов оплаты"
       description="Привяжите карту для автоматической оплаты подписки"
-      className="py-8"
+      className="flex-1 py-8"
     />
   );
 }
