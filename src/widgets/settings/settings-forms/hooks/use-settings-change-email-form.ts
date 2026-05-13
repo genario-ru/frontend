@@ -30,7 +30,7 @@ export function useSettingsChangeEmailForm() {
       onSubmit: changeEmailFormMatchValidateFn,
     },
     onSubmit: async ({ value: { newEmail } }) => {
-      const callbackURL = composeFullUrl("/settings/account");
+      const callbackURL = composeFullUrl("/settings");
 
       await changeEmailAsync({
         data: {
