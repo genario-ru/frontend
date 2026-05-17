@@ -24,7 +24,11 @@ export function IdeasListAppMenubarActions({
   return (
     <div className="flex items-center gap-2">
       <IdeasListAppMenubarMoreIdeasDialog
-        trigger={<AppMenubarButton icon={<WandSparklesIcon />}>Больше идей</AppMenubarButton>}
+        trigger={
+          <AppMenubarButton icon={<WandSparklesIcon />}>
+            Больше идей
+          </AppMenubarButton>
+        }
         form={form}
         isMoreIdeasDialogOpen={isMoreIdeasDialogOpen}
         isGenerateMoreIdeasPending={isGenerateMoreIdeasPending}

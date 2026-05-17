@@ -118,7 +118,7 @@
   }
 
   #root {
-    @apply bg-neutral-2 isolate relative min-h-dvh justify-center flex overflow-auto;
+    @apply bg-neutral-2 relative isolate flex min-h-dvh justify-center overflow-auto;
   }
 
   .hide-scrollbar {

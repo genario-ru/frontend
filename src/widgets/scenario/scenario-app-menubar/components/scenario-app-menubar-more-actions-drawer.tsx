@@ -1,4 +1,9 @@
-import { EllipsisIcon, PencilIcon, TrashIcon, WandSparklesIcon } from "lucide-react";
+import {
+  EllipsisIcon,
+  PencilIcon,
+  TrashIcon,
+  WandSparklesIcon,
+} from "lucide-react";
 
 import { AppMenubarButton } from "@/features/navigation/app-menubar/components/app-menubar-button";
 import { AppMenubarButtonLink } from "@/features/navigation/app-menubar/components/app-menubar-button-link";
@@ -75,7 +80,9 @@ export function ScenarioAppMenubarMoreActionsDrawer({
     <>
       <Drawer open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
         <DrawerTrigger
-          render={<AppMenubarButton priority="tertiary" icon={<EllipsisIcon />} />}
+          render={
+            <AppMenubarButton priority="tertiary" icon={<EllipsisIcon />} />
+          }
         />
         <DrawerContent>
           <DrawerHeader title="Действия" />

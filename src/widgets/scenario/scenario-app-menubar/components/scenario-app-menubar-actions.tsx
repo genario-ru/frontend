@@ -26,7 +26,11 @@ export function ScenarioAppMenubarActions({
   return (
     <div className="flex items-center gap-1">
       <ScenarioAppMenubarImproveDialog
-        trigger={<Button priority="tertiary" icon={<WandSparklesIcon />}>Улучшить</Button>}
+        trigger={
+          <Button priority="tertiary" icon={<WandSparklesIcon />}>
+            Улучшить
+          </Button>
+        }
         form={form}
         isImproveDialogOpen={isImproveDialogOpen}
         isImproveDialogPending={isImproveDialogPending}
