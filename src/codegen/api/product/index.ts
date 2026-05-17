@@ -10,6 +10,7 @@ export { getApiV1Alerts } from "./clients/get-api-v1-alerts.ts";
 export { getApiV1ArchiveFilters } from "./clients/get-api-v1-archive-filters.ts";
 export { getApiV1ArchiveItemsMy } from "./clients/get-api-v1-archive-items-my.ts";
 export { getApiV1AttachmentsByAttachmentIdDownload } from "./clients/get-api-v1-attachments-by-attachment-id-download.ts";
+export { getApiV1AuthSession } from "./clients/get-api-v1-auth-session.ts";
 export { getApiV1BillingPaymentMethodsMy } from "./clients/get-api-v1-billing-payment-methods-my.ts";
 export { getApiV1BillingPaymentsMy } from "./clients/get-api-v1-billing-payments-my.ts";
 export { getApiV1CreditsBatchesMy } from "./clients/get-api-v1-credits-batches-my.ts";
@@ -47,6 +48,7 @@ export { getApiV1Templates } from "./clients/get-api-v1-templates.ts";
 export { getApiV1Tones } from "./clients/get-api-v1-tones.ts";
 export { getApiV1VideoDurations } from "./clients/get-api-v1-video-durations.ts";
 export { getApiV1VideoTypes } from "./clients/get-api-v1-video-types.ts";
+export { patchApiV1AuthUser } from "./clients/patch-api-v1-auth-user.ts";
 export { patchApiV1IdeasByIdeaId } from "./clients/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdSave } from "./clients/patch-api-v1-ideas-by-idea-id-save.ts";
 export { patchApiV1IdeasListsByIdeasListId } from "./clients/patch-api-v1-ideas-lists-by-ideas-list-id.ts";
@@ -56,6 +58,11 @@ export { patchApiV1ScenariosByScenarioIdSave } from "./clients/patch-api-v1-scen
 export { patchApiV1ScenariosChaptersByChapterId } from "./clients/patch-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "./clients/patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { patchApiV1ScenariosScenesBySceneId } from "./clients/patch-api-v1-scenarios-scenes-by-scene-id.ts";
+export { postApiV1AuthChangeEmail } from "./clients/post-api-v1-auth-change-email.ts";
+export { postApiV1AuthEmailOtpSendVerificationOtp } from "./clients/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export { postApiV1AuthEmailOtpSignIn } from "./clients/post-api-v1-auth-email-otp-sign-in.ts";
+export { postApiV1AuthSignOut } from "./clients/post-api-v1-auth-sign-out.ts";
+export { postApiV1AuthUserDelete } from "./clients/post-api-v1-auth-user-delete.ts";
 export { postApiV1BillingPaymentMethods } from "./clients/post-api-v1-billing-payment-methods.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./clients/post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./clients/post-api-v1-ideas-lists.ts";
@@ -93,8 +100,16 @@ export type { ArchiveFiltersSchema } from "./models/archive-filters-schema.ts";
 export type { ArchiveIdeasListSchema } from "./models/archive-ideas-list-schema.ts";
 export type { ArchiveItemSchema } from "./models/archive-item-schema.ts";
 export type { ArchiveScenarioSchema } from "./models/archive-scenario-schema.ts";
+export type { AuthSessionSchema } from "./models/auth-session-schema.ts";
+export type { AuthenticatedSessionSchema } from "./models/authenticated-session-schema.ts";
 export type { BadRequestResponseSchema } from "./models/bad-request-response-schema.ts";
 export type { CancelSubscriptionResponseSchema } from "./models/cancel-subscription-response-schema.ts";
+export type { ChangeEmailBodySchema } from "./models/change-email-body-schema.ts";
+export type {
+  ChangeEmailResponseSchema,
+  ChangeEmailResponseSchemaMessageEnumKey,
+} from "./models/change-email-response-schema.ts";
+export { changeEmailResponseSchemaMessageEnum } from "./models/change-email-response-schema.ts";
 export type { CreateIdeaBodySchema } from "./models/create-idea-body-schema.ts";
 export type { CreateIdeaResponseSchema } from "./models/create-idea-response-schema.ts";
 export type { CreateIdeasListBodySchema } from "./models/create-ideas-list-body-schema.ts";
@@ -230,6 +245,12 @@ export type { DeleteScenarioChapterResponseSchema } from "./models/delete-scenar
 export type { DeleteScenarioResponseSchema } from "./models/delete-scenario-response-schema.ts";
 export type { DeleteScenarioSceneComponentResponseSchema } from "./models/delete-scenario-scene-component-response-schema.ts";
 export type { DeleteScenarioSceneResponseSchema } from "./models/delete-scenario-scene-response-schema.ts";
+export type { DeleteUserBodySchema } from "./models/delete-user-body-schema.ts";
+export type {
+  DeleteUserResponseSchema,
+  DeleteUserResponseSchemaMessageEnumKey,
+} from "./models/delete-user-response-schema.ts";
+export { deleteUserResponseSchemaMessageEnum } from "./models/delete-user-response-schema.ts";
 export type {
   ExportDocumentShortSchema,
   ExportDocumentShortSchemaDocumentStatusEnumKey,
@@ -290,6 +311,17 @@ export type {
   GetApiV1AttachmentsByAttachmentIdDownloadQuery,
   GetApiV1AttachmentsByAttachmentIdDownloadQueryResponse,
 } from "./models/get-api-v1-attachments-by-attachment-id-download.ts";
+export type {
+  GetApiV1AuthSession200,
+  GetApiV1AuthSession400,
+  GetApiV1AuthSession401,
+  GetApiV1AuthSession402,
+  GetApiV1AuthSession403,
+  GetApiV1AuthSession404,
+  GetApiV1AuthSession500,
+  GetApiV1AuthSessionQuery,
+  GetApiV1AuthSessionQueryResponse,
+} from "./models/get-api-v1-auth-session.ts";
 export type {
   GetApiV1BillingPaymentMethodsMy200,
   GetApiV1BillingPaymentMethodsMy400,
@@ -768,6 +800,7 @@ export { dataStatusEnum2 } from "./models/get-scenario-metadata-response-schema.
 export type { GetScenarioResponseSchema } from "./models/get-scenario-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./models/get-scenario-versions-response-schema.ts";
 export type { GetScenariosFiltersResponseSchema } from "./models/get-scenarios-filters-response-schema.ts";
+export type { GetSessionResponseSchema } from "./models/get-session-response-schema.ts";
 export type { GetTariffsResponseSchema } from "./models/get-tariffs-response-schema.ts";
 export type { GetTemplatesResponseSchema } from "./models/get-templates-response-schema.ts";
 export type { GetTonesResponseSchema } from "./models/get-tones-response-schema.ts";
@@ -803,6 +836,18 @@ export type { InternalServerErrorResponseSchema } from "./models/internal-server
 export type { LegalDocumentExtendedSchema } from "./models/legal-document-extended-schema.ts";
 export type { LegalDocumentSchema } from "./models/legal-document-schema.ts";
 export type { NotFoundResponseSchema } from "./models/not-found-response-schema.ts";
+export type {
+  PatchApiV1AuthUser200,
+  PatchApiV1AuthUser400,
+  PatchApiV1AuthUser401,
+  PatchApiV1AuthUser402,
+  PatchApiV1AuthUser403,
+  PatchApiV1AuthUser404,
+  PatchApiV1AuthUser500,
+  PatchApiV1AuthUserMutation,
+  PatchApiV1AuthUserMutationRequest,
+  PatchApiV1AuthUserMutationResponse,
+} from "./models/patch-api-v1-auth-user.ts";
 export type {
   PatchApiV1IdeasByIdeaId200,
   PatchApiV1IdeasByIdeaId400,
@@ -933,6 +978,65 @@ export { paymentMethodSchemaStatusEnum } from "./models/payment-method-schema.ts
 export type { PaymentRequiredResponseSchema } from "./models/payment-required-response-schema.ts";
 export type { PlatformExtendedSchema } from "./models/platform-extended-schema.ts";
 export type { PlatformSchema } from "./models/platform-schema.ts";
+export type {
+  PostApiV1AuthChangeEmail200,
+  PostApiV1AuthChangeEmail400,
+  PostApiV1AuthChangeEmail401,
+  PostApiV1AuthChangeEmail402,
+  PostApiV1AuthChangeEmail403,
+  PostApiV1AuthChangeEmail404,
+  PostApiV1AuthChangeEmail500,
+  PostApiV1AuthChangeEmailMutation,
+  PostApiV1AuthChangeEmailMutationRequest,
+  PostApiV1AuthChangeEmailMutationResponse,
+} from "./models/post-api-v1-auth-change-email.ts";
+export type {
+  PostApiV1AuthEmailOtpSendVerificationOtp200,
+  PostApiV1AuthEmailOtpSendVerificationOtp400,
+  PostApiV1AuthEmailOtpSendVerificationOtp401,
+  PostApiV1AuthEmailOtpSendVerificationOtp402,
+  PostApiV1AuthEmailOtpSendVerificationOtp403,
+  PostApiV1AuthEmailOtpSendVerificationOtp404,
+  PostApiV1AuthEmailOtpSendVerificationOtp500,
+  PostApiV1AuthEmailOtpSendVerificationOtpMutation,
+  PostApiV1AuthEmailOtpSendVerificationOtpMutationRequest,
+  PostApiV1AuthEmailOtpSendVerificationOtpMutationResponse,
+} from "./models/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export type {
+  PostApiV1AuthEmailOtpSignIn200,
+  PostApiV1AuthEmailOtpSignIn400,
+  PostApiV1AuthEmailOtpSignIn401,
+  PostApiV1AuthEmailOtpSignIn402,
+  PostApiV1AuthEmailOtpSignIn403,
+  PostApiV1AuthEmailOtpSignIn404,
+  PostApiV1AuthEmailOtpSignIn500,
+  PostApiV1AuthEmailOtpSignInMutation,
+  PostApiV1AuthEmailOtpSignInMutationRequest,
+  PostApiV1AuthEmailOtpSignInMutationResponse,
+} from "./models/post-api-v1-auth-email-otp-sign-in.ts";
+export type {
+  PostApiV1AuthSignOut200,
+  PostApiV1AuthSignOut400,
+  PostApiV1AuthSignOut401,
+  PostApiV1AuthSignOut402,
+  PostApiV1AuthSignOut403,
+  PostApiV1AuthSignOut404,
+  PostApiV1AuthSignOut500,
+  PostApiV1AuthSignOutMutation,
+  PostApiV1AuthSignOutMutationResponse,
+} from "./models/post-api-v1-auth-sign-out.ts";
+export type {
+  PostApiV1AuthUserDelete200,
+  PostApiV1AuthUserDelete400,
+  PostApiV1AuthUserDelete401,
+  PostApiV1AuthUserDelete402,
+  PostApiV1AuthUserDelete403,
+  PostApiV1AuthUserDelete404,
+  PostApiV1AuthUserDelete500,
+  PostApiV1AuthUserDeleteMutation,
+  PostApiV1AuthUserDeleteMutationRequest,
+  PostApiV1AuthUserDeleteMutationResponse,
+} from "./models/post-api-v1-auth-user-delete.ts";
 export type {
   PostApiV1BillingPaymentMethods201,
   PostApiV1BillingPaymentMethods400,
@@ -1215,6 +1319,15 @@ export { scenariosFilterSchemaSlugEnum } from "./models/scenarios-filter-schema.
 export { scenariosFilterSchemaTypeEnum } from "./models/scenarios-filter-schema.ts";
 export type { ScenariosFiltersSchema } from "./models/scenarios-filters-schema.ts";
 export type {
+  SendVerificationOtpBodySchema,
+  SendVerificationOtpBodySchemaTypeEnumKey,
+} from "./models/send-verification-otp-body-schema.ts";
+export { sendVerificationOtpBodySchemaTypeEnum } from "./models/send-verification-otp-body-schema.ts";
+export type { SendVerificationOtpResponseSchema } from "./models/send-verification-otp-response-schema.ts";
+export type { SignInEmailOtpBodySchema } from "./models/sign-in-email-otp-body-schema.ts";
+export type { SignInEmailOtpResponseSchema } from "./models/sign-in-email-otp-response-schema.ts";
+export type { SignOutResponseSchema } from "./models/sign-out-response-schema.ts";
+export type {
   SubscriptionExtendedSchema,
   SubscriptionExtendedSchemaStatusEnumKey,
 } from "./models/subscription-extended-schema.ts";
@@ -1260,6 +1373,8 @@ export type { UpdateScenarioSceneBodySchema } from "./models/update-scenario-sce
 export type { UpdateScenarioSceneComponentBodySchema } from "./models/update-scenario-scene-component-body-schema.ts";
 export type { UpdateScenarioSceneComponentResponseSchema } from "./models/update-scenario-scene-component-response-schema.ts";
 export type { UpdateScenarioSceneResponseSchema } from "./models/update-scenario-scene-response-schema.ts";
+export type { UpdateUserBodySchema } from "./models/update-user-body-schema.ts";
+export type { UpdateUserResponseSchema } from "./models/update-user-response-schema.ts";
 export type {
   UserSchema,
   UserSchemaRoleEnumKey,
@@ -1321,6 +1436,10 @@ export type { GetApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./tansta
 export { getApiV1AttachmentsByAttachmentIdDownloadQueryKey } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
 export { getApiV1AttachmentsByAttachmentIdDownloadQueryOptions } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
 export { useGetApiV1AttachmentsByAttachmentIdDownload } from "./tanstack/get-api-v1-attachments-by-attachment-id-download.ts";
+export type { GetApiV1AuthSessionQueryKey } from "./tanstack/get-api-v1-auth-session.ts";
+export { getApiV1AuthSessionQueryKey } from "./tanstack/get-api-v1-auth-session.ts";
+export { getApiV1AuthSessionQueryOptions } from "./tanstack/get-api-v1-auth-session.ts";
+export { useGetApiV1AuthSession } from "./tanstack/get-api-v1-auth-session.ts";
 export type { GetApiV1BillingPaymentMethodsMyQueryKey } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
 export { getApiV1BillingPaymentMethodsMyQueryKey } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
 export { getApiV1BillingPaymentMethodsMyQueryOptions } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
@@ -1485,6 +1604,10 @@ export type { GetApiV1VideoTypesQueryKey } from "./tanstack/get-api-v1-video-typ
 export { getApiV1VideoTypesQueryKey } from "./tanstack/get-api-v1-video-types.ts";
 export { getApiV1VideoTypesQueryOptions } from "./tanstack/get-api-v1-video-types.ts";
 export { useGetApiV1VideoTypes } from "./tanstack/get-api-v1-video-types.ts";
+export type { PatchApiV1AuthUserMutationKey } from "./tanstack/patch-api-v1-auth-user.ts";
+export { patchApiV1AuthUserMutationKey } from "./tanstack/patch-api-v1-auth-user.ts";
+export { patchApiV1AuthUserMutationOptions } from "./tanstack/patch-api-v1-auth-user.ts";
+export { usePatchApiV1AuthUser } from "./tanstack/patch-api-v1-auth-user.ts";
 export type { PatchApiV1IdeasByIdeaIdMutationKey } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationKey } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationOptions } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
@@ -1521,6 +1644,26 @@ export type { PatchApiV1ScenariosScenesBySceneIdMutationKey } from "./tanstack/p
 export { patchApiV1ScenariosScenesBySceneIdMutationKey } from "./tanstack/patch-api-v1-scenarios-scenes-by-scene-id.ts";
 export { patchApiV1ScenariosScenesBySceneIdMutationOptions } from "./tanstack/patch-api-v1-scenarios-scenes-by-scene-id.ts";
 export { usePatchApiV1ScenariosScenesBySceneId } from "./tanstack/patch-api-v1-scenarios-scenes-by-scene-id.ts";
+export type { PostApiV1AuthChangeEmailMutationKey } from "./tanstack/post-api-v1-auth-change-email.ts";
+export { postApiV1AuthChangeEmailMutationKey } from "./tanstack/post-api-v1-auth-change-email.ts";
+export { postApiV1AuthChangeEmailMutationOptions } from "./tanstack/post-api-v1-auth-change-email.ts";
+export { usePostApiV1AuthChangeEmail } from "./tanstack/post-api-v1-auth-change-email.ts";
+export type { PostApiV1AuthEmailOtpSendVerificationOtpMutationKey } from "./tanstack/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export { postApiV1AuthEmailOtpSendVerificationOtpMutationKey } from "./tanstack/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export { postApiV1AuthEmailOtpSendVerificationOtpMutationOptions } from "./tanstack/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export { usePostApiV1AuthEmailOtpSendVerificationOtp } from "./tanstack/post-api-v1-auth-email-otp-send-verification-otp.ts";
+export type { PostApiV1AuthEmailOtpSignInMutationKey } from "./tanstack/post-api-v1-auth-email-otp-sign-in.ts";
+export { postApiV1AuthEmailOtpSignInMutationKey } from "./tanstack/post-api-v1-auth-email-otp-sign-in.ts";
+export { postApiV1AuthEmailOtpSignInMutationOptions } from "./tanstack/post-api-v1-auth-email-otp-sign-in.ts";
+export { usePostApiV1AuthEmailOtpSignIn } from "./tanstack/post-api-v1-auth-email-otp-sign-in.ts";
+export type { PostApiV1AuthSignOutMutationKey } from "./tanstack/post-api-v1-auth-sign-out.ts";
+export { postApiV1AuthSignOutMutationKey } from "./tanstack/post-api-v1-auth-sign-out.ts";
+export { postApiV1AuthSignOutMutationOptions } from "./tanstack/post-api-v1-auth-sign-out.ts";
+export { usePostApiV1AuthSignOut } from "./tanstack/post-api-v1-auth-sign-out.ts";
+export type { PostApiV1AuthUserDeleteMutationKey } from "./tanstack/post-api-v1-auth-user-delete.ts";
+export { postApiV1AuthUserDeleteMutationKey } from "./tanstack/post-api-v1-auth-user-delete.ts";
+export { postApiV1AuthUserDeleteMutationOptions } from "./tanstack/post-api-v1-auth-user-delete.ts";
+export { usePostApiV1AuthUserDelete } from "./tanstack/post-api-v1-auth-user-delete.ts";
 export type { PostApiV1BillingPaymentMethodsMutationKey } from "./tanstack/post-api-v1-billing-payment-methods.ts";
 export { postApiV1BillingPaymentMethodsMutationKey } from "./tanstack/post-api-v1-billing-payment-methods.ts";
 export { postApiV1BillingPaymentMethodsMutationOptions } from "./tanstack/post-api-v1-billing-payment-methods.ts";
@@ -1594,8 +1737,12 @@ export { archiveFiltersSchemaSchema } from "./zod/archive-filters-schema-schema.
 export { archiveIdeasListSchemaSchema } from "./zod/archive-ideas-list-schema-schema.ts";
 export { archiveItemSchemaSchema } from "./zod/archive-item-schema-schema.ts";
 export { archiveScenarioSchemaSchema } from "./zod/archive-scenario-schema-schema.ts";
+export { authSessionSchemaSchema } from "./zod/auth-session-schema-schema.ts";
+export { authenticatedSessionSchemaSchema } from "./zod/authenticated-session-schema-schema.ts";
 export { badRequestResponseSchemaSchema } from "./zod/bad-request-response-schema-schema.ts";
 export { cancelSubscriptionResponseSchemaSchema } from "./zod/cancel-subscription-response-schema-schema.ts";
+export { changeEmailBodySchemaSchema } from "./zod/change-email-body-schema-schema.ts";
+export { changeEmailResponseSchemaSchema } from "./zod/change-email-response-schema-schema.ts";
 export { createIdeaBodySchemaSchema } from "./zod/create-idea-body-schema-schema.ts";
 export { createIdeaResponseSchemaSchema } from "./zod/create-idea-response-schema-schema.ts";
 export { createIdeasListBodySchemaSchema } from "./zod/create-ideas-list-body-schema-schema.ts";
@@ -1711,6 +1858,8 @@ export { deleteScenarioChapterResponseSchemaSchema } from "./zod/delete-scenario
 export { deleteScenarioResponseSchemaSchema } from "./zod/delete-scenario-response-schema-schema.ts";
 export { deleteScenarioSceneComponentResponseSchemaSchema } from "./zod/delete-scenario-scene-component-response-schema-schema.ts";
 export { deleteScenarioSceneResponseSchemaSchema } from "./zod/delete-scenario-scene-response-schema-schema.ts";
+export { deleteUserBodySchemaSchema } from "./zod/delete-user-body-schema-schema.ts";
+export { deleteUserResponseSchemaSchema } from "./zod/delete-user-response-schema-schema.ts";
 export { exportDocumentShortSchemaSchema } from "./zod/export-document-short-schema-schema.ts";
 export { forbiddenResponseSchemaSchema } from "./zod/forbidden-response-schema-schema.ts";
 export { generateMoreIdeasBodySchemaSchema } from "./zod/generate-more-ideas-body-schema-schema.ts";
@@ -1759,6 +1908,16 @@ export {
   getApiV1AttachmentsByAttachmentIdDownloadPathParamsSchema,
   getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema,
 } from "./zod/get-api-v1-attachments-by-attachment-id-download-schema.ts";
+export {
+  getApiV1AuthSession200Schema,
+  getApiV1AuthSession400Schema,
+  getApiV1AuthSession401Schema,
+  getApiV1AuthSession402Schema,
+  getApiV1AuthSession403Schema,
+  getApiV1AuthSession404Schema,
+  getApiV1AuthSession500Schema,
+  getApiV1AuthSessionQueryResponseSchema,
+} from "./zod/get-api-v1-auth-session-schema.ts";
 export {
   getApiV1BillingPaymentMethodsMy200Schema,
   getApiV1BillingPaymentMethodsMy400Schema,
@@ -2188,6 +2347,7 @@ export { getScenarioMetadataResponseSchemaSchema } from "./zod/get-scenario-meta
 export { getScenarioResponseSchemaSchema } from "./zod/get-scenario-response-schema-schema.ts";
 export { getScenarioVersionsResponseSchemaSchema } from "./zod/get-scenario-versions-response-schema-schema.ts";
 export { getScenariosFiltersResponseSchemaSchema } from "./zod/get-scenarios-filters-response-schema-schema.ts";
+export { getSessionResponseSchemaSchema } from "./zod/get-session-response-schema-schema.ts";
 export { getTariffsResponseSchemaSchema } from "./zod/get-tariffs-response-schema-schema.ts";
 export { getTemplatesResponseSchemaSchema } from "./zod/get-templates-response-schema-schema.ts";
 export { getTonesResponseSchemaSchema } from "./zod/get-tones-response-schema-schema.ts";
@@ -2209,6 +2369,17 @@ export { internalServerErrorResponseSchemaSchema } from "./zod/internal-server-e
 export { legalDocumentExtendedSchemaSchema } from "./zod/legal-document-extended-schema-schema.ts";
 export { legalDocumentSchemaSchema } from "./zod/legal-document-schema-schema.ts";
 export { notFoundResponseSchemaSchema } from "./zod/not-found-response-schema-schema.ts";
+export {
+  patchApiV1AuthUser200Schema,
+  patchApiV1AuthUser400Schema,
+  patchApiV1AuthUser401Schema,
+  patchApiV1AuthUser402Schema,
+  patchApiV1AuthUser403Schema,
+  patchApiV1AuthUser404Schema,
+  patchApiV1AuthUser500Schema,
+  patchApiV1AuthUserMutationRequestSchema,
+  patchApiV1AuthUserMutationResponseSchema,
+} from "./zod/patch-api-v1-auth-user-schema.ts";
 export {
   patchApiV1IdeasByIdeaIdSave200Schema,
   patchApiV1IdeasByIdeaIdSave400Schema,
@@ -2322,6 +2493,60 @@ export { paymentMethodSchemaSchema } from "./zod/payment-method-schema-schema.ts
 export { paymentRequiredResponseSchemaSchema } from "./zod/payment-required-response-schema-schema.ts";
 export { platformExtendedSchemaSchema } from "./zod/platform-extended-schema-schema.ts";
 export { platformSchemaSchema } from "./zod/platform-schema-schema.ts";
+export {
+  postApiV1AuthChangeEmail200Schema,
+  postApiV1AuthChangeEmail400Schema,
+  postApiV1AuthChangeEmail401Schema,
+  postApiV1AuthChangeEmail402Schema,
+  postApiV1AuthChangeEmail403Schema,
+  postApiV1AuthChangeEmail404Schema,
+  postApiV1AuthChangeEmail500Schema,
+  postApiV1AuthChangeEmailMutationRequestSchema,
+  postApiV1AuthChangeEmailMutationResponseSchema,
+} from "./zod/post-api-v1-auth-change-email-schema.ts";
+export {
+  postApiV1AuthEmailOtpSendVerificationOtp200Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp400Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp401Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp402Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp403Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp404Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp500Schema,
+  postApiV1AuthEmailOtpSendVerificationOtpMutationRequestSchema,
+  postApiV1AuthEmailOtpSendVerificationOtpMutationResponseSchema,
+} from "./zod/post-api-v1-auth-email-otp-send-verification-otp-schema.ts";
+export {
+  postApiV1AuthEmailOtpSignIn200Schema,
+  postApiV1AuthEmailOtpSignIn400Schema,
+  postApiV1AuthEmailOtpSignIn401Schema,
+  postApiV1AuthEmailOtpSignIn402Schema,
+  postApiV1AuthEmailOtpSignIn403Schema,
+  postApiV1AuthEmailOtpSignIn404Schema,
+  postApiV1AuthEmailOtpSignIn500Schema,
+  postApiV1AuthEmailOtpSignInMutationRequestSchema,
+  postApiV1AuthEmailOtpSignInMutationResponseSchema,
+} from "./zod/post-api-v1-auth-email-otp-sign-in-schema.ts";
+export {
+  postApiV1AuthSignOut200Schema,
+  postApiV1AuthSignOut400Schema,
+  postApiV1AuthSignOut401Schema,
+  postApiV1AuthSignOut402Schema,
+  postApiV1AuthSignOut403Schema,
+  postApiV1AuthSignOut404Schema,
+  postApiV1AuthSignOut500Schema,
+  postApiV1AuthSignOutMutationResponseSchema,
+} from "./zod/post-api-v1-auth-sign-out-schema.ts";
+export {
+  postApiV1AuthUserDelete200Schema,
+  postApiV1AuthUserDelete400Schema,
+  postApiV1AuthUserDelete401Schema,
+  postApiV1AuthUserDelete402Schema,
+  postApiV1AuthUserDelete403Schema,
+  postApiV1AuthUserDelete404Schema,
+  postApiV1AuthUserDelete500Schema,
+  postApiV1AuthUserDeleteMutationRequestSchema,
+  postApiV1AuthUserDeleteMutationResponseSchema,
+} from "./zod/post-api-v1-auth-user-delete-schema.ts";
 export {
   postApiV1BillingPaymentMethods201Schema,
   postApiV1BillingPaymentMethods400Schema,
@@ -2535,6 +2760,11 @@ export { scenarioVersionSchemaSchema } from "./zod/scenario-version-schema-schem
 export { scenariosFilterOptionSchemaSchema } from "./zod/scenarios-filter-option-schema-schema.ts";
 export { scenariosFilterSchemaSchema } from "./zod/scenarios-filter-schema-schema.ts";
 export { scenariosFiltersSchemaSchema } from "./zod/scenarios-filters-schema-schema.ts";
+export { sendVerificationOtpBodySchemaSchema } from "./zod/send-verification-otp-body-schema-schema.ts";
+export { sendVerificationOtpResponseSchemaSchema } from "./zod/send-verification-otp-response-schema-schema.ts";
+export { signInEmailOtpBodySchemaSchema } from "./zod/sign-in-email-otp-body-schema-schema.ts";
+export { signInEmailOtpResponseSchemaSchema } from "./zod/sign-in-email-otp-response-schema-schema.ts";
+export { signOutResponseSchemaSchema } from "./zod/sign-out-response-schema-schema.ts";
 export { subscriptionExtendedSchemaSchema } from "./zod/subscription-extended-schema-schema.ts";
 export { subscriptionSchemaSchema } from "./zod/subscription-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./zod/tariff-discount-schema-schema.ts";
@@ -2557,6 +2787,8 @@ export { updateScenarioSceneBodySchemaSchema } from "./zod/update-scenario-scene
 export { updateScenarioSceneComponentBodySchemaSchema } from "./zod/update-scenario-scene-component-body-schema-schema.ts";
 export { updateScenarioSceneComponentResponseSchemaSchema } from "./zod/update-scenario-scene-component-response-schema-schema.ts";
 export { updateScenarioSceneResponseSchemaSchema } from "./zod/update-scenario-scene-response-schema-schema.ts";
+export { updateUserBodySchemaSchema } from "./zod/update-user-body-schema-schema.ts";
+export { updateUserResponseSchemaSchema } from "./zod/update-user-response-schema-schema.ts";
 export { userSchemaSchema } from "./zod/user-schema-schema.ts";
 export { validateProfileChannelBodySchemaSchema } from "./zod/validate-profile-channel-body-schema-schema.ts";
 export { validateProfileChannelResponseSchemaSchema } from "./zod/validate-profile-channel-response-schema-schema.ts";

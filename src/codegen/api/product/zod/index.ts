@@ -7,8 +7,12 @@ export { archiveFiltersSchemaSchema } from "./archive-filters-schema-schema.ts";
 export { archiveIdeasListSchemaSchema } from "./archive-ideas-list-schema-schema.ts";
 export { archiveItemSchemaSchema } from "./archive-item-schema-schema.ts";
 export { archiveScenarioSchemaSchema } from "./archive-scenario-schema-schema.ts";
+export { authSessionSchemaSchema } from "./auth-session-schema-schema.ts";
+export { authenticatedSessionSchemaSchema } from "./authenticated-session-schema-schema.ts";
 export { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
 export { cancelSubscriptionResponseSchemaSchema } from "./cancel-subscription-response-schema-schema.ts";
+export { changeEmailBodySchemaSchema } from "./change-email-body-schema-schema.ts";
+export { changeEmailResponseSchemaSchema } from "./change-email-response-schema-schema.ts";
 export { createIdeaBodySchemaSchema } from "./create-idea-body-schema-schema.ts";
 export { createIdeaResponseSchemaSchema } from "./create-idea-response-schema-schema.ts";
 export { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema-schema.ts";
@@ -124,6 +128,8 @@ export { deleteScenarioChapterResponseSchemaSchema } from "./delete-scenario-cha
 export { deleteScenarioResponseSchemaSchema } from "./delete-scenario-response-schema-schema.ts";
 export { deleteScenarioSceneComponentResponseSchemaSchema } from "./delete-scenario-scene-component-response-schema-schema.ts";
 export { deleteScenarioSceneResponseSchemaSchema } from "./delete-scenario-scene-response-schema-schema.ts";
+export { deleteUserBodySchemaSchema } from "./delete-user-body-schema-schema.ts";
+export { deleteUserResponseSchemaSchema } from "./delete-user-response-schema-schema.ts";
 export { exportDocumentShortSchemaSchema } from "./export-document-short-schema-schema.ts";
 export { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
 export { generateMoreIdeasBodySchemaSchema } from "./generate-more-ideas-body-schema-schema.ts";
@@ -172,6 +178,16 @@ export {
   getApiV1AttachmentsByAttachmentIdDownloadPathParamsSchema,
   getApiV1AttachmentsByAttachmentIdDownloadQueryResponseSchema,
 } from "./get-api-v1-attachments-by-attachment-id-download-schema.ts";
+export {
+  getApiV1AuthSession200Schema,
+  getApiV1AuthSession400Schema,
+  getApiV1AuthSession401Schema,
+  getApiV1AuthSession402Schema,
+  getApiV1AuthSession403Schema,
+  getApiV1AuthSession404Schema,
+  getApiV1AuthSession500Schema,
+  getApiV1AuthSessionQueryResponseSchema,
+} from "./get-api-v1-auth-session-schema.ts";
 export {
   getApiV1BillingPaymentMethodsMy200Schema,
   getApiV1BillingPaymentMethodsMy400Schema,
@@ -601,6 +617,7 @@ export { getScenarioMetadataResponseSchemaSchema } from "./get-scenario-metadata
 export { getScenarioResponseSchemaSchema } from "./get-scenario-response-schema-schema.ts";
 export { getScenarioVersionsResponseSchemaSchema } from "./get-scenario-versions-response-schema-schema.ts";
 export { getScenariosFiltersResponseSchemaSchema } from "./get-scenarios-filters-response-schema-schema.ts";
+export { getSessionResponseSchemaSchema } from "./get-session-response-schema-schema.ts";
 export { getTariffsResponseSchemaSchema } from "./get-tariffs-response-schema-schema.ts";
 export { getTemplatesResponseSchemaSchema } from "./get-templates-response-schema-schema.ts";
 export { getTonesResponseSchemaSchema } from "./get-tones-response-schema-schema.ts";
@@ -622,6 +639,17 @@ export { internalServerErrorResponseSchemaSchema } from "./internal-server-error
 export { legalDocumentExtendedSchemaSchema } from "./legal-document-extended-schema-schema.ts";
 export { legalDocumentSchemaSchema } from "./legal-document-schema-schema.ts";
 export { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
+export {
+  patchApiV1AuthUser200Schema,
+  patchApiV1AuthUser400Schema,
+  patchApiV1AuthUser401Schema,
+  patchApiV1AuthUser402Schema,
+  patchApiV1AuthUser403Schema,
+  patchApiV1AuthUser404Schema,
+  patchApiV1AuthUser500Schema,
+  patchApiV1AuthUserMutationRequestSchema,
+  patchApiV1AuthUserMutationResponseSchema,
+} from "./patch-api-v1-auth-user-schema.ts";
 export {
   patchApiV1IdeasByIdeaIdSave200Schema,
   patchApiV1IdeasByIdeaIdSave400Schema,
@@ -735,6 +763,60 @@ export { paymentMethodSchemaSchema } from "./payment-method-schema-schema.ts";
 export { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 export { platformExtendedSchemaSchema } from "./platform-extended-schema-schema.ts";
 export { platformSchemaSchema } from "./platform-schema-schema.ts";
+export {
+  postApiV1AuthChangeEmail200Schema,
+  postApiV1AuthChangeEmail400Schema,
+  postApiV1AuthChangeEmail401Schema,
+  postApiV1AuthChangeEmail402Schema,
+  postApiV1AuthChangeEmail403Schema,
+  postApiV1AuthChangeEmail404Schema,
+  postApiV1AuthChangeEmail500Schema,
+  postApiV1AuthChangeEmailMutationRequestSchema,
+  postApiV1AuthChangeEmailMutationResponseSchema,
+} from "./post-api-v1-auth-change-email-schema.ts";
+export {
+  postApiV1AuthEmailOtpSendVerificationOtp200Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp400Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp401Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp402Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp403Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp404Schema,
+  postApiV1AuthEmailOtpSendVerificationOtp500Schema,
+  postApiV1AuthEmailOtpSendVerificationOtpMutationRequestSchema,
+  postApiV1AuthEmailOtpSendVerificationOtpMutationResponseSchema,
+} from "./post-api-v1-auth-email-otp-send-verification-otp-schema.ts";
+export {
+  postApiV1AuthEmailOtpSignIn200Schema,
+  postApiV1AuthEmailOtpSignIn400Schema,
+  postApiV1AuthEmailOtpSignIn401Schema,
+  postApiV1AuthEmailOtpSignIn402Schema,
+  postApiV1AuthEmailOtpSignIn403Schema,
+  postApiV1AuthEmailOtpSignIn404Schema,
+  postApiV1AuthEmailOtpSignIn500Schema,
+  postApiV1AuthEmailOtpSignInMutationRequestSchema,
+  postApiV1AuthEmailOtpSignInMutationResponseSchema,
+} from "./post-api-v1-auth-email-otp-sign-in-schema.ts";
+export {
+  postApiV1AuthSignOut200Schema,
+  postApiV1AuthSignOut400Schema,
+  postApiV1AuthSignOut401Schema,
+  postApiV1AuthSignOut402Schema,
+  postApiV1AuthSignOut403Schema,
+  postApiV1AuthSignOut404Schema,
+  postApiV1AuthSignOut500Schema,
+  postApiV1AuthSignOutMutationResponseSchema,
+} from "./post-api-v1-auth-sign-out-schema.ts";
+export {
+  postApiV1AuthUserDelete200Schema,
+  postApiV1AuthUserDelete400Schema,
+  postApiV1AuthUserDelete401Schema,
+  postApiV1AuthUserDelete402Schema,
+  postApiV1AuthUserDelete403Schema,
+  postApiV1AuthUserDelete404Schema,
+  postApiV1AuthUserDelete500Schema,
+  postApiV1AuthUserDeleteMutationRequestSchema,
+  postApiV1AuthUserDeleteMutationResponseSchema,
+} from "./post-api-v1-auth-user-delete-schema.ts";
 export {
   postApiV1BillingPaymentMethods201Schema,
   postApiV1BillingPaymentMethods400Schema,
@@ -948,6 +1030,11 @@ export { scenarioVersionSchemaSchema } from "./scenario-version-schema-schema.ts
 export { scenariosFilterOptionSchemaSchema } from "./scenarios-filter-option-schema-schema.ts";
 export { scenariosFilterSchemaSchema } from "./scenarios-filter-schema-schema.ts";
 export { scenariosFiltersSchemaSchema } from "./scenarios-filters-schema-schema.ts";
+export { sendVerificationOtpBodySchemaSchema } from "./send-verification-otp-body-schema-schema.ts";
+export { sendVerificationOtpResponseSchemaSchema } from "./send-verification-otp-response-schema-schema.ts";
+export { signInEmailOtpBodySchemaSchema } from "./sign-in-email-otp-body-schema-schema.ts";
+export { signInEmailOtpResponseSchemaSchema } from "./sign-in-email-otp-response-schema-schema.ts";
+export { signOutResponseSchemaSchema } from "./sign-out-response-schema-schema.ts";
 export { subscriptionExtendedSchemaSchema } from "./subscription-extended-schema-schema.ts";
 export { subscriptionSchemaSchema } from "./subscription-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./tariff-discount-schema-schema.ts";
@@ -970,6 +1057,8 @@ export { updateScenarioSceneBodySchemaSchema } from "./update-scenario-scene-bod
 export { updateScenarioSceneComponentBodySchemaSchema } from "./update-scenario-scene-component-body-schema-schema.ts";
 export { updateScenarioSceneComponentResponseSchemaSchema } from "./update-scenario-scene-component-response-schema-schema.ts";
 export { updateScenarioSceneResponseSchemaSchema } from "./update-scenario-scene-response-schema-schema.ts";
+export { updateUserBodySchemaSchema } from "./update-user-body-schema-schema.ts";
+export { updateUserResponseSchemaSchema } from "./update-user-response-schema-schema.ts";
 export { userSchemaSchema } from "./user-schema-schema.ts";
 export { validateProfileChannelBodySchemaSchema } from "./validate-profile-channel-body-schema-schema.ts";
 export { validateProfileChannelResponseSchemaSchema } from "./validate-profile-channel-response-schema-schema.ts";
