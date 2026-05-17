@@ -334,6 +334,29 @@ export type {
   GetApiV1IdeasListsFiltersQueryResponse,
 } from "./get-api-v1-ideas-lists-filters.ts";
 export type {
+  GetApiV1LegalDocuments200,
+  GetApiV1LegalDocuments400,
+  GetApiV1LegalDocuments401,
+  GetApiV1LegalDocuments402,
+  GetApiV1LegalDocuments403,
+  GetApiV1LegalDocuments404,
+  GetApiV1LegalDocuments500,
+  GetApiV1LegalDocumentsQuery,
+  GetApiV1LegalDocumentsQueryResponse,
+} from "./get-api-v1-legal-documents.ts";
+export type {
+  GetApiV1LegalDocumentsBySlug200,
+  GetApiV1LegalDocumentsBySlug400,
+  GetApiV1LegalDocumentsBySlug401,
+  GetApiV1LegalDocumentsBySlug402,
+  GetApiV1LegalDocumentsBySlug403,
+  GetApiV1LegalDocumentsBySlug404,
+  GetApiV1LegalDocumentsBySlug500,
+  GetApiV1LegalDocumentsBySlugPathParams,
+  GetApiV1LegalDocumentsBySlugQuery,
+  GetApiV1LegalDocumentsBySlugQueryResponse,
+} from "./get-api-v1-legal-documents-by-slug.ts";
+export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
   GetApiV1Platforms401,
@@ -635,6 +658,8 @@ export type {
 } from "./get-ideas-list-response-schema.ts";
 export { dataStatusEnum } from "./get-ideas-list-response-schema.ts";
 export type { GetIdeasListsFiltersResponseSchema } from "./get-ideas-lists-filters-response-schema.ts";
+export type { GetLegalDocumentResponseSchema } from "./get-legal-document-response-schema.ts";
+export type { GetLegalDocumentsResponseSchema } from "./get-legal-documents-response-schema.ts";
 export type { GetMyArchiveItemsResponseMetaSchema } from "./get-my-archive-items-response-meta-schema.ts";
 export type { GetMyArchiveItemsResponseSchema } from "./get-my-archive-items-response-schema.ts";
 export type { GetMyCreditsBatchesResponseSchema } from "./get-my-credits-batches-response-schema.ts";
@@ -701,6 +726,8 @@ export type { InitiateCreditsPackagePaymentResponseSchema } from "./initiate-cre
 export type { InitiateSubscriptionPaymentBodySchema } from "./initiate-subscription-payment-body-schema.ts";
 export type { InitiateSubscriptionPaymentResponseSchema } from "./initiate-subscription-payment-response-schema.ts";
 export type { InternalServerErrorResponseSchema } from "./internal-server-error-response-schema.ts";
+export type { LegalDocumentExtendedSchema } from "./legal-document-extended-schema.ts";
+export type { LegalDocumentSchema } from "./legal-document-schema.ts";
 export type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
 export type {
   PatchApiV1IdeasByIdeaId200,

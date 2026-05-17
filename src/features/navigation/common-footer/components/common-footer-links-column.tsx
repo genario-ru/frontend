@@ -35,6 +35,7 @@ export function CommonFooterLinksColumn({
           <Link
             key={`footer-documents-${item.title}-item-${index}`}
             to={item.to}
+            params={item.params}
             className={commonFooterLinkClassName}
           >
             {item.title}

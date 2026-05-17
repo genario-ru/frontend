@@ -20,6 +20,8 @@ export { getApiV1IdeasLists } from "./clients/get-api-v1-ideas-lists.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./clients/get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsFilters } from "./clients/get-api-v1-ideas-lists-filters.ts";
+export { getApiV1LegalDocuments } from "./clients/get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsBySlug } from "./clients/get-api-v1-legal-documents-by-slug.ts";
 export { getApiV1Platforms } from "./clients/get-api-v1-platforms.ts";
 export { getApiV1ProductionStatuses } from "./clients/get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./clients/get-api-v1-profiles-by-profile-id.ts";
@@ -406,6 +408,29 @@ export type {
   GetApiV1IdeasListsFiltersQueryResponse,
 } from "./models/get-api-v1-ideas-lists-filters.ts";
 export type {
+  GetApiV1LegalDocuments200,
+  GetApiV1LegalDocuments400,
+  GetApiV1LegalDocuments401,
+  GetApiV1LegalDocuments402,
+  GetApiV1LegalDocuments403,
+  GetApiV1LegalDocuments404,
+  GetApiV1LegalDocuments500,
+  GetApiV1LegalDocumentsQuery,
+  GetApiV1LegalDocumentsQueryResponse,
+} from "./models/get-api-v1-legal-documents.ts";
+export type {
+  GetApiV1LegalDocumentsBySlug200,
+  GetApiV1LegalDocumentsBySlug400,
+  GetApiV1LegalDocumentsBySlug401,
+  GetApiV1LegalDocumentsBySlug402,
+  GetApiV1LegalDocumentsBySlug403,
+  GetApiV1LegalDocumentsBySlug404,
+  GetApiV1LegalDocumentsBySlug500,
+  GetApiV1LegalDocumentsBySlugPathParams,
+  GetApiV1LegalDocumentsBySlugQuery,
+  GetApiV1LegalDocumentsBySlugQueryResponse,
+} from "./models/get-api-v1-legal-documents-by-slug.ts";
+export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
   GetApiV1Platforms401,
@@ -707,6 +732,8 @@ export type {
 } from "./models/get-ideas-list-response-schema.ts";
 export { dataStatusEnum } from "./models/get-ideas-list-response-schema.ts";
 export type { GetIdeasListsFiltersResponseSchema } from "./models/get-ideas-lists-filters-response-schema.ts";
+export type { GetLegalDocumentResponseSchema } from "./models/get-legal-document-response-schema.ts";
+export type { GetLegalDocumentsResponseSchema } from "./models/get-legal-documents-response-schema.ts";
 export type { GetMyArchiveItemsResponseMetaSchema } from "./models/get-my-archive-items-response-meta-schema.ts";
 export type { GetMyArchiveItemsResponseSchema } from "./models/get-my-archive-items-response-schema.ts";
 export type { GetMyCreditsBatchesResponseSchema } from "./models/get-my-credits-batches-response-schema.ts";
@@ -773,6 +800,8 @@ export type { InitiateCreditsPackagePaymentResponseSchema } from "./models/initi
 export type { InitiateSubscriptionPaymentBodySchema } from "./models/initiate-subscription-payment-body-schema.ts";
 export type { InitiateSubscriptionPaymentResponseSchema } from "./models/initiate-subscription-payment-response-schema.ts";
 export type { InternalServerErrorResponseSchema } from "./models/internal-server-error-response-schema.ts";
+export type { LegalDocumentExtendedSchema } from "./models/legal-document-extended-schema.ts";
+export type { LegalDocumentSchema } from "./models/legal-document-schema.ts";
 export type { NotFoundResponseSchema } from "./models/not-found-response-schema.ts";
 export type {
   PatchApiV1IdeasByIdeaId200,
@@ -1340,6 +1369,14 @@ export type { GetApiV1IdeasListsInfiniteQueryKey } from "./tanstack/get-api-v1-i
 export { getApiV1IdeasListsInfiniteQueryKey } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
 export { getApiV1IdeasListsInfiniteQueryOptions } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
 export { useGetApiV1IdeasListsInfinite } from "./tanstack/get-api-v1-ideas-lists-infinite.ts";
+export type { GetApiV1LegalDocumentsQueryKey } from "./tanstack/get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsQueryKey } from "./tanstack/get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsQueryOptions } from "./tanstack/get-api-v1-legal-documents.ts";
+export { useGetApiV1LegalDocuments } from "./tanstack/get-api-v1-legal-documents.ts";
+export type { GetApiV1LegalDocumentsBySlugQueryKey } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
+export { getApiV1LegalDocumentsBySlugQueryKey } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
+export { getApiV1LegalDocumentsBySlugQueryOptions } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
+export { useGetApiV1LegalDocumentsBySlug } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
 export type { GetApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./tanstack/get-api-v1-platforms.ts";
@@ -1830,6 +1867,27 @@ export {
   getApiV1IdeasListsQueryResponseSchema,
 } from "./zod/get-api-v1-ideas-lists-schema.ts";
 export {
+  getApiV1LegalDocumentsBySlug200Schema,
+  getApiV1LegalDocumentsBySlug400Schema,
+  getApiV1LegalDocumentsBySlug401Schema,
+  getApiV1LegalDocumentsBySlug402Schema,
+  getApiV1LegalDocumentsBySlug403Schema,
+  getApiV1LegalDocumentsBySlug404Schema,
+  getApiV1LegalDocumentsBySlug500Schema,
+  getApiV1LegalDocumentsBySlugPathParamsSchema,
+  getApiV1LegalDocumentsBySlugQueryResponseSchema,
+} from "./zod/get-api-v1-legal-documents-by-slug-schema.ts";
+export {
+  getApiV1LegalDocuments200Schema,
+  getApiV1LegalDocuments400Schema,
+  getApiV1LegalDocuments401Schema,
+  getApiV1LegalDocuments402Schema,
+  getApiV1LegalDocuments403Schema,
+  getApiV1LegalDocuments404Schema,
+  getApiV1LegalDocuments500Schema,
+  getApiV1LegalDocumentsQueryResponseSchema,
+} from "./zod/get-api-v1-legal-documents-schema.ts";
+export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
   getApiV1Platforms401Schema,
@@ -2098,6 +2156,8 @@ export { getIdeaResponseSchemaSchema } from "./zod/get-idea-response-schema-sche
 export { getIdeasListExportsResponseSchemaSchema } from "./zod/get-ideas-list-exports-response-schema-schema.ts";
 export { getIdeasListResponseSchemaSchema } from "./zod/get-ideas-list-response-schema-schema.ts";
 export { getIdeasListsFiltersResponseSchemaSchema } from "./zod/get-ideas-lists-filters-response-schema-schema.ts";
+export { getLegalDocumentResponseSchemaSchema } from "./zod/get-legal-document-response-schema-schema.ts";
+export { getLegalDocumentsResponseSchemaSchema } from "./zod/get-legal-documents-response-schema-schema.ts";
 export { getMyArchiveItemsResponseMetaSchemaSchema } from "./zod/get-my-archive-items-response-meta-schema-schema.ts";
 export { getMyArchiveItemsResponseSchemaSchema } from "./zod/get-my-archive-items-response-schema-schema.ts";
 export { getMyCreditsBatchesResponseSchemaSchema } from "./zod/get-my-credits-batches-response-schema-schema.ts";
@@ -2146,6 +2206,8 @@ export { initiateCreditsPackagePaymentResponseSchemaSchema } from "./zod/initiat
 export { initiateSubscriptionPaymentBodySchemaSchema } from "./zod/initiate-subscription-payment-body-schema-schema.ts";
 export { initiateSubscriptionPaymentResponseSchemaSchema } from "./zod/initiate-subscription-payment-response-schema-schema.ts";
 export { internalServerErrorResponseSchemaSchema } from "./zod/internal-server-error-response-schema-schema.ts";
+export { legalDocumentExtendedSchemaSchema } from "./zod/legal-document-extended-schema-schema.ts";
+export { legalDocumentSchemaSchema } from "./zod/legal-document-schema-schema.ts";
 export { notFoundResponseSchemaSchema } from "./zod/not-found-response-schema-schema.ts";
 export {
   patchApiV1IdeasByIdeaIdSave200Schema,

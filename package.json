@@ -71,6 +71,7 @@
     "react-i18next": "^15.6.1",
     "react-markdown": "^10.1.0",
     "react-use": "^17.6.0",
+    "remark-gfm": "^4.0.1",
     "sonner": "^2.0.7",
     "swiper": "^12.0.3",
     "tailwind-merge": "^3.3.1",

@@ -20,6 +20,8 @@ export { getApiV1IdeasLists } from "./get-api-v1-ideas-lists.ts";
 export { getApiV1IdeasListsByIdeasListId } from "./get-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { getApiV1IdeasListsByIdeasListIdExports } from "./get-api-v1-ideas-lists-by-ideas-list-id-exports.ts";
 export { getApiV1IdeasListsFilters } from "./get-api-v1-ideas-lists-filters.ts";
+export { getApiV1LegalDocuments } from "./get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsBySlug } from "./get-api-v1-legal-documents-by-slug.ts";
 export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
 export { getApiV1ProductionStatuses } from "./get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";

@@ -280,6 +280,27 @@ export {
   getApiV1IdeasListsQueryResponseSchema,
 } from "./get-api-v1-ideas-lists-schema.ts";
 export {
+  getApiV1LegalDocumentsBySlug200Schema,
+  getApiV1LegalDocumentsBySlug400Schema,
+  getApiV1LegalDocumentsBySlug401Schema,
+  getApiV1LegalDocumentsBySlug402Schema,
+  getApiV1LegalDocumentsBySlug403Schema,
+  getApiV1LegalDocumentsBySlug404Schema,
+  getApiV1LegalDocumentsBySlug500Schema,
+  getApiV1LegalDocumentsBySlugPathParamsSchema,
+  getApiV1LegalDocumentsBySlugQueryResponseSchema,
+} from "./get-api-v1-legal-documents-by-slug-schema.ts";
+export {
+  getApiV1LegalDocuments200Schema,
+  getApiV1LegalDocuments400Schema,
+  getApiV1LegalDocuments401Schema,
+  getApiV1LegalDocuments402Schema,
+  getApiV1LegalDocuments403Schema,
+  getApiV1LegalDocuments404Schema,
+  getApiV1LegalDocuments500Schema,
+  getApiV1LegalDocumentsQueryResponseSchema,
+} from "./get-api-v1-legal-documents-schema.ts";
+export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
   getApiV1Platforms401Schema,
@@ -548,6 +569,8 @@ export { getIdeaResponseSchemaSchema } from "./get-idea-response-schema-schema.t
 export { getIdeasListExportsResponseSchemaSchema } from "./get-ideas-list-exports-response-schema-schema.ts";
 export { getIdeasListResponseSchemaSchema } from "./get-ideas-list-response-schema-schema.ts";
 export { getIdeasListsFiltersResponseSchemaSchema } from "./get-ideas-lists-filters-response-schema-schema.ts";
+export { getLegalDocumentResponseSchemaSchema } from "./get-legal-document-response-schema-schema.ts";
+export { getLegalDocumentsResponseSchemaSchema } from "./get-legal-documents-response-schema-schema.ts";
 export { getMyArchiveItemsResponseMetaSchemaSchema } from "./get-my-archive-items-response-meta-schema-schema.ts";
 export { getMyArchiveItemsResponseSchemaSchema } from "./get-my-archive-items-response-schema-schema.ts";
 export { getMyCreditsBatchesResponseSchemaSchema } from "./get-my-credits-batches-response-schema-schema.ts";
@@ -596,6 +619,8 @@ export { initiateCreditsPackagePaymentResponseSchemaSchema } from "./initiate-cr
 export { initiateSubscriptionPaymentBodySchemaSchema } from "./initiate-subscription-payment-body-schema-schema.ts";
 export { initiateSubscriptionPaymentResponseSchemaSchema } from "./initiate-subscription-payment-response-schema-schema.ts";
 export { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
+export { legalDocumentExtendedSchemaSchema } from "./legal-document-extended-schema-schema.ts";
+export { legalDocumentSchemaSchema } from "./legal-document-schema-schema.ts";
 export { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 export {
   patchApiV1IdeasByIdeaIdSave200Schema,

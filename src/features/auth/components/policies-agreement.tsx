@@ -18,11 +18,15 @@ export const PoliciesAgreement = () => {
   return (
     <div className="text-neutral-7 w-full text-center text-xs text-balance">
       Нажимая «Продолжить», вы соглашаетесь с нашими{" "}
-      <DocumentLink href="/terms-of-service">
+      <DocumentLink to="/legal/$slug" params={{ slug: "terms" }}>
         Условиями пользования
+      </DocumentLink>
+      ,{" "}
+      <DocumentLink to="/legal/$slug" params={{ slug: "offer" }}>
+        публичной офертой
       </DocumentLink>{" "}
       и{" "}
-      <DocumentLink href="/privacy-policy">
+      <DocumentLink to="/legal/$slug" params={{ slug: "privacy" }}>
         Политикой конфиденциальности
       </DocumentLink>
       .

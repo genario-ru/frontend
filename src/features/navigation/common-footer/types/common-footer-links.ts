@@ -4,9 +4,7 @@ type CommonFooterLinkItemStatic = {
   title: string;
 };
 
-type CommonFooterLinkItemLocal = {
-  to: LinkProps["to"];
-};
+type CommonFooterLinkItemLocal = Pick<LinkProps, "to" | "params">;
 
 type CommonFooterLinkItemExternal = {
   href: string;

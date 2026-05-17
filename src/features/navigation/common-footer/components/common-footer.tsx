@@ -3,6 +3,7 @@ import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 import { cn } from "@/shared/utils/cn";
 
 import { commonFooterLinks } from "../constants/common-footer-links";
+import { CommonFooterDocumentsLinksColumn } from "./common-footer-documents-links-column";
 import { CommonFooterLegalInfo } from "./common-footer-legal-info";
 import { CommonFooterLinksColumn } from "./common-footer-links-column";
 
@@ -28,6 +29,7 @@ export function CommonFooter({ className }: CommonFooterProps) {
             items={column.items}
           />
         ))}
+        <CommonFooterDocumentsLinksColumn />
       </nav>
     </Island>
   );

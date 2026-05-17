@@ -98,6 +98,14 @@ export type { GetApiV1IdeasListsInfiniteQueryKey } from "./get-api-v1-ideas-list
 export { getApiV1IdeasListsInfiniteQueryKey } from "./get-api-v1-ideas-lists-infinite.ts";
 export { getApiV1IdeasListsInfiniteQueryOptions } from "./get-api-v1-ideas-lists-infinite.ts";
 export { useGetApiV1IdeasListsInfinite } from "./get-api-v1-ideas-lists-infinite.ts";
+export type { GetApiV1LegalDocumentsQueryKey } from "./get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsQueryKey } from "./get-api-v1-legal-documents.ts";
+export { getApiV1LegalDocumentsQueryOptions } from "./get-api-v1-legal-documents.ts";
+export { useGetApiV1LegalDocuments } from "./get-api-v1-legal-documents.ts";
+export type { GetApiV1LegalDocumentsBySlugQueryKey } from "./get-api-v1-legal-documents-by-slug.ts";
+export { getApiV1LegalDocumentsBySlugQueryKey } from "./get-api-v1-legal-documents-by-slug.ts";
+export { getApiV1LegalDocumentsBySlugQueryOptions } from "./get-api-v1-legal-documents-by-slug.ts";
+export { useGetApiV1LegalDocumentsBySlug } from "./get-api-v1-legal-documents-by-slug.ts";
 export type { GetApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./get-api-v1-platforms.ts";
