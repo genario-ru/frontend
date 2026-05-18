@@ -1,12 +1,12 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 
-import { usePostSignOut } from "@/codegen/api/auth";
+import { usePostApiV1AuthSignOut } from "@/codegen/api/product";
 
 export function useSignOut() {
   const navigate = useNavigate();
 
-  const { mutate: signOutMutate } = usePostSignOut({
+  const { mutate: signOutMutate } = usePostApiV1AuthSignOut({
     mutation: {
       onSuccess: () => {
         navigate({
@@ -19,7 +19,7 @@ export function useSignOut() {
   });
 
   const signOut = useCallback(() => {
-    signOutMutate({ data: {} });
+    signOutMutate();
   }, [signOutMutate]);
 
   return signOut;

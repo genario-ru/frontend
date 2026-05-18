@@ -1,4 +1,4 @@
-import { useGetGetSession } from "@/codegen/api/auth";
+import { useGetApiV1AuthSession } from "@/codegen/api/product";
 
 export function useGetSession() {
   const {
@@ -6,7 +6,7 @@ export function useGetSession() {
     isLoading: isSessionLoading,
     isError: isSessionError,
     refetch: refetchSession,
-  } = useGetGetSession();
+  } = useGetApiV1AuthSession();
 
   return { sessionData, isSessionLoading, isSessionError, refetchSession };
 }

@@ -1,8 +1,10 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 
-import { getGetSessionQueryOptions } from "@/codegen/api/auth";
-import { getApiV1SubscriptonsMyQueryOptions } from "@/codegen/api/product";
+import {
+  getApiV1AuthSessionQueryOptions,
+  getApiV1SubscriptonsMyQueryOptions,
+} from "@/codegen/api/product";
 import { SignInComponent } from "@/entrypoints/sign-in/component";
 import { z } from "@/lib/zod";
 
@@ -18,9 +20,9 @@ export type SignInSearch = z.infer<typeof signInSearchSchema>;
 export const Route = createFileRoute("/_auth/sign-in")({
   validateSearch: zodValidator(signInSearchSchema),
   beforeLoad: async ({ context }) => {
-    const sessionData = await context.queryClient.ensureQueryData({
-      ...getGetSessionQueryOptions(),
-    });
+    const sessionData = await context.queryClient.ensureQueryData(
+      getApiV1AuthSessionQueryOptions(),
+    );
 
     if (!sessionData) {
       return {

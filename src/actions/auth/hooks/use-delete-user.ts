@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import { usePostDeleteUser } from "@/codegen/api/auth";
+import { usePostApiV1AuthUserDelete } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useDeleteUser() {
@@ -10,7 +10,7 @@ export function useDeleteUser() {
   const { showErrorToast } = useToast();
 
   const { mutate: deleteUser, isPending: isDeleteUserPending } =
-    usePostDeleteUser({
+    usePostApiV1AuthUserDelete({
       mutation: {
         onSuccess: () => {
           queryClient.clear();

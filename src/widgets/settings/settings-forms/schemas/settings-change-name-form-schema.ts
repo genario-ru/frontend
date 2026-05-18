@@ -1,4 +1,5 @@
-import { postUpdateUserMutationRequestSchema } from "@/codegen/api/auth";
+import { updateUserBodySchemaSchema } from "@/codegen/api/product";
 
-export const settingsChangeNameFormSchema =
-  postUpdateUserMutationRequestSchema.pick({ name: true });
+export const settingsChangeNameFormSchema = updateUserBodySchemaSchema.pick({
+  name: true,
+});

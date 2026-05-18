@@ -1,11 +1,11 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-import { getGetSessionQueryOptions } from "@/codegen/api/auth";
+import { getApiV1AuthSessionQueryOptions } from "@/codegen/api/product";
 
 export const Route = createFileRoute("/_with-auth")({
   beforeLoad: async ({ context, location }) => {
     const sessionData = await context.queryClient.ensureQueryData(
-      getGetSessionQueryOptions(),
+      getApiV1AuthSessionQueryOptions(),
     );
 
     if (!sessionData) {

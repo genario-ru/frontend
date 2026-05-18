@@ -10,12 +10,12 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const authSessionSchemaSchema = z
   .object({
-    id: z.uuid(),
+    id: z.string(),
     userId: z.uuid(),
     token: z.string().max(255),
     ipAddress: z.string().max(45),
     userAgent: z.string(),
-    impersonatedBy: z.union([z.uuid(), z.null()]),
+    impersonatedBy: z.optional(z.union([z.string(), z.null()])),
     expiresAt: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),

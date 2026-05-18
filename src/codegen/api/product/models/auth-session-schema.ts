@@ -9,7 +9,7 @@
  */
 export type AuthSessionSchema = {
   /**
-   * @type string, uuid
+   * @type string
    */
   id: string;
   /**
@@ -30,7 +30,7 @@ export type AuthSessionSchema = {
    * @type string
    */
   userAgent: string;
-  impersonatedBy: string | null;
+  impersonatedBy?: string | null;
   /**
    * @type string
    */

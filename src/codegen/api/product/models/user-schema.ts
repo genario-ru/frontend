@@ -28,16 +28,17 @@ export type UserSchema = {
    * @type boolean
    */
   emailVerified: boolean;
-  phone: string | null;
+  phone?: string | null;
   /**
-   * @type boolean
+   * @default false
+   * @type boolean | undefined
    */
-  phoneVerified: boolean;
+  phoneVerified?: boolean;
   /**
    * @type string
    */
   name: string;
-  image: string | null;
+  image?: string | null;
   /**
    * @type string
    */
@@ -46,8 +47,8 @@ export type UserSchema = {
    * @type boolean
    */
   banned: boolean;
-  banReason: string | null;
-  banExpires: string | null;
+  banReason?: string | null;
+  banExpires?: string | null;
   /**
    * @type string
    */

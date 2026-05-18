@@ -1,10 +1,10 @@
-import { usePostChangeEmail } from "@/codegen/api/auth";
+import { usePostApiV1AuthChangeEmail } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useChangeEmail() {
   const { showErrorToast } = useToast();
 
-  const { mutateAsync: changeEmailAsync } = usePostChangeEmail({
+  const { mutateAsync: changeEmailAsync } = usePostApiV1AuthChangeEmail({
     mutation: {
       onError: () => {
         showErrorToast({

@@ -19,12 +19,6 @@ type CreateConfigParams = {
 export default defineConfig(() => {
   return [
     createConfig({
-      input: `${API_DIR}/auth.json`,
-      output: `${API_OUTPUT_DIR}/auth`,
-      prefixUrl: "/api/auth",
-      infiniteQuries: false,
-    }),
-    createConfig({
       input: `${API_DIR}/product.json`,
       output: `${API_OUTPUT_DIR}/product`,
     }),

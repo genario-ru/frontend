@@ -1,4 +1,4 @@
-import { usePostUpdateUser } from "@/codegen/api/auth";
+import { usePatchApiV1AuthUser } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useUpdateUser() {
@@ -8,7 +8,7 @@ export function useUpdateUser() {
     mutate: updateUser,
     mutateAsync: updateUserAsync,
     isPending: isUpdateUserPending,
-  } = usePostUpdateUser({
+  } = usePatchApiV1AuthUser({
     mutation: {
       onSuccess: () => {
         showSuccessToast({

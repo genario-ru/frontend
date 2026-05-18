@@ -1,7 +1,7 @@
-import { usePostEmailOtpSendVerificationOtp } from "@/codegen/api/auth";
+import { usePostApiV1AuthEmailOtpSendVerificationOtp } from "@/codegen/api/product";
 
 type UseSendVerificationOtpParams = Parameters<
-  typeof usePostEmailOtpSendVerificationOtp
+  typeof usePostApiV1AuthEmailOtpSendVerificationOtp
 >[0];
 
 export function useSendVerificationOtp(params?: UseSendVerificationOtpParams) {
@@ -9,7 +9,7 @@ export function useSendVerificationOtp(params?: UseSendVerificationOtpParams) {
     mutate: sendVerificationOtp,
     isPending: isVerificationOtpSending,
     isSuccess: isVerificationOtpSent,
-  } = usePostEmailOtpSendVerificationOtp(params);
+  } = usePostApiV1AuthEmailOtpSendVerificationOtp(params);
 
   return {
     sendVerificationOtp,

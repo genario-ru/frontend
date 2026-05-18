@@ -1,8 +1,8 @@
 import type { QueryClient } from "@tanstack/react-query";
 
-import type { GetSession200 } from "@/codegen/api/auth";
+import type { GetApiV1AuthSessionQueryResponse } from "@/codegen/api/product";
 
 export type RouterContext = {
   queryClient: QueryClient;
-  sessionData?: GetSession200;
+  sessionData?: GetApiV1AuthSessionQueryResponse;
 };
