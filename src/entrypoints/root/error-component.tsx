@@ -18,7 +18,12 @@ export function RootErrorComponent() {
           title="Ошибка загрузки"
           description="Не удалось загрузить приложение. Если обновление страницы не помогает, вероятнее всего, мы уже знаем о проблеме и работаем над ее устранением"
           actions={
-            <Button size="lg" icon={<RotateCwIcon />} onClick={reloadPage}>
+            <Button
+              size="lg"
+              priority="tertiary"
+              icon={<RotateCwIcon />}
+              onClick={reloadPage}
+            >
               Обновить страницу
             </Button>
           }
