@@ -15,7 +15,7 @@ export function CookieConsentBanner() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-2 p-4">
-      <Island className="bg-neutral-8/80 pointer-events-auto mx-auto max-w-xl backdrop-blur-sm">
+      <Island className="bg-neutral-8/80 dark:bg-neutral-8/90 pointer-events-auto mx-auto max-w-xl backdrop-blur-sm">
         <p className="text-neutral-1 text-sm">
           Мы используем файлы cookie для корректной работы сайта, сохранения
           ваших настроек и улучшения сервиса. Нажимая «Принять», вы даете
