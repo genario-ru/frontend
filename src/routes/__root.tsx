@@ -2,6 +2,7 @@ import { createRootRouteWithContext } from "@tanstack/react-router";
 
 import { RootComponent } from "@/entrypoints/root/component";
 import { RootErrorComponent } from "@/entrypoints/root/error-component";
+import { RootPendingComponent } from "@/entrypoints/root/pending-component";
 import type { RouterContext } from "@/lib/tanstack-router/types";
 import {
   DEFAULT_DESCRIPTION,
@@ -41,5 +42,6 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     };
   },
   component: RootComponent,
+  pendingComponent: RootPendingComponent,
   errorComponent: RootErrorComponent,
 });

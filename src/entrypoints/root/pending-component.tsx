@@ -10,7 +10,7 @@ const logoIconVariants = cva(
   "m-auto animate-bounce h-10 w-auto object-fit duration-100",
 );
 
-export const AppPendingComponent = () => {
+export function RootPendingComponent() {
   return (
     <PageLayout className="justify-center">
       <ContentLayout>
@@ -19,4 +19,4 @@ export const AppPendingComponent = () => {
       </ContentLayout>
     </PageLayout>
   );
-};
+}

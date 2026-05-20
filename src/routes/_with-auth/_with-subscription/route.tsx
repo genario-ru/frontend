@@ -1,9 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { getApiV1SubscriptonsMyQueryOptions } from "@/codegen/api/product";
-import { AppComponent } from "@/entrypoints/app/component";
-import { AppErrorComponent } from "@/entrypoints/app/error-component";
-import { AppPendingComponent } from "@/entrypoints/app/pending-component";
+import { WithSubscriptionComponent } from "@/entrypoints/with-subscription/component";
 
 export const Route = createFileRoute("/_with-auth/_with-subscription")({
   beforeLoad: async ({ context }) => {
@@ -24,7 +22,5 @@ export const Route = createFileRoute("/_with-auth/_with-subscription")({
 
     return context;
   },
-  component: AppComponent,
-  errorComponent: AppErrorComponent,
-  pendingComponent: AppPendingComponent,
+  component: WithSubscriptionComponent,
 });
