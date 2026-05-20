@@ -11,7 +11,11 @@ import { useVerifyOTPForm } from "../hooks/use-verify-otp-form";
 
 type VerifyOTPFormProps = VerifyOTPSearch;
 
-export const VerifyOTPForm = ({ email, redirect }: VerifyOTPFormProps) => {
+export const VerifyOTPForm = ({
+  email,
+  redirect,
+  isMarketingAccepted,
+}: VerifyOTPFormProps) => {
   const {
     form,
     OTPInputState,
@@ -21,7 +25,7 @@ export const VerifyOTPForm = ({ email, redirect }: VerifyOTPFormProps) => {
     onFormSubmit,
     onOTPInputComplete,
     onResendVerificationEmailButtonClick,
-  } = useVerifyOTPForm({ email, redirect });
+  } = useVerifyOTPForm({ email, redirect, isMarketingAccepted });
 
   return (
     <form

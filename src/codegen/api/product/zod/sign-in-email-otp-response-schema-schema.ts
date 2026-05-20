@@ -5,16 +5,24 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { userSchemaSchema } from "./user-schema-schema.ts";
-
 /**
  * @description Sign in with email OTP response description
  */
 export const signInEmailOtpResponseSchemaSchema = z
   .object({
     token: z.string(),
-    get user() {
-      return userSchemaSchema.describe("User description");
-    },
+    user: z.object({
+      id: z.string(),
+      createdAt: z.optional(
+        z.iso.datetime().default("2026-05-20T18:19:58.602Z"),
+      ),
+      updatedAt: z.optional(
+        z.iso.datetime().default("2026-05-20T18:19:58.603Z"),
+      ),
+      email: z.string(),
+      emailVerified: z.optional(z.boolean().default(false)),
+      name: z.string(),
+      image: z.optional(z.union([z.string(), z.null()])),
+    }),
   })
   .describe("Sign in with email OTP response description");

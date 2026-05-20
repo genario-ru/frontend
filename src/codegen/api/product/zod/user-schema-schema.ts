@@ -13,6 +13,7 @@ export const userSchemaSchema = z
     id: z.uuid(),
     email: z.string(),
     emailVerified: z.boolean(),
+    marketingAccepted: z.boolean(),
     phone: z.optional(z.union([z.string(), z.null()])),
     phoneVerified: z.optional(z.boolean().default(false)),
     name: z.string(),

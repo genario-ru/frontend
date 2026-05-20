@@ -18,25 +18,7 @@ export function useSignInForm({ email, redirect }: UseSignInFormParams) {
   const { showErrorToast } = useToast();
 
   const { sendVerificationOtp, isVerificationOtpSending } =
-    useSendVerificationOtp({
-      mutation: {
-        onError: () => {
-          showErrorToast({
-            description:
-              "Произошла ошибка при входе в аккаунт. Проверьте корректность введенных данных и попробуйте еще раз",
-          });
-        },
-        onSuccess: (_data, { data: { email } }) => {
-          navigate({
-            to: "/verify-otp",
-            search: {
-              redirect,
-              email,
-            },
-          });
-        },
-      },
-    });
+    useSendVerificationOtp();
 
   const form = useAppForm({
     ...signInFormOptions({ email }),
@@ -48,13 +30,33 @@ export function useSignInForm({ email, redirect }: UseSignInFormParams) {
       },
       onSubmit: signInFormValidateFn,
     },
-    onSubmit: async ({ value }) => {
-      sendVerificationOtp({
-        data: {
-          email: value.email,
-          type: "sign-in",
+    onSubmit: async ({ value: { email, isMarketingAccepted } }) => {
+      sendVerificationOtp(
+        {
+          data: {
+            email,
+            type: "sign-in",
+          },
         },
-      });
+        {
+          onError: () => {
+            showErrorToast({
+              description:
+                "Произошла ошибка при входе в аккаунт. Проверьте корректность введенных данных и попробуйте еще раз",
+            });
+          },
+          onSuccess: () => {
+            navigate({
+              to: "/verify-otp",
+              search: {
+                redirect,
+                email,
+                isMarketingAccepted,
+              },
+            });
+          },
+        },
+      );
     },
   });
 

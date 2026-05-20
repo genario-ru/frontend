@@ -24,6 +24,7 @@ type UseVerificationOTPFormParams = VerifyOTPSearch;
 export function useVerifyOTPForm({
   email,
   redirect = "/home",
+  isMarketingAccepted,
 }: UseVerificationOTPFormParams) {
   const navigate = useNavigate();
   const { showErrorToast, showSuccessToast } = useToast();
@@ -36,72 +37,58 @@ export function useVerifyOTPForm({
     sendVerificationOtp,
     isVerificationOtpSending,
     isVerificationOtpSent,
-  } = useSendVerificationOtp({
-    mutation: {
-      onMutate: () => resetCountdown(),
-      onSuccess: () => {
-        startCountdown();
-        showSuccessToast({
-          title: "Код отправлен",
-          description: "Код подтверждения был повторно отправлен на вашу почту",
-        });
-      },
-      onError: () => {
-        showErrorToast({
-          description: "Произошла ошибка при повторной отправке кода. ",
-        });
-      },
-    },
-  });
+  } = useSendVerificationOtp();
 
   const {
     mutate: signIn,
     isPending: isSignInPending,
     isSuccess: isSignInSuccess,
-  } = useSignInEmailOtp({
-    mutation: {
-      onError: (error) => {
-        if (error instanceof APIError && error.cause.status === 400) {
-          form.setFieldMeta("code", (meta) => ({
-            ...meta,
-            errorMap: {
-              ...meta.errorMap,
-              onSubmit: "Неправильный код",
-            },
-          }));
-
-          showErrorToast({
-            description: "Неправильный код",
-          });
-        } else {
-          showErrorToast({
-            description:
-              "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
-          });
-        }
-      },
-      onSuccess: async () => {
-        navigate({
-          to: redirect,
-          replace: true,
-          reloadDocument: true,
-        });
-      },
-    },
-  });
+  } = useSignInEmailOtp();
 
   const form = useAppForm({
     ...verifyOTPFormOptions,
     validators: { onSubmit: verifyOTPFormValidateFn },
-    onSubmit: async function ({ value }) {
+    onSubmit: async function ({ value, formApi }) {
       if (!email) return;
 
-      signIn({
-        data: {
-          email,
-          otp: value.code,
+      signIn(
+        {
+          data: {
+            email,
+            otp: value.code,
+            isMarketingAccepted,
+          },
         },
-      });
+        {
+          onError: (error) => {
+            if (error instanceof APIError && error.cause.status === 400) {
+              formApi.setFieldMeta("code", (meta) => ({
+                ...meta,
+                errorMap: {
+                  ...meta.errorMap,
+                  onSubmit: "Неправильный код",
+                },
+              }));
+
+              showErrorToast({
+                description: "Неправильный код",
+              });
+            } else {
+              showErrorToast({
+                description:
+                  "Произошла ошибка при входе в аккаунт. Попробуйте еще раз чуть позже",
+              });
+            }
+          },
+          onSuccess: async () => {
+            navigate({
+              to: redirect,
+              replace: true,
+              reloadDocument: true,
+            });
+          },
+        },
+      );
     },
   });
 
@@ -148,13 +135,40 @@ export function useVerifyOTPForm({
     if (!email) return;
     if (isVerificationOtpSent && blockedSecondsLeft <= 0) return;
 
-    sendVerificationOtp({
-      data: {
-        email,
-        type: "sign-in",
+    resetCountdown();
+    sendVerificationOtp(
+      {
+        data: {
+          email,
+          type: "sign-in",
+        },
       },
-    });
-  }, [email, isVerificationOtpSent, blockedSecondsLeft, sendVerificationOtp]);
+      {
+        onSuccess: () => {
+          startCountdown();
+          showSuccessToast({
+            title: "Код отправлен",
+            description:
+              "Код подтверждения был повторно отправлен на вашу почту",
+          });
+        },
+        onError: () => {
+          showErrorToast({
+            description: "Произошла ошибка при повторной отправке кода. ",
+          });
+        },
+      },
+    );
+  }, [
+    email,
+    isVerificationOtpSent,
+    blockedSecondsLeft,
+    sendVerificationOtp,
+    resetCountdown,
+    startCountdown,
+    showSuccessToast,
+    showErrorToast,
+  ]);
 
   return {
     form,

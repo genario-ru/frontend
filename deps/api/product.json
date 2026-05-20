@@ -7739,7 +7739,9 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
           "userId": {
             "type": "string",
@@ -7760,7 +7762,9 @@
           "impersonatedBy": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
               },
               {
                 "type": "null"
@@ -7783,6 +7787,7 @@
           "token",
           "ipAddress",
           "userAgent",
+          "impersonatedBy",
           "expiresAt",
           "createdAt",
           "updatedAt"
@@ -7802,6 +7807,9 @@
             "type": "string"
           },
           "emailVerified": {
+            "type": "boolean"
+          },
+          "marketingAccepted": {
             "type": "boolean"
           },
           "phone": {
@@ -7872,6 +7880,7 @@
           "id",
           "email",
           "emailVerified",
+          "marketingAccepted",
           "name",
           "role",
           "banned",
@@ -8000,7 +8009,47 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/UserSchema"
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "createdAt": {
+                "default": "2026-05-20T18:19:58.602Z",
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "default": "2026-05-20T18:19:58.603Z",
+                "type": "string",
+                "format": "date-time"
+              },
+              "email": {
+                "type": "string"
+              },
+              "emailVerified": {
+                "default": false,
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "image": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "email",
+              "name"
+            ]
           }
         },
         "required": [
@@ -8022,6 +8071,9 @@
             "type": "string",
             "minLength": 6,
             "maxLength": 6
+          },
+          "isMarketingAccepted": {
+            "type": "boolean"
           }
         },
         "required": [

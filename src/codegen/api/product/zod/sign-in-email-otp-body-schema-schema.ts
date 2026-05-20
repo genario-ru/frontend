@@ -12,5 +12,6 @@ export const signInEmailOtpBodySchemaSchema = z
   .object({
     email: z.email(),
     otp: z.string().min(6).max(6),
+    isMarketingAccepted: z.optional(z.boolean()),
   })
   .describe("Sign in with email OTP body description");

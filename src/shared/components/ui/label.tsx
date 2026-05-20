@@ -22,6 +22,9 @@ const labelVariants = cva(
 type LavelProps = ComponentProps<typeof LabelPrimitive.Root> &
   VariantProps<typeof labelVariants>;
 
-export const Label = ({ className, ...props }: LavelProps) => (
-  <LabelPrimitive.Root className={cn(labelVariants(), className)} {...props} />
+export const Label = ({ size, className, ...props }: LavelProps) => (
+  <LabelPrimitive.Root
+    className={cn(labelVariants({ size }), className)}
+    {...props}
+  />
 );

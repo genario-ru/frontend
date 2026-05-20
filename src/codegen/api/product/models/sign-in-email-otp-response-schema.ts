@@ -3,8 +3,6 @@
  * Do not edit manually.
  */
 
-import type { UserSchema } from "./user-schema.ts";
-
 /**
  * Sign in with email OTP response
  * @description Sign in with email OTP response description
@@ -15,8 +13,36 @@ export type SignInEmailOtpResponseSchema = {
    */
   token: string;
   /**
-   * @description User description
    * @type object
    */
-  user: UserSchema;
+  user: {
+    /**
+     * @type string
+     */
+    id: string;
+    /**
+     * @default "2026-05-20T18:19:58.602Z"
+     * @type string | undefined, date-time
+     */
+    createdAt?: string;
+    /**
+     * @default "2026-05-20T18:19:58.603Z"
+     * @type string | undefined, date-time
+     */
+    updatedAt?: string;
+    /**
+     * @type string
+     */
+    email: string;
+    /**
+     * @default false
+     * @type boolean | undefined
+     */
+    emailVerified?: boolean;
+    /**
+     * @type string
+     */
+    name: string;
+    image?: string | null;
+  };
 };

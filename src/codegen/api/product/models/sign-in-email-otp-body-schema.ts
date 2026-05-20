@@ -18,4 +18,8 @@ export type SignInEmailOtpBodySchema = {
    * @type string
    */
   otp: string;
+  /**
+   * @type boolean | undefined
+   */
+  isMarketingAccepted?: boolean;
 };

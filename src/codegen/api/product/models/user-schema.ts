@@ -28,6 +28,10 @@ export type UserSchema = {
    * @type boolean
    */
   emailVerified: boolean;
+  /**
+   * @type boolean
+   */
+  marketingAccepted: boolean;
   phone?: string | null;
   /**
    * @default false
