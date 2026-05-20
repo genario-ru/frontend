@@ -1,6 +1,7 @@
 import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 
 import { CheckboxChipsField } from "./components/checkbox-chips-field";
+import { CheckboxField } from "./components/checkbox-field";
 import { InputField } from "./components/input-field";
 import { MultiSelectField } from "./components/multi-select-field";
 import { RadioCardsGroupField } from "./components/radio-cards-group-field";
@@ -18,6 +19,7 @@ export const { useAppForm, withForm } = createFormHook({
   fieldComponents: {
     InputField,
     TextareaField,
+    CheckboxField,
     CheckboxChipsField,
     SelectField,
     MultiSelectField,

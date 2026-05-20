@@ -5,6 +5,10 @@ import { z } from "@/lib/zod";
 
 export const signInFormSchema = z.object({
   email: z.email("Введите корректный email"),
+  isLegalAccepted: z.boolean().refine(Boolean, {
+    message: "Для входа необходимо согласиться с условиями и документами",
+  }),
+  isMarketingAccepted: z.boolean(),
 });
 
 export type SignInFormSchema = z.infer<typeof signInFormSchema>;
@@ -15,7 +19,11 @@ type SignInFormOptionsParams = {
 
 export function signInFormOptions({ email = "" }: SignInFormOptionsParams) {
   return formOptions({
-    defaultValues: { email },
+    defaultValues: {
+      email,
+      isLegalAccepted: false,
+      isMarketingAccepted: false,
+    },
   });
 }
 

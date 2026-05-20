@@ -1,6 +1,7 @@
 import type { SignInSearch } from "@/routes/_auth/sign-in";
 
 import { useSignInForm } from "../hooks/use-sign-in-form";
+import { SignInFormFields } from "./sign-in-form-fields";
 
 type SignInFormProps = SignInSearch;
 
@@ -27,6 +28,7 @@ export function SignInForm({ email, redirect }: SignInFormProps) {
           Продолжить
         </form.SubmitButton>
       </form.AppForm>
+      <SignInFormFields form={form} />
     </form>
   );
 }

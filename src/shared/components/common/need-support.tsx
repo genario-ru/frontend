@@ -9,7 +9,7 @@ export const NeedSupport = ({ className, ...props }: NeedSupportProps) => {
   return (
     <section
       className={cn(
-        "text-neutral-7 w-full text-center text-xs whitespace-pre-line",
+        "text-neutral-7 w-full text-center text-sm whitespace-pre-line",
         className,
       )}
       {...props}
