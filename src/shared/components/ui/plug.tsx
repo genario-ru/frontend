@@ -86,7 +86,7 @@ const plugTitleVariants = cva("whitespace-pre-line", {
 });
 
 const plugDescriptionVariants = cva(
-  "text-neutral-6 text-center whitespace-pre-line",
+  "text-neutral-7 text-center whitespace-pre-line",
   {
     variants: {
       size: {

@@ -8009,47 +8009,7 @@
             "type": "string"
           },
           "user": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "createdAt": {
-                "default": "2026-05-20T18:19:58.602Z",
-                "type": "string",
-                "format": "date-time"
-              },
-              "updatedAt": {
-                "default": "2026-05-20T18:19:58.603Z",
-                "type": "string",
-                "format": "date-time"
-              },
-              "email": {
-                "type": "string"
-              },
-              "emailVerified": {
-                "default": false,
-                "type": "boolean"
-              },
-              "name": {
-                "type": "string"
-              },
-              "image": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            },
-            "required": [
-              "id",
-              "email",
-              "name"
-            ]
+            "$ref": "#/components/schemas/UserSchema"
           }
         },
         "required": [
