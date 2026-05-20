@@ -34,6 +34,8 @@ export function CommonFooterLinksColumn({
         return (
           <Link
             key={`footer-documents-${item.title}-item-${index}`}
+            target="_blank"
+            rel="noopener noreferrer"
             to={item.to}
             params={item.params}
             className={commonFooterLinkClassName}
