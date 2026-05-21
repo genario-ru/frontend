@@ -1,19 +1,20 @@
-import landingPersonalizationFeatureImage from "@/assets/images/landing-personalization-feature.jpg";
+import profileSettingsFeatureImage from "@/assets/images/profile-settings-feature.jpg";
+import profilesImportFeatureImage from "@/assets/images/profiles-import-feature.jpg";
 
 import type { LandingPersonalizationFeature } from "../types/landing-personalization-feature";
 
 export const landingPersonalizationFeatures: LandingPersonalizationFeature[] = [
   {
-    image: landingPersonalizationFeatureImage,
-    title: "Настройка под канал и стиль",
+    image: profilesImportFeatureImage,
+    title: "Импорт профилей каналов",
     description:
-      "Genario учитывает формат канала, тон общения и требования к подаче. Благодаря этому идеи, сценарии и метаданные получаются ближе к вашему стилю уже на первом черновике.",
+      "Добавьте ссылки на свои каналы, а Genario поможет быстро создать профили для дальнейшей работы. Это упрощает старт, экономит время на ручной перенос данных и помогает быстрее перейти к подготовке контента.",
   },
   {
-    image: landingPersonalizationFeatureImage,
-    title: "Подготовка под вашу аудиторию",
+    image: profileSettingsFeatureImage,
+    title: "Ручная настройка профиля",
     description:
-      "Можно задать тему, нишу и портрет зрителя, чтобы сервис опирался не на усреднённую заготовку, а на вашу реальную аудиторию. Это помогает быстрее получать более уместные и рабочие заготовки для видео.",
+      "Профиль можно детально настроить вручную: указать тематику канала, стиль подачи, платформы, тональность и аудиторию. Благодаря этому идеи, сценарии и метаданные получаются ближе к вашему реальному формату уже с первого черновика.",
     inverseOrder: true,
   },
 ];
