@@ -12,19 +12,19 @@ export const LegalConsentText = ({
 }: LegalConsentTextProps) => {
   return (
     <span className={className} {...props}>
-      Я соглашаюсь с{SPACE}
+      Я принимаю{SPACE}
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "terms-of-service" }}>
-        пользовательским соглашением
-      </AuthDocumentLink>
-      ,{SPACE}
-      <AuthDocumentLink to="/legal/$slug" params={{ slug: "public-offer" }}>
-        публичной офертой
+        пользовательское соглашение
       </AuthDocumentLink>
       {SPACE}и{SPACE}
+      <AuthDocumentLink to="/legal/$slug" params={{ slug: "public-offer" }}>
+        публичную оферту
+      </AuthDocumentLink>
+      . С{SPACE}
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "privacy-policy" }}>
         политикой конфиденциальности
       </AuthDocumentLink>
-      .
+      {SPACE}ознакомлен(а).
     </span>
   );
 };
