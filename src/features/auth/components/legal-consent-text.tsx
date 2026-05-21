@@ -16,15 +16,22 @@ export const LegalConsentText = ({
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "terms-of-service" }}>
         пользовательское соглашение
       </AuthDocumentLink>
-      {SPACE}и{SPACE}
+      ,{SPACE}
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "public-offer" }}>
         публичную оферту
       </AuthDocumentLink>
-      . С{SPACE}
-      <AuthDocumentLink to="/legal/$slug" params={{ slug: "privacy-policy" }}>
-        политикой конфиденциальности
+      {SPACE}и даю{SPACE}
+      <AuthDocumentLink
+        to="/legal/$slug"
+        params={{ slug: "privacy-policy-consent" }}
+      >
+        согласие на обработку персональных данных
       </AuthDocumentLink>
-      {SPACE}ознакомлен(а).
+      {SPACE}на условиях{SPACE}
+      <AuthDocumentLink to="/legal/$slug" params={{ slug: "privacy-policy" }}>
+        политики обработки персональных данных
+      </AuthDocumentLink>
+      .
     </span>
   );
 };
