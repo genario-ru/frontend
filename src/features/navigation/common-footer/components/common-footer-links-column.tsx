@@ -4,7 +4,7 @@ import type { CommonFooterLinksColumn } from "../types/common-footer-links";
 
 type CommonFooterLinksColumnProps = CommonFooterLinksColumn;
 
-const commonFooterLinkClassName =
+const COMMON_FOOTER_LINK_CLASS_NAME =
   "text-neutral-6 hover:text-neutral-8 text-sm duration-200 hover:underline";
 
 export function CommonFooterLinksColumn({
@@ -24,7 +24,7 @@ export function CommonFooterLinksColumn({
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={commonFooterLinkClassName}
+              className={COMMON_FOOTER_LINK_CLASS_NAME}
             >
               {item.title}
             </a>
@@ -38,7 +38,7 @@ export function CommonFooterLinksColumn({
             rel="noopener noreferrer"
             to={item.to}
             params={item.params}
-            className={commonFooterLinkClassName}
+            className={COMMON_FOOTER_LINK_CLASS_NAME}
           >
             {item.title}
           </Link>

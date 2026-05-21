@@ -1,11 +1,11 @@
 import { useParams, useSearch } from "@tanstack/react-router";
 import { useMemo } from "react";
 
+import { CommonFooter } from "@/features/navigation/common-footer/components/common-footer";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { scenarioTabs } from "@/shared/constants/scenario-tabs";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
-import { cn } from "@/shared/utils/cn";
 import { ScenarioAppMenubar } from "@/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar";
 import { ScenarioChapter } from "@/widgets/scenario/scenario-chapter/components/scenario-chapter";
 import { ScenarioGenerationAlert } from "@/widgets/scenario/scenario-generation-alert/components/scenario-generation-alert";
@@ -46,14 +46,17 @@ export function ScenarioComponent() {
     );
   }, [isMobile, tab, scenarioId]);
 
+  const footer = useMemo(() => {
+    if (tab === scenarioTabs.metadata) {
+      return <CommonFooter />;
+    }
+  }, [tab]);
+
   return (
-    <PageLayout
-      className={cn("h-fit min-h-full pb-8", {
-        "pb-0": tab !== scenarioTabs.metadata,
-      })}
-    >
+    <PageLayout className="h-fit min-h-full">
       <ScenarioAppMenubar scenarioId={scenarioId} />
       {body}
+      {footer}
     </PageLayout>
   );
 }
