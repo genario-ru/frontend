@@ -4,6 +4,7 @@ import {
   TemplateCardsRadioGroupItem,
   TemplateCardsRadioGroupSkeleton,
 } from "@/features/templates/template-card/components/template-cards-radio-group";
+import { noTemplateOption } from "@/features/templates/template-card/constants/no-template-option";
 import { withForm } from "@/lib/tanstack-form";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
 import { Plug } from "@/shared/components/ui/plug";
@@ -38,10 +39,22 @@ export const ScenarioSettingsTemplatesSelectionSubform = withForm({
         {(field) => (
           <FieldLayout message={field.state.meta.errors[0]}>
             <TemplateCardsRadioGroup
-              value={field.state.value}
+              value={field.state.value ?? noTemplateOption.value}
               onBlur={field.handleBlur}
-              onValueChange={(e) => field.handleChange(e)}
+              onValueChange={(value) =>
+                field.handleChange(
+                  value === noTemplateOption.value ? null : value,
+                )
+              }
             >
+              <TemplateCardsRadioGroupItem
+                value={noTemplateOption.value}
+                name={noTemplateOption.name}
+                icon={noTemplateOption.icon}
+                color={noTemplateOption.color}
+                description={noTemplateOption.description}
+                checked={field.state.value == null}
+              />
               {templatesData.data.map((item) => (
                 <TemplateCardsRadioGroupItem
                   key={item.id}

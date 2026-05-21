@@ -33,7 +33,8 @@ export const prepareScenarioSettingsFormOptions = ({
         templateId:
           templateIdParam ??
           scenarioData?.data.templateId ??
-          ideaData?.data.ideasList.templateId,
+          ideaData?.data.ideasList.templateId ??
+          null,
       },
       [ScenarioSettingsFormSteps.PrimaryInfo]: {
         name: scenarioData?.data.name ?? ideaData?.data.name ?? "",

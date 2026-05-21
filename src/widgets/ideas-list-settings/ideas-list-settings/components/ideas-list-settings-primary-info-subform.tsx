@@ -15,7 +15,7 @@ export const IdeasListSettingsPrimaryInfoSubform = withForm({
         >
           {(field) => (
             <field.TextareaField
-              label="Промпт"
+              label="Наброски"
               placeholder="10 идей для видео про личный бренд для эксперта, который развивает YouTube-канал"
             />
           )}

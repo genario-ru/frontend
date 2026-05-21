@@ -25,7 +25,7 @@ export const prepareIdeasListSettingsFormOptions = ({
     defaultValues: {
       currentStep,
       [IdeasListSettingsFormSteps.TemplateSelection]: {
-        templateId: templateId ?? ideasListData?.data.templateId,
+        templateId: templateId ?? ideasListData?.data.templateId ?? null,
       },
       [IdeasListSettingsFormSteps.PrimaryInfo]: {
         prompt: ideasListData?.data.prompt ?? "",
