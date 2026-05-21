@@ -17,7 +17,7 @@ export const FormHeader = ({
     <div className={cn("flex flex-col items-center gap-2", className)}>
       {title && <h1 className="text-2xl font-bold">{title}</h1>}
       {description && (
-        <p className="text-neutral-7 text-center text-sm whitespace-pre-wrap">
+        <p className="text-neutral-7 text-center whitespace-pre-wrap">
           {description}
         </p>
       )}
