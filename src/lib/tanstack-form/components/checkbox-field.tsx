@@ -22,7 +22,6 @@ type CheckboxFieldProps = Omit<
 
 export const CheckboxField = ({
   label,
-  className,
   labelClassName,
   fieldLayoutProps: { message, messageVariant, ...fieldLayoutProps } = {},
   ...props
@@ -49,7 +48,6 @@ export const CheckboxField = ({
           checked={value}
           onCheckedChange={(checked) => handleChange(checked === true)}
           aria-invalid={errors.length > 0}
-          className={cn("mt-0.5", className)}
           {...props}
         />
         {label && (

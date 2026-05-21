@@ -12,8 +12,8 @@ export const MarketingConsentText = ({
 }: MarketingConsentTextProps) => {
   return (
     <span className={className} {...props}>
-      Я соглашаюсь на получение рекламных предложений и информационных рассылок
-      в соответствии с{SPACE}
+      Я соглашаюсь на получение рекламных и информационных материалов в
+      соответствии с{SPACE}
       <AuthDocumentLink
         to="/legal/$slug"
         params={{ slug: "advertising-consent" }}
