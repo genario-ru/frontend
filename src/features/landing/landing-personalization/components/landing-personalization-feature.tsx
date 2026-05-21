@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/shared/components/ui/button-link";
+import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
 import { LandingSectionHeader } from "../../landing-section-header/components/landing-section-header";
@@ -8,7 +9,7 @@ export function LandingPersonalizationFeature({
   image,
   title,
   description,
-  buttonLinkText = "Попробовать бесплатно",
+  buttonLinkText = `Попробовать 3 дня за 1${NBSP}${RUBLE_SIGN}`,
   inverseOrder,
 }: LandingPersonalizationFeature) {
   return (
@@ -16,7 +17,7 @@ export function LandingPersonalizationFeature({
       <div className="rounded-6 from-neutral-8 to-accent-6 bg-linear-to-b p-4 sm:p-6 lg:p-8">
         <img
           src={image}
-          alt="Feature screenshot"
+          alt={title}
           className="rounded-4 h-full w-full"
         />
       </div>
@@ -30,7 +31,12 @@ export function LandingPersonalizationFeature({
           description={description}
           align="left"
         />
-        <ButtonLink size="lg" to="/sign-in" className="w-full sm:w-fit">
+        <ButtonLink
+          size="lg"
+          to="/"
+          hash="tariffs"
+          className="w-full sm:w-fit"
+        >
           {buttonLinkText}
         </ButtonLink>
       </div>

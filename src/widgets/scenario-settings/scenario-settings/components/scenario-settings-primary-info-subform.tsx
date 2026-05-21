@@ -15,7 +15,7 @@ export const ScenarioSettingsPrimaryInfoSubform = withForm({
             <field.InputField
               label="Название"
               size="lg"
-              placeholder="Мой новый крутой сценарий..."
+              placeholder="Сценарий для YouTube-видео про запуск подкаста"
             />
           )}
         </form.AppField>
@@ -25,7 +25,7 @@ export const ScenarioSettingsPrimaryInfoSubform = withForm({
           {(field) => (
             <field.TextareaField
               label="Идея"
-              placeholder="Сценарий для видео про приготовление еды..."
+              placeholder="Разобрать главные ошибки новичков при запуске подкаста и показать, как их избежать"
             />
           )}
         </form.AppField>

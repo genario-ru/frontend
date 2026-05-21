@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 
 import { VerifyOTPComponent } from "@/entrypoints/verify-otp/component";
+import { VerifyOTPErrorComponent } from "@/entrypoints/verify-otp/error-component";
 import { z } from "@/lib/zod";
 
 const verifyOTPSearchSchema = z.object({
@@ -17,5 +18,5 @@ export type VerifyOTPSearch = z.infer<typeof verifyOTPSearchSchema>;
 export const Route = createFileRoute("/_auth/verify-otp")({
   validateSearch: zodValidator(verifyOTPSearchSchema),
   component: VerifyOTPComponent,
-  errorComponent: () => <div>Provide email</div>,
+  errorComponent: VerifyOTPErrorComponent,
 });

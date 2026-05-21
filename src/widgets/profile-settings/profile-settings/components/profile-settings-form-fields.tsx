@@ -35,7 +35,7 @@ export const ProfileSettingsFormFields = withForm({
           {(field) => (
             <field.TextareaField
               label="Описание профиля / канала"
-              placeholder="Вся релевантная информация о вашем профиле / канале"
+              placeholder="О чём ваш канал, в каком стиле вы подаёте материал и для какой аудитории делаете контент"
             />
           )}
         </form.AppField>

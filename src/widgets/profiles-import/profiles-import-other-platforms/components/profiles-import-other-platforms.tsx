@@ -8,7 +8,7 @@ export function ProfilesImportOtherPlatforms() {
     <ProfilesImportIsland
       icon={CircleQuestionMarkIcon}
       title="Что делать, если канал на другой платформе?"
-      description="Ничего страшного, для этого просто перейдите в режим ручного создания профиля вашего канала"
+      description="Если импорт для вашей платформы пока недоступен, создайте профиль канала вручную и заполните нужные данные самостоятельно."
     >
       <ButtonLink
         to="/profiles/settings"

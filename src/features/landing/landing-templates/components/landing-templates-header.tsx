@@ -1,22 +1,14 @@
-import { Badge } from "@/shared/components/ui/badge";
-
 import { LandingSectionHeader } from "../../landing-section-header/components/landing-section-header";
 
-const LANDING_TEMPLATES_BADGE = "Что-то очень важное";
-const LANDING_TEMPLITES_TITLE = "Шаблоны на все случаи";
-const LANDING_TEMPLITES_DESCRIPTION =
-  "Создавайте сценарии для видео за минуты, а не часы, Создавайте сценарии для видео за минуты, а не часы, Создавайте сценарии";
+const LANDING_TEMPLATES_TITLE = "Шаблоны под разные сценарии";
+const LANDING_TEMPLATES_DESCRIPTION =
+  "Выбирайте шаблон под задачу ролика: обзор, туториал, storytelling, vlog и другие сценарные форматы. Это помогает сразу выстраивать материал в нужной логике, а не собирать структуру с нуля.";
 
 export function LandingTemplatesHeader() {
   return (
     <LandingSectionHeader
-      badge={
-        <Badge color="custom" className="bg-accent-1 text-accent-7">
-          {LANDING_TEMPLATES_BADGE}
-        </Badge>
-      }
-      title={LANDING_TEMPLITES_TITLE}
-      description={LANDING_TEMPLITES_DESCRIPTION}
+      title={LANDING_TEMPLATES_TITLE}
+      description={LANDING_TEMPLATES_DESCRIPTION}
     />
   );
 }

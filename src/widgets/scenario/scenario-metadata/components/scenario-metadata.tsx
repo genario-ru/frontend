@@ -100,7 +100,7 @@ export function ScenarioMetadata({ scenarioId }: ScenarioMetadataProps) {
     <Island
       grow
       title="Метаданные"
-      description="Тут нужно осмысленное описание для метаданных"
+      description="Соберите заголовки, описания и теги под нужные платформы, чтобы быстрее подготовить видео к публикации."
     >
       {body}
     </Island>
