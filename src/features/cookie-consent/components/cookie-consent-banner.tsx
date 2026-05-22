@@ -19,8 +19,7 @@ export function CookieConsentBanner() {
         <p className="text-neutral-1 text-sm">
           Мы используем файлы cookie для корректной работы сайта, сохранения
           ваших настроек и улучшения сервиса. Нажимая «Принять», вы даете
-          согласие на обработку файлов cookie. Подробнее об этом можно прочитать
-          в{SPACE}
+          согласие на обработку файлов cookie на условиях{SPACE}
           <Link
             to="/legal/$slug"
             params={{ slug: "cookie-policy" }}
@@ -28,7 +27,7 @@ export function CookieConsentBanner() {
             rel="noopener noreferrer"
             className="hover:text-neutral-2 underline underline-offset-2"
           >
-            политике использования Cookie
+            политики использования Cookie
           </Link>
           .
         </p>
