@@ -15,7 +15,7 @@ export const Route = createFileRoute("/_with-auth")({
         reloadDocument: true,
         to: "/sign-in",
         search: {
-          redirect: location.pathname,
+          redirect: `${location.pathname}${location.searchStr}`,
         },
       });
     }
