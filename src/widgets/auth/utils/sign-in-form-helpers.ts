@@ -9,10 +9,6 @@ export const signInFormSchema = z.object({
     message:
       "Для входа необходимо принять пользовательское соглашение и публичную оферту",
   }),
-  isPersonalDataAccepted: z.boolean().refine(Boolean, {
-    message:
-      "Для входа необходимо дать согласие на обработку персональных данных",
-  }),
   isMarketingAccepted: z.boolean(),
 });
 
@@ -27,7 +23,6 @@ export function signInFormOptions({ email = "" }: SignInFormOptionsParams) {
     defaultValues: {
       email,
       isTermsAccepted: false,
-      isPersonalDataAccepted: false,
       isMarketingAccepted: false,
     },
   });
