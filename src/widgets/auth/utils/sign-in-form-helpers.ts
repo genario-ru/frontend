@@ -6,8 +6,7 @@ import { z } from "@/lib/zod";
 export const signInFormSchema = z.object({
   email: z.email("Введите корректный email"),
   isTermsAccepted: z.boolean().refine(Boolean, {
-    message:
-      "Для входа необходимо принять пользовательское соглашение и публичную оферту",
+    message: "Данное согласие является обязательным",
   }),
   isMarketingAccepted: z.boolean(),
 });
