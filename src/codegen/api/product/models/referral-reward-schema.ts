@@ -31,10 +31,6 @@ export type ReferralRewardSchema = {
   /**
    * @type string
    */
-  slug: string;
-  /**
-   * @type string
-   */
   name: string;
   description: string | null;
   /**
@@ -46,11 +42,15 @@ export type ReferralRewardSchema = {
    */
   userType: ReferralRewardSchemaUserTypeEnumKey;
   /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
+   * @minLength -8388608
+   * @maxLength 8388607
+   * @type number
    */
   value: number;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

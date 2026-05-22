@@ -11,12 +11,13 @@ import { z } from "@/lib/zod/index.ts";
 export const templateSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     details: z.union([z.string(), z.null()]),
     icon: z.union([z.string(), z.null()]),
     color: z.string(),
+    priority: z.int().min(-9007199254740991).max(9007199254740991),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

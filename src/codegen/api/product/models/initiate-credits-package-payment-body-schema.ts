@@ -11,7 +11,7 @@ export type InitiateCreditsPackagePaymentBodySchema = {
   /**
    * @type string
    */
-  creditsPackageId: string;
+  creditsPackageSlug: string;
   /**
    * @type string | undefined
    */

@@ -11,7 +11,6 @@ import { z } from "@/lib/zod/index.ts";
 export const productionStatusSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     icon: z.union([z.string(), z.null()]),
@@ -19,6 +18,8 @@ export const productionStatusSchemaSchema = z
     isDefault: z.boolean(),
     forScenario: z.boolean(),
     forScenarioChapter: z.boolean(),
+    priority: z.int().min(-9007199254740991).max(9007199254740991),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

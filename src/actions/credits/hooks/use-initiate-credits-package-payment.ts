@@ -7,6 +7,8 @@ export function useInitiateCreditsPackagePayment() {
   const {
     mutate: initiateCreditsPackagePayment,
     isPending: isInitiateCreditsPackagePaymentPending,
+    isError: isInitiateCreditsPackagePaymentError,
+    isSuccess: isInitiateCreditsPackagePaymentSuccess,
   } = usePostApiV1CreditsPackagesInitiatePayment({
     mutation: {
       onError: () => {
@@ -19,7 +21,9 @@ export function useInitiateCreditsPackagePayment() {
   });
 
   return {
-    initiateCreditsPackagePayment,
     isInitiateCreditsPackagePaymentPending,
+    isInitiateCreditsPackagePaymentError,
+    isInitiateCreditsPackagePaymentSuccess,
+    initiateCreditsPackagePayment,
   };
 }

@@ -15,10 +15,6 @@ export type VideoDurationSchema = {
   /**
    * @type string
    */
-  slug: string;
-  /**
-   * @type string
-   */
   name: string;
   description: string | null;
   /**
@@ -28,6 +24,10 @@ export type VideoDurationSchema = {
    */
   minSeconds: number;
   maxSeconds: number | null;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

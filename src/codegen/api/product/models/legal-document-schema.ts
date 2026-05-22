@@ -15,11 +15,11 @@ export type LegalDocumentSchema = {
   /**
    * @type string
    */
-  slug: string;
+  title: string;
   /**
    * @type string
    */
-  title: string;
+  slug: string;
   /**
    * @type string
    */

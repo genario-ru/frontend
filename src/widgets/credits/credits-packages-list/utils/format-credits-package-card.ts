@@ -6,23 +6,11 @@ import {
   CREDITS_PER_SCRIPT_ESTIMATE,
 } from "../constants/credits-package-metric-ratios";
 
-export type CreditsPackageCardView = {
-  id: string;
-  title: string;
-  priceLabel: string;
-  purchaseButtonLabel: string;
-  description: string | null;
-  metricBadgeLabels: string[];
-  isPreferred: boolean;
-};
-
 function formatRub(value: number): string {
   return `${value.toLocaleString("ru-RU", { maximumFractionDigits: 0 })} ₽`;
 }
 
-export function formatCreditsPackageCard(
-  pkg: CreditsPackageSchema,
-): CreditsPackageCardView {
+export function formatCreditsPackageCard(pkg: CreditsPackageSchema) {
   const rubPerCredit = pkg.amount > 0 ? pkg.price / pkg.amount : 0;
   const ideasApprox = Math.floor(pkg.amount / CREDITS_PER_IDEA_ESTIMATE);
   const scriptsApprox = pkg.amount / CREDITS_PER_SCRIPT_ESTIMATE;
@@ -39,6 +27,7 @@ export function formatCreditsPackageCard(
 
   return {
     id: pkg.id,
+    slug: pkg.slug,
     title: `${pkg.amount.toLocaleString("ru-RU")} кредитов`,
     priceLabel: formatRub(pkg.price),
     purchaseButtonLabel: `Купить за ${formatRub(pkg.price)}`,

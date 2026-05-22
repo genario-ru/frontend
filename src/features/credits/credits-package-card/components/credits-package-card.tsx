@@ -2,7 +2,10 @@ import { StarIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Badge } from "@/shared/components/ui/badge";
-import { Button } from "@/shared/components/ui/button";
+import {
+  ButtonLink,
+  type ButtonLinkProps,
+} from "@/shared/components/ui/button-link";
 import { cn } from "@/shared/utils/cn";
 
 type CreditsPackageCardProps = {
@@ -10,10 +13,8 @@ type CreditsPackageCardProps = {
   priceLabel: string;
   description: string | null;
   metricBadges: ReactNode;
-  purchaseButtonLabel: string;
   isPreferred: boolean;
-  isPurchasePending: boolean;
-  onPurchase: () => void;
+  buttonLinkProps: ButtonLinkProps;
 };
 
 export function CreditsPackageCard({
@@ -21,10 +22,8 @@ export function CreditsPackageCard({
   priceLabel,
   description,
   metricBadges,
-  purchaseButtonLabel,
   isPreferred,
-  isPurchasePending,
-  onPurchase,
+  buttonLinkProps,
 }: CreditsPackageCardProps) {
   return (
     <div
@@ -58,16 +57,13 @@ export function CreditsPackageCard({
         )}
         {metricBadges}
       </div>
-      <Button
+      <ButtonLink
         variant={isPreferred ? "accent" : "neutral"}
         priority={isPreferred ? "primary" : "secondary"}
         size="base"
         className="w-full"
-        state={isPurchasePending ? "loading" : "default"}
-        onClick={onPurchase}
-      >
-        {purchaseButtonLabel}
-      </Button>
+        {...buttonLinkProps}
+      />
     </div>
   );
 }

@@ -25,7 +25,7 @@ export const creditsUsageExtendedSchemaSchema = z
     ]),
     entityId: z.uuid(),
     creditsAmount: z.number().min(-8388608).max(8388607),
-    tokensPerCredit: z.int().min(-9007199254740991).max(9007199254740991),
+    tokensPerCredit: z.number().min(-8388608).max(8388607),
     createdAt: z.string(),
     updatedAt: z.string(),
     get batch() {

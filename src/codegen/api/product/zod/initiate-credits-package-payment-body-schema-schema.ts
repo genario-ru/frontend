@@ -10,7 +10,7 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const initiateCreditsPackagePaymentBodySchemaSchema = z
   .object({
-    creditsPackageId: z.string(),
+    creditsPackageSlug: z.string(),
     redirect: z.optional(z.string()),
   })
   .describe("Initiate credits package payment body description");

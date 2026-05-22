@@ -15,10 +15,6 @@ export type ScenarioSceneComponentTypeSchema = {
   /**
    * @type string
    */
-  slug: string;
-  /**
-   * @type string
-   */
   name: string;
   description: string | null;
   details: string | null;
@@ -28,6 +24,10 @@ export type ScenarioSceneComponentTypeSchema = {
    * @type boolean
    */
   optional: boolean;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

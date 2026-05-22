@@ -18,9 +18,9 @@ export type CreditsPackageSchema = {
   name: string;
   description: string | null;
   /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
+   * @minLength -8388608
+   * @maxLength 8388607
+   * @type number
    */
   amount: number;
   /**
@@ -38,6 +38,10 @@ export type CreditsPackageSchema = {
    * @type boolean
    */
   isPreferred: boolean;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

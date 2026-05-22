@@ -11,12 +11,13 @@
 import { Route as rootRouteImport } from "./../../routes/__root";
 import { Route as WithAuthRouteRouteImport } from "./../../routes/_with-auth/route";
 import { Route as AuthRouteRouteImport } from "./../../routes/_auth/route";
+import { Route as WithoutAuthTariffsRouteImport } from "./../../routes/_without-auth/tariffs";
+import { Route as WithoutAuthCreditsPackagesRouteImport } from "./../../routes/_without-auth/credits-packages";
 import { Route as AuthVerifyOtpRouteImport } from "./../../routes/_auth/verify-otp";
 import { Route as AuthSignInRouteImport } from "./../../routes/_auth/sign-in";
 import { Route as WithAuthWithSubscriptionRouteRouteImport } from "./../../routes/_with-auth/_with-subscription/route";
 import { Route as WithoutAuthLandingIndexRouteImport } from "./../../routes/_without-auth/_landing/index";
 import { Route as WithoutAuthLegalSlugRouteImport } from "./../../routes/_without-auth/legal/$slug";
-import { Route as WithAuthWithoutSubscriptionTariffsRouteImport } from "./../../routes/_with-auth/_without-subscription/tariffs";
 import { Route as WithAuthWithoutSubscriptionPaymentRedirectRouteImport } from "./../../routes/_with-auth/_without-subscription/payment-redirect";
 import { Route as WithAuthWithSubscriptionSettingsRouteImport } from "./../../routes/_with-auth/_with-subscription/settings";
 import { Route as WithAuthWithSubscriptionHomeRouteImport } from "./../../routes/_with-auth/_with-subscription/home";
@@ -39,6 +40,17 @@ const AuthRouteRoute = AuthRouteRouteImport.update({
   id: "/_auth",
   getParentRoute: () => rootRouteImport,
 } as any);
+const WithoutAuthTariffsRoute = WithoutAuthTariffsRouteImport.update({
+  id: "/_without-auth/tariffs",
+  path: "/tariffs",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const WithoutAuthCreditsPackagesRoute =
+  WithoutAuthCreditsPackagesRouteImport.update({
+    id: "/_without-auth/credits-packages",
+    path: "/credits-packages",
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const AuthVerifyOtpRoute = AuthVerifyOtpRouteImport.update({
   id: "/verify-otp",
   path: "/verify-otp",
@@ -64,12 +76,6 @@ const WithoutAuthLegalSlugRoute = WithoutAuthLegalSlugRouteImport.update({
   path: "/legal/$slug",
   getParentRoute: () => rootRouteImport,
 } as any);
-const WithAuthWithoutSubscriptionTariffsRoute =
-  WithAuthWithoutSubscriptionTariffsRouteImport.update({
-    id: "/_without-subscription/tariffs",
-    path: "/tariffs",
-    getParentRoute: () => WithAuthRouteRoute,
-  } as any);
 const WithAuthWithoutSubscriptionPaymentRedirectRoute =
   WithAuthWithoutSubscriptionPaymentRedirectRouteImport.update({
     id: "/_without-subscription/payment-redirect",
@@ -153,11 +159,12 @@ export interface FileRoutesByFullPath {
   "/": typeof WithoutAuthLandingIndexRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
+  "/credits-packages": typeof WithoutAuthCreditsPackagesRoute;
+  "/tariffs": typeof WithoutAuthTariffsRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/settings": typeof WithAuthWithSubscriptionSettingsRoute;
   "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
-  "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/legal/$slug": typeof WithoutAuthLegalSlugRoute;
   "/billing/credits": typeof WithAuthWithSubscriptionBillingCreditsRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
@@ -173,11 +180,12 @@ export interface FileRoutesByTo {
   "/": typeof WithoutAuthLandingIndexRoute;
   "/sign-in": typeof AuthSignInRoute;
   "/verify-otp": typeof AuthVerifyOtpRoute;
+  "/credits-packages": typeof WithoutAuthCreditsPackagesRoute;
+  "/tariffs": typeof WithoutAuthTariffsRoute;
   "/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/settings": typeof WithAuthWithSubscriptionSettingsRoute;
   "/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
-  "/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/legal/$slug": typeof WithoutAuthLegalSlugRoute;
   "/billing/credits": typeof WithAuthWithSubscriptionBillingCreditsRoute;
   "/ideas-lists/$ideasListId": typeof WithAuthWithSubscriptionIdeasListsIdeasListIdRoute;
@@ -196,11 +204,12 @@ export interface FileRoutesById {
   "/_with-auth/_with-subscription": typeof WithAuthWithSubscriptionRouteRouteWithChildren;
   "/_auth/sign-in": typeof AuthSignInRoute;
   "/_auth/verify-otp": typeof AuthVerifyOtpRoute;
+  "/_without-auth/credits-packages": typeof WithoutAuthCreditsPackagesRoute;
+  "/_without-auth/tariffs": typeof WithoutAuthTariffsRoute;
   "/_with-auth/_with-subscription/archive": typeof WithAuthWithSubscriptionArchiveRoute;
   "/_with-auth/_with-subscription/home": typeof WithAuthWithSubscriptionHomeRoute;
   "/_with-auth/_with-subscription/settings": typeof WithAuthWithSubscriptionSettingsRoute;
   "/_with-auth/_without-subscription/payment-redirect": typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
-  "/_with-auth/_without-subscription/tariffs": typeof WithAuthWithoutSubscriptionTariffsRoute;
   "/_without-auth/legal/$slug": typeof WithoutAuthLegalSlugRoute;
   "/_without-auth/_landing/": typeof WithoutAuthLandingIndexRoute;
   "/_with-auth/_with-subscription/billing/credits": typeof WithAuthWithSubscriptionBillingCreditsRoute;
@@ -219,11 +228,12 @@ export interface FileRouteTypes {
     | "/"
     | "/sign-in"
     | "/verify-otp"
+    | "/credits-packages"
+    | "/tariffs"
     | "/archive"
     | "/home"
     | "/settings"
     | "/payment-redirect"
-    | "/tariffs"
     | "/legal/$slug"
     | "/billing/credits"
     | "/ideas-lists/$ideasListId"
@@ -239,11 +249,12 @@ export interface FileRouteTypes {
     | "/"
     | "/sign-in"
     | "/verify-otp"
+    | "/credits-packages"
+    | "/tariffs"
     | "/archive"
     | "/home"
     | "/settings"
     | "/payment-redirect"
-    | "/tariffs"
     | "/legal/$slug"
     | "/billing/credits"
     | "/ideas-lists/$ideasListId"
@@ -261,11 +272,12 @@ export interface FileRouteTypes {
     | "/_with-auth/_with-subscription"
     | "/_auth/sign-in"
     | "/_auth/verify-otp"
+    | "/_without-auth/credits-packages"
+    | "/_without-auth/tariffs"
     | "/_with-auth/_with-subscription/archive"
     | "/_with-auth/_with-subscription/home"
     | "/_with-auth/_with-subscription/settings"
     | "/_with-auth/_without-subscription/payment-redirect"
-    | "/_with-auth/_without-subscription/tariffs"
     | "/_without-auth/legal/$slug"
     | "/_without-auth/_landing/"
     | "/_with-auth/_with-subscription/billing/credits"
@@ -282,6 +294,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   WithAuthRouteRoute: typeof WithAuthRouteRouteWithChildren;
+  WithoutAuthCreditsPackagesRoute: typeof WithoutAuthCreditsPackagesRoute;
+  WithoutAuthTariffsRoute: typeof WithoutAuthTariffsRoute;
   WithoutAuthLegalSlugRoute: typeof WithoutAuthLegalSlugRoute;
   WithoutAuthLandingIndexRoute: typeof WithoutAuthLandingIndexRoute;
 }
@@ -300,6 +314,20 @@ declare module "@tanstack/react-router" {
       path: "";
       fullPath: "/";
       preLoaderRoute: typeof AuthRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/tariffs": {
+      id: "/_without-auth/tariffs";
+      path: "/tariffs";
+      fullPath: "/tariffs";
+      preLoaderRoute: typeof WithoutAuthTariffsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/_without-auth/credits-packages": {
+      id: "/_without-auth/credits-packages";
+      path: "/credits-packages";
+      fullPath: "/credits-packages";
+      preLoaderRoute: typeof WithoutAuthCreditsPackagesRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/_auth/verify-otp": {
@@ -336,13 +364,6 @@ declare module "@tanstack/react-router" {
       fullPath: "/legal/$slug";
       preLoaderRoute: typeof WithoutAuthLegalSlugRouteImport;
       parentRoute: typeof rootRouteImport;
-    };
-    "/_with-auth/_without-subscription/tariffs": {
-      id: "/_with-auth/_without-subscription/tariffs";
-      path: "/tariffs";
-      fullPath: "/tariffs";
-      preLoaderRoute: typeof WithAuthWithoutSubscriptionTariffsRouteImport;
-      parentRoute: typeof WithAuthRouteRoute;
     };
     "/_with-auth/_without-subscription/payment-redirect": {
       id: "/_with-auth/_without-subscription/payment-redirect";
@@ -501,7 +522,6 @@ const WithAuthWithSubscriptionRouteRouteWithChildren =
 interface WithAuthRouteRouteChildren {
   WithAuthWithSubscriptionRouteRoute: typeof WithAuthWithSubscriptionRouteRouteWithChildren;
   WithAuthWithoutSubscriptionPaymentRedirectRoute: typeof WithAuthWithoutSubscriptionPaymentRedirectRoute;
-  WithAuthWithoutSubscriptionTariffsRoute: typeof WithAuthWithoutSubscriptionTariffsRoute;
 }
 
 const WithAuthRouteRouteChildren: WithAuthRouteRouteChildren = {
@@ -509,8 +529,6 @@ const WithAuthRouteRouteChildren: WithAuthRouteRouteChildren = {
     WithAuthWithSubscriptionRouteRouteWithChildren,
   WithAuthWithoutSubscriptionPaymentRedirectRoute:
     WithAuthWithoutSubscriptionPaymentRedirectRoute,
-  WithAuthWithoutSubscriptionTariffsRoute:
-    WithAuthWithoutSubscriptionTariffsRoute,
 };
 
 const WithAuthRouteRouteWithChildren = WithAuthRouteRoute._addFileChildren(
@@ -520,6 +538,8 @@ const WithAuthRouteRouteWithChildren = WithAuthRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   WithAuthRouteRoute: WithAuthRouteRouteWithChildren,
+  WithoutAuthCreditsPackagesRoute: WithoutAuthCreditsPackagesRoute,
+  WithoutAuthTariffsRoute: WithoutAuthTariffsRoute,
   WithoutAuthLegalSlugRoute: WithoutAuthLegalSlugRoute,
   WithoutAuthLandingIndexRoute: WithoutAuthLandingIndexRoute,
 };

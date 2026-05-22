@@ -11,12 +11,12 @@ import { z } from "@/lib/zod/index.ts";
 export const referralRewardSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     type: z.enum(["credits", "tariff_discount"]),
     userType: z.enum(["referral_source", "referral_target"]),
-    value: z.int().min(-9007199254740991).max(9007199254740991),
+    value: z.number().min(-8388608).max(8388607),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

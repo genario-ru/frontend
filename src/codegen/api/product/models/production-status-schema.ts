@@ -15,10 +15,6 @@ export type ProductionStatusSchema = {
   /**
    * @type string
    */
-  slug: string;
-  /**
-   * @type string
-   */
   name: string;
   description: string | null;
   icon: string | null;
@@ -35,6 +31,16 @@ export type ProductionStatusSchema = {
    * @type boolean
    */
   forScenarioChapter: boolean;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  priority: number;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

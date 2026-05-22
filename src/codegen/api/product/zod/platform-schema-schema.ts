@@ -11,7 +11,6 @@ import { z } from "@/lib/zod/index.ts";
 export const platformSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     details: z.union([z.string(), z.null()]),
@@ -21,6 +20,8 @@ export const platformSchemaSchema = z
     urlRegex: z.union([z.string(), z.null()]),
     channelUrlRegex: z.union([z.string(), z.null()]),
     hasAutoImport: z.boolean(),
+    priority: z.int().min(-9007199254740991).max(9007199254740991),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

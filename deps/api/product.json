@@ -8326,9 +8326,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -8365,6 +8362,14 @@
           "color": {
             "type": "string"
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8374,12 +8379,13 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "details",
           "icon",
           "color",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -8462,9 +8468,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -8488,6 +8491,14 @@
               }
             ]
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8497,10 +8508,11 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "icon",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -8515,9 +8527,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -8541,6 +8550,14 @@
               }
             ]
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8550,10 +8567,11 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "icon",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -8881,9 +8899,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -8926,6 +8941,14 @@
           "forScenarioChapter": {
             "type": "boolean"
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8935,7 +8958,6 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "icon",
@@ -8943,6 +8965,8 @@
           "isDefault",
           "forScenario",
           "forScenarioChapter",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -9276,9 +9300,9 @@
             ]
           },
           "amount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "price": {
             "type": "number",
@@ -9303,6 +9327,9 @@
           "isPreferred": {
             "type": "boolean"
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -9319,6 +9346,7 @@
           "oldPrice",
           "forPurchase",
           "isPreferred",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -9625,9 +9653,9 @@
             ]
           },
           "remainingAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "status": {
             "type": "string",
@@ -9737,9 +9765,9 @@
             ]
           },
           "remainingAmount": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "status": {
             "type": "string",
@@ -9821,9 +9849,9 @@
             "maximum": 8388607
           },
           "tokensPerCredit": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
           },
           "createdAt": {
             "type": "string"
@@ -9951,7 +9979,7 @@
       "InitiateCreditsPackagePaymentBodySchema": {
         "type": "object",
         "properties": {
-          "creditsPackageId": {
+          "creditsPackageSlug": {
             "type": "string"
           },
           "redirect": {
@@ -9959,7 +9987,7 @@
           }
         },
         "required": [
-          "creditsPackageId"
+          "creditsPackageSlug"
         ],
         "title": "Initiate credits package payment body",
         "description": "Initiate credits package payment body description"
@@ -10715,9 +10743,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -10748,6 +10773,9 @@
               }
             ]
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -10757,11 +10785,11 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "minSeconds",
           "maxSeconds",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -10775,9 +10803,6 @@
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "slug": {
-            "type": "string"
           },
           "name": {
             "type": "string"
@@ -10855,6 +10880,14 @@
           "hasAutoImport": {
             "type": "boolean"
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -10864,7 +10897,6 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "details",
@@ -10874,6 +10906,8 @@
           "urlRegex",
           "channelUrlRegex",
           "hasAutoImport",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -11614,10 +11648,10 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
+          "title": {
             "type": "string"
           },
-          "title": {
+          "slug": {
             "type": "string"
           },
           "createdAt": {
@@ -11632,8 +11666,8 @@
         },
         "required": [
           "id",
-          "slug",
           "title",
+          "slug",
           "createdAt",
           "updatedAt",
           "markdown"
@@ -11662,10 +11696,10 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
+          "title": {
             "type": "string"
           },
-          "title": {
+          "slug": {
             "type": "string"
           },
           "createdAt": {
@@ -11677,8 +11711,8 @@
         },
         "required": [
           "id",
-          "slug",
           "title",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -11708,9 +11742,6 @@
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "slug": {
-            "type": "string"
           },
           "name": {
             "type": "string"
@@ -11788,6 +11819,14 @@
           "hasAutoImport": {
             "type": "boolean"
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -11803,7 +11842,6 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "details",
@@ -11813,6 +11851,8 @@
           "urlRegex",
           "channelUrlRegex",
           "hasAutoImport",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt",
           "videoTypes"
@@ -11911,9 +11951,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -11937,6 +11974,14 @@
               }
             ]
           },
+          "priority": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -11946,10 +11991,11 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "icon",
+          "priority",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -12403,9 +12449,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -12434,9 +12477,12 @@
             ]
           },
           "value": {
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "slug": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string"
@@ -12447,12 +12493,12 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "type",
           "userType",
           "value",
+          "slug",
           "createdAt",
           "updatedAt"
         ],
@@ -13676,9 +13722,6 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "slug": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -13725,6 +13768,9 @@
           "optional": {
             "type": "boolean"
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -13734,13 +13780,13 @@
         },
         "required": [
           "id",
-          "slug",
           "name",
           "description",
           "details",
           "icon",
           "color",
           "optional",
+          "slug",
           "createdAt",
           "updatedAt"
         ],

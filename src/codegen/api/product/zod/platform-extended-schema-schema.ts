@@ -13,7 +13,6 @@ import { videoTypeSchemaSchema } from "./video-type-schema-schema.ts";
 export const platformExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     details: z.union([z.string(), z.null()]),
@@ -23,6 +22,8 @@ export const platformExtendedSchemaSchema = z
     urlRegex: z.union([z.string(), z.null()]),
     channelUrlRegex: z.union([z.string(), z.null()]),
     hasAutoImport: z.boolean(),
+    priority: z.int().min(-9007199254740991).max(9007199254740991),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
     get videoTypes() {

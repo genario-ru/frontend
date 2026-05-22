@@ -38,9 +38,9 @@ export type CreditsBatchExtendedSchema = {
   name: string;
   description: string | null;
   /**
-   * @minLength -9007199254740991
-   * @maxLength 9007199254740991
-   * @type integer
+   * @minLength -8388608
+   * @maxLength 8388607
+   * @type number
    */
   remainingAmount: number;
   /**

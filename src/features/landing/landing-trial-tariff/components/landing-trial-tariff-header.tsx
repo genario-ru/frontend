@@ -13,12 +13,7 @@ export function LandingTrialTariffHeader({
   title,
   description,
 }: LandingTrialTariffHeaderProps) {
-  return (
-    <LandingSectionHeader
-      title={title}
-      description={description}
-    />
-  );
+  return <LandingSectionHeader title={title} description={description} />;
 }
 
 export const LandingTrialTariffHeaderSkeleton = LandingSectionHeaderSkeleton;

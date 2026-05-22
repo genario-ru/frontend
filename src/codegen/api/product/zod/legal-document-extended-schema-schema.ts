@@ -11,8 +11,8 @@ import { z } from "@/lib/zod/index.ts";
 export const legalDocumentExtendedSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     title: z.string(),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
     markdown: z.string(),

@@ -11,13 +11,13 @@ import { z } from "@/lib/zod/index.ts";
 export const scenarioSceneComponentTypeSchemaSchema = z
   .object({
     id: z.uuid(),
-    slug: z.string(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
     details: z.union([z.string(), z.null()]),
     icon: z.union([z.string(), z.null()]),
     color: z.union([z.string(), z.null()]),
     optional: z.boolean(),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

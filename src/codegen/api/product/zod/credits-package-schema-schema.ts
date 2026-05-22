@@ -13,11 +13,12 @@ export const creditsPackageSchemaSchema = z
     id: z.uuid(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
-    amount: z.int().min(-9007199254740991).max(9007199254740991),
+    amount: z.number().min(-8388608).max(8388607),
     price: z.number().min(-8388608).max(8388607),
     oldPrice: z.union([z.number(), z.null()]),
     forPurchase: z.boolean(),
     isPreferred: z.boolean(),
+    slug: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

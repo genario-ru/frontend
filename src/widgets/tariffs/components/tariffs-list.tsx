@@ -59,7 +59,7 @@ export function TariffsList() {
           <TariffCardPrimaryAction
             title={primaryActionTitle}
             subtitle={primaryActionSubtitle}
-            to="/sign-in"
+            to="/payment-redirect"
             search={{
               tariffSlug: tariff.slug,
               trialTariffSlug: trialTariffData?.data.slug,

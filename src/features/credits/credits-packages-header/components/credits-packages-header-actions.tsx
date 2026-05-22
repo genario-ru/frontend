@@ -2,7 +2,7 @@ import { ButtonLink } from "@/shared/components/ui/button-link";
 import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
-export function LandingHeaderActions() {
+export function CreditsPackagesHeaderActions() {
   const { isMobile } = useBreakpoints();
 
   const tryButtonContent = isMobile

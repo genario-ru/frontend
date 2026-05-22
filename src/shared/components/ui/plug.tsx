@@ -117,6 +117,7 @@ export type PlugProps = ComponentProps<"div"> &
     icon?: LucideIconType;
     variant?: PlugVariant;
     actions?: ReactNode;
+    iconClassName?: string;
   };
 
 export function Plug({
@@ -128,6 +129,7 @@ export function Plug({
   appearance,
   direction = "column",
   size,
+  iconClassName,
   className,
   ...props
 }: PlugProps) {
@@ -138,7 +140,10 @@ export function Plug({
     <LucideIcon
       data-slot="plug-icon"
       icon={Icon}
-      className={plugIconVariants({ variant, size: resolvedSize })}
+      className={cn(
+        plugIconVariants({ variant, size: resolvedSize }),
+        iconClassName,
+      )}
     />
   );
 

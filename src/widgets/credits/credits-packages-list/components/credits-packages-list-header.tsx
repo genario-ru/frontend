@@ -1,13 +1,13 @@
 import { Island } from "@/shared/components/ui/island";
 import { cn } from "@/shared/utils/cn";
 
-type CreditsPackagesHeaderProps = {
+type CreditsPackagesListHeaderProps = {
   hasShadow?: boolean;
 };
 
-export function CreditsPackagesHeader({
+export function CreditsPackagesListHeader({
   hasShadow = false,
-}: CreditsPackagesHeaderProps) {
+}: CreditsPackagesListHeaderProps) {
   return (
     <Island
       title="Пакеты кредитов"

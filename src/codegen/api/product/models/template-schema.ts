@@ -15,10 +15,6 @@ export type TemplateSchema = {
   /**
    * @type string
    */
-  slug: string;
-  /**
-   * @type string
-   */
   name: string;
   description: string | null;
   details: string | null;
@@ -27,6 +23,16 @@ export type TemplateSchema = {
    * @type string
    */
   color: string;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  priority: number;
+  /**
+   * @type string
+   */
+  slug: string;
   /**
    * @type string
    */

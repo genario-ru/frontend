@@ -1,0 +1,32 @@
+import { CommonFooter } from "@/features/navigation/common-footer/components/common-footer";
+import { ContentLayout } from "@/shared/components/layouts/content-layout";
+import { PageLayout } from "@/shared/components/layouts/page-layout";
+import { Heading } from "@/shared/components/ui/heading";
+import { Island } from "@/shared/components/ui/island";
+import { CreditsPackagesHeader } from "@/widgets/credits/credits-packages-header/components/credits-packages-header";
+import { CreditsPackagesList } from "@/widgets/credits/credits-packages-list/components/credits-packages-list";
+
+export function CreditsPackagesComponent() {
+  return (
+    <PageLayout className="h-fit min-h-full">
+      <CreditsPackagesHeader />
+      <ContentLayout>
+        <Island grow className="items-center gap-8 p-6">
+          <header className="flex max-w-3xl flex-col items-center gap-2">
+            <Heading className="text-2xl font-semibold lg:text-3xl">
+              Пакеты кредитов
+            </Heading>
+            <p className="text-neutral-7 text-center lg:text-lg">
+              Покупка пакетов кредитов доступна только при наличии активной
+              подписки
+            </p>
+          </header>
+          <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">
+            <CreditsPackagesList redirect="/home" />
+          </div>
+        </Island>
+      </ContentLayout>
+      <CommonFooter className="mt-auto" />
+    </PageLayout>
+  );
+}

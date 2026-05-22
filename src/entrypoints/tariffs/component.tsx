@@ -10,8 +10,8 @@ export function TariffsComponent() {
       <TariffsHeader />
       <ContentLayout size="xl">
         <TariffsList />
-        <CommonFooter />
       </ContentLayout>
+      <CommonFooter />
     </PageLayout>
   );
 }

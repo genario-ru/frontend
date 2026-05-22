@@ -18,7 +18,7 @@ export const creditsBatchExtendedSchemaSchema = z
     creditsPackageId: z.uuid(),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
-    remainingAmount: z.int().min(-9007199254740991).max(9007199254740991),
+    remainingAmount: z.number().min(-8388608).max(8388607),
     status: z.enum(["pending", "active", "terminated"]),
     expiresAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
