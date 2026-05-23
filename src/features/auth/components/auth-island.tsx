@@ -13,7 +13,7 @@ export const AuthIsland = ({ className, children, ...props }: IslandProps) => {
       roundedTop={!isMobile}
       roundedBottom={!isMobile}
       className={cn(
-        "grid h-full gap-6 p-6 md:h-auto md:grid-cols-2",
+        "grid flex-1 gap-6 p-6 md:flex-none md:grid-cols-2",
         className,
       )}
       {...props}
