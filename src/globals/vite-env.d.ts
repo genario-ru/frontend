@@ -14,6 +14,9 @@ interface ImportMetaEnv {
   // Доступны на клиенте
   readonly VITE_BASE_URL: string;
   readonly VITE_BASE_API_URL: string;
+  readonly VITE_GLITCHTIP_DSN?: string;
+  readonly VITE_GLITCHTIP_ENVIRONMENT?: string;
+  readonly VITE_GLITCHTIP_RELEASE?: string;
 }
 
 interface ImportMeta {

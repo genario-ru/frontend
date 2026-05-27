@@ -86,8 +86,6 @@ export default async function client<TData, TError, TVariables = unknown>({
       statusText: response.statusText,
     };
   } catch (error) {
-    console.log("error", error);
-
     if (error instanceof APIError) {
       throw error;
     }

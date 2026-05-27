@@ -13,16 +13,40 @@ ENV VITE_BASE_URL=$VITE_BASE_URL
 ARG VITE_BASE_API_URL
 ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
 
+ARG VITE_GLITCHTIP_DSN
+ENV VITE_GLITCHTIP_DSN=$VITE_GLITCHTIP_DSN
+
+ARG VITE_GLITCHTIP_ENVIRONMENT
+ENV VITE_GLITCHTIP_ENVIRONMENT=$VITE_GLITCHTIP_ENVIRONMENT
+
+ARG VITE_GLITCHTIP_RELEASE
+ENV VITE_GLITCHTIP_RELEASE=$VITE_GLITCHTIP_RELEASE
+
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 COPY . .
 RUN pnpm build
 
+FROM scratch AS dist-assets
+
+COPY --from=builder /app/dist /app
+
 # Этап 2: Продакшн образ с nginx
 FROM nginx:alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+FROM nginx:alpine AS prebuilt-dist
+
+ARG PREBUILT_DIST_DIR=.tmp/glitchtip-dist/app
+
+COPY ${PREBUILT_DIST_DIR}/ /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

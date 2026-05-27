@@ -1,6 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { getApiV1AuthSessionQueryOptions } from "@/codegen/api/product";
+import { WithAuthComponent } from "@/entrypoints/with-auth/component";
 import { WithAuthPendingComponent } from "@/entrypoints/with-auth/pending-component";
 
 export const Route = createFileRoute("/_with-auth")({
@@ -25,5 +26,6 @@ export const Route = createFileRoute("/_with-auth")({
       sessionData,
     };
   },
+  component: WithAuthComponent,
   pendingComponent: WithAuthPendingComponent,
 });

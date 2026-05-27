@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
+import { initSentry } from "@/lib/sentry";
 import { createQueryClient } from "@/lib/tanstack-query/create-query-client.ts";
 import { createRouter } from "@/lib/tanstack-router/create-router.ts";
 import { reportWebVitals } from "@/shared/utils/report-web-vitals.ts";
@@ -15,6 +16,9 @@ import { reportWebVitals } from "@/shared/utils/report-web-vitals.ts";
 function mount() {
   const queryClient = createQueryClient();
   const router = createRouter({ queryClient });
+
+  initSentry(router);
+
   const rootElement = document.getElementById("root");
 
   setupRouterSsrQueryIntegration({

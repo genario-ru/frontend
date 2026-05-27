@@ -14,6 +14,9 @@ export default defineConfig(({ mode }) => {
   const baseUrl = env.VITE_BASE_URL;
 
   return {
+    build: {
+      sourcemap: "hidden",
+    },
     plugins: [
       devtools(),
       tanstackRouter({

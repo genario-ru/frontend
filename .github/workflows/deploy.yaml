@@ -8,10 +8,12 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  RELEASE: ${{ github.sha }}
+  GLITCHTIP_DIST_DIR: .tmp/glitchtip-dist
 
 jobs:
   build-and-push:
-    name: Build & Push image
+    name: Build, upload sourcemaps & push image
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -40,19 +42,68 @@ jobs:
             type=sha,prefix=sha-,format=short
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and push
+      - name: Validate GlitchTip sourcemap configuration
+        env:
+          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
+          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
+          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
+          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_GLITCHTIP_DSN: ${{ secrets.VITE_GLITCHTIP_DSN }}
+          VITE_GLITCHTIP_RELEASE: ${{ env.RELEASE }}
+        run: bash ./sh/glitchtip-cli.sh validate-config
+
+      - name: Export production dist for GlitchTip sourcemaps
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          # Vite-переменные передаются как build args из GitHub Secrets
+          target: dist-assets
+          outputs: type=local,dest=${{ env.GLITCHTIP_DIST_DIR }}
           build-args: |
             VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}
             VITE_BASE_API_URL=${{ secrets.VITE_BASE_API_URL }}
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache,mode=max
+            VITE_GLITCHTIP_DSN=${{ secrets.VITE_GLITCHTIP_DSN }}
+            VITE_GLITCHTIP_ENVIRONMENT=production
+            VITE_GLITCHTIP_RELEASE=${{ env.RELEASE }}
+
+      - name: Set up Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install GlitchTip CLI
+        shell: bash
+        run: cargo install --git https://gitlab.com/glitchtip/glitchtip-cli.git glitchtip-cli
+
+      - name: Upload GlitchTip sourcemaps
+        env:
+          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
+          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
+          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
+          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
+          RELEASE: ${{ env.RELEASE }}
+        run: bash ./sh/glitchtip-cli.sh upload-sourcemaps "${{ env.GLITCHTIP_DIST_DIR }}/app" "$RELEASE"
+
+      - name: Build and push injected GlitchTip dist
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          target: prebuilt-dist
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            PREBUILT_DIST_DIR=${{ env.GLITCHTIP_DIST_DIR }}/app
+
+      - name: Record GlitchTip deploy
+        env:
+          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
+          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
+          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
+          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
+          RELEASE: ${{ env.RELEASE }}
+        run: bash ./sh/glitchtip-cli.sh record-deploy "$RELEASE" production
 
   deploy:
     name: Trigger Dokploy deployment
