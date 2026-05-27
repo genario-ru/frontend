@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     build: {
-      sourcemap: "hidden",
+      sourcemap: true,
     },
     plugins: [
       devtools(),
