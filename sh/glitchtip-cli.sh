@@ -54,6 +54,7 @@ upload_sourcemaps() {
 
   require_glitchtip_env
   export_cli_env
+  export SENTRY_RELEASE="${release}"
 
   local release_create_output
   if ! release_create_output="$(glitchtip-cli releases new "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}" 2>&1)"; then
@@ -65,7 +66,9 @@ upload_sourcemaps() {
     fi
   fi
 
+  echo "Found $(find "${dist_dir}" -type f -name '*.map' | wc -l) sourcemap files before upload"
   glitchtip-cli sourcemaps inject "${dist_dir}"
+  echo "Injected debug IDs into $(grep -R --include='*.js' -l 'debugId' "${dist_dir}" | wc -l) JavaScript files"
   glitchtip-cli sourcemaps upload "${dist_dir}" --release "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
   find "${dist_dir}" -type f -name '*.map' -delete
   glitchtip-cli releases finalize "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
