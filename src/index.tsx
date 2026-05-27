@@ -17,10 +17,9 @@ import { reportWebVitals } from "@/shared/utils/report-web-vitals.ts";
 function mount() {
   const queryClient = createQueryClient();
   const router = createRouter({ queryClient });
+  const rootElement = document.getElementById("root");
 
   initSentry(router);
-
-  const rootElement = document.getElementById("root");
 
   setupRouterSsrQueryIntegration({
     router,
@@ -32,6 +31,7 @@ function mount() {
   if (rootElement && !rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement, {
       onUncaughtError: Sentry.reactErrorHandler(),
+      onCaughtError: Sentry.reactErrorHandler(),
       onRecoverableError: Sentry.reactErrorHandler(),
     });
 
