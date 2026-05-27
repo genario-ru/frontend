@@ -78,7 +78,7 @@ record_deploy() {
   require_glitchtip_env
   export_cli_env
 
-  glitchtip-cli deploys new "${release}" --env "${environment}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
+  glitchtip-cli deploys --release "${release}" new --env "${environment}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
 }
 
 case "${1:-}" in
