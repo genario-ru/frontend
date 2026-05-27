@@ -1,6 +1,7 @@
 import "./styles/globals.css";
 import "@/lib/i18n";
 
+import * as Sentry from "@sentry/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
@@ -29,7 +30,10 @@ function mount() {
   });
 
   if (rootElement && !rootElement.innerHTML) {
-    const root = ReactDOM.createRoot(rootElement);
+    const root = ReactDOM.createRoot(rootElement, {
+      onUncaughtError: Sentry.reactErrorHandler(),
+      onRecoverableError: Sentry.reactErrorHandler(),
+    });
 
     root.render(
       <StrictMode>
