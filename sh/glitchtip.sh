@@ -57,7 +57,7 @@ upload_sourcemaps() {
   export SENTRY_RELEASE="${release}"
 
   local release_create_output
-  if ! release_create_output="$(glitchtip-cli releases new "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}" 2>&1)"; then
+  if ! release_create_output="$(sentry-cli releases new "${release}" 2>&1)"; then
     if grep -Eiq "already exists|exists already|exists" <<<"${release_create_output}"; then
       echo "GlitchTip release already exists, continuing"
     else
@@ -67,11 +67,11 @@ upload_sourcemaps() {
   fi
 
   echo "Found $(find "${dist_dir}" -type f -name '*.map' | wc -l) sourcemap files before upload"
-  glitchtip-cli sourcemaps inject "${dist_dir}"
+  sentry-cli sourcemaps inject "${dist_dir}"
   echo "Injected debug IDs into $(grep -R --include='*.js' -l 'debugId' "${dist_dir}" | wc -l) JavaScript files"
-  glitchtip-cli sourcemaps upload "${dist_dir}" --release "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
+  sentry-cli sourcemaps upload "${dist_dir}" --release "${release}"
   find "${dist_dir}" -type f -name '*.map' -delete
-  glitchtip-cli releases finalize "${release}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
+  sentry-cli releases finalize "${release}"
 }
 
 record_deploy() {
@@ -81,7 +81,7 @@ record_deploy() {
   require_glitchtip_env
   export_cli_env
 
-  glitchtip-cli deploys --release "${release}" new --env "${environment}" --org "${SENTRY_ORG}" --project "${SENTRY_PROJECT}"
+  sentry-cli releases deploys "${release}" new --env "${environment}"
 }
 
 case "${1:-}" in
