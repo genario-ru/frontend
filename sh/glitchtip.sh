@@ -77,11 +77,36 @@ upload_sourcemaps() {
 record_deploy() {
   local release="${1:?Expected release as the first argument}"
   local environment="${2:?Expected environment as the second argument}"
+  local deploy_url="${3:-}"
 
   require_glitchtip_env
   export_cli_env
 
-  sentry-cli releases deploys "${release}" new --env "${environment}"
+  local encoded_release
+  encoded_release="$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "${release}")"
+
+  local payload
+  payload="$(
+    DEPLOY_ENVIRONMENT="${environment}" DEPLOY_URL="${deploy_url}" python3 - <<'PY'
+import json
+import os
+
+print(json.dumps({
+    "environment": os.environ["DEPLOY_ENVIRONMENT"],
+    "url": os.environ["DEPLOY_URL"],
+}))
+PY
+  )"
+
+  curl --fail-with-body --show-error --silent \
+    --request POST \
+    --url "${SENTRY_URL%/}/api/0/organizations/${SENTRY_ORG}/releases/${encoded_release}/deploys/" \
+    --header "Authorization: Bearer ${SENTRY_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --data "${payload}" \
+    > /dev/null
+
+  echo "Created deploy for release ${release} in environment ${environment}."
 }
 
 case "${1:-}" in
@@ -92,10 +117,10 @@ case "${1:-}" in
     upload_sourcemaps "${2:-}" "${3:-}"
     ;;
   record-deploy)
-    record_deploy "${2:-}" "${3:-}"
+    record_deploy "${2:-}" "${3:-}" "${4:-}"
     ;;
   *)
-    echo "Usage: $0 {validate-config|upload-sourcemaps <dist-dir> <release>|record-deploy <release> <environment>}"
+    echo "Usage: $0 {validate-config|upload-sourcemaps <dist-dir> <release>|record-deploy <release> <environment> [deploy-url]}"
     exit 1
     ;;
 esac

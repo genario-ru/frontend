@@ -97,7 +97,7 @@ jobs:
           GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
           GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
           RELEASE: ${{ env.RELEASE }}
-        run: bash ./sh/glitchtip.sh record-deploy "$RELEASE" production
+        run: bash ./sh/glitchtip.sh record-deploy "$RELEASE" production "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 
   deploy:
     name: Trigger Dokploy deployment
