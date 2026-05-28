@@ -14,13 +14,6 @@ export function LandingComponent() {
   return (
     <PageLayout>
       <ContentLayout>
-        <button
-          onClick={() => {
-            throw new Error("test");
-          }}
-        >
-          Test
-        </button>
         <LandingHeader />
         <LandingHero />
         <LandingPossibilities />
