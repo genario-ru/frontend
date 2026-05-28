@@ -2,6 +2,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import { createRouter as createTanstackRouter } from "@tanstack/react-router";
 
 import { routeTree } from "@/codegen/router/route-tree.gen";
+import { getSentryRouterOnCatch } from "@/lib/sentry";
 
 import { createRouterContext } from "./create-router-context";
 
@@ -23,5 +24,6 @@ export function createRouter({ queryClient }: CreateRouterParams) {
     defaultPreloadStaleTime: 0,
     defaultPendingMs: 0,
     defaultPendingMinMs: 0,
+    defaultOnCatch: getSentryRouterOnCatch(),
   });
 }

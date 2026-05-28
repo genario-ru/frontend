@@ -31,7 +31,6 @@ function mount() {
   if (rootElement && !rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement, {
       onUncaughtError: Sentry.reactErrorHandler(),
-      onCaughtError: Sentry.reactErrorHandler(),
       onRecoverableError: Sentry.reactErrorHandler(),
     });
 
