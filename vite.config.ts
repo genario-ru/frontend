@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     build: {
-      sourcemap: true,
+      sourcemap: "hidden",
     },
     plugins: [
       devtools(),
@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
           type: "module",
         },
         workbox: {
+          sourcemap: false,
           // Удалять устаревшие precache-данные при активации нового SW
           cleanupOutdatedCaches: true,
           // HTML не включаем в precache — иначе SW отдаёт старый index.html после деплоя
