@@ -9,6 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   RELEASE: ${{ github.sha }}
+  GLITCHTIP_CLI_VERSION: v1.0.0
   GLITCHTIP_DIST_DIR: .tmp/glitchtip-dist
 
 jobs:
@@ -18,6 +19,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      SENTRY_URL: ${{ secrets.GLITCHTIP_URL }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.GLITCHTIP_ORG }}
+      SENTRY_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
 
     steps:
       - name: Checkout
@@ -42,16 +48,41 @@ jobs:
             type=sha,prefix=sha-,format=short
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Validate GlitchTip sourcemap configuration
+      - name: Validate GlitchTip configuration
+        shell: bash
         env:
-          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
-          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
-          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
-          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
           VITE_GLITCHTIP_DSN: ${{ secrets.VITE_GLITCHTIP_DSN }}
-          VITE_GLITCHTIP_RELEASE: ${{ env.RELEASE }}
-        run: bash ./sh/glitchtip.sh validate-config
+        run: |
+          set -euo pipefail
+
+          require_var() {
+            if [ -z "${!1:-}" ]; then
+              echo "::error::Missing $2"
+              exit 1
+            fi
+          }
+
+          require_var SENTRY_URL GLITCHTIP_URL
+          require_var SENTRY_AUTH_TOKEN GLITCHTIP_AUTH_TOKEN
+          require_var SENTRY_ORG GLITCHTIP_ORG
+          require_var SENTRY_PROJECT GLITCHTIP_PROJECT
+          require_var VITE_BASE_URL VITE_BASE_URL
+          require_var VITE_BASE_API_URL VITE_BASE_API_URL
+          require_var VITE_GLITCHTIP_DSN VITE_GLITCHTIP_DSN
+
+      - name: Install GlitchTip CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          install -d "$RUNNER_TEMP/glitchtip-cli"
+          curl --fail --location --show-error --silent \
+            "https://gitlab.com/glitchtip/glitchtip-cli/-/jobs/artifacts/${GLITCHTIP_CLI_VERSION}/raw/artifacts/glitchtip-cli-linux-x86_64?job=build-linux-x86_64" \
+            --output "$RUNNER_TEMP/glitchtip-cli/glitchtip-cli"
+          chmod +x "$RUNNER_TEMP/glitchtip-cli/glitchtip-cli"
+          echo "$RUNNER_TEMP/glitchtip-cli" >> "$GITHUB_PATH"
 
       - name: Export production dist for GlitchTip sourcemaps
         uses: docker/build-push-action@v5
@@ -67,18 +98,19 @@ jobs:
             VITE_GLITCHTIP_ENVIRONMENT=production
             VITE_GLITCHTIP_RELEASE=${{ env.RELEASE }}
 
-      - name: Install Sentry CLI
-        shell: bash
-        run: npm install --global @sentry/cli
-
       - name: Upload GlitchTip sourcemaps
-        env:
-          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
-          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
-          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
-          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
-          RELEASE: ${{ env.RELEASE }}
-        run: bash ./sh/glitchtip.sh upload-sourcemaps "${{ env.GLITCHTIP_DIST_DIR }}/app" "$RELEASE"
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          dist_dir="${GLITCHTIP_DIST_DIR}/app"
+
+          echo "Found $(find "$dist_dir" -type f -name '*.map' | wc -l) sourcemap files before upload"
+          glitchtip-cli sourcemaps inject "$dist_dir"
+          echo "Injected debug IDs into $(grep -R --include='*.js' -l 'debugId' "$dist_dir" | wc -l) JavaScript files"
+          glitchtip-cli sourcemaps upload "$dist_dir" --release "$RELEASE"
+          find "$dist_dir" -type f -name '*.map' -delete
+          glitchtip-cli releases finalize "$RELEASE"
 
       - name: Build and push injected GlitchTip dist
         uses: docker/build-push-action@v5
@@ -92,13 +124,7 @@ jobs:
             PREBUILT_DIST_DIR=${{ env.GLITCHTIP_DIST_DIR }}/app
 
       - name: Record GlitchTip deploy
-        env:
-          GLITCHTIP_URL: ${{ secrets.GLITCHTIP_URL }}
-          GLITCHTIP_AUTH_TOKEN: ${{ secrets.GLITCHTIP_AUTH_TOKEN }}
-          GLITCHTIP_ORG: ${{ secrets.GLITCHTIP_ORG }}
-          GLITCHTIP_PROJECT: ${{ secrets.GLITCHTIP_PROJECT }}
-          RELEASE: ${{ env.RELEASE }}
-        run: bash ./sh/glitchtip.sh record-deploy "$RELEASE" production "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        run: glitchtip-cli deploys --release "$RELEASE" new --env production --url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 
   deploy:
     name: Trigger Dokploy deployment
