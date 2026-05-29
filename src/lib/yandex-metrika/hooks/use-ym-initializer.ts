@@ -17,7 +17,7 @@ export function useYMInitializer() {
 
   useEffect(() => {
     ymHit(pathname);
-  }, [pathname]);
+  }, [pathname, ymConfig]);
 
   return { ymConfig };
 }
