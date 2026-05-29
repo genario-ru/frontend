@@ -1,8 +1,10 @@
 import type { YMCounterId } from "./ym-counter-id";
 import type { YMInitParams } from "./ym-init-params";
+import type { YMUserParams } from "./ym-user-params";
 
 export type YMFunction = {
   (id: YMCounterId, method: "init", params?: YMInitParams): void;
+  (id: YMCounterId, method: "userParams", params: YMUserParams): void;
   (
     id: YMCounterId,
     method: "hit",

@@ -1,24 +1,16 @@
 import { useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useEventListener } from "usehooks-ts";
-
-import { COOKIE_CONSENT_CHANGE_EVENT } from "@/shared/constants/window-events";
 
 import { ymInitParams } from "../constants/ym-init-params";
-import { getYMConfig } from "../utils/get-ym-config";
 import { ymHit, ymInit } from "../utils/ym-functions";
+import { useYMConfig } from "./use-ym-config";
 
-export function useYM() {
-  const [ymInitialized, setYMInitialized] = useState(false);
-  const [ymConfig, setYMConfig] = useState(getYMConfig());
+export function useYMInitialize() {
+  const ymConfig = useYMConfig();
   const { pathname } = useLocation();
+  const [ymInitialized, setYMInitialized] = useState(false);
 
-  // Слушаем изменения согласия с куками
-  useEventListener(COOKIE_CONSENT_CHANGE_EVENT, () => {
-    setYMConfig(getYMConfig());
-  });
-
-  // Инициализируем счётчик
+  // Инициализируем счётчик после согласия на использование Cookie файлов
   useEffect(() => {
     if (!ymConfig.enabled) {
       return;
@@ -36,6 +28,4 @@ export function useYM() {
 
     ymHit(ymConfig.id, pathname);
   }, [pathname, ymConfig, ymInitialized]);
-
-  return { ymConfig };
 }
