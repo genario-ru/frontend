@@ -16,10 +16,8 @@ export function useYMInitializer() {
   });
 
   useEffect(() => {
-    if (ymConfig.enabled) {
-      ymHit(pathname);
-    }
-  }, [pathname, ymConfig.enabled]);
+    ymHit(pathname);
+  }, [pathname]);
 
   return { ymConfig };
 }
