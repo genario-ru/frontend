@@ -4,7 +4,7 @@ import { RootComponent } from "@/entrypoints/root/component";
 import { RootErrorComponent } from "@/entrypoints/root/error-component";
 import { RootPendingComponent } from "@/entrypoints/root/pending-component";
 import type { RouterContext } from "@/lib/tanstack-router/types";
-import { YMInitializer } from "@/lib/yandex-metrika";
+import { getYMLoaderScript } from "@/lib/yandex-metrika/utils/get-ym-loader-script";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -42,8 +42,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       ],
       scripts: [
         {
-          type: "module",
-          children: <YMInitializer />,
+          type: "text/javascript",
+          children: getYMLoaderScript(),
         },
       ],
     };

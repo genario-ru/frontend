@@ -7,7 +7,7 @@ import { COOKIE_CONSENT_CHANGE_EVENT } from "@/shared/constants/window-events";
 import { getYMConfig } from "../utils/get-ym-config";
 import { ymHit } from "../utils/ym-functions";
 
-export function useYMInitializer() {
+export function useYM() {
   const [ymConfig, setYMConfig] = useState(getYMConfig());
   const { pathname } = useLocation();
 
@@ -16,7 +16,11 @@ export function useYMInitializer() {
   });
 
   useEffect(() => {
-    ymHit(pathname);
+    if (!ymConfig.enabled) {
+      return;
+    }
+
+    ymHit(ymConfig.id, pathname);
   }, [pathname, ymConfig]);
 
   return { ymConfig };

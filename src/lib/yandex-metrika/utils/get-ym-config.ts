@@ -5,8 +5,8 @@ import type { YMConfig } from "../types/ym-config";
 
 export function getYMConfig(): YMConfig {
   const id = envs.VITE_YANDEX_METRIKA_ID;
-  const isConsentAccepted = isCookieConsentAccepted();
   const isProduction = envs.MODE === "production";
+  const isConsentAccepted = isCookieConsentAccepted();
 
   if (id && isConsentAccepted && isProduction) {
     return {
