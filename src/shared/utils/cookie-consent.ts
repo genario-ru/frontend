@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 
 import { accountIndependentCookies } from "@/shared/constants/account-independent-cookies";
+import { COOKIE_CONSENT_CHANGE_EVENT } from "@/shared/constants/window-events";
 
 const COOKIE_CONSENT_ACCEPTED_VALUE = "accepted";
 const COOKIE_CONSENT_REJECTED_VALUE = "rejected";
@@ -13,6 +14,8 @@ function setCookieConsent(value: string) {
     sameSite: "Lax",
     secure: window.location.protocol === "https:",
   });
+
+  window.dispatchEvent(new Event(COOKIE_CONSENT_CHANGE_EVENT));
 }
 
 export function hasCookieConsentDecision() {

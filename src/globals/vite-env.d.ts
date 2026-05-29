@@ -17,6 +17,7 @@ interface ImportMetaEnv {
   readonly VITE_GLITCHTIP_DSN?: string;
   readonly VITE_GLITCHTIP_ENVIRONMENT?: string;
   readonly VITE_GLITCHTIP_RELEASE?: string;
+  readonly VITE_YANDEX_METRIKA_ID?: string;
 }
 
 interface ImportMeta {

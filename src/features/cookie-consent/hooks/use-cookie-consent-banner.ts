@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   acceptCookieConsent,
   hasCookieConsentDecision,
   rejectCookieConsent,
-} from "../utils/cookie-consent";
+} from "@/shared/utils/cookie-consent";
 
 export function useCookieConsentBanner() {
   const [hasDecision, setHasDecision] = useState(() =>
     hasCookieConsentDecision(),
   );
 
-  const handleAccept = () => {
+  const handleAccept = useCallback(() => {
     acceptCookieConsent();
     setHasDecision(true);
-  };
+  }, []);
 
-  const handleReject = () => {
+  const handleReject = useCallback(() => {
     rejectCookieConsent();
     setHasDecision(true);
-  };
+  }, []);
 
   return { hasDecision, handleAccept, handleReject };
 }
