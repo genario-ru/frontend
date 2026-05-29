@@ -4,7 +4,6 @@ import { HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import { CookieConsentBanner } from "@/features/cookie-consent/components/cookie-consent-banner";
-import { YMInitializer } from "@/lib/yandex-metrika";
 import { Toaster } from "@/shared/components/ui/toaster";
 
 export function RootComponent() {
@@ -12,7 +11,6 @@ export function RootComponent() {
     <>
       <HeadContent />
       <Scripts />
-      <YMInitializer />
       <Outlet />
       <CookieConsentBanner />
       <Toaster />
