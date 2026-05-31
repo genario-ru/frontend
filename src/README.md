@@ -1,139 +1,75 @@
-# Структура проекта
+# Source Architecture
 
-Данный проект использует Feature-Sliced Design архитектуру для организации кода.
+`src/` follows a pragmatic Feature-Sliced Design layout. The goal is predictable
+file placement and dependency direction, not ceremony.
 
-## 📁 actions
+## Layers
 
-Композионные хуки с бизнес-логикой, разделенные по доменам. Включает в себя:
+| Layer       | Path                       | Use for                                                                       |
+| ----------- | -------------------------- | ----------------------------------------------------------------------------- |
+| routes      | `src/routes/**`            | TanStack route declarations, guards, redirects, search validation, preloaders |
+| entrypoints | `src/entrypoints/**`       | Page-level composition: layouts plus widgets/features                         |
+| widgets     | `src/widgets/<domain>/**`  | Complex domain blocks with local behavior and composed UI                     |
+| features    | `src/features/<domain>/**` | Reusable domain UI, small domain helpers, display constants                   |
+| actions     | `src/actions/<domain>/**`  | Business hooks wrapping API/query/mutation behavior                           |
+| shared      | `src/shared/**`            | Cross-domain components, hooks, utils, constants, types                       |
+| lib         | `src/lib/**`               | Technical infrastructure: API client, auth, i18n, form, router, zod           |
+| codegen     | `src/codegen/**`           | Generated API and router files, read-only                                     |
+| globals     | `src/globals/**`           | Global `.d.ts` declarations                                                   |
+| assets      | `src/assets/**`            | Static assets imported by the app                                             |
+| styles      | `src/styles/**`            | Global styles and theme CSS                                                   |
 
-- Комплексные хуки, объединяющие несколько query и mutation
-- Работу с Zustand сторами
-- Бизнес-логику приложения
-- Координацию между различными слоями приложения
+Default dependency direction:
 
-**Структура:** `{domain}/`
+```text
+routes -> entrypoints -> widgets -> features/actions -> shared/lib
+```
 
-## 📁 codegen
+`actions` may import generated API hooks and query helpers. Widgets and features
+should prefer action hooks for network behavior, but may import generated types,
+schemas, enums, and query keys when they need API contract data.
 
-Сгенерированный автоматически код, разделенный по разделам (без доменов):
+## Placement Shortcuts
 
-- API клиент
-- Типы и код для роутера
-  и т.д.
+- New page route: `src/routes/**` plus `src/entrypoints/<page>/component.tsx`.
+- Page layout/wiring: `src/entrypoints/**`.
+- Domain block that fetches/mutates and renders UI: `src/widgets/<domain>/**`.
+- Reusable domain component: `src/features/<domain>/**`.
+- Business hook around generated API behavior: `src/actions/<domain>/hooks/**`.
+- Reusable UI primitive or cross-domain helper: `src/shared/**`.
+- App infrastructure or wrappers around external libraries: `src/lib/**`.
 
-## 📁 entities
+## Current Domain Folders
 
-Core логика для каждого домена, разделенная по доменам. Каждая сущность включает:
+Action domains:
 
-- Query и mutation для работы с данными
-- Zustand store для управления состоянием
-- Типы данных
-- Сервисы для API взаимодействия
-  и т.д.
+```text
+archive, auth, billing, credits, ideas, ideas-lists, platforms,
+production-statuses, profiles, scenario, subscriptions, tariffs, templates,
+tones, video-durations, video-types
+```
 
-**Структура:** `{domain}/`
+Feature/widget/entrypoint domains are broader and include UI-only areas such as
+`landing`, `navigation`, `settings`, `legal`, `home`, and `profiles-import`.
 
-## 📁 entrypoints
+## Generated Files
 
-Страницы и лоадеры приложения (без доменов):
+Do not edit:
 
-- Страницы приложения
-- Лоадеры для страниц
-- Layout'ы
-- Точки входа в функциональность
+- `src/codegen/api/product/**`
+- `src/codegen/router/route-tree.gen.ts`
+- `src/globals/i18next-resources.d.ts`
 
-## 📁 features
+Use:
 
-Глупенькие компоненты, разделенные по доменам, которые:
+```bash
+pnpm api:generate
+pnpm router:generate
+pnpm i18n:resources
+```
 
-- Конфигурируются через пропсы
-- Содержат визуальную репрезентацию
-- Содержат только базовую логику (управление состоянием, if/else условия)
-- Не содержат сложную бизнес-логику
-- Легко переиспользуются
+## Before Creating New Domain Files
 
-**Структура:** `{domain}/`
-
-## 📁 globals
-
-Глобальные типы и определения (без доменов):
-
-- Типы роутера
-- Типы для SVG
-- Типы Vite
-- Типы PWA
-  и т.д.
-
-## 📁 icons
-
-Нестилизованные SVG иконки (без доменов). Планируется вынос в отдельный npm пакет.
-
-## 📁 lib
-
-Core техническая логика приложения, разделенная по разделам (без доменов):
-
-- Работа с API
-- Техническая логика аутентификации
-- Интернационализация
-- PWA функциональность
-- Настройка TanStack Query
-- Настройка TanStack Router
-- Работа с TipTap редактором
-  и т.д.
-
-## 📁 routes
-
-Роуты приложения, использующие entrypoints (без доменов):
-
-- Корневой роут
-- Защищенные роуты приложения
-- Роуты аутентификации
-  и т.д.
-
-## 📁 shared
-
-Общие компоненты, константы, хуки, типы и утилиты (без доменов):
-
-- Переиспользуемые компоненты
-- Константы приложения
-- Общие хуки
-- Общие типы
-- Утилиты
-  и т.д.
-
-## 📁 styles
-
-Глобальные стили (без доменов):
-
-- Глобальные стили
-- Темы приложения
-  и т.д.
-
-## 📁 widgets
-
-Комплексные блоки, разделенные по доменам, которые:
-
-- Используют разные features
-- Вызывают actions
-- Содержат сложную логику
-- Из них состоят entrypoints
-
-**Структура:** `{domain}/`
-
-## Архитектурные принципы
-
-1. **Разделение ответственности**: Каждый слой имеет четко определенную роль
-2. **Зависимости**: Слои могут импортировать только из нижележащих слоев
-3. **Переиспользование**: Компоненты из shared и features легко переиспользуются
-4. **Масштабируемость**: Структура позволяет легко добавлять новую функциональность
-5. **Тестируемость**: Четкое разделение упрощает написание тестов
-
-### Слои архитектуры
-
-- **📁 actions** - комплексные хуки с бизнес-логикой (домены)
-- **📁 entities** - сущности с query, mutation, Zustand store (домены)
-- **📁 widgets** - комплексные блоки, использующие features и actions (домены)
-- **📁 features** - "глупые" компоненты с базовой логикой (домены)
-- **📁 shared** - общие компоненты, константы, хуки, типы, утилиты (без доменов)
-- **📁 lib** - core техническая логика (без доменов)
-- **📁 entrypoints** - страницы, лоадеры, layout'ы (без доменов)
+Read at least 3 similar files in the target layer and copy the local structure,
+naming, import style, and hook/component split. Prefer same-domain examples; if
+they do not exist, use the closest related domains.

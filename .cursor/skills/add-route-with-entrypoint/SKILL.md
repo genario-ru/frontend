@@ -1,66 +1,59 @@
 ---
 name: add-route-with-entrypoint
-description: Adds a new TanStack file route with proper entrypoint composition while keeping route files minimal. Use when creating a new page route or extending navigation structure.
+description: Adds a TanStack file route with proper entrypoint composition.
 ---
 
 # Add Route With Entrypoint
 
-## Goal
+Use this skill for route additions or route behavior changes. Read `AGENTS.md`
+and `src/routes/README.md` first.
 
-Add a new route without violating the `Route-only` rule in `src/routes/**`.
+## Why
 
-## Pre-coding step
+Routes are generated into the TanStack route tree. Keep them focused on
+navigation concerns so page UI and business logic remain in entrypoints,
+widgets, features, and actions.
 
-Read 2–3 existing route files in the same layout group and their corresponding entrypoints to understand the patterns.
+## Step 1: Inspect Existing Routes
 
-## Steps
+Read 2-3 route files in the same layout group and their entrypoints. Check path
+naming, search schemas, redirects, preloading, and component naming.
 
-1. **Choose the correct layout group:**
-   - Requires auth + subscription → `src/routes/_with-auth/_with-subscription/`
-   - Requires auth only → `src/routes/_with-auth/_without-subscription/`
-   - Unauthenticated page → `src/routes/_auth/` or `src/routes/_without-auth/`
+## Step 2: Choose Layout Group
 
-2. **Create the entrypoint** at `src/entrypoints/<name>/component.tsx`:
-   - Page-level composition only — layout, widgets, and sections.
-   - Import domain widgets and features, not raw codegen hooks.
+| Scenario                                    | Folder                                         |
+| ------------------------------------------- | ---------------------------------------------- |
+| Requires session and active subscription    | `src/routes/_with-auth/_with-subscription/`    |
+| Requires session but no active subscription | `src/routes/_with-auth/_without-subscription/` |
+| Sign-in or OTP flow                         | `src/routes/_auth/`                            |
+| Public page                                 | `src/routes/_without-auth/`                    |
 
-3. **Create the route file** in the appropriate `src/routes/` folder:
+## Step 3: Entrypoint For UI
 
-   ```typescript
-   import { createFileRoute } from "@tanstack/react-router";
-   import { zodValidator } from "@tanstack/zod-adapter";
-   import { z } from "@/lib/zod";
-   import { MyPageComponent } from "@/entrypoints/my-page/component";
+Create or update `src/entrypoints/<page>/component.tsx` for page composition.
+Import widgets/features there. Do not define page UI in the route file.
 
-   const searchSchema = z.object({ q: z.string().optional() });
+## Step 4: Route File Contents
 
-   export const Route = createFileRoute(
-     "/_with-auth/_with-subscription/my-page",
-   )({
-     validateSearch: zodValidator(searchSchema),
-     beforeLoad: async ({ context }) => {
-       // preload data if needed
-     },
-     component: MyPageComponent,
-   });
-   ```
+Allowed:
 
-4. **Domain blocks** (if needed) → add to `widgets/features/actions`, not to the route file.
+- `createFileRoute(...)`;
+- route-local search schemas and exported search types;
+- `beforeLoad` guards, redirects, and query preloading;
+- route-level loader logic when truly route-specific;
+- imported entrypoint component reference.
 
-5. **Regenerate route tree:**
+Not allowed:
 
-   ```bash
-   pnpm router:generate
-   ```
+- page JSX;
+- widget/feature implementations;
+- business hooks;
+- manual edits to `src/codegen/router/route-tree.gen.ts`.
 
-6. **Verify:**
-   ```bash
-   pnpm lint:fix
-   pnpm lint:typescript
-   ```
+## Verification
 
-## Constraints
-
-- Never edit `src/codegen/router/route-tree.gen.ts` manually.
-- No business logic in `src/routes/**` — only `Route` declaration.
-- Route component must point to an entrypoint, not an inline component.
+```bash
+pnpm router:generate
+pnpm lint:fix
+pnpm lint:typescript
+```

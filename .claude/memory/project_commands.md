@@ -1,47 +1,53 @@
 ---
 name: Frontend project commands and workflows
-description: All important CLI commands and multi-step workflows for the frontend project
+description: Important CLI commands and multi-step workflows
 type: reference
 ---
+
+Canonical guide: `AGENTS.md`.
 
 ## Daily commands
 
 ```bash
-pnpm dev                  # Dev server (Vite)
-pnpm build                # TypeScript check + production build
-pnpm lint:fix             # ESLint + Prettier auto-fix
-pnpm lint:typescript      # Type check only (no emit)
+pnpm dev
+pnpm build
+pnpm lint:fix
+pnpm lint:typescript
 ```
 
-## Code generation commands
+There is no standardized `pnpm test` script currently.
+
+## Generated code commands
 
 ```bash
-pnpm router:generate      # Regenerate src/codegen/router/route-tree.gen.ts
-pnpm router:watch         # Watch mode for route tree during active route dev
-pnpm api:download         # Download OpenAPI schemas to deps/api/{auth,product}.json
-pnpm api:generate         # Regenerate src/codegen/api/** via Kubb
-pnpm api:generate:hey-api # Alternative generation (only when explicitly requested)
-pnpm i18n:resources       # Regenerate src/globals/i18next-resources.d.ts
+pnpm router:generate
+pnpm router:watch
+pnpm api:download
+pnpm api:generate
+pnpm api:generate:hey-api
+pnpm i18n:resources
 ```
 
 ## Workflows
 
-### Add a new route
+New route:
 
-1. Create file in `src/routes/<layout-group>/`
-2. Create entrypoint at `src/entrypoints/<name>/component.tsx`
-3. `pnpm router:generate`
-4. `pnpm lint:fix && pnpm lint:typescript`
+1. Add/update `src/routes/**`.
+2. Add/update `src/entrypoints/<page>/component.tsx`.
+3. Run `pnpm router:generate`.
+4. Run `pnpm lint:fix` and `pnpm lint:typescript`.
 
-### Update API after schema change
+API update:
 
-1. `pnpm api:download` (if schema files changed)
-2. `pnpm api:generate`
-3. Adapt hand-written code outside `src/codegen/**`
-4. `pnpm lint:typescript`
+1. Run `pnpm api:download` only if the backend schema must be refreshed.
+2. Run `pnpm api:generate`.
+3. Adapt handwritten code outside `src/codegen/**`.
+4. Run `pnpm lint:typescript`.
 
-### Add i18n translations
+i18n / pluralization update:
 
-1. Add key to both `public/locales/en/translation.json` and `ru/translation.json`
-2. `pnpm i18n:resources`
-3. `pnpm lint:typescript`
+1. Use only for existing locale-backed text, explicit i18n tasks, or
+   pluralization/inflection.
+2. Update both locale JSON files when locale resources change.
+3. Run `pnpm i18n:resources`.
+4. Run `pnpm lint:typescript`.

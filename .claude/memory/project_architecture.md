@@ -1,55 +1,46 @@
 ---
 name: Frontend project architecture
-description: FSD layers, tech stack, existing domains, and key structural rules for the frontend project
+description: FSD layers, tech stack, domains, and structural rules for the Genario frontend
 type: project
 ---
 
-React 19 + TypeScript 5.7 SPA with strict **Feature-Sliced Design (FSD)** architecture.
+Canonical guide: `AGENTS.md`.
 
-**Why:** Enforced via `.cursor/rules/` and `CLAUDE.md`. Deviations break the layer contract.
+React 19 + TypeScript SPA with a pragmatic Feature-Sliced Design layout.
 
-**How to apply:** Always check the layer before placing a file. See placement decision table below.
+## Layers
 
-## FSD layers (src/)
+| Layer       | Path                     | Purpose                                                                       |
+| ----------- | ------------------------ | ----------------------------------------------------------------------------- |
+| routes      | `src/routes/`            | TanStack route declarations, guards, redirects, search validation, preloaders |
+| entrypoints | `src/entrypoints/`       | Page-level composition                                                        |
+| widgets     | `src/widgets/<domain>/`  | Complex domain blocks                                                         |
+| features    | `src/features/<domain>/` | Reusable domain UI and small helpers                                          |
+| actions     | `src/actions/<domain>/`  | Business hooks wrapping API/query/mutation behavior                           |
+| shared      | `src/shared/`            | Cross-domain UI, hooks, utils, constants, types                               |
+| lib         | `src/lib/`               | Technical infrastructure                                                      |
+| codegen     | `src/codegen/`           | Generated API/router files, read-only                                         |
 
-| Layer       | Path                     | Purpose                                           |
-| ----------- | ------------------------ | ------------------------------------------------- |
-| routes      | `src/routes/`            | `createFileRoute()` declarations only             |
-| entrypoints | `src/entrypoints/`       | Page-level composition                            |
-| widgets     | `src/widgets/<domain>/`  | Composite domain blocks                           |
-| features    | `src/features/<domain>/` | Presentational domain UI                          |
-| actions     | `src/actions/<domain>/`  | Business orchestration hooks                      |
-| shared      | `src/shared/`            | Cross-domain: ui, utils, hooks, types             |
-| lib         | `src/lib/`               | Infrastructure: api, auth, i18n, tanstack-\*, zod |
-| codegen     | `src/codegen/`           | Generated — **never edit manually**               |
+Default dependency direction:
 
-**Dependency direction**: `routes → entrypoints → widgets → features/actions → shared/lib`
+```text
+routes -> entrypoints -> widgets -> features/actions -> shared/lib
+```
 
-## Tech stack
+## Stack
 
-- **TanStack Router 1.x** — file-based routing, search params via Zod, `beforeLoad` loaders
-- **TanStack Query 5** — server state; `ensureQueryData` in route loaders
-- **TanStack Form 1.x** — `useAppForm` from `@/lib/tanstack-form`
-- **Tailwind CSS 4** — utility classes; `cn()` from `@/shared/utils/cn`
-- **Zod 4** — always import from `@/lib/zod` (has custom error messages)
-- **Kubb 4** — OpenAPI → `src/codegen/api/{auth,product}/` (models, zod, tanstack, client)
-- **i18next** — locales at `public/locales/{en,ru}/translation.json`
-
-## Existing domains
-
-`archive`, `auth`, `billing`, `credits`, `ideas`, `ideas-lists`, `navigation`,
-`platforms`, `profiles`, `scenario`, `subscriptions`, `tariffs`, `templates`,
-`tones`, `video-durations`, `video-types`
-
-## Route layout groups
-
-- `_with-auth/_with-subscription/` — main app
-- `_with-auth/_without-subscription/` — auth but no plan
-- `_auth/` — unauthenticated (sign-in, OTP)
-- `_without-auth/` — redirects if logged in
+- TanStack Router 1.x
+- TanStack Query 5
+- TanStack Form through `@/lib/tanstack-form`
+- Tailwind CSS 4 with `cn()` from `@/shared/utils/cn`
+- Zod 4 through `@/lib/zod`
+- Kubb 4 from `deps/api/product.json` to `src/codegen/api/product/**`
+- i18next locale resources in `public/locales/{en,ru}/translation.json`; not the
+  default translation layer for all UI text
 
 ## Hard rules
 
-- `src/routes/**` — only `Route` export, no logic
-- `src/codegen/**` — read-only, regenerate via `pnpm api:generate` / `pnpm router:generate`
-- `src/shared` / `src/lib` — no domain-specific logic
+- Do not manually edit `src/codegen/**`.
+- Keep route files focused on route behavior and entrypoint references.
+- Keep page composition in `src/entrypoints/**`.
+- Keep domain-specific business logic out of `src/shared/**` and `src/lib/**`.

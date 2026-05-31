@@ -1,61 +1,61 @@
 ---
 name: regenerate-api-and-adapt
-description: Regenerates API clients/types from OpenAPI sources and adapts handwritten code safely outside generated folders. Use when backend schema changed or API hooks/types are outdated.
+description: Regenerates Kubb API output from the product OpenAPI schema and adapts handwritten code.
 ---
 
 # Regenerate API And Adapt
 
-## Goal
+Use this skill when product API generated code must change. Read `AGENTS.md`
+and `kubb.config.ts` first.
 
-Update API codegen and safely adapt handwritten code to the new generated output.
+## Why
 
-## Steps
+`src/codegen/api/product/**` is generated output. Manual edits are overwritten
+and hide the real schema or configuration issue.
 
-1. **Download fresh schemas** (only if backend schema changed):
+## Step 1: Refresh Schema Only When Needed
 
-   ```bash
-   pnpm api:download
-   # Downloads to deps/api/auth.json and deps/api/product.json
-   ```
-
-2. **Generate API clients/types:**
-
-   ```bash
-   pnpm api:generate
-   # Runs Kubb: generates src/codegen/api/auth/** and src/codegen/api/product/**
-   ```
-
-   Use `pnpm api:generate:hey-api` only if explicitly requested for hey-api output.
-
-3. **Review generated output** in `src/codegen/api/**`:
-   - `models/` — TypeScript types
-   - `zod/` — Zod schemas
-   - `tanstack/` — TanStack Query hooks
-   - Treat this as read-only; note what changed (new hooks, renamed types, removed fields).
-
-4. **Adapt handwritten code** only outside `src/codegen/**`:
-   - Update imports of renamed types/hooks.
-   - Update call sites for changed hook signatures.
-   - Handle new required fields or removed ones in action hooks.
-   - Check widgets and features using the affected domain hooks.
-
-5. **Verify:**
-   ```bash
-   pnpm lint:fix
-   pnpm lint:typescript
-   ```
-
-## Constraints
-
-- Never manually edit `src/codegen/**`.
-- When generated output doesn't match expectations, fix `kubb.config.ts` or schema files (`deps/api/*.json`), then regenerate — never patch the output directly.
-
-## What Kubb generates per domain
-
+```bash
+pnpm api:download
 ```
-src/codegen/api/<domain>/
-├── models/    # TypeScript interfaces and types
-├── zod/       # Zod validation schemas (uses @/lib/zod)
-├── tanstack/  # use*, *QueryOptions, *MutationOptions, *Infinite hooks
-└── client/    # Raw fetch functions (rarely used directly)
+
+Run only when the backend schema must be fetched. Skip if
+`deps/api/product.json` is already current.
+
+## Step 2: Regenerate
+
+```bash
+pnpm api:generate
+```
+
+Generated output:
+
+```text
+src/codegen/api/product/
+  clients/
+  models/
+  tanstack/
+  zod/
+```
+
+## Step 3: Review Contract Changes
+
+Look for renamed hooks/types/schemas/query keys, changed params, changed request
+or response shapes, removed endpoints, and new endpoints.
+
+## Step 4: Adapt Handwritten Code
+
+1. `src/actions/**`.
+2. `src/routes/**`.
+3. `src/widgets/**` and `src/features/**`.
+4. `src/entrypoints/**` only if component contracts changed.
+
+If generated output is wrong, fix `kubb.config.ts` or
+`deps/api/product.json`, then regenerate.
+
+## Verification
+
+```bash
+pnpm lint:fix
+pnpm lint:typescript
 ```

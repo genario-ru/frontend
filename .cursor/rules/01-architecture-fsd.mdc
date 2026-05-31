@@ -5,47 +5,49 @@ alwaysApply: true
 
 # FSD Architecture
 
-Reference `src/README.md` for full documentation.
+Canonical guide: `AGENTS.md`. Detailed source layout: `src/README.md`.
 
 ## Layer placement
 
-| Layer | Path | Purpose |
-|---|---|---|
-| routes | `src/routes/` | `createFileRoute()` declarations only — no logic |
-| entrypoints | `src/entrypoints/` | Page-level composition, layouts |
-| widgets | `src/widgets/<domain>/` | Composite domain blocks (features + actions) |
-| features | `src/features/<domain>/` | Presentational domain UI components |
-| actions | `src/actions/<domain>/` | Business orchestration hooks |
-| shared | `src/shared/` | Cross-domain: components/ui, utils, hooks, types, constants |
-| lib | `src/lib/` | Technical infrastructure (api, auth, i18n, tanstack-*, zod) |
-| codegen | `src/codegen/` | Generated files — **never edit manually** |
-| globals | `src/globals/` | Global `.d.ts` type definitions |
+| Layer       | Path                     | Purpose                                                                       |
+| ----------- | ------------------------ | ----------------------------------------------------------------------------- |
+| routes      | `src/routes/`            | TanStack route declarations, guards, redirects, search validation, preloaders |
+| entrypoints | `src/entrypoints/`       | Page-level composition and layout wiring                                      |
+| widgets     | `src/widgets/<domain>/`  | Complex domain blocks combining UI and behavior                               |
+| features    | `src/features/<domain>/` | Reusable domain UI and small domain helpers                                   |
+| actions     | `src/actions/<domain>/`  | Business hooks wrapping API/query/mutation behavior                           |
+| shared      | `src/shared/`            | Cross-domain UI, hooks, utils, constants, types                               |
+| lib         | `src/lib/`               | Technical infrastructure: API client, auth, i18n, router, form, zod           |
+| codegen     | `src/codegen/`           | Generated files, read-only                                                    |
+| globals     | `src/globals/`           | Global `.d.ts` declarations                                                   |
 
 ## Dependency direction
 
-```
-routes → entrypoints → widgets → features → actions → shared/lib → codegen
+```text
+routes -> entrypoints -> widgets -> features/actions -> shared/lib
 ```
 
-Higher layers import from lower layers. Never reverse this direction.
+`actions` may import generated API hooks. Widgets and features should prefer
+action hooks for network behavior, but may import generated types, schemas,
+enums, and query keys when they need API contract data.
 
 ## Placement decision shortcut
 
-1. Generic, reusable across domains? → `shared/` or `lib/`
-2. Domain business hook/orchestration? → `actions/<domain>/`
-3. Domain presentational UI component? → `features/<domain>/`
-4. Domain composite block (features + actions)? → `widgets/<domain>/`
-5. Page-level wiring? → `entrypoints/`
-6. Route declaration? → `routes/`
+1. Route declaration or route guard? -> `src/routes/`
+2. Page-level composition? -> `src/entrypoints/`
+3. Domain block that combines behavior and UI? -> `src/widgets/<domain>/`
+4. Reusable domain UI or display helper? -> `src/features/<domain>/`
+5. Business hook around API/query/mutation behavior? -> `src/actions/<domain>/`
+6. Generic reusable code? -> `src/shared/` or `src/lib/`
 
 ## Hard constraints
 
-- `shared/` and `lib/` must not contain domain-specific logic.
-- `routes/` files export only `Route` via `createFileRoute`.
-- `codegen/` is read-only — edit source configs/schemas and regenerate.
+- `shared/` and `lib/` must not contain domain-specific business logic.
+- `routes/` must not contain page JSX or domain component implementation.
+- `codegen/` is read-only; edit source schemas/config and regenerate.
 
-## Existing domains
+## Action domains
 
-`archive`, `auth`, `billing`, `credits`, `ideas`, `ideas-lists`, `navigation`,
-`platforms`, `profiles`, `scenario`, `subscriptions`, `tariffs`, `templates`,
-`tones`, `video-durations`, `video-types`
+`archive`, `auth`, `billing`, `credits`, `ideas`, `ideas-lists`, `platforms`,
+`production-statuses`, `profiles`, `scenario`, `subscriptions`, `tariffs`,
+`templates`, `tones`, `video-durations`, `video-types`

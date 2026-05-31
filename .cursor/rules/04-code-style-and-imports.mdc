@@ -10,50 +10,55 @@ Config sources: `eslint.config.js`, `prettier.config.js`, `tsconfig.json`.
 
 ## Style defaults
 
-- Double quotes, semicolons.
-- Import order sorted automatically via `simple-import-sort`.
-- Prefer `@/*` path alias for all `src/` imports.
+- Double quotes and semicolons.
+- Prettier print width: 80.
+- Import order is fixed by `simple-import-sort`.
+- Prefer `@/*` path alias for `src/` imports.
+- Prefer named exports for components and hooks.
 
 ## TypeScript defaults
 
-- Strict typing — avoid `any` unless justified.
+- Keep types explicit at public boundaries.
+- Avoid `any` unless the local API forces it or the reason is clear.
 - Use `_` prefix for intentionally unused variables/args.
 
 ## Classnames
 
-Use `cn()` from `@/shared/utils/cn` (clsx + tailwind-merge):
 ```typescript
 import { cn } from "@/shared/utils/cn";
+
 className={cn("base", condition && "active", props.className)}
 ```
 
 ## Zod imports
 
 Always import from `@/lib/zod`, not directly from `"zod"`:
+
 ```typescript
-import { z } from "@/lib/zod";  // has project-wide custom error messages
+import { z } from "@/lib/zod";
 ```
 
 ## Component file structure
 
 ```typescript
-// Props type declared above component
-type MyComponentProps = { ... };
+type MyComponentProps = {
+  title: string;
+};
 
-export function MyComponent({ prop1, prop2 }: MyComponentProps) {
-  return (...);
+export function MyComponent({ title }: MyComponentProps) {
+  return <div>{title}</div>;
 }
 ```
 
 ## Shared UI components
 
-Use existing components from `@/shared/components/ui/` before creating new ones:
-`Button`, `Input`, `Textarea`, `Dialog`, `Sheet`, `Spinner`, `Skeleton`,
-`Badge`, `Avatar`, `Card`, `Tabs`, `Dropdown`, `Checkbox`, `Select`, etc.
+Check `@/shared/components/ui/**` before creating new primitives. Reuse existing
+buttons, inputs, dialogs, drawers/sheets, selects, tabs, cards, badges,
+skeletons, spinners, menus, and form field components where possible.
 
 ## Before finishing task
 
-1. `pnpm lint:fix` — auto-fix ESLint + Prettier.
-2. `pnpm lint:typescript` — verify types are clean.
-3. If route files changed → `pnpm router:generate`.
-4. If locale JSONs changed → `pnpm i18n:resources`.
+1. Run `pnpm lint:fix` when imports/formatting/code changed.
+2. Run `pnpm lint:typescript` for code changes.
+3. If route files changed, run `pnpm router:generate`.
+4. If locale JSON files changed, run `pnpm i18n:resources`.

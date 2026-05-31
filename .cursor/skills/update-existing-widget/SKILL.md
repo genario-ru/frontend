@@ -1,50 +1,58 @@
 ---
 name: update-existing-widget
-description: Applies focused updates to an existing widget with minimal side effects, preserving FSD boundaries and local hooks/components structure. Use when user asks to change behavior or UI in current widgets.
+description: Applies focused updates to an existing widget while preserving FSD boundaries.
 ---
 
 # Update Existing Widget
 
-## Goal
+Use this skill for focused changes under `src/widgets/**`. Read `AGENTS.md`
+first.
 
-Make targeted changes to an existing widget without unnecessary refactoring or layer violations.
+## Why
 
-## Pre-coding step
+Widgets combine UI, local behavior, dialogs/drawers, lists, and action hooks.
+Keep changes focused so business behavior does not drift into UI and unrelated
+structure stays stable.
 
-1. Read the widget's entry component at `src/widgets/<domain>/<widget-name>/components/`.
-2. Read the widget's local hooks (if any) at `src/widgets/<domain>/<widget-name>/hooks/`.
-3. Identify which action hooks from `src/actions/<domain>/` it uses.
+## Step 1: Understand The Widget
 
-## Determine where logic belongs
+Before editing, read:
 
-| Change type                        | Location                                                |
-| ---------------------------------- | ------------------------------------------------------- |
-| Pure UI/visual change              | Widget component file                                   |
-| Reusable local state/interaction   | Widget hook (`hooks/use-<widget-name>.ts`)              |
-| Business orchestration or API call | `src/actions/<domain>/hooks/`                           |
-| Cross-widget shared UI             | `src/features/<domain>/` or `src/shared/components/ui/` |
+1. main widget component under `src/widgets/<domain>/<widget>/components/`;
+2. local hooks under `hooks/`, if present;
+3. colocated schemas/types/utils/constants;
+4. action hooks imported from `src/actions/<domain>/hooks/`;
+5. sibling widgets if the local pattern is unclear.
 
-## Steps
+## Step 2: Choose The Correct File
 
-1. **Minimal diff:** change only what is needed for the task — don't reorganize unrelated code or move code between layers unnecessarily.
+| Change                                            | Location                 |
+| ------------------------------------------------- | ------------------------ |
+| Markup, layout, class names                       | Widget component         |
+| Local interaction state, handlers, derived values | Widget hook              |
+| API call, mutation callback, cache invalidation   | Action hook              |
+| Reusable domain display piece                     | `src/features/<domain>/` |
+| Generic UI/helper                                 | `src/shared/**`          |
 
-2. **Classnames:** use `cn()` from `@/shared/utils/cn` for conditional Tailwind classes.
+## Step 3: Preserve Conventions
 
-3. **API data:** use hooks from `@/codegen/api/*` via action wrappers in `src/actions/`. Don't call codegen hooks directly in widget components.
+- Keep the diff focused.
+- Use `cn()` for conditional class names.
+- Use `useAppForm` for forms.
+- Use `z` from `@/lib/zod`.
+- Use action hooks for generated network behavior.
+- Do not add i18n keys for ordinary new UI text by default. Use locale files
+  only in existing i18n-backed areas, explicit i18n tasks, or
+  pluralization/inflection cases.
 
-4. **Forms (if applicable):** use `useAppForm` from `@/lib/tanstack-form`.
+Generated types, schemas, and query keys may be imported where contract data is
+needed. Avoid adding direct generated network hook calls inside widget UI.
 
-5. **Translations:** add new UI strings to both locale files, run `pnpm i18n:resources`.
+## Verification
 
-6. **Verify:**
-   ```bash
-   pnpm lint:fix
-   pnpm lint:typescript
-   ```
-
-## Output checklist
-
-- [ ] Widget behavior matches the task requirements.
-- [ ] No FSD layer boundaries violated.
-- [ ] No manual edits to `src/codegen/**`.
-- [ ] No unrelated files changed.
+```bash
+pnpm i18n:resources   # if locale JSON changed intentionally
+pnpm router:generate  # if route files changed
+pnpm lint:fix
+pnpm lint:typescript
+```

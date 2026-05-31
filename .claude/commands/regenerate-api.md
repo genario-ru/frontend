@@ -1,66 +1,66 @@
-# Regenerate API and Adapt
+# Regenerate API And Adapt
 
-Update Kubb-generated API clients from OpenAPI sources and safely adapt handwritten code to the new output.
+Arguments: `$ARGUMENTS` - why regeneration is needed.
 
-## Arguments
+Read `AGENTS.md` and `kubb.config.ts` first.
 
-`$ARGUMENTS` — context for why regeneration is needed (e.g. "backend added pagination to /ideas endpoint" or "auth token field renamed").
+## Why
 
-## Step 1 — Download schemas (only if backend changed)
+`src/codegen/api/product/**` is generated from OpenAPI. Manual edits there will
+be overwritten and usually hide the real schema or config problem.
+
+## Step 1: Refresh Schema If Needed
 
 ```bash
 pnpm api:download
-# Downloads to: deps/api/auth.json and deps/api/product.json
 ```
 
-Skip this step if the schemas are already up to date.
+Run this only when the backend schema must be fetched. Skip it when
+`deps/api/product.json` is already current.
 
-## Step 2 — Generate API clients
+## Step 2: Generate
 
 ```bash
 pnpm api:generate
 ```
 
-This regenerates all of `src/codegen/api/**`:
+Generated output:
 
+```text
+src/codegen/api/product/
+  clients/
+  models/
+  tanstack/
+  zod/
 ```
-src/codegen/api/<domain>/
-├── models/    # TypeScript interfaces and types
-├── zod/       # Zod validation schemas
-├── tanstack/  # use*, *QueryOptions, *MutationOptions, *Infinite hooks
-└── client/    # Raw fetch functions (rarely used directly)
-```
 
-**Never edit files in `src/codegen/` manually.** If the output is wrong, fix `kubb.config.ts` or `deps/api/*.json` and regenerate.
+## Step 3: Review Contract Changes
 
-## Step 3 — Review what changed
+Look for:
 
-After generation, check the diff in `src/codegen/api/**`:
+- renamed hooks/types/schemas/query keys;
+- changed required params;
+- changed request/response fields;
+- removed endpoints;
+- new endpoints that replace local workarounds.
 
-- Renamed types or hooks
-- New required fields or removed fields
-- Changed hook signatures or query option shapes
-- New endpoints available
+## Step 4: Adapt Handwritten Code
 
-## Step 4 — Adapt handwritten code
+Order matters:
 
-Update all files **outside** `src/codegen/`:
+1. `src/actions/**` first.
+2. `src/routes/**` query options and guards next.
+3. `src/widgets/**` and `src/features/**` after action contracts are stable.
+4. `src/entrypoints/**` only if public component contracts changed.
 
-- `src/actions/<domain>/hooks/` — update imports of renamed hooks/types; handle new required params
-- `src/widgets/` and `src/features/` — update any action hooks that changed signatures
-- `src/routes/` — update `beforeLoad` query option calls if option names changed
+If generated output is wrong, fix `kubb.config.ts` or `deps/api/product.json`
+and regenerate.
 
-Search for affected imports:
+## Finish
 
 ```bash
-# Find all files importing from the regenerated domain
-grep -r "from \"@/codegen/api/<domain>" src/ --include="*.ts" --include="*.tsx"
+pnpm lint:fix
+pnpm lint:typescript
 ```
 
-## Step 5 — Verify
-
-```bash
-pnpm lint:fix && pnpm lint:typescript
-```
-
-Fix all TypeScript errors introduced by the changed codegen before considering this done.
+Do not silence type errors with broad casts.

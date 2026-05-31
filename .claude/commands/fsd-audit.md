@@ -1,86 +1,35 @@
 # FSD Architecture Audit
 
-Scan the codebase for FSD layer violations, bad import directions, and misplaced logic.
+Arguments: `$ARGUMENTS` - optional scope. Defaults to full audit.
 
-## Arguments
+Read `AGENTS.md` first.
 
-`$ARGUMENTS` — optional scope (e.g. "scenario domain" or "widgets only"). Defaults to full audit.
+## Check
 
-## What to check
+1. Import direction follows:
 
-### 1. Import direction violations
-
-The dependency rule: `routes → entrypoints → widgets → features → actions → shared/lib → codegen`
-
-Find reverse imports (higher layer imported by lower layer):
-
-- `shared/` or `lib/` importing from `actions/`, `features/`, `widgets/`, `entrypoints/`
-- `actions/` importing from `features/` or `widgets/`
-- `features/` importing from `widgets/`
-
-```bash
-# Check shared for domain imports
-grep -r "from \"@/actions\|from \"@/features\|from \"@/widgets" src/shared/ --include="*.ts" --include="*.tsx"
-grep -r "from \"@/actions\|from \"@/features\|from \"@/widgets" src/lib/ --include="*.ts" --include="*.tsx"
+```text
+routes -> entrypoints -> widgets -> features/actions -> shared/lib
 ```
 
-### 2. Codegen used directly in widgets/features
+2. `shared` and `lib` do not import domain layers.
+3. `actions` do not import widgets or feature components.
+4. `features` do not import widgets.
+5. Route files do not define page JSX or domain implementations.
+6. New widget/feature code does not call generated network hooks directly.
+7. Zod imports come from `@/lib/zod`.
+8. `src/codegen/**` is not manually edited.
 
-Widgets and features must go through action hooks, not call codegen hooks directly:
+Generated types, schemas, enums, query keys, and route query options may be used
+where API contract data is needed.
 
-```bash
-grep -r "from \"@/codegen" src/widgets/ src/features/ --include="*.tsx" --include="*.ts"
-```
+## Report
 
-### 3. Business logic in route files
+For each violation, include file, line, violation type, and recommended fix.
 
-Route files must only export `Route` via `createFileRoute`:
-
-```bash
-grep -rn "useState\|useEffect\|useMutation\|fetch(" src/routes/ --include="*.tsx"
-```
-
-### 4. Domain logic in shared/lib
-
-```bash
-# Domain-specific nouns in shared imports
-grep -rn "scenario\|ideas\|billing\|tariff\|template" src/shared/ src/lib/ --include="*.ts" --include="*.tsx"
-```
-
-### 5. Zod imported directly (not from @/lib/zod)
+After fixes:
 
 ```bash
-grep -rn "from \"zod\"" src/ --include="*.ts" --include="*.tsx" | grep -v codegen | grep -v "lib/zod"
-```
-
-### 6. Manual edits to codegen
-
-Check git status and diff for any changes in `src/codegen/`:
-
-```bash
-git diff HEAD -- src/codegen/
-git status src/codegen/
-```
-
-## Report format
-
-For each violation found:
-
-- File path and line number
-- Type of violation
-- Recommended fix
-
-## Fix violations
-
-After identifying issues, fix them in order of severity:
-
-1. Codegen edits (revert immediately)
-2. Import direction violations
-3. Direct codegen imports in widgets
-4. Business logic in routes
-
-Run after fixes:
-
-```bash
-pnpm lint:fix && pnpm lint:typescript
+pnpm lint:fix
+pnpm lint:typescript
 ```

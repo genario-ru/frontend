@@ -3,19 +3,26 @@ description: Validation and testing policy
 alwaysApply: true
 ---
 
-# Testing Policy
+# Validation Policy
 
-Vitest is installed but project-wide test workflow is not fully standardized.
+Vitest is installed, but `package.json` does not currently define a project-wide
+test script. Do not refer to `pnpm test` unless that script is added.
 
-## Minimum validation for every code task
+## Minimum validation for code tasks
 
-1. `pnpm lint:typescript` — type check must pass.
-2. `pnpm lint:fix` — run when formatting or lint issues are likely.
-3. If routes changed → `pnpm router:generate`.
-4. If locale JSONs changed → `pnpm i18n:resources`.
+1. `pnpm lint:fix` when imports, formatting, or lintable code changed.
+2. `pnpm lint:typescript` for TypeScript/React changes.
+3. If route files changed, run `pnpm router:generate`.
+4. If locale JSON files changed, run `pnpm i18n:resources`.
+5. If production behavior or bundling changed, run `pnpm build`.
+
+For documentation-only changes, a targeted file review is usually enough unless
+the docs reference commands, generated outputs, or file paths that should be
+verified.
 
 ## When adding tests
 
 - Colocate test files next to the module being tested.
-- Use Vitest conventions compatible with Vite + TS setup.
-- If introducing a new test command/config, keep it minimal.
+- Use Vitest conventions compatible with Vite + TypeScript.
+- If introducing a new test command/config, keep it minimal and document it in
+  `package.json`, `README.md`, and `AGENTS.md`.

@@ -1,64 +1,66 @@
 # Add Domain Feature
 
-Add or expand domain functionality in the correct FSD layer without violating architecture boundaries.
+Arguments: `$ARGUMENTS` - description of the feature to add.
 
-## Arguments
+Read `AGENTS.md` and `src/README.md` first, then follow this workflow.
 
-`$ARGUMENTS` — description of the feature to add (e.g. "use-get-templates action hook" or "templates filter feature component").
+## Why
 
-## Pre-coding step (mandatory)
+Domain changes should land in the layer where future agents will look for them.
+Generated API hooks should not leak directly into widgets/features because
+generated names and signatures change when the OpenAPI schema changes.
 
-Before writing any code, do a reference study:
+## Step 1: Reference Study
 
-- New action hook → read 3+ hooks in `src/actions/<domain>/hooks/`
-- New feature component → read 3+ in `src/features/<domain>/`
-- New widget → read 3+ in `src/widgets/` (same or related domains)
-- New entrypoint → read 3+ in `src/entrypoints/`
+Before writing code, list at least 3 similar files in the target layer.
 
-List the reference paths before writing code.
+- Action hook: inspect `src/actions/<domain>/hooks/**`.
+- Feature UI: inspect `src/features/<domain>/**`.
+- Widget: inspect `src/widgets/<domain>/**` or related widgets.
+- Entrypoint: inspect `src/entrypoints/**`.
 
-## Layer placement
+Use these references for file names, export style, hook return shape, and
+component structure.
 
-| What you're building               | Where it goes                              |
-| ---------------------------------- | ------------------------------------------ |
-| API orchestration / business logic | `src/actions/<domain>/hooks/use-<name>.ts` |
-| Presentational UI component        | `src/features/<domain>/<name>/components/` |
-| Composite block (features + hooks) | `src/widgets/<domain>/<name>/`             |
-| Page-level layout wiring           | `src/entrypoints/<name>/component.tsx`     |
+## Step 2: Choose Placement
 
-## Implementation rules
+| Work                                     | Place                                      |
+| ---------------------------------------- | ------------------------------------------ |
+| API/query/mutation orchestration         | `src/actions/<domain>/hooks/use-<name>.ts` |
+| Reusable presentational domain UI        | `src/features/<domain>/<name>/components/` |
+| Complex UI with action hooks/local state | `src/widgets/<domain>/<name>/`             |
+| Page-level wiring                        | `src/entrypoints/<name>/component.tsx`     |
+| Route/search/guard/preload               | `src/routes/**`                            |
 
-1. **Check codegen first** — look in `src/codegen/api/auth/tanstack/` and `src/codegen/api/product/tanstack/` for existing hooks. If missing, run `pnpm api:generate`.
+If the task fits an existing file, update it instead of scaffolding new folders.
 
-2. **Action hooks** wrap codegen hooks and expose clean return values:
+## Step 3: API And Data Flow
 
-   ```typescript
-   // src/actions/<domain>/hooks/use-get-<name>.ts
-   import { useGetApiV1Something } from "@/codegen/api/product";
+Check `src/codegen/api/product/**` for existing generated contracts.
 
-   export function useGetSomething() {
-     const { data, isLoading, isError } = useGetApiV1Something();
-     return { data, isLoading, isError };
-   }
-   ```
+- Wrap generated network hooks in action hooks.
+- Use generated types, enums, schemas, and query keys where contract data is
+  needed.
+- Do not manually edit `src/codegen/**`.
 
-3. **Feature components** are presentational — receive data via props, no API calls.
+## Step 4: Project Primitives
 
-4. **Widget components** use action hooks + feature components. Never call codegen hooks directly.
+- `cn()` from `@/shared/utils/cn`.
+- `useAppForm` from `@/lib/tanstack-form`.
+- `z` from `@/lib/zod`.
+- Existing UI primitives from `src/shared/components/ui/**`.
+- Do not add i18n keys for ordinary new UI text by default. Use locale JSON only
+  in existing i18n-backed areas, explicit i18n tasks, or pluralization/inflection
+  cases.
 
-5. **Classnames**: use `cn()` from `@/shared/utils/cn`.
+## Finish
 
-6. **Forms**: use `useAppForm` from `@/lib/tanstack-form`.
+```bash
+pnpm i18n:resources   # if locale JSON changed intentionally
+pnpm router:generate  # if route files changed
+pnpm lint:fix
+pnpm lint:typescript
+```
 
-7. **Validation**: use `z` from `@/lib/zod` (not from `"zod"` directly).
-
-8. **User-facing text**: add to both `public/locales/en/translation.json` and `public/locales/ru/translation.json`.
-
-## Finish checklist
-
-- [ ] Code in correct FSD layer
-- [ ] No direct codegen hook usage in widgets/features
-- [ ] No domain logic in `shared/` or `lib/`
-- [ ] Locale keys added to both files (if any new text)
-- Run: `pnpm i18n:resources` (if locale changed)
-- Run: `pnpm lint:fix && pnpm lint:typescript`
+Report changed files, reference files inspected, generators run, and validation
+results.

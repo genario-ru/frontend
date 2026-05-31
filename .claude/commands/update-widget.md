@@ -1,40 +1,53 @@
 # Update Existing Widget
 
-Apply a focused, minimal change to an existing widget. Preserve FSD boundaries and existing structure — do not refactor what isn't part of the task.
+Arguments: `$ARGUMENTS` - widget path or domain plus requested change.
 
-## Arguments
+Read `AGENTS.md` first.
 
-`$ARGUMENTS` — widget path or domain + description of the change (e.g. "widgets/ideas/ideas-list — add empty state" or "scenario chapter navigation — highlight active item").
+## Why
 
-## Pre-coding step
+Widgets concentrate UI composition, local state, dialogs/drawers, and action
+hook usage. A small requested change should not turn into a broad refactor or
+move business logic into UI.
 
-Before changing anything, read:
+## Step 1: Read Existing Structure
 
-1. The widget's main component at `src/widgets/<domain>/<widget-name>/components/`
-2. The widget's local hooks at `src/widgets/<domain>/<widget-name>/hooks/` (if any)
-3. The action hooks it uses from `src/actions/<domain>/hooks/`
+Before editing, read:
 
-## Where the change belongs
+1. main widget component under `src/widgets/<domain>/<widget>/components/`;
+2. local hooks under `src/widgets/<domain>/<widget>/hooks/`, if present;
+3. colocated schemas/types/utils/constants;
+4. imported action hooks from `src/actions/<domain>/hooks/`;
+5. sibling widgets if the pattern is unclear.
 
-| Type of change                            | Location                                                |
-| ----------------------------------------- | ------------------------------------------------------- |
-| Visual / layout tweak                     | Widget component file                                   |
-| Reusable local state or interaction logic | Widget hook (`hooks/use-<widget-name>.ts`)              |
-| New API call or business rule             | `src/actions/<domain>/hooks/use-<name>.ts`              |
-| Shared UI across widgets                  | `src/features/<domain>/` or `src/shared/components/ui/` |
+## Step 2: Choose The Correct File
 
-## Rules
+| Change                                            | Location                 |
+| ------------------------------------------------- | ------------------------ |
+| Markup, layout, class names                       | Widget component         |
+| Local interaction state, handlers, derived values | Widget hook              |
+| API call, mutation callback, cache invalidation   | Action hook              |
+| Reusable domain display piece                     | `src/features/<domain>/` |
+| Generic UI/helper                                 | `src/shared/**`          |
 
-- **Minimal diff**: change only what the task requires. Don't reorganize unrelated code.
-- **Classnames**: `cn()` from `@/shared/utils/cn` — never build class strings manually.
-- **API data**: always go through action hooks in `src/actions/`. No direct codegen hook imports in widget components.
-- **Forms**: `useAppForm` from `@/lib/tanstack-form`.
-- **New user-facing strings**: add to both locale files, run `pnpm i18n:resources`.
+## Step 3: Preserve Conventions
 
-## Finish checklist
+- Keep the diff focused.
+- Use `cn()` for conditional class names.
+- Use `useAppForm` for forms.
+- Use `z` from `@/lib/zod`.
+- Use action hooks for generated network behavior.
+- Do not add i18n keys for ordinary new UI text by default. Use locale files
+  only in existing i18n-backed areas, explicit i18n tasks, or
+  pluralization/inflection cases.
 
-- [ ] Only the targeted widget is changed
-- [ ] No FSD boundaries violated
-- [ ] No manual edits to `src/codegen/**`
-- [ ] No unrelated files modified
-- Run: `pnpm lint:fix && pnpm lint:typescript`
+## Finish
+
+```bash
+pnpm i18n:resources   # if locale JSON changed intentionally
+pnpm router:generate  # if route files changed
+pnpm lint:fix
+pnpm lint:typescript
+```
+
+Report changed files, references inspected, and validation results.

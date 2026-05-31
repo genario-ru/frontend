@@ -1,75 +1,45 @@
 ---
 name: Frontend code conventions and patterns
-description: Key code patterns, naming rules, and conventions used throughout the project
+description: Naming, imports, component structure, and completion checklist
 type: project
 ---
 
-Conventions enforced by ESLint/Prettier config + `.cursor/rules/`. Must follow to pass `pnpm lint:typescript`.
-
-**Why:** Project has automated lint checks; deviations cause CI failures.
-
-**How to apply:** Use these patterns as default for all new code in this project.
+Canonical guide: `AGENTS.md`.
 
 ## Naming
 
-- Domain folders: `kebab-case`
-- Hook files: `use-<name>.ts` prefix
-- Component files: `<component-name>.tsx` (kebab-case)
-- Named exports only (no default exports for components)
+- Domain folders: `kebab-case`.
+- Hook files: `use-<name>.ts`.
+- Component files: kebab-case `.tsx`.
+- Prefer named exports.
 
 ## Imports
 
-- Always use `@/*` path alias for `src/` imports
-- Import order sorted automatically (simple-import-sort ESLint plugin)
-- Zod: `import { z } from "@/lib/zod"` — never from `"zod"` directly
-- Classnames: `import { cn } from "@/shared/utils/cn"`
-- Forms: `import { useAppForm } from "@/lib/tanstack-form"`
+- Prefer `@/*` for `src/` imports.
+- Import order is handled by `simple-import-sort`.
+- Zod: `import { z } from "@/lib/zod"`.
+- Classnames: `import { cn } from "@/shared/utils/cn"`.
+- Forms: `import { useAppForm } from "@/lib/tanstack-form"`.
 
-## Component structure
+## Pre-coding rule
 
-```typescript
-type MyComponentProps = { ... };
+Before creating new files in `actions`, `features`, `widgets`, or `entrypoints`,
+read at least 3 similar local implementations in the same layer.
 
-export function MyComponent({ prop }: MyComponentProps) {
-  return (...);
-}
-```
+## Generated code
 
-## Action hook structure
-
-Wraps codegen hook, returns clean object:
-
-```typescript
-export function useGetSomething() {
-  const { data, isLoading, isError } = useGetSomethingFromCodegen();
-  return { data, isLoading, isError };
-}
-```
-
-## Form pattern
-
-```typescript
-import { useAppForm } from "@/lib/tanstack-form";
-import { z } from "@/lib/zod";
-
-const form = useAppForm({
-  defaultValues: { name: "" },
-  validators: { onSubmit: z.object({ name: z.string().min(1) }) },
-  onSubmit: async ({ value }) => {
-    /* mutation call */
-  },
-});
-```
-
-## Pre-coding rule for new domain files
-
-Before creating any new file in `actions/`, `features/`, `widgets/`, `entrypoints/`:
-find and read at least **3 similar existing implementations** in the same layer to match local patterns.
+- Generated network hooks come from `@/codegen/api/product`.
+- Prefer wrapping generated network hooks in `src/actions/**`.
+- Generated types, schemas, enums, query keys, and route query options may be
+  imported where API contract data is needed.
+- Never manually edit `src/codegen/**`.
 
 ## Completion checklist
 
-1. Correct FSD layer
-2. No edits to `src/codegen/**`
-3. Routes changed? → `pnpm router:generate`
-4. Locale JSON changed? → `pnpm i18n:resources`
-5. `pnpm lint:fix` → `pnpm lint:typescript`
+1. Correct FSD layer.
+2. Reference files inspected for local patterns.
+3. No manual edits to generated files.
+4. Do not add i18n keys for ordinary new UI text by default.
+5. Route changes -> `pnpm router:generate`.
+6. Locale resource changes -> `pnpm i18n:resources`.
+7. Code changes -> `pnpm lint:fix` and `pnpm lint:typescript`.
