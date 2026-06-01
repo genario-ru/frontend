@@ -1,38 +1,86 @@
-import { CreditCardIcon, Trash2Icon } from "lucide-react";
+import {
+  CreditCardIcon,
+  EllipsisIcon,
+  StarIcon,
+  Trash2Icon,
+} from "lucide-react";
+import { useState } from "react";
 
 import type { PaymentMethodSchema } from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/shared/components/ui/dropdown-menu";
 
 type BillingMyPaymentMethodCardProps = {
   paymentMethod: PaymentMethodSchema;
   isDeletePending: boolean;
+  hideDropdownAction?: boolean;
   onDelete: () => void;
+  onMakeDefault: () => void;
 };
 
 export function BillingMyPaymentMethodCard({
   paymentMethod,
   isDeletePending,
+  hideDropdownAction = false,
   onDelete,
+  onMakeDefault,
 }: BillingMyPaymentMethodCardProps) {
   const label = paymentMethod.title ?? paymentMethod.type;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="group/card border-neutral-3 bg-neutral-1 flex items-center justify-between gap-3 rounded-2xl border px-4 py-3">
+    <div className="bg-neutral-2 flex items-center justify-between gap-3 rounded-2xl px-4 py-3">
       <div className="flex items-center gap-3">
         <CreditCardIcon className="text-neutral-6 h-4 w-4" strokeWidth={1.5} />
         <span className="font-medium">{label}</span>
       </div>
-      <Button
-        variant="negative"
-        priority="tertiary"
-        size="sm"
-        rounding="full"
-        icon={<Trash2Icon />}
-        state={isDeletePending ? "loading" : "default"}
-        onClick={onDelete}
-        aria-label="Удалить способ оплаты"
-        className="opacity-0 transition-opacity group-hover/card:opacity-100 focus-visible:opacity-100"
-      />
+      {!hideDropdownAction && (
+        <DropdownMenu
+          modal={false}
+          open={isMenuOpen}
+          onOpenChange={setIsMenuOpen}
+        >
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" priority="tertiary" icon={<EllipsisIcon />} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <Button
+                  size="sm"
+                  priority="tertiary"
+                  rounding="base"
+                  icon={<StarIcon />}
+                  className="w-full justify-start"
+                  onClick={onMakeDefault}
+                >
+                  Сделать основным
+                </Button>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Button
+                  size="sm"
+                  priority="tertiary"
+                  variant="negative"
+                  rounding="base"
+                  icon={<Trash2Icon />}
+                  state={isDeletePending ? "loading" : "default"}
+                  className="w-full justify-start"
+                  onClick={onDelete}
+                >
+                  Удалить
+                </Button>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </div>
   );
 }

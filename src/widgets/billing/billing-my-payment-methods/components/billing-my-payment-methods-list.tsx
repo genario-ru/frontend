@@ -5,13 +5,16 @@ import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
 import { Plug } from "@/shared/components/ui/plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { SwipeActions } from "@/shared/components/ui/swipe-actions";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
 
 import { useBillingMyPaymentMethodsList } from "../hooks/use-billing-my-payment-methods-list";
+import { BillingMyPaymentMethodSwipeActions } from "./billing-my-payment-method-swipe-actions";
 
 export function BillingMyPaymentMethodsList() {
   const {
     paymentMethods,
+    showSwipeActions,
     isMyPaymentMethodsLoading,
     isMyPaymentMethodsError,
     isDeletePaymentMethodPending,
@@ -32,18 +35,38 @@ export function BillingMyPaymentMethodsList() {
 
   return (
     <div className="flex flex-1 flex-col gap-2">
-      {paymentMethods.map((paymentMethod) => (
-        <BillingMyPaymentMethodCard
-          key={paymentMethod.id}
-          paymentMethod={paymentMethod}
-          isDeletePending={isDeletePaymentMethodPending}
-          onDelete={() =>
-            deletePaymentMethod({
-              paymentMethodId: paymentMethod.paymentMethodId,
-            })
-          }
-        />
-      ))}
+      {paymentMethods.map((paymentMethod) => {
+        const onDelete = () =>
+          deletePaymentMethod({ paymentMethodId: paymentMethod.id });
+
+        const card = (
+          <BillingMyPaymentMethodCard
+            key={paymentMethod.id}
+            paymentMethod={paymentMethod}
+            isDeletePending={isDeletePaymentMethodPending}
+            hideDropdownAction={showSwipeActions}
+            onDelete={onDelete}
+            onMakeDefault={() => {}}
+          />
+        );
+
+        if (showSwipeActions) {
+          return (
+            <SwipeActions
+              key={paymentMethod.id}
+              beforeInset={8}
+              actions={
+                <BillingMyPaymentMethodSwipeActions onDelete={onDelete} />
+              }
+              className="rounded-2xl"
+            >
+              {card}
+            </SwipeActions>
+          );
+        }
+
+        return card;
+      })}
     </div>
   );
 }

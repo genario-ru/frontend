@@ -1,8 +1,18 @@
+import { EllipsisIcon, XIcon } from "lucide-react";
+import { useState } from "react";
+
 import type {
   SubscriptionExtendedSchemaStatusEnumKey,
   TariffExtendedSchemaBillingPeriodEnumKey,
 } from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/shared/components/ui/dropdown-menu";
 import { LDQUO, MDASH, NBSP, RDQUO } from "@/shared/constants/unicode";
 
 import { billingPeriodSuffix } from "../constants/billing-period-suffix";
@@ -34,46 +44,61 @@ export function BillingMySubscriptionCard({
   onCancelButtonClick,
 }: BillingMySubscriptionCardProps) {
   const suffix = billingPeriod ? billingPeriodSuffix[billingPeriod] : null;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <>
-      <div className="group/card bg-neutral-2 relative flex justify-between gap-4 rounded-2xl px-4 py-3">
-        <div className="flex flex-col gap-2">
-          <p className="font-medium">
-            Тариф
-            {NBSP}
-            {LDQUO}
-            {name}
-            {RDQUO}
-            {NBSP}
-            {MDASH}
-            {NBSP}
-            {price === 0 ? "Бесплатно" : `${price.toLocaleString("ru-RU")} руб`}
-            {suffix && (
-              <span className="text-neutral-6 text-sm font-normal">
-                {suffix}
-              </span>
-            )}
-          </p>
-          <BillingMySubscriptionCardBadges
-            status={status}
-            credits={credits}
-            billingPeriod={billingPeriod}
-            durationDays={durationDays}
-            dateRange={dateRange}
-          />
-        </div>
-        {isCancellable && !hideCancelAction && (
-          <Button
-            variant="negative"
-            size="sm"
-            className="opacity-0 transition-opacity group-hover/card:opacity-100 focus-visible:opacity-100"
-            onClick={onCancelButtonClick}
-          >
-            Отменить
-          </Button>
-        )}
+    <div className="bg-neutral-2 relative flex justify-between gap-4 rounded-2xl px-4 py-3">
+      <div className="flex flex-col gap-2">
+        <p className="font-medium">
+          Тариф
+          {NBSP}
+          {LDQUO}
+          {name}
+          {RDQUO}
+          {NBSP}
+          {MDASH}
+          {NBSP}
+          {price === 0 ? "Бесплатно" : `${price.toLocaleString("ru-RU")} руб`}
+          {suffix && (
+            <span className="text-neutral-6 text-sm font-normal">{suffix}</span>
+          )}
+        </p>
+        <BillingMySubscriptionCardBadges
+          status={status}
+          credits={credits}
+          billingPeriod={billingPeriod}
+          durationDays={durationDays}
+          dateRange={dateRange}
+        />
       </div>
-    </>
+      {isCancellable && !hideCancelAction && (
+        <DropdownMenu
+          modal={false}
+          open={isMenuOpen}
+          onOpenChange={setIsMenuOpen}
+        >
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" priority="tertiary" icon={<EllipsisIcon />} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <Button
+                  size="sm"
+                  priority="tertiary"
+                  variant="negative"
+                  rounding="base"
+                  icon={<XIcon />}
+                  className="w-full justify-start"
+                  onClick={onCancelButtonClick}
+                >
+                  Отменить
+                </Button>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
+    </div>
   );
 }
