@@ -1,12 +1,8 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
-import { isFuture, isPast } from "date-fns";
-import { isNull } from "es-toolkit";
 
-import {
-  getApiV1SubscriptonsMyQueryOptions,
-  type SubscriptionExtendedSchema,
-} from "@/codegen/api/product";
+import { getApiV1SubscriptonsMyQueryOptions } from "@/codegen/api/product";
 import { WithSubscriptionComponent } from "@/entrypoints/with-subscription/component";
+import { checkHasActiveSubscription } from "@/shared/utils/subscriptions/check-has-active-subscription";
 
 export const Route = createFileRoute("/_with-auth/_with-subscription")({
   beforeLoad: async ({ context }) => {
@@ -29,23 +25,3 @@ export const Route = createFileRoute("/_with-auth/_with-subscription")({
   },
   component: WithSubscriptionComponent,
 });
-
-function checkHasActiveSubscription(
-  subscriptions: SubscriptionExtendedSchema[],
-) {
-  const activeSubscriptions = subscriptions.filter((subscription) => {
-    const isActive = ["active", "cancelled", "overdue"].includes(
-      subscription.status,
-    );
-
-    const isStarted =
-      isNull(subscription.startsAt) || isPast(subscription.startsAt);
-
-    const isNotEnded =
-      isNull(subscription.endsAt) || isFuture(subscription.endsAt);
-
-    return isActive && isStarted && isNotEnded;
-  });
-
-  return activeSubscriptions.length > 0;
-}

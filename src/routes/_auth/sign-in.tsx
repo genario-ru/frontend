@@ -7,6 +7,7 @@ import {
 } from "@/codegen/api/product";
 import { SignInComponent } from "@/entrypoints/sign-in/component";
 import { z } from "@/lib/zod";
+import { checkHasActiveSubscription } from "@/shared/utils/subscriptions/check-has-active-subscription";
 
 const signInSearchSchema = z.object({
   email: z.email().optional(),
@@ -33,8 +34,8 @@ export const Route = createFileRoute("/_auth/sign-in")({
       ...getApiV1SubscriptonsMyQueryOptions(),
     });
 
-    const hasActiveSubscription = subscriptions.data.some(
-      (subscription) => subscription.status === "active",
+    const hasActiveSubscription = checkHasActiveSubscription(
+      subscriptions.data,
     );
 
     if (hasActiveSubscription) {
