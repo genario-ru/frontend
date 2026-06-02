@@ -49,6 +49,7 @@ export type SubscriptionExtendedSchema = {
    * @type string
    */
   status: SubscriptionExtendedSchemaStatusEnumKey;
+  statusUpdatedAt: string | null;
   /**
    * @type string
    */

@@ -2,6 +2,7 @@ import { ReceiptIcon } from "lucide-react";
 
 import type { PaymentExtendedSchemaStatusEnumKey } from "@/codegen/api/product";
 import { Badge } from "@/shared/components/ui/badge";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { LDQUO, RDQUO } from "@/shared/constants/unicode";
 import { cn } from "@/shared/utils/cn";
 
@@ -26,10 +27,10 @@ export function BillingMyRecentOperationCard({
 }: BillingMyRecentOperationCardProps) {
   return (
     <div className="bg-neutral-2 flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
-      <div className="flex items-start gap-3">
-        <ReceiptIcon
-          className={cn("mt-0.5 h-4 w-4 shrink-0", operationIconColor[status])}
-          strokeWidth={1.5}
+      <div className="flex items-start gap-2">
+        <LucideIcon
+          icon={ReceiptIcon}
+          className={cn(operationIconColor[status])}
         />
         <div className="flex flex-col gap-1.5">
           <span className="font-medium">{title}</span>

@@ -1154,6 +1154,18 @@ export type {
   PostApiV1SubscriptionsInitiatePaymentMutationRequest,
   PostApiV1SubscriptionsInitiatePaymentMutationResponse,
 } from "./post-api-v1-subscriptions-initiate-payment.ts";
+export type {
+  PostApiV1SubscriptionsUpgrade200,
+  PostApiV1SubscriptionsUpgrade400,
+  PostApiV1SubscriptionsUpgrade401,
+  PostApiV1SubscriptionsUpgrade402,
+  PostApiV1SubscriptionsUpgrade403,
+  PostApiV1SubscriptionsUpgrade404,
+  PostApiV1SubscriptionsUpgrade500,
+  PostApiV1SubscriptionsUpgradeMutation,
+  PostApiV1SubscriptionsUpgradeMutationRequest,
+  PostApiV1SubscriptionsUpgradeMutationResponse,
+} from "./post-api-v1-subscriptions-upgrade.ts";
 export type { ProductionStatusSchema } from "./production-status-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
@@ -1294,6 +1306,8 @@ export type { UpdateScenarioSceneComponentResponseSchema } from "./update-scenar
 export type { UpdateScenarioSceneResponseSchema } from "./update-scenario-scene-response-schema.ts";
 export type { UpdateUserBodySchema } from "./update-user-body-schema.ts";
 export type { UpdateUserResponseSchema } from "./update-user-response-schema.ts";
+export type { UpgradeSubscriptionBodySchema } from "./upgrade-subscription-body-schema.ts";
+export type { UpgradeSubscriptionResponseSchema } from "./upgrade-subscription-response-schema.ts";
 export type { UserSchema, UserSchemaRoleEnumKey } from "./user-schema.ts";
 export { userSchemaRoleEnum } from "./user-schema.ts";
 export type { ValidateProfileChannelBodySchema } from "./validate-profile-channel-body-schema.ts";

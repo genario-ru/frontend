@@ -7252,6 +7252,96 @@
         }
       }
     },
+    "/api/v1/subscriptions/upgrade": {
+      "post": {
+        "operationId": "postApiV1SubscriptionsUpgrade",
+        "tags": [
+          "Subscriptions"
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription upgraded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpgradeSubscriptionResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpgradeSubscriptionBodySchema"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/tariffs": {
       "get": {
         "operationId": "getApiV1Tariffs",
@@ -9085,6 +9175,9 @@
               }
             ]
           },
+          "default": {
+            "type": "boolean"
+          },
           "createdAt": {
             "type": "string"
           },
@@ -9102,6 +9195,7 @@
           "title",
           "confirmationUrl",
           "data",
+          "default",
           "createdAt",
           "updatedAt"
         ],
@@ -9596,6 +9690,16 @@
               "terminated"
             ]
           },
+          "statusUpdatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "createdAt": {
             "type": "string"
           },
@@ -9615,6 +9719,7 @@
           "nextBillingAt",
           "failedBillingAttempts",
           "status",
+          "statusUpdatedAt",
           "createdAt",
           "updatedAt"
         ],
@@ -14697,6 +14802,16 @@
               "terminated"
             ]
           },
+          "statusUpdatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "createdAt": {
             "type": "string"
           },
@@ -14719,6 +14834,7 @@
           "nextBillingAt",
           "failedBillingAttempts",
           "status",
+          "statusUpdatedAt",
           "createdAt",
           "updatedAt",
           "tariff"
@@ -14794,6 +14910,32 @@
         ],
         "title": "Initiate subscription payment body",
         "description": "Initiate subscription payment body description"
+      },
+      "UpgradeSubscriptionResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Upgrade subscription response",
+        "description": "Upgrade subscription response description"
+      },
+      "UpgradeSubscriptionBodySchema": {
+        "type": "object",
+        "properties": {
+          "newTariffId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "newTariffId"
+        ],
+        "title": "Upgrade subscription body",
+        "description": "Upgrade subscription body description"
       },
       "GetTariffsResponseSchema": {
         "type": "object",

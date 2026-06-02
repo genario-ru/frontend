@@ -19,6 +19,7 @@ export const paymentMethodSchemaSchema = z
     title: z.union([z.string(), z.null()]),
     confirmationUrl: z.union([z.string(), z.null()]),
     data: z.union([z.any(), z.null()]),
+    default: z.boolean(),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

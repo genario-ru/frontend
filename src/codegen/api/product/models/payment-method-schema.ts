@@ -42,6 +42,10 @@ export type PaymentMethodSchema = {
   confirmationUrl: string | null;
   data: any | null;
   /**
+   * @type boolean
+   */
+  default: boolean;
+  /**
    * @type string
    */
   createdAt: string;

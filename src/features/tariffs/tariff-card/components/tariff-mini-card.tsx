@@ -12,55 +12,37 @@ import {
 } from "./tariff-card-list-item";
 import { TariffPrice } from "./tariff-price";
 
-type TariffCardProps = PropsWithClassName<{
+type TariffMiniCardProps = PropsWithClassName<{
   name: string;
-  description: string | null;
   price: number;
   oldPrice?: number | null;
   features?: string[];
   limitations?: string[];
-  inverseColors?: boolean;
-  primaryAction: ReactNode;
-  secondaryAction?: ReactNode;
+  action: ReactNode;
 }>;
 
-export function TariffCard({
+export function TariffMiniCard({
   name,
-  description,
   price,
   oldPrice,
   features = [],
   limitations = [],
-  inverseColors = false,
-  primaryAction,
-  secondaryAction,
+  action,
   className,
-}: TariffCardProps) {
+}: TariffMiniCardProps) {
   const hasList = features.length + limitations.length > 0;
 
   return (
     <div
-      data-inverse={inverseColors}
       className={cn(
-        "group/tariff-card rounded-6 bg-neutral-1 flex flex-col gap-6 p-6",
+        "rounded-6 bg-neutral-2 flex flex-col gap-4 p-4",
         className,
       )}
     >
-      <header className="flex w-full flex-col gap-3">
-        <div className="flex w-full flex-col gap-1">
-          <p className="group-data-[inverse=true]/tariff-card:text-neutral-1 text-xl font-semibold">
-            {name}
-          </p>
-          <p className="text-neutral-8/70 group-data-[inverse=true]/tariff-card:text-neutral-1/70">
-            {description}
-          </p>
-        </div>
+      <header className="flex w-full flex-col gap-2">
+        <p className="text-lg font-semibold">{name}</p>
         <TariffPrice price={price} oldPrice={oldPrice} />
       </header>
-      <div className="flex flex-col items-center gap-2">
-        {primaryAction}
-        {secondaryAction}
-      </div>
       {hasList && (
         <ul className="flex w-full flex-col gap-1">
           {features.map((feature, index) => (
@@ -78,33 +60,24 @@ export function TariffCard({
           ))}
         </ul>
       )}
+      {action}
     </div>
   );
 }
 
-export function TariffCardSkeleton({ className }: PropsWithClassName) {
+export function TariffMiniCardSkeleton({ className }: PropsWithClassName) {
   return (
     <Skeleton className={cn("rounded-6 flex flex-col gap-6 p-6", className)}>
       <header className="flex w-full flex-col gap-3">
-        <div className="flex w-full flex-col gap-1">
-          <TextSkeleton fontSize={24} lineHeight={32} className="w-2/3" />
-          <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />
-        </div>
+        <TextSkeleton fontSize={18} lineHeight={24} className="w-2/3" />
         <TextSkeleton fontSize={24} lineHeight={32} className="w-2/3" />
       </header>
-      <div className="flex flex-col items-center gap-2">
-        <Skeleton className="rounded-4 h-15 w-full" />
-        <TextSkeleton
-          fontSize={16}
-          lineHeight={24}
-          lineClassName="mx-auto w-2/3"
-        />
-      </div>
       <ItemsList
         count={8}
         className="w-full gap-2"
         item={<TariffCardListItemSkeleton />}
       />
+      <Skeleton className="rounded-4 h-10 w-full" />
     </Skeleton>
   );
 }

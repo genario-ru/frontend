@@ -15,6 +15,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 
 type BillingMyPaymentMethodCardProps = {
   paymentMethod: PaymentMethodSchema;
@@ -37,7 +38,7 @@ export function BillingMyPaymentMethodCard({
   return (
     <div className="bg-neutral-2 flex items-center justify-between gap-3 rounded-2xl px-4 py-3">
       <div className="flex items-center gap-3">
-        <CreditCardIcon className="text-neutral-6 h-4 w-4" strokeWidth={1.5} />
+        <LucideIcon icon={CreditCardIcon} />
         <span className="font-medium">{label}</span>
       </div>
       {!hideDropdownAction && (
@@ -47,7 +48,7 @@ export function BillingMyPaymentMethodCard({
           onOpenChange={setIsMenuOpen}
         >
           <DropdownMenuTrigger asChild>
-            <Button size="sm" priority="tertiary" icon={<EllipsisIcon />} />
+            <Button size="sm" icon={<EllipsisIcon />} />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
@@ -56,8 +57,9 @@ export function BillingMyPaymentMethodCard({
                   size="sm"
                   priority="tertiary"
                   rounding="base"
+                  align="between"
                   icon={<StarIcon />}
-                  className="w-full justify-start"
+                  className="w-full"
                   onClick={onMakeDefault}
                 >
                   Сделать основным
@@ -69,9 +71,10 @@ export function BillingMyPaymentMethodCard({
                   priority="tertiary"
                   variant="negative"
                   rounding="base"
+                  align="between"
                   icon={<Trash2Icon />}
                   state={isDeletePending ? "loading" : "default"}
-                  className="w-full justify-start"
+                  className="w-full"
                   onClick={onDelete}
                 >
                   Удалить

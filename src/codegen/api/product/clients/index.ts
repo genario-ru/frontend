@@ -79,3 +79,4 @@ export { postApiV1ScenariosByScenarioIdMetadataRegenerate } from "./post-api-v1-
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./post-api-v1-subscriptions-initiate-payment.ts";
+export { postApiV1SubscriptionsUpgrade } from "./post-api-v1-subscriptions-upgrade.ts";

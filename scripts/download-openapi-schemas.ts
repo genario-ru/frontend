@@ -1,13 +1,15 @@
 #!/usr/bin/env tsx
 /* eslint-disable security/detect-non-literal-fs-filename */
 
+import "dotenv/config";
+
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 
 // Список схем для загрузки
 const SCHEMAS = [
   {
-    url: "https://api.genario.ru/api/open-api",
+    url: `${process.env.VITE_BASE_API_URL}/api/open-api`,
     filename: "product.json",
   },
 ];

@@ -79,6 +79,7 @@ export { postApiV1ScenariosByScenarioIdMetadataRegenerate } from "./clients/post
 export { postApiV1ScenariosScenesBySceneIdPreview } from "./clients/post-api-v1-scenarios-scenes-by-scene-id-preview.ts";
 export { postApiV1SubscriptionsBySubscriptionIdCancel } from "./clients/post-api-v1-subscriptions-by-subscription-id-cancel.ts";
 export { postApiV1SubscriptionsInitiatePayment } from "./clients/post-api-v1-subscriptions-initiate-payment.ts";
+export { postApiV1SubscriptionsUpgrade } from "./clients/post-api-v1-subscriptions-upgrade.ts";
 export type { AddPaymentMethodBodySchema } from "./models/add-payment-method-body-schema.ts";
 export type { AddPaymentMethodResponseSchema } from "./models/add-payment-method-response-schema.ts";
 export type {
@@ -1235,6 +1236,18 @@ export type {
   PostApiV1SubscriptionsInitiatePaymentMutationRequest,
   PostApiV1SubscriptionsInitiatePaymentMutationResponse,
 } from "./models/post-api-v1-subscriptions-initiate-payment.ts";
+export type {
+  PostApiV1SubscriptionsUpgrade200,
+  PostApiV1SubscriptionsUpgrade400,
+  PostApiV1SubscriptionsUpgrade401,
+  PostApiV1SubscriptionsUpgrade402,
+  PostApiV1SubscriptionsUpgrade403,
+  PostApiV1SubscriptionsUpgrade404,
+  PostApiV1SubscriptionsUpgrade500,
+  PostApiV1SubscriptionsUpgradeMutation,
+  PostApiV1SubscriptionsUpgradeMutationRequest,
+  PostApiV1SubscriptionsUpgradeMutationResponse,
+} from "./models/post-api-v1-subscriptions-upgrade.ts";
 export type { ProductionStatusSchema } from "./models/production-status-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./models/profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
@@ -1375,6 +1388,8 @@ export type { UpdateScenarioSceneComponentResponseSchema } from "./models/update
 export type { UpdateScenarioSceneResponseSchema } from "./models/update-scenario-scene-response-schema.ts";
 export type { UpdateUserBodySchema } from "./models/update-user-body-schema.ts";
 export type { UpdateUserResponseSchema } from "./models/update-user-response-schema.ts";
+export type { UpgradeSubscriptionBodySchema } from "./models/upgrade-subscription-body-schema.ts";
+export type { UpgradeSubscriptionResponseSchema } from "./models/upgrade-subscription-response-schema.ts";
 export type {
   UserSchema,
   UserSchemaRoleEnumKey,
@@ -1728,6 +1743,10 @@ export type { PostApiV1SubscriptionsInitiatePaymentMutationKey } from "./tanstac
 export { postApiV1SubscriptionsInitiatePaymentMutationKey } from "./tanstack/post-api-v1-subscriptions-initiate-payment.ts";
 export { postApiV1SubscriptionsInitiatePaymentMutationOptions } from "./tanstack/post-api-v1-subscriptions-initiate-payment.ts";
 export { usePostApiV1SubscriptionsInitiatePayment } from "./tanstack/post-api-v1-subscriptions-initiate-payment.ts";
+export type { PostApiV1SubscriptionsUpgradeMutationKey } from "./tanstack/post-api-v1-subscriptions-upgrade.ts";
+export { postApiV1SubscriptionsUpgradeMutationKey } from "./tanstack/post-api-v1-subscriptions-upgrade.ts";
+export { postApiV1SubscriptionsUpgradeMutationOptions } from "./tanstack/post-api-v1-subscriptions-upgrade.ts";
+export { usePostApiV1SubscriptionsUpgrade } from "./tanstack/post-api-v1-subscriptions-upgrade.ts";
 export { addPaymentMethodBodySchemaSchema } from "./zod/add-payment-method-body-schema-schema.ts";
 export { addPaymentMethodResponseSchemaSchema } from "./zod/add-payment-method-response-schema-schema.ts";
 export { alertSchemaSchema } from "./zod/alert-schema-schema.ts";
@@ -2729,6 +2748,17 @@ export {
   postApiV1SubscriptionsInitiatePaymentMutationRequestSchema,
   postApiV1SubscriptionsInitiatePaymentMutationResponseSchema,
 } from "./zod/post-api-v1-subscriptions-initiate-payment-schema.ts";
+export {
+  postApiV1SubscriptionsUpgrade200Schema,
+  postApiV1SubscriptionsUpgrade400Schema,
+  postApiV1SubscriptionsUpgrade401Schema,
+  postApiV1SubscriptionsUpgrade402Schema,
+  postApiV1SubscriptionsUpgrade403Schema,
+  postApiV1SubscriptionsUpgrade404Schema,
+  postApiV1SubscriptionsUpgrade500Schema,
+  postApiV1SubscriptionsUpgradeMutationRequestSchema,
+  postApiV1SubscriptionsUpgradeMutationResponseSchema,
+} from "./zod/post-api-v1-subscriptions-upgrade-schema.ts";
 export { productionStatusSchemaSchema } from "./zod/production-status-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-url-validation-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";
@@ -2789,6 +2819,8 @@ export { updateScenarioSceneComponentResponseSchemaSchema } from "./zod/update-s
 export { updateScenarioSceneResponseSchemaSchema } from "./zod/update-scenario-scene-response-schema-schema.ts";
 export { updateUserBodySchemaSchema } from "./zod/update-user-body-schema-schema.ts";
 export { updateUserResponseSchemaSchema } from "./zod/update-user-response-schema-schema.ts";
+export { upgradeSubscriptionBodySchemaSchema } from "./zod/upgrade-subscription-body-schema-schema.ts";
+export { upgradeSubscriptionResponseSchemaSchema } from "./zod/upgrade-subscription-response-schema-schema.ts";
 export { userSchemaSchema } from "./zod/user-schema-schema.ts";
 export { validateProfileChannelBodySchemaSchema } from "./zod/validate-profile-channel-body-schema-schema.ts";
 export { validateProfileChannelResponseSchemaSchema } from "./zod/validate-profile-channel-response-schema-schema.ts";

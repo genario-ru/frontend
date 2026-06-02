@@ -342,3 +342,7 @@ export type { PostApiV1SubscriptionsInitiatePaymentMutationKey } from "./post-ap
 export { postApiV1SubscriptionsInitiatePaymentMutationKey } from "./post-api-v1-subscriptions-initiate-payment.ts";
 export { postApiV1SubscriptionsInitiatePaymentMutationOptions } from "./post-api-v1-subscriptions-initiate-payment.ts";
 export { usePostApiV1SubscriptionsInitiatePayment } from "./post-api-v1-subscriptions-initiate-payment.ts";
+export type { PostApiV1SubscriptionsUpgradeMutationKey } from "./post-api-v1-subscriptions-upgrade.ts";
+export { postApiV1SubscriptionsUpgradeMutationKey } from "./post-api-v1-subscriptions-upgrade.ts";
+export { postApiV1SubscriptionsUpgradeMutationOptions } from "./post-api-v1-subscriptions-upgrade.ts";
+export { usePostApiV1SubscriptionsUpgrade } from "./post-api-v1-subscriptions-upgrade.ts";

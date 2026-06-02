@@ -78,7 +78,7 @@ export function BillingMySubscriptionCard({
           onOpenChange={setIsMenuOpen}
         >
           <DropdownMenuTrigger asChild>
-            <Button size="sm" priority="tertiary" icon={<EllipsisIcon />} />
+            <Button size="sm" icon={<EllipsisIcon />} />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
@@ -88,8 +88,9 @@ export function BillingMySubscriptionCard({
                   priority="tertiary"
                   variant="negative"
                   rounding="base"
+                  align="between"
                   icon={<XIcon />}
-                  className="w-full justify-start"
+                  className="w-full"
                   onClick={onCancelButtonClick}
                 >
                   Отменить

@@ -73,7 +73,7 @@ export function LandingTariffsList() {
           />
         );
 
-        const secondaryAction = hasTrial ? (
+        const secondaryAction = hasTrial && (
           <TariffCardSecondaryAction
             to="/sign-in"
             search={{
@@ -84,7 +84,7 @@ export function LandingTariffsList() {
               "text-neutral-1/70 hover:text-neutral-1": inverseColors,
             })}
           />
-        ) : undefined;
+        );
 
         const [features, limitations] = partition(
           tariff.features,

@@ -17,16 +17,13 @@ export function BillingMyPaymentMethodSwipeActions({
       <Button
         type="button"
         variant="neutral"
-        priority="tertiary"
         size="sm"
         direction="column"
         iconPosition="left"
         icon={<StarIcon />}
         className={swipeActionClassName}
         onClick={() => {}}
-      >
-        Сделать основным
-      </Button>
+      />
       <Button
         type="button"
         variant="negative"
@@ -37,9 +34,7 @@ export function BillingMyPaymentMethodSwipeActions({
         icon={<Trash2Icon />}
         className={swipeActionClassName}
         onClick={onDelete}
-      >
-        Удалить
-      </Button>
+      />
     </div>
   );
 }

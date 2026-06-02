@@ -4,8 +4,8 @@ export const operationIconColor: Record<
   PaymentExtendedSchemaStatusEnumKey,
   string
 > = {
-  succeeded: "text-positive-5",
-  failed: "text-negative-5",
-  pending: "text-neutral-6",
-  canceled: "text-neutral-6",
+  succeeded: "stroke-positive-5",
+  failed: "stroke-negative-5",
+  pending: "stroke-neutral-6",
+  canceled: "stroke-negative-5",
 };

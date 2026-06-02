@@ -1,26 +1,86 @@
-import { useMemo } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useCallback, useMemo, useState } from "react";
 
 import { useGetMySubscriptions } from "@/actions/subscriptions/hooks/use-get-my-subscriptions";
-import { TARIFF_SLUGS } from "@/shared/constants/tariff-slugs";
+import { useUpgradeSubscription } from "@/actions/subscriptions/hooks/use-upgrade-subscription";
+import { useGetTariffs } from "@/actions/tariffs/hooks/use-get-tariffs";
+import { getApiV1SubscriptonsMyQueryKey } from "@/codegen/api/product";
+import { useToast } from "@/shared/hooks/use-toast";
 
 export function useBillingMySubscriptionsActions() {
-  const { mySubscriptionsData, isMySubscriptionsLoading } =
-    useGetMySubscriptions();
+  const queryClient = useQueryClient();
+  const { showErrorToast, showSuccessToast } = useToast();
 
-  const showUpgradeButton = useMemo(() => {
-    if (!mySubscriptionsData?.data) return false;
+  const [isChangeTariffDialogOpen, setIsChangeTariffDialogOpen] =
+    useState(false);
 
-    const activeSubscription = mySubscriptionsData.data.find(
-      (subscription) => subscription.status === "active",
+  const { upgradeSubscription, isUpgradeSubscriptionPending } =
+    useUpgradeSubscription();
+
+  const {
+    mySubscriptionsData,
+    isMySubscriptionsLoading,
+    isMySubscriptionsError,
+  } = useGetMySubscriptions();
+
+  const { tariffsData, isTariffsLoading, isTariffsError } = useGetTariffs();
+
+  const handleUpgradeSubscription = useCallback(
+    (tariffId: string) => {
+      upgradeSubscription(
+        { data: { newTariffId: tariffId } },
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries({
+              queryKey: getApiV1SubscriptonsMyQueryKey(),
+            });
+
+            setIsChangeTariffDialogOpen(false);
+
+            showSuccessToast({
+              title: "Подписка обновлена",
+              description: "Подписка была успешно обновлена",
+            });
+          },
+          onError: () => {
+            showErrorToast({
+              description: "Не удалось обновить подписку. Попробуйте ещё раз",
+            });
+          },
+        },
+      );
+    },
+    [
+      queryClient,
+      setIsChangeTariffDialogOpen,
+      upgradeSubscription,
+      showErrorToast,
+      showSuccessToast,
+    ],
+  );
+
+  const availableTariffs = useMemo(() => {
+    const activeSubscriptions = mySubscriptionsData?.data.filter(
+      (subscription) => ["active", "pending"].includes(subscription.status),
     );
 
-    if (!activeSubscription) return true;
+    if (!activeSubscriptions) return tariffsData?.data;
 
-    return activeSubscription.tariff.slug !== TARIFF_SLUGS.ADVANCED;
-  }, [mySubscriptionsData]);
+    return tariffsData?.data.filter(
+      (tariff) =>
+        !activeSubscriptions.some(
+          (subscription) => subscription.tariff.id === tariff.id,
+        ),
+    );
+  }, [tariffsData, mySubscriptionsData]);
 
   return {
-    showUpgradeButton,
-    isMySubscriptionsLoading,
+    availableTariffs,
+    isChangeTariffDialogOpen,
+    isLoading: isMySubscriptionsLoading || isTariffsLoading,
+    isError: isMySubscriptionsError || isTariffsError,
+    isUpgradeSubscriptionPending,
+    handleUpgradeSubscription,
+    setIsChangeTariffDialogOpen,
   };
 }

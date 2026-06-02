@@ -999,6 +999,17 @@ export {
   postApiV1SubscriptionsInitiatePaymentMutationRequestSchema,
   postApiV1SubscriptionsInitiatePaymentMutationResponseSchema,
 } from "./post-api-v1-subscriptions-initiate-payment-schema.ts";
+export {
+  postApiV1SubscriptionsUpgrade200Schema,
+  postApiV1SubscriptionsUpgrade400Schema,
+  postApiV1SubscriptionsUpgrade401Schema,
+  postApiV1SubscriptionsUpgrade402Schema,
+  postApiV1SubscriptionsUpgrade403Schema,
+  postApiV1SubscriptionsUpgrade404Schema,
+  postApiV1SubscriptionsUpgrade500Schema,
+  postApiV1SubscriptionsUpgradeMutationRequestSchema,
+  postApiV1SubscriptionsUpgradeMutationResponseSchema,
+} from "./post-api-v1-subscriptions-upgrade-schema.ts";
 export { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-validation-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
@@ -1059,6 +1070,8 @@ export { updateScenarioSceneComponentResponseSchemaSchema } from "./update-scena
 export { updateScenarioSceneResponseSchemaSchema } from "./update-scenario-scene-response-schema-schema.ts";
 export { updateUserBodySchemaSchema } from "./update-user-body-schema-schema.ts";
 export { updateUserResponseSchemaSchema } from "./update-user-response-schema-schema.ts";
+export { upgradeSubscriptionBodySchemaSchema } from "./upgrade-subscription-body-schema-schema.ts";
+export { upgradeSubscriptionResponseSchemaSchema } from "./upgrade-subscription-response-schema-schema.ts";
 export { userSchemaSchema } from "./user-schema-schema.ts";
 export { validateProfileChannelBodySchemaSchema } from "./validate-profile-channel-body-schema-schema.ts";
 export { validateProfileChannelResponseSchemaSchema } from "./validate-profile-channel-response-schema-schema.ts";

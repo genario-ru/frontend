@@ -23,6 +23,7 @@ export const subscriptionExtendedSchemaSchema = z
     nextBillingAt: z.union([z.string(), z.null()]),
     failedBillingAttempts: z.int().min(-9007199254740991).max(9007199254740991),
     status: z.enum(["pending", "active", "overdue", "cancelled", "terminated"]),
+    statusUpdatedAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
     get tariff() {

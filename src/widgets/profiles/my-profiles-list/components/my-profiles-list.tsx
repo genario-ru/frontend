@@ -1,4 +1,4 @@
-import { PlusIcon } from "lucide-react";
+import { HandIcon, ImportIcon } from "lucide-react";
 
 import { ProfileCard } from "@/features/profiles/profile-card/components/profile-card";
 import { ProfileCardSkeleton } from "@/features/profiles/profile-card/components/profile-card-skeleton";
@@ -93,22 +93,30 @@ function MyProfilesListSkeleton() {
 
 function MyProfilesListEmpty() {
   return (
-    <Island className="flex-1 items-center justify-center">
+    <Island className="flex-1 items-center justify-center py-24">
       <Plug
         size="lg"
-        title="Нет профилей каналов"
-        description="Создайте первый профиль канала для лучшей персонализации генерируемого контента"
+        title="Нет профилей"
+        description="Импортируйте ваш канал или создайте профиль для лучшей персонализации генерируемого контента вручную"
         actions={
-          <ButtonLink
-            size="lg"
-            variant="accent"
-            priority="primary"
-            to="/profiles/settings"
-            icon={<PlusIcon />}
-            className="mt-2"
-          >
-            Создать профиль
-          </ButtonLink>
+          <div className="mt-2 flex w-full flex-col items-center gap-2 md:w-auto md:flex-row">
+            <ButtonLink
+              size="lg"
+              to="/profiles/import"
+              icon={<ImportIcon />}
+              className="w-full md:w-auto"
+            >
+              Импорт каналов
+            </ButtonLink>
+            <ButtonLink
+              size="lg"
+              to="/profiles/settings"
+              icon={<HandIcon />}
+              className="w-full md:w-auto"
+            >
+              Создать профиль вручную
+            </ButtonLink>
+          </div>
         }
       />
     </Island>
