@@ -20,10 +20,9 @@ export const RequiredConsentText = ({
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "public-offer" }}>
         публичной оферты
       </AuthDocumentLink>
-      , а также{SPACE} даю согласие на обработку персональных данных{SPACE} на
-      {SPACE}условиях{SPACE}
+      {SPACE}и подтверждаю ознакомление с{SPACE}
       <AuthDocumentLink to="/legal/$slug" params={{ slug: "privacy-policy" }}>
-        политики обработки персональных данных
+        политикой обработки персональных данных
       </AuthDocumentLink>
       .
     </span>
