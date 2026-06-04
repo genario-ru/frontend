@@ -64,6 +64,8 @@ export { postApiV1AuthEmailOtpSignIn } from "./clients/post-api-v1-auth-email-ot
 export { postApiV1AuthSignOut } from "./clients/post-api-v1-auth-sign-out.ts";
 export { postApiV1AuthUserDelete } from "./clients/post-api-v1-auth-user-delete.ts";
 export { postApiV1BillingPaymentMethods } from "./clients/post-api-v1-billing-payment-methods.ts";
+export { postApiV1BillingSubscriptionsCharge } from "./clients/post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingUpcomingChargesNewsletter } from "./clients/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./clients/post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./clients/post-api-v1-ideas-lists.ts";
 export { postApiV1IdeasListsByIdeasListIdExport } from "./clients/post-api-v1-ideas-lists-by-ideas-list-id-export.ts";
@@ -760,10 +762,10 @@ export type { GetCreditsPackagesResponseSchema } from "./models/get-credits-pack
 export type { GetIdeaResponseSchema } from "./models/get-idea-response-schema.ts";
 export type { GetIdeasListExportsResponseSchema } from "./models/get-ideas-list-exports-response-schema.ts";
 export type {
-  DataStatusEnumKey,
+  DataStatusEnum2Key,
   GetIdeasListResponseSchema,
 } from "./models/get-ideas-list-response-schema.ts";
-export { dataStatusEnum } from "./models/get-ideas-list-response-schema.ts";
+export { dataStatusEnum2 } from "./models/get-ideas-list-response-schema.ts";
 export type { GetIdeasListsFiltersResponseSchema } from "./models/get-ideas-lists-filters-response-schema.ts";
 export type { GetLegalDocumentResponseSchema } from "./models/get-legal-document-response-schema.ts";
 export type { GetLegalDocumentsResponseSchema } from "./models/get-legal-documents-response-schema.ts";
@@ -794,10 +796,10 @@ export type { GetScenarioChapterResponseSchema } from "./models/get-scenario-cha
 export type { GetScenarioCurrentVersionResponseSchema } from "./models/get-scenario-current-version-response-schema.ts";
 export type { GetScenarioExportsResponseSchema } from "./models/get-scenario-exports-response-schema.ts";
 export type {
-  DataStatusEnum2Key,
+  DataStatusEnum3Key,
   GetScenarioMetadataResponseSchema,
 } from "./models/get-scenario-metadata-response-schema.ts";
-export { dataStatusEnum2 } from "./models/get-scenario-metadata-response-schema.ts";
+export { dataStatusEnum3 } from "./models/get-scenario-metadata-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./models/get-scenario-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./models/get-scenario-versions-response-schema.ts";
 export type { GetScenariosFiltersResponseSchema } from "./models/get-scenarios-filters-response-schema.ts";
@@ -972,10 +974,52 @@ export type {
 } from "./models/payment-extended-schema.ts";
 export { paymentExtendedSchemaStatusEnum } from "./models/payment-extended-schema.ts";
 export type {
+  AmountCurrencyEnumKey,
+  AppliedCompensationCurrencyEnumKey,
+  AvailableCompensationCurrencyEnumKey,
+  CardCardTypeEnumKey,
+  CardSourceEnumKey,
+  DataStatusEnumKey,
+  DataTypeEnum2Key,
+  DataTypeEnum3Key,
+  DataTypeEnum4Key,
+  DataTypeEnum5Key,
+  DataTypeEnum6Key,
+  DataTypeEnum7Key,
+  DataTypeEnum8Key,
+  DataTypeEnum9Key,
+  DataTypeEnum10Key,
+  DataTypeEnumKey,
+  DiscountAmountCurrencyEnumKey,
   PaymentMethodSchema,
   PaymentMethodSchemaStatusEnumKey,
+  VatDataRateEnumKey,
+  VatDataTypeEnum2Key,
+  VatDataTypeEnum3Key,
+  VatDataTypeEnumKey,
 } from "./models/payment-method-schema.ts";
+export { amountCurrencyEnum } from "./models/payment-method-schema.ts";
+export { appliedCompensationCurrencyEnum } from "./models/payment-method-schema.ts";
+export { availableCompensationCurrencyEnum } from "./models/payment-method-schema.ts";
+export { cardCardTypeEnum } from "./models/payment-method-schema.ts";
+export { cardSourceEnum } from "./models/payment-method-schema.ts";
+export { dataStatusEnum } from "./models/payment-method-schema.ts";
+export { dataTypeEnum } from "./models/payment-method-schema.ts";
+export { dataTypeEnum10 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum2 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum3 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum4 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum5 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum6 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum7 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum8 } from "./models/payment-method-schema.ts";
+export { dataTypeEnum9 } from "./models/payment-method-schema.ts";
+export { discountAmountCurrencyEnum } from "./models/payment-method-schema.ts";
 export { paymentMethodSchemaStatusEnum } from "./models/payment-method-schema.ts";
+export { vatDataRateEnum } from "./models/payment-method-schema.ts";
+export { vatDataTypeEnum } from "./models/payment-method-schema.ts";
+export { vatDataTypeEnum2 } from "./models/payment-method-schema.ts";
+export { vatDataTypeEnum3 } from "./models/payment-method-schema.ts";
 export type { PaymentRequiredResponseSchema } from "./models/payment-required-response-schema.ts";
 export type { PlatformExtendedSchema } from "./models/platform-extended-schema.ts";
 export type { PlatformSchema } from "./models/platform-schema.ts";
@@ -1050,6 +1094,28 @@ export type {
   PostApiV1BillingPaymentMethodsMutationRequest,
   PostApiV1BillingPaymentMethodsMutationResponse,
 } from "./models/post-api-v1-billing-payment-methods.ts";
+export type {
+  PostApiV1BillingSubscriptionsCharge202,
+  PostApiV1BillingSubscriptionsCharge400,
+  PostApiV1BillingSubscriptionsCharge401,
+  PostApiV1BillingSubscriptionsCharge402,
+  PostApiV1BillingSubscriptionsCharge403,
+  PostApiV1BillingSubscriptionsCharge404,
+  PostApiV1BillingSubscriptionsCharge500,
+  PostApiV1BillingSubscriptionsChargeMutation,
+  PostApiV1BillingSubscriptionsChargeMutationResponse,
+} from "./models/post-api-v1-billing-subscriptions-charge.ts";
+export type {
+  PostApiV1BillingUpcomingChargesNewsletter202,
+  PostApiV1BillingUpcomingChargesNewsletter400,
+  PostApiV1BillingUpcomingChargesNewsletter401,
+  PostApiV1BillingUpcomingChargesNewsletter402,
+  PostApiV1BillingUpcomingChargesNewsletter403,
+  PostApiV1BillingUpcomingChargesNewsletter404,
+  PostApiV1BillingUpcomingChargesNewsletter500,
+  PostApiV1BillingUpcomingChargesNewsletterMutation,
+  PostApiV1BillingUpcomingChargesNewsletterMutationResponse,
+} from "./models/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export type {
   PostApiV1CreditsPackagesInitiatePayment200,
   PostApiV1CreditsPackagesInitiatePayment400,
@@ -1371,6 +1437,8 @@ export { tariffSchemaBillingPeriodEnum } from "./models/tariff-schema.ts";
 export { tariffSchemaGenerationPriorityEnum } from "./models/tariff-schema.ts";
 export type { TemplateSchema } from "./models/template-schema.ts";
 export type { ToneSchema } from "./models/tone-schema.ts";
+export type { TriggerSubscriptionsChargeResponseSchema } from "./models/trigger-subscriptions-charge-response-schema.ts";
+export type { TriggerUpcomingChargesNewsletterResponseSchema } from "./models/trigger-upcoming-charges-newsletter-response-schema.ts";
 export type { UnauthorizedResponseSchema } from "./models/unauthorized-response-schema.ts";
 export type { UpdateIdeaBodySchema } from "./models/update-idea-body-schema.ts";
 export type { UpdateIdeaResponseSchema } from "./models/update-idea-response-schema.ts";
@@ -1683,6 +1751,14 @@ export type { PostApiV1BillingPaymentMethodsMutationKey } from "./tanstack/post-
 export { postApiV1BillingPaymentMethodsMutationKey } from "./tanstack/post-api-v1-billing-payment-methods.ts";
 export { postApiV1BillingPaymentMethodsMutationOptions } from "./tanstack/post-api-v1-billing-payment-methods.ts";
 export { usePostApiV1BillingPaymentMethods } from "./tanstack/post-api-v1-billing-payment-methods.ts";
+export type { PostApiV1BillingSubscriptionsChargeMutationKey } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingSubscriptionsChargeMutationKey } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingSubscriptionsChargeMutationOptions } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
+export { usePostApiV1BillingSubscriptionsCharge } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
+export type { PostApiV1BillingUpcomingChargesNewsletterMutationKey } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
+export { postApiV1BillingUpcomingChargesNewsletterMutationKey } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
+export { postApiV1BillingUpcomingChargesNewsletterMutationOptions } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
+export { usePostApiV1BillingUpcomingChargesNewsletter } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export type { PostApiV1CreditsPackagesInitiatePaymentMutationKey } from "./tanstack/post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1CreditsPackagesInitiatePaymentMutationKey } from "./tanstack/post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1CreditsPackagesInitiatePaymentMutationOptions } from "./tanstack/post-api-v1-credits-packages-initiate-payment.ts";
@@ -2578,6 +2654,26 @@ export {
   postApiV1BillingPaymentMethodsMutationResponseSchema,
 } from "./zod/post-api-v1-billing-payment-methods-schema.ts";
 export {
+  postApiV1BillingSubscriptionsCharge202Schema,
+  postApiV1BillingSubscriptionsCharge400Schema,
+  postApiV1BillingSubscriptionsCharge401Schema,
+  postApiV1BillingSubscriptionsCharge402Schema,
+  postApiV1BillingSubscriptionsCharge403Schema,
+  postApiV1BillingSubscriptionsCharge404Schema,
+  postApiV1BillingSubscriptionsCharge500Schema,
+  postApiV1BillingSubscriptionsChargeMutationResponseSchema,
+} from "./zod/post-api-v1-billing-subscriptions-charge-schema.ts";
+export {
+  postApiV1BillingUpcomingChargesNewsletter202Schema,
+  postApiV1BillingUpcomingChargesNewsletter400Schema,
+  postApiV1BillingUpcomingChargesNewsletter401Schema,
+  postApiV1BillingUpcomingChargesNewsletter402Schema,
+  postApiV1BillingUpcomingChargesNewsletter403Schema,
+  postApiV1BillingUpcomingChargesNewsletter404Schema,
+  postApiV1BillingUpcomingChargesNewsletter500Schema,
+  postApiV1BillingUpcomingChargesNewsletterMutationResponseSchema,
+} from "./zod/post-api-v1-billing-upcoming-charges-newsletter-schema.ts";
+export {
   postApiV1CreditsPackagesInitiatePayment200Schema,
   postApiV1CreditsPackagesInitiatePayment400Schema,
   postApiV1CreditsPackagesInitiatePayment401Schema,
@@ -2802,6 +2898,8 @@ export { tariffExtendedSchemaSchema } from "./zod/tariff-extended-schema-schema.
 export { tariffSchemaSchema } from "./zod/tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./zod/template-schema-schema.ts";
 export { toneSchemaSchema } from "./zod/tone-schema-schema.ts";
+export { triggerSubscriptionsChargeResponseSchemaSchema } from "./zod/trigger-subscriptions-charge-response-schema-schema.ts";
+export { triggerUpcomingChargesNewsletterResponseSchemaSchema } from "./zod/trigger-upcoming-charges-newsletter-response-schema-schema.ts";
 export { unauthorizedResponseSchemaSchema } from "./zod/unauthorized-response-schema-schema.ts";
 export { updateIdeaBodySchemaSchema } from "./zod/update-idea-body-schema-schema.ts";
 export { updateIdeaResponseSchemaSchema } from "./zod/update-idea-response-schema-schema.ts";

@@ -12,6 +12,237 @@ export const paymentMethodSchemaStatusEnum = {
 export type PaymentMethodSchemaStatusEnumKey =
   (typeof paymentMethodSchemaStatusEnum)[keyof typeof paymentMethodSchemaStatusEnum];
 
+export const dataTypeEnum2 = {
+  bank_card: "bank_card",
+} as const;
+
+export type DataTypeEnum2Key =
+  (typeof dataTypeEnum2)[keyof typeof dataTypeEnum2];
+
+export const dataStatusEnum = {
+  pending: "pending",
+  active: "active",
+  inactive: "inactive",
+} as const;
+
+export type DataStatusEnumKey =
+  (typeof dataStatusEnum)[keyof typeof dataStatusEnum];
+
+export const cardCardTypeEnum = {
+  MasterCard: "MasterCard",
+  Visa: "Visa",
+  Mir: "Mir",
+  UnionPay: "UnionPay",
+  JCB: "JCB",
+  AmericanExpress: "AmericanExpress",
+  DinersClub: "DinersClub",
+  DiscoverCard: "DiscoverCard",
+  InstaPayment: "InstaPayment",
+  InstaPaymentTM: "InstaPaymentTM",
+  Laser: "Laser",
+  Dankort: "Dankort",
+  Solo: "Solo",
+  Switch: "Switch",
+  Unknown: "Unknown",
+} as const;
+
+export type CardCardTypeEnumKey =
+  (typeof cardCardTypeEnum)[keyof typeof cardCardTypeEnum];
+
+export const cardSourceEnum = {
+  apple_pay: "apple_pay",
+  google_pay: "google_pay",
+  mir_pay: "mir_pay",
+} as const;
+
+export type CardSourceEnumKey =
+  (typeof cardSourceEnum)[keyof typeof cardSourceEnum];
+
+export const dataTypeEnum = {
+  bank_card: "bank_card",
+  cash: "cash",
+  alfabank: "alfabank",
+  webmoney: "webmoney",
+  wechat: "wechat",
+  apple_pay: "apple_pay",
+  google_pay: "google_pay",
+  qiwi: "qiwi",
+  installments: "installments",
+  yoo_money: "yoo_money",
+  sberbank: "sberbank",
+  mobile_balance: "mobile_balance",
+  b2b_sberbank: "b2b_sberbank",
+  tinkoff_bank: "tinkoff_bank",
+  sbp: "sbp",
+  sber_loan: "sber_loan",
+  electronic_certificate: "electronic_certificate",
+  sber_bnpl: "sber_bnpl",
+} as const;
+
+export type DataTypeEnumKey = (typeof dataTypeEnum)[keyof typeof dataTypeEnum];
+
+export const dataTypeEnum3 = {
+  alfabank: "alfabank",
+} as const;
+
+export type DataTypeEnum3Key =
+  (typeof dataTypeEnum3)[keyof typeof dataTypeEnum3];
+
+export const dataTypeEnum4 = {
+  sberbank: "sberbank",
+} as const;
+
+export type DataTypeEnum4Key =
+  (typeof dataTypeEnum4)[keyof typeof dataTypeEnum4];
+
+export const dataTypeEnum5 = {
+  tinkoff_bank: "tinkoff_bank",
+} as const;
+
+export type DataTypeEnum5Key =
+  (typeof dataTypeEnum5)[keyof typeof dataTypeEnum5];
+
+export const dataTypeEnum6 = {
+  yoo_money: "yoo_money",
+} as const;
+
+export type DataTypeEnum6Key =
+  (typeof dataTypeEnum6)[keyof typeof dataTypeEnum6];
+
+export const dataTypeEnum7 = {
+  b2b_sberbank: "b2b_sberbank",
+} as const;
+
+export type DataTypeEnum7Key =
+  (typeof dataTypeEnum7)[keyof typeof dataTypeEnum7];
+
+export const vatDataTypeEnum2 = {
+  calculated: "calculated",
+} as const;
+
+export type VatDataTypeEnum2Key =
+  (typeof vatDataTypeEnum2)[keyof typeof vatDataTypeEnum2];
+
+export const vatDataRateEnum = {
+  "5": "5",
+  "7": "7",
+  "10": "10",
+  "20": "20",
+  "22": "22",
+} as const;
+
+export type VatDataRateEnumKey =
+  (typeof vatDataRateEnum)[keyof typeof vatDataRateEnum];
+
+export const amountCurrencyEnum = {
+  RUB: "RUB",
+  EUR: "EUR",
+  USD: "USD",
+  KZT: "KZT",
+  BYN: "BYN",
+  UAH: "UAH",
+  UZS: "UZS",
+  TRY: "TRY",
+  INR: "INR",
+  MDL: "MDL",
+  AZN: "AZN",
+  AMD: "AMD",
+} as const;
+
+export type AmountCurrencyEnumKey =
+  (typeof amountCurrencyEnum)[keyof typeof amountCurrencyEnum];
+
+export const vatDataTypeEnum = {
+  calculated: "calculated",
+  untaxed: "untaxed",
+  mixed: "mixed",
+} as const;
+
+export type VatDataTypeEnumKey =
+  (typeof vatDataTypeEnum)[keyof typeof vatDataTypeEnum];
+
+export const vatDataTypeEnum3 = {
+  mixed: "mixed",
+} as const;
+
+export type VatDataTypeEnum3Key =
+  (typeof vatDataTypeEnum3)[keyof typeof vatDataTypeEnum3];
+
+export const dataTypeEnum8 = {
+  sbp: "sbp",
+} as const;
+
+export type DataTypeEnum8Key =
+  (typeof dataTypeEnum8)[keyof typeof dataTypeEnum8];
+
+export const dataTypeEnum9 = {
+  sber_loan: "sber_loan",
+} as const;
+
+export type DataTypeEnum9Key =
+  (typeof dataTypeEnum9)[keyof typeof dataTypeEnum9];
+
+export const discountAmountCurrencyEnum = {
+  RUB: "RUB",
+  EUR: "EUR",
+  USD: "USD",
+  KZT: "KZT",
+  BYN: "BYN",
+  UAH: "UAH",
+  UZS: "UZS",
+  TRY: "TRY",
+  INR: "INR",
+  MDL: "MDL",
+  AZN: "AZN",
+  AMD: "AMD",
+} as const;
+
+export type DiscountAmountCurrencyEnumKey =
+  (typeof discountAmountCurrencyEnum)[keyof typeof discountAmountCurrencyEnum];
+
+export const dataTypeEnum10 = {
+  electronic_certificate: "electronic_certificate",
+} as const;
+
+export type DataTypeEnum10Key =
+  (typeof dataTypeEnum10)[keyof typeof dataTypeEnum10];
+
+export const availableCompensationCurrencyEnum = {
+  RUB: "RUB",
+  EUR: "EUR",
+  USD: "USD",
+  KZT: "KZT",
+  BYN: "BYN",
+  UAH: "UAH",
+  UZS: "UZS",
+  TRY: "TRY",
+  INR: "INR",
+  MDL: "MDL",
+  AZN: "AZN",
+  AMD: "AMD",
+} as const;
+
+export type AvailableCompensationCurrencyEnumKey =
+  (typeof availableCompensationCurrencyEnum)[keyof typeof availableCompensationCurrencyEnum];
+
+export const appliedCompensationCurrencyEnum = {
+  RUB: "RUB",
+  EUR: "EUR",
+  USD: "USD",
+  KZT: "KZT",
+  BYN: "BYN",
+  UAH: "UAH",
+  UZS: "UZS",
+  TRY: "TRY",
+  INR: "INR",
+  MDL: "MDL",
+  AZN: "AZN",
+  AMD: "AMD",
+} as const;
+
+export type AppliedCompensationCurrencyEnumKey =
+  (typeof appliedCompensationCurrencyEnum)[keyof typeof appliedCompensationCurrencyEnum];
+
 /**
  * Payment method
  * @description Payment method description
@@ -40,7 +271,982 @@ export type PaymentMethodSchema = {
   type: string;
   title: string | null;
   confirmationUrl: string | null;
-  data: any | null;
+  data?:
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum2Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Данные банковской карты.
+         * @type object | undefined
+         */
+        card?: {
+          /**
+           * @description Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.
+           * @pattern [0-9]{6}
+           * @type string | undefined
+           */
+          first6?: string;
+          /**
+           * @description Последние 4 цифры номера карты.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          last4: string;
+          /**
+           * @description Срок действия, год, YYYY.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          expiry_year: string;
+          /**
+           * @description Срок действия, месяц, MM.
+           * @type string
+           */
+          expiry_month: string;
+          /**
+           * @description Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.
+           * @type string
+           */
+          card_type: CardCardTypeEnumKey;
+          /**
+           * @description Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.
+           * @type object | undefined
+           */
+          card_product?: {
+            /**
+             * @description Код карточного продукта. Пример: MCP
+             * @type string
+             */
+            code: string;
+            /**
+             * @description Название карточного продукта. Пример: MIR Privilege
+             * @type string | undefined
+             */
+            name?: string;
+          };
+          /**
+           * @description Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.
+           * @type string | undefined
+           */
+          issuer_country?: string;
+          /**
+           * @description Наименование банка, выпустившего карту.
+           * @type string | undefined
+           */
+          issuer_name?: string;
+          /**
+           * @description Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.
+           * @type string | undefined
+           */
+          source?: CardSourceEnumKey;
+        };
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum3Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Логин пользователя в Альфа-Клике (привязанный телефон или дополнительный логин).
+         * @type string | undefined
+         */
+        login?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum4Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Телефон пользователя, на который зарегистрирован аккаунт в SberPay. Указывается в формате ITU-T E.164: https://ru.wikipedia.org/wiki/E.164, например 79000000000.
+         * @pattern [0-9]{4,15}
+         * @type string | undefined
+         */
+        phone?: string;
+        /**
+         * @description Данные банковской карты.
+         * @type object | undefined
+         */
+        card?: {
+          /**
+           * @description Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.
+           * @pattern [0-9]{6}
+           * @type string
+           */
+          first6: string;
+          /**
+           * @description Последние 4 цифры номера карты.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          last4: string;
+          /**
+           * @description Срок действия, год, YYYY.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          expiry_year: string;
+          /**
+           * @description Срок действия, месяц, MM.
+           * @type string
+           */
+          expiry_month: string;
+          /**
+           * @description Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.
+           * @type string
+           */
+          card_type: CardCardTypeEnumKey;
+        };
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum5Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Данные банковской карты.
+         * @type object | undefined
+         */
+        card?: {
+          /**
+           * @description Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.
+           * @pattern [0-9]{6}
+           * @type string
+           */
+          first6: string;
+          /**
+           * @description Последние 4 цифры номера карты.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          last4: string;
+          /**
+           * @description Срок действия, год, YYYY.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          expiry_year: string;
+          /**
+           * @description Срок действия, месяц, MM.
+           * @type string
+           */
+          expiry_month: string;
+          /**
+           * @description Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.
+           * @type string
+           */
+          card_type: CardCardTypeEnumKey;
+        };
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum6Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Номер кошелька ЮMoney, из которого заплатил пользователь.
+         * @pattern [0-9]{11,33}
+         * @type string | undefined
+         */
+        account_number?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum7Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Назначение платежа (не больше 210 символов).
+         * @pattern [\s\S].{1,210}
+         * @type string
+         */
+        payment_purpose: string;
+        vat_data:
+          | {
+              /**
+               * @type string
+               */
+              type: VatDataTypeEnum2Key;
+              /**
+               * @description Tax rate (in percentage). Possible values: 5, 7, 10, 20 and 22. Starting January 1, 2026, the 22% VAT rate applies instead of the 20% rate.
+               * @type string
+               */
+              rate: VatDataRateEnumKey;
+              /**
+               * @description Сумма в выбранной валюте.
+               * @type object
+               */
+              amount: {
+                /**
+                 * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+                 * @type string
+                 */
+                value: string;
+                /**
+                 * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+                 * @type string
+                 */
+                currency: AmountCurrencyEnumKey;
+              };
+            }
+          | {
+              /**
+               * @description Тип способа расчета НДС.
+               * @type string
+               */
+              type: VatDataTypeEnumKey;
+            }
+          | {
+              /**
+               * @type string
+               */
+              type: VatDataTypeEnum3Key;
+              /**
+               * @description Сумма в выбранной валюте.
+               * @type object
+               */
+              amount: {
+                /**
+                 * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+                 * @type string
+                 */
+                value: string;
+                /**
+                 * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+                 * @type string
+                 */
+                currency: AmountCurrencyEnumKey;
+              };
+            };
+        /**
+         * @description Банковские реквизиты плательщика (юридического лица или ИП).
+         * @type object | undefined
+         */
+        payer_bank_details?: {
+          /**
+           * @description Полное наименование организации.
+           * @maxLength 800
+           * @type string
+           */
+          full_name: string;
+          /**
+           * @description Сокращенное наименование организации.
+           * @maxLength 160
+           * @type string
+           */
+          short_name: string;
+          /**
+           * @description Адрес организации.
+           * @maxLength 500
+           * @type string
+           */
+          address: string;
+          /**
+           * @description Индивидуальный налоговый номер (ИНН) организации.
+           * @pattern \d{10}|\d{12}
+           * @type string
+           */
+          inn: string;
+          /**
+           * @description Наименование банка организации.
+           * @minLength 1
+           * @maxLength 350
+           * @type string
+           */
+          bank_name: string;
+          /**
+           * @description Отделение банка организации.
+           * @minLength 1
+           * @maxLength 140
+           * @type string
+           */
+          bank_branch: string;
+          /**
+           * @description Банковский идентификационный код (БИК) банка организации.
+           * @pattern \d{9}
+           * @type string
+           */
+          bank_bik: string;
+          /**
+           * @description Номер счета организации.
+           * @pattern \d{20}
+           * @type string
+           */
+          account: string;
+          /**
+           * @description Код причины постановки на учет (КПП) организации.
+           * @pattern \d{9}
+           * @type string | undefined
+           */
+          kpp?: string;
+        };
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum8Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Идентификатор операции в СБП (НСПК). Пример: 1027088AE4CB48CB81287833347A8777.
+         * @type string | undefined
+         */
+        sbp_operation_id?: string;
+        /**
+         * @description Реквизиты счета, который использовался для оплаты. Обязательный параметр для платежей в статусе succeeded. В остальных случаях может отсутствовать.
+         * @type object | undefined
+         */
+        payer_bank_details?: {
+          /**
+           * @description Идентификатор банка или платежного сервиса в СБП (НСПК).
+           * @maxLength 12
+           * @pattern [a-zA-Z0-9]{12}
+           * @type string
+           */
+          bank_id: string;
+          /**
+           * @description Банковский идентификационный код (БИК) банка или платежного сервиса.
+           * @maxLength 9
+           * @pattern \d{9}
+           * @type string
+           */
+          bic: string;
+        };
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum9Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Тариф кредита, который пользователь выбрал при оплате. Возможные значения: loan — кредит; installments_XX — рассрочка, где XX — количество месяцев для выплаты рассрочки. Например, installments_3 — рассрочка на 3 месяца. Присутствует для платежей в статусе waiting_for_capture и succeeded.
+         * @minLength 1
+         * @type string | undefined
+         */
+        loan_option?: string;
+        /**
+         * @description Сумма в выбранной валюте.
+         * @type object | undefined
+         */
+        discount_amount?: {
+          /**
+           * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+           * @type string
+           */
+          value: string;
+          /**
+           * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+           * @type string
+           */
+          currency: DiscountAmountCurrencyEnumKey;
+        };
+        /**
+         * @description Время, когда заканчивается период охлаждения: https://yookassa.ru/docs/support/payments/credit-purchases-by-sberbank-with-cooling-off кредита или рассрочки. Указывается по UTC: https://ru.wikipedia.org/wiki/%D0%92%D1%81%D0%B5%D0%BC%D0%B8%D1%80%D0%BD%D0%BE%D0%B5_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%B2%D1%80%D0%B5%D0%BC%D1%8F и передается в формате ISO 8601: https://en.wikipedia.org/wiki/ISO_8601. Присутствует для платежей в статусе pending, которые по закону: https://www.consultant.ru/document/cons_doc_LAW_498604/ попадают под процедуру охлаждения.
+         * @type string | undefined, date-time
+         */
+        suspended_until?: string;
+      }
+    | {
+        /**
+         * @type string
+         */
+        type: DataTypeEnum10Key;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+        /**
+         * @description Данные банковской карты.
+         * @type object | undefined
+         */
+        card?: {
+          /**
+           * @description Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.
+           * @pattern [0-9]{6}
+           * @type string | undefined
+           */
+          first6?: string;
+          /**
+           * @description Последние 4 цифры номера карты.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          last4: string;
+          /**
+           * @description Срок действия, год, YYYY.
+           * @pattern [0-9]{4}
+           * @type string
+           */
+          expiry_year: string;
+          /**
+           * @description Срок действия, месяц, MM.
+           * @type string
+           */
+          expiry_month: string;
+          /**
+           * @description Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.
+           * @type string
+           */
+          card_type: CardCardTypeEnumKey;
+          /**
+           * @description Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.
+           * @type object | undefined
+           */
+          card_product?: {
+            /**
+             * @description Код карточного продукта. Пример: MCP
+             * @type string
+             */
+            code: string;
+            /**
+             * @description Название карточного продукта. Пример: MIR Privilege
+             * @type string | undefined
+             */
+            name?: string;
+          };
+          /**
+           * @description Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.
+           * @type string | undefined
+           */
+          issuer_country?: string;
+          /**
+           * @description Наименование банка, выпустившего карту.
+           * @type string | undefined
+           */
+          issuer_name?: string;
+          /**
+           * @description Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.
+           * @type string | undefined
+           */
+          source?: CardSourceEnumKey;
+        };
+        /**
+         * @description Данные от ФЭС НСПК для оплаты по электронному сертификату.
+         * @type object | undefined
+         */
+        electronic_certificate?: {
+          /**
+           * @description Сумма в выбранной валюте.
+           * @type object
+           */
+          amount: {
+            /**
+             * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+             * @type string
+             */
+            value: string;
+            /**
+             * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+             * @type string
+             */
+            currency: AmountCurrencyEnumKey;
+          };
+          /**
+           * @description Идентификатор корзины, сформированной в НСПК.
+           * @pattern [0-9]{24}
+           * @type string
+           */
+          basket_id: string;
+        };
+        /**
+         * @description Одобренная корзина покупки — список товаров, одобренных к оплате по электронному сертификату. Присутствует только при оплате на готовой странице ЮKassa: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/ready-made-payment-form.
+         * @type array | undefined
+         */
+        articles?: {
+          /**
+           * @description Порядковый номер товара в корзине. От 1 до 999 включительно.
+           * @minLength 1
+           * @maxLength 999
+           * @type integer
+           */
+          article_number: number;
+          /**
+           * @description Код ТРУ. 30 символов, две группы цифр, разделенные точкой. Формат: NNNNNNNNN.NNNNNNNNNYYYYMMMMZZZ, где NNNNNNNNN.NNNNNNNNN — код вида ТРУ по Перечню ТРУ: https://esnsi.gosuslugi.ru/classifiers/10616/data?pg=1&p=1, YYYY — код производителя, MMMM — код модели, ZZZ — код страны производителя. Пример: 329921120.06001010200080001643 Как сформировать код ТРУ: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/basics#payments-preparations-tru-code
+           * @minLength 30
+           * @maxLength 30
+           * @type string
+           */
+          tru_code: string;
+          /**
+           * @description Код товара в вашей системе. Максимум 128 символов.
+           * @maxLength 128
+           * @type string | undefined
+           */
+          article_code?: string;
+          /**
+           * @description Список электронных сертификатов, которые используются для оплаты покупки.
+           * @type array
+           */
+          certificates: {
+            /**
+             * @description Идентификатор сертификата. От 20 до 30 символов.
+             * @minLength 20
+             * @maxLength 30
+             * @type string
+             */
+            certificate_id: string;
+            /**
+             * @description Количество единиц товара, которое одобрили для оплаты по этому электронному сертификату.
+             * @minLength -9007199254740991
+             * @maxLength 9007199254740991
+             * @type integer
+             */
+            tru_quantity: number;
+            /**
+             * @description Сумма в выбранной валюте.
+             * @type object
+             */
+            available_compensation: {
+              /**
+               * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+               * @type string
+               */
+              value: string;
+              /**
+               * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+               * @type string
+               */
+              currency: AvailableCompensationCurrencyEnumKey;
+            };
+            /**
+             * @description Сумма в выбранной валюте.
+             * @type object
+             */
+            applied_compensation: {
+              /**
+               * @description Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.
+               * @type string
+               */
+              value: string;
+              /**
+               * @description Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.
+               * @type string
+               */
+              currency: AppliedCompensationCurrencyEnumKey;
+            };
+          }[];
+        }[];
+      }
+    | {
+        /**
+         * @description Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods
+         * @type string
+         */
+        type: DataTypeEnumKey;
+        /**
+         * @description Payment method ID.
+         * @type string
+         */
+        id: string;
+        /**
+         * @description Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.
+         * @type boolean
+         */
+        saved: boolean;
+        /**
+         * @description Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.
+         * @type string
+         */
+        status: DataStatusEnumKey;
+        /**
+         * @description Название способа оплаты.
+         * @type string | undefined
+         */
+        title?: string;
+      };
   /**
    * @type boolean
    */

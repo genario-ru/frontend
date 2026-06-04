@@ -9,7 +9,7 @@ import type { TemplateSchema } from "./template-schema.ts";
 import type { ToneSchema } from "./tone-schema.ts";
 import type { VideoTypeSchema } from "./video-type-schema.ts";
 
-export const dataStatusEnum = {
+export const dataStatusEnum2 = {
   idle: "idle",
   pending: "pending",
   generation: "generation",
@@ -17,8 +17,8 @@ export const dataStatusEnum = {
   ready: "ready",
 } as const;
 
-export type DataStatusEnumKey =
-  (typeof dataStatusEnum)[keyof typeof dataStatusEnum];
+export type DataStatusEnum2Key =
+  (typeof dataStatusEnum2)[keyof typeof dataStatusEnum2];
 
 /**
  * Get ideas list response
@@ -42,7 +42,7 @@ export type GetIdeasListResponseSchema = {
     /**
      * @type string
      */
-    status: DataStatusEnumKey;
+    status: DataStatusEnum2Key;
     /**
      * @type string
      */

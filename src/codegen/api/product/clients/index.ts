@@ -64,6 +64,8 @@ export { postApiV1AuthEmailOtpSignIn } from "./post-api-v1-auth-email-otp-sign-i
 export { postApiV1AuthSignOut } from "./post-api-v1-auth-sign-out.ts";
 export { postApiV1AuthUserDelete } from "./post-api-v1-auth-user-delete.ts";
 export { postApiV1BillingPaymentMethods } from "./post-api-v1-billing-payment-methods.ts";
+export { postApiV1BillingSubscriptionsCharge } from "./post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingUpcomingChargesNewsletter } from "./post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./post-api-v1-ideas-lists.ts";
 export { postApiV1IdeasListsByIdeasListIdExport } from "./post-api-v1-ideas-lists-by-ideas-list-id-export.ts";

@@ -5,7 +5,7 @@
 
 import type { ScenarioMetadataExtendedSchema } from "./scenario-metadata-extended-schema.ts";
 
-export const dataStatusEnum2 = {
+export const dataStatusEnum3 = {
   idle: "idle",
   pending: "pending",
   generation: "generation",
@@ -13,8 +13,8 @@ export const dataStatusEnum2 = {
   ready: "ready",
 } as const;
 
-export type DataStatusEnum2Key =
-  (typeof dataStatusEnum2)[keyof typeof dataStatusEnum2];
+export type DataStatusEnum3Key =
+  (typeof dataStatusEnum3)[keyof typeof dataStatusEnum3];
 
 /**
  * Get scenario metadata response
@@ -28,7 +28,7 @@ export type GetScenarioMetadataResponseSchema = {
     /**
      * @type string
      */
-    status: DataStatusEnum2Key;
+    status: DataStatusEnum3Key;
     /**
      * @type array
      */

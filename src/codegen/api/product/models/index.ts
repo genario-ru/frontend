@@ -678,10 +678,10 @@ export type { GetCreditsPackagesResponseSchema } from "./get-credits-packages-re
 export type { GetIdeaResponseSchema } from "./get-idea-response-schema.ts";
 export type { GetIdeasListExportsResponseSchema } from "./get-ideas-list-exports-response-schema.ts";
 export type {
-  DataStatusEnumKey,
+  DataStatusEnum2Key,
   GetIdeasListResponseSchema,
 } from "./get-ideas-list-response-schema.ts";
-export { dataStatusEnum } from "./get-ideas-list-response-schema.ts";
+export { dataStatusEnum2 } from "./get-ideas-list-response-schema.ts";
 export type { GetIdeasListsFiltersResponseSchema } from "./get-ideas-lists-filters-response-schema.ts";
 export type { GetLegalDocumentResponseSchema } from "./get-legal-document-response-schema.ts";
 export type { GetLegalDocumentsResponseSchema } from "./get-legal-documents-response-schema.ts";
@@ -712,10 +712,10 @@ export type { GetScenarioChapterResponseSchema } from "./get-scenario-chapter-re
 export type { GetScenarioCurrentVersionResponseSchema } from "./get-scenario-current-version-response-schema.ts";
 export type { GetScenarioExportsResponseSchema } from "./get-scenario-exports-response-schema.ts";
 export type {
-  DataStatusEnum2Key,
+  DataStatusEnum3Key,
   GetScenarioMetadataResponseSchema,
 } from "./get-scenario-metadata-response-schema.ts";
-export { dataStatusEnum2 } from "./get-scenario-metadata-response-schema.ts";
+export { dataStatusEnum3 } from "./get-scenario-metadata-response-schema.ts";
 export type { GetScenarioResponseSchema } from "./get-scenario-response-schema.ts";
 export type { GetScenarioVersionsResponseSchema } from "./get-scenario-versions-response-schema.ts";
 export type { GetScenariosFiltersResponseSchema } from "./get-scenarios-filters-response-schema.ts";
@@ -890,10 +890,52 @@ export type {
 } from "./payment-extended-schema.ts";
 export { paymentExtendedSchemaStatusEnum } from "./payment-extended-schema.ts";
 export type {
+  AmountCurrencyEnumKey,
+  AppliedCompensationCurrencyEnumKey,
+  AvailableCompensationCurrencyEnumKey,
+  CardCardTypeEnumKey,
+  CardSourceEnumKey,
+  DataStatusEnumKey,
+  DataTypeEnum2Key,
+  DataTypeEnum3Key,
+  DataTypeEnum4Key,
+  DataTypeEnum5Key,
+  DataTypeEnum6Key,
+  DataTypeEnum7Key,
+  DataTypeEnum8Key,
+  DataTypeEnum9Key,
+  DataTypeEnum10Key,
+  DataTypeEnumKey,
+  DiscountAmountCurrencyEnumKey,
   PaymentMethodSchema,
   PaymentMethodSchemaStatusEnumKey,
+  VatDataRateEnumKey,
+  VatDataTypeEnum2Key,
+  VatDataTypeEnum3Key,
+  VatDataTypeEnumKey,
 } from "./payment-method-schema.ts";
+export { amountCurrencyEnum } from "./payment-method-schema.ts";
+export { appliedCompensationCurrencyEnum } from "./payment-method-schema.ts";
+export { availableCompensationCurrencyEnum } from "./payment-method-schema.ts";
+export { cardCardTypeEnum } from "./payment-method-schema.ts";
+export { cardSourceEnum } from "./payment-method-schema.ts";
+export { dataStatusEnum } from "./payment-method-schema.ts";
+export { dataTypeEnum } from "./payment-method-schema.ts";
+export { dataTypeEnum10 } from "./payment-method-schema.ts";
+export { dataTypeEnum2 } from "./payment-method-schema.ts";
+export { dataTypeEnum3 } from "./payment-method-schema.ts";
+export { dataTypeEnum4 } from "./payment-method-schema.ts";
+export { dataTypeEnum5 } from "./payment-method-schema.ts";
+export { dataTypeEnum6 } from "./payment-method-schema.ts";
+export { dataTypeEnum7 } from "./payment-method-schema.ts";
+export { dataTypeEnum8 } from "./payment-method-schema.ts";
+export { dataTypeEnum9 } from "./payment-method-schema.ts";
+export { discountAmountCurrencyEnum } from "./payment-method-schema.ts";
 export { paymentMethodSchemaStatusEnum } from "./payment-method-schema.ts";
+export { vatDataRateEnum } from "./payment-method-schema.ts";
+export { vatDataTypeEnum } from "./payment-method-schema.ts";
+export { vatDataTypeEnum2 } from "./payment-method-schema.ts";
+export { vatDataTypeEnum3 } from "./payment-method-schema.ts";
 export type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 export type { PlatformExtendedSchema } from "./platform-extended-schema.ts";
 export type { PlatformSchema } from "./platform-schema.ts";
@@ -968,6 +1010,28 @@ export type {
   PostApiV1BillingPaymentMethodsMutationRequest,
   PostApiV1BillingPaymentMethodsMutationResponse,
 } from "./post-api-v1-billing-payment-methods.ts";
+export type {
+  PostApiV1BillingSubscriptionsCharge202,
+  PostApiV1BillingSubscriptionsCharge400,
+  PostApiV1BillingSubscriptionsCharge401,
+  PostApiV1BillingSubscriptionsCharge402,
+  PostApiV1BillingSubscriptionsCharge403,
+  PostApiV1BillingSubscriptionsCharge404,
+  PostApiV1BillingSubscriptionsCharge500,
+  PostApiV1BillingSubscriptionsChargeMutation,
+  PostApiV1BillingSubscriptionsChargeMutationResponse,
+} from "./post-api-v1-billing-subscriptions-charge.ts";
+export type {
+  PostApiV1BillingUpcomingChargesNewsletter202,
+  PostApiV1BillingUpcomingChargesNewsletter400,
+  PostApiV1BillingUpcomingChargesNewsletter401,
+  PostApiV1BillingUpcomingChargesNewsletter402,
+  PostApiV1BillingUpcomingChargesNewsletter403,
+  PostApiV1BillingUpcomingChargesNewsletter404,
+  PostApiV1BillingUpcomingChargesNewsletter500,
+  PostApiV1BillingUpcomingChargesNewsletterMutation,
+  PostApiV1BillingUpcomingChargesNewsletterMutationResponse,
+} from "./post-api-v1-billing-upcoming-charges-newsletter.ts";
 export type {
   PostApiV1CreditsPackagesInitiatePayment200,
   PostApiV1CreditsPackagesInitiatePayment400,
@@ -1289,6 +1353,8 @@ export { tariffSchemaBillingPeriodEnum } from "./tariff-schema.ts";
 export { tariffSchemaGenerationPriorityEnum } from "./tariff-schema.ts";
 export type { TemplateSchema } from "./template-schema.ts";
 export type { ToneSchema } from "./tone-schema.ts";
+export type { TriggerSubscriptionsChargeResponseSchema } from "./trigger-subscriptions-charge-response-schema.ts";
+export type { TriggerUpcomingChargesNewsletterResponseSchema } from "./trigger-upcoming-charges-newsletter-response-schema.ts";
 export type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 export type { UpdateIdeaBodySchema } from "./update-idea-body-schema.ts";
 export type { UpdateIdeaResponseSchema } from "./update-idea-response-schema.ts";
