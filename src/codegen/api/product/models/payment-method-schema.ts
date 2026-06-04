@@ -271,7 +271,7 @@ export type PaymentMethodSchema = {
   type: string;
   title: string | null;
   confirmationUrl: string | null;
-  data?:
+  data:
     | {
         /**
          * @type string

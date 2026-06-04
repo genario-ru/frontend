@@ -18,481 +18,295 @@ export const paymentMethodSchemaSchema = z
     type: z.string(),
     title: z.union([z.string(), z.null()]),
     confirmationUrl: z.union([z.string(), z.null()]),
-    data: z.optional(
-      z.union([
-        z.object({
-          type: z.enum(["bank_card"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          card: z.optional(
-            z
-              .object({
-                first6: z.optional(
-                  z
-                    .string()
-                    .regex(/[0-9]{6}/)
-                    .describe(
-                      "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
-                    ),
-                ),
-                last4: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Последние 4 цифры номера карты."),
-                expiry_year: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Срок действия, год, YYYY."),
-                expiry_month: z.string().describe("Срок действия, месяц, MM."),
-                card_type: z
-                  .enum([
-                    "MasterCard",
-                    "Visa",
-                    "Mir",
-                    "UnionPay",
-                    "JCB",
-                    "AmericanExpress",
-                    "DinersClub",
-                    "DiscoverCard",
-                    "InstaPayment",
-                    "InstaPaymentTM",
-                    "Laser",
-                    "Dankort",
-                    "Solo",
-                    "Switch",
-                    "Unknown",
-                  ])
-                  .describe(
-                    "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
-                  ),
-                card_product: z.optional(
-                  z
-                    .object({
-                      code: z
-                        .string()
-                        .describe("Код карточного продукта. Пример: MCP"),
-                      name: z.optional(
-                        z
-                          .string()
-                          .describe(
-                            "Название карточного продукта. Пример: MIR Privilege",
-                          ),
-                      ),
-                    })
-                    .describe(
-                      "Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.",
-                    ),
-                ),
-                issuer_country: z.optional(
-                  z
-                    .string()
-                    .describe(
-                      "Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.",
-                    ),
-                ),
-                issuer_name: z.optional(
-                  z
-                    .string()
-                    .describe("Наименование банка, выпустившего карту."),
-                ),
-                source: z.optional(
-                  z
-                    .enum(["apple_pay", "google_pay", "mir_pay"])
-                    .describe(
-                      "Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.",
-                    ),
-                ),
-              })
-              .describe("Данные банковской карты."),
+    data: z.union([
+      z.object({
+        type: z.enum(["bank_card"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
           ),
-        }),
-        z.object({
-          type: z.enum(["alfabank"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          login: z.optional(
-            z
-              .string()
-              .describe(
-                "Логин пользователя в Альфа-Клике (привязанный телефон или дополнительный логин).",
-              ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
           ),
-        }),
-        z.object({
-          type: z.enum(["sberbank"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          phone: z.optional(
-            z
-              .string()
-              .regex(/[0-9]{4,15}/)
-              .describe(
-                "Телефон пользователя, на который зарегистрирован аккаунт в SberPay. Указывается в формате ITU-T E.164: https://ru.wikipedia.org/wiki/E.164, например 79000000000.",
-              ),
-          ),
-          card: z.optional(
-            z
-              .object({
-                first6: z
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        card: z.optional(
+          z
+            .object({
+              first6: z.optional(
+                z
                   .string()
                   .regex(/[0-9]{6}/)
                   .describe(
                     "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
                   ),
-                last4: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Последние 4 цифры номера карты."),
-                expiry_year: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Срок действия, год, YYYY."),
-                expiry_month: z.string().describe("Срок действия, месяц, MM."),
-                card_type: z
-                  .enum([
-                    "MasterCard",
-                    "Visa",
-                    "Mir",
-                    "UnionPay",
-                    "JCB",
-                    "AmericanExpress",
-                    "DinersClub",
-                    "DiscoverCard",
-                    "InstaPayment",
-                    "InstaPaymentTM",
-                    "Laser",
-                    "Dankort",
-                    "Solo",
-                    "Switch",
-                    "Unknown",
-                  ])
-                  .describe(
-                    "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
-                  ),
-              })
-              .describe("Данные банковской карты."),
-          ),
-        }),
-        z.object({
-          type: z.enum(["tinkoff_bank"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          card: z.optional(
-            z
-              .object({
-                first6: z
-                  .string()
-                  .regex(/[0-9]{6}/)
-                  .describe(
-                    "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
-                  ),
-                last4: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Последние 4 цифры номера карты."),
-                expiry_year: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Срок действия, год, YYYY."),
-                expiry_month: z.string().describe("Срок действия, месяц, MM."),
-                card_type: z
-                  .enum([
-                    "MasterCard",
-                    "Visa",
-                    "Mir",
-                    "UnionPay",
-                    "JCB",
-                    "AmericanExpress",
-                    "DinersClub",
-                    "DiscoverCard",
-                    "InstaPayment",
-                    "InstaPaymentTM",
-                    "Laser",
-                    "Dankort",
-                    "Solo",
-                    "Switch",
-                    "Unknown",
-                  ])
-                  .describe(
-                    "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
-                  ),
-              })
-              .describe("Данные банковской карты."),
-          ),
-        }),
-        z.object({
-          type: z.enum(["yoo_money"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          account_number: z.optional(
-            z
-              .string()
-              .regex(/[0-9]{11,33}/)
-              .describe(
-                "Номер кошелька ЮMoney, из которого заплатил пользователь.",
               ),
-          ),
-        }),
-        z.object({
-          type: z.enum(["b2b_sberbank"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          payment_purpose: z
-            .string()
-            .regex(/[\s\S].{1,210}/)
-            .describe("Назначение платежа (не больше 210 символов)."),
-          vat_data: z.union([
-            z.object({
-              type: z.enum(["calculated"]),
-              rate: z
-                .enum(["5", "7", "10", "20", "22"])
+              last4: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Последние 4 цифры номера карты."),
+              expiry_year: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Срок действия, год, YYYY."),
+              expiry_month: z.string().describe("Срок действия, месяц, MM."),
+              card_type: z
+                .enum([
+                  "MasterCard",
+                  "Visa",
+                  "Mir",
+                  "UnionPay",
+                  "JCB",
+                  "AmericanExpress",
+                  "DinersClub",
+                  "DiscoverCard",
+                  "InstaPayment",
+                  "InstaPaymentTM",
+                  "Laser",
+                  "Dankort",
+                  "Solo",
+                  "Switch",
+                  "Unknown",
+                ])
                 .describe(
-                  "Tax rate (in percentage). Possible values: 5, 7, 10, 20 and 22. Starting January 1, 2026, the 22% VAT rate applies instead of the 20% rate.",
+                  "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
                 ),
-              amount: z
-                .object({
-                  value: z
-                    .string()
-                    .describe(
-                      "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+              card_product: z.optional(
+                z
+                  .object({
+                    code: z
+                      .string()
+                      .describe("Код карточного продукта. Пример: MCP"),
+                    name: z.optional(
+                      z
+                        .string()
+                        .describe(
+                          "Название карточного продукта. Пример: MIR Privilege",
+                        ),
                     ),
-                  currency: z
-                    .enum([
-                      "RUB",
-                      "EUR",
-                      "USD",
-                      "KZT",
-                      "BYN",
-                      "UAH",
-                      "UZS",
-                      "TRY",
-                      "INR",
-                      "MDL",
-                      "AZN",
-                      "AMD",
-                    ])
-                    .describe(
-                      "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
-                    ),
-                })
-                .describe("Сумма в выбранной валюте."),
-            }),
-            z.object({
-              type: z.enum(["mixed"]),
-              amount: z
-                .object({
-                  value: z
-                    .string()
-                    .describe(
-                      "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
-                    ),
-                  currency: z
-                    .enum([
-                      "RUB",
-                      "EUR",
-                      "USD",
-                      "KZT",
-                      "BYN",
-                      "UAH",
-                      "UZS",
-                      "TRY",
-                      "INR",
-                      "MDL",
-                      "AZN",
-                      "AMD",
-                    ])
-                    .describe(
-                      "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
-                    ),
-                })
-                .describe("Сумма в выбранной валюте."),
-            }),
-            z.object({
-              type: z
-                .enum(["calculated", "untaxed", "mixed"])
-                .describe("Тип способа расчета НДС."),
-            }),
-          ]),
-          payer_bank_details: z.optional(
-            z
-              .object({
-                full_name: z
-                  .string()
-                  .max(800)
-                  .describe("Полное наименование организации."),
-                short_name: z
-                  .string()
-                  .max(160)
-                  .describe("Сокращенное наименование организации."),
-                address: z.string().max(500).describe("Адрес организации."),
-                inn: z
-                  .string()
-                  .regex(/\d{10}|\d{12}/)
+                  })
                   .describe(
-                    "Индивидуальный налоговый номер (ИНН) организации.",
+                    "Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.",
                   ),
-                bank_name: z
+              ),
+              issuer_country: z.optional(
+                z
                   .string()
-                  .min(1)
-                  .max(350)
-                  .describe("Наименование банка организации."),
-                bank_branch: z
-                  .string()
-                  .min(1)
-                  .max(140)
-                  .describe("Отделение банка организации."),
-                bank_bik: z
-                  .string()
-                  .regex(/\d{9}/)
                   .describe(
-                    "Банковский идентификационный код (БИК) банка организации.",
+                    "Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.",
                   ),
-                account: z
-                  .string()
-                  .regex(/\d{20}/)
-                  .describe("Номер счета организации."),
-                kpp: z.optional(
-                  z
-                    .string()
-                    .regex(/\d{9}/)
-                    .describe(
-                      "Код причины постановки на учет (КПП) организации.",
-                    ),
+              ),
+              issuer_name: z.optional(
+                z.string().describe("Наименование банка, выпустившего карту."),
+              ),
+              source: z.optional(
+                z
+                  .enum(["apple_pay", "google_pay", "mir_pay"])
+                  .describe(
+                    "Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.",
+                  ),
+              ),
+            })
+            .describe("Данные банковской карты."),
+        ),
+      }),
+      z.object({
+        type: z.enum(["alfabank"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        login: z.optional(
+          z
+            .string()
+            .describe(
+              "Логин пользователя в Альфа-Клике (привязанный телефон или дополнительный логин).",
+            ),
+        ),
+      }),
+      z.object({
+        type: z.enum(["sberbank"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        phone: z.optional(
+          z
+            .string()
+            .regex(/[0-9]{4,15}/)
+            .describe(
+              "Телефон пользователя, на который зарегистрирован аккаунт в SberPay. Указывается в формате ITU-T E.164: https://ru.wikipedia.org/wiki/E.164, например 79000000000.",
+            ),
+        ),
+        card: z.optional(
+          z
+            .object({
+              first6: z
+                .string()
+                .regex(/[0-9]{6}/)
+                .describe(
+                  "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
                 ),
-              })
-              .describe(
-                "Банковские реквизиты плательщика (юридического лица или ИП).",
-              ),
+              last4: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Последние 4 цифры номера карты."),
+              expiry_year: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Срок действия, год, YYYY."),
+              expiry_month: z.string().describe("Срок действия, месяц, MM."),
+              card_type: z
+                .enum([
+                  "MasterCard",
+                  "Visa",
+                  "Mir",
+                  "UnionPay",
+                  "JCB",
+                  "AmericanExpress",
+                  "DinersClub",
+                  "DiscoverCard",
+                  "InstaPayment",
+                  "InstaPaymentTM",
+                  "Laser",
+                  "Dankort",
+                  "Solo",
+                  "Switch",
+                  "Unknown",
+                ])
+                .describe(
+                  "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
+                ),
+            })
+            .describe("Данные банковской карты."),
+        ),
+      }),
+      z.object({
+        type: z.enum(["tinkoff_bank"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
           ),
-        }),
-        z.object({
-          type: z.enum(["sbp"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          sbp_operation_id: z.optional(
-            z
-              .string()
-              .describe(
-                "Идентификатор операции в СБП (НСПК). Пример: 1027088AE4CB48CB81287833347A8777.",
-              ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
           ),
-          payer_bank_details: z.optional(
-            z
-              .object({
-                bank_id: z
-                  .string()
-                  .max(12)
-                  .regex(/[a-zA-Z0-9]{12}/)
-                  .describe(
-                    "Идентификатор банка или платежного сервиса в СБП (НСПК).",
-                  ),
-                bic: z
-                  .string()
-                  .max(9)
-                  .regex(/\d{9}/)
-                  .describe(
-                    "Банковский идентификационный код (БИК) банка или платежного сервиса.",
-                  ),
-              })
-              .describe(
-                "Реквизиты счета, который использовался для оплаты. Обязательный параметр для платежей в статусе succeeded. В остальных случаях может отсутствовать.",
-              ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        card: z.optional(
+          z
+            .object({
+              first6: z
+                .string()
+                .regex(/[0-9]{6}/)
+                .describe(
+                  "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
+                ),
+              last4: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Последние 4 цифры номера карты."),
+              expiry_year: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Срок действия, год, YYYY."),
+              expiry_month: z.string().describe("Срок действия, месяц, MM."),
+              card_type: z
+                .enum([
+                  "MasterCard",
+                  "Visa",
+                  "Mir",
+                  "UnionPay",
+                  "JCB",
+                  "AmericanExpress",
+                  "DinersClub",
+                  "DiscoverCard",
+                  "InstaPayment",
+                  "InstaPaymentTM",
+                  "Laser",
+                  "Dankort",
+                  "Solo",
+                  "Switch",
+                  "Unknown",
+                ])
+                .describe(
+                  "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
+                ),
+            })
+            .describe("Данные банковской карты."),
+        ),
+      }),
+      z.object({
+        type: z.enum(["yoo_money"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
           ),
-        }),
-        z.object({
-          type: z.enum(["sber_loan"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          loan_option: z.optional(
-            z
-              .string()
-              .min(1)
-              .describe(
-                "Тариф кредита, который пользователь выбрал при оплате. Возможные значения: loan — кредит; installments_XX — рассрочка, где XX — количество месяцев для выплаты рассрочки. Например, installments_3 — рассрочка на 3 месяца. Присутствует для платежей в статусе waiting_for_capture и succeeded.",
-              ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
           ),
-          discount_amount: z.optional(
-            z
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        account_number: z.optional(
+          z
+            .string()
+            .regex(/[0-9]{11,33}/)
+            .describe(
+              "Номер кошелька ЮMoney, из которого заплатил пользователь.",
+            ),
+        ),
+      }),
+      z.object({
+        type: z.enum(["b2b_sberbank"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        payment_purpose: z
+          .string()
+          .regex(/[\s\S].{1,210}/)
+          .describe("Назначение платежа (не больше 210 символов)."),
+        vat_data: z.union([
+          z.object({
+            type: z.enum(["calculated"]),
+            rate: z
+              .enum(["5", "7", "10", "20", "22"])
+              .describe(
+                "Tax rate (in percentage). Possible values: 5, 7, 10, 20 and 22. Starting January 1, 2026, the 22% VAT rate applies instead of the 20% rate.",
+              ),
+            amount: z
               .object({
                 value: z
                   .string()
@@ -519,610 +333,788 @@ export const paymentMethodSchemaSchema = z
                   ),
               })
               .describe("Сумма в выбранной валюте."),
-          ),
-          suspended_until: z.optional(
-            z.iso
-              .datetime()
-              .describe(
-                "Время, когда заканчивается период охлаждения: https://yookassa.ru/docs/support/payments/credit-purchases-by-sberbank-with-cooling-off кредита или рассрочки. Указывается по UTC: https://ru.wikipedia.org/wiki/%D0%92%D1%81%D0%B5%D0%BC%D0%B8%D1%80%D0%BD%D0%BE%D0%B5_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%B2%D1%80%D0%B5%D0%BC%D1%8F и передается в формате ISO 8601: https://en.wikipedia.org/wiki/ISO_8601. Присутствует для платежей в статусе pending, которые по закону: https://www.consultant.ru/document/cons_doc_LAW_498604/ попадают под процедуру охлаждения.",
-              ),
-          ),
-        }),
-        z.object({
-          type: z.enum(["electronic_certificate"]),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-          card: z.optional(
-            z
+          }),
+          z.object({
+            type: z.enum(["mixed"]),
+            amount: z
               .object({
-                first6: z.optional(
-                  z
-                    .string()
-                    .regex(/[0-9]{6}/)
-                    .describe(
-                      "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
-                    ),
-                ),
-                last4: z
+                value: z
                   .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Последние 4 цифры номера карты."),
-                expiry_year: z
-                  .string()
-                  .regex(/[0-9]{4}/)
-                  .describe("Срок действия, год, YYYY."),
-                expiry_month: z.string().describe("Срок действия, месяц, MM."),
-                card_type: z
+                  .describe(
+                    "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+                  ),
+                currency: z
                   .enum([
-                    "MasterCard",
-                    "Visa",
-                    "Mir",
-                    "UnionPay",
-                    "JCB",
-                    "AmericanExpress",
-                    "DinersClub",
-                    "DiscoverCard",
-                    "InstaPayment",
-                    "InstaPaymentTM",
-                    "Laser",
-                    "Dankort",
-                    "Solo",
-                    "Switch",
-                    "Unknown",
+                    "RUB",
+                    "EUR",
+                    "USD",
+                    "KZT",
+                    "BYN",
+                    "UAH",
+                    "UZS",
+                    "TRY",
+                    "INR",
+                    "MDL",
+                    "AZN",
+                    "AMD",
                   ])
                   .describe(
-                    "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
+                    "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
                   ),
-                card_product: z.optional(
-                  z
-                    .object({
-                      code: z
-                        .string()
-                        .describe("Код карточного продукта. Пример: MCP"),
-                      name: z.optional(
-                        z
-                          .string()
-                          .describe(
-                            "Название карточного продукта. Пример: MIR Privilege",
-                          ),
-                      ),
-                    })
-                    .describe(
-                      "Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.",
-                    ),
-                ),
-                issuer_country: z.optional(
-                  z
-                    .string()
-                    .describe(
-                      "Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.",
-                    ),
-                ),
-                issuer_name: z.optional(
-                  z
-                    .string()
-                    .describe("Наименование банка, выпустившего карту."),
-                ),
-                source: z.optional(
-                  z
-                    .enum(["apple_pay", "google_pay", "mir_pay"])
-                    .describe(
-                      "Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.",
-                    ),
-                ),
               })
-              .describe("Данные банковской карты."),
-          ),
-          electronic_certificate: z.optional(
-            z
-              .object({
-                amount: z
-                  .object({
-                    value: z
-                      .string()
-                      .describe(
-                        "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
-                      ),
-                    currency: z
-                      .enum([
-                        "RUB",
-                        "EUR",
-                        "USD",
-                        "KZT",
-                        "BYN",
-                        "UAH",
-                        "UZS",
-                        "TRY",
-                        "INR",
-                        "MDL",
-                        "AZN",
-                        "AMD",
-                      ])
-                      .describe(
-                        "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
-                      ),
-                  })
-                  .describe("Сумма в выбранной валюте."),
-                basket_id: z
+              .describe("Сумма в выбранной валюте."),
+          }),
+          z.object({
+            type: z
+              .enum(["calculated", "untaxed", "mixed"])
+              .describe("Тип способа расчета НДС."),
+          }),
+        ]),
+        payer_bank_details: z.optional(
+          z
+            .object({
+              full_name: z
+                .string()
+                .max(800)
+                .describe("Полное наименование организации."),
+              short_name: z
+                .string()
+                .max(160)
+                .describe("Сокращенное наименование организации."),
+              address: z.string().max(500).describe("Адрес организации."),
+              inn: z
+                .string()
+                .regex(/\d{10}|\d{12}/)
+                .describe("Индивидуальный налоговый номер (ИНН) организации."),
+              bank_name: z
+                .string()
+                .min(1)
+                .max(350)
+                .describe("Наименование банка организации."),
+              bank_branch: z
+                .string()
+                .min(1)
+                .max(140)
+                .describe("Отделение банка организации."),
+              bank_bik: z
+                .string()
+                .regex(/\d{9}/)
+                .describe(
+                  "Банковский идентификационный код (БИК) банка организации.",
+                ),
+              account: z
+                .string()
+                .regex(/\d{20}/)
+                .describe("Номер счета организации."),
+              kpp: z.optional(
+                z
                   .string()
-                  .regex(/[0-9]{24}/)
-                  .describe("Идентификатор корзины, сформированной в НСПК."),
-              })
-              .describe(
-                "Данные от ФЭС НСПК для оплаты по электронному сертификату.",
+                  .regex(/\d{9}/)
+                  .describe(
+                    "Код причины постановки на учет (КПП) организации.",
+                  ),
               ),
+            })
+            .describe(
+              "Банковские реквизиты плательщика (юридического лица или ИП).",
+            ),
+        ),
+      }),
+      z.object({
+        type: z.enum(["sbp"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
           ),
-          articles: z.optional(
-            z
-              .array(
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        sbp_operation_id: z.optional(
+          z
+            .string()
+            .describe(
+              "Идентификатор операции в СБП (НСПК). Пример: 1027088AE4CB48CB81287833347A8777.",
+            ),
+        ),
+        payer_bank_details: z.optional(
+          z
+            .object({
+              bank_id: z
+                .string()
+                .max(12)
+                .regex(/[a-zA-Z0-9]{12}/)
+                .describe(
+                  "Идентификатор банка или платежного сервиса в СБП (НСПК).",
+                ),
+              bic: z
+                .string()
+                .max(9)
+                .regex(/\d{9}/)
+                .describe(
+                  "Банковский идентификационный код (БИК) банка или платежного сервиса.",
+                ),
+            })
+            .describe(
+              "Реквизиты счета, который использовался для оплаты. Обязательный параметр для платежей в статусе succeeded. В остальных случаях может отсутствовать.",
+            ),
+        ),
+      }),
+      z.object({
+        type: z.enum(["sber_loan"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        loan_option: z.optional(
+          z
+            .string()
+            .min(1)
+            .describe(
+              "Тариф кредита, который пользователь выбрал при оплате. Возможные значения: loan — кредит; installments_XX — рассрочка, где XX — количество месяцев для выплаты рассрочки. Например, installments_3 — рассрочка на 3 месяца. Присутствует для платежей в статусе waiting_for_capture и succeeded.",
+            ),
+        ),
+        discount_amount: z.optional(
+          z
+            .object({
+              value: z
+                .string()
+                .describe(
+                  "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+                ),
+              currency: z
+                .enum([
+                  "RUB",
+                  "EUR",
+                  "USD",
+                  "KZT",
+                  "BYN",
+                  "UAH",
+                  "UZS",
+                  "TRY",
+                  "INR",
+                  "MDL",
+                  "AZN",
+                  "AMD",
+                ])
+                .describe(
+                  "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
+                ),
+            })
+            .describe("Сумма в выбранной валюте."),
+        ),
+        suspended_until: z.optional(
+          z.iso
+            .datetime()
+            .describe(
+              "Время, когда заканчивается период охлаждения: https://yookassa.ru/docs/support/payments/credit-purchases-by-sberbank-with-cooling-off кредита или рассрочки. Указывается по UTC: https://ru.wikipedia.org/wiki/%D0%92%D1%81%D0%B5%D0%BC%D0%B8%D1%80%D0%BD%D0%BE%D0%B5_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%B2%D1%80%D0%B5%D0%BC%D1%8F и передается в формате ISO 8601: https://en.wikipedia.org/wiki/ISO_8601. Присутствует для платежей в статусе pending, которые по закону: https://www.consultant.ru/document/cons_doc_LAW_498604/ попадают под процедуру охлаждения.",
+            ),
+        ),
+      }),
+      z.object({
+        type: z.enum(["electronic_certificate"]),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+        card: z.optional(
+          z
+            .object({
+              first6: z.optional(
+                z
+                  .string()
+                  .regex(/[0-9]{6}/)
+                  .describe(
+                    "Первые 6 цифр номера карты (BIN). При оплате картой, сохраненной в ЮKassa: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/basics и других сервисах, переданный BIN может не соответствовать значениям last4, expiry_year, expiry_month.",
+                  ),
+              ),
+              last4: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Последние 4 цифры номера карты."),
+              expiry_year: z
+                .string()
+                .regex(/[0-9]{4}/)
+                .describe("Срок действия, год, YYYY."),
+              expiry_month: z.string().describe("Срок действия, месяц, MM."),
+              card_type: z
+                .enum([
+                  "MasterCard",
+                  "Visa",
+                  "Mir",
+                  "UnionPay",
+                  "JCB",
+                  "AmericanExpress",
+                  "DinersClub",
+                  "DiscoverCard",
+                  "InstaPayment",
+                  "InstaPaymentTM",
+                  "Laser",
+                  "Dankort",
+                  "Solo",
+                  "Switch",
+                  "Unknown",
+                ])
+                .describe(
+                  "Тип банковской карты. Возможные значения: MasterCard (для карт Mastercard и Maestro), Visa (для карт Visa и Visa Electron), Mir, UnionPay, JCB, AmericanExpress, DinersClub, DiscoverCard, InstaPayment, InstaPaymentTM, Laser, Dankort, Solo, Switch и Unknown.",
+                ),
+              card_product: z.optional(
                 z
                   .object({
-                    article_number: z
-                      .int()
-                      .min(1)
-                      .max(999)
-                      .describe(
-                        "Порядковый номер товара в корзине. От 1 до 999 включительно.",
-                      ),
-                    tru_code: z
+                    code: z
                       .string()
-                      .min(30)
-                      .max(30)
-                      .describe(
-                        "Код ТРУ. 30 символов, две группы цифр, разделенные точкой. Формат: NNNNNNNNN.NNNNNNNNNYYYYMMMMZZZ, где NNNNNNNNN.NNNNNNNNN — код вида ТРУ по Перечню ТРУ: https://esnsi.gosuslugi.ru/classifiers/10616/data?pg=1&p=1, YYYY — код производителя, MMMM — код модели, ZZZ — код страны производителя. Пример: 329921120.06001010200080001643 Как сформировать код ТРУ: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/basics#payments-preparations-tru-code",
-                      ),
-                    article_code: z.optional(
+                      .describe("Код карточного продукта. Пример: MCP"),
+                    name: z.optional(
                       z
                         .string()
-                        .max(128)
                         .describe(
-                          "Код товара в вашей системе. Максимум 128 символов.",
+                          "Название карточного продукта. Пример: MIR Privilege",
                         ),
                     ),
-                    certificates: z
-                      .array(
-                        z
-                          .object({
-                            certificate_id: z
-                              .string()
-                              .min(20)
-                              .max(30)
-                              .describe(
-                                "Идентификатор сертификата. От 20 до 30 символов.",
-                              ),
-                            tru_quantity: z
-                              .int()
-                              .min(-9007199254740991)
-                              .max(9007199254740991)
-                              .describe(
-                                "Количество единиц товара, которое одобрили для оплаты по этому электронному сертификату.",
-                              ),
-                            available_compensation: z
-                              .object({
-                                value: z
-                                  .string()
-                                  .describe(
-                                    "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
-                                  ),
-                                currency: z
-                                  .enum([
-                                    "RUB",
-                                    "EUR",
-                                    "USD",
-                                    "KZT",
-                                    "BYN",
-                                    "UAH",
-                                    "UZS",
-                                    "TRY",
-                                    "INR",
-                                    "MDL",
-                                    "AZN",
-                                    "AMD",
-                                  ])
-                                  .describe(
-                                    "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
-                                  ),
-                              })
-                              .describe("Сумма в выбранной валюте."),
-                            applied_compensation: z
-                              .object({
-                                value: z
-                                  .string()
-                                  .describe(
-                                    "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
-                                  ),
-                                currency: z
-                                  .enum([
-                                    "RUB",
-                                    "EUR",
-                                    "USD",
-                                    "KZT",
-                                    "BYN",
-                                    "UAH",
-                                    "UZS",
-                                    "TRY",
-                                    "INR",
-                                    "MDL",
-                                    "AZN",
-                                    "AMD",
-                                  ])
-                                  .describe(
-                                    "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
-                                  ),
-                              })
-                              .describe("Сумма в выбранной валюте."),
-                          })
-                          .describe(
-                            "Описание используемого электронного сертификата.",
-                          ),
-                      )
-                      .describe(
-                        "Список электронных сертификатов, которые используются для оплаты покупки.",
-                      ),
                   })
                   .describe(
-                    "Товарная позиция в одобренной корзине покупки при оплате по электронному сертификату.",
+                    "Карточный продукт платежной системы, с которым ассоциирована банковская карта. Например, карточные продукты платежной системы Мир: Mir Classic, Mir Classic Credit, MIR Privilege Plus и другие.",
                   ),
-              )
-              .describe(
-                "Одобренная корзина покупки — список товаров, одобренных к оплате по электронному сертификату. Присутствует только при оплате на готовой странице ЮKassa: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/ready-made-payment-form.",
               ),
+              issuer_country: z.optional(
+                z
+                  .string()
+                  .describe(
+                    "Код страны, в которой выпущена карта. Передается в формате ISO-3166 alpha-2: https://www.iso.org/obp/ui/#iso:pub:PUB500001:en. Пример: RU.",
+                  ),
+              ),
+              issuer_name: z.optional(
+                z.string().describe("Наименование банка, выпустившего карту."),
+              ),
+              source: z.optional(
+                z
+                  .enum(["apple_pay", "google_pay", "mir_pay"])
+                  .describe(
+                    "Источник данных банковской карты. Возможные значения: mir_pay, apple_pay, google_pay. Присутствует, если пользователь при оплате выбрал карту, сохраненную в Mir Pay, Apple Pay или Google Pay.",
+                  ),
+              ),
+            })
+            .describe("Данные банковской карты."),
+        ),
+        electronic_certificate: z.optional(
+          z
+            .object({
+              amount: z
+                .object({
+                  value: z
+                    .string()
+                    .describe(
+                      "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+                    ),
+                  currency: z
+                    .enum([
+                      "RUB",
+                      "EUR",
+                      "USD",
+                      "KZT",
+                      "BYN",
+                      "UAH",
+                      "UZS",
+                      "TRY",
+                      "INR",
+                      "MDL",
+                      "AZN",
+                      "AMD",
+                    ])
+                    .describe(
+                      "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
+                    ),
+                })
+                .describe("Сумма в выбранной валюте."),
+              basket_id: z
+                .string()
+                .regex(/[0-9]{24}/)
+                .describe("Идентификатор корзины, сформированной в НСПК."),
+            })
+            .describe(
+              "Данные от ФЭС НСПК для оплаты по электронному сертификату.",
+            ),
+        ),
+        articles: z.optional(
+          z
+            .array(
+              z
+                .object({
+                  article_number: z
+                    .int()
+                    .min(1)
+                    .max(999)
+                    .describe(
+                      "Порядковый номер товара в корзине. От 1 до 999 включительно.",
+                    ),
+                  tru_code: z
+                    .string()
+                    .min(30)
+                    .max(30)
+                    .describe(
+                      "Код ТРУ. 30 символов, две группы цифр, разделенные точкой. Формат: NNNNNNNNN.NNNNNNNNNYYYYMMMMZZZ, где NNNNNNNNN.NNNNNNNNN — код вида ТРУ по Перечню ТРУ: https://esnsi.gosuslugi.ru/classifiers/10616/data?pg=1&p=1, YYYY — код производителя, MMMM — код модели, ZZZ — код страны производителя. Пример: 329921120.06001010200080001643 Как сформировать код ТРУ: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/basics#payments-preparations-tru-code",
+                    ),
+                  article_code: z.optional(
+                    z
+                      .string()
+                      .max(128)
+                      .describe(
+                        "Код товара в вашей системе. Максимум 128 символов.",
+                      ),
+                  ),
+                  certificates: z
+                    .array(
+                      z
+                        .object({
+                          certificate_id: z
+                            .string()
+                            .min(20)
+                            .max(30)
+                            .describe(
+                              "Идентификатор сертификата. От 20 до 30 символов.",
+                            ),
+                          tru_quantity: z
+                            .int()
+                            .min(-9007199254740991)
+                            .max(9007199254740991)
+                            .describe(
+                              "Количество единиц товара, которое одобрили для оплаты по этому электронному сертификату.",
+                            ),
+                          available_compensation: z
+                            .object({
+                              value: z
+                                .string()
+                                .describe(
+                                  "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+                                ),
+                              currency: z
+                                .enum([
+                                  "RUB",
+                                  "EUR",
+                                  "USD",
+                                  "KZT",
+                                  "BYN",
+                                  "UAH",
+                                  "UZS",
+                                  "TRY",
+                                  "INR",
+                                  "MDL",
+                                  "AZN",
+                                  "AMD",
+                                ])
+                                .describe(
+                                  "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
+                                ),
+                            })
+                            .describe("Сумма в выбранной валюте."),
+                          applied_compensation: z
+                            .object({
+                              value: z
+                                .string()
+                                .describe(
+                                  "Сумма в выбранной валюте. Всегда дробное значение. Разделитель дробной части — точка, разделитель тысяч отсутствует. Количество знаков после точки зависит от выбранной валюты. Пример: 1000.00.",
+                                ),
+                              currency: z
+                                .enum([
+                                  "RUB",
+                                  "EUR",
+                                  "USD",
+                                  "KZT",
+                                  "BYN",
+                                  "UAH",
+                                  "UZS",
+                                  "TRY",
+                                  "INR",
+                                  "MDL",
+                                  "AZN",
+                                  "AMD",
+                                ])
+                                .describe(
+                                  "Трехбуквенный код валюты в формате ISO-4217: https://www.iso.org/iso-4217-currency-codes.html. Пример: RUB. Должен соответствовать валюте субаккаунта (recipient.gateway_id), если вы разделяете потоки платежей, и валюте аккаунта (shopId в личном кабинете: https://yookassa.ru/my), если не разделяете.",
+                                ),
+                            })
+                            .describe("Сумма в выбранной валюте."),
+                        })
+                        .describe(
+                          "Описание используемого электронного сертификата.",
+                        ),
+                    )
+                    .describe(
+                      "Список электронных сертификатов, которые используются для оплаты покупки.",
+                    ),
+                })
+                .describe(
+                  "Товарная позиция в одобренной корзине покупки при оплате по электронному сертификату.",
+                ),
+            )
+            .describe(
+              "Одобренная корзина покупки — список товаров, одобренных к оплате по электронному сертификату. Присутствует только при оплате на готовой странице ЮKassa: https://yookassa.ru/developers/payment-acceptance/integration-scenarios/manual-integration/other/electronic-certificate/ready-made-payment-form.",
+            ),
+        ),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
           ),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-        z.object({
-          type: z
-            .enum([
-              "bank_card",
-              "cash",
-              "alfabank",
-              "webmoney",
-              "wechat",
-              "apple_pay",
-              "google_pay",
-              "qiwi",
-              "installments",
-              "yoo_money",
-              "sberbank",
-              "mobile_balance",
-              "b2b_sberbank",
-              "tinkoff_bank",
-              "sbp",
-              "sber_loan",
-              "electronic_certificate",
-              "sber_bnpl",
-            ])
-            .describe(
-              "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
-            ),
-          id: z.string().describe("Payment method ID."),
-          saved: z
-            .boolean()
-            .describe(
-              "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
-            ),
-          status: z
-            .enum(["pending", "active", "inactive"])
-            .describe(
-              "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
-            ),
-          title: z.optional(z.string().describe("Название способа оплаты.")),
-        }),
-      ]),
-    ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+      z.object({
+        type: z
+          .enum([
+            "bank_card",
+            "cash",
+            "alfabank",
+            "webmoney",
+            "wechat",
+            "apple_pay",
+            "google_pay",
+            "qiwi",
+            "installments",
+            "yoo_money",
+            "sberbank",
+            "mobile_balance",
+            "b2b_sberbank",
+            "tinkoff_bank",
+            "sbp",
+            "sber_loan",
+            "electronic_certificate",
+            "sber_bnpl",
+          ])
+          .describe(
+            "Payment method code is the type of a means of payment used for paying. More about payment methods: https://yookassa.ru/developers/payment-acceptance/getting-started/payment-methods",
+          ),
+        id: z.string().describe("Payment method ID."),
+        saved: z
+          .boolean()
+          .describe(
+            "Признак сохранения способа оплаты для автоплатежей: https://yookassa.ru/developers/payment-acceptance/scenario-extensions/recurring-payments/pay-with-saved. Возможные значения: * true — способ оплаты сохранен для автоплатежей и выплат; * false — способ оплаты не сохранен.",
+          ),
+        status: z
+          .enum(["pending", "active", "inactive"])
+          .describe(
+            "Статус проверки и сохранения способа оплаты. Возможные значения: * pending — ожидает действий от пользователя; * active — способ оплаты сохранен, его можно использовать для автоплатежей или выплат; * inactive — способ оплаты не сохранен: пользователь не подтвердил привязку платежного средства или при сохранении способа оплаты возникла ошибка. Чтобы узнать подробности, обратитесь в техническую поддержку ЮKassa.",
+          ),
+        title: z.optional(z.string().describe("Название способа оплаты.")),
+      }),
+    ]),
     default: z.boolean(),
     createdAt: z.string(),
     updatedAt: z.string(),
