@@ -76,7 +76,7 @@ export function ScenarioChapterGeneratingAlert() {
     <GenerationAlert
       title="Генерируем сценарий"
       description="Генерируем для вас сценарий, подождите несколько секунд"
-      className="flex-1"
+      className="flex-1 rounded-b-none"
     />
   );
 }

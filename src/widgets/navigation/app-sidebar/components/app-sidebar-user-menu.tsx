@@ -43,7 +43,7 @@ export const AppSidebarUserMenu = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <AppSidebarUserMenuButtonLink icon={<BoltIcon />}>
+            <AppSidebarUserMenuButtonLink to="/settings" icon={<BoltIcon />}>
               Настройки
             </AppSidebarUserMenuButtonLink>
           </DropdownMenuItem>
