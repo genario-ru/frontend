@@ -1,92 +1,51 @@
-import {
-  CreditCardIcon,
-  EllipsisIcon,
-  StarIcon,
-  Trash2Icon,
-} from "lucide-react";
-import { useState } from "react";
+import { CreditCardIcon, StarIcon, Trash2Icon } from "lucide-react";
 
 import type { PaymentMethodSchema } from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { cn } from "@/shared/utils/cn";
 
 type BillingMyPaymentMethodCardProps = {
   paymentMethod: PaymentMethodSchema;
-  isDeletePending: boolean;
-  hideDropdownAction?: boolean;
+  hideActions?: boolean;
   onDelete: () => void;
   onMakeDefault: () => void;
 };
 
 export function BillingMyPaymentMethodCard({
   paymentMethod,
-  isDeletePending,
-  hideDropdownAction = false,
+  hideActions = false,
   onDelete,
   onMakeDefault,
 }: BillingMyPaymentMethodCardProps) {
   const label = paymentMethod.title ?? paymentMethod.type;
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDefault = paymentMethod.default;
 
   return (
     <div className="bg-neutral-2 flex items-center justify-between gap-3 rounded-2xl px-4 py-3">
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <LucideIcon icon={CreditCardIcon} />
-        <span className="font-medium">{label}</span>
+        <span className="truncate font-medium">{label}</span>
       </div>
-      {!hideDropdownAction && (
-        <DropdownMenu
-          modal={false}
-          open={isMenuOpen}
-          onOpenChange={setIsMenuOpen}
-        >
-          <DropdownMenuTrigger asChild>
-            <Button size="sm" icon={<EllipsisIcon />} />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Button
-                  size="sm"
-                  priority="tertiary"
-                  rounding="base"
-                  align="between"
-                  icon={
-                    <StarIcon className={cn({ "fill-neutral-8": isDefault })} />
-                  }
-                  className="w-full"
-                  onClick={onMakeDefault}
-                >
-                  {isDefault ? "Основной" : "Сделать основным"}
-                </Button>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Button
-                  size="sm"
-                  priority="tertiary"
-                  variant="negative"
-                  rounding="base"
-                  align="between"
-                  icon={<Trash2Icon />}
-                  state={isDeletePending ? "loading" : "default"}
-                  className="w-full"
-                  onClick={onDelete}
-                >
-                  Удалить
-                </Button>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      {!hideActions && (
+        <div className="flex shrink-0 items-center gap-2">
+          <Button
+            type="button"
+            size="sm"
+            icon={<StarIcon className={cn({ "fill-neutral-8": isDefault })} />}
+            aria-label="Сделать основным"
+            onClick={onMakeDefault}
+          />
+          <Button
+            type="button"
+            size="sm"
+            variant="negative"
+            priority="tertiary"
+            icon={<Trash2Icon />}
+            aria-label="Удалить"
+            onClick={onDelete}
+          />
+        </div>
       )}
     </div>
   );

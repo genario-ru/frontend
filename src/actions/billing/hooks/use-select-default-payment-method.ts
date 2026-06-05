@@ -13,7 +13,7 @@ type SelectDefaultPaymentMethodContext = {
 
 export function useSelectDefaultPaymentMethod() {
   const queryClient = useQueryClient();
-  const { showSuccessToast, showErrorToast } = useToast();
+  const { showErrorToast } = useToast();
   const myPaymentMethodsQueryKey = getApiV1BillingPaymentMethodsMyQueryKey();
 
   const {
@@ -52,12 +52,6 @@ export function useSelectDefaultPaymentMethod() {
             );
 
             return { previousMyPaymentMethodsData };
-          },
-          onSuccess: () => {
-            showSuccessToast({
-              title: "Способ оплаты обновлен",
-              description: "Способ оплаты выбран основным",
-            });
           },
           onError: (_error, _variables, context) => {
             if (context?.previousMyPaymentMethodsData) {

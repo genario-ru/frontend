@@ -33,8 +33,7 @@ export function BillingMyPaymentMethodsListItem({
     () => (
       <BillingMyPaymentMethodCard
         paymentMethod={paymentMethod}
-        isDeletePending={isDeletePaymentMethodPending}
-        hideDropdownAction={showSwipeActions}
+        hideActions={showSwipeActions}
         onDelete={handleDeleteButtonClick}
         onMakeDefault={handleSelectDefaultPaymentMethod}
       />
@@ -42,7 +41,6 @@ export function BillingMyPaymentMethodsListItem({
     [
       paymentMethod,
       showSwipeActions,
-      isDeletePaymentMethodPending,
       handleDeleteButtonClick,
       handleSelectDefaultPaymentMethod,
     ],
