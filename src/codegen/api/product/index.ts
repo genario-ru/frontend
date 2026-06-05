@@ -49,6 +49,7 @@ export { getApiV1Tones } from "./clients/get-api-v1-tones.ts";
 export { getApiV1VideoDurations } from "./clients/get-api-v1-video-durations.ts";
 export { getApiV1VideoTypes } from "./clients/get-api-v1-video-types.ts";
 export { patchApiV1AuthUser } from "./clients/patch-api-v1-auth-user.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault } from "./clients/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
 export { patchApiV1IdeasByIdeaId } from "./clients/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdSave } from "./clients/patch-api-v1-ideas-by-idea-id-save.ts";
 export { patchApiV1IdeasListsByIdeasListId } from "./clients/patch-api-v1-ideas-lists-by-ideas-list-id.ts";
@@ -852,6 +853,18 @@ export type {
   PatchApiV1AuthUserMutationResponse,
 } from "./models/patch-api-v1-auth-user.ts";
 export type {
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault200,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault400,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault401,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault402,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault403,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault404,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault500,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutation,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationResponse,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultPathParams,
+} from "./models/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export type {
   PatchApiV1IdeasByIdeaId200,
   PatchApiV1IdeasByIdeaId400,
   PatchApiV1IdeasByIdeaId401,
@@ -1397,6 +1410,7 @@ export type {
 export { scenariosFilterSchemaSlugEnum } from "./models/scenarios-filter-schema.ts";
 export { scenariosFilterSchemaTypeEnum } from "./models/scenarios-filter-schema.ts";
 export type { ScenariosFiltersSchema } from "./models/scenarios-filters-schema.ts";
+export type { SelectDefaultPaymentMethodResponseSchema } from "./models/select-default-payment-method-response-schema.ts";
 export type {
   SendVerificationOtpBodySchema,
   SendVerificationOtpBodySchemaTypeEnumKey,
@@ -1691,6 +1705,10 @@ export type { PatchApiV1AuthUserMutationKey } from "./tanstack/patch-api-v1-auth
 export { patchApiV1AuthUserMutationKey } from "./tanstack/patch-api-v1-auth-user.ts";
 export { patchApiV1AuthUserMutationOptions } from "./tanstack/patch-api-v1-auth-user.ts";
 export { usePatchApiV1AuthUser } from "./tanstack/patch-api-v1-auth-user.ts";
+export type { PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationKey } from "./tanstack/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationKey } from "./tanstack/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationOptions } from "./tanstack/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { usePatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault } from "./tanstack/patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
 export type { PatchApiV1IdeasByIdeaIdMutationKey } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationKey } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationOptions } from "./tanstack/patch-api-v1-ideas-by-idea-id.ts";
@@ -2476,6 +2494,17 @@ export {
   patchApiV1AuthUserMutationResponseSchema,
 } from "./zod/patch-api-v1-auth-user-schema.ts";
 export {
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault200Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault400Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault401Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault402Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault403Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault404Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault500Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationResponseSchema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultPathParamsSchema,
+} from "./zod/patch-api-v1-billing-payment-methods-by-payment-method-id-default-schema.ts";
+export {
   patchApiV1IdeasByIdeaIdSave200Schema,
   patchApiV1IdeasByIdeaIdSave400Schema,
   patchApiV1IdeasByIdeaIdSave401Schema,
@@ -2886,6 +2915,7 @@ export { scenarioVersionSchemaSchema } from "./zod/scenario-version-schema-schem
 export { scenariosFilterOptionSchemaSchema } from "./zod/scenarios-filter-option-schema-schema.ts";
 export { scenariosFilterSchemaSchema } from "./zod/scenarios-filter-schema-schema.ts";
 export { scenariosFiltersSchemaSchema } from "./zod/scenarios-filters-schema-schema.ts";
+export { selectDefaultPaymentMethodResponseSchemaSchema } from "./zod/select-default-payment-method-response-schema-schema.ts";
 export { sendVerificationOtpBodySchemaSchema } from "./zod/send-verification-otp-body-schema-schema.ts";
 export { sendVerificationOtpResponseSchemaSchema } from "./zod/send-verification-otp-response-schema-schema.ts";
 export { signInEmailOtpBodySchemaSchema } from "./zod/sign-in-email-otp-body-schema-schema.ts";

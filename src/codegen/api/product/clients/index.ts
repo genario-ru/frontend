@@ -49,6 +49,7 @@ export { getApiV1Tones } from "./get-api-v1-tones.ts";
 export { getApiV1VideoDurations } from "./get-api-v1-video-durations.ts";
 export { getApiV1VideoTypes } from "./get-api-v1-video-types.ts";
 export { patchApiV1AuthUser } from "./patch-api-v1-auth-user.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault } from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
 export { patchApiV1IdeasByIdeaId } from "./patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdSave } from "./patch-api-v1-ideas-by-idea-id-save.ts";
 export { patchApiV1IdeasListsByIdeasListId } from "./patch-api-v1-ideas-lists-by-ideas-list-id.ts";

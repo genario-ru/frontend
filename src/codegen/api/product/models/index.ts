@@ -768,6 +768,18 @@ export type {
   PatchApiV1AuthUserMutationResponse,
 } from "./patch-api-v1-auth-user.ts";
 export type {
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault200,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault400,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault401,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault402,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault403,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault404,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault500,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutation,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationResponse,
+  PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultPathParams,
+} from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export type {
   PatchApiV1IdeasByIdeaId200,
   PatchApiV1IdeasByIdeaId400,
   PatchApiV1IdeasByIdeaId401,
@@ -1313,6 +1325,7 @@ export type {
 export { scenariosFilterSchemaSlugEnum } from "./scenarios-filter-schema.ts";
 export { scenariosFilterSchemaTypeEnum } from "./scenarios-filter-schema.ts";
 export type { ScenariosFiltersSchema } from "./scenarios-filters-schema.ts";
+export type { SelectDefaultPaymentMethodResponseSchema } from "./select-default-payment-method-response-schema.ts";
 export type {
   SendVerificationOtpBodySchema,
   SendVerificationOtpBodySchemaTypeEnumKey,

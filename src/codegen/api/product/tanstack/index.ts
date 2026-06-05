@@ -222,6 +222,10 @@ export type { PatchApiV1AuthUserMutationKey } from "./patch-api-v1-auth-user.ts"
 export { patchApiV1AuthUserMutationKey } from "./patch-api-v1-auth-user.ts";
 export { patchApiV1AuthUserMutationOptions } from "./patch-api-v1-auth-user.ts";
 export { usePatchApiV1AuthUser } from "./patch-api-v1-auth-user.ts";
+export type { PatchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationKey } from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationKey } from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationOptions } from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
+export { usePatchApiV1BillingPaymentMethodsByPaymentMethodIdDefault } from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default.ts";
 export type { PatchApiV1IdeasByIdeaIdMutationKey } from "./patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationKey } from "./patch-api-v1-ideas-by-idea-id.ts";
 export { patchApiV1IdeasByIdeaIdMutationOptions } from "./patch-api-v1-ideas-by-idea-id.ts";

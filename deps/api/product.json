@@ -1449,6 +1449,98 @@
         ]
       }
     },
+    "/api/v1/billing/payment-methods/{paymentMethodId}/default": {
+      "patch": {
+        "operationId": "patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault",
+        "tags": [
+          "Billing"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default payment method selected successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectDefaultPaymentMethodResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "paymentMethodId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ]
+      }
+    },
     "/api/v1/billing/payment-methods/my": {
       "get": {
         "operationId": "getApiV1BillingPaymentMethodsMy",
@@ -11470,6 +11562,19 @@
         ],
         "title": "Delete payment method response",
         "description": "Delete payment method response description"
+      },
+      "SelectDefaultPaymentMethodResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PaymentMethodSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Select default payment method response",
+        "description": "Select default payment method response description"
       },
       "GetMyPaymentMethodsResponseSchema": {
         "type": "object",

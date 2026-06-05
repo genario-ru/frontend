@@ -651,6 +651,17 @@ export {
   patchApiV1AuthUserMutationResponseSchema,
 } from "./patch-api-v1-auth-user-schema.ts";
 export {
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault200Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault400Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault401Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault402Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault403Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault404Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefault500Schema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultMutationResponseSchema,
+  patchApiV1BillingPaymentMethodsByPaymentMethodIdDefaultPathParamsSchema,
+} from "./patch-api-v1-billing-payment-methods-by-payment-method-id-default-schema.ts";
+export {
   patchApiV1IdeasByIdeaIdSave200Schema,
   patchApiV1IdeasByIdeaIdSave400Schema,
   patchApiV1IdeasByIdeaIdSave401Schema,
@@ -1061,6 +1072,7 @@ export { scenarioVersionSchemaSchema } from "./scenario-version-schema-schema.ts
 export { scenariosFilterOptionSchemaSchema } from "./scenarios-filter-option-schema-schema.ts";
 export { scenariosFilterSchemaSchema } from "./scenarios-filter-schema-schema.ts";
 export { scenariosFiltersSchemaSchema } from "./scenarios-filters-schema-schema.ts";
+export { selectDefaultPaymentMethodResponseSchemaSchema } from "./select-default-payment-method-response-schema-schema.ts";
 export { sendVerificationOtpBodySchemaSchema } from "./send-verification-otp-body-schema-schema.ts";
 export { sendVerificationOtpResponseSchemaSchema } from "./send-verification-otp-response-schema-schema.ts";
 export { signInEmailOtpBodySchemaSchema } from "./sign-in-email-otp-body-schema-schema.ts";
