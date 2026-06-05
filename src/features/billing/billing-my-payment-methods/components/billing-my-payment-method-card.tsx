@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { cn } from "@/shared/utils/cn";
 
 type BillingMyPaymentMethodCardProps = {
   paymentMethod: PaymentMethodSchema;
@@ -34,6 +35,7 @@ export function BillingMyPaymentMethodCard({
 }: BillingMyPaymentMethodCardProps) {
   const label = paymentMethod.title ?? paymentMethod.type;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isDefault = paymentMethod.default;
 
   return (
     <div className="bg-neutral-2 flex items-center justify-between gap-3 rounded-2xl px-4 py-3">
@@ -58,11 +60,13 @@ export function BillingMyPaymentMethodCard({
                   priority="tertiary"
                   rounding="base"
                   align="between"
-                  icon={<StarIcon />}
+                  icon={
+                    <StarIcon className={cn({ "fill-neutral-8": isDefault })} />
+                  }
                   className="w-full"
                   onClick={onMakeDefault}
                 >
-                  Сделать основным
+                  {isDefault ? "Основной" : "Сделать основным"}
                 </Button>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>

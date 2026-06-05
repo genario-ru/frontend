@@ -1,16 +1,21 @@
 import { StarIcon, Trash2Icon } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/utils/cn";
 
 type BillingMyPaymentMethodSwipeActionsProps = {
+  isDefault: boolean;
   onDelete: () => void;
+  onMakeDefault: () => void;
 };
 
 const swipeActionClassName =
   "h-full min-h-0 min-w-18 w-full max-w-none flex-1 shrink self-stretch justify-center";
 
 export function BillingMyPaymentMethodSwipeActions({
+  isDefault,
   onDelete,
+  onMakeDefault,
 }: BillingMyPaymentMethodSwipeActionsProps) {
   return (
     <div className="flex h-full min-h-0 w-full min-w-min flex-1 items-stretch gap-2">
@@ -20,9 +25,9 @@ export function BillingMyPaymentMethodSwipeActions({
         size="sm"
         direction="column"
         iconPosition="left"
-        icon={<StarIcon />}
+        icon={<StarIcon className={cn({ "fill-neutral-8": isDefault })} />}
         className={swipeActionClassName}
-        onClick={() => {}}
+        onClick={onMakeDefault}
       />
       <Button
         type="button"

@@ -26,7 +26,8 @@ export function BillingMyPaymentMethodsListItem({
     handleDeleteDialogOpenChange,
     handleDeleteButtonClick,
     handleDeletePaymentMethod,
-  } = useBillingMyPaymentMethodsListItem({ paymentMethodId: paymentMethod.id });
+    handleSelectDefaultPaymentMethod,
+  } = useBillingMyPaymentMethodsListItem({ paymentMethod });
 
   const card = useMemo(
     () => (
@@ -35,7 +36,7 @@ export function BillingMyPaymentMethodsListItem({
         isDeletePending={isDeletePaymentMethodPending}
         hideDropdownAction={showSwipeActions}
         onDelete={handleDeleteButtonClick}
-        onMakeDefault={() => {}}
+        onMakeDefault={handleSelectDefaultPaymentMethod}
       />
     ),
     [
@@ -43,6 +44,7 @@ export function BillingMyPaymentMethodsListItem({
       showSwipeActions,
       isDeletePaymentMethodPending,
       handleDeleteButtonClick,
+      handleSelectDefaultPaymentMethod,
     ],
   );
 
@@ -53,7 +55,9 @@ export function BillingMyPaymentMethodsListItem({
           beforeInset={8}
           actions={
             <BillingMyPaymentMethodSwipeActions
+              isDefault={paymentMethod.default}
               onDelete={handleDeleteButtonClick}
+              onMakeDefault={handleSelectDefaultPaymentMethod}
             />
           }
           className="rounded-2xl"
@@ -64,7 +68,13 @@ export function BillingMyPaymentMethodsListItem({
     }
 
     return card;
-  }, [showSwipeActions, card, handleDeleteButtonClick]);
+  }, [
+    card,
+    showSwipeActions,
+    paymentMethod,
+    handleDeleteButtonClick,
+    handleSelectDefaultPaymentMethod,
+  ]);
 
   const dialog = useMemo(() => {
     if (isMobile) {
