@@ -15,53 +15,53 @@ import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.
  * Get my subscriptions response
  * @description My subscriptions retrieved successfully
  */
-export type GetApiV1SubscriptonsMy200 = GetMySubscriptionsResponseSchema;
+export type GetApiV1SubscriptionsMy200 = GetMySubscriptionsResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type GetApiV1SubscriptonsMy400 = BadRequestResponseSchema;
+export type GetApiV1SubscriptionsMy400 = BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type GetApiV1SubscriptonsMy401 = UnauthorizedResponseSchema;
+export type GetApiV1SubscriptionsMy401 = UnauthorizedResponseSchema;
 
 /**
  * Payment required response
  * @description Payment required
  */
-export type GetApiV1SubscriptonsMy402 = PaymentRequiredResponseSchema;
+export type GetApiV1SubscriptionsMy402 = PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type GetApiV1SubscriptonsMy403 = ForbiddenResponseSchema;
+export type GetApiV1SubscriptionsMy403 = ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type GetApiV1SubscriptonsMy404 = NotFoundResponseSchema;
+export type GetApiV1SubscriptionsMy404 = NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type GetApiV1SubscriptonsMy500 = InternalServerErrorResponseSchema;
+export type GetApiV1SubscriptionsMy500 = InternalServerErrorResponseSchema;
 
-export type GetApiV1SubscriptonsMyQueryResponse = GetApiV1SubscriptonsMy200;
+export type GetApiV1SubscriptionsMyQueryResponse = GetApiV1SubscriptionsMy200;
 
-export type GetApiV1SubscriptonsMyQuery = {
-  Response: GetApiV1SubscriptonsMy200;
+export type GetApiV1SubscriptionsMyQuery = {
+  Response: GetApiV1SubscriptionsMy200;
   Errors:
-    | GetApiV1SubscriptonsMy400
-    | GetApiV1SubscriptonsMy401
-    | GetApiV1SubscriptonsMy402
-    | GetApiV1SubscriptonsMy403
-    | GetApiV1SubscriptonsMy404
-    | GetApiV1SubscriptonsMy500;
+    | GetApiV1SubscriptionsMy400
+    | GetApiV1SubscriptionsMy401
+    | GetApiV1SubscriptionsMy402
+    | GetApiV1SubscriptionsMy403
+    | GetApiV1SubscriptionsMy404
+    | GetApiV1SubscriptionsMy500;
 };

@@ -41,7 +41,7 @@ export { getApiV1ScenariosByScenarioIdMetadata } from "./clients/get-api-v1-scen
 export { getApiV1ScenariosByScenarioIdVersions } from "./clients/get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosChaptersByChapterId } from "./clients/get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosFilters } from "./clients/get-api-v1-scenarios-filters.ts";
-export { getApiV1SubscriptonsMy } from "./clients/get-api-v1-subscriptons-my.ts";
+export { getApiV1SubscriptionsMy } from "./clients/get-api-v1-subscriptions-my.ts";
 export { getApiV1Tariffs } from "./clients/get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./clients/get-api-v1-tariffs-trial.ts";
 export { getApiV1Templates } from "./clients/get-api-v1-templates.ts";
@@ -66,6 +66,7 @@ export { postApiV1AuthSignOut } from "./clients/post-api-v1-auth-sign-out.ts";
 export { postApiV1AuthUserDelete } from "./clients/post-api-v1-auth-user-delete.ts";
 export { postApiV1BillingPaymentMethods } from "./clients/post-api-v1-billing-payment-methods.ts";
 export { postApiV1BillingSubscriptionsCharge } from "./clients/post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatches } from "./clients/post-api-v1-billing-terminate-expired-credits-batches.ts";
 export { postApiV1BillingUpcomingChargesNewsletter } from "./clients/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./clients/post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./clients/post-api-v1-ideas-lists.ts";
@@ -682,16 +683,16 @@ export type {
   GetApiV1ScenariosFiltersQueryResponse,
 } from "./models/get-api-v1-scenarios-filters.ts";
 export type {
-  GetApiV1SubscriptonsMy200,
-  GetApiV1SubscriptonsMy400,
-  GetApiV1SubscriptonsMy401,
-  GetApiV1SubscriptonsMy402,
-  GetApiV1SubscriptonsMy403,
-  GetApiV1SubscriptonsMy404,
-  GetApiV1SubscriptonsMy500,
-  GetApiV1SubscriptonsMyQuery,
-  GetApiV1SubscriptonsMyQueryResponse,
-} from "./models/get-api-v1-subscriptons-my.ts";
+  GetApiV1SubscriptionsMy200,
+  GetApiV1SubscriptionsMy400,
+  GetApiV1SubscriptionsMy401,
+  GetApiV1SubscriptionsMy402,
+  GetApiV1SubscriptionsMy403,
+  GetApiV1SubscriptionsMy404,
+  GetApiV1SubscriptionsMy500,
+  GetApiV1SubscriptionsMyQuery,
+  GetApiV1SubscriptionsMyQueryResponse,
+} from "./models/get-api-v1-subscriptions-my.ts";
 export type {
   GetApiV1Tariffs200,
   GetApiV1Tariffs400,
@@ -1119,6 +1120,17 @@ export type {
   PostApiV1BillingSubscriptionsChargeMutationResponse,
 } from "./models/post-api-v1-billing-subscriptions-charge.ts";
 export type {
+  PostApiV1BillingTerminateExpiredCreditsBatches202,
+  PostApiV1BillingTerminateExpiredCreditsBatches400,
+  PostApiV1BillingTerminateExpiredCreditsBatches401,
+  PostApiV1BillingTerminateExpiredCreditsBatches402,
+  PostApiV1BillingTerminateExpiredCreditsBatches403,
+  PostApiV1BillingTerminateExpiredCreditsBatches404,
+  PostApiV1BillingTerminateExpiredCreditsBatches500,
+  PostApiV1BillingTerminateExpiredCreditsBatchesMutation,
+  PostApiV1BillingTerminateExpiredCreditsBatchesMutationResponse,
+} from "./models/post-api-v1-billing-terminate-expired-credits-batches.ts";
+export type {
   PostApiV1BillingUpcomingChargesNewsletter202,
   PostApiV1BillingUpcomingChargesNewsletter400,
   PostApiV1BillingUpcomingChargesNewsletter401,
@@ -1452,6 +1464,7 @@ export { tariffSchemaGenerationPriorityEnum } from "./models/tariff-schema.ts";
 export type { TemplateSchema } from "./models/template-schema.ts";
 export type { ToneSchema } from "./models/tone-schema.ts";
 export type { TriggerSubscriptionsChargeResponseSchema } from "./models/trigger-subscriptions-charge-response-schema.ts";
+export type { TriggerTerminateExpiredCreditsBatchesResponseSchema } from "./models/trigger-terminate-expired-credits-batches-response-schema.ts";
 export type { TriggerUpcomingChargesNewsletterResponseSchema } from "./models/trigger-upcoming-charges-newsletter-response-schema.ts";
 export type { UnauthorizedResponseSchema } from "./models/unauthorized-response-schema.ts";
 export type { UpdateIdeaBodySchema } from "./models/update-idea-body-schema.ts";
@@ -1673,10 +1686,10 @@ export type { GetApiV1ScenariosInfiniteQueryKey } from "./tanstack/get-api-v1-sc
 export { getApiV1ScenariosInfiniteQueryKey } from "./tanstack/get-api-v1-scenarios-infinite.ts";
 export { getApiV1ScenariosInfiniteQueryOptions } from "./tanstack/get-api-v1-scenarios-infinite.ts";
 export { useGetApiV1ScenariosInfinite } from "./tanstack/get-api-v1-scenarios-infinite.ts";
-export type { GetApiV1SubscriptonsMyQueryKey } from "./tanstack/get-api-v1-subscriptons-my.ts";
-export { getApiV1SubscriptonsMyQueryKey } from "./tanstack/get-api-v1-subscriptons-my.ts";
-export { getApiV1SubscriptonsMyQueryOptions } from "./tanstack/get-api-v1-subscriptons-my.ts";
-export { useGetApiV1SubscriptonsMy } from "./tanstack/get-api-v1-subscriptons-my.ts";
+export type { GetApiV1SubscriptionsMyQueryKey } from "./tanstack/get-api-v1-subscriptions-my.ts";
+export { getApiV1SubscriptionsMyQueryKey } from "./tanstack/get-api-v1-subscriptions-my.ts";
+export { getApiV1SubscriptionsMyQueryOptions } from "./tanstack/get-api-v1-subscriptions-my.ts";
+export { useGetApiV1SubscriptionsMy } from "./tanstack/get-api-v1-subscriptions-my.ts";
 export type { GetApiV1TariffsQueryKey } from "./tanstack/get-api-v1-tariffs.ts";
 export { getApiV1TariffsQueryKey } from "./tanstack/get-api-v1-tariffs.ts";
 export { getApiV1TariffsQueryOptions } from "./tanstack/get-api-v1-tariffs.ts";
@@ -1773,6 +1786,10 @@ export type { PostApiV1BillingSubscriptionsChargeMutationKey } from "./tanstack/
 export { postApiV1BillingSubscriptionsChargeMutationKey } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
 export { postApiV1BillingSubscriptionsChargeMutationOptions } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
 export { usePostApiV1BillingSubscriptionsCharge } from "./tanstack/post-api-v1-billing-subscriptions-charge.ts";
+export type { PostApiV1BillingTerminateExpiredCreditsBatchesMutationKey } from "./tanstack/post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatchesMutationKey } from "./tanstack/post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatchesMutationOptions } from "./tanstack/post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { usePostApiV1BillingTerminateExpiredCreditsBatches } from "./tanstack/post-api-v1-billing-terminate-expired-credits-batches.ts";
 export type { PostApiV1BillingUpcomingChargesNewsletterMutationKey } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1BillingUpcomingChargesNewsletterMutationKey } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1BillingUpcomingChargesNewsletterMutationOptions } from "./tanstack/post-api-v1-billing-upcoming-charges-newsletter.ts";
@@ -2353,15 +2370,15 @@ export {
   getApiV1ScenariosQueryResponseSchema,
 } from "./zod/get-api-v1-scenarios-schema.ts";
 export {
-  getApiV1SubscriptonsMy200Schema,
-  getApiV1SubscriptonsMy400Schema,
-  getApiV1SubscriptonsMy401Schema,
-  getApiV1SubscriptonsMy402Schema,
-  getApiV1SubscriptonsMy403Schema,
-  getApiV1SubscriptonsMy404Schema,
-  getApiV1SubscriptonsMy500Schema,
-  getApiV1SubscriptonsMyQueryResponseSchema,
-} from "./zod/get-api-v1-subscriptons-my-schema.ts";
+  getApiV1SubscriptionsMy200Schema,
+  getApiV1SubscriptionsMy400Schema,
+  getApiV1SubscriptionsMy401Schema,
+  getApiV1SubscriptionsMy402Schema,
+  getApiV1SubscriptionsMy403Schema,
+  getApiV1SubscriptionsMy404Schema,
+  getApiV1SubscriptionsMy500Schema,
+  getApiV1SubscriptionsMyQueryResponseSchema,
+} from "./zod/get-api-v1-subscriptions-my-schema.ts";
 export {
   getApiV1Tariffs200Schema,
   getApiV1Tariffs400Schema,
@@ -2693,6 +2710,16 @@ export {
   postApiV1BillingSubscriptionsChargeMutationResponseSchema,
 } from "./zod/post-api-v1-billing-subscriptions-charge-schema.ts";
 export {
+  postApiV1BillingTerminateExpiredCreditsBatches202Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches400Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches401Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches402Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches403Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches404Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches500Schema,
+  postApiV1BillingTerminateExpiredCreditsBatchesMutationResponseSchema,
+} from "./zod/post-api-v1-billing-terminate-expired-credits-batches-schema.ts";
+export {
   postApiV1BillingUpcomingChargesNewsletter202Schema,
   postApiV1BillingUpcomingChargesNewsletter400Schema,
   postApiV1BillingUpcomingChargesNewsletter401Schema,
@@ -2929,6 +2956,7 @@ export { tariffSchemaSchema } from "./zod/tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./zod/template-schema-schema.ts";
 export { toneSchemaSchema } from "./zod/tone-schema-schema.ts";
 export { triggerSubscriptionsChargeResponseSchemaSchema } from "./zod/trigger-subscriptions-charge-response-schema-schema.ts";
+export { triggerTerminateExpiredCreditsBatchesResponseSchemaSchema } from "./zod/trigger-terminate-expired-credits-batches-response-schema-schema.ts";
 export { triggerUpcomingChargesNewsletterResponseSchemaSchema } from "./zod/trigger-upcoming-charges-newsletter-response-schema-schema.ts";
 export { unauthorizedResponseSchemaSchema } from "./zod/unauthorized-response-schema-schema.ts";
 export { updateIdeaBodySchemaSchema } from "./zod/update-idea-body-schema-schema.ts";

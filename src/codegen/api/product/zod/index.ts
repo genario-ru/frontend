@@ -510,15 +510,15 @@ export {
   getApiV1ScenariosQueryResponseSchema,
 } from "./get-api-v1-scenarios-schema.ts";
 export {
-  getApiV1SubscriptonsMy200Schema,
-  getApiV1SubscriptonsMy400Schema,
-  getApiV1SubscriptonsMy401Schema,
-  getApiV1SubscriptonsMy402Schema,
-  getApiV1SubscriptonsMy403Schema,
-  getApiV1SubscriptonsMy404Schema,
-  getApiV1SubscriptonsMy500Schema,
-  getApiV1SubscriptonsMyQueryResponseSchema,
-} from "./get-api-v1-subscriptons-my-schema.ts";
+  getApiV1SubscriptionsMy200Schema,
+  getApiV1SubscriptionsMy400Schema,
+  getApiV1SubscriptionsMy401Schema,
+  getApiV1SubscriptionsMy402Schema,
+  getApiV1SubscriptionsMy403Schema,
+  getApiV1SubscriptionsMy404Schema,
+  getApiV1SubscriptionsMy500Schema,
+  getApiV1SubscriptionsMyQueryResponseSchema,
+} from "./get-api-v1-subscriptions-my-schema.ts";
 export {
   getApiV1Tariffs200Schema,
   getApiV1Tariffs400Schema,
@@ -850,6 +850,16 @@ export {
   postApiV1BillingSubscriptionsChargeMutationResponseSchema,
 } from "./post-api-v1-billing-subscriptions-charge-schema.ts";
 export {
+  postApiV1BillingTerminateExpiredCreditsBatches202Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches400Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches401Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches402Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches403Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches404Schema,
+  postApiV1BillingTerminateExpiredCreditsBatches500Schema,
+  postApiV1BillingTerminateExpiredCreditsBatchesMutationResponseSchema,
+} from "./post-api-v1-billing-terminate-expired-credits-batches-schema.ts";
+export {
   postApiV1BillingUpcomingChargesNewsletter202Schema,
   postApiV1BillingUpcomingChargesNewsletter400Schema,
   postApiV1BillingUpcomingChargesNewsletter401Schema,
@@ -1086,6 +1096,7 @@ export { tariffSchemaSchema } from "./tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./template-schema-schema.ts";
 export { toneSchemaSchema } from "./tone-schema-schema.ts";
 export { triggerSubscriptionsChargeResponseSchemaSchema } from "./trigger-subscriptions-charge-response-schema-schema.ts";
+export { triggerTerminateExpiredCreditsBatchesResponseSchemaSchema } from "./trigger-terminate-expired-credits-batches-response-schema-schema.ts";
 export { triggerUpcomingChargesNewsletterResponseSchemaSchema } from "./trigger-upcoming-charges-newsletter-response-schema-schema.ts";
 export { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 export { updateIdeaBodySchemaSchema } from "./update-idea-body-schema-schema.ts";

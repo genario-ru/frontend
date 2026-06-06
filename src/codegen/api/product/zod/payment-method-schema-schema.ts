@@ -12,7 +12,7 @@ export const paymentMethodSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
-    paymentMethodId: z.string(),
+    externalId: z.string(),
     status: z.enum(["pending", "active", "inactive"]),
     statusDetails: z.union([z.string(), z.null()]),
     type: z.string(),

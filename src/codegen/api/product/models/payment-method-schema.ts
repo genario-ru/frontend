@@ -259,7 +259,7 @@ export type PaymentMethodSchema = {
   /**
    * @type string
    */
-  paymentMethodId: string;
+  externalId: string;
   /**
    * @type string
    */

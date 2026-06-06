@@ -34,7 +34,7 @@ export type PaymentExtendedSchema = {
   /**
    * @type string
    */
-  paymentId: string;
+  externalId: string;
   /**
    * @minLength -8388608
    * @maxLength 8388607

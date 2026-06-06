@@ -16,52 +16,52 @@ import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema
 /**
  * @description My subscriptions retrieved successfully
  */
-export const getApiV1SubscriptonsMy200Schema = z
+export const getApiV1SubscriptionsMy200Schema = z
   .lazy(() => getMySubscriptionsResponseSchemaSchema)
   .describe("Get my subscriptions response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1SubscriptonsMy400Schema = z
+export const getApiV1SubscriptionsMy400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1SubscriptonsMy401Schema = z
+export const getApiV1SubscriptionsMy401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Payment required
  */
-export const getApiV1SubscriptonsMy402Schema = z
+export const getApiV1SubscriptionsMy402Schema = z
   .lazy(() => paymentRequiredResponseSchemaSchema)
   .describe("Payment required response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1SubscriptonsMy403Schema = z
+export const getApiV1SubscriptionsMy403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1SubscriptonsMy404Schema = z
+export const getApiV1SubscriptionsMy404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1SubscriptonsMy500Schema = z
+export const getApiV1SubscriptionsMy500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const getApiV1SubscriptonsMyQueryResponseSchema = z.lazy(
-  () => getApiV1SubscriptonsMy200Schema,
+export const getApiV1SubscriptionsMyQueryResponseSchema = z.lazy(
+  () => getApiV1SubscriptionsMy200Schema,
 );

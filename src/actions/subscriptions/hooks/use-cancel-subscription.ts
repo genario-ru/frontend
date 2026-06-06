@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
-  getApiV1SubscriptonsMyQueryKey,
+  getApiV1SubscriptionsMyQueryKey,
   usePostApiV1SubscriptionsBySubscriptionIdCancel,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -15,7 +15,7 @@ export function useCancelSubscription() {
       mutation: {
         onSuccess: () => {
           queryClient.invalidateQueries({
-            queryKey: getApiV1SubscriptonsMyQueryKey(),
+            queryKey: getApiV1SubscriptionsMyQueryKey(),
           });
 
           showSuccessToast({

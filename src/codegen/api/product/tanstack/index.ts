@@ -190,10 +190,10 @@ export type { GetApiV1ScenariosInfiniteQueryKey } from "./get-api-v1-scenarios-i
 export { getApiV1ScenariosInfiniteQueryKey } from "./get-api-v1-scenarios-infinite.ts";
 export { getApiV1ScenariosInfiniteQueryOptions } from "./get-api-v1-scenarios-infinite.ts";
 export { useGetApiV1ScenariosInfinite } from "./get-api-v1-scenarios-infinite.ts";
-export type { GetApiV1SubscriptonsMyQueryKey } from "./get-api-v1-subscriptons-my.ts";
-export { getApiV1SubscriptonsMyQueryKey } from "./get-api-v1-subscriptons-my.ts";
-export { getApiV1SubscriptonsMyQueryOptions } from "./get-api-v1-subscriptons-my.ts";
-export { useGetApiV1SubscriptonsMy } from "./get-api-v1-subscriptons-my.ts";
+export type { GetApiV1SubscriptionsMyQueryKey } from "./get-api-v1-subscriptions-my.ts";
+export { getApiV1SubscriptionsMyQueryKey } from "./get-api-v1-subscriptions-my.ts";
+export { getApiV1SubscriptionsMyQueryOptions } from "./get-api-v1-subscriptions-my.ts";
+export { useGetApiV1SubscriptionsMy } from "./get-api-v1-subscriptions-my.ts";
 export type { GetApiV1TariffsQueryKey } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsQueryKey } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsQueryOptions } from "./get-api-v1-tariffs.ts";
@@ -290,6 +290,10 @@ export type { PostApiV1BillingSubscriptionsChargeMutationKey } from "./post-api-
 export { postApiV1BillingSubscriptionsChargeMutationKey } from "./post-api-v1-billing-subscriptions-charge.ts";
 export { postApiV1BillingSubscriptionsChargeMutationOptions } from "./post-api-v1-billing-subscriptions-charge.ts";
 export { usePostApiV1BillingSubscriptionsCharge } from "./post-api-v1-billing-subscriptions-charge.ts";
+export type { PostApiV1BillingTerminateExpiredCreditsBatchesMutationKey } from "./post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatchesMutationKey } from "./post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatchesMutationOptions } from "./post-api-v1-billing-terminate-expired-credits-batches.ts";
+export { usePostApiV1BillingTerminateExpiredCreditsBatches } from "./post-api-v1-billing-terminate-expired-credits-batches.ts";
 export type { PostApiV1BillingUpcomingChargesNewsletterMutationKey } from "./post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1BillingUpcomingChargesNewsletterMutationKey } from "./post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1BillingUpcomingChargesNewsletterMutationOptions } from "./post-api-v1-billing-upcoming-charges-newsletter.ts";

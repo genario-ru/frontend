@@ -1781,6 +1781,86 @@
         }
       }
     },
+    "/api/v1/billing/terminate-expired-credits-batches": {
+      "post": {
+        "operationId": "postApiV1BillingTerminateExpiredCreditsBatches",
+        "tags": [
+          "Billing"
+        ],
+        "responses": {
+          "202": {
+            "description": "Expired credits batches termination job has been enqueued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TriggerTerminateExpiredCreditsBatchesResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/billing/upcoming-charges-newsletter": {
       "post": {
         "operationId": "postApiV1BillingUpcomingChargesNewsletter",
@@ -7237,9 +7317,9 @@
         }
       }
     },
-    "/api/v1/subscriptons/my": {
+    "/api/v1/subscriptions/my": {
       "get": {
-        "operationId": "getApiV1SubscriptonsMy",
+        "operationId": "getApiV1SubscriptionsMy",
         "tags": [
           "Subscriptions"
         ],
@@ -9370,7 +9450,7 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
-          "paymentMethodId": {
+          "externalId": {
             "type": "string"
           },
           "status": {
@@ -11536,7 +11616,7 @@
         "required": [
           "id",
           "userId",
-          "paymentMethodId",
+          "externalId",
           "status",
           "statusDetails",
           "type",
@@ -11833,7 +11913,7 @@
               }
             ]
           },
-          "paymentId": {
+          "externalId": {
             "type": "string"
           },
           "amount": {
@@ -11904,7 +11984,7 @@
           "id",
           "userId",
           "paymentMethodId",
-          "paymentId",
+          "externalId",
           "amount",
           "currency",
           "status",
@@ -11958,6 +12038,34 @@
         ],
         "title": "Trigger subscriptions charge response",
         "description": "Trigger subscriptions charge response description"
+      },
+      "TriggerTerminateExpiredCreditsBatchesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "jobId": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "jobId"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Trigger terminate expired credits batches response",
+        "description": "Trigger terminate expired credits batches response description"
       },
       "TriggerUpcomingChargesNewsletterResponseSchema": {
         "type": "object",

@@ -41,7 +41,7 @@ export { getApiV1ScenariosByScenarioIdMetadata } from "./get-api-v1-scenarios-by
 export { getApiV1ScenariosByScenarioIdVersions } from "./get-api-v1-scenarios-by-scenario-id-versions.ts";
 export { getApiV1ScenariosChaptersByChapterId } from "./get-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { getApiV1ScenariosFilters } from "./get-api-v1-scenarios-filters.ts";
-export { getApiV1SubscriptonsMy } from "./get-api-v1-subscriptons-my.ts";
+export { getApiV1SubscriptionsMy } from "./get-api-v1-subscriptions-my.ts";
 export { getApiV1Tariffs } from "./get-api-v1-tariffs.ts";
 export { getApiV1TariffsTrial } from "./get-api-v1-tariffs-trial.ts";
 export { getApiV1Templates } from "./get-api-v1-templates.ts";
@@ -66,6 +66,7 @@ export { postApiV1AuthSignOut } from "./post-api-v1-auth-sign-out.ts";
 export { postApiV1AuthUserDelete } from "./post-api-v1-auth-user-delete.ts";
 export { postApiV1BillingPaymentMethods } from "./post-api-v1-billing-payment-methods.ts";
 export { postApiV1BillingSubscriptionsCharge } from "./post-api-v1-billing-subscriptions-charge.ts";
+export { postApiV1BillingTerminateExpiredCreditsBatches } from "./post-api-v1-billing-terminate-expired-credits-batches.ts";
 export { postApiV1BillingUpcomingChargesNewsletter } from "./post-api-v1-billing-upcoming-charges-newsletter.ts";
 export { postApiV1CreditsPackagesInitiatePayment } from "./post-api-v1-credits-packages-initiate-payment.ts";
 export { postApiV1IdeasLists } from "./post-api-v1-ideas-lists.ts";

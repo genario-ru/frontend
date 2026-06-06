@@ -3,7 +3,7 @@ import { zodValidator } from "@tanstack/zod-adapter";
 
 import {
   getApiV1AuthSessionQueryOptions,
-  getApiV1SubscriptonsMyQueryOptions,
+  getApiV1SubscriptionsMyQueryOptions,
 } from "@/codegen/api/product";
 import { SignInComponent } from "@/entrypoints/sign-in/component";
 import { z } from "@/lib/zod";
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/_auth/sign-in")({
     }
 
     const subscriptions = await context.queryClient.ensureQueryData({
-      ...getApiV1SubscriptonsMyQueryOptions(),
+      ...getApiV1SubscriptionsMyQueryOptions(),
     });
 
     const hasActiveSubscription = checkHasActiveSubscription(

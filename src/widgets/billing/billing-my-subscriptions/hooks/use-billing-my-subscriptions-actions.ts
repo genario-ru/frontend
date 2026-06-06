@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useGetMySubscriptions } from "@/actions/subscriptions/hooks/use-get-my-subscriptions";
 import { useUpgradeSubscription } from "@/actions/subscriptions/hooks/use-upgrade-subscription";
 import { useGetTariffs } from "@/actions/tariffs/hooks/use-get-tariffs";
-import { getApiV1SubscriptonsMyQueryKey } from "@/codegen/api/product";
+import { getApiV1SubscriptionsMyQueryKey } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useBillingMySubscriptionsActions() {
@@ -32,7 +32,7 @@ export function useBillingMySubscriptionsActions() {
         {
           onSuccess: () => {
             queryClient.invalidateQueries({
-              queryKey: getApiV1SubscriptonsMyQueryKey(),
+              queryKey: getApiV1SubscriptionsMyQueryKey(),
             });
 
             setIsChangeTariffDialogOpen(false);
