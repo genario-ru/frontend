@@ -253,6 +253,18 @@ export type {
   GetApiV1BillingPaymentMethodsMyQueryResponse,
 } from "./get-api-v1-billing-payment-methods-my.ts";
 export type {
+  GetApiV1BillingPaymentsByPaymentId200,
+  GetApiV1BillingPaymentsByPaymentId400,
+  GetApiV1BillingPaymentsByPaymentId401,
+  GetApiV1BillingPaymentsByPaymentId402,
+  GetApiV1BillingPaymentsByPaymentId403,
+  GetApiV1BillingPaymentsByPaymentId404,
+  GetApiV1BillingPaymentsByPaymentId500,
+  GetApiV1BillingPaymentsByPaymentIdPathParams,
+  GetApiV1BillingPaymentsByPaymentIdQuery,
+  GetApiV1BillingPaymentsByPaymentIdQueryResponse,
+} from "./get-api-v1-billing-payments-by-payment-id.ts";
+export type {
   GetApiV1BillingPaymentsMy200,
   GetApiV1BillingPaymentsMy400,
   GetApiV1BillingPaymentsMy401,
@@ -702,6 +714,7 @@ export type { GetMyReferralInvitesResponseSchema } from "./get-my-referral-invit
 export type { GetMyScenariosResponseMetaSchema } from "./get-my-scenarios-response-meta-schema.ts";
 export type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
+export type { GetPaymentResponseSchema } from "./get-payment-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./get-production-statuses-response-schema.ts";

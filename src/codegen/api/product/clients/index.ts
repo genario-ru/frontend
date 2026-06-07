@@ -12,6 +12,7 @@ export { getApiV1ArchiveItemsMy } from "./get-api-v1-archive-items-my.ts";
 export { getApiV1AttachmentsByAttachmentIdDownload } from "./get-api-v1-attachments-by-attachment-id-download.ts";
 export { getApiV1AuthSession } from "./get-api-v1-auth-session.ts";
 export { getApiV1BillingPaymentMethodsMy } from "./get-api-v1-billing-payment-methods-my.ts";
+export { getApiV1BillingPaymentsByPaymentId } from "./get-api-v1-billing-payments-by-payment-id.ts";
 export { getApiV1BillingPaymentsMy } from "./get-api-v1-billing-payments-my.ts";
 export { getApiV1CreditsBatchesMy } from "./get-api-v1-credits-batches-my.ts";
 export { getApiV1CreditsPackages } from "./get-api-v1-credits-packages.ts";

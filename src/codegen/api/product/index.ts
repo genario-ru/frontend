@@ -12,6 +12,7 @@ export { getApiV1ArchiveItemsMy } from "./clients/get-api-v1-archive-items-my.ts
 export { getApiV1AttachmentsByAttachmentIdDownload } from "./clients/get-api-v1-attachments-by-attachment-id-download.ts";
 export { getApiV1AuthSession } from "./clients/get-api-v1-auth-session.ts";
 export { getApiV1BillingPaymentMethodsMy } from "./clients/get-api-v1-billing-payment-methods-my.ts";
+export { getApiV1BillingPaymentsByPaymentId } from "./clients/get-api-v1-billing-payments-by-payment-id.ts";
 export { getApiV1BillingPaymentsMy } from "./clients/get-api-v1-billing-payments-my.ts";
 export { getApiV1CreditsBatchesMy } from "./clients/get-api-v1-credits-batches-my.ts";
 export { getApiV1CreditsPackages } from "./clients/get-api-v1-credits-packages.ts";
@@ -338,6 +339,18 @@ export type {
   GetApiV1BillingPaymentMethodsMyQuery,
   GetApiV1BillingPaymentMethodsMyQueryResponse,
 } from "./models/get-api-v1-billing-payment-methods-my.ts";
+export type {
+  GetApiV1BillingPaymentsByPaymentId200,
+  GetApiV1BillingPaymentsByPaymentId400,
+  GetApiV1BillingPaymentsByPaymentId401,
+  GetApiV1BillingPaymentsByPaymentId402,
+  GetApiV1BillingPaymentsByPaymentId403,
+  GetApiV1BillingPaymentsByPaymentId404,
+  GetApiV1BillingPaymentsByPaymentId500,
+  GetApiV1BillingPaymentsByPaymentIdPathParams,
+  GetApiV1BillingPaymentsByPaymentIdQuery,
+  GetApiV1BillingPaymentsByPaymentIdQueryResponse,
+} from "./models/get-api-v1-billing-payments-by-payment-id.ts";
 export type {
   GetApiV1BillingPaymentsMy200,
   GetApiV1BillingPaymentsMy400,
@@ -788,6 +801,7 @@ export type { GetMyReferralInvitesResponseSchema } from "./models/get-my-referra
 export type { GetMyScenariosResponseMetaSchema } from "./models/get-my-scenarios-response-meta-schema.ts";
 export type { GetMyScenariosResponseSchema } from "./models/get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./models/get-my-subscriptions-response-schema.ts";
+export type { GetPaymentResponseSchema } from "./models/get-payment-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./models/get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./models/get-platforms-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./models/get-production-statuses-response-schema.ts";
@@ -1554,6 +1568,10 @@ export type { GetApiV1BillingPaymentMethodsMyQueryKey } from "./tanstack/get-api
 export { getApiV1BillingPaymentMethodsMyQueryKey } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
 export { getApiV1BillingPaymentMethodsMyQueryOptions } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
 export { useGetApiV1BillingPaymentMethodsMy } from "./tanstack/get-api-v1-billing-payment-methods-my.ts";
+export type { GetApiV1BillingPaymentsByPaymentIdQueryKey } from "./tanstack/get-api-v1-billing-payments-by-payment-id.ts";
+export { getApiV1BillingPaymentsByPaymentIdQueryKey } from "./tanstack/get-api-v1-billing-payments-by-payment-id.ts";
+export { getApiV1BillingPaymentsByPaymentIdQueryOptions } from "./tanstack/get-api-v1-billing-payments-by-payment-id.ts";
+export { useGetApiV1BillingPaymentsByPaymentId } from "./tanstack/get-api-v1-billing-payments-by-payment-id.ts";
 export type { GetApiV1BillingPaymentsMyQueryKey } from "./tanstack/get-api-v1-billing-payments-my.ts";
 export { getApiV1BillingPaymentsMyQueryKey } from "./tanstack/get-api-v1-billing-payments-my.ts";
 export { getApiV1BillingPaymentsMyQueryOptions } from "./tanstack/get-api-v1-billing-payments-my.ts";
@@ -2059,6 +2077,17 @@ export {
   getApiV1BillingPaymentMethodsMyQueryResponseSchema,
 } from "./zod/get-api-v1-billing-payment-methods-my-schema.ts";
 export {
+  getApiV1BillingPaymentsByPaymentId200Schema,
+  getApiV1BillingPaymentsByPaymentId400Schema,
+  getApiV1BillingPaymentsByPaymentId401Schema,
+  getApiV1BillingPaymentsByPaymentId402Schema,
+  getApiV1BillingPaymentsByPaymentId403Schema,
+  getApiV1BillingPaymentsByPaymentId404Schema,
+  getApiV1BillingPaymentsByPaymentId500Schema,
+  getApiV1BillingPaymentsByPaymentIdPathParamsSchema,
+  getApiV1BillingPaymentsByPaymentIdQueryResponseSchema,
+} from "./zod/get-api-v1-billing-payments-by-payment-id-schema.ts";
+export {
   getApiV1BillingPaymentsMy200Schema,
   getApiV1BillingPaymentsMy400Schema,
   getApiV1BillingPaymentsMy401Schema,
@@ -2464,6 +2493,7 @@ export { getMyReferralInvitesResponseSchemaSchema } from "./zod/get-my-referral-
 export { getMyScenariosResponseMetaSchemaSchema } from "./zod/get-my-scenarios-response-meta-schema-schema.ts";
 export { getMyScenariosResponseSchemaSchema } from "./zod/get-my-scenarios-response-schema-schema.ts";
 export { getMySubscriptionsResponseSchemaSchema } from "./zod/get-my-subscriptions-response-schema-schema.ts";
+export { getPaymentResponseSchemaSchema } from "./zod/get-payment-response-schema-schema.ts";
 export { getPlatformsForChannelsResponseSchemaSchema } from "./zod/get-platforms-for-channels-response-schema-schema.ts";
 export { getPlatformsResponseSchemaSchema } from "./zod/get-platforms-response-schema-schema.ts";
 export { getProductionStatusesResponseSchemaSchema } from "./zod/get-production-statuses-response-schema-schema.ts";
