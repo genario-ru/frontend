@@ -75,7 +75,7 @@ export function LandingTariffsList() {
 
         const secondaryAction = hasTrial && (
           <TariffCardSecondaryAction
-            to="/sign-in"
+            to="/payment-redirect"
             search={{
               tariffSlug: tariff.slug,
             }}
