@@ -962,6 +962,11 @@ export { vatDataTypeEnum } from "./payment-method-schema.ts";
 export { vatDataTypeEnum2 } from "./payment-method-schema.ts";
 export { vatDataTypeEnum3 } from "./payment-method-schema.ts";
 export type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
+export type {
+  PaymentSchema,
+  PaymentSchemaStatusEnumKey,
+} from "./payment-schema.ts";
+export { paymentSchemaStatusEnum } from "./payment-schema.ts";
 export type { PlatformExtendedSchema } from "./platform-extended-schema.ts";
 export type { PlatformSchema } from "./platform-schema.ts";
 export type {

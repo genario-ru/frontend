@@ -12690,19 +12690,99 @@
         "title": "Get my credits usage response",
         "description": "Get my credits usage response description"
       },
+      "PaymentSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "paymentMethodId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "paymentLink": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "minimum": -8388608,
+            "maximum": 8388607
+          },
+          "currency": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "succeeded",
+              "canceled",
+              "failed"
+            ]
+          },
+          "statusDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "paymentMethodId",
+          "externalId",
+          "paymentLink",
+          "amount",
+          "currency",
+          "status",
+          "statusDetails",
+          "createdAt",
+          "updatedAt"
+        ],
+        "title": "Payment method",
+        "description": "Payment description"
+      },
       "InitiateCreditsPackagePaymentResponseSchema": {
         "type": "object",
         "properties": {
           "data": {
-            "type": "object",
-            "properties": {
-              "paymentLink": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "paymentLink"
-            ]
+            "$ref": "#/components/schemas/PaymentSchema"
           }
         },
         "required": [
@@ -17505,15 +17585,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "type": "object",
-            "properties": {
-              "paymentLink": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "paymentLink"
-            ]
+            "$ref": "#/components/schemas/PaymentSchema"
           }
         },
         "required": [

@@ -3,18 +3,16 @@
  * Do not edit manually.
  */
 
+import type { PaymentSchema } from "./payment-schema.ts";
+
 /**
  * Initiate subscription payment response
  * @description Initiate subscription payment response description
  */
 export type InitiateSubscriptionPaymentResponseSchema = {
   /**
+   * @description Payment description
    * @type object
    */
-  data: {
-    /**
-     * @type string
-     */
-    paymentLink: string;
-  };
+  data: PaymentSchema;
 };

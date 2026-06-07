@@ -1049,6 +1049,11 @@ export { vatDataTypeEnum } from "./models/payment-method-schema.ts";
 export { vatDataTypeEnum2 } from "./models/payment-method-schema.ts";
 export { vatDataTypeEnum3 } from "./models/payment-method-schema.ts";
 export type { PaymentRequiredResponseSchema } from "./models/payment-required-response-schema.ts";
+export type {
+  PaymentSchema,
+  PaymentSchemaStatusEnumKey,
+} from "./models/payment-schema.ts";
+export { paymentSchemaStatusEnum } from "./models/payment-schema.ts";
 export type { PlatformExtendedSchema } from "./models/platform-extended-schema.ts";
 export type { PlatformSchema } from "./models/platform-schema.ts";
 export type {
@@ -2662,6 +2667,7 @@ export {
 export { paymentExtendedSchemaSchema } from "./zod/payment-extended-schema-schema.ts";
 export { paymentMethodSchemaSchema } from "./zod/payment-method-schema-schema.ts";
 export { paymentRequiredResponseSchemaSchema } from "./zod/payment-required-response-schema-schema.ts";
+export { paymentSchemaSchema } from "./zod/payment-schema-schema.ts";
 export { platformExtendedSchemaSchema } from "./zod/platform-extended-schema-schema.ts";
 export { platformSchemaSchema } from "./zod/platform-schema-schema.ts";
 export {

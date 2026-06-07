@@ -5,13 +5,15 @@
 
 import { z } from "@/lib/zod/index.ts";
 
+import { paymentSchemaSchema } from "./payment-schema-schema.ts";
+
 /**
  * @description Initiate subscription payment response description
  */
 export const initiateSubscriptionPaymentResponseSchemaSchema = z
   .object({
-    data: z.object({
-      paymentLink: z.string(),
-    }),
+    get data() {
+      return paymentSchemaSchema.describe("Payment description");
+    },
   })
   .describe("Initiate subscription payment response description");

@@ -784,6 +784,7 @@ export {
 export { paymentExtendedSchemaSchema } from "./payment-extended-schema-schema.ts";
 export { paymentMethodSchemaSchema } from "./payment-method-schema-schema.ts";
 export { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
+export { paymentSchemaSchema } from "./payment-schema-schema.ts";
 export { platformExtendedSchemaSchema } from "./platform-extended-schema-schema.ts";
 export { platformSchemaSchema } from "./platform-schema-schema.ts";
 export {
