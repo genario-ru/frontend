@@ -1105,7 +1105,6 @@ export { subscriptionExtendedSchemaSchema } from "./subscription-extended-schema
 export { subscriptionSchemaSchema } from "./subscription-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./tariff-discount-schema-schema.ts";
 export { tariffExtendedSchemaSchema } from "./tariff-extended-schema-schema.ts";
-export { tariffSchemaSchema } from "./tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./template-schema-schema.ts";
 export { toneSchemaSchema } from "./tone-schema-schema.ts";
 export { triggerSubscriptionsChargeResponseSchemaSchema } from "./trigger-subscriptions-charge-response-schema-schema.ts";

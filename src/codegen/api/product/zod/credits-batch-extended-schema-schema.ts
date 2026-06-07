@@ -6,7 +6,6 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { creditsPackageSchemaSchema } from "./credits-package-schema-schema.ts";
-import { subscriptionSchemaSchema } from "./subscription-schema-schema.ts";
 
 /**
  * @description Credits batch extended description
@@ -23,9 +22,6 @@ export const creditsBatchExtendedSchemaSchema = z
     expiresAt: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
-    get subscription() {
-      return z.union([subscriptionSchemaSchema, z.null()]).optional();
-    },
     get creditsPackage() {
       return z.union([creditsPackageSchemaSchema, z.null()]).optional();
     },

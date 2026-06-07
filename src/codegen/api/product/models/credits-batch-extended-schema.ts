@@ -4,7 +4,6 @@
  */
 
 import type { CreditsPackageSchema } from "./credits-package-schema.ts";
-import type { SubscriptionSchema } from "./subscription-schema.ts";
 
 export const creditsBatchExtendedSchemaStatusEnum = {
   pending: "pending",
@@ -56,6 +55,5 @@ export type CreditsBatchExtendedSchema = {
    * @type string
    */
   updatedAt: string;
-  subscription?: SubscriptionSchema | null;
   creditsPackage?: CreditsPackageSchema | null;
 };

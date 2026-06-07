@@ -1386,13 +1386,6 @@ export type {
 } from "./tariff-extended-schema.ts";
 export { tariffExtendedSchemaBillingPeriodEnum } from "./tariff-extended-schema.ts";
 export { tariffExtendedSchemaGenerationPriorityEnum } from "./tariff-extended-schema.ts";
-export type {
-  TariffSchema,
-  TariffSchemaBillingPeriodEnumKey,
-  TariffSchemaGenerationPriorityEnumKey,
-} from "./tariff-schema.ts";
-export { tariffSchemaBillingPeriodEnum } from "./tariff-schema.ts";
-export { tariffSchemaGenerationPriorityEnum } from "./tariff-schema.ts";
 export type { TemplateSchema } from "./template-schema.ts";
 export type { ToneSchema } from "./tone-schema.ts";
 export type { TriggerSubscriptionsChargeResponseSchema } from "./trigger-subscriptions-charge-response-schema.ts";

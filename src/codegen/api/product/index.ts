@@ -1473,13 +1473,6 @@ export type {
 } from "./models/tariff-extended-schema.ts";
 export { tariffExtendedSchemaBillingPeriodEnum } from "./models/tariff-extended-schema.ts";
 export { tariffExtendedSchemaGenerationPriorityEnum } from "./models/tariff-extended-schema.ts";
-export type {
-  TariffSchema,
-  TariffSchemaBillingPeriodEnumKey,
-  TariffSchemaGenerationPriorityEnumKey,
-} from "./models/tariff-schema.ts";
-export { tariffSchemaBillingPeriodEnum } from "./models/tariff-schema.ts";
-export { tariffSchemaGenerationPriorityEnum } from "./models/tariff-schema.ts";
 export type { TemplateSchema } from "./models/template-schema.ts";
 export type { ToneSchema } from "./models/tone-schema.ts";
 export type { TriggerSubscriptionsChargeResponseSchema } from "./models/trigger-subscriptions-charge-response-schema.ts";
@@ -2988,7 +2981,6 @@ export { subscriptionExtendedSchemaSchema } from "./zod/subscription-extended-sc
 export { subscriptionSchemaSchema } from "./zod/subscription-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./zod/tariff-discount-schema-schema.ts";
 export { tariffExtendedSchemaSchema } from "./zod/tariff-extended-schema-schema.ts";
-export { tariffSchemaSchema } from "./zod/tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./zod/template-schema-schema.ts";
 export { toneSchemaSchema } from "./zod/tone-schema-schema.ts";
 export { triggerSubscriptionsChargeResponseSchemaSchema } from "./zod/trigger-subscriptions-charge-response-schema-schema.ts";

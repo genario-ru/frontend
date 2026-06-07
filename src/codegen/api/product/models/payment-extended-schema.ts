@@ -3,9 +3,9 @@
  * Do not edit manually.
  */
 
-import type { CreditsPackageSchema } from "./credits-package-schema.ts";
+import type { CreditsBatchExtendedSchema } from "./credits-batch-extended-schema.ts";
 import type { PaymentMethodSchema } from "./payment-method-schema.ts";
-import type { TariffSchema } from "./tariff-schema.ts";
+import type { SubscriptionExtendedSchema } from "./subscription-extended-schema.ts";
 
 export const paymentExtendedSchemaStatusEnum = {
   pending: "pending",
@@ -60,6 +60,6 @@ export type PaymentExtendedSchema = {
    */
   updatedAt: string;
   paymentMethod?: PaymentMethodSchema | null;
-  tariff?: TariffSchema | null;
-  creditsPackage?: CreditsPackageSchema | null;
+  subscription?: SubscriptionExtendedSchema | null;
+  creditsBatch?: CreditsBatchExtendedSchema | null;
 };
