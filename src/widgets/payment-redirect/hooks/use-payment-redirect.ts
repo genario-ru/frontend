@@ -151,8 +151,9 @@ export function usePaymentRedirect({
     const isPaymentSubscriptionPending =
       paymentData?.data.subscription?.status === "pending";
 
-    const isPaymentSubscriptionActive =
-      paymentData?.data.subscription?.status === "active";
+    const isPaymentEntityActive =
+      paymentData?.data.subscription?.status === "active" ||
+      paymentData?.data.creditsBatch?.status === "active";
 
     if (isPaymentLoading) {
       setPaymentRedirectStatus("payment-loading");
@@ -160,7 +161,7 @@ export function usePaymentRedirect({
       setPaymentRedirectStatus("payment-error");
     } else if (isPaymentPending || isPaymentSubscriptionPending) {
       setPaymentRedirectStatus("payment-pending");
-    } else if (isPaymentSucceeded && isPaymentSubscriptionActive) {
+    } else if (isPaymentSucceeded && isPaymentEntityActive) {
       setPaymentRedirectStatus("payment-success");
       navigate({
         to: "/home",

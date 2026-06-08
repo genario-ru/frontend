@@ -28,8 +28,13 @@ export function useGetPayment({
           const isPaymentSubscriptionPending =
             query.state.data?.data.subscription?.status === "pending";
 
+          const isPaymentCreditsBatchPending =
+            query.state.data?.data.creditsBatch?.status === "pending";
+
           const isPendingStatus =
-            isPaymentPending || isPaymentSubscriptionPending;
+            isPaymentPending ||
+            isPaymentSubscriptionPending ||
+            isPaymentCreditsBatchPending;
 
           if (refetchOnPending && isPendingStatus) {
             return REFETCH_INTERVAL;
