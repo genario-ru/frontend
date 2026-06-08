@@ -76,6 +76,7 @@ export function BillingMySubscriptionsActions() {
                   Выбрать
                 </Button>
               }
+              className="flex-1"
             />
           );
         })}
