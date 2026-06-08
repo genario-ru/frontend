@@ -120,7 +120,7 @@ function PaymentPendingPlug({ onAction }: PlugWithActionProps) {
       size="lg"
       icon={ClockIcon}
       title="Ожидаем проведения платежа"
-      description="Ждем ответа от платежного провайдера и проводим активацию подписки"
+      description="Ждем ответа от платежного провайдера, после чего проводем активацию подписки"
       actions={
         <Button size="lg" className="mt-2" onClick={onAction}>
           Перейти к оплате
@@ -150,6 +150,7 @@ function PaymentSuccessPlug() {
   return (
     <Plug
       size="lg"
+      variant="positive"
       icon={CircleCheckIcon}
       title="Все получилось!"
       description="Перенаправляем вас в личный кабинет"
