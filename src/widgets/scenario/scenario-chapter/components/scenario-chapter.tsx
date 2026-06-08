@@ -3,7 +3,6 @@ import {
   ScenarioChapterHeader,
   ScenarioChapterHeaderSkeleton,
 } from "@/features/scenario/scenario-chapter/scenario-chapter-header/components/scenario-chapter-header";
-import { GenerationAlert } from "@/shared/components/common/generation-alert";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
 
@@ -68,16 +67,6 @@ export function ScenarioChapter({ scenarioId }: ScenarioChapterProps) {
         videoTypeSlug={scenarioVideoType?.slug ?? "long"}
       />
     </div>
-  );
-}
-
-export function ScenarioChapterGeneratingAlert() {
-  return (
-    <GenerationAlert
-      title="Генерируем сценарий"
-      description="Генерируем для вас сценарий, подождите несколько секунд"
-      className="flex-1 rounded-b-none"
-    />
   );
 }
 

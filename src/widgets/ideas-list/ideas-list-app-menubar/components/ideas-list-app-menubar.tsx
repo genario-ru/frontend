@@ -30,16 +30,24 @@ export function IdeasListAppMenubar({
   } = useIdeasListAppMenubar({ ideasListId });
 
   const title = useMemo(() => {
-    if (isIdeasListLoading || isGenerating) {
-      return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
+    if (isIdeasListLoading) {
+      return <IdeasListAppMenubarTitleSkeleton />;
+    }
+
+    if (!ideasListTitle && isGenerating) {
+      return <IdeasListAppMenubarTitleSkeleton />;
     }
 
     return ideasListTitle;
   }, [ideasListTitle, isIdeasListLoading, isGenerating]);
 
   const description = useMemo(() => {
-    if (isIdeasListLoading || isGenerating) {
-      return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
+    if (isIdeasListLoading) {
+      return <IdeasListAppMenubarDescriptionSkeleton />;
+    }
+
+    if (!ideasListDescription && isGenerating) {
+      return <IdeasListAppMenubarDescriptionSkeleton />;
     }
 
     return ideasListDescription;
@@ -116,4 +124,12 @@ export function IdeasListAppMenubar({
       bottom={bottom}
     />
   );
+}
+
+function IdeasListAppMenubarTitleSkeleton() {
+  return <TextSkeleton fontSize={24} lineHeight={32} className="w-64" />;
+}
+
+function IdeasListAppMenubarDescriptionSkeleton() {
+  return <TextSkeleton fontSize={16} lineHeight={24} linesCount={2} />;
 }
