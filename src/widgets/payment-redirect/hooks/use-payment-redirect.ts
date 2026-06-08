@@ -46,6 +46,12 @@ export function usePaymentRedirect({
     }
   }, [redirect]);
 
+  const handleRedirectToPayment = useCallback(() => {
+    if (paymentData?.data.paymentLink) {
+      window.location.href = paymentData.data.paymentLink;
+    }
+  }, [paymentData]);
+
   const handleInitiatePayment = useCallback(() => {
     if (tariffSlug) {
       setPaymentRedirectStatus("initiate-payment-pending");
@@ -168,6 +174,7 @@ export function usePaymentRedirect({
 
   return {
     paymentRedirectStatus,
+    handleRedirectToPayment,
     handleInitiatePayment,
   };
 }

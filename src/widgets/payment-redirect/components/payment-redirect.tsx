@@ -1,4 +1,4 @@
-import { CircleCheckIcon, LoaderIcon } from "lucide-react";
+import { CircleCheckIcon, ClockIcon, LoaderIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import type { PaymentRedirectSearch } from "@/routes/_with-auth/_without-subscription/payment-redirect";
@@ -22,7 +22,11 @@ export function PaymentRedirect({
   creditsPackageSlug,
   paymentId,
 }: PaymentRedirectProps) {
-  const { paymentRedirectStatus, handleInitiatePayment } = usePaymentRedirect({
+  const {
+    paymentRedirectStatus,
+    handleRedirectToPayment,
+    handleInitiatePayment,
+  } = usePaymentRedirect({
     redirect,
     tariffSlug,
     trialTariffSlug,
@@ -41,7 +45,7 @@ export function PaymentRedirect({
       case "payment-loading":
         return <PaymentLoadingPlug />;
       case "payment-pending":
-        return <PaymentPendingPlug />;
+        return <PaymentPendingPlug onAction={handleRedirectToPayment} />;
       case "payment-error":
         return <PaymentErrorPlug onAction={handleInitiatePayment} />;
       case "payment-success":
@@ -49,7 +53,7 @@ export function PaymentRedirect({
       default:
         return null;
     }
-  }, [paymentRedirectStatus, handleInitiatePayment]);
+  }, [paymentRedirectStatus, handleInitiatePayment, handleRedirectToPayment]);
 
   return (
     <Island grow className="justify-center">
@@ -110,13 +114,18 @@ function PaymentLoadingPlug() {
   );
 }
 
-function PaymentPendingPlug() {
+function PaymentPendingPlug({ onAction }: PlugWithActionProps) {
   return (
     <Plug
       size="lg"
-      icon={LoaderIcon}
+      icon={ClockIcon}
       title="Ожидаем проведения платежа"
       description="Ждем ответа от платежного провайдера и проводим активацию подписки"
+      actions={
+        <Button size="lg" className="mt-2" onClick={onAction}>
+          Перейти к оплате
+        </Button>
+      }
     />
   );
 }
