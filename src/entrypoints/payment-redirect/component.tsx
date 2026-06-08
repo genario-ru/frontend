@@ -7,8 +7,13 @@ import { PaymentRedirectFooter } from "@/widgets/payment-redirect/components/pay
 import { PaymentRedirectHeader } from "@/widgets/payment-redirect/components/payment-redirect-header";
 
 export function PaymentRedirectComponent() {
-  const { redirect, tariffSlug, trialTariffSlug, creditsPackageSlug } =
-    useSearch({ from: "/_with-auth/_without-subscription/payment-redirect" });
+  const {
+    redirect,
+    tariffSlug,
+    trialTariffSlug,
+    creditsPackageSlug,
+    paymentId,
+  } = useSearch({ from: "/_with-auth/_without-subscription/payment-redirect" });
 
   return (
     <PageLayout className="h-fit min-h-full">
@@ -19,6 +24,7 @@ export function PaymentRedirectComponent() {
           tariffSlug={tariffSlug}
           trialTariffSlug={trialTariffSlug}
           creditsPackageSlug={creditsPackageSlug}
+          paymentId={paymentId}
         />
       </ContentLayout>
       <PaymentRedirectFooter />

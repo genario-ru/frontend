@@ -10,11 +10,15 @@ const paymentRedirectSearchSchema = z
     tariffSlug: z.string().optional(),
     trialTariffSlug: z.string().optional(),
     creditsPackageSlug: z.string().optional(),
+    paymentId: z.string().optional(),
   })
-  .refine((data) => data.tariffSlug || data.creditsPackageSlug, {
-    path: ["tariffSlug", "creditsPackageSlug"],
-    message: "Необходимо выбрать тариф или пакет кредитов",
-  });
+  .refine(
+    (data) => data.tariffSlug || data.creditsPackageSlug || data.paymentId,
+    {
+      path: ["tariffSlug", "creditsPackageSlug", "paymentId"],
+      message: "В ссылке отсутствуют обязательные параметры",
+    },
+  );
 
 export type PaymentRedirectSearch = z.infer<typeof paymentRedirectSearchSchema>;
 

@@ -16,11 +16,11 @@ export type PaymentOperationData = {
 };
 
 function formatOperationTitle(payment: PaymentExtendedSchema): string {
-  if (payment.tariff) {
+  if (payment.subscription) {
     return "Оплата подписки";
   }
 
-  if (payment.creditsPackage) {
+  if (payment.creditsBatch) {
     return "Покупка кредитов";
   }
 
@@ -53,7 +53,7 @@ export function formatPaymentOperation(
     id: payment.id,
     title: formatOperationTitle(payment),
     status: payment.status,
-    tariffName: payment.tariff?.name ?? null,
+    tariffName: payment.subscription?.tariff.name ?? null,
     formattedAmount: formatAmount(payment.amount, payment.currency),
     formattedDate: formatDate(payment.createdAt),
   };

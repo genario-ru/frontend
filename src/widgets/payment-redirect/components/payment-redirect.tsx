@@ -11,82 +11,139 @@ import { usePaymentRedirect } from "../hooks/use-payment-redirect";
 
 type PaymentRedirectProps = PaymentRedirectSearch;
 
+type PlugWithActionProps = {
+  onAction: () => void;
+};
+
 export function PaymentRedirect({
   redirect,
   tariffSlug,
   trialTariffSlug,
   creditsPackageSlug,
+  paymentId,
 }: PaymentRedirectProps) {
-  const {
-    handleInitiatePayment,
-    isInitiatePaymentPending,
-    isInitiatePaymentError,
-    isInitiatePaymentSuccess,
-  } = usePaymentRedirect({
+  const { paymentRedirectStatus, handleInitiatePayment } = usePaymentRedirect({
     redirect,
     tariffSlug,
     trialTariffSlug,
     creditsPackageSlug,
+    paymentId,
   });
 
   const body = useMemo(() => {
-    if (isInitiatePaymentPending) {
-      return (
-        <Plug
-          size="lg"
-          icon={LoaderIcon}
-          title="Готовим ссылку для оплаты"
-          description="Вы будете перенаправлены на страницу оплаты через несколько секунд"
-          iconClassName="animate-spin"
-        />
-      );
+    switch (paymentRedirectStatus) {
+      case "initiate-payment-pending":
+        return <InitiatePaymentPendingPlug />;
+      case "initiate-payment-error":
+        return <InitiatePaymentErrorPlug onAction={handleInitiatePayment} />;
+      case "initiate-payment-success":
+        return <InitiatePaymentSuccessPlug />;
+      case "payment-loading":
+        return <PaymentLoadingPlug />;
+      case "payment-pending":
+        return <PaymentPendingPlug />;
+      case "payment-error":
+        return <PaymentErrorPlug onAction={handleInitiatePayment} />;
+      case "payment-success":
+        return <PaymentSuccessPlug />;
+      default:
+        return null;
     }
-
-    if (isInitiatePaymentError) {
-      return (
-        <Plug
-          size="lg"
-          variant="negative"
-          title="Ошибка"
-          description={`Не удалось инициировать оплату.${CRLF}Попробуйте ещё раз или повторите попытку позднее`}
-          actions={
-            <Button size="lg" className="mt-2" onClick={handleInitiatePayment}>
-              Попробовать снова
-            </Button>
-          }
-        />
-      );
-    }
-
-    if (isInitiatePaymentSuccess) {
-      return (
-        <Plug
-          size="lg"
-          icon={CircleCheckIcon}
-          title="Перенаправляем на страницу оплаты"
-          description="Пожалуйста, подождите несколько секунд"
-        />
-      );
-    }
-
-    return (
-      <Plug
-        size="lg"
-        icon={CircleCheckIcon}
-        title="Ожидаем инициализацию оплаты"
-        description="Пожалуйста, подождите несколько секунд"
-      />
-    );
-  }, [
-    isInitiatePaymentPending,
-    isInitiatePaymentError,
-    isInitiatePaymentSuccess,
-    handleInitiatePayment,
-  ]);
+  }, [paymentRedirectStatus, handleInitiatePayment]);
 
   return (
     <Island grow className="justify-center">
       {body}
     </Island>
+  );
+}
+
+function InitiatePaymentPendingPlug() {
+  return (
+    <Plug
+      size="lg"
+      icon={LoaderIcon}
+      title="Готовим ссылку для оплаты"
+      description="Вы будете перенаправлены на страницу оплаты через несколько секунд"
+      iconClassName="animate-spin"
+    />
+  );
+}
+
+function InitiatePaymentErrorPlug({ onAction }: PlugWithActionProps) {
+  return (
+    <Plug
+      size="lg"
+      variant="negative"
+      title="Ошибка"
+      description={`Не удалось инициировать оплату.${CRLF}Попробуйте ещё раз или повторите попытку позднее`}
+      actions={
+        <Button size="lg" className="mt-2" onClick={onAction}>
+          Попробовать снова
+        </Button>
+      }
+    />
+  );
+}
+
+function InitiatePaymentSuccessPlug() {
+  return (
+    <Plug
+      size="lg"
+      variant="positive"
+      icon={CircleCheckIcon}
+      title="Перенаправляем на страницу оплаты"
+      description="Пожалуйста, подождите несколько секунд"
+    />
+  );
+}
+
+function PaymentLoadingPlug() {
+  return (
+    <Plug
+      size="lg"
+      icon={LoaderIcon}
+      title="Загружаем платеж"
+      description="Получаем информацию о вашем платеже"
+      iconClassName="animate-spin"
+    />
+  );
+}
+
+function PaymentPendingPlug() {
+  return (
+    <Plug
+      size="lg"
+      icon={LoaderIcon}
+      title="Ожидаем проведения платежа"
+      description="Ждем ответа от платежного провайдера и проводим активацию подписки"
+    />
+  );
+}
+
+function PaymentErrorPlug({ onAction }: PlugWithActionProps) {
+  return (
+    <Plug
+      size="lg"
+      variant="negative"
+      title="Ошибка платежа"
+      description="Не удалось провести платеж. Попробуйте ещё раз или повторите попытку позднее"
+      actions={
+        <Button size="lg" className="mt-2" onClick={onAction}>
+          Попробовать ещё раз
+        </Button>
+      }
+    />
+  );
+}
+
+function PaymentSuccessPlug() {
+  return (
+    <Plug
+      size="lg"
+      icon={CircleCheckIcon}
+      title="Все получилось!"
+      description="Перенаправляем вас в личный кабинет"
+    />
   );
 }
