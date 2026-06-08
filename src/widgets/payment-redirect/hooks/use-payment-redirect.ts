@@ -1,4 +1,5 @@
 import { useMount } from "@siberiacancode/reactuse";
+import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useGetPayment } from "@/actions/billing/hooks/use-get-payment";
@@ -25,6 +26,8 @@ export function usePaymentRedirect({
   creditsPackageSlug,
   paymentId,
 }: UsePaymentRedirectParams) {
+  const navigate = useNavigate();
+
   const [paymentRedirectStatus, setPaymentRedirectStatus] =
     useState<PaymentRedirectStatus | null>(null);
 
@@ -153,8 +156,13 @@ export function usePaymentRedirect({
       setPaymentRedirectStatus("payment-pending");
     } else if (isPaymentSucceeded && isPaymentSubscriptionActive) {
       setPaymentRedirectStatus("payment-success");
+      navigate({
+        to: "/home",
+        replace: true,
+        reloadDocument: true,
+      });
     }
-  }, [paymentData, isPaymentLoading, isPaymentError]);
+  }, [paymentData, isPaymentLoading, isPaymentError, navigate]);
 
   useMount(handleMount);
 
