@@ -6,6 +6,6 @@ export const operationStatusColor: Record<
 > = {
   pending: "neutral",
   succeeded: "positive",
-  canceled: "neutral",
+  canceled: "negative",
   failed: "negative",
 };

@@ -1,4 +1,10 @@
-import { ArrowUpRightIcon, ReceiptIcon } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  BanknoteArrowUpIcon,
+  BanknoteIcon,
+  BanknoteXIcon,
+} from "lucide-react";
+import { useMemo } from "react";
 
 import type { PaymentExtendedSchemaStatusEnumKey } from "@/codegen/api/product";
 import { Badge } from "@/shared/components/ui/badge";
@@ -29,14 +35,26 @@ export function BillingMyRecentOperationCard({
   formattedDate,
   paymentLink,
 }: BillingMyRecentOperationCardProps) {
+  const icon = useMemo(() => {
+    switch (status) {
+      case "pending":
+        return BanknoteIcon;
+      case "succeeded":
+        return BanknoteArrowUpIcon;
+      case "canceled":
+        return BanknoteXIcon;
+      case "failed":
+        return BanknoteXIcon;
+      default:
+        return BanknoteIcon;
+    }
+  }, [status]);
+
   return (
     <div className="bg-neutral-2 flex justify-between gap-4 rounded-2xl px-4 py-3">
       <div className="flex h-full flex-col justify-between gap-2">
         <div className="flex items-center gap-2">
-          <LucideIcon
-            icon={ReceiptIcon}
-            className={cn(operationIconColor[status])}
-          />
+          <LucideIcon icon={icon} className={cn(operationIconColor[status])} />
           <span className="font-medium">{title}</span>
         </div>
         <div className="flex flex-wrap gap-1">
