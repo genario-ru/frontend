@@ -1,19 +1,7 @@
 import { format, isToday, isYesterday } from "date-fns";
 import { ru } from "date-fns/locale";
 
-import type {
-  PaymentExtendedSchema,
-  PaymentExtendedSchemaStatusEnumKey,
-} from "@/codegen/api/product";
-
-export type PaymentOperationData = {
-  id: string;
-  title: string;
-  status: PaymentExtendedSchemaStatusEnumKey;
-  tariffName: string | null;
-  formattedAmount: string;
-  formattedDate: string;
-};
+import type { PaymentExtendedSchema } from "@/codegen/api/product";
 
 function formatOperationTitle(payment: PaymentExtendedSchema): string {
   if (payment.subscription) {
@@ -46,9 +34,7 @@ function formatDate(dateString: string): string {
   return format(date, "d MMMM yyyy, HH:mm:ss", { locale: ru });
 }
 
-export function formatPaymentOperation(
-  payment: PaymentExtendedSchema,
-): PaymentOperationData {
+export function formatPaymentOperation(payment: PaymentExtendedSchema) {
   return {
     id: payment.id,
     title: formatOperationTitle(payment),
@@ -56,5 +42,6 @@ export function formatPaymentOperation(
     tariffName: payment.subscription?.tariff.name ?? null,
     formattedAmount: formatAmount(payment.amount, payment.currency),
     formattedDate: formatDate(payment.createdAt),
+    paymentLink: payment.paymentLink,
   };
 }

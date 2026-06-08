@@ -35,6 +35,7 @@ export function BillingMyRecentOperationsList() {
           tariffName={operation.tariffName}
           formattedAmount={operation.formattedAmount}
           formattedDate={operation.formattedDate}
+          paymentLink={operation.paymentLink}
         />
       ))}
     </div>
