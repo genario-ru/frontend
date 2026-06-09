@@ -6,14 +6,14 @@ import { cn } from "@/shared/utils/cn";
 
 const radioCardsGroupItemVariants = cva(
   cn(
-    "flex flex-col items-center font-medium bg-neutral-1 ring ring-neutral-4 duration-200 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 hover:bg-neutral-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
+    "flex items-center font-medium bg-neutral-1 ring ring-neutral-4 duration-200 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 hover:bg-neutral-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
   ),
   {
     variants: {
       size: {
         sm: "gap-1 rounded-xl px-3 py-2",
-        base: "gap-1 rounded-2xl p-3.5",
-        lg: "gap-1.5 rounded-3xl p-4",
+        base: "gap-2 rounded-2xl p-3.5",
+        lg: "gap-3 rounded-3xl p-4",
       },
       state: {
         default:

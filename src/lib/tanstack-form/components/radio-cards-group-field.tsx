@@ -38,12 +38,13 @@ export const RadioCardsGroupField = ({
   const itemState = errors.length > 0 ? "error" : "default";
 
   return (
-    <FieldLayout labelText={label} message={errors[0]} className={className}>
+    <FieldLayout labelText={label} message={errors[0]}>
       <RadioCardsGroup
         defaultValue={defaultValue}
         value={value}
         onBlur={handleBlur}
         onValueChange={handleChange}
+        className={className}
       >
         {items.map((item) => (
           <RadioCardsGroupItem
@@ -52,8 +53,8 @@ export const RadioCardsGroupField = ({
             className={itemClassName}
             state={itemState}
           >
-            {item.label}
             {item.icon && <LucideIcon icon={item.icon} />}
+            {item.label}
           </RadioCardsGroupItem>
         ))}
       </RadioCardsGroup>

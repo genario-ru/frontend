@@ -1,3 +1,5 @@
+import { PlusIcon } from "lucide-react";
+
 import type { PaymentMethodSchema } from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -37,10 +39,10 @@ export function CreditsPackagePaymentMethodDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="max-w-xl">
         <DialogPredefinedHeader
-          title="Оплата пакета кредитов"
-          description={`Пакет «${packageTitle}» за ${packagePriceLabel}. При оплате сохранённой картой деньги будут списаны с неё сразу, без перехода на страницу банка. Кредиты будут зачислены после подтверждения оплаты`}
+          title={`Покупка пакета «${packageTitle}» за ${packagePriceLabel}`}
+          description={`При оплате сохранённым способом оплаты деньги будут списаны с неё сразу, без перехода на страницу банка. Кредиты будут зачислены после подтверждения оплаты`}
         />
         <form onSubmit={onFormSubmit} className="flex flex-col">
           <DialogBody>
@@ -48,25 +50,24 @@ export function CreditsPackagePaymentMethodDialog({
               {(field) => (
                 <field.RadioCardsGroupField
                   items={paymentMethodItems}
-                  itemClassName="flex-1 flex-row items-center justify-center gap-2"
+                  className="flex-col"
+                  itemClassName="w-full flex-row"
                 />
               )}
             </form.AppField>
+          </DialogBody>
+          <DialogFooter>
             <Button
               type="button"
               variant="neutral"
               priority="secondary"
-              className="w-full"
+              icon={<PlusIcon />}
               onClick={onPayWithNewCard}
             >
               Оплатить новой картой
             </Button>
-          </DialogBody>
-          <DialogFooter>
             <form.AppForm>
-              <form.SubmitButton variant="accent" className="w-full">
-                Оплатить
-              </form.SubmitButton>
+              <form.SubmitButton variant="accent">Оплатить</form.SubmitButton>
             </form.AppForm>
           </DialogFooter>
         </form>
