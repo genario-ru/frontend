@@ -16,4 +16,8 @@ export type InitiateCreditsPackagePaymentBodySchema = {
    * @type string | undefined
    */
   redirect?: string;
+  /**
+   * @type string | undefined, uuid
+   */
+  paymentMethodId?: string;
 };

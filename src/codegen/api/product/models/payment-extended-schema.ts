@@ -5,7 +5,7 @@
 
 import type { CreditsBatchExtendedSchema } from "./credits-batch-extended-schema.ts";
 import type { PaymentMethodSchema } from "./payment-method-schema.ts";
-import type { SubscriptionExtendedSchema } from "./subscription-extended-schema.ts";
+import type { SubscriptionWithTariffSchema } from "./subscription-with-tariff-schema.ts";
 
 export const paymentExtendedSchemaStatusEnum = {
   pending: "pending",
@@ -60,6 +60,6 @@ export type PaymentExtendedSchema = {
    */
   updatedAt: string;
   paymentMethod?: PaymentMethodSchema | null;
-  subscription?: SubscriptionExtendedSchema | null;
+  subscription?: SubscriptionWithTariffSchema | null;
   creditsBatch?: CreditsBatchExtendedSchema | null;
 };

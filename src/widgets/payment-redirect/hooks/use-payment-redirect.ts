@@ -24,6 +24,7 @@ export function usePaymentRedirect({
   tariffSlug,
   trialTariffSlug,
   creditsPackageSlug,
+  paymentMethodId,
   paymentId,
 }: UsePaymentRedirectParams) {
   const navigate = useNavigate();
@@ -93,10 +94,26 @@ export function usePaymentRedirect({
         {
           data: {
             creditsPackageSlug,
+            paymentMethodId,
           },
         },
         {
-          onSuccess: ({ data: { paymentLink } }) => {
+          onSuccess: ({ data: { id, paymentLink } }) => {
+            // Оплата сохраненным способом проходит без редиректа в ЮКассу:
+            // переходим к отслеживанию статуса платежа. creditsPackageSlug и
+            // paymentMethodId оставляем в search, чтобы при ошибке платежа
+            // работала повторная инициация оплаты.
+            if (paymentMethodId) {
+              setPaymentRedirectStatus("initiate-payment-success");
+              navigate({
+                to: "/payment-redirect",
+                search: { paymentId: id, creditsPackageSlug, paymentMethodId },
+                replace: true,
+              });
+
+              return;
+            }
+
             if (!paymentLink) {
               setPaymentRedirectStatus("initiate-payment-error");
               showErrorToast({
@@ -128,9 +145,11 @@ export function usePaymentRedirect({
     }
   }, [
     creditsPackageSlug,
+    paymentMethodId,
     tariffSlug,
     trialTariffSlug,
     redirectUrl,
+    navigate,
     showErrorToast,
     initiateCreditsPackagePayment,
     initiateSubscriptionPayment,
@@ -175,6 +194,7 @@ export function usePaymentRedirect({
 
   return {
     paymentRedirectStatus,
+    hasPaymentLink: Boolean(paymentData?.data.paymentLink),
     handleRedirectToPayment,
     handleInitiatePayment,
   };

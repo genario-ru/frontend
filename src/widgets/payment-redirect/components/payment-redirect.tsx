@@ -20,10 +20,12 @@ export function PaymentRedirect({
   tariffSlug,
   trialTariffSlug,
   creditsPackageSlug,
+  paymentMethodId,
   paymentId,
 }: PaymentRedirectProps) {
   const {
     paymentRedirectStatus,
+    hasPaymentLink,
     handleRedirectToPayment,
     handleInitiatePayment,
   } = usePaymentRedirect({
@@ -31,6 +33,7 @@ export function PaymentRedirect({
     tariffSlug,
     trialTariffSlug,
     creditsPackageSlug,
+    paymentMethodId,
     paymentId,
   });
 
@@ -45,7 +48,11 @@ export function PaymentRedirect({
       case "payment-loading":
         return <PaymentLoadingPlug />;
       case "payment-pending":
-        return <PaymentPendingPlug onAction={handleRedirectToPayment} />;
+        return (
+          <PaymentPendingPlug
+            onAction={hasPaymentLink ? handleRedirectToPayment : undefined}
+          />
+        );
       case "payment-error":
         return <PaymentErrorPlug onAction={handleInitiatePayment} />;
       case "payment-success":
@@ -53,7 +60,12 @@ export function PaymentRedirect({
       default:
         return null;
     }
-  }, [paymentRedirectStatus, handleInitiatePayment, handleRedirectToPayment]);
+  }, [
+    paymentRedirectStatus,
+    hasPaymentLink,
+    handleInitiatePayment,
+    handleRedirectToPayment,
+  ]);
 
   return (
     <Island grow className="justify-center">
@@ -114,18 +126,24 @@ function PaymentLoadingPlug() {
   );
 }
 
-function PaymentPendingPlug({ onAction }: PlugWithActionProps) {
+function PaymentPendingPlug({ onAction }: Partial<PlugWithActionProps>) {
+  const actions = useMemo(() => {
+    if (onAction) {
+      return (
+        <Button size="lg" className="mt-2" onClick={onAction}>
+          Перейти к оплате
+        </Button>
+      );
+    }
+  }, [onAction]);
+
   return (
     <Plug
       size="lg"
       icon={ClockIcon}
       title="Ожидаем проведения платежа"
       description="Ждем ответа от платежного провайдера, после чего проводем активацию подписки"
-      actions={
-        <Button size="lg" className="mt-2" onClick={onAction}>
-          Перейти к оплате
-        </Button>
-      }
+      actions={actions}
     />
   );
 }

@@ -2,10 +2,6 @@ import { StarIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  ButtonLink,
-  type ButtonLinkProps,
-} from "@/shared/components/ui/button-link";
 import { cn } from "@/shared/utils/cn";
 
 type CreditsPackageCardProps = {
@@ -14,7 +10,7 @@ type CreditsPackageCardProps = {
   description: string | null;
   metricBadges: ReactNode;
   isPreferred: boolean;
-  buttonLinkProps: ButtonLinkProps;
+  button: ReactNode;
 };
 
 export function CreditsPackageCard({
@@ -23,7 +19,7 @@ export function CreditsPackageCard({
   description,
   metricBadges,
   isPreferred,
-  buttonLinkProps,
+  button,
 }: CreditsPackageCardProps) {
   return (
     <div
@@ -57,13 +53,7 @@ export function CreditsPackageCard({
         )}
         {metricBadges}
       </div>
-      <ButtonLink
-        variant={isPreferred ? "accent" : "neutral"}
-        priority={isPreferred ? "primary" : "secondary"}
-        size="base"
-        className="w-full"
-        {...buttonLinkProps}
-      />
+      {button}
     </div>
   );
 }

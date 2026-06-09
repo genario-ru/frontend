@@ -12,5 +12,6 @@ export const initiateCreditsPackagePaymentBodySchemaSchema = z
   .object({
     creditsPackageSlug: z.string(),
     redirect: z.optional(z.string()),
+    paymentMethodId: z.optional(z.uuid()),
   })
   .describe("Initiate credits package payment body description");

@@ -10,6 +10,7 @@ const paymentRedirectSearchSchema = z
     tariffSlug: z.string().optional(),
     trialTariffSlug: z.string().optional(),
     creditsPackageSlug: z.string().optional(),
+    paymentMethodId: z.string().optional(),
     paymentId: z.string().optional(),
   })
   .refine(

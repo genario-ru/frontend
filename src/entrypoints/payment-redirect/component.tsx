@@ -12,6 +12,7 @@ export function PaymentRedirectComponent() {
     tariffSlug,
     trialTariffSlug,
     creditsPackageSlug,
+    paymentMethodId,
     paymentId,
   } = useSearch({ from: "/_with-auth/_without-subscription/payment-redirect" });
 
@@ -24,6 +25,7 @@ export function PaymentRedirectComponent() {
           tariffSlug={tariffSlug}
           trialTariffSlug={trialTariffSlug}
           creditsPackageSlug={creditsPackageSlug}
+          paymentMethodId={paymentMethodId}
           paymentId={paymentId}
         />
       </ContentLayout>

@@ -1103,8 +1103,10 @@ export { signInEmailOtpResponseSchemaSchema } from "./sign-in-email-otp-response
 export { signOutResponseSchemaSchema } from "./sign-out-response-schema-schema.ts";
 export { subscriptionExtendedSchemaSchema } from "./subscription-extended-schema-schema.ts";
 export { subscriptionSchemaSchema } from "./subscription-schema-schema.ts";
+export { subscriptionWithTariffSchemaSchema } from "./subscription-with-tariff-schema-schema.ts";
 export { tariffDiscountSchemaSchema } from "./tariff-discount-schema-schema.ts";
 export { tariffExtendedSchemaSchema } from "./tariff-extended-schema-schema.ts";
+export { tariffSchemaSchema } from "./tariff-schema-schema.ts";
 export { templateSchemaSchema } from "./template-schema-schema.ts";
 export { toneSchemaSchema } from "./tone-schema-schema.ts";
 export { triggerSubscriptionsChargeResponseSchemaSchema } from "./trigger-subscriptions-charge-response-schema-schema.ts";

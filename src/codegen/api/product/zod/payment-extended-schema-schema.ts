@@ -7,7 +7,7 @@ import { z } from "@/lib/zod/index.ts";
 
 import { creditsBatchExtendedSchemaSchema } from "./credits-batch-extended-schema-schema.ts";
 import { paymentMethodSchemaSchema } from "./payment-method-schema-schema.ts";
-import { subscriptionExtendedSchemaSchema } from "./subscription-extended-schema-schema.ts";
+import { subscriptionWithTariffSchemaSchema } from "./subscription-with-tariff-schema-schema.ts";
 
 /**
  * @description Payment extended description
@@ -29,7 +29,7 @@ export const paymentExtendedSchemaSchema = z
       return z.union([paymentMethodSchemaSchema, z.null()]).optional();
     },
     get subscription() {
-      return z.union([subscriptionExtendedSchemaSchema, z.null()]).optional();
+      return z.union([subscriptionWithTariffSchemaSchema, z.null()]).optional();
     },
     get creditsBatch() {
       return z.union([creditsBatchExtendedSchemaSchema, z.null()]).optional();

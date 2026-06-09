@@ -1,6 +1,7 @@
 import { RotateCwIcon } from "lucide-react";
 
 import { CreditsPackageCard } from "@/features/credits/credits-package-card/components/credits-package-card";
+import { CreditsPackagePaymentMethodDialog } from "@/features/credits/credits-package-payment-method-dialog/components/credits-package-payment-method-dialog";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
@@ -8,6 +9,7 @@ import { Plug } from "@/shared/components/ui/plug";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { useReloadPage } from "@/shared/hooks/use-reload-page";
 
+import { useCreditsPackagePurchase } from "../hooks/use-credits-package-purchase";
 import { useCreditsPackagesList } from "../hooks/use-credits-packages-list";
 
 type CreditsPackagesListProps = {
@@ -22,6 +24,15 @@ export function CreditsPackagesList({
     isCreditsPackagesLoading,
     isCreditsPackagesError,
   } = useCreditsPackagesList();
+
+  const {
+    paymentMethods,
+    selectedPackageView,
+    handlePurchaseClick,
+    handleDialogOpenChange,
+    handlePayWithSavedMethod,
+    handlePayWithNewCard,
+  } = useCreditsPackagePurchase({ redirect });
 
   if (isCreditsPackagesLoading) {
     return <CreditsPackagesListSkeleton />;
@@ -44,14 +55,17 @@ export function CreditsPackagesList({
           priceLabel={view.priceLabel}
           description={view.description}
           isPreferred={view.isPreferred}
-          buttonLinkProps={{
-            to: "/payment-redirect",
-            search: {
-              redirect,
-              creditsPackageSlug: view.slug,
-            },
-            children: view.purchaseButtonLabel,
-          }}
+          button={
+            <Button
+              variant={view.isPreferred ? "accent" : "neutral"}
+              priority={view.isPreferred ? "primary" : "secondary"}
+              size="base"
+              className="w-full"
+              onClick={() => handlePurchaseClick(view)}
+            >
+              {view.purchaseButtonLabel}
+            </Button>
+          }
           metricBadges={view.metricBadgeLabels.map((label) => (
             <Badge
               key={label}
@@ -64,6 +78,17 @@ export function CreditsPackagesList({
           ))}
         />
       ))}
+      {selectedPackageView && (
+        <CreditsPackagePaymentMethodDialog
+          isOpen
+          setIsOpen={handleDialogOpenChange}
+          packageTitle={selectedPackageView.title}
+          packagePriceLabel={selectedPackageView.priceLabel}
+          paymentMethods={paymentMethods}
+          onPayWithSavedMethod={handlePayWithSavedMethod}
+          onPayWithNewCard={handlePayWithNewCard}
+        />
+      )}
     </>
   );
 }
