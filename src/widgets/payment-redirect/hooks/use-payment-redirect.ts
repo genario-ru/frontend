@@ -66,7 +66,7 @@ export function usePaymentRedirect({
               return;
             }
 
-            setPaymentRedirectStatus("payment-pending");
+            setPaymentRedirectStatus("payment-loading");
             navigate({
               to: "/payment-redirect",
               search: (previousSearch) => ({
@@ -104,7 +104,7 @@ export function usePaymentRedirect({
               return;
             }
 
-            setPaymentRedirectStatus("payment-pending");
+            setPaymentRedirectStatus("payment-loading");
             navigate({
               to: "/payment-redirect",
               search: (previousSearch) => ({
