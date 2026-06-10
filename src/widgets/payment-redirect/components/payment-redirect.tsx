@@ -11,7 +11,6 @@ import type { PaymentRedirectSearch } from "@/routes/_with-auth/_without-subscri
 import { Button } from "@/shared/components/ui/button";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
-import { CRLF } from "@/shared/constants/unicode";
 
 import { usePaymentRedirect } from "../hooks/use-payment-redirect";
 
@@ -96,7 +95,7 @@ function InitiatePaymentErrorPlug({ onAction }: PlugWithActionProps) {
       size="lg"
       variant="negative"
       title="Не удалось создать платёж"
-      description={`Деньги не были списаны.${CRLF}Попробуйте ещё раз — если ошибка повторится, напишите в поддержку`}
+      description="Деньги не были списаны. Попробуйте ещё раз — если ошибка повторится, напишите в поддержку"
       actions={
         <Button
           size="lg"
@@ -144,7 +143,7 @@ function PaymentPendingPlug({ onAction }: Partial<PlugWithActionProps>) {
       size="lg"
       icon={ClockIcon}
       title="Ожидаем подтверждения оплаты"
-      description={`Ждём ответа от платёжной системы — обычно это занимает меньше минуты.${CRLF}Как только оплата подтвердится, подписка или пакет кредитов активируются автоматически, страница обновится сама`}
+      description="Ждём ответа от платёжной системы — обычно это занимает меньше минуты. Как только оплата подтвердится, подписка или пакет кредитов активируются автоматически, страница обновится сама"
       actions={actions}
     />
   );
@@ -156,7 +155,7 @@ function PaymentErrorPlug({ onAction }: PlugWithActionProps) {
       size="lg"
       variant="negative"
       title="Платёж не прошёл"
-      description={`Оплата не была завершена: возможно, на карте не хватило средств или банк отклонил операцию.${CRLF}Попробуйте ещё раз или используйте другой способ оплаты`}
+      description="Оплата не была завершена: возможно, на карте не хватило средств или банк отклонил операцию. Попробуйте ещё раз или используйте другой способ оплаты"
       actions={
         <Button size="lg" className="mt-2" onClick={onAction}>
           Попробовать ещё раз
