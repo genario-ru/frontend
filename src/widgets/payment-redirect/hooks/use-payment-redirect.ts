@@ -9,7 +9,7 @@ import type { PaymentRedirectSearch } from "@/routes/_with-auth/_without-subscri
 import { useToast } from "@/shared/hooks/use-toast";
 
 const DEFAULT_ERROR_DESCRIPTION =
-  "Не удалось инициировать оплату. Попробуйте ещё раз или повторите попытку позднее";
+  "Не удалось создать платёж, деньги не были списаны. Попробуйте ещё раз чуть позже";
 
 type UsePaymentRedirectParams = PaymentRedirectSearch;
 

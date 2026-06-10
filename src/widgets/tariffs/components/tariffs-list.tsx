@@ -52,7 +52,7 @@ export function TariffsList() {
           : `Оформить за ${tariff.price}${NBSP}${RUBLE_SIGN}/мес`;
 
         const primaryActionSubtitle = hasTrial
-          ? `Затем ${tariff.price}${NBSP}${RUBLE_SIGN}/мес`
+          ? `Затем ${tariff.price}${NBSP}${RUBLE_SIGN}/мес, отмена в любой момент`
           : undefined;
 
         const primaryAction = (
@@ -112,8 +112,9 @@ export function TariffsList() {
       <header className="flex max-w-3xl flex-col items-center gap-2">
         <Heading className="text-2xl font-semibold lg:text-3xl">Тарифы</Heading>
         <p className="text-neutral-7 text-center lg:text-lg">
-          Создавайте сценарии для видео за минуты, а не часы, Создавайте
-          сценарии для видео за минуты, а не часы, Создавайте сценарии
+          Подписка оформляется на месяц и продлевается автоматически. Отменить
+          её можно в любой момент — доступ сохранится до конца оплаченного
+          периода
         </p>
       </header>
       <div className="flex w-full flex-col gap-2 lg:flex-row">{list}</div>

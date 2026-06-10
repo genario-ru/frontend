@@ -105,8 +105,8 @@ export function CreditsUsageListEmpty() {
   return (
     <Plug
       variant="neutral"
-      title="Расходов пока нет"
-      description="Здесь появятся операции списания кредитов"
+      title="Списаний пока нет"
+      description="Кредиты списываются при генерации идей, сценариев и превью сцен. Здесь появится история списаний: за что, когда и сколько кредитов было потрачено"
       className="m-auto py-8"
     />
   );

@@ -42,7 +42,7 @@ export function CreditsPackagePaymentMethodDialog({
       <DialogContent className="max-w-xl">
         <DialogPredefinedHeader
           title={`Покупка пакета «${packageTitle}» за ${packagePriceLabel}`}
-          description={`При оплате сохранённым способом оплаты деньги будут списаны с неё сразу, без перехода на страницу банка. Кредиты будут зачислены после подтверждения оплаты`}
+          description={`Это разовая покупка: она не влияет на подписку и не продлевается автоматически. При оплате сохранённой картой деньги спишутся с неё сразу, без перехода на страницу банка. Кредиты будут зачислены на баланс после подтверждения оплаты`}
         />
         <form onSubmit={onFormSubmit} className="flex flex-col">
           <DialogBody>

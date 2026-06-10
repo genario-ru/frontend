@@ -27,7 +27,7 @@ export function BillingMySubscriptionCancelDialogDrawer({
       <DrawerContent>
         <DrawerHeader
           title="Отменить подписку?"
-          description={`Подписка по тарифу «${subscriptionName}» будет активна до конца оплаченного периода, после чего автоматически завершится`}
+          description={`Подписка по тарифу «${subscriptionName}» останется активной до конца оплаченного периода, после чего завершится автоматически. Новых списаний не будет. Вы сможете снова оформить подписку в любой момент`}
         />
         <DrawerSection row roundedBottom={false} className="justify-between">
           <DrawerClose

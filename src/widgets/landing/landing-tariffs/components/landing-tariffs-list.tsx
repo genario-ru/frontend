@@ -56,7 +56,7 @@ export function LandingTariffsList() {
           : `Оформить за ${tariff.price}${NBSP}${RUBLE_SIGN}/мес`;
 
         const primaryActionSubtitle = hasTrial
-          ? `Затем ${tariff.price}${NBSP}${RUBLE_SIGN}/мес`
+          ? `Затем ${tariff.price}${NBSP}${RUBLE_SIGN}/мес, отмена в любой момент`
           : undefined;
 
         const primaryAction = (

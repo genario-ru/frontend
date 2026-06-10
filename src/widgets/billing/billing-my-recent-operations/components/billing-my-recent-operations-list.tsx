@@ -75,7 +75,7 @@ export function BillingMyRecentOperationsListEmpty() {
     <Plug
       variant="neutral"
       title="Операций пока нет"
-      description="История платежей будет отображаться здесь"
+      description="Здесь будет история ваших платежей: оплата и продление подписки, покупка пакетов кредитов"
       className="m-auto py-8"
     />
   );

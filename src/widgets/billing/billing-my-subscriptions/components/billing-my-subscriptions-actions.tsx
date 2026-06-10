@@ -108,7 +108,7 @@ export function BillingMySubscriptionsActions() {
         <DialogContent className="w-fit max-w-6xl">
           <DialogPredefinedHeader
             title="Изменить тариф"
-            description="Выберите новый тариф для вашей подписки"
+            description="Новый тариф заменит текущий: изменятся стоимость подписки и доступные лимиты"
           />
           <DialogBody className="flex-row gap-2">{body}</DialogBody>
         </DialogContent>

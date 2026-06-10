@@ -38,13 +38,13 @@ export function useBillingMySubscriptionsActions() {
             setIsChangeTariffDialogOpen(false);
 
             showSuccessToast({
-              title: "Подписка обновлена",
-              description: "Подписка была успешно обновлена",
+              title: "Тариф изменён",
+              description: "Ваша подписка переведена на новый тариф",
             });
           },
           onError: () => {
             showErrorToast({
-              description: "Не удалось обновить подписку. Попробуйте ещё раз",
+              description: "Не удалось изменить тариф. Попробуйте ещё раз",
             });
           },
         },

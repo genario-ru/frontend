@@ -20,7 +20,8 @@ export function useCancelSubscription() {
 
           showSuccessToast({
             title: "Подписка отменена",
-            description: "Подписка будет активна до конца оплаченного периода",
+            description:
+              "Доступ сохранится до конца оплаченного периода. Новых списаний не будет",
           });
         },
         onError: () => {

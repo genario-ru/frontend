@@ -83,8 +83,8 @@ function InitiatePaymentPendingPlug() {
     <Plug
       size="lg"
       icon={LoaderIcon}
-      title="Создаем платеж"
-      description="Пожалуйста, подождите несколько секунд"
+      title="Создаём платёж"
+      description="Готовим оплату — это займёт несколько секунд. Деньги пока не списываются"
       iconClassName="animate-spin"
     />
   );
@@ -95,8 +95,8 @@ function InitiatePaymentErrorPlug({ onAction }: PlugWithActionProps) {
     <Plug
       size="lg"
       variant="negative"
-      title="Ошибка"
-      description={`Не удалось инициировать оплату.${CRLF}Попробуйте ещё раз или повторите попытку позднее`}
+      title="Не удалось создать платёж"
+      description={`Деньги не были списаны.${CRLF}Попробуйте ещё раз — если ошибка повторится, напишите в поддержку`}
       actions={
         <Button
           size="lg"
@@ -116,8 +116,8 @@ function PaymentLoadingPlug() {
     <Plug
       size="lg"
       icon={LoaderIcon}
-      title="Загружаем платеж"
-      description="Получаем информацию о вашем платеже"
+      title="Проверяем статус платежа"
+      description="Получаем информацию о вашем платеже от платёжной системы"
       iconClassName="animate-spin"
     />
   );
@@ -143,8 +143,8 @@ function PaymentPendingPlug({ onAction }: Partial<PlugWithActionProps>) {
     <Plug
       size="lg"
       icon={ClockIcon}
-      title="Ожидаем проведения платежа"
-      description="Ждем ответа от платежного провайдера, после чего проводем активацию подписки / пакета кредитов"
+      title="Ожидаем подтверждения оплаты"
+      description={`Ждём ответа от платёжной системы — обычно это занимает меньше минуты.${CRLF}Как только оплата подтвердится, подписка или пакет кредитов активируются автоматически, страница обновится сама`}
       actions={actions}
     />
   );
@@ -155,8 +155,8 @@ function PaymentErrorPlug({ onAction }: PlugWithActionProps) {
     <Plug
       size="lg"
       variant="negative"
-      title="Ошибка платежа"
-      description="Не удалось провести платеж. Попробуйте ещё раз или повторите попытку позднее"
+      title="Платёж не прошёл"
+      description={`Оплата не была завершена: возможно, на карте не хватило средств или банк отклонил операцию.${CRLF}Попробуйте ещё раз или используйте другой способ оплаты`}
       actions={
         <Button size="lg" className="mt-2" onClick={onAction}>
           Попробовать ещё раз
@@ -172,8 +172,8 @@ function PaymentSuccessPlug() {
       size="lg"
       variant="positive"
       icon={CircleCheckIcon}
-      title="Все получилось!"
-      description="Перенаправляем вас в личный кабинет"
+      title="Оплата прошла успешно!"
+      description="Подписка или пакет кредитов уже активированы. Перенаправляем вас в личный кабинет"
     />
   );
 }

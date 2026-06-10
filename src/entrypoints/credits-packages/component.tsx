@@ -17,8 +17,9 @@ export function CreditsPackagesComponent() {
               Пакеты кредитов
             </Heading>
             <p className="text-neutral-7 text-center lg:text-lg">
-              Покупка пакетов кредитов доступна только при наличии активной
-              подписки
+              Кредиты расходуются на генерацию идей, сценариев и превью сцен.
+              Пакет — разовая покупка без автопродления, оплачивается один раз.
+              Купить пакет можно только при активной подписке
             </p>
           </header>
           <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">

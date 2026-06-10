@@ -78,7 +78,7 @@ export function BillingMyPaymentMethodsListEmpty() {
     <Plug
       variant="neutral"
       title="Нет привязанных способов оплаты"
-      description="Привяжите карту для автоматической оплаты подписки"
+      description="Привяжите карту, чтобы подписка продлевалась автоматически, а пакеты кредитов можно было оплачивать без повторного ввода данных"
       className="flex-1 py-8"
     />
   );

@@ -28,7 +28,7 @@ export function BillingMyPaymentMethodDeleteDialog({
       <DialogContent>
         <DialogPredefinedHeader
           title="Удалить способ оплаты?"
-          description={`Вы уверены, что хотите удалить способ оплаты «${paymentMethodName}»?`}
+          description={`Способ оплаты «${paymentMethodName}» будет отвязан от аккаунта, и им больше нельзя будет оплачивать подписку и пакеты кредитов. При необходимости вы сможете привязать его заново`}
         />
         <DialogBody />
         <DialogFooter>

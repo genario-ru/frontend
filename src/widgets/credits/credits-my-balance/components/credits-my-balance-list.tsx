@@ -72,8 +72,8 @@ export function CreditsMyBalanceListEmpty() {
   return (
     <Plug
       variant="neutral"
-      title="Нет приобретенных пакетов"
-      description="Здесь появятся приобретенные пакеты кредитов"
+      title="Кредитов пока нет"
+      description="Кредиты начисляются при оплате подписки и покупке пакетов. Здесь вы увидите остаток по каждому начислению и срок его действия"
       className="m-auto py-8"
     />
   );
