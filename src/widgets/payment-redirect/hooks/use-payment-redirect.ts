@@ -44,7 +44,7 @@ export function usePaymentRedirect({
 
   const handleRedirectToPayment = useCallback(() => {
     if (paymentData?.data.paymentLink) {
-      window.location.replace(paymentData.data.paymentLink);
+      window.location.href = paymentData.data.paymentLink;
     }
   }, [paymentData]);
 
@@ -76,7 +76,7 @@ export function usePaymentRedirect({
               replace: true,
             });
 
-            window.location.replace(paymentLink);
+            window.location.href = paymentLink;
           },
           onError: () => {
             setPaymentRedirectStatus("initiate-payment-error");
@@ -115,7 +115,7 @@ export function usePaymentRedirect({
             });
 
             if (paymentLink) {
-              window.location.replace(paymentLink);
+              window.location.href = paymentLink;
             }
           },
           onError: () => {
