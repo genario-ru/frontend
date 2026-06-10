@@ -2,6 +2,7 @@ import { useSearch } from "@tanstack/react-router";
 
 import { AuthIsland } from "@/features/auth/components/auth-island";
 import { FormHeader } from "@/features/auth/components/form-header";
+import { SPACE } from "@/shared/constants/unicode";
 import { VerifyOTPForm } from "@/widgets/auth/components/verify-otp-form";
 
 export function VerifyOTPComponent() {
@@ -15,7 +16,7 @@ export function VerifyOTPComponent() {
         title="Подтверждение почты"
         description={
           <>
-            Пожалуйста, введите код, отправленный на почту{"\n"}
+            Пожалуйста, введите код, отправленный на почту{SPACE}
             <span className="text-new-neutral-8 text-base font-medium">
               {email}
             </span>

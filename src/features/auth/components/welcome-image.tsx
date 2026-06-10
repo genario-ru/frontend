@@ -1,14 +1,12 @@
-import { Skeleton } from "@/shared/components/ui/skeleton";
+const SIGN_IN_IMAGE_URL =
+  "https://s3.twcstorage.ru/genario-public-s3-storage/images/illustrations/sign-in-image";
 
 export const WelcomeImage = () => {
-  return <Skeleton className="rounded-4 size-full flex-1" />;
-
-  // return (
-  //   <Image
-  //     src="/images/auth/welcome.png"
-  //     alt="Welcome"
-  //     width={100}
-  //     height={100}
-  //   />
-  // );
+  return (
+    <img
+      src={SIGN_IN_IMAGE_URL}
+      alt="Картинка страницы входа"
+      className="rounded-4 h-full w-full flex-1 object-cover"
+    />
+  );
 };
