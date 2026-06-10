@@ -22,7 +22,7 @@ export function CreditsPackagesComponent() {
             </p>
           </header>
           <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">
-            <CreditsPackagesList redirect="/home" />
+            <CreditsPackagesList />
           </div>
         </Island>
       </ContentLayout>

@@ -1,4 +1,10 @@
-import { CircleCheckIcon, ClockIcon, LoaderIcon } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  CircleCheckIcon,
+  ClockIcon,
+  LoaderIcon,
+  RefreshCwIcon,
+} from "lucide-react";
 import { useMemo } from "react";
 
 import type { PaymentRedirectSearch } from "@/routes/_with-auth/_without-subscription/payment-redirect";
@@ -43,8 +49,6 @@ export function PaymentRedirect({
         return <InitiatePaymentPendingPlug />;
       case "initiate-payment-error":
         return <InitiatePaymentErrorPlug onAction={handleInitiatePayment} />;
-      case "initiate-payment-success":
-        return <InitiatePaymentSuccessPlug />;
       case "payment-loading":
         return <PaymentLoadingPlug />;
       case "payment-pending":
@@ -79,8 +83,8 @@ function InitiatePaymentPendingPlug() {
     <Plug
       size="lg"
       icon={LoaderIcon}
-      title="Готовим ссылку для оплаты"
-      description="Вы будете перенаправлены на страницу оплаты через несколько секунд"
+      title="Создаем платеж"
+      description="Пожалуйста, подождите несколько секунд"
       iconClassName="animate-spin"
     />
   );
@@ -94,22 +98,15 @@ function InitiatePaymentErrorPlug({ onAction }: PlugWithActionProps) {
       title="Ошибка"
       description={`Не удалось инициировать оплату.${CRLF}Попробуйте ещё раз или повторите попытку позднее`}
       actions={
-        <Button size="lg" className="mt-2" onClick={onAction}>
+        <Button
+          size="lg"
+          className="mt-2"
+          icon={<RefreshCwIcon />}
+          onClick={onAction}
+        >
           Попробовать снова
         </Button>
       }
-    />
-  );
-}
-
-function InitiatePaymentSuccessPlug() {
-  return (
-    <Plug
-      size="lg"
-      variant="positive"
-      icon={CircleCheckIcon}
-      title="Перенаправляем на страницу оплаты"
-      description="Пожалуйста, подождите несколько секунд"
     />
   );
 }
@@ -130,7 +127,12 @@ function PaymentPendingPlug({ onAction }: Partial<PlugWithActionProps>) {
   const actions = useMemo(() => {
     if (onAction) {
       return (
-        <Button size="lg" className="mt-2" onClick={onAction}>
+        <Button
+          size="lg"
+          className="mt-2"
+          icon={<ArrowUpRightIcon />}
+          onClick={onAction}
+        >
           Перейти к оплате
         </Button>
       );
@@ -142,7 +144,7 @@ function PaymentPendingPlug({ onAction }: Partial<PlugWithActionProps>) {
       size="lg"
       icon={ClockIcon}
       title="Ожидаем проведения платежа"
-      description="Ждем ответа от платежного провайдера, после чего проводем активацию подписки"
+      description="Ждем ответа от платежного провайдера, после чего проводем активацию подписки / пакета кредитов"
       actions={actions}
     />
   );

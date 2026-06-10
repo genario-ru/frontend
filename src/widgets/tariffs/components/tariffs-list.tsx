@@ -69,7 +69,7 @@ export function TariffsList() {
           />
         );
 
-        const secondaryAction = hasTrial ? (
+        const secondaryAction = hasTrial && (
           <TariffCardSecondaryAction
             to="/payment-redirect"
             search={{
@@ -77,7 +77,7 @@ export function TariffsList() {
             }}
             title="Оформить без пробного периода"
           />
-        ) : undefined;
+        );
 
         const [features, limitations] = partition(
           tariff.features,

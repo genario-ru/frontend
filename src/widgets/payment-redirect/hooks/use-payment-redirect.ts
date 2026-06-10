@@ -1,6 +1,6 @@
 import { useMount } from "@siberiacancode/reactuse";
 import { useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useGetPayment } from "@/actions/billing/hooks/use-get-payment";
 import { useInitiateSubscriptionPayment } from "@/actions/billing/hooks/use-initiate-subscription-payment";
@@ -8,19 +8,21 @@ import { useInitiateCreditsPackagePayment } from "@/actions/credits/hooks/use-in
 import type { PaymentRedirectSearch } from "@/routes/_with-auth/_without-subscription/payment-redirect";
 import { useToast } from "@/shared/hooks/use-toast";
 
+const DEFAULT_ERROR_DESCRIPTION =
+  "Не удалось инициировать оплату. Попробуйте ещё раз или повторите попытку позднее";
+
 type UsePaymentRedirectParams = PaymentRedirectSearch;
 
 type PaymentRedirectStatus =
   | "initiate-payment-pending"
   | "initiate-payment-error"
-  | "initiate-payment-success"
   | "payment-loading"
   | "payment-pending"
   | "payment-error"
   | "payment-success";
 
 export function usePaymentRedirect({
-  redirect,
+  redirect = "/home",
   tariffSlug,
   trialTariffSlug,
   creditsPackageSlug,
@@ -28,28 +30,21 @@ export function usePaymentRedirect({
   paymentId,
 }: UsePaymentRedirectParams) {
   const navigate = useNavigate();
-
-  const [paymentRedirectStatus, setPaymentRedirectStatus] =
-    useState<PaymentRedirectStatus | null>(null);
-
   const { showErrorToast } = useToast();
   const { initiateSubscriptionPayment } = useInitiateSubscriptionPayment();
   const { initiateCreditsPackagePayment } = useInitiateCreditsPackagePayment();
+
+  const [paymentRedirectStatus, setPaymentRedirectStatus] =
+    useState<PaymentRedirectStatus | null>(null);
 
   const { paymentData, isPaymentLoading, isPaymentError } = useGetPayment({
     paymentId,
     refetchOnPending: true,
   });
 
-  const redirectUrl = useMemo(() => {
-    if (redirect) {
-      return `${window.location.origin}${redirect}`;
-    }
-  }, [redirect]);
-
   const handleRedirectToPayment = useCallback(() => {
     if (paymentData?.data.paymentLink) {
-      window.location.href = paymentData.data.paymentLink;
+      window.location.replace(paymentData.data.paymentLink);
     }
   }, [paymentData]);
 
@@ -61,30 +56,31 @@ export function usePaymentRedirect({
           data: {
             tariffSlug,
             trialTariffSlug,
-            redirect: redirectUrl,
           },
         },
         {
-          onSuccess: ({ data: { paymentLink } }) => {
+          onSuccess: ({ data: { id, paymentLink } }) => {
             if (!paymentLink) {
               setPaymentRedirectStatus("initiate-payment-error");
-              showErrorToast({
-                description:
-                  "Не удалось инициировать оплату. Попробуйте ещё раз или повторите попытку позднее",
-              });
-
+              showErrorToast({ description: DEFAULT_ERROR_DESCRIPTION });
               return;
             }
 
-            setPaymentRedirectStatus("initiate-payment-success");
-            window.location.href = paymentLink;
+            setPaymentRedirectStatus("payment-pending");
+            navigate({
+              to: "/payment-redirect",
+              search: (previousSearch) => ({
+                ...previousSearch,
+                paymentId: id,
+              }),
+              replace: true,
+            });
+
+            window.location.replace(paymentLink);
           },
           onError: () => {
             setPaymentRedirectStatus("initiate-payment-error");
-            showErrorToast({
-              description:
-                "Не удалось инициировать оплату. Попробуйте ещё раз чуть позже",
-            });
+            showErrorToast({ description: DEFAULT_ERROR_DESCRIPTION });
           },
         },
       );
@@ -99,56 +95,44 @@ export function usePaymentRedirect({
         },
         {
           onSuccess: ({ data: { id, paymentLink } }) => {
-            // Оплата сохраненным способом проходит без редиректа в ЮКассу:
-            // переходим к отслеживанию статуса платежа. creditsPackageSlug и
-            // paymentMethodId оставляем в search, чтобы при ошибке платежа
-            // работала повторная инициация оплаты.
-            if (paymentMethodId) {
-              setPaymentRedirectStatus("initiate-payment-success");
-              navigate({
-                to: "/payment-redirect",
-                search: { paymentId: id, creditsPackageSlug, paymentMethodId },
-                replace: true,
-              });
-
-              return;
-            }
-
-            if (!paymentLink) {
+            // Платеж без сохраненного способа оплаты обязан содержать ссылку
+            // на подтверждение в ЮКассе. При оплате сохраненным способом
+            // ссылки нет: сразу переходим к отслеживанию статуса платежа.
+            if (!paymentMethodId && !paymentLink) {
               setPaymentRedirectStatus("initiate-payment-error");
-              showErrorToast({
-                description:
-                  "Не удалось инициировать оплату. Попробуйте ещё раз или повторите попытку позднее",
-              });
-
+              showErrorToast({ description: DEFAULT_ERROR_DESCRIPTION });
               return;
             }
 
-            setPaymentRedirectStatus("initiate-payment-success");
-            window.location.href = paymentLink;
+            setPaymentRedirectStatus("payment-pending");
+            navigate({
+              to: "/payment-redirect",
+              search: (previousSearch) => ({
+                ...previousSearch,
+                paymentId: id,
+              }),
+              replace: true,
+            });
+
+            if (paymentLink) {
+              window.location.replace(paymentLink);
+            }
           },
           onError: () => {
             setPaymentRedirectStatus("initiate-payment-error");
-            showErrorToast({
-              description:
-                "Не удалось инициировать оплату. Попробуйте ещё раз чуть позже",
-            });
+            showErrorToast({ description: DEFAULT_ERROR_DESCRIPTION });
           },
         },
       );
     } else {
       setPaymentRedirectStatus("initiate-payment-error");
-      showErrorToast({
-        description:
-          "Не удалось инициировать оплату. Попробуйте ещё раз или повторите попытку позднее",
-      });
+      showErrorToast({ description: DEFAULT_ERROR_DESCRIPTION });
     }
   }, [
     creditsPackageSlug,
     paymentMethodId,
     tariffSlug,
     trialTariffSlug,
-    redirectUrl,
     navigate,
     showErrorToast,
     initiateCreditsPackagePayment,
@@ -162,17 +146,21 @@ export function usePaymentRedirect({
   }, [paymentId, handleInitiatePayment]);
 
   useEffect(() => {
-    const isPaymentSucceeded = paymentData?.data.status === "succeeded";
-    const isPaymentPending = paymentData?.data.status === "pending";
-    const isPaymentCanceled = paymentData?.data.status === "canceled";
-    const isPaymentFailed = paymentData?.data.status === "failed";
+    const paymentStatus = paymentData?.data.status;
+    const paymentSubscriptionsStatus = paymentData?.data.subscription?.status;
+    const paymentCreditsBatchStatus = paymentData?.data.creditsBatch?.status;
+
+    const isPaymentSucceeded = paymentStatus === "succeeded";
+    const isPaymentPending = paymentStatus === "pending";
+    const isPaymentCanceled = paymentStatus === "canceled";
+    const isPaymentFailed = paymentStatus === "failed";
 
     const isPaymentSubscriptionPending =
-      paymentData?.data.subscription?.status === "pending";
+      paymentSubscriptionsStatus === "pending";
 
     const isPaymentEntityActive =
-      paymentData?.data.subscription?.status === "active" ||
-      paymentData?.data.creditsBatch?.status === "active";
+      paymentSubscriptionsStatus === "active" ||
+      paymentCreditsBatchStatus === "active";
 
     if (isPaymentLoading) {
       setPaymentRedirectStatus("payment-loading");
@@ -183,12 +171,12 @@ export function usePaymentRedirect({
     } else if (isPaymentSucceeded && isPaymentEntityActive) {
       setPaymentRedirectStatus("payment-success");
       navigate({
-        to: "/home",
+        to: redirect,
         replace: true,
         reloadDocument: true,
       });
     }
-  }, [paymentData, isPaymentLoading, isPaymentError, navigate]);
+  }, [redirect, paymentData, isPaymentLoading, isPaymentError, navigate]);
 
   useMount(handleMount);
 
