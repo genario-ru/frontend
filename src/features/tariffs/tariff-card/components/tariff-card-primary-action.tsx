@@ -28,7 +28,7 @@ export function TariffCardPrimaryAction({
       {...props}
     >
       {title}
-      <span className="opacity-70">{subtitle}</span>
+      <span className="text-center text-sm opacity-70">{subtitle}</span>
     </ButtonLink>
   );
 }
