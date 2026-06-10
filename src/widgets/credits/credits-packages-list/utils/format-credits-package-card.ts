@@ -6,6 +6,8 @@ import {
   CREDITS_PER_SCRIPT_ESTIMATE,
 } from "../constants/credits-package-metric-ratios";
 
+export type CreditsPackageView = ReturnType<typeof formatCreditsPackageCard>;
+
 function formatRub(value: number): string {
   return `${value.toLocaleString("ru-RU", { maximumFractionDigits: 0 })} ₽`;
 }

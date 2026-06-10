@@ -3,26 +3,25 @@ import { PlusIcon } from "lucide-react";
 import type { PaymentMethodSchema } from "@/codegen/api/product";
 import { Button } from "@/shared/components/ui/button";
 import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogFooter,
-  DialogPredefinedHeader,
-} from "@/shared/components/ui/dialog";
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerSection,
+} from "@/shared/components/ui/drawer";
 
 import { useCreditsPackagePaymentMethodDialog } from "../hooks/use-credits-package-payment-method-dialog";
 
-type CreditsPackagePaymentMethodDialogProps = {
+type CreditsPackagePaymentMethodDrawerProps = {
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
   packageTitle: string;
   packagePriceLabel: string;
   paymentMethods: PaymentMethodSchema[];
+  setIsOpen: (isOpen: boolean) => void;
   onPayWithSavedMethod: (paymentMethodId: string) => void;
   onPayWithNewCard: () => void;
 };
 
-export function CreditsPackagePaymentMethodDialog({
+export function CreditsPackagePaymentMethodDrawer({
   isOpen,
   setIsOpen,
   packageTitle,
@@ -30,7 +29,7 @@ export function CreditsPackagePaymentMethodDialog({
   paymentMethods,
   onPayWithSavedMethod,
   onPayWithNewCard,
-}: CreditsPackagePaymentMethodDialogProps) {
+}: CreditsPackagePaymentMethodDrawerProps) {
   const { form, paymentMethodItems, onFormSubmit } =
     useCreditsPackagePaymentMethodDialog({
       paymentMethods,
@@ -38,14 +37,14 @@ export function CreditsPackagePaymentMethodDialog({
     });
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-xl">
-        <DialogPredefinedHeader
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
+      <DrawerContent>
+        <DrawerHeader
           title={`Покупка пакета «${packageTitle}» за ${packagePriceLabel}`}
           description={`При оплате сохранённой картой деньги спишутся с неё сразу, без перехода на страницу банка. Кредиты будут зачислены на баланс после подтверждения оплаты`}
         />
-        <form onSubmit={onFormSubmit} className="flex flex-col">
-          <DialogBody>
+        <form onSubmit={onFormSubmit} className="flex flex-col gap-2">
+          <DrawerSection>
             <form.AppField name="paymentMethodId">
               {(field) => (
                 <field.RadioCardsGroupField
@@ -55,10 +54,11 @@ export function CreditsPackagePaymentMethodDialog({
                 />
               )}
             </form.AppField>
-          </DialogBody>
-          <DialogFooter>
+          </DrawerSection>
+          <DrawerSection row roundedBottom={false} className="justify-between">
             <Button
               type="button"
+              size="lg"
               variant="neutral"
               priority="secondary"
               icon={<PlusIcon />}
@@ -67,11 +67,13 @@ export function CreditsPackagePaymentMethodDialog({
               Оплатить новой картой
             </Button>
             <form.AppForm>
-              <form.SubmitButton variant="accent">Оплатить</form.SubmitButton>
+              <form.SubmitButton size="lg" variant="accent">
+                Оплатить
+              </form.SubmitButton>
             </form.AppForm>
-          </DialogFooter>
+          </DrawerSection>
         </form>
-      </DialogContent>
-    </Dialog>
+      </DrawerContent>
+    </Drawer>
   );
 }
