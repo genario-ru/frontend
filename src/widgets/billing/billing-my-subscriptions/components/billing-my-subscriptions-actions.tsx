@@ -8,20 +8,16 @@ import {
 } from "@/features/tariffs/tariff-card/components/tariff-mini-card";
 import { ItemsList } from "@/shared/components/common/items-list";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogPredefinedHeader,
-  DialogTrigger,
-} from "@/shared/components/ui/dialog";
 import { Plug } from "@/shared/components/ui/plug";
 import { cn } from "@/shared/utils/cn";
 
 import { useBillingMySubscriptionsActions } from "../hooks/use-billing-my-subscriptions-actions";
+import { BillingMySubscriptionsChangeTariffDialog } from "./billing-my-subscriptions-change-tariff-dialog";
+import { BillingMySubscriptionsChangeTariffDrawer } from "./billing-my-subscriptions-change-tariff-drawer";
 
 export function BillingMySubscriptionsActions() {
   const {
+    isMobile,
     availableTariffs,
     isChangeTariffDialogOpen,
     isLoading,
@@ -90,29 +86,50 @@ export function BillingMySubscriptionsActions() {
     handleUpgradeSubscription,
   ]);
 
+  const trigger = useMemo(
+    () => (
+      <Button
+        icon={<ArrowUpRightIcon />}
+        variant="neutral"
+        priority="secondary"
+      >
+        Изменить тариф
+      </Button>
+    ),
+    [],
+  );
+
+  const changeTariffDialog = useMemo(() => {
+    if (isMobile) {
+      return (
+        <BillingMySubscriptionsChangeTariffDrawer
+          trigger={trigger}
+          isOpen={isChangeTariffDialogOpen}
+          setIsOpen={setIsChangeTariffDialogOpen}
+          body={body}
+        />
+      );
+    }
+
+    return (
+      <BillingMySubscriptionsChangeTariffDialog
+        trigger={trigger}
+        isOpen={isChangeTariffDialogOpen}
+        setIsOpen={setIsChangeTariffDialogOpen}
+        body={body}
+      />
+    );
+  }, [
+    isMobile,
+    trigger,
+    body,
+    isChangeTariffDialogOpen,
+    setIsChangeTariffDialogOpen,
+  ]);
+
   return (
     <div className="flex w-full items-center justify-end gap-2">
-      <Dialog
-        open={isChangeTariffDialogOpen}
-        onOpenChange={setIsChangeTariffDialogOpen}
-      >
-        <DialogTrigger asChild>
-          <Button
-            icon={<ArrowUpRightIcon />}
-            variant="neutral"
-            priority="secondary"
-          >
-            Изменить тариф
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="w-fit max-w-6xl">
-          <DialogPredefinedHeader
-            title="Изменить тариф"
-            description="Новый тариф заменит текущий: изменятся стоимость подписки и доступные лимиты"
-          />
-          <DialogBody className="flex-row gap-2">{body}</DialogBody>
-        </DialogContent>
-      </Dialog>
+      {changeTariffDialog}
     </div>
   );
 }

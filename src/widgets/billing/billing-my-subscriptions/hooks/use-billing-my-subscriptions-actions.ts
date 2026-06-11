@@ -5,10 +5,12 @@ import { useGetMySubscriptions } from "@/actions/subscriptions/hooks/use-get-my-
 import { useUpgradeSubscription } from "@/actions/subscriptions/hooks/use-upgrade-subscription";
 import { useGetTariffs } from "@/actions/tariffs/hooks/use-get-tariffs";
 import { getApiV1SubscriptionsMyQueryKey } from "@/codegen/api/product";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useBillingMySubscriptionsActions() {
   const queryClient = useQueryClient();
+  const { isMobile } = useBreakpoints();
   const { showErrorToast, showSuccessToast } = useToast();
 
   const [isChangeTariffDialogOpen, setIsChangeTariffDialogOpen] =
@@ -75,6 +77,7 @@ export function useBillingMySubscriptionsActions() {
   }, [tariffsData, mySubscriptionsData]);
 
   return {
+    isMobile,
     availableTariffs,
     isChangeTariffDialogOpen,
     isLoading: isMySubscriptionsLoading || isTariffsLoading,
