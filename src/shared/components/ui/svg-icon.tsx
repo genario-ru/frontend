@@ -9,6 +9,13 @@ export type SVGIconVariantProps = VariantProps<typeof svgIconVariants>;
 type SvgIconProps = ComponentProps<"svg"> &
   SVGIconVariantProps & { icon: FC<SVGProps<SVGElement>> };
 
-export const SvgIcon = ({ icon: Icon, size, ...props }: SvgIconProps) => {
-  return <Icon className={cn(svgIconVariants({ size }))} {...props} />;
+export const SvgIcon = ({
+  icon: Icon,
+  size,
+  className,
+  ...props
+}: SvgIconProps) => {
+  return (
+    <Icon className={cn(svgIconVariants({ size }), className)} {...props} />
+  );
 };

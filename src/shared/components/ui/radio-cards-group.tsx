@@ -6,7 +6,7 @@ import { cn } from "@/shared/utils/cn";
 
 const radioCardsGroupItemVariants = cva(
   cn(
-    "flex items-center font-medium bg-neutral-1 ring ring-neutral-4 duration-200 [&_svg]:stroke-neutral-7 [&_svg]:shrink-0 [&_svg]:size-6 hover:bg-neutral-2 data-[state=checked]:[&_svg]:stroke-neutral-8",
+    "flex items-center font-medium bg-neutral-1 ring ring-neutral-4 duration-200 hover:bg-neutral-2",
   ),
   {
     variants: {

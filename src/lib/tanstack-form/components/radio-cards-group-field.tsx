@@ -1,7 +1,7 @@
 import { useStore } from "@tanstack/react-form";
+import type { ReactNode } from "react";
 
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
-import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
@@ -15,7 +15,7 @@ type SelectFieldProps = PropsWithClassName<{
   items: {
     label: string;
     value: string;
-    icon?: string;
+    icon?: ReactNode;
   }[];
   itemClassName?: string;
 }>;
@@ -53,7 +53,7 @@ export const RadioCardsGroupField = ({
             className={itemClassName}
             state={itemState}
           >
-            {item.icon && <LucideIcon icon={item.icon} />}
+            {item.icon}
             {item.label}
           </RadioCardsGroupItem>
         ))}

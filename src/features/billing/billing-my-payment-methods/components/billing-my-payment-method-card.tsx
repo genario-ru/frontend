@@ -1,8 +1,9 @@
-import { CreditCardIcon, StarIcon, Trash2Icon } from "lucide-react";
+import { StarIcon, Trash2Icon } from "lucide-react";
 
 import type { PaymentMethodSchema } from "@/codegen/api/product";
+import { usePaymentMethodDisplay } from "@/features/billing/payment-method-display/hooks/use-payment-method-display";
 import { Button } from "@/shared/components/ui/button";
-import { LucideIcon } from "@/shared/components/ui/lucide-icon";
+import { SvgIcon } from "@/shared/components/ui/svg-icon";
 import { cn } from "@/shared/utils/cn";
 
 type BillingMyPaymentMethodCardProps = {
@@ -18,14 +19,14 @@ export function BillingMyPaymentMethodCard({
   onDelete,
   onMakeDefault,
 }: BillingMyPaymentMethodCardProps) {
-  const label = paymentMethod.title ?? paymentMethod.type;
+  const { title, icon } = usePaymentMethodDisplay(paymentMethod);
   const isDefault = paymentMethod.default;
 
   return (
     <div className="bg-neutral-2 flex items-center justify-between gap-3 rounded-2xl px-4 py-3">
       <div className="flex min-w-0 items-center gap-3">
-        <LucideIcon icon={CreditCardIcon} />
-        <span className="truncate font-medium">{label}</span>
+        <SvgIcon icon={icon} className="stroke-transparent" />
+        <span className="truncate font-medium">{title}</span>
       </div>
       {!hideActions && (
         <div className="flex shrink-0 items-center gap-2">

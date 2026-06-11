@@ -1,8 +1,10 @@
 import { useMemo } from "react";
 
 import type { PaymentMethodSchema } from "@/codegen/api/product";
+import { getPaymentMethodDisplay } from "@/features/billing/payment-method-display/utils/get-payment-method-display";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { SvgIcon } from "@/shared/components/ui/svg-icon";
 
 import type { CreditsPackagePaymentMethodFormSchema } from "../types/credits-package-payment-method-form-types";
 import { creditsPackagePaymentMethodFormValidateFn } from "../utils/credits-package-payment-method-form-helpers";
@@ -28,12 +30,13 @@ export function useCreditsPackagePaymentMethodDialog({
   const paymentMethodItems = useMemo(
     () =>
       paymentMethods.map((paymentMethod) => {
-        const title = paymentMethod.title ?? paymentMethod.type;
+        const { title, icon } = getPaymentMethodDisplay(paymentMethod);
+        const label = paymentMethod.default ? `${title} · Основная` : title;
 
         return {
           value: paymentMethod.id,
-          label: paymentMethod.default ? `${title} · Основная` : title,
-          icon: "CreditCard",
+          label,
+          icon: <SvgIcon icon={icon} className="stroke-transparent" />,
         };
       }),
     [paymentMethods],

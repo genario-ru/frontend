@@ -4,6 +4,7 @@ import type { PaymentMethodSchema } from "@/codegen/api/product";
 import { BillingMyPaymentMethodCard } from "@/features/billing/billing-my-payment-methods/components/billing-my-payment-method-card";
 import { BillingMyPaymentMethodDeleteDialog } from "@/features/billing/billing-my-payment-methods/components/billing-my-payment-method-delete-dialog";
 import { BillingMyPaymentMethodDeleteDrawer } from "@/features/billing/billing-my-payment-methods/components/billing-my-payment-method-delete-drawer";
+import { usePaymentMethodDisplay } from "@/features/billing/payment-method-display/hooks/use-payment-method-display";
 import { SwipeActions } from "@/shared/components/ui/swipe-actions";
 
 import { useBillingMyPaymentMethodsListItem } from "../hooks/use-billing-my-payment-methods-list-item";
@@ -28,6 +29,8 @@ export function BillingMyPaymentMethodsListItem({
     handleDeletePaymentMethod,
     handleSelectDefaultPaymentMethod,
   } = useBillingMyPaymentMethodsListItem({ paymentMethod });
+
+  const { title: paymentMethodTitle } = usePaymentMethodDisplay(paymentMethod);
 
   const card = useMemo(
     () => (
@@ -78,7 +81,7 @@ export function BillingMyPaymentMethodsListItem({
     if (isMobile) {
       return (
         <BillingMyPaymentMethodDeleteDrawer
-          paymentMethodName={paymentMethod.title ?? paymentMethod.type}
+          paymentMethodName={paymentMethodTitle}
           isOpen={isDeleteDialogOpen}
           isPending={isDeletePaymentMethodPending}
           setIsOpen={handleDeleteDialogOpenChange}
@@ -89,7 +92,7 @@ export function BillingMyPaymentMethodsListItem({
 
     return (
       <BillingMyPaymentMethodDeleteDialog
-        paymentMethodName={paymentMethod.title ?? paymentMethod.type}
+        paymentMethodName={paymentMethodTitle}
         isOpen={isDeleteDialogOpen}
         isPending={isDeletePaymentMethodPending}
         setIsOpen={handleDeleteDialogOpenChange}
@@ -98,7 +101,7 @@ export function BillingMyPaymentMethodsListItem({
     );
   }, [
     isMobile,
-    paymentMethod,
+    paymentMethodTitle,
     isDeleteDialogOpen,
     isDeletePaymentMethodPending,
     handleDeleteDialogOpenChange,
