@@ -23,7 +23,7 @@ export function useIdeasListAppMenubar({
       return undefined;
     }
 
-    return ideasListData.data.name || "Без названия";
+    return ideasListData.data.name;
   }, [ideasListData]);
 
   const ideasListDescription = useMemo(() => {

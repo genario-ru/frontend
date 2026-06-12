@@ -11,7 +11,7 @@ type CheckboxChipsGroupProps = ComponentProps<"div">;
 export type CheckboxChipsGroupItemProps = ComponentProps<
   typeof CheckboxPrimitive.Root
 > &
-  Pick<ButtonProps, "size" | "rounding">;
+  Pick<ButtonProps, "size" | "rounding" | "state">;
 
 export const CheckboxChipsGroup = ({
   className,
@@ -28,13 +28,14 @@ export const CheckboxChipsGroup = ({
 export const CheckboxChipsGroupItem = ({
   size = "lg",
   rounding,
+  state,
   className,
   ...props
 }: CheckboxChipsGroupItemProps) => {
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        buttonVariants({ size, rounding }),
+        buttonVariants({ size, rounding, state }),
         "data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2",
         className,
       )}

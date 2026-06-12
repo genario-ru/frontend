@@ -1,4 +1,5 @@
 import type { CheckedState } from "@radix-ui/react-checkbox";
+import { useStore } from "@tanstack/react-form";
 import { isNil, noop } from "es-toolkit";
 import { ChevronRightIcon } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
@@ -45,6 +46,7 @@ export const CheckboxChipsField = ({
   ...props
 }: CheckboxChipsFieldProps) => {
   const {
+    store,
     defaultValue,
     checkedValues,
     visibleItems,
@@ -56,12 +58,15 @@ export const CheckboxChipsField = ({
     defaultMaxVisibleItems,
   });
 
+  const errors: string[] = useStore(store, (state) => state.meta.errors);
+
   return (
-    <FieldLayout labelText={title}>
+    <FieldLayout labelText={title} message={errors[0]}>
       <CheckboxChipsGroup {...props}>
         {visibleItems.map((item) => (
           <CheckboxChipsGroupItem
             key={item.value}
+            state={errors.length > 0 ? "error" : "default"}
             defaultChecked={defaultValue?.some(
               (defaultItem) => defaultItem === item.value,
             )}
@@ -99,6 +104,7 @@ function useCheckboxChipsField({
   defaultMaxVisibleItems = Number.POSITIVE_INFINITY,
 }: UseCheckboxChipsFieldParams) {
   const {
+    store,
     options: { defaultValue },
     state: { value: checkedValues },
     pushValue,
@@ -164,6 +170,7 @@ function useCheckboxChipsField({
   );
 
   return {
+    store,
     defaultValue,
     checkedValues,
     visibleItems,
