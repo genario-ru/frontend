@@ -10,7 +10,7 @@ export function useSignOut() {
     mutation: {
       onSuccess: () => {
         navigate({
-          to: "/sign-in",
+          to: "/",
           reloadDocument: true,
           replace: true,
         });

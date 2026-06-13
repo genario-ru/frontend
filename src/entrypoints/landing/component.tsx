@@ -9,12 +9,13 @@ import { LandingPossibilities } from "@/widgets/landing/landing-possibilities/co
 import { LandingTariffs } from "@/widgets/landing/landing-tariffs/components/landing-tariffs";
 import { LandingTemplates } from "@/widgets/landing/landing-templates/components/landing-templates";
 import { LandingTrialTariff } from "@/widgets/landing/landing-trial-tariff/components/landing-trial-tariff";
+import { AppWithoutAuthHeaderActions } from "@/widgets/navigation/app-without-auth-header/components/app-without-auth-header-actions";
 
 export function LandingComponent() {
   return (
     <PageLayout>
       <ContentLayout>
-        <LandingHeader />
+        <LandingHeader right={<AppWithoutAuthHeaderActions />} />
         <LandingHero />
         <LandingPossibilities />
         <LandingTemplates />

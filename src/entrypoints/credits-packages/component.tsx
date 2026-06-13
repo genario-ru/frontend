@@ -3,13 +3,13 @@ import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { Heading } from "@/shared/components/ui/heading";
 import { Island } from "@/shared/components/ui/island";
-import { CreditsPackagesHeader } from "@/widgets/credits/credits-packages-header/components/credits-packages-header";
 import { CreditsPackagesList } from "@/widgets/credits/credits-packages-list/components/credits-packages-list";
+import { AppWithoutAuthHeader } from "@/widgets/navigation/app-without-auth-header/components/app-without-auth-header";
 
 export function CreditsPackagesComponent() {
   return (
     <PageLayout className="h-fit min-h-full">
-      <CreditsPackagesHeader />
+      <AppWithoutAuthHeader />
       <ContentLayout>
         <Island grow className="items-center gap-8 p-6">
           <header className="flex max-w-3xl flex-col items-center gap-2">
