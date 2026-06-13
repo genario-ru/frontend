@@ -1,15 +1,10 @@
 import type { SubscriptionExtendedSchema } from "@/codegen/api/product";
 
+// Видимость подписки определяется только статусом: отмененная подписка
+// действует до конца оплаченного периода, после чего биллинг на бэке
+// переводит ее в статус "terminated".
 export function isVisibleSubscription(
   subscription: SubscriptionExtendedSchema,
 ): boolean {
-  if (subscription.status === "active" || subscription.status === "pending") {
-    return true;
-  }
-
-  if (subscription.status === "cancelled" && subscription.endsAt) {
-    return new Date(subscription.endsAt) > new Date();
-  }
-
-  return false;
+  return ["active", "pending", "cancelled"].includes(subscription.status);
 }

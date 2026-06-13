@@ -1,24 +1,14 @@
-import { isFuture, isPast } from "date-fns";
-import { isNull } from "es-toolkit";
-
 import type { SubscriptionExtendedSchema } from "@/codegen/api/product";
 
+// Активность подписки определяется только статусом: даты окончания
+// обрабатывает биллинг на бэке, который переводит истекшие подписки
+// в статус "terminated".
 export function checkHasActiveSubscription(
   subscriptions: SubscriptionExtendedSchema[],
 ) {
-  const activeSubscriptions = subscriptions.filter((subscription) => {
-    const isActive = ["active", "cancelled", "overdue"].includes(
-      subscription.status,
-    );
-
-    const isStarted =
-      isNull(subscription.startsAt) || isPast(subscription.startsAt);
-
-    const isNotEnded =
-      isNull(subscription.endsAt) || isFuture(subscription.endsAt);
-
-    return isActive && isStarted && isNotEnded;
-  });
+  const activeSubscriptions = subscriptions.filter((subscription) =>
+    ["active", "cancelled", "overdue"].includes(subscription.status),
+  );
 
   return activeSubscriptions.length > 0;
 }
