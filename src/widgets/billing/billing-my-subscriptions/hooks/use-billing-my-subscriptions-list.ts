@@ -12,6 +12,7 @@ import { isVisibleSubscription } from "../utils/is-visible-subscription";
 export function useBillingMySubscriptionsList() {
   const { isDesktop, isMobile } = useBreakpoints();
   const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
+
   const [selectedSubscriptionId, setSelectedSubscriptionId] = useState<
     string | null
   >(null);

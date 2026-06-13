@@ -6,5 +6,7 @@ import type { SubscriptionExtendedSchema } from "@/codegen/api/product";
 export function isVisibleSubscription(
   subscription: SubscriptionExtendedSchema,
 ): boolean {
-  return ["active", "pending", "cancelled"].includes(subscription.status);
+  return ["active", "pending", "cancelled", "overdue"].includes(
+    subscription.status,
+  );
 }
