@@ -8,7 +8,7 @@ export function useAppWithoutAuthHeaderActions() {
   const { isMobile } = useBreakpoints();
   const { sessionData, isSessionLoading } = useGetSession();
 
-  const homeButtonContent = isMobile ? "Кабинет" : "Личный кабинет";
+  const homeButtonContent = isMobile ? "ЛК" : "Личный кабинет";
 
   const tryButtonContent = isMobile
     ? "3 дня за 1 ₽"
