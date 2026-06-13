@@ -2,19 +2,18 @@ import type { CommonFooterLinksColumn } from "../types/common-footer-links";
 
 export const commonFooterLinks: CommonFooterLinksColumn[] = [
   {
-    title: "Социальные сети",
+    title: "Контакты",
     items: [
       {
-        title: "ВКонтакте",
-        href: "https://vk.com",
-      },
-      {
         title: "Telegram",
-        href: "https://telegram.org",
+        href: "https://t.me/genario_ru",
+        target: "_blank",
+        rel: "noopener noreferrer",
       },
       {
-        title: "YouTube",
-        href: "https://www.youtube.com",
+        title: "Почта",
+        href: "mailto:support@genario.ru",
+        target: "_self",
       },
     ],
   },

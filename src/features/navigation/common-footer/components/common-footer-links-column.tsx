@@ -21,10 +21,8 @@ export function CommonFooterLinksColumn({
           return (
             <a
               key={`footer-documents-${item.title}-item-${index}`}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className={COMMON_FOOTER_LINK_CLASS_NAME}
+              {...item}
             >
               {item.title}
             </a>

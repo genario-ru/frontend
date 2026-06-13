@@ -1,10 +1,10 @@
-import type { LinkProps } from "@tanstack/react-router";
+import type { LinkComponentProps } from "@tanstack/react-router";
 
 type CommonFooterLinkItemStatic = {
   title: string;
 };
 
-type CommonFooterLinkItemLocal = Pick<LinkProps, "to" | "params">;
+type CommonFooterLinkItemLocal = LinkComponentProps;
 
 type CommonFooterLinkItemExternal = {
   href: string;
