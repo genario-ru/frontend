@@ -164,9 +164,16 @@ export function usePaymentRedirect({
 
     if (isPaymentLoading) {
       setPaymentRedirectStatus("payment-loading");
-    } else if (isPaymentError || isPaymentCanceled || isPaymentFailed) {
+    } else if (isPaymentCanceled || isPaymentFailed) {
+      // Только реальные терминальные статусы платежа означают провал.
+      // Ошибка чтения статуса (429/сеть) — не провал платежа: остаёмся в
+      // pending и даём поллингу/ретраям дочитать статус.
       setPaymentRedirectStatus("payment-error");
-    } else if (isPaymentPending || isPaymentSubscriptionPending) {
+    } else if (
+      isPaymentError ||
+      isPaymentPending ||
+      isPaymentSubscriptionPending
+    ) {
       setPaymentRedirectStatus("payment-pending");
     } else if (isPaymentSucceeded && isPaymentEntityActive) {
       setPaymentRedirectStatus("payment-success");
