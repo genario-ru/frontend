@@ -3,7 +3,7 @@ import "swiper/swiper.css";
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
+import { HomeCarouselArrows } from "@/features/home/home-carousel/components/home-carousel-arrows";
 import { TemplateCard } from "@/features/templates/template-card/components/template-card";
 import { TemplateCardDrawerMenu } from "@/features/templates/template-card/components/template-card-drawer-menu";
 import { Drawer, DrawerTrigger } from "@/shared/components/ui/drawer";

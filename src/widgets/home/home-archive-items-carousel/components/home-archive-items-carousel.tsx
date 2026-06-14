@@ -1,13 +1,11 @@
 import "swiper/swiper.css";
 
-import { BookImageIcon, LightbulbIcon } from "lucide-react";
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ArchiveItem } from "@/features/archive/archive-item/components/archive-item";
 import { ArchiveItemSkeleton } from "@/features/archive/archive-item/components/archive-item-skeleton";
-import { HomeCarouselArrows } from "@/features/home/components/home-carousel-arrows";
-import { ButtonLink } from "@/shared/components/ui/button-link";
+import { HomeCarouselArrows } from "@/features/home/home-carousel/components/home-carousel-arrows";
 import { Island } from "@/shared/components/ui/island";
 import { Plug } from "@/shared/components/ui/plug";
 import { ArchiveItemBadges } from "@/widgets/archive/archive-items/components/archive-item-badges";
@@ -106,7 +104,7 @@ export function HomeArchiveItemsCarousel() {
           onNextClick={onNextButtonClick}
         />
       }
-      className="isolate gap-3 overflow-hidden"
+      className="isolate flex-1 gap-3 overflow-hidden"
     >
       {body}
     </Island>
@@ -119,16 +117,6 @@ export function HomeArchiveItemsCarouselEmptyPlug() {
       variant="neutral"
       title="Тут пока пусто"
       description="Создайте свой первый список идей или сценарий"
-      actions={
-        <div className="mt-2 flex items-center gap-2">
-          <ButtonLink to="/ideas-lists/settings" icon={<LightbulbIcon />}>
-            Новые идеи
-          </ButtonLink>
-          <ButtonLink to="/scenarios/settings" icon={<BookImageIcon />}>
-            Новый сценарий
-          </ButtonLink>
-        </div>
-      }
       className="min-h-[176px]"
     />
   );

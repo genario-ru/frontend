@@ -4,9 +4,9 @@ import { cn } from "@/shared/utils/cn";
 
 import { Heading } from "./heading";
 
-export type IslandProps = ComponentProps<"div"> & {
-  title?: string;
-  description?: string;
+export type IslandProps = Omit<ComponentProps<"div">, "title"> & {
+  title?: ReactNode;
+  description?: ReactNode;
   roundedTop?: boolean;
   roundedBottom?: boolean;
   grow?: boolean;

@@ -16,11 +16,7 @@ export function HomeAppMenubarDrawerActions() {
     <Drawer>
       <DrawerTrigger
         render={
-          <Button
-            variant="accent"
-            priority="primary"
-            icon={<ChevronDownIcon />}
-          >
+          <Button priority="primary" icon={<ChevronDownIcon />}>
             Создать
           </Button>
         }
