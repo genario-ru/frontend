@@ -1,7 +1,7 @@
 import { SPACE } from "@/shared/constants/unicode";
 
-const LANDING_HERO_TITLE_PRIMARY_PART = "Сократите процесс подготовки видео";
-const LANDING_HERO_TITLE_SECONDARY_PART = "с часов до минут";
+const LANDING_HERO_TITLE_PRIMARY_PART = "От идеи до готового сценария";
+const LANDING_HERO_TITLE_SECONDARY_PART = "за минуты, а не часы";
 
 export function LandingHeroTitle() {
   return (
