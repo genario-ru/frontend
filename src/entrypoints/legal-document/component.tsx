@@ -5,7 +5,7 @@ import { CommonFooter } from "@/features/navigation/common-footer/components/com
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { PageLayout } from "@/shared/components/layouts/page-layout";
 import { Island } from "@/shared/components/ui/island";
-import { LegalDocumentsHeader } from "@/widgets/legal-documents/legal-documents-header/components/legal-documents-header";
+import { AppWithoutAuthHeader } from "@/widgets/navigation/app-without-auth-header/components/app-without-auth-header";
 
 export function LegalDocumentComponent() {
   const { data: legalDocumentData } = useLoaderData({
@@ -14,7 +14,7 @@ export function LegalDocumentComponent() {
 
   return (
     <PageLayout className="h-fit min-h-full">
-      <LegalDocumentsHeader />
+      <AppWithoutAuthHeader />
       <ContentLayout>
         <Island className="block">
           <LegalDocumentMarkdown content={legalDocumentData.markdown} />
