@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import {
   getApiV1ArchiveItemsMyQueryKey,
+  getApiV1OnboardingQueryKey,
   useDeleteApiV1IdeasListsByIdeasListId,
 } from "@/codegen/api/product";
 import { useToast } from "@/shared/hooks/use-toast";
@@ -16,6 +17,10 @@ export function useDeleteIdeasList() {
         onSuccess: () => {
           queryClient.invalidateQueries({
             queryKey: getApiV1ArchiveItemsMyQueryKey(),
+          });
+
+          queryClient.invalidateQueries({
+            queryKey: getApiV1OnboardingQueryKey(),
           });
 
           showSuccessToast({

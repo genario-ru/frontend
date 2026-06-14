@@ -25,16 +25,16 @@ export function Item({
     <div className="bg-neutral-2 rounded-4 flex flex-col gap-3 p-3">
       <div className="flex gap-3">
         {left}
-        <div className="flex flex-1 flex-col gap-1">
+        <section className="flex flex-1 flex-col gap-1">
           <div className="flex w-full items-center gap-2">
             {icon}
-            <p className="w-full font-medium">{title}</p>
+            <div className="w-full font-medium">{title}</div>
           </div>
           {description && (
-            <p className="text-neutral-7 text-sm">{description}</p>
+            <div className="text-neutral-7 text-sm">{description}</div>
           )}
           {badges}
-        </div>
+        </section>
         {right}
       </div>
       {bottom}

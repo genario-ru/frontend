@@ -1,6 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
+  getApiV1OnboardingQueryKey,
   getApiV1ProfilesMyQueryKey,
   useDeleteApiV1ProfilesByProfileId,
 } from "@/codegen/api/product";
@@ -22,6 +23,10 @@ export function useDeleteProfile() {
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
             queryKey: getApiV1ProfilesMyQueryKey(),
+          });
+
+          queryClient.invalidateQueries({
+            queryKey: getApiV1OnboardingQueryKey(),
           });
 
           showSuccessToast({

@@ -1,6 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 
 import {
+  getApiV1OnboardingQueryKey,
   getApiV1ProfilesMyQueryKey,
   usePostApiV1Profiles,
 } from "@/codegen/api/product";
@@ -16,6 +17,10 @@ export function useCreateProfile() {
         onSuccess: ({ data }) => {
           queryClient.invalidateQueries({
             queryKey: getApiV1ProfilesMyQueryKey(),
+          });
+
+          queryClient.invalidateQueries({
+            queryKey: getApiV1OnboardingQueryKey(),
           });
 
           showSuccessToast({

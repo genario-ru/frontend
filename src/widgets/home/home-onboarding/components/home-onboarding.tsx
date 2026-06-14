@@ -1,4 +1,4 @@
-import { RotateCwIcon } from "lucide-react";
+import { EyeOffIcon, RotateCwIcon } from "lucide-react";
 import { type ReactNode, useMemo } from "react";
 
 import {
@@ -15,8 +15,13 @@ import { useReloadPage } from "@/shared/hooks/use-reload-page";
 import { useHomeOnboarding } from "../hooks/use-home-onboarding";
 
 export function HomeOnboarding() {
-  const { onboardingData, isOnboardingLoading, isOnboardingError } =
-    useHomeOnboarding();
+  const {
+    onboardingData,
+    isOnboardingLoading,
+    isOnboardingError,
+    isHideOnboardingPending,
+    handleHideOnboarding,
+  } = useHomeOnboarding();
 
   const body = useMemo(() => {
     if (isOnboardingLoading) {
@@ -71,7 +76,24 @@ export function HomeOnboarding() {
     );
   }, [isOnboardingError, isOnboardingLoading, onboardingData]);
 
-  return <Island title="Быстрый старт">{body}</Island>;
+  const actions = useMemo(() => {
+    return (
+      <Button
+        size="sm"
+        icon={<EyeOffIcon />}
+        disabled={isHideOnboardingPending}
+        onClick={handleHideOnboarding}
+      >
+        Скрыть
+      </Button>
+    );
+  }, [handleHideOnboarding, isHideOnboardingPending]);
+
+  return (
+    <Island title="Быстрый старт" actions={actions} className="gap-3">
+      {body}
+    </Island>
+  );
 }
 
 function HomeOnboardingSkeleton() {
