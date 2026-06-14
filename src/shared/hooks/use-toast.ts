@@ -28,6 +28,17 @@ export const useToast = () => {
     });
   };
 
+  const showWarningToast = ({
+    title = "Внимание",
+    description = "Обратите внимание на данное сообщение",
+  }: ShowToastParams) => {
+    toast({
+      variant: "warning",
+      title,
+      description,
+    });
+  };
+
   const showInfoToast = ({
     title = "Информация",
     description = "Здесь должно быть какое-то информативное сообщение",
@@ -39,5 +50,5 @@ export const useToast = () => {
     });
   };
 
-  return { showErrorToast, showSuccessToast, showInfoToast };
+  return { showErrorToast, showSuccessToast, showWarningToast, showInfoToast };
 };

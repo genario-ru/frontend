@@ -12,6 +12,7 @@ const fieldLayoutMessageVariants = cva(
         neutral: "text-neutral-8",
         negative: "text-negative-6",
         positive: "text-positive-6",
+        warning: "text-warning-6",
         accent: "text-accent-6",
       },
     },

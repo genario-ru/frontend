@@ -4,6 +4,7 @@ import {
   CircleMinusIcon,
   CircleXIcon,
   type LucideIcon as LucideIconType,
+  TriangleAlertIcon,
 } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -60,6 +61,7 @@ const plugIconVariants = cva("", {
     variant: {
       negative: "stroke-negative-5",
       positive: "stroke-positive-5",
+      warning: "stroke-warning-5",
       neutral: "stroke-neutral-8",
     },
     size: {
@@ -103,6 +105,7 @@ const plugDescriptionVariants = cva(
 const plugDefaultIconByVariant = {
   negative: CircleXIcon,
   positive: CircleCheckIcon,
+  warning: TriangleAlertIcon,
   neutral: CircleMinusIcon,
 } as const;
 

@@ -29,6 +29,16 @@
   --positive-7: #15803d;
   --positive-8: #166534;
 
+  /* Warning colors */
+  --warning-1: #fef3c7;
+  --warning-2: #fde68a;
+  --warning-3: #fcd34d;
+  --warning-4: #fbbf24;
+  --warning-5: #f59e0b;
+  --warning-6: #d97706;
+  --warning-7: #b45309;
+  --warning-8: #92400e;
+
   /* Accent colors */
   --accent-1: #e0e7ff;
   --accent-2: #c7d2fe;
@@ -75,6 +85,16 @@
   --positive-6: #46d179;
   --positive-7: #86efac;
   --positive-8: #bbf7d0;
+
+  /* Warning colors */
+  --warning-1: #3b1d03;
+  --warning-2: #5f3611;
+  --warning-3: #78350f;
+  --warning-4: #b45309;
+  --warning-5: #d97706;
+  --warning-6: #f59e0b;
+  --warning-7: #fbbf24;
+  --warning-8: #fcd34d;
 
   /* Accent colors */
   --accent-1: #1e1b4b;

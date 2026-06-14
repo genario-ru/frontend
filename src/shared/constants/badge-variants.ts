@@ -8,6 +8,7 @@ export const badgeVariants = cva(
         neutral: "",
         positive: "",
         negative: "",
+        warning: "",
         custom: "",
       },
       variant: {
@@ -52,6 +53,17 @@ export const badgeVariants = cva(
         color: "negative",
         variant: "tertiary",
         className: "bg-neutral-1 text-negative-5 [&_svg]:stroke-negative-5",
+      },
+      // Warning
+      {
+        color: "warning",
+        variant: "secondary",
+        className: "bg-warning-1 text-warning-5 [&_svg]:stroke-warning-5",
+      },
+      {
+        color: "warning",
+        variant: "tertiary",
+        className: "bg-neutral-1 text-warning-5 [&_svg]:stroke-warning-5",
       },
     ],
     defaultVariants: {

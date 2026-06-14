@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { CheckIcon, InfoIcon, XIcon } from "lucide-react";
+import { CheckIcon, InfoIcon, TriangleAlertIcon, XIcon } from "lucide-react";
 import { type ComponentProps } from "react";
 import { Toaster as ToasterRoot } from "sonner";
 
@@ -15,6 +15,7 @@ const toastIconVariants = cva(
       variant: {
         info: "bg-neutral-5",
         success: "bg-positive-5",
+        warning: "bg-warning-5",
         error: "bg-negative-5",
       },
     },
@@ -43,6 +44,7 @@ export const Toast = (props: ToastProps) => {
       <div className={toastIconVariants({ variant })}>
         {variant === "info" && <InfoIcon />}
         {variant === "success" && <CheckIcon />}
+        {variant === "warning" && <TriangleAlertIcon />}
         {variant === "error" && <XIcon />}
       </div>
       <div className="flex flex-col gap-0.5">

@@ -17,6 +17,7 @@ export const buttonVariants = cva(
         neutral: "",
         positive: "",
         negative: "",
+        warning: "",
         accent: "",
       },
       priority: {
@@ -218,6 +219,36 @@ export const buttonVariants = cva(
           "text-negative-7 [&_svg]:stroke-negative-7",
           "hover:bg-negative-1 hover:text-negative-8 hover:[&_svg]:stroke-negative-8 active:bg-negative-1 active:text-negative-8 active:[&_svg]:stroke-negative-8",
           "focus-visible:ring-negative-8",
+        ),
+      },
+      // Warning
+      {
+        variant: "warning",
+        priority: "primary",
+        className: cn(
+          "bg-warning-6 text-neutral-1 [&_svg]:stroke-neutral-1",
+          "dark:bg-warning-5 dark:text-neutral-8 dark:[&_svg]:stroke-neutral-8",
+          "hover:bg-warning-6/80 active:bg-warning-6/80",
+          "dark:hover:bg-warning-5/80 dark:active:bg-warning-5/80",
+          "focus-visible:ring-neutral-8",
+        ),
+      },
+      {
+        variant: "warning",
+        priority: "secondary",
+        className: cn(
+          "bg-warning-1 text-warning-7 [&_svg]:stroke-warning-7",
+          "hover:bg-warning-2 hover:text-warning-8 hover:[&_svg]:stroke-warning-8 active:bg-warning-2 active:text-warning-8 active:[&_svg]:stroke-warning-8",
+          "focus-visible:ring-neutral-8",
+        ),
+      },
+      {
+        variant: "warning",
+        priority: "tertiary",
+        className: cn(
+          "text-warning-7 [&_svg]:stroke-warning-7",
+          "hover:bg-warning-1 hover:text-warning-8 hover:[&_svg]:stroke-warning-8 active:bg-warning-1 active:text-warning-8 active:[&_svg]:stroke-warning-8",
+          "focus-visible:ring-warning-8",
         ),
       },
       // Accent

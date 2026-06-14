@@ -12,6 +12,7 @@ export const svgIconVariants = cva("shrink-0", {
       neutral: "",
       positive: "",
       negative: "",
+      warning: "",
     },
     priority: {
       primary: "",
@@ -72,6 +73,22 @@ export const svgIconVariants = cva("shrink-0", {
       color: "negative",
       priority: "tertiary",
       className: "stroke-negative-4",
+    },
+    // Warning
+    {
+      color: "warning",
+      priority: "primary",
+      className: "stroke-warning-6",
+    },
+    {
+      color: "warning",
+      priority: "secondary",
+      className: "stroke-warning-5",
+    },
+    {
+      color: "warning",
+      priority: "tertiary",
+      className: "stroke-warning-4",
     },
   ],
 });
