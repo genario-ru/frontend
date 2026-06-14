@@ -63,7 +63,8 @@ export function useBillingMySubscriptionsActions() {
 
   const availableTariffs = useMemo(() => {
     const activeSubscriptions = mySubscriptionsData?.data.filter(
-      (subscription) => ["active", "pending"].includes(subscription.status),
+      (subscription) =>
+        ["active", "pending", "overdue"].includes(subscription.status),
     );
 
     if (!activeSubscriptions) return tariffsData?.data;
