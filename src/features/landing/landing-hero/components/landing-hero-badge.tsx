@@ -9,7 +9,7 @@ export function LandingHeroBadge() {
       color="custom"
       className="bg-accent-1 text-accent-7 [&_svg]:stroke-accent-7"
     >
-      Для YouTube, RuTube, VK Видео, Dzen и других платформ
+      Для коротких и длинных видео
     </Badge>
   );
 }
