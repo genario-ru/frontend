@@ -2,11 +2,11 @@ import type { SubscriptionExtendedSchemaStatusEnumKey } from "@/codegen/api/prod
 
 export const subscriptionStatusColor: Record<
   SubscriptionExtendedSchemaStatusEnumKey,
-  "positive" | "negative" | "neutral"
+  "positive" | "negative" | "warning" | "neutral"
 > = {
   active: "positive",
   pending: "neutral",
   cancelled: "negative",
-  overdue: "negative",
+  overdue: "warning",
   terminated: "neutral",
 };

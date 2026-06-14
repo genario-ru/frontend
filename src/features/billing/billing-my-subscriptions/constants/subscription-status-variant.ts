@@ -7,6 +7,6 @@ export const subscriptionStatusVariant: Record<
   active: "secondary",
   pending: "tertiary",
   cancelled: "secondary",
-  overdue: "tertiary",
+  overdue: "secondary",
   terminated: "secondary",
 };
