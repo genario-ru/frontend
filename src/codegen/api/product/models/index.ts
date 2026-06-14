@@ -394,6 +394,17 @@ export type {
   GetApiV1LegalDocumentsBySlugQueryResponse,
 } from "./get-api-v1-legal-documents-by-slug.ts";
 export type {
+  GetApiV1Onboarding200,
+  GetApiV1Onboarding400,
+  GetApiV1Onboarding401,
+  GetApiV1Onboarding402,
+  GetApiV1Onboarding403,
+  GetApiV1Onboarding404,
+  GetApiV1Onboarding500,
+  GetApiV1OnboardingQuery,
+  GetApiV1OnboardingQueryResponse,
+} from "./get-api-v1-onboarding.ts";
+export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
   GetApiV1Platforms401,
@@ -714,6 +725,13 @@ export type { GetMyReferralInvitesResponseSchema } from "./get-my-referral-invit
 export type { GetMyScenariosResponseMetaSchema } from "./get-my-scenarios-response-meta-schema.ts";
 export type { GetMyScenariosResponseSchema } from "./get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./get-my-subscriptions-response-schema.ts";
+export type {
+  GetOnboardingResponseSchema,
+  ItemsStatusEnumKey,
+  ItemsTypeEnumKey,
+} from "./get-onboarding-response-schema.ts";
+export { itemsStatusEnum } from "./get-onboarding-response-schema.ts";
+export { itemsTypeEnum } from "./get-onboarding-response-schema.ts";
 export type { GetPaymentResponseSchema } from "./get-payment-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";

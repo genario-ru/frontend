@@ -114,6 +114,10 @@ export type { GetApiV1LegalDocumentsBySlugQueryKey } from "./get-api-v1-legal-do
 export { getApiV1LegalDocumentsBySlugQueryKey } from "./get-api-v1-legal-documents-by-slug.ts";
 export { getApiV1LegalDocumentsBySlugQueryOptions } from "./get-api-v1-legal-documents-by-slug.ts";
 export { useGetApiV1LegalDocumentsBySlug } from "./get-api-v1-legal-documents-by-slug.ts";
+export type { GetApiV1OnboardingQueryKey } from "./get-api-v1-onboarding.ts";
+export { getApiV1OnboardingQueryKey } from "./get-api-v1-onboarding.ts";
+export { getApiV1OnboardingQueryOptions } from "./get-api-v1-onboarding.ts";
+export { useGetApiV1Onboarding } from "./get-api-v1-onboarding.ts";
 export type { GetApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./get-api-v1-platforms.ts";

@@ -24,6 +24,7 @@ export { getApiV1IdeasListsByIdeasListIdExports } from "./clients/get-api-v1-ide
 export { getApiV1IdeasListsFilters } from "./clients/get-api-v1-ideas-lists-filters.ts";
 export { getApiV1LegalDocuments } from "./clients/get-api-v1-legal-documents.ts";
 export { getApiV1LegalDocumentsBySlug } from "./clients/get-api-v1-legal-documents-by-slug.ts";
+export { getApiV1Onboarding } from "./clients/get-api-v1-onboarding.ts";
 export { getApiV1Platforms } from "./clients/get-api-v1-platforms.ts";
 export { getApiV1ProductionStatuses } from "./clients/get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./clients/get-api-v1-profiles-by-profile-id.ts";
@@ -481,6 +482,17 @@ export type {
   GetApiV1LegalDocumentsBySlugQueryResponse,
 } from "./models/get-api-v1-legal-documents-by-slug.ts";
 export type {
+  GetApiV1Onboarding200,
+  GetApiV1Onboarding400,
+  GetApiV1Onboarding401,
+  GetApiV1Onboarding402,
+  GetApiV1Onboarding403,
+  GetApiV1Onboarding404,
+  GetApiV1Onboarding500,
+  GetApiV1OnboardingQuery,
+  GetApiV1OnboardingQueryResponse,
+} from "./models/get-api-v1-onboarding.ts";
+export type {
   GetApiV1Platforms200,
   GetApiV1Platforms400,
   GetApiV1Platforms401,
@@ -801,6 +813,13 @@ export type { GetMyReferralInvitesResponseSchema } from "./models/get-my-referra
 export type { GetMyScenariosResponseMetaSchema } from "./models/get-my-scenarios-response-meta-schema.ts";
 export type { GetMyScenariosResponseSchema } from "./models/get-my-scenarios-response-schema.ts";
 export type { GetMySubscriptionsResponseSchema } from "./models/get-my-subscriptions-response-schema.ts";
+export type {
+  GetOnboardingResponseSchema,
+  ItemsStatusEnumKey,
+  ItemsTypeEnumKey,
+} from "./models/get-onboarding-response-schema.ts";
+export { itemsStatusEnum } from "./models/get-onboarding-response-schema.ts";
+export { itemsTypeEnum } from "./models/get-onboarding-response-schema.ts";
 export type { GetPaymentResponseSchema } from "./models/get-payment-response-schema.ts";
 export type { GetPlatformsForChannelsResponseSchema } from "./models/get-platforms-for-channels-response-schema.ts";
 export type { GetPlatformsResponseSchema } from "./models/get-platforms-response-schema.ts";
@@ -1634,6 +1653,10 @@ export type { GetApiV1LegalDocumentsBySlugQueryKey } from "./tanstack/get-api-v1
 export { getApiV1LegalDocumentsBySlugQueryKey } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
 export { getApiV1LegalDocumentsBySlugQueryOptions } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
 export { useGetApiV1LegalDocumentsBySlug } from "./tanstack/get-api-v1-legal-documents-by-slug.ts";
+export type { GetApiV1OnboardingQueryKey } from "./tanstack/get-api-v1-onboarding.ts";
+export { getApiV1OnboardingQueryKey } from "./tanstack/get-api-v1-onboarding.ts";
+export { getApiV1OnboardingQueryOptions } from "./tanstack/get-api-v1-onboarding.ts";
+export { useGetApiV1Onboarding } from "./tanstack/get-api-v1-onboarding.ts";
 export type { GetApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryKey } from "./tanstack/get-api-v1-platforms.ts";
 export { getApiV1PlatformsQueryOptions } from "./tanstack/get-api-v1-platforms.ts";
@@ -2216,6 +2239,16 @@ export {
   getApiV1LegalDocumentsQueryResponseSchema,
 } from "./zod/get-api-v1-legal-documents-schema.ts";
 export {
+  getApiV1Onboarding200Schema,
+  getApiV1Onboarding400Schema,
+  getApiV1Onboarding401Schema,
+  getApiV1Onboarding402Schema,
+  getApiV1Onboarding403Schema,
+  getApiV1Onboarding404Schema,
+  getApiV1Onboarding500Schema,
+  getApiV1OnboardingQueryResponseSchema,
+} from "./zod/get-api-v1-onboarding-schema.ts";
+export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
   getApiV1Platforms401Schema,
@@ -2503,6 +2536,7 @@ export { getMyReferralInvitesResponseSchemaSchema } from "./zod/get-my-referral-
 export { getMyScenariosResponseMetaSchemaSchema } from "./zod/get-my-scenarios-response-meta-schema-schema.ts";
 export { getMyScenariosResponseSchemaSchema } from "./zod/get-my-scenarios-response-schema-schema.ts";
 export { getMySubscriptionsResponseSchemaSchema } from "./zod/get-my-subscriptions-response-schema-schema.ts";
+export { getOnboardingResponseSchemaSchema } from "./zod/get-onboarding-response-schema-schema.ts";
 export { getPaymentResponseSchemaSchema } from "./zod/get-payment-response-schema-schema.ts";
 export { getPlatformsForChannelsResponseSchemaSchema } from "./zod/get-platforms-for-channels-response-schema-schema.ts";
 export { getPlatformsResponseSchemaSchema } from "./zod/get-platforms-response-schema-schema.ts";

@@ -3898,6 +3898,86 @@
         }
       }
     },
+    "/api/v1/onboarding": {
+      "get": {
+        "operationId": "getApiV1Onboarding",
+        "tags": [
+          "Onboarding"
+        ],
+        "responses": {
+          "200": {
+            "description": "Onboarding retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetOnboardingResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/platforms": {
       "get": {
         "operationId": "getApiV1Platforms",
@@ -8321,6 +8401,9 @@
           "marketingAccepted": {
             "type": "boolean"
           },
+          "hideOnboarding": {
+            "type": "boolean"
+          },
           "phone": {
             "anyOf": [
               {
@@ -8390,6 +8473,7 @@
           "email",
           "emailVerified",
           "marketingAccepted",
+          "hideOnboarding",
           "name",
           "role",
           "banned",
@@ -8627,6 +8711,9 @@
           },
           "image": {
             "type": "string"
+          },
+          "hideOnboarding": {
+            "type": "boolean"
           }
         },
         "title": "Update user body",
@@ -12562,6 +12649,7 @@
               "ideas-list",
               "scenario-chapters",
               "scenario-chapter-scenes",
+              "scenario-chapter-scene",
               "scenario-scene-preview",
               "scenario-metadata",
               "scenario-metadata-item"
@@ -14548,6 +14636,65 @@
         ],
         "title": "Get legal documents response",
         "description": "Get legal documents response description"
+      },
+      "GetOnboardingResponseSchema": {
+        "type": "object",
+        "properties": {
+          "icon": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "profile",
+                    "ideas-list",
+                    "scenario",
+                    "metadata"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "completed",
+                    "locked"
+                  ]
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "status",
+                "title",
+                "description"
+              ]
+            }
+          }
+        },
+        "required": [
+          "icon",
+          "title",
+          "description",
+          "items"
+        ],
+        "title": "Get onboarding response",
+        "description": "Get onboarding response description"
       },
       "PlatformExtendedSchema": {
         "type": "object",

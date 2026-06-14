@@ -328,6 +328,16 @@ export {
   getApiV1LegalDocumentsQueryResponseSchema,
 } from "./get-api-v1-legal-documents-schema.ts";
 export {
+  getApiV1Onboarding200Schema,
+  getApiV1Onboarding400Schema,
+  getApiV1Onboarding401Schema,
+  getApiV1Onboarding402Schema,
+  getApiV1Onboarding403Schema,
+  getApiV1Onboarding404Schema,
+  getApiV1Onboarding500Schema,
+  getApiV1OnboardingQueryResponseSchema,
+} from "./get-api-v1-onboarding-schema.ts";
+export {
   getApiV1Platforms200Schema,
   getApiV1Platforms400Schema,
   getApiV1Platforms401Schema,
@@ -615,6 +625,7 @@ export { getMyReferralInvitesResponseSchemaSchema } from "./get-my-referral-invi
 export { getMyScenariosResponseMetaSchemaSchema } from "./get-my-scenarios-response-meta-schema-schema.ts";
 export { getMyScenariosResponseSchemaSchema } from "./get-my-scenarios-response-schema-schema.ts";
 export { getMySubscriptionsResponseSchemaSchema } from "./get-my-subscriptions-response-schema-schema.ts";
+export { getOnboardingResponseSchemaSchema } from "./get-onboarding-response-schema-schema.ts";
 export { getPaymentResponseSchemaSchema } from "./get-payment-response-schema-schema.ts";
 export { getPlatformsForChannelsResponseSchemaSchema } from "./get-platforms-for-channels-response-schema-schema.ts";
 export { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";

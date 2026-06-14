@@ -14,6 +14,7 @@ export const userSchemaSchema = z
     email: z.string(),
     emailVerified: z.boolean(),
     marketingAccepted: z.boolean(),
+    hideOnboarding: z.boolean(),
     phone: z.optional(z.union([z.string(), z.null()])),
     phoneVerified: z.optional(z.boolean().default(false)),
     name: z.string(),

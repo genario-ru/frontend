@@ -32,6 +32,10 @@ export type UserSchema = {
    * @type boolean
    */
   marketingAccepted: boolean;
+  /**
+   * @type boolean
+   */
+  hideOnboarding: boolean;
   phone?: string | null;
   /**
    * @default false

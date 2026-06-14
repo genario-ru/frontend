@@ -12,5 +12,6 @@ export const updateUserBodySchemaSchema = z
   .object({
     name: z.optional(z.string().min(1)),
     image: z.optional(z.string()),
+    hideOnboarding: z.optional(z.boolean()),
   })
   .describe("Update user body description");

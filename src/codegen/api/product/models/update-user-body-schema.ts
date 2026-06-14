@@ -17,4 +17,8 @@ export type UpdateUserBodySchema = {
    * @type string | undefined
    */
   image?: string;
+  /**
+   * @type boolean | undefined
+   */
+  hideOnboarding?: boolean;
 };
