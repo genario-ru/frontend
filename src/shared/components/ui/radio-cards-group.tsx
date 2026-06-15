@@ -15,6 +15,11 @@ const radioCardsGroupItemVariants = cva(
         base: "gap-2 rounded-2xl p-3.5",
         lg: "gap-3 rounded-3xl p-4",
       },
+      align: {
+        center: "justify-center",
+        start: "justify-start",
+        end: "justify-end",
+      },
       state: {
         default:
           "hover:ring-neutral-5 active:ring-neutral-5 data-[state=checked]:ring-neutral-8 data-[state=checked]:ring-2",
@@ -23,6 +28,7 @@ const radioCardsGroupItemVariants = cva(
     },
     defaultVariants: {
       size: "base",
+      align: "center",
       state: "default",
     },
   },
@@ -47,6 +53,7 @@ export function RadioCardsGroup({
 
 export function RadioCardsGroupItem({
   size,
+  align,
   state,
   className,
   children,
@@ -54,7 +61,10 @@ export function RadioCardsGroupItem({
 }: RadioCardsGroupItemProps) {
   return (
     <RadioGroupPrimitive.Item
-      className={cn(radioCardsGroupItemVariants({ size, state }), className)}
+      className={cn(
+        radioCardsGroupItemVariants({ size, align, state }),
+        className,
+      )}
       {...props}
     >
       {children}

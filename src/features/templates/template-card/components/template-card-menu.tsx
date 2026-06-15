@@ -27,7 +27,6 @@ export function TemplateCardMenu({
         to="/ideas-lists/settings"
         search={{ templateId }}
         icon={<LucideIcon icon={LightbulbIcon} />}
-        className="w-full flex-1"
       >
         Новые идеи
       </TemplateCardMenuButtonLink>
@@ -35,7 +34,6 @@ export function TemplateCardMenu({
         to="/scenarios/settings"
         search={{ templateId }}
         icon={<LucideIcon icon={BookImageIcon} />}
-        className="w-full flex-1"
       >
         Новый сценарий
       </TemplateCardMenuButtonLink>

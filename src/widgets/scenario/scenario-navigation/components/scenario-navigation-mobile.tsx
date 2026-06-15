@@ -53,6 +53,7 @@ export function ScenarioNavigationMobile({
               key={chapter.id}
               value={chapter.id}
               size="sm"
+              align="start"
               className={cn("w-full items-start text-left", {
                 "ring-neutral-8 ring-2":
                   activeScenarioChapter?.id === chapter.id,
