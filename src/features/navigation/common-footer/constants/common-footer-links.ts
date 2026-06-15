@@ -9,11 +9,13 @@ export const commonFooterLinks: CommonFooterLinksColumn[] = [
         href: "https://t.me/genario_ru",
         target: "_blank",
         rel: "noopener noreferrer",
+        goal: "tg-community-link-click",
       },
       {
         title: "Почта",
         href: "mailto:support@genario.ru",
         target: "_self",
+        goal: "support-email-link-click",
       },
     ],
   },

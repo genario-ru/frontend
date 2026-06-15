@@ -4,7 +4,11 @@
 import { ButtonLink } from "@/shared/components/ui/button-link";
 import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 
+import { useLandingHeroActions } from "../hooks/use-landing-hero-actions";
+
 export function LandingHeroActions() {
+  const { handleClick } = useLandingHeroActions();
+
   return (
     <div className="flex w-full flex-col items-stretch gap-2 md:w-auto md:flex-row md:items-center">
       <ButtonLink
@@ -14,6 +18,7 @@ export function LandingHeroActions() {
         to="/"
         hash="tariffs"
         className="w-full md:w-auto"
+        onClick={handleClick}
       >
         Попробовать 3 дня за 1{NBSP}
         {RUBLE_SIGN}

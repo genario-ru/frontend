@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useSendVerificationOtp } from "@/actions/auth/hooks/use-send-verification-otp";
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
+import { useReachGoal } from "@/lib/yandex-metrika";
 import type { SignInSearch } from "@/routes/_auth/sign-in";
 import { useToast } from "@/shared/hooks/use-toast";
 
@@ -15,6 +16,7 @@ type UseSignInFormParams = SignInSearch;
 
 export function useSignInForm({ email, redirect }: UseSignInFormParams) {
   const navigate = useNavigate();
+  const reachGoal = useReachGoal();
   const { showErrorToast } = useToast();
 
   const { sendVerificationOtp, isVerificationOtpSending } =
@@ -31,6 +33,8 @@ export function useSignInForm({ email, redirect }: UseSignInFormParams) {
       onSubmit: signInFormValidateFn,
     },
     onSubmit: async ({ value: { email, isMarketingAccepted } }) => {
+      reachGoal("sign-in-button-click");
+
       sendVerificationOtp(
         {
           data: {
@@ -57,6 +61,9 @@ export function useSignInForm({ email, redirect }: UseSignInFormParams) {
           },
         },
       );
+    },
+    onSubmitInvalid: () => {
+      reachGoal("sign-in-button-click");
     },
   });
 

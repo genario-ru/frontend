@@ -16,6 +16,7 @@ export function useCommonFooterDocumentsLinksColumn() {
       params: {
         slug: document.slug,
       },
+      goal: "legal-document-click",
     })) ?? [];
 
   return {

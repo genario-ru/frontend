@@ -4,6 +4,8 @@ import {
 } from "@/shared/components/ui/button-link";
 import { cn } from "@/shared/utils/cn";
 
+import { useTariffCardPrimaryAction } from "../hooks/use-tariff-card-primary-action";
+
 type LandingTariffsCardPrimaryActionProps = Omit<ButtonLinkProps, "title"> & {
   title: string;
   subtitle?: string;
@@ -17,6 +19,8 @@ export function TariffCardPrimaryAction({
   className,
   ...props
 }: LandingTariffsCardPrimaryActionProps) {
+  const { handleClick } = useTariffCardPrimaryAction();
+
   return (
     <ButtonLink
       to={to}
@@ -25,6 +29,7 @@ export function TariffCardPrimaryAction({
       variant="accent"
       priority="primary"
       className={cn("w-full flex-col items-center gap-0", className)}
+      onClick={handleClick}
       {...props}
     >
       {title}

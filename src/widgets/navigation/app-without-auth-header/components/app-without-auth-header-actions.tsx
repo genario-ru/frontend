@@ -14,6 +14,7 @@ export function AppWithoutAuthHeaderActions() {
     homeButtonContent,
     tryButtonContent,
     signOut,
+    handleLoginClick,
   } = useAppWithoutAuthHeaderActions();
 
   const body = useMemo(() => {
@@ -36,7 +37,11 @@ export function AppWithoutAuthHeaderActions() {
 
     return (
       <>
-        <ButtonLink priority="tertiary" to="/sign-in">
+        <ButtonLink
+          priority="tertiary"
+          to="/sign-in"
+          onClick={handleLoginClick}
+        >
           Войти
         </ButtonLink>
         <ButtonLink to="/" hash="tariffs">
@@ -50,6 +55,7 @@ export function AppWithoutAuthHeaderActions() {
     homeButtonContent,
     tryButtonContent,
     signOut,
+    handleLoginClick,
   ]);
 
   return <div className="flex items-center gap-2 duration-200">{body}</div>;
