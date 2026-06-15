@@ -39,11 +39,7 @@ export function useVerifyOTPForm({
     isVerificationOtpSent,
   } = useSendVerificationOtp();
 
-  const {
-    mutate: signIn,
-    isPending: isSignInPending,
-    isSuccess: isSignInSuccess,
-  } = useSignInEmailOtp();
+  const { signIn, isSignInPending, isSignInSuccess } = useSignInEmailOtp();
 
   const form = useAppForm({
     ...verifyOTPFormOptions,

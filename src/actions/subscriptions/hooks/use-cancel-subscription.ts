@@ -4,16 +4,20 @@ import {
   getApiV1SubscriptionsMyQueryKey,
   usePostApiV1SubscriptionsBySubscriptionIdCancel,
 } from "@/codegen/api/product";
+import { useReachGoal } from "@/lib/yandex-metrika";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useCancelSubscription() {
   const queryClient = useQueryClient();
+  const reachGoal = useReachGoal();
   const { showSuccessToast, showErrorToast } = useToast();
 
   const { mutate: cancelSubscription, isPending: isCancelSubscriptionPending } =
     usePostApiV1SubscriptionsBySubscriptionIdCancel({
       mutation: {
         onSuccess: () => {
+          reachGoal("subscription-cancel");
+
           queryClient.invalidateQueries({
             queryKey: getApiV1SubscriptionsMyQueryKey(),
           });

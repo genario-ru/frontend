@@ -4,10 +4,12 @@ import {
   getApiV1ScenariosByScenarioIdQueryKey,
   usePatchApiV1ScenariosByScenarioIdSave,
 } from "@/codegen/api/product";
+import { useReachGoal } from "@/lib/yandex-metrika";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useSaveScenario() {
   const queryClient = useQueryClient();
+  const reachGoal = useReachGoal();
   const { showErrorToast } = useToast();
 
   const { mutate: saveScenario, isPending: isSaveScenarioPending } =
@@ -20,6 +22,10 @@ export function useSaveScenario() {
           });
         },
         onSuccess: ({ data }) => {
+          if (data.saved) {
+            reachGoal("scenario-save");
+          }
+
           queryClient.invalidateQueries({
             queryKey: getApiV1ScenariosByScenarioIdQueryKey({
               scenarioId: data.id,

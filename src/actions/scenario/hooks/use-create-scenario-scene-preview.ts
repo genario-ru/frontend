@@ -5,6 +5,7 @@ import {
   usePostApiV1ScenariosScenesBySceneIdPreview,
 } from "@/codegen/api/product";
 import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
+import { useReachGoal } from "@/lib/yandex-metrika";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type UseCreateScenarioScenePreviewParams = {
@@ -15,6 +16,7 @@ export function useCreateScenarioScenePreview({
   chapterId,
 }: UseCreateScenarioScenePreviewParams) {
   const queryClient = useQueryClient();
+  const reachGoal = useReachGoal();
   const { showErrorToast } = useToast();
 
   const {
@@ -30,6 +32,8 @@ export function useCreateScenarioScenePreview({
         showErrorToast({ description: description });
       },
       onSuccess: () => {
+        reachGoal("scene-preview-generation-start");
+
         queryClient.invalidateQueries({
           queryKey: getApiV1ScenariosChaptersByChapterIdQueryKey({
             chapterId,

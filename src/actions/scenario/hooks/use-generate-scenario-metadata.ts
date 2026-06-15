@@ -4,10 +4,12 @@ import {
   getApiV1ScenariosByScenarioIdMetadataQueryKey,
   usePostApiV1ScenariosByScenarioIdMetadataGenerate,
 } from "@/codegen/api/product";
+import { useReachGoal } from "@/lib/yandex-metrika";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useGenerateScenarioMetadata() {
   const queryClient = useQueryClient();
+  const reachGoal = useReachGoal();
   const { showErrorToast } = useToast();
 
   const {
@@ -16,6 +18,8 @@ export function useGenerateScenarioMetadata() {
   } = usePostApiV1ScenariosByScenarioIdMetadataGenerate({
     mutation: {
       onSuccess: (_data, variables) => {
+        reachGoal("scenario-metadata-generation-start");
+
         queryClient.invalidateQueries({
           queryKey: getApiV1ScenariosByScenarioIdMetadataQueryKey({
             scenarioId: variables.scenarioId,
