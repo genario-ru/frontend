@@ -26,4 +26,17 @@ export type UpdateIdeaBodySchema = {
    */
   description: string;
   reason?: string | null;
+  hook?: string | null;
+  /**
+   * @minLength 0
+   * @maxLength 5
+   * @type integer | undefined
+   */
+  complexity?: number;
+  /**
+   * @minLength 0
+   * @maxLength 5
+   * @type integer | undefined
+   */
+  potential?: number;
 };

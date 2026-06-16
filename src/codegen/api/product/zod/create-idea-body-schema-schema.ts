@@ -14,5 +14,8 @@ export const createIdeaBodySchemaSchema = z
     name: z.string().min(3).max(256),
     description: z.string().min(16).max(4096),
     reason: z.optional(z.union([z.string(), z.null()])),
+    hook: z.optional(z.union([z.string(), z.null()])),
+    complexity: z.optional(z.int().min(0).max(5)),
+    potential: z.optional(z.int().min(0).max(5)),
   })
   .describe("Create idea body description");

@@ -21,6 +21,9 @@ export const ideaExtendedSchemaSchema = z
     name: z.string(),
     description: z.string(),
     reason: z.union([z.string(), z.null()]),
+    hook: z.union([z.string(), z.null()]),
+    complexity: z.int().min(-9007199254740991).max(9007199254740991),
+    potential: z.int().min(-9007199254740991).max(9007199254740991),
     createdAt: z.string(),
     updatedAt: z.string(),
     get ideasList() {

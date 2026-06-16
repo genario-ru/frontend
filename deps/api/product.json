@@ -8879,6 +8879,26 @@
               }
             ]
           },
+          "hook": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "complexity": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "potential": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
           "createdAt": {
             "type": "string"
           },
@@ -8895,6 +8915,9 @@
           "name",
           "description",
           "reason",
+          "hook",
+          "complexity",
+          "potential",
           "createdAt",
           "updatedAt"
         ],
@@ -9360,6 +9383,26 @@
               }
             ]
           },
+          "hook": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "complexity": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "potential": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
           "createdAt": {
             "type": "string"
           },
@@ -9382,6 +9425,9 @@
           "name",
           "description",
           "reason",
+          "hook",
+          "complexity",
+          "potential",
           "createdAt",
           "updatedAt",
           "ideasList",
@@ -9452,6 +9498,27 @@
                 "type": "null"
               }
             ]
+          },
+          "hook": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "complexity": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "potential": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
           }
         },
         "required": [
@@ -13440,6 +13507,27 @@
                 "type": "null"
               }
             ]
+          },
+          "hook": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "complexity": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "potential": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
           }
         },
         "required": [

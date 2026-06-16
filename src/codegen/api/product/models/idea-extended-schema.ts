@@ -37,6 +37,19 @@ export type IdeaExtendedSchema = {
    */
   description: string;
   reason: string | null;
+  hook: string | null;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  complexity: number;
+  /**
+   * @minLength -9007199254740991
+   * @maxLength 9007199254740991
+   * @type integer
+   */
+  potential: number;
   /**
    * @type string
    */
