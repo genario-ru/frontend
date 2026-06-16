@@ -51,7 +51,10 @@ export function CreditsPackagePaymentMethodDialog({
                 <field.RadioCardsGroupField
                   items={paymentMethodItems}
                   className="flex-col"
-                  itemClassName="w-full flex-row"
+                  itemProps={{
+                    align: "start",
+                    className: "w-full flex-row",
+                  }}
                 />
               )}
             </form.AppField>

@@ -5,6 +5,7 @@ import { FieldLayout } from "@/shared/components/layouts/field-layout";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
+  type RadioCardsGroupItemProps,
 } from "@/shared/components/ui/radio-cards-group";
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
 
@@ -17,14 +18,14 @@ type SelectFieldProps = PropsWithClassName<{
     value: string;
     icon?: ReactNode;
   }[];
-  itemClassName?: string;
+  itemProps?: Partial<RadioCardsGroupItemProps>;
 }>;
 
 export const RadioCardsGroupField = ({
   label,
   items,
+  itemProps,
   className,
-  itemClassName,
 }: SelectFieldProps) => {
   const {
     options: { defaultValue },
@@ -50,8 +51,8 @@ export const RadioCardsGroupField = ({
           <RadioCardsGroupItem
             key={item.value}
             value={item.value}
-            className={itemClassName}
             state={itemState}
+            {...itemProps}
           >
             {item.icon}
             {item.label}

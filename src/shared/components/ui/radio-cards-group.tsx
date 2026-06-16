@@ -34,7 +34,7 @@ const radioCardsGroupItemVariants = cva(
   },
 );
 
-type RadioCardsGroupItemProps = ComponentProps<
+export type RadioCardsGroupItemProps = ComponentProps<
   typeof RadioGroupPrimitive.Item
 > &
   VariantProps<typeof radioCardsGroupItemVariants>;

@@ -57,7 +57,9 @@ export const ProfileSettingsFormFields = withForm({
                 label: profileType.name,
                 value: profileType.id,
               }))}
-              itemClassName="flex-1"
+              itemProps={{
+                className: "flex-1",
+              }}
             />
           )}
         </form.AppField>
