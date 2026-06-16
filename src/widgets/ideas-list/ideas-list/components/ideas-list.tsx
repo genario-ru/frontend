@@ -89,6 +89,9 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
                   name={idea.name}
                   description={idea.description}
                   reason={idea.reason}
+                  hook={idea.hook}
+                  potential={idea.potential}
+                  complexity={idea.complexity}
                   primaryActions={
                     <IdeasListIdeaCardPrimaryActions ideaId={idea.id} />
                   }
@@ -103,6 +106,9 @@ export function IdeasList({ ideasListId, tab }: IdeasListProps) {
               name={idea.name}
               description={idea.description}
               reason={idea.reason}
+              hook={idea.hook}
+              potential={idea.potential}
+              complexity={idea.complexity}
               primaryActions={
                 <IdeasListIdeaCardPrimaryActions ideaId={idea.id} />
               }
