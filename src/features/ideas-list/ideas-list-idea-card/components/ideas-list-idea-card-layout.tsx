@@ -53,10 +53,7 @@ export function IdeasListIdeaCardLayout({
           <Card
             title="Потенциал"
             headerIcon={
-              <LucideIcon
-                icon={TrendingUpIcon}
-                className="stroke-positive-5 size-5"
-              />
+              <LucideIcon icon={TrendingUpIcon} className="stroke-positive-5" />
             }
           >
             <ScoreIndicator value={potential} max={SCORE_MAX} inverted />
@@ -66,10 +63,7 @@ export function IdeasListIdeaCardLayout({
           <Card
             title="Сложность"
             headerIcon={
-              <LucideIcon
-                icon={GaugeIcon}
-                className="stroke-negative-5 size-5"
-              />
+              <LucideIcon icon={GaugeIcon} className="stroke-negative-5" />
             }
           >
             <ScoreIndicator value={complexity} max={SCORE_MAX} />
@@ -77,17 +71,14 @@ export function IdeasListIdeaCardLayout({
         )}
       </div>
       {hook && (
-        <Card
-          title="Хук"
-          headerIcon={<LucideIcon size="sm" icon={AnchorIcon} />}
-        >
+        <Card title="Хук" headerIcon={<LucideIcon icon={AnchorIcon} />}>
           {hook}
         </Card>
       )}
       {description && (
         <Card
           title="Описание"
-          headerIcon={<LucideIcon size="sm" icon={ScrollTextIcon} />}
+          headerIcon={<LucideIcon icon={ScrollTextIcon} />}
           className="flex-1"
         >
           {description}
@@ -97,11 +88,7 @@ export function IdeasListIdeaCardLayout({
         <Card
           title="Почему зайдет"
           headerIcon={
-            <LucideIcon
-              size="sm"
-              icon={FlameIcon}
-              className="stroke-orange-500"
-            />
+            <LucideIcon icon={FlameIcon} className="stroke-orange-500" />
           }
         >
           {reason}
@@ -123,37 +110,30 @@ export function IdeasListIdeaCardLayoutSkeleton() {
         <Card
           title="Потенциал"
           headerIcon={
-            <LucideIcon
-              icon={TrendingUpIcon}
-              className="stroke-positive-5 size-5"
-            />
+            <LucideIcon icon={TrendingUpIcon} className="stroke-positive-5" />
           }
         >
           <Skeleton className="h-8 w-full rounded-lg" />
         </Card>
         <Card
           title="Сложность"
-          headerIcon={<LucideIcon icon={GaugeIcon} className="size-5" />}
+          headerIcon={
+            <LucideIcon icon={GaugeIcon} className="stroke-negative-5" />
+          }
         >
           <Skeleton className="h-8 w-full rounded-lg" />
         </Card>
       </div>
-      <Card
-        title="Хук"
-        headerIcon={<LucideIcon icon={AnchorIcon} className="size-5" />}
-      >
+      <Card title="Хук" headerIcon={<LucideIcon icon={AnchorIcon} />}>
         <TextSkeleton fontSize={14} lineHeight={20} linesCount={2} />
       </Card>
-      <Card
-        title="Описание"
-        headerIcon={<LucideIcon icon={ScrollTextIcon} className="size-5" />}
-      >
+      <Card title="Описание" headerIcon={<LucideIcon icon={ScrollTextIcon} />}>
         <TextSkeleton fontSize={14} lineHeight={20} linesCount={10} />
       </Card>
       <Card
         title="Почему зайдет"
         headerIcon={
-          <LucideIcon icon={FlameIcon} className="size-5 stroke-orange-500" />
+          <LucideIcon icon={FlameIcon} className="stroke-orange-500" />
         }
       >
         <TextSkeleton fontSize={14} lineHeight={20} linesCount={4} />
