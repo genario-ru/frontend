@@ -7,9 +7,9 @@ export function WaitlistLandingHeroBadge() {
     <Badge
       icon={<ZapIcon />}
       color="custom"
-      className="bg-accent-1 text-accent-7 [&_svg]:stroke-accent-7"
+      className="bg-neutral-1/10 text-neutral-1 dark:bg-neutral-8/10 dark:text-neutral-8 [&_svg]:stroke-accent-5 w-fit backdrop-blur-sm"
     >
-      Скоро запуск · ранний доступ
+      Открываем ранний доступ по заявкам
     </Badge>
   );
 }

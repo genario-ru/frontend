@@ -9,21 +9,21 @@ export const waitlistLandingHeaderLinks: WaitlistLandingHeaderLink[] = [
   {
     label: "Зачем",
     navigateOptions: {
-      to: "/waitlist",
+      to: "/",
       hash: "problem",
     },
   },
   {
     label: "Возможности",
     navigateOptions: {
-      to: "/waitlist",
+      to: "/",
       hash: "possibilities",
     },
   },
   {
     label: "Ранний доступ",
     navigateOptions: {
-      to: "/waitlist",
+      to: "/",
       hash: "waitlist-form",
     },
   },

@@ -1,10 +1,9 @@
 import { WaitlistLandingSectionHeader } from "../../waitlist-landing-section-header/components/waitlist-landing-section-header";
 
-const WAITLIST_LANDING_PROBLEM_TITLE =
-  "Общий ИИ и текущие сервисы не закрывают задачу";
+const WAITLIST_LANDING_PROBLEM_TITLE = "Чего не хватает обычным генераторам";
 
 const WAITLIST_LANDING_PROBLEM_DESCRIPTION =
-  "Открываете ChatGPT или очередной сервис — получаете общий текст, который не про вас и не про то, как вы снимаете. Это мы и исправляем.";
+  "Большинство инструментов помогает только с текстом. А автору всё равно приходится самому держать в голове контекст канала и отдельно заниматься съёмкой, монтажом, метаданными и обложкой.";
 
 export function WaitlistLandingProblemHeader() {
   return (

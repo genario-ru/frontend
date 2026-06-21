@@ -3,7 +3,7 @@ import { WaitlistLandingSectionHeader } from "../../waitlist-landing-section-hea
 const WAITLIST_LANDING_FORM_TITLE = "Оставьте заявку на ранний доступ";
 
 const WAITLIST_LANDING_FORM_DESCRIPTION =
-  "Напишем, как только откроем доступ. А пара ответов ниже подскажет нам, что сделать в первую очередь.";
+  "Когда откроем доступ, пришлём приглашение на email. А ваши ответы подскажут, на что нам обратить внимание в первую очередь.";
 
 export function WaitlistLandingFormHeader() {
   return (

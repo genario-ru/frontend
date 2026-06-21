@@ -3,6 +3,8 @@ import {
   FileTextIcon,
   FileVideoCameraIcon,
   ImagePlay,
+  LightbulbIcon,
+  ListVideoIcon,
   type LucideIcon,
 } from "lucide-react";
 
@@ -12,40 +14,49 @@ type WaitlistLandingPossibility = {
   title: string;
   description: string;
   disabled?: boolean;
-  soon?: boolean;
 };
 
 export const waitlistLandingPossibilitiesList: WaitlistLandingPossibility[] = [
   {
     icon: DownloadIcon,
     iconColor: "#00c0e8",
-    title: "Импорт вашего канала",
+    title: "Понимает канал и материалы",
     description:
-      "Подключите YouTube или RuTube — и Genario построит идеи и сценарии на основе вашего реального контента, тем и подачи.",
-    soon: true,
+      "Подключает YouTube или RuTube и принимает ваши видео, фото, обложки и визуальные референсы.",
   },
   {
-    icon: ImagePlay,
-    iconColor: "#34c759",
-    title: "Загрузка своих видео и фото",
+    icon: LightbulbIcon,
+    iconColor: "#a5b4fc",
+    title: "Находит идеи под аудиторию",
     description:
-      "Нет импорта для вашей площадки? Загрузите примеры роликов, фотографии и опишите стилистику — продукт подстроится под вас.",
-    soon: true,
+      "Предлагает темы и заходы на основе ниши, аудитории и того, что уже сработало в вашем контенте.",
   },
   {
     icon: FileVideoCameraIcon,
     iconColor: "#ffcc00",
-    title: "Сценарий под съёмку и план монтажа",
+    title: "Пишет сценарий под съёмку",
     description:
-      "Сначала — текст, по которому удобно снимать. Затем — план монтажа под отснятый материал. Так, как вы реально работаете.",
-    soon: true,
+      "Даёт структуру, реплики, сцены и понятные подсказки: что говорить, как снимать и какие кадры нужны.",
   },
   {
     icon: FileTextIcon,
     iconColor: "#ff9500",
-    title: "Обложки и превью сцен",
+    title: "Помогает собрать монтаж",
     description:
-      "Быстрая генерация обложек и превью сцен под ваш бренд — без долгого ожидания и дорогих моделей.",
-    soon: true,
+      "После съёмки раскладывает выпуск по сценам: порядок склейки, вставки, анимации и текст на экране.",
+  },
+  {
+    icon: ListVideoIcon,
+    iconColor: "#34c759",
+    title: "Готовит метаданные",
+    description:
+      "Подбирает заголовки, описания и теги под YouTube, RuTube, Shorts и другие форматы публикации.",
+  },
+  {
+    icon: ImagePlay,
+    iconColor: "#34c759",
+    title: "Делает обложки",
+    description:
+      "Использует ваши фото, референсы и стиль канала, чтобы собрать кликабельное превью.",
   },
 ];

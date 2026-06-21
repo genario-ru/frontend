@@ -6,7 +6,7 @@ export function WaitlistLandingHeaderActions() {
       <ButtonLink
         variant="accent"
         priority="primary"
-        to="/waitlist"
+        to="/"
         hash="waitlist-form"
       >
         Оставить заявку
