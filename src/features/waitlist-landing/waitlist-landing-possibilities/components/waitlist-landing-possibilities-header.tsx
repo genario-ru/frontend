@@ -3,7 +3,7 @@ import { WaitlistLandingSectionHeader } from "../../waitlist-landing-section-hea
 const WAITLIST_LANDING_POSSIBILITIES_TITLE = "С чем поможет Genario";
 
 const WAITLIST_LANDING_POSSIBILITIES_DESCRIPTION =
-  "Ранняя версия уже помогает пройти ключевые этапы выпуска: от идеи и сценария до плана монтажа, метаданных и обложки.";
+  "Genario помогает не просто генерировать отдельные куски, а последовательно собрать всю базу для видео: что снимать, как монтировать и как упаковать видео под публикацию.";
 
 export function WaitlistLandingPossibilitiesHeader() {
   return (

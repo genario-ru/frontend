@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+import { useCreateApplication } from "@/actions/applications/hooks/use-create-application";
 import {
   waitlistLandingFormOptions,
   waitlistLandingFormValidateFn,
@@ -6,8 +9,13 @@ import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 import { useToast } from "@/shared/hooks/use-toast";
 
+const CREATE_APPLICATION_ERROR_DESCRIPTION =
+  "Не удалось отправить заявку. Попробуйте ещё раз чуть позже.";
+
 export function useWaitlistLandingForm() {
-  const { showSuccessToast } = useToast();
+  const { showErrorToast } = useToast();
+  const { createApplication, isApplicationCreating } = useCreateApplication();
+  const [isApplicationSubmitted, setIsApplicationSubmitted] = useState(false);
 
   const form = useAppForm({
     ...waitlistLandingFormOptions(),
@@ -19,17 +27,36 @@ export function useWaitlistLandingForm() {
       },
       onSubmit: waitlistLandingFormValidateFn,
     },
-    onSubmit: ({ formApi }) => {
-      showSuccessToast({
-        title: "Заявка отправлена",
-        description: "Спасибо! Мы напишем вам, как только откроем доступ.",
-      });
-
-      formApi.reset();
+    onSubmit: ({ value }) => {
+      createApplication(
+        {
+          data: {
+            email: value.email,
+            featureIds: value.interests,
+            comment: value.comment || undefined,
+            marketingAccepted: value.isMarketingAccepted,
+          },
+        },
+        {
+          onSuccess: () => {
+            setIsApplicationSubmitted(true);
+          },
+          onError: () => {
+            showErrorToast({
+              description: CREATE_APPLICATION_ERROR_DESCRIPTION,
+            });
+          },
+        },
+      );
     },
   });
 
   const { onFormSubmit } = useFormHandlers({ form });
 
-  return { form, onFormSubmit };
+  return {
+    form,
+    onFormSubmit,
+    isApplicationCreating,
+    isApplicationSubmitted,
+  };
 }

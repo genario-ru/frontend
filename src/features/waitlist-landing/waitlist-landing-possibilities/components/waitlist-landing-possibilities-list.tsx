@@ -1,22 +1,32 @@
+import type { ProductFeatureSchema } from "@/codegen/api/product";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 
-import { waitlistLandingPossibilitiesList } from "../constants/waitlist-landing-possibilities-list";
 import { WaitlistLandingPossibilitiesCard } from "./waitlist-landing-possibilities-card";
 
-export function WaitlistLandingPossibilitiesList() {
+type WaitlistLandingPossibilitiesListProps = {
+  productFeatures: ProductFeatureSchema[];
+};
+
+export function WaitlistLandingPossibilitiesList({
+  productFeatures,
+}: WaitlistLandingPossibilitiesListProps) {
   return (
     <div className="grid w-full gap-3 md:grid-cols-2">
-      {waitlistLandingPossibilitiesList.map(
-        ({ icon, iconColor, title, description, disabled }, index) => (
-          <WaitlistLandingPossibilitiesCard
-            key={`waitlist-landing-possibilities-card-${index}`}
-            icon={<LucideIcon icon={icon} style={{ stroke: iconColor }} />}
-            title={title}
-            description={description}
-            disabled={disabled}
-          />
-        ),
-      )}
+      {productFeatures.map((productFeature) => (
+        <WaitlistLandingPossibilitiesCard
+          key={productFeature.id}
+          icon={
+            <LucideIcon
+              icon={productFeature.icon}
+              style={{ stroke: productFeature.color }}
+            />
+          }
+          title={productFeature.name}
+          description={productFeature.description}
+          disabled={!productFeature.available}
+          soon={!productFeature.available}
+        />
+      ))}
     </div>
   );
 }
