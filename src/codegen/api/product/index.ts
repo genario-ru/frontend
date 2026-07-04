@@ -63,6 +63,7 @@ export { patchApiV1ScenariosChaptersByChapterId } from "./clients/patch-api-v1-s
 export { patchApiV1ScenariosSceneComponentsBySceneComponentId } from "./clients/patch-api-v1-scenarios-scene-components-by-scene-component-id.ts";
 export { patchApiV1ScenariosScenesBySceneId } from "./clients/patch-api-v1-scenarios-scenes-by-scene-id.ts";
 export { postApiV1Applications } from "./clients/post-api-v1-applications.ts";
+export { postApiV1Attachments } from "./clients/post-api-v1-attachments.ts";
 export { postApiV1AuthChangeEmail } from "./clients/post-api-v1-auth-change-email.ts";
 export { postApiV1AuthEmailOtpSendVerificationOtp } from "./clients/post-api-v1-auth-email-otp-send-verification-otp.ts";
 export { postApiV1AuthEmailOtpSignIn } from "./clients/post-api-v1-auth-email-otp-sign-in.ts";
@@ -110,6 +111,7 @@ export type { ArchiveFiltersSchema } from "./models/archive-filters-schema.ts";
 export type { ArchiveIdeasListSchema } from "./models/archive-ideas-list-schema.ts";
 export type { ArchiveItemSchema } from "./models/archive-item-schema.ts";
 export type { ArchiveScenarioSchema } from "./models/archive-scenario-schema.ts";
+export type { AttachmentSchema } from "./models/attachment-schema.ts";
 export type { AuthSessionSchema } from "./models/auth-session-schema.ts";
 export type { AuthenticatedSessionSchema } from "./models/authenticated-session-schema.ts";
 export type { BadRequestResponseSchema } from "./models/bad-request-response-schema.ts";
@@ -122,6 +124,8 @@ export type {
 export { changeEmailResponseSchemaMessageEnum } from "./models/change-email-response-schema.ts";
 export type { CreateApplicationBodySchema } from "./models/create-application-body-schema.ts";
 export type { CreateApplicationResponseSchema } from "./models/create-application-response-schema.ts";
+export type { CreateAttachmentBodySchema } from "./models/create-attachment-body-schema.ts";
+export type { CreateAttachmentResponseSchema } from "./models/create-attachment-response-schema.ts";
 export type { CreateIdeaBodySchema } from "./models/create-idea-body-schema.ts";
 export type { CreateIdeaResponseSchema } from "./models/create-idea-response-schema.ts";
 export type { CreateIdeasListBodySchema } from "./models/create-ideas-list-body-schema.ts";
@@ -1105,6 +1109,18 @@ export type {
   PostApiV1ApplicationsMutationResponse,
 } from "./models/post-api-v1-applications.ts";
 export type {
+  PostApiV1Attachments201,
+  PostApiV1Attachments400,
+  PostApiV1Attachments401,
+  PostApiV1Attachments402,
+  PostApiV1Attachments403,
+  PostApiV1Attachments404,
+  PostApiV1Attachments500,
+  PostApiV1AttachmentsMutation,
+  PostApiV1AttachmentsMutationRequest,
+  PostApiV1AttachmentsMutationResponse,
+} from "./models/post-api-v1-attachments.ts";
+export type {
   PostApiV1AuthChangeEmail200,
   PostApiV1AuthChangeEmail400,
   PostApiV1AuthChangeEmail401,
@@ -1847,6 +1863,10 @@ export type { PostApiV1ApplicationsMutationKey } from "./tanstack/post-api-v1-ap
 export { postApiV1ApplicationsMutationKey } from "./tanstack/post-api-v1-applications.ts";
 export { postApiV1ApplicationsMutationOptions } from "./tanstack/post-api-v1-applications.ts";
 export { usePostApiV1Applications } from "./tanstack/post-api-v1-applications.ts";
+export type { PostApiV1AttachmentsMutationKey } from "./tanstack/post-api-v1-attachments.ts";
+export { postApiV1AttachmentsMutationKey } from "./tanstack/post-api-v1-attachments.ts";
+export { postApiV1AttachmentsMutationOptions } from "./tanstack/post-api-v1-attachments.ts";
+export { usePostApiV1Attachments } from "./tanstack/post-api-v1-attachments.ts";
 export type { PostApiV1AuthChangeEmailMutationKey } from "./tanstack/post-api-v1-auth-change-email.ts";
 export { postApiV1AuthChangeEmailMutationKey } from "./tanstack/post-api-v1-auth-change-email.ts";
 export { postApiV1AuthChangeEmailMutationOptions } from "./tanstack/post-api-v1-auth-change-email.ts";
@@ -1957,6 +1977,7 @@ export { archiveFiltersSchemaSchema } from "./zod/archive-filters-schema-schema.
 export { archiveIdeasListSchemaSchema } from "./zod/archive-ideas-list-schema-schema.ts";
 export { archiveItemSchemaSchema } from "./zod/archive-item-schema-schema.ts";
 export { archiveScenarioSchemaSchema } from "./zod/archive-scenario-schema-schema.ts";
+export { attachmentSchemaSchema } from "./zod/attachment-schema-schema.ts";
 export { authSessionSchemaSchema } from "./zod/auth-session-schema-schema.ts";
 export { authenticatedSessionSchemaSchema } from "./zod/authenticated-session-schema-schema.ts";
 export { badRequestResponseSchemaSchema } from "./zod/bad-request-response-schema-schema.ts";
@@ -1965,6 +1986,8 @@ export { changeEmailBodySchemaSchema } from "./zod/change-email-body-schema-sche
 export { changeEmailResponseSchemaSchema } from "./zod/change-email-response-schema-schema.ts";
 export { createApplicationBodySchemaSchema } from "./zod/create-application-body-schema-schema.ts";
 export { createApplicationResponseSchemaSchema } from "./zod/create-application-response-schema-schema.ts";
+export { createAttachmentBodySchemaSchema } from "./zod/create-attachment-body-schema-schema.ts";
+export { createAttachmentResponseSchemaSchema } from "./zod/create-attachment-response-schema-schema.ts";
 export { createIdeaBodySchemaSchema } from "./zod/create-idea-body-schema-schema.ts";
 export { createIdeaResponseSchemaSchema } from "./zod/create-idea-response-schema-schema.ts";
 export { createIdeasListBodySchemaSchema } from "./zod/create-ideas-list-body-schema-schema.ts";
@@ -2772,6 +2795,17 @@ export {
   postApiV1ApplicationsMutationRequestSchema,
   postApiV1ApplicationsMutationResponseSchema,
 } from "./zod/post-api-v1-applications-schema.ts";
+export {
+  postApiV1Attachments201Schema,
+  postApiV1Attachments400Schema,
+  postApiV1Attachments401Schema,
+  postApiV1Attachments402Schema,
+  postApiV1Attachments403Schema,
+  postApiV1Attachments404Schema,
+  postApiV1Attachments500Schema,
+  postApiV1AttachmentsMutationRequestSchema,
+  postApiV1AttachmentsMutationResponseSchema,
+} from "./zod/post-api-v1-attachments-schema.ts";
 export {
   postApiV1AuthChangeEmail200Schema,
   postApiV1AuthChangeEmail400Schema,

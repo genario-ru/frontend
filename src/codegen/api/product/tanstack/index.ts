@@ -278,6 +278,10 @@ export type { PostApiV1ApplicationsMutationKey } from "./post-api-v1-application
 export { postApiV1ApplicationsMutationKey } from "./post-api-v1-applications.ts";
 export { postApiV1ApplicationsMutationOptions } from "./post-api-v1-applications.ts";
 export { usePostApiV1Applications } from "./post-api-v1-applications.ts";
+export type { PostApiV1AttachmentsMutationKey } from "./post-api-v1-attachments.ts";
+export { postApiV1AttachmentsMutationKey } from "./post-api-v1-attachments.ts";
+export { postApiV1AttachmentsMutationOptions } from "./post-api-v1-attachments.ts";
+export { usePostApiV1Attachments } from "./post-api-v1-attachments.ts";
 export type { PostApiV1AuthChangeEmailMutationKey } from "./post-api-v1-auth-change-email.ts";
 export { postApiV1AuthChangeEmailMutationKey } from "./post-api-v1-auth-change-email.ts";
 export { postApiV1AuthChangeEmailMutationOptions } from "./post-api-v1-auth-change-email.ts";

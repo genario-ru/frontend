@@ -8,6 +8,7 @@ export { archiveFiltersSchemaSchema } from "./archive-filters-schema-schema.ts";
 export { archiveIdeasListSchemaSchema } from "./archive-ideas-list-schema-schema.ts";
 export { archiveItemSchemaSchema } from "./archive-item-schema-schema.ts";
 export { archiveScenarioSchemaSchema } from "./archive-scenario-schema-schema.ts";
+export { attachmentSchemaSchema } from "./attachment-schema-schema.ts";
 export { authSessionSchemaSchema } from "./auth-session-schema-schema.ts";
 export { authenticatedSessionSchemaSchema } from "./authenticated-session-schema-schema.ts";
 export { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
@@ -16,6 +17,8 @@ export { changeEmailBodySchemaSchema } from "./change-email-body-schema-schema.t
 export { changeEmailResponseSchemaSchema } from "./change-email-response-schema-schema.ts";
 export { createApplicationBodySchemaSchema } from "./create-application-body-schema-schema.ts";
 export { createApplicationResponseSchemaSchema } from "./create-application-response-schema-schema.ts";
+export { createAttachmentBodySchemaSchema } from "./create-attachment-body-schema-schema.ts";
+export { createAttachmentResponseSchemaSchema } from "./create-attachment-response-schema-schema.ts";
 export { createIdeaBodySchemaSchema } from "./create-idea-body-schema-schema.ts";
 export { createIdeaResponseSchemaSchema } from "./create-idea-response-schema-schema.ts";
 export { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema-schema.ts";
@@ -823,6 +826,17 @@ export {
   postApiV1ApplicationsMutationRequestSchema,
   postApiV1ApplicationsMutationResponseSchema,
 } from "./post-api-v1-applications-schema.ts";
+export {
+  postApiV1Attachments201Schema,
+  postApiV1Attachments400Schema,
+  postApiV1Attachments401Schema,
+  postApiV1Attachments402Schema,
+  postApiV1Attachments403Schema,
+  postApiV1Attachments404Schema,
+  postApiV1Attachments500Schema,
+  postApiV1AttachmentsMutationRequestSchema,
+  postApiV1AttachmentsMutationResponseSchema,
+} from "./post-api-v1-attachments-schema.ts";
 export {
   postApiV1AuthChangeEmail200Schema,
   postApiV1AuthChangeEmail400Schema,

@@ -20,6 +20,7 @@ export type { ArchiveFiltersSchema } from "./archive-filters-schema.ts";
 export type { ArchiveIdeasListSchema } from "./archive-ideas-list-schema.ts";
 export type { ArchiveItemSchema } from "./archive-item-schema.ts";
 export type { ArchiveScenarioSchema } from "./archive-scenario-schema.ts";
+export type { AttachmentSchema } from "./attachment-schema.ts";
 export type { AuthSessionSchema } from "./auth-session-schema.ts";
 export type { AuthenticatedSessionSchema } from "./authenticated-session-schema.ts";
 export type { BadRequestResponseSchema } from "./bad-request-response-schema.ts";
@@ -32,6 +33,8 @@ export type {
 export { changeEmailResponseSchemaMessageEnum } from "./change-email-response-schema.ts";
 export type { CreateApplicationBodySchema } from "./create-application-body-schema.ts";
 export type { CreateApplicationResponseSchema } from "./create-application-response-schema.ts";
+export type { CreateAttachmentBodySchema } from "./create-attachment-body-schema.ts";
+export type { CreateAttachmentResponseSchema } from "./create-attachment-response-schema.ts";
 export type { CreateIdeaBodySchema } from "./create-idea-body-schema.ts";
 export type { CreateIdeaResponseSchema } from "./create-idea-response-schema.ts";
 export type { CreateIdeasListBodySchema } from "./create-ideas-list-body-schema.ts";
@@ -1014,6 +1017,18 @@ export type {
   PostApiV1ApplicationsMutationRequest,
   PostApiV1ApplicationsMutationResponse,
 } from "./post-api-v1-applications.ts";
+export type {
+  PostApiV1Attachments201,
+  PostApiV1Attachments400,
+  PostApiV1Attachments401,
+  PostApiV1Attachments402,
+  PostApiV1Attachments403,
+  PostApiV1Attachments404,
+  PostApiV1Attachments500,
+  PostApiV1AttachmentsMutation,
+  PostApiV1AttachmentsMutationRequest,
+  PostApiV1AttachmentsMutationResponse,
+} from "./post-api-v1-attachments.ts";
 export type {
   PostApiV1AuthChangeEmail200,
   PostApiV1AuthChangeEmail400,
