@@ -41,3 +41,17 @@ pnpm lint:typescript
 ```
 
 Run `pnpm lint:fix` as well when imports or formatting changed.
+
+## Reference Examples
+
+- Authenticated app route with search params:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`.
+- Authenticated settings route with search validation:
+  `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`.
+- Route entrypoints:
+  `src/entrypoints/scenario/component.tsx` and
+  `src/entrypoints/ideas-list-settings/component.tsx`.
+
+Keep new route files structurally close to these examples. If route behavior
+requires a new guard/composition pattern that is not present in this project,
+ask the user before implementing it.

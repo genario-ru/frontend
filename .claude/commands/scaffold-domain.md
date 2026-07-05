@@ -17,6 +17,12 @@ Read `AGENTS.md` first.
 4. Add the new domain to `AGENTS.md` and `.cursor/rules/01-architecture-fsd.mdc`
    only after real code exists there.
 
+Ask the user before creating a domain structure that does not match existing
+local domains or requires a new custom abstraction.
+
+Forms belong in widgets. Reusable non-form display components may go to
+features; widget orchestration and `withForm` children must not.
+
 ## Verify
 
 ```bash

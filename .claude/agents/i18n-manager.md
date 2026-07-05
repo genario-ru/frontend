@@ -50,3 +50,9 @@ t("domain.section.key");
 
 Plural keys may use i18next suffixes such as `_one`, `_few`, `_many`, and
 `_other`.
+
+## Reference Examples
+
+- English resources: `public/locales/en/translation.json`.
+- Russian resources: `public/locales/ru/translation.json`.
+- Generated resource types: `src/globals/i18next-resources.d.ts`.

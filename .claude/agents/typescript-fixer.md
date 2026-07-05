@@ -29,6 +29,8 @@ layers first so widgets and entrypoints do not accumulate casts or workarounds.
    - incorrect component props;
    - form schema/value mismatch;
    - route/search param mismatch.
+   - positional args or non-flat prop drift where object params/flat props are
+     expected.
 3. Fix in dependency order:
    - generated config/schema if generation itself is wrong;
    - action hooks;
@@ -38,6 +40,10 @@ layers first so widgets and entrypoints do not accumulate casts or workarounds.
 4. Run `pnpm lint:fix` when imports/formatting changed.
 5. Run `pnpm lint:typescript` again.
 
+Use local references before changing shapes. If fixing a type error requires a
+new custom abstraction, broad prop object, or unusual cast, ask the user before
+implementing it.
+
 ## Do Not
 
 - Edit `src/codegen/**` manually.
@@ -45,3 +51,13 @@ layers first so widgets and entrypoints do not accumulate casts or workarounds.
   documented local precedent and no type-safe option.
 - Install packages before checking `package.json`.
 - Fix symptoms in UI when an action hook or generated contract is wrong.
+- Add request `try/catch` in UI/action hooks to satisfy TypeScript.
+- Move `withForm` children into features.
+
+## Reference Examples
+
+- Form typing: `src/widgets/profile-settings/profile-settings/**`.
+- Action wrapper typing:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Flat feature props:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.

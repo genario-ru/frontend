@@ -34,11 +34,15 @@ Before editing, read:
 | Reusable domain display piece                     | `src/features/<domain>/` |
 | Generic UI/helper                                 | `src/shared/**`          |
 
+Ask the user before introducing a new custom abstraction, composition pattern,
+or significant layer move.
+
 ## Step 3: Preserve Conventions
 
 - Keep the diff focused.
 - Use `cn()` for conditional class names.
 - Use `useAppForm` for forms.
+- Keep `withForm` children and form helpers in the owning widget.
 - Use `z` from `@/lib/zod`.
 - Use action hooks for generated network behavior.
 - Do not add i18n keys for ordinary new UI text by default. Use locale files
@@ -48,6 +52,10 @@ Before editing, read:
 Generated types, schemas, and query keys may be imported where contract data is
 needed. Avoid adding direct generated network hook calls inside widget UI.
 
+Do not add routine request `try/catch`. Use Query flags for GETs and mutation
+callbacks for side effects. Keep handlers in `useCallback`, dynamic body/slots
+in `useMemo`, and non-trivial logic in colocated hooks.
+
 ## Verification
 
 ```bash
@@ -56,3 +64,13 @@ pnpm router:generate  # if route files changed
 pnpm lint:fix
 pnpm lint:typescript
 ```
+
+## Reference Examples
+
+- Widget component:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget hook:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Mutation callback hook:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
+- Widget form: `src/widgets/profile-settings/profile-settings/**`.

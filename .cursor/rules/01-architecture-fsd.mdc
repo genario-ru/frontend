@@ -45,6 +45,34 @@ enums, and query keys when they need API contract data.
 - `shared/` and `lib/` must not contain domain-specific business logic.
 - `routes/` must not contain page JSX or domain component implementation.
 - `codegen/` is read-only; edit source schemas/config and regenerate.
+- Do not introduce new custom abstractions, composition patterns, or libraries
+  without user agreement.
+- If placement or implementation is ambiguous, ask the user instead of
+  guessing.
+
+## Widget and feature split
+
+- Widgets own complex domain blocks, local behavior, mutation calls, dialogs,
+  drawers, lists, and forms.
+- Widget logic belongs in colocated hooks named after the component, for example
+  `useScenarioAppMenubar` for `ScenarioAppMenubar`.
+- Features are reusable presentational/domain UI. Pass data and callbacks in;
+  keep widget-specific orchestration in widgets.
+- Forms and `withForm` subcomponents stay in the owning widget. Do not move
+  `withForm` children into `features`.
+
+## Reference examples
+
+- Widget hook/component split:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`
+  and
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget-owned form:
+  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`
+  and sibling `profile-settings-form*.tsx` files.
+- Presentational feature:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.
+- Entrypoint composition: `src/entrypoints/scenario/component.tsx`.
 
 ## Action domains
 

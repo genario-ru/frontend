@@ -53,9 +53,22 @@ or response shapes, removed endpoints, and new endpoints.
 If generated output is wrong, fix `kubb.config.ts` or
 `deps/api/product.json`, then regenerate.
 
+Keep generated network hooks behind action hooks. Do not introduce direct
+generated query/mutation hooks in widgets/features while adapting contracts. Use
+Query flags for GET errors and mutation callbacks for side effects.
+
 ## Verification
 
 ```bash
 pnpm lint:fix
 pnpm lint:typescript
 ```
+
+## Reference Examples
+
+- Kubb config: `kubb.config.ts`.
+- GET action wrapper: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action wrapper:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widget consumer:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.

@@ -56,6 +56,11 @@ Order matters:
 If generated output is wrong, fix `kubb.config.ts` or `deps/api/product.json`
 and regenerate.
 
+Keep generated network hooks behind action hooks while adapting. Use TanStack
+Query state for GET errors and mutation callbacks for side effects. Do not move
+generated hooks directly into widgets/features or replace callback flows with
+routine `try/catch`.
+
 ## Finish
 
 ```bash
@@ -64,3 +69,12 @@ pnpm lint:typescript
 ```
 
 Do not silence type errors with broad casts.
+
+## Reference Examples
+
+- Kubb configuration: `kubb.config.ts`.
+- GET action wrapper: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action wrapper:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widget consumer:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.

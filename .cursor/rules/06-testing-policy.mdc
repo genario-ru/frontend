@@ -20,6 +20,13 @@ For documentation-only changes, a targeted file review is usually enough unless
 the docs reference commands, generated outputs, or file paths that should be
 verified.
 
+## Reference examples
+
+- Script source of truth: `package.json`.
+- Build and plugin behavior: `vite.config.ts`.
+- API generation behavior: `kubb.config.ts`.
+- Route generation output: `src/codegen/router/route-tree.gen.ts`.
+
 ## When adding tests
 
 - Colocate test files next to the module being tested.

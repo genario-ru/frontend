@@ -37,6 +37,36 @@ Read these before making non-trivial changes:
 If documentation disagrees with code/config, trust code/config first, then
 update the documentation in the same change.
 
+## External Reference Baseline
+
+Use these as general background, not as permission to override local project
+rules:
+
+- React: `https://react.dev/reference/react/useMemo`,
+  `https://react.dev/reference/react/useCallback`,
+  `https://react.dev/learn/you-might-not-need-an-effect`.
+- TanStack Query:
+  `https://tanstack.com/query/latest/docs/framework/react/guides/queries`,
+  `https://tanstack.com/query/latest/docs/framework/react/guides/mutations`.
+- TanStack Form:
+  `https://tanstack.com/form/latest/docs/framework/react/guides/form-composition`.
+- Feature-Sliced Design: `https://fsd.how/docs/reference/layers/`.
+
+## Collaboration Contract
+
+- If implementation details are ambiguous, ask the user instead of guessing.
+- If several reasonable implementations exist, present the options and wait for
+  the user's decision before writing code.
+- If a task appears to require a new custom abstraction, new architectural
+  pattern, new library, or a construction not already used in this project,
+  agree it with the user first.
+- Before adding files or new composition, inspect local references and reuse the
+  closest existing structure. Do not invent custom code when a local pattern
+  already solves the problem.
+- Keep documentation and examples honest. If a referenced local file contains
+  mojibake in Russian strings/comments, use it for structure only and do not
+  copy broken text.
+
 ## Architecture Model
 
 `src/` uses a pragmatic Feature-Sliced Design layout. The point is to keep
@@ -71,6 +101,24 @@ This is a dependency direction, not a ban on all lateral reuse. The practical
 rule is: lower-level or generic code must not depend on higher-level product
 composition. If a helper becomes useful across domains, move it down into
 `shared` or `lib` only after removing domain assumptions from it.
+
+## Local Reference Map
+
+Use these files as implementation references before creating new patterns.
+
+| Pattern                               | References                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Route with search params              | `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`, `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`                                                                                                                                                                                                                           |
+| Entrypoint with dynamic body/layout   | `src/entrypoints/scenario/component.tsx`, `src/entrypoints/home/component.tsx`                                                                                                                                                                                                                                                                                      |
+| GET action hook                       | `src/actions/templates/hooks/use-get-templates.ts`, `src/actions/auth/hooks/use-get-session.ts`, `src/actions/scenario/hooks/use-get-scenario.ts`                                                                                                                                                                                                                   |
+| Mutation action hook with callbacks   | `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`, `src/actions/ideas/hooks/use-save-idea.ts`, `src/actions/onboarding/hooks/use-hide-onboarding.ts`                                                                                                                                                                                                         |
+| Widget logic hook                     | `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`, `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`, `src/widgets/billing/billing-my-subscriptions/hooks/use-billing-my-subscriptions-actions.ts`                                                                                                     |
+| Widget component using memoized slots | `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`, `src/widgets/home/home-onboarding/components/home-onboarding.tsx`, `src/widgets/credits/credits-usage-list/components/credits-usage-list.tsx`                                                                                                                                      |
+| Widget-owned TanStack Form            | `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form-fields.tsx`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form-buttons.tsx` |
+| Reusable presentational feature       | `src/features/profiles/profile-card/components/profile-card.tsx`, `src/features/templates/template-card/components/template-card.tsx`, `src/features/scenario/scenario-chapter/scenario-chapter-status-select/components/scenario-chapter-status-select.tsx`                                                                                                        |
+| Infrastructure-only `try/catch`       | `src/lib/api/client/index.ts`, `src/shared/utils/parse-json.ts`, `src/shared/utils/copy-element-content.ts`                                                                                                                                                                                                                                                         |
+| Codegen and router configuration      | `kubb.config.ts`, `vite.config.ts`, `scripts/download-openapi-schemas.ts`, `src/codegen/api/product/**`, `src/codegen/router/route-tree.gen.ts`                                                                                                                                                                                                                     |
+| i18n resources and generated types    | `public/locales/en/translation.json`, `public/locales/ru/translation.json`, `src/globals/i18next-resources.d.ts`                                                                                                                                                                                                                                                    |
 
 ## Layer Placement
 
@@ -113,6 +161,23 @@ Avoid introducing new generated network hook calls directly in widgets or
 feature UI. The action layer exists so generated naming, signatures, cache
 details, and mutation behavior do not leak through the app.
 
+## Server State And Error Handling
+
+- Do not use `try/catch` in components, widgets, features, or ordinary action
+  hooks for backend requests.
+- GET requests rely on TanStack Query state (`data`, `isLoading`/`isPending`,
+  `isError`, `error`, `refetch`). Render loading/error/empty/success states
+  from these fields.
+- Mutations handle side effects through callbacks:
+  - define common side effects in the action hook's `mutation.onSuccess`,
+    `mutation.onError`, and `mutation.onSettled`;
+  - pass per-call callbacks to `mutate(variables, { onSuccess, onError })`
+    from widget hooks when the side effect depends on the current UI flow;
+  - do not use `mutateAsync` plus `try/catch` for routine UI flows.
+- `try/catch` is reserved for foundational infrastructure and utilities such as
+  API client normalization, JSON parsing, clipboard/browser APIs, or similar
+  non-query boundaries.
+
 ## Route Rules
 
 Route files may contain:
@@ -131,6 +196,10 @@ After route file changes, run `pnpm router:generate`.
 ## Forms, Validation, Styling, And i18n
 
 - Use `useAppForm` from `@/lib/tanstack-form`, not bare `useForm`.
+- Forms belong to widgets and widget hooks. Keep `useAppForm`, `withForm`
+  subforms, form schemas, form types, and form helpers under the owning widget.
+- Do not move `withForm` children into `src/features/**`. Only non-form
+  presentational pieces may live in features.
 - Use `z` from `@/lib/zod`, not direct imports from `"zod"`.
 - Use `cn()` from `@/shared/utils/cn` for conditional class names.
 - Prefer `src/shared/components/ui/**` primitives before creating new UI.
@@ -145,6 +214,46 @@ These rules exist because this project has app-level wrappers for validation
 messages, form fields, class merging, and typed locale resources. Bypassing the
 wrappers creates inconsistent UI and type drift; overusing i18n creates needless
 translation churn.
+
+## React Component And Hook Rules
+
+- Components should primarily render. Put non-trivial local state, handlers,
+  derived values, mutation calls, navigation, and data preparation into a
+  colocated hook named after the component, for example `useScenarioForm` for
+  `ScenarioForm`.
+- If a child widget component contains its own non-trivial logic, give it its
+  own file and its own hook, for example `ScenarioFormFields` and
+  `useScenarioFormFields`.
+- Use `useMemo` for dynamic body/layout/slot content and derived collections
+  when conditional rendering or calculations would otherwise clutter the
+  component body.
+- Define callbacks inside components/hooks with `useCallback`; pass stable
+  handlers to child components.
+- Avoid `useEffect` for actions that can happen imperatively in an event
+  handler, mutation callback, router callback, or form submit handler. Use
+  `useEffect` only for synchronization with external systems or local library
+  integration.
+- Keep component files focused. A `.tsx` component file may contain the main
+  component plus its skeletons, plugs, and simple loading/empty states. Move
+  meaningful child components into separate files.
+- Do not put constants, broad utility logic, or multiple unrelated types in
+  component files. Use colocated `constants`, `utils`, `types`, or `schemas`
+  folders when the data is not just local props/hook params.
+- Feature components should stay presentational and reusable: pass data and
+  callbacks in, but keep widget-specific orchestration in widget hooks.
+- Widgets compose features and own complex UI behavior. Do not clutter widgets
+  with small reusable display pieces that belong in `features`.
+
+## Params And Props
+
+- Function, hook, and component parameters are passed as a single object, not as
+  positional arguments.
+- Prefer flat props/params. Pass only the fields the component or hook needs.
+- Passing a full entity object is acceptable only when the child truly needs the
+  whole entity or local precedent already uses that shape.
+- Keep public prop and hook param types close to the component/hook only when
+  they are small. If a file needs several exported or shared types, move them to
+  a colocated `types` file/folder.
 
 ## Common Workflows
 

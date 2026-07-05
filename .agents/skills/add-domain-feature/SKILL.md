@@ -47,6 +47,9 @@ Examples:
 Use the references to copy naming, return shapes, hook/component splits, and
 import style. Mention the inspected paths in the final response.
 
+If references conflict, the implementation has several viable compositions, or
+the task requires a new custom abstraction/pattern, ask the user before coding.
+
 ## Step 3: Use Generated API Contracts Correctly
 
 Look in `src/codegen/api/product/**` for existing contracts.
@@ -71,10 +74,19 @@ Generated types, enums, schemas, query keys, and route query options may be used
 outside actions when they are API contract data. Avoid new direct generated
 network hook calls in widgets/features.
 
+For backend requests:
+
+- GET hooks expose TanStack Query state; do not add `try/catch`.
+- Mutation side effects go through `onSuccess`, `onError`, and `onSettled`
+  callbacks either in the action hook or in the per-call `mutate` options.
+- Do not use `mutateAsync` plus `try/catch` for ordinary UI flows.
+
 ## Step 4: Implement With Local Primitives
 
 - Conditional classes: `cn()` from `@/shared/utils/cn`.
 - Forms: `useAppForm` from `@/lib/tanstack-form`.
+- Form composition: `withForm` from `@/lib/tanstack-form`, kept inside the
+  owning widget.
 - Validation: `z` from `@/lib/zod`.
 - UI primitives: check `src/shared/components/ui/**` before creating new ones.
 - Text: do not add i18n keys by default. Use locale JSON only in existing
@@ -85,6 +97,11 @@ Keep feature components presentational unless local precedent shows otherwise.
 Put local interaction state in widget hooks when it makes the component easier
 to read.
 
+Keep components render-focused. Put handlers in `useCallback`, derived
+content/collections in `useMemo`, and non-trivial widget logic in colocated
+hooks. Prefer flat props/params and pass functions/hooks/components parameters
+as a single object.
+
 ## Step 5: Verify
 
 - Locale JSON changed intentionally: run `pnpm i18n:resources`.
@@ -93,3 +110,18 @@ to read.
 - Build-impacting infrastructure changed: consider `pnpm build`.
 
 Never edit `src/codegen/**` manually.
+
+## Reference Examples
+
+- GET action hook: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action hook:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widget hook split:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`
+  and
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget-owned form:
+  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`
+  plus `profile-settings-form*.tsx`.
+- Presentational feature:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.

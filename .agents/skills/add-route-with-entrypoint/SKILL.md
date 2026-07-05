@@ -25,6 +25,9 @@ Read 2-3 route files in the same layout group and their entrypoints. Check:
 - query preloading pattern;
 - entrypoint component naming.
 
+If the route needs a guard, loader, or layout composition pattern not present in
+local references, ask the user before implementing it.
+
 ## Step 2: Choose The Layout Group
 
 | Scenario                                    | Folder                                         |
@@ -85,3 +88,12 @@ pnpm lint:typescript
 ```
 
 Never edit `src/codegen/router/route-tree.gen.ts` manually.
+
+## Reference Examples
+
+- Route with search params:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`.
+- Route with settings search:
+  `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`.
+- Entrypoint with memoized dynamic body:
+  `src/entrypoints/scenario/component.tsx`.

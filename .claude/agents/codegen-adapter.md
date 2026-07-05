@@ -40,14 +40,27 @@ them directly.
 5. If generated output is wrong, fix `kubb.config.ts` or
    `deps/api/product.json` and regenerate.
 
+Keep generated network hooks behind action hooks. Do not introduce direct
+generated query/mutation hooks in widgets/features while adapting contracts. Use
+TanStack Query state for GET errors and mutation callbacks for side effects.
+
 ## What Not To Do
 
 - Do not edit `src/codegen/**`.
 - Do not use broad casts to bypass changed contracts.
 - Do not update widgets before action hooks are stable.
 - Do not run `api:download` if the local schema is intentionally pinned.
+- Do not replace callback-based mutation handling with routine
+  `mutateAsync`/`try-catch`.
 
 ## Verification
 
 Run `pnpm lint:fix` when imports/formatting changed, then
 `pnpm lint:typescript`.
+
+## Reference Examples
+
+- Kubb configuration: `kubb.config.ts`.
+- GET action wrapper: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action wrapper:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.

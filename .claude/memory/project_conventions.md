@@ -26,6 +26,9 @@ Canonical guide: `AGENTS.md`.
 Before creating new files in `actions`, `features`, `widgets`, or `entrypoints`,
 read at least 3 similar local implementations in the same layer.
 
+If references conflict, implementation is ambiguous, or a new custom pattern is
+needed, ask the user before coding.
+
 ## Generated code
 
 - Generated network hooks come from `@/codegen/api/product`.
@@ -33,6 +36,21 @@ read at least 3 similar local implementations in the same layer.
 - Generated types, schemas, enums, query keys, and route query options may be
   imported where API contract data is needed.
 - Never manually edit `src/codegen/**`.
+
+## React and data-flow rules
+
+- GET requests use TanStack Query state (`data`, loading/error flags, `error`,
+  `refetch`), not local `try/catch`.
+- Mutation side effects use `onSuccess`, `onError`, and `onSettled` callbacks in
+  action hooks or per-call `mutate` options.
+- Keep component handlers in `useCallback` and dynamic body/layout/slot content
+  or derived collections in `useMemo`.
+- Avoid `useEffect` when an action can run in an event handler, form submit,
+  mutation callback, or router callback.
+- Prefer flat props/params and a single object parameter for functions, hooks,
+  and components.
+- `try/catch` belongs only in infrastructure/util boundaries such as
+  `src/lib/api/client/index.ts` or parsing/browser API helpers.
 
 ## Completion checklist
 
@@ -43,3 +61,12 @@ read at least 3 similar local implementations in the same layer.
 5. Route changes -> `pnpm router:generate`.
 6. Locale resource changes -> `pnpm i18n:resources`.
 7. Code changes -> `pnpm lint:fix` and `pnpm lint:typescript`.
+
+## Reference examples
+
+- GET action hook: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action hook:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Memoized widget component:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget form: `src/widgets/profile-settings/profile-settings/**`.

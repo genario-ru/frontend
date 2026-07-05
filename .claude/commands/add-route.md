@@ -15,6 +15,9 @@ route generation becomes harder to review.
 Read 2-3 nearby route files in the same layout group and their entrypoints.
 Check search schemas, redirects, preloading, and component naming.
 
+If a new guard, loader, or layout composition pattern is needed and there is no
+local precedent, ask the user before coding.
+
 ## Step 2: Choose Layout Group
 
 | Scenario                                    | Folder                                         |
@@ -54,3 +57,11 @@ pnpm lint:typescript
 ```
 
 Report route files, entrypoint files, and generated route tree changes.
+
+## Reference Examples
+
+- Route with search params:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`.
+- Settings route:
+  `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`.
+- Entrypoint with memoized layout: `src/entrypoints/scenario/component.tsx`.

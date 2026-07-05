@@ -45,3 +45,16 @@ import { getApiV1AuthSessionQueryOptions } from "@/codegen/api/product";
 // Type imports are okay where API contract data is needed.
 import type { GetApiV1AuthSessionQueryResponse } from "@/codegen/api/product";
 ```
+
+## Reference examples
+
+- Kubb configuration: `kubb.config.ts`.
+- Generated product API root: `src/codegen/api/product/**`.
+- GET action wrapper: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action wrapper:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Route preloading/search consumers: `src/routes/**`.
+
+Generated network hooks should not be introduced directly in widgets/features.
+Use action hooks unless the import is only a generated type, schema, enum, query
+key, or route-level query option.

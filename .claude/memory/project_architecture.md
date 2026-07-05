@@ -44,3 +44,21 @@ routes -> entrypoints -> widgets -> features/actions -> shared/lib
 - Keep route files focused on route behavior and entrypoint references.
 - Keep page composition in `src/entrypoints/**`.
 - Keep domain-specific business logic out of `src/shared/**` and `src/lib/**`.
+- Keep forms, `useAppForm`, `withForm` children, schemas, form types, and form
+  helpers in the owning widget.
+- Keep features presentational/reusable unless local precedent says otherwise.
+- Keep non-trivial widget logic in colocated hooks and components focused on
+  rendering.
+- Ask the user before introducing new custom abstractions, composition patterns,
+  libraries, or non-local structures.
+
+## Reference examples
+
+- Route/entrypoint:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx` and
+  `src/entrypoints/scenario/component.tsx`.
+- Widget hook/component:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Presentational feature:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.

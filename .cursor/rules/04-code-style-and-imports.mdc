@@ -21,6 +21,10 @@ Config sources: `eslint.config.js`, `prettier.config.js`, `tsconfig.json`.
 - Keep types explicit at public boundaries.
 - Avoid `any` unless the local API forces it or the reason is clear.
 - Use `_` prefix for intentionally unused variables/args.
+- Functions, hooks, and components receive parameters as one object, not a
+  positional argument list.
+- Prefer flat props/params. Pass only the fields that are needed; pass a full
+  entity only when the child truly uses the full entity or local precedent does.
 
 ## Classnames
 
@@ -50,6 +54,22 @@ export function MyComponent({ title }: MyComponentProps) {
 }
 ```
 
+Keep component files focused:
+
+- main component plus skeleton/plug/loading/empty states may live together;
+- meaningful child components go into separate files;
+- constants, utilities, schemas, and multiple shared/exported types go into
+  colocated `constants`, `utils`, `schemas`, or `types` files.
+
+## React hooks
+
+- Use `useMemo` for dynamic body/layout/slot content and derived collections.
+- Use `useCallback` for handlers defined in components/hooks.
+- Avoid `useEffect` for actions that can run in event handlers, mutation
+  callbacks, form submit handlers, or router callbacks.
+- Use `useEffect` mainly for external synchronization and integration with
+  browser/third-party APIs.
+
 ## Shared UI components
 
 Check `@/shared/components/ui/**` before creating new primitives. Reuse existing
@@ -62,3 +82,15 @@ skeletons, spinners, menus, and form field components where possible.
 2. Run `pnpm lint:typescript` for code changes.
 3. If route files changed, run `pnpm router:generate`.
 4. If locale JSON files changed, run `pnpm i18n:resources`.
+
+## Reference examples
+
+- Memoized dynamic layout: `src/entrypoints/scenario/component.tsx`.
+- Memoized widget slots:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Callback handlers:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
+- Flat feature props:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.
+- Infrastructure-only `try/catch`: `src/lib/api/client/index.ts` and
+  `src/shared/utils/parse-json.ts`.

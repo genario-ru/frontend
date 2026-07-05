@@ -33,3 +33,10 @@ pnpm lint:typescript
 Never edit `src/globals/i18next-resources.d.ts` manually.
 
 Pluralization keys may use `_one`, `_few`, `_many`, and `_other`.
+
+## Reference Examples
+
+- English resources: `public/locales/en/translation.json`.
+- Russian resources: `public/locales/ru/translation.json`.
+- Generated resource types: `src/globals/i18next-resources.d.ts`.
+- Existing usage pattern: `rg -n "useTranslation|t\\(" src`.

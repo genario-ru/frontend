@@ -19,6 +19,9 @@ widgets, features, and actions.
 Read 2-3 route files in the same layout group and their entrypoints. Check path
 naming, search schemas, redirects, preloading, and component naming.
 
+If the route requires an unseen guard, loader, or layout composition pattern,
+ask the user before coding.
+
 ## Step 2: Choose Layout Group
 
 | Scenario                                    | Folder                                         |
@@ -57,3 +60,11 @@ pnpm router:generate
 pnpm lint:fix
 pnpm lint:typescript
 ```
+
+## Reference Examples
+
+- Route with search params:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`.
+- Settings route:
+  `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`.
+- Entrypoint composition: `src/entrypoints/scenario/component.tsx`.

@@ -33,6 +33,14 @@ routes -> entrypoints -> widgets -> features/actions -> shared/lib
 7. Zod imports come from `@/lib/zod`.
 8. `src/codegen/**` and `src/globals/i18next-resources.d.ts` are not manually
    edited.
+9. Form composition (`useAppForm`, `withForm`, schemas, form helpers) stays in
+   widgets.
+10. Routine backend request errors are not handled with `try/catch` in
+    UI/action hooks.
+11. Widget components do not accumulate non-trivial logic, unrelated child
+    components, constants, utils, or many shared types.
+12. Props/params are flat where possible and public functions/hooks/components
+    receive one object parameter.
 
 ## Severity Guidance
 
@@ -42,6 +50,15 @@ routes -> entrypoints -> widgets -> features/actions -> shared/lib
   domain logic placed in shared/lib.
 - Low: naming or organization drift that still compiles but breaks local
   conventions.
+
+## Reference Examples
+
+- Widget/component split:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Presentational feature:
+  `src/features/templates/template-card/components/template-card.tsx`.
+- Infrastructure `try/catch`: `src/lib/api/client/index.ts`.
 
 ## Report Format
 

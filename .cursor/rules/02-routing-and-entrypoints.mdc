@@ -67,3 +67,15 @@ export const Route = createFileRoute("/_with-auth/_with-subscription/my-page")({
 - Route tree: `src/codegen/router/route-tree.gen.ts`; never edit manually.
 - After route file changes: `pnpm router:generate`.
 - During active route work: `pnpm router:watch`.
+
+## Reference examples
+
+- Route with search params:
+  `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx`.
+- Route with optional settings search:
+  `src/routes/_with-auth/_with-subscription/ideas-lists/settings.tsx`.
+- Entrypoint with memoized body/footer:
+  `src/entrypoints/scenario/component.tsx`.
+
+If a new route requires an unseen guard, loader, or layout composition pattern,
+ask the user before implementing it.

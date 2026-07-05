@@ -42,6 +42,13 @@ create translation churn just because text was added.
 3. Run `pnpm i18n:resources`.
 4. Run `pnpm lint:typescript`.
 
+## Reference examples
+
+- English resources: `public/locales/en/translation.json`.
+- Russian resources: `public/locales/ru/translation.json`.
+- Generated resource types: `src/globals/i18next-resources.d.ts`.
+- Existing usage pattern: search `useTranslation` in `src/**`.
+
 ## Pluralization
 
 Locale files can use i18next plural suffixes such as `_one`, `_few`, `_many`,

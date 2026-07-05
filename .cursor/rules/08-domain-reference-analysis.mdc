@@ -14,6 +14,8 @@ Before creating any new file in `actions`, `features`, `widgets`, or
 2. Prefer the same domain; otherwise use the closest related domains.
 3. Compare file structure, naming, hook/component split, imports, and return
    shapes.
+4. If the references conflict, the target composition is ambiguous, or the
+   implementation requires a new custom pattern, ask the user before coding.
 
 ## What to inspect by layer
 
@@ -31,3 +33,17 @@ Before creating any new file in `actions`, `features`, `widgets`, or
 - Explain briefly if the new implementation must deviate from local patterns.
 
 Do not write new domain files before completing this reference pass.
+
+## Reference starting points
+
+- Action hooks: `src/actions/templates/hooks/use-get-templates.ts`,
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widgets:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`,
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Widget forms:
+  `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`.
+- Features:
+  `src/features/profiles/profile-card/components/profile-card.tsx`,
+  `src/features/templates/template-card/components/template-card.tsx`.
+- Entrypoints: `src/entrypoints/scenario/component.tsx`.

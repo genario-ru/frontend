@@ -28,3 +28,8 @@ pnpm i18n:resources
 - Generated API contracts changed -> run `pnpm api:generate` and adapt
   handwritten code.
 - Missing i18n resource types -> run `pnpm i18n:resources`.
+- Routine request `try/catch` in UI/action hooks -> use Query state or mutation
+  callbacks.
+- Form pieces in `features` -> keep `useAppForm`/`withForm` pieces in widgets.
+- Component files with unrelated child components/constants/utils/types -> split
+  into colocated files.

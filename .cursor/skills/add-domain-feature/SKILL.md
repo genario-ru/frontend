@@ -33,23 +33,34 @@ Read at least 3 similar files in the target layer before editing. Prefer the
 same domain. Use those references for naming, hook return shapes, component
 structure, and import style.
 
+If references conflict, the composition is ambiguous, or the task requires a new
+custom pattern, ask the user before coding.
+
 ## Step 3: Use Generated API Correctly
 
 - Look in `src/codegen/api/product/**`.
 - Wrap generated network hooks in `src/actions/**`.
 - Generated types, enums, schemas, query keys, and route query options may be
   imported where contract data is needed.
+- Handle GET errors through TanStack Query state and mutation side effects
+  through `onSuccess`/`onError` callbacks. Do not add routine request
+  `try/catch`.
 - Never edit `src/codegen/**`.
 
 ## Step 4: Use Project Primitives
 
 - `cn()` from `@/shared/utils/cn`.
-- `useAppForm` from `@/lib/tanstack-form`.
+- `useAppForm` and `withForm` from `@/lib/tanstack-form`; keep form pieces in
+  widgets, not features.
 - `z` from `@/lib/zod`.
 - Existing UI primitives from `src/shared/components/ui/**`.
 - Do not add i18n keys for ordinary new UI text by default. Use locale JSON only
   in existing i18n-backed areas, explicit i18n tasks, or pluralization/inflection
   cases.
+- Keep widget logic in colocated hooks, component callbacks in `useCallback`,
+  and dynamic body/layout/slot content in `useMemo`.
+- Prefer flat props/params and a single object parameter for functions, hooks,
+  and components.
 
 ## Verification
 
@@ -59,3 +70,13 @@ pnpm router:generate  # if route files changed
 pnpm lint:fix
 pnpm lint:typescript
 ```
+
+## Reference Examples
+
+- GET action hook: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation callback hook:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widget hook/component:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Feature UI: `src/features/profiles/profile-card/components/profile-card.tsx`.

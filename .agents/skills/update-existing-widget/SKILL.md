@@ -31,18 +31,22 @@ Before editing, read:
 | Change                                                         | Location                 |
 | -------------------------------------------------------------- | ------------------------ |
 | Class names, markup, layout, small conditional rendering       | Widget component         |
-| Reusable local interaction state, derived state, handlers      | Widget hook              |
+| Local interaction state, derived state, handlers, navigation   | Widget hook              |
 | API call, mutation callback, cache invalidation, business rule | Action hook              |
 | Reusable domain display component                              | `src/features/<domain>/` |
 | Generic primitive or utility                                   | `src/shared/**`          |
 
 Do not move code between layers unless the requested change requires it.
+Ask the user before introducing a new composition pattern, custom abstraction,
+or significant layer move.
 
 ## Step 3: Preserve Local Conventions
 
 - Keep filenames and export style consistent with sibling files.
 - Use `cn()` for conditional class names.
 - Use `useAppForm` for forms.
+- Keep `withForm` subcomponents, form schemas, form types, and form helpers in
+  the owning widget.
 - Use `z` from `@/lib/zod`.
 - Use action hooks for generated network behavior.
 - Do not add i18n keys for ordinary new UI text by default. Use locale files
@@ -51,6 +55,13 @@ Do not move code between layers unless the requested change requires it.
 
 Generated types, schemas, and query keys may be imported where contract data is
 needed. Avoid adding direct generated network hook calls inside widget UI.
+
+Do not add routine request `try/catch` in widget code. GET states come from
+TanStack Query flags; mutation effects use `onSuccess`/`onError` callbacks.
+
+Keep widget components render-focused. Use `useMemo` for dynamic body/layout
+content, `useCallback` for handlers, and colocated hooks for non-trivial logic.
+Prefer flat props/params and one object parameter.
 
 ## Step 4: Verify
 
@@ -61,3 +72,16 @@ needed. Avoid adding direct generated network hook calls inside widget UI.
 
 Final response should mention the widget files changed, local references read,
 and validation commands run.
+
+## Reference Examples
+
+- Widget component with memoized slots:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget hook:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Per-call mutation callback:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
+- Widget-owned form:
+  `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`.
+- Reusable feature component:
+  `src/features/templates/template-card/components/template-card.tsx`.

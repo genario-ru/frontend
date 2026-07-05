@@ -68,6 +68,11 @@ Check what changed before adapting handwritten code:
 If generated output looks wrong, fix `kubb.config.ts` or
 `deps/api/product.json`, then regenerate.
 
+Keep generated network calls behind action hooks. Do not push generated query or
+mutation hooks directly into widgets/features while adapting the schema. Do not
+replace callback-based mutation handling with `mutateAsync`/`try-catch` unless
+the user has approved a custom flow.
+
 ## Step 5: Verify
 
 ```bash
@@ -77,3 +82,13 @@ pnpm lint:typescript
 
 If many generated names changed, expect TypeScript to be the main feedback
 loop. Do not silence errors with broad casts.
+
+## Reference Examples
+
+- Kubb configuration: `kubb.config.ts`.
+- Generated API root: `src/codegen/api/product/**`.
+- GET action wrapper: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action wrapper:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Widget consumer after action boundary:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.

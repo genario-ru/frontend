@@ -14,6 +14,10 @@ wrappers for network behavior used by widgets/features:
 import { useGetTemplates } from "@/actions/templates/hooks/use-get-templates";
 ```
 
+GET requests should be handled through TanStack Query state (`data`,
+`isLoading`/`isPending`, `isError`, `error`, `refetch`). Do not add
+`try/catch` around query hooks.
+
 ## Preloading in route guards/loaders
 
 ```typescript
@@ -56,6 +60,14 @@ mutate(
   },
 );
 ```
+
+Use mutation callbacks for backend-request side effects:
+
+- common side effects belong in the action hook's `mutation.onSuccess`,
+  `mutation.onError`, and `mutation.onSettled`;
+- UI-flow-specific side effects belong in the `mutate(variables, callbacks)`
+  call from a widget hook;
+- avoid `mutateAsync` plus `try/catch` unless the user approved a custom flow.
 
 ## Router search params
 
@@ -104,3 +116,20 @@ const form = useAppForm({
 Common field components include `InputField`, `TextareaField`, `SelectField`,
 `CheckboxChipsField`, `MultiSelectField`, and `RadioCardsGroupField`.
 Common form components include `SubmitButton` and `ResetButton`.
+
+Large forms may be split with `withForm`, but form parts stay inside the owning
+widget. Do not move `withForm` children into `src/features/**`.
+
+## Reference examples
+
+- GET action hook: `src/actions/templates/hooks/use-get-templates.ts`.
+- Mutation action hook with callbacks:
+  `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
+- Per-call mutation callback from a widget hook:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
+- Widget-owned TanStack Form:
+  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`.
+- `withForm` subcomponents:
+  `src/widgets/profile-settings/profile-settings/components/profile-settings-form-fields.tsx`
+  and
+  `src/widgets/profile-settings/profile-settings/components/profile-settings-form-buttons.tsx`.

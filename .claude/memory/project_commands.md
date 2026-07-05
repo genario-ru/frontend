@@ -44,6 +44,10 @@ API update:
 3. Adapt handwritten code outside `src/codegen/**`.
 4. Run `pnpm lint:typescript`.
 
+During API adaptation, keep generated network hooks behind action hooks and use
+TanStack Query/mutation callbacks for error and success handling. Do not add
+routine request `try/catch` in UI/action hooks.
+
 i18n / pluralization update:
 
 1. Use only for existing locale-backed text, explicit i18n tasks, or

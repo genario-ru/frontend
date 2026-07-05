@@ -21,6 +21,7 @@ untranslated text, or forms bypassing project wrappers.
    - Tailwind classes follow local density/spacing conventions.
 2. Forms:
    - `useAppForm` from `@/lib/tanstack-form`;
+   - `withForm` children stay in widgets, not features;
    - schema/value shape matches form usage;
    - submit/reset buttons follow local form patterns.
 3. Validation:
@@ -29,6 +30,8 @@ untranslated text, or forms bypassing project wrappers.
    - widgets use action hooks for network behavior;
    - features are presentational unless local precedent justifies otherwise;
    - generated types/schemas/query keys are contract data only.
+   - GET errors are rendered from Query state, not local `try/catch`;
+   - mutation side effects use `onSuccess`/`onError` callbacks.
 5. i18n:
    - ordinary new UI text does not need translation keys by default;
    - existing i18n areas keep using locale keys consistently;
@@ -41,7 +44,21 @@ untranslated text, or forms bypassing project wrappers.
 7. Responsibility:
    - large components delegate local logic to hooks or child components when
      that matches sibling patterns;
+   - handlers are stable `useCallback` values when passed around;
+   - dynamic body/layout/slot content and derived collections use `useMemo`;
+   - props/params are flat unless the full entity is genuinely needed;
+   - functions/hooks/components receive a single object parameter;
    - no broad unrelated refactor.
+
+## Reference Examples
+
+- Memoized widget component:
+  `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
+- Widget hook:
+  `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
+- Widget-owned form: `src/widgets/profile-settings/profile-settings/**`.
+- Presentational feature:
+  `src/features/profiles/profile-card/components/profile-card.tsx`.
 
 ## Report Format
 
