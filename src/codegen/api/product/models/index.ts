@@ -754,6 +754,7 @@ export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
 export type { GetProductFeaturesResponseSchema } from "./get-product-features-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./get-production-statuses-response-schema.ts";
+export type { GetProfileDataSchema } from "./get-profile-data-schema.ts";
 export type { GetProfileResponseSchema } from "./get-profile-response-schema.ts";
 export type { GetProfileTypesResponseSchema } from "./get-profile-types-response-schema.ts";
 export type { GetReferralInfoResponseSchema } from "./get-referral-info-response-schema.ts";
@@ -1335,6 +1336,8 @@ export type { ProductFeatureSchema } from "./product-feature-schema.ts";
 export type { ProductionStatusSchema } from "./production-status-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
+export type { ProfileReferenceItemSchema } from "./profile-reference-item-schema.ts";
+export type { ProfileReferencesSchema } from "./profile-references-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
 export type {

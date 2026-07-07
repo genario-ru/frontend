@@ -11,10 +11,10 @@ import { z } from "@/lib/zod/index.ts";
 export const createProfileBodySchemaSchema = z
   .object({
     name: z.string().min(1).max(256),
-    description: z.string().min(64).max(8192),
-    targetAudience: z.optional(z.string().min(1).max(1024)),
+    positioning: z.optional(z.string().max(8192)),
+    targetAudience: z.optional(z.string().max(1024)),
+    additionalInfo: z.optional(z.string().max(8192)),
     typeId: z.uuid(),
-    toneIds: z.optional(z.array(z.uuid())),
     platformIds: z.optional(z.array(z.uuid())),
   })
   .describe("Create profile body description");

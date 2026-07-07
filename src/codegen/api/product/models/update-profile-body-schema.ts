@@ -9,11 +9,14 @@
  */
 export type UpdateProfileBodySchema = {
   /**
+   * @minLength 1
+   * @maxLength 256
    * @type string | undefined
    */
   name?: string;
-  description?: string | null;
+  positioning?: string | null;
   targetAudience?: string | null;
+  additionalInfo?: string | null;
   typeId?: string | null;
   /**
    * @type array | undefined
@@ -22,5 +25,17 @@ export type UpdateProfileBodySchema = {
   /**
    * @type array | undefined
    */
-  toneIds?: string[];
+  videoReferences?: string[];
+  /**
+   * @type array | undefined
+   */
+  thumbnailReferences?: string[];
+  /**
+   * @type array | undefined
+   */
+  actorReferences?: string[];
+  /**
+   * @type array | undefined
+   */
+  transcriptReferences?: string[];
 };

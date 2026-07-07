@@ -9396,7 +9396,27 @@
               }
             ]
           },
+          "positioning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "targetAudience": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "additionalInfo": {
             "anyOf": [
               {
                 "type": "string"
@@ -9419,7 +9439,9 @@
           "typeId",
           "name",
           "description",
+          "positioning",
           "targetAudience",
+          "additionalInfo",
           "createdAt",
           "updatedAt"
         ],
@@ -10012,6 +10034,9 @@
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           },
+          "fileName": {
+            "type": "string"
+          },
           "key": {
             "type": "string"
           },
@@ -10031,6 +10056,7 @@
         "required": [
           "id",
           "userId",
+          "fileName",
           "key",
           "bucketName",
           "mimeType",
@@ -15506,7 +15532,27 @@
               }
             ]
           },
+          "positioning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "targetAudience": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "additionalInfo": {
             "anyOf": [
               {
                 "type": "string"
@@ -15521,9 +15567,6 @@
           },
           "updatedAt": {
             "type": "string"
-          },
-          "user": {
-            "$ref": "#/components/schemas/UserSchema"
           },
           "type": {
             "anyOf": [
@@ -15540,12 +15583,6 @@
             "items": {
               "$ref": "#/components/schemas/PlatformSchema"
             }
-          },
-          "tones": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ToneSchema"
-            }
           }
         },
         "required": [
@@ -15554,13 +15591,13 @@
           "typeId",
           "name",
           "description",
+          "positioning",
           "targetAudience",
+          "additionalInfo",
           "createdAt",
           "updatedAt",
-          "user",
           "type",
-          "platforms",
-          "tones"
+          "platforms"
         ],
         "title": "Profile extended",
         "description": "Profile extended description"
@@ -15762,35 +15799,99 @@
         "title": "Get profile types response",
         "description": "Get profile types response description"
       },
-      "GetProfileResponseSchema": {
+      "ProfileReferenceItemSchema": {
         "type": "object",
         "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ProfileExtendedSchema"
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "downloadUrl": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
           }
         },
         "required": [
-          "data"
+          "id",
+          "mimeType",
+          "fileName",
+          "downloadUrl",
+          "createdAt"
         ],
-        "title": "Get profile response",
-        "description": "Get profile response description"
+        "title": "Profile reference item",
+        "description": "Profile reference item description"
       },
-      "UpdateProfileResponseSchema": {
+      "ProfileReferencesSchema": {
         "type": "object",
         "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ProfileSchema"
+          "videoReferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+            }
+          },
+          "thumbnailReferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+            }
+          },
+          "actorReferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+            }
+          },
+          "transcriptReferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+            }
           }
         },
         "required": [
-          "data"
+          "videoReferences",
+          "thumbnailReferences",
+          "actorReferences",
+          "transcriptReferences"
         ],
-        "title": "Update profile response",
-        "description": "Update profile response description"
+        "title": "Profile references",
+        "description": "Profile references description"
       },
-      "UpdateProfileBodySchema": {
+      "GetProfileDataSchema": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "typeId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "name": {
             "type": "string"
           },
@@ -15804,10 +15905,141 @@
               }
             ]
           },
+          "positioning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "targetAudience": {
             "anyOf": [
               {
                 "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "additionalInfo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProfileTypeSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlatformSchema"
+            }
+          },
+          "references": {
+            "$ref": "#/components/schemas/ProfileReferencesSchema"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "typeId",
+          "name",
+          "description",
+          "positioning",
+          "targetAudience",
+          "additionalInfo",
+          "createdAt",
+          "updatedAt",
+          "type",
+          "platforms",
+          "references"
+        ],
+        "title": "Get profile data",
+        "description": "Get profile data description"
+      },
+      "GetProfileResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/GetProfileDataSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get profile response",
+        "description": "Get profile response description"
+      },
+      "UpdateProfileResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProfileExtendedSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Update profile response",
+        "description": "Update profile response description"
+      },
+      "UpdateProfileBodySchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "positioning": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 8192
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "targetAudience": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1024
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "additionalInfo": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 8192
               },
               {
                 "type": "null"
@@ -15834,7 +16066,31 @@
               "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
             }
           },
-          "toneIds": {
+          "videoReferences": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          },
+          "thumbnailReferences": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          },
+          "actorReferences": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          },
+          "transcriptReferences": {
             "type": "array",
             "items": {
               "type": "string",
@@ -15850,7 +16106,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ProfileSchema"
+            "$ref": "#/components/schemas/ProfileExtendedSchema"
           }
         },
         "required": [
@@ -15867,28 +16123,22 @@
             "minLength": 1,
             "maxLength": 256
           },
-          "description": {
+          "positioning": {
             "type": "string",
-            "minLength": 64,
             "maxLength": 8192
           },
           "targetAudience": {
             "type": "string",
-            "minLength": 1,
             "maxLength": 1024
+          },
+          "additionalInfo": {
+            "type": "string",
+            "maxLength": 8192
           },
           "typeId": {
             "type": "string",
             "format": "uuid",
             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "toneIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            }
           },
           "platformIds": {
             "type": "array",
@@ -15901,7 +16151,6 @@
         },
         "required": [
           "name",
-          "description",
           "typeId"
         ],
         "title": "Create profile body",

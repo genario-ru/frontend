@@ -19,6 +19,10 @@ export type AttachmentSchema = {
   /**
    * @type string
    */
+  fileName: string;
+  /**
+   * @type string
+   */
   key: string;
   /**
    * @type string

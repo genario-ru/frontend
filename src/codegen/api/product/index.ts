@@ -845,6 +845,7 @@ export type { GetPlatformsForChannelsResponseSchema } from "./models/get-platfor
 export type { GetPlatformsResponseSchema } from "./models/get-platforms-response-schema.ts";
 export type { GetProductFeaturesResponseSchema } from "./models/get-product-features-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./models/get-production-statuses-response-schema.ts";
+export type { GetProfileDataSchema } from "./models/get-profile-data-schema.ts";
 export type { GetProfileResponseSchema } from "./models/get-profile-response-schema.ts";
 export type { GetProfileTypesResponseSchema } from "./models/get-profile-types-response-schema.ts";
 export type { GetReferralInfoResponseSchema } from "./models/get-referral-info-response-schema.ts";
@@ -1426,6 +1427,8 @@ export type { ProductFeatureSchema } from "./models/product-feature-schema.ts";
 export type { ProductionStatusSchema } from "./models/production-status-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./models/profile-channel-url-validation-schema.ts";
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
+export type { ProfileReferenceItemSchema } from "./models/profile-reference-item-schema.ts";
+export type { ProfileReferencesSchema } from "./models/profile-references-schema.ts";
 export type { ProfileSchema } from "./models/profile-schema.ts";
 export type { ProfileTypeSchema } from "./models/profile-type-schema.ts";
 export type {
@@ -2616,6 +2619,7 @@ export { getPlatformsForChannelsResponseSchemaSchema } from "./zod/get-platforms
 export { getPlatformsResponseSchemaSchema } from "./zod/get-platforms-response-schema-schema.ts";
 export { getProductFeaturesResponseSchemaSchema } from "./zod/get-product-features-response-schema-schema.ts";
 export { getProductionStatusesResponseSchemaSchema } from "./zod/get-production-statuses-response-schema-schema.ts";
+export { getProfileDataSchemaSchema } from "./zod/get-profile-data-schema-schema.ts";
 export { getProfileResponseSchemaSchema } from "./zod/get-profile-response-schema-schema.ts";
 export { getProfileTypesResponseSchemaSchema } from "./zod/get-profile-types-response-schema-schema.ts";
 export { getReferralInfoResponseSchemaSchema } from "./zod/get-referral-info-response-schema-schema.ts";
@@ -3087,6 +3091,8 @@ export { productFeatureSchemaSchema } from "./zod/product-feature-schema-schema.
 export { productionStatusSchemaSchema } from "./zod/production-status-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-url-validation-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";
+export { profileReferenceItemSchemaSchema } from "./zod/profile-reference-item-schema-schema.ts";
+export { profileReferencesSchemaSchema } from "./zod/profile-references-schema-schema.ts";
 export { profileSchemaSchema } from "./zod/profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./zod/profile-type-schema-schema.ts";
 export { profilesFromChannelsJobSchemaSchema } from "./zod/profiles-from-channels-job-schema-schema.ts";

@@ -6,12 +6,13 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { platformSchemaSchema } from "./platform-schema-schema.ts";
+import { profileReferencesSchemaSchema } from "./profile-references-schema-schema.ts";
 import { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
 
 /**
- * @description Profile extended description
+ * @description Get profile data description
  */
-export const profileExtendedSchemaSchema = z
+export const getProfileDataSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
@@ -29,5 +30,10 @@ export const profileExtendedSchemaSchema = z
     get platforms() {
       return z.array(platformSchemaSchema.describe("Platform description"));
     },
+    get references() {
+      return profileReferencesSchemaSchema.describe(
+        "Profile references description",
+      );
+    },
   })
-  .describe("Profile extended description");
+  .describe("Get profile data description");

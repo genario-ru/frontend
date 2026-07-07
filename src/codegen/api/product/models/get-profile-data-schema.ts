@@ -4,13 +4,14 @@
  */
 
 import type { PlatformSchema } from "./platform-schema.ts";
+import type { ProfileReferencesSchema } from "./profile-references-schema.ts";
 import type { ProfileTypeSchema } from "./profile-type-schema.ts";
 
 /**
- * Profile extended
- * @description Profile extended description
+ * Get profile data
+ * @description Get profile data description
  */
-export type ProfileExtendedSchema = {
+export type GetProfileDataSchema = {
   /**
    * @type string, uuid
    */
@@ -41,4 +42,9 @@ export type ProfileExtendedSchema = {
    * @type array
    */
   platforms: PlatformSchema[];
+  /**
+   * @description Profile references description
+   * @type object
+   */
+  references: ProfileReferencesSchema;
 };

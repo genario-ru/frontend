@@ -12,6 +12,7 @@ export const attachmentSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
+    fileName: z.string(),
     key: z.string(),
     bucketName: z.string(),
     mimeType: z.string(),

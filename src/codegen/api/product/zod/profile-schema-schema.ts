@@ -15,7 +15,9 @@ export const profileSchemaSchema = z
     typeId: z.union([z.uuid(), z.null()]),
     name: z.string(),
     description: z.union([z.string(), z.null()]),
+    positioning: z.union([z.string(), z.null()]),
     targetAudience: z.union([z.string(), z.null()]),
+    additionalInfo: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
   })
