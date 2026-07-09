@@ -29,9 +29,10 @@ export { getApiV1Platforms } from "./clients/get-api-v1-platforms.ts";
 export { getApiV1ProductFeatures } from "./clients/get-api-v1-product-features.ts";
 export { getApiV1ProductionStatuses } from "./clients/get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./clients/get-api-v1-profiles-by-profile-id.ts";
+export { getApiV1ProfilesByProfileIdAttachments } from "./clients/get-api-v1-profiles-by-profile-id-attachments.ts";
+export { getApiV1ProfilesByProfileIdChannelVideos } from "./clients/get-api-v1-profiles-by-profile-id-channel-videos.ts";
 export { getApiV1ProfilesChannelsJobsMy } from "./clients/get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsPlatforms } from "./clients/get-api-v1-profiles-channels-platforms.ts";
-export { getApiV1ProfilesChannelsVideos } from "./clients/get-api-v1-profiles-channels-videos.ts";
 export { getApiV1ProfilesMy } from "./clients/get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesTypes } from "./clients/get-api-v1-profiles-types.ts";
 export { getApiV1ReferralCodesMy } from "./clients/get-api-v1-referral-codes-my.ts";
@@ -80,6 +81,7 @@ export { postApiV1IdeasListsByIdeasListIdExport } from "./clients/post-api-v1-id
 export { postApiV1IdeasListsByIdeasListIdIdeas } from "./clients/post-api-v1-ideas-lists-by-ideas-list-id-ideas.ts";
 export { postApiV1IdeasListsByIdeasListIdMoreIdeas } from "./clients/post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
 export { postApiV1Profiles } from "./clients/post-api-v1-profiles.ts";
+export { postApiV1ProfilesByProfileIdAttachments } from "./clients/post-api-v1-profiles-by-profile-id-attachments.ts";
 export { postApiV1ProfilesChannels } from "./clients/post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsValidate } from "./clients/post-api-v1-profiles-channels-validate.ts";
 export { postApiV1ProfilesChannelsVideos } from "./clients/post-api-v1-profiles-channels-videos.ts";
@@ -134,6 +136,12 @@ export type { CreateIdeasListBodySchema } from "./models/create-ideas-list-body-
 export type { CreateIdeasListExportBodySchema } from "./models/create-ideas-list-export-body-schema.ts";
 export type { CreateIdeasListExportResponseSchema } from "./models/create-ideas-list-export-response-schema.ts";
 export type { CreateIdeasListResponseSchema } from "./models/create-ideas-list-response-schema.ts";
+export type {
+  CreateProfileAttachmentBodySchema,
+  CreateProfileAttachmentBodySchemaTypeEnumKey,
+} from "./models/create-profile-attachment-body-schema.ts";
+export { createProfileAttachmentBodySchemaTypeEnum } from "./models/create-profile-attachment-body-schema.ts";
+export type { CreateProfileAttachmentResponseSchema } from "./models/create-profile-attachment-response-schema.ts";
 export type { CreateProfileBodySchema } from "./models/create-profile-body-schema.ts";
 export type { CreateProfileChannelVideoBodySchema } from "./models/create-profile-channel-video-body-schema.ts";
 export type { CreateProfileChannelVideoResponseSchema } from "./models/create-profile-channel-video-response-schema.ts";
@@ -554,6 +562,30 @@ export type {
   GetApiV1ProfilesByProfileIdQueryResponse,
 } from "./models/get-api-v1-profiles-by-profile-id.ts";
 export type {
+  GetApiV1ProfilesByProfileIdAttachments200,
+  GetApiV1ProfilesByProfileIdAttachments400,
+  GetApiV1ProfilesByProfileIdAttachments401,
+  GetApiV1ProfilesByProfileIdAttachments402,
+  GetApiV1ProfilesByProfileIdAttachments403,
+  GetApiV1ProfilesByProfileIdAttachments404,
+  GetApiV1ProfilesByProfileIdAttachments500,
+  GetApiV1ProfilesByProfileIdAttachmentsPathParams,
+  GetApiV1ProfilesByProfileIdAttachmentsQuery,
+  GetApiV1ProfilesByProfileIdAttachmentsQueryResponse,
+} from "./models/get-api-v1-profiles-by-profile-id-attachments.ts";
+export type {
+  GetApiV1ProfilesByProfileIdChannelVideos200,
+  GetApiV1ProfilesByProfileIdChannelVideos400,
+  GetApiV1ProfilesByProfileIdChannelVideos401,
+  GetApiV1ProfilesByProfileIdChannelVideos402,
+  GetApiV1ProfilesByProfileIdChannelVideos403,
+  GetApiV1ProfilesByProfileIdChannelVideos404,
+  GetApiV1ProfilesByProfileIdChannelVideos500,
+  GetApiV1ProfilesByProfileIdChannelVideosPathParams,
+  GetApiV1ProfilesByProfileIdChannelVideosQuery,
+  GetApiV1ProfilesByProfileIdChannelVideosQueryResponse,
+} from "./models/get-api-v1-profiles-by-profile-id-channel-videos.ts";
+export type {
   GetApiV1ProfilesChannelsJobsMy200,
   GetApiV1ProfilesChannelsJobsMy400,
   GetApiV1ProfilesChannelsJobsMy401,
@@ -575,18 +607,6 @@ export type {
   GetApiV1ProfilesChannelsPlatformsQuery,
   GetApiV1ProfilesChannelsPlatformsQueryResponse,
 } from "./models/get-api-v1-profiles-channels-platforms.ts";
-export type {
-  GetApiV1ProfilesChannelsVideos200,
-  GetApiV1ProfilesChannelsVideos400,
-  GetApiV1ProfilesChannelsVideos401,
-  GetApiV1ProfilesChannelsVideos402,
-  GetApiV1ProfilesChannelsVideos403,
-  GetApiV1ProfilesChannelsVideos404,
-  GetApiV1ProfilesChannelsVideos500,
-  GetApiV1ProfilesChannelsVideosQuery,
-  GetApiV1ProfilesChannelsVideosQueryParams,
-  GetApiV1ProfilesChannelsVideosQueryResponse,
-} from "./models/get-api-v1-profiles-channels-videos.ts";
 export type {
   GetApiV1ProfilesMy200,
   GetApiV1ProfilesMy400,
@@ -861,6 +881,7 @@ export type { GetPlatformsForChannelsResponseSchema } from "./models/get-platfor
 export type { GetPlatformsResponseSchema } from "./models/get-platforms-response-schema.ts";
 export type { GetProductFeaturesResponseSchema } from "./models/get-product-features-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./models/get-production-statuses-response-schema.ts";
+export type { GetProfileAttachmentsResponseSchema } from "./models/get-profile-attachments-response-schema.ts";
 export type { GetProfileChannelVideosResponseSchema } from "./models/get-profile-channel-videos-response-schema.ts";
 export type { GetProfileDataSchema } from "./models/get-profile-data-schema.ts";
 export type { GetProfileResponseSchema } from "./models/get-profile-response-schema.ts";
@@ -1318,6 +1339,19 @@ export type {
   PostApiV1ProfilesMutationResponse,
 } from "./models/post-api-v1-profiles.ts";
 export type {
+  PostApiV1ProfilesByProfileIdAttachments201,
+  PostApiV1ProfilesByProfileIdAttachments400,
+  PostApiV1ProfilesByProfileIdAttachments401,
+  PostApiV1ProfilesByProfileIdAttachments402,
+  PostApiV1ProfilesByProfileIdAttachments403,
+  PostApiV1ProfilesByProfileIdAttachments404,
+  PostApiV1ProfilesByProfileIdAttachments500,
+  PostApiV1ProfilesByProfileIdAttachmentsMutation,
+  PostApiV1ProfilesByProfileIdAttachmentsMutationRequest,
+  PostApiV1ProfilesByProfileIdAttachmentsMutationResponse,
+  PostApiV1ProfilesByProfileIdAttachmentsPathParams,
+} from "./models/post-api-v1-profiles-by-profile-id-attachments.ts";
+export type {
   PostApiV1ProfilesChannels201,
   PostApiV1ProfilesChannels400,
   PostApiV1ProfilesChannels401,
@@ -1454,6 +1488,11 @@ export type {
 } from "./models/post-api-v1-subscriptions-upgrade.ts";
 export type { ProductFeatureSchema } from "./models/product-feature-schema.ts";
 export type { ProductionStatusSchema } from "./models/production-status-schema.ts";
+export type {
+  ProfileAttachmentExtendedSchema,
+  ProfileAttachmentExtendedSchemaTypeEnumKey,
+} from "./models/profile-attachment-extended-schema.ts";
+export { profileAttachmentExtendedSchemaTypeEnum } from "./models/profile-attachment-extended-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./models/profile-channel-url-validation-schema.ts";
 export type { ProfileChannelVideoSchema } from "./models/profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
@@ -1752,6 +1791,14 @@ export type { GetApiV1ProfilesByProfileIdQueryKey } from "./tanstack/get-api-v1-
 export { getApiV1ProfilesByProfileIdQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
 export { getApiV1ProfilesByProfileIdQueryOptions } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
 export { useGetApiV1ProfilesByProfileId } from "./tanstack/get-api-v1-profiles-by-profile-id.ts";
+export type { GetApiV1ProfilesByProfileIdAttachmentsQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id-attachments.ts";
+export { getApiV1ProfilesByProfileIdAttachmentsQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id-attachments.ts";
+export { getApiV1ProfilesByProfileIdAttachmentsQueryOptions } from "./tanstack/get-api-v1-profiles-by-profile-id-attachments.ts";
+export { useGetApiV1ProfilesByProfileIdAttachments } from "./tanstack/get-api-v1-profiles-by-profile-id-attachments.ts";
+export type { GetApiV1ProfilesByProfileIdChannelVideosQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { getApiV1ProfilesByProfileIdChannelVideosQueryKey } from "./tanstack/get-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { getApiV1ProfilesByProfileIdChannelVideosQueryOptions } from "./tanstack/get-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { useGetApiV1ProfilesByProfileIdChannelVideos } from "./tanstack/get-api-v1-profiles-by-profile-id-channel-videos.ts";
 export type { GetApiV1ProfilesChannelsJobsMyQueryKey } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsJobsMyQueryKey } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsJobsMyQueryOptions } from "./tanstack/get-api-v1-profiles-channels-jobs-my.ts";
@@ -1760,10 +1807,6 @@ export type { GetApiV1ProfilesChannelsPlatformsQueryKey } from "./tanstack/get-a
 export { getApiV1ProfilesChannelsPlatformsQueryKey } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryOptions } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
 export { useGetApiV1ProfilesChannelsPlatforms } from "./tanstack/get-api-v1-profiles-channels-platforms.ts";
-export type { GetApiV1ProfilesChannelsVideosQueryKey } from "./tanstack/get-api-v1-profiles-channels-videos.ts";
-export { getApiV1ProfilesChannelsVideosQueryKey } from "./tanstack/get-api-v1-profiles-channels-videos.ts";
-export { getApiV1ProfilesChannelsVideosQueryOptions } from "./tanstack/get-api-v1-profiles-channels-videos.ts";
-export { useGetApiV1ProfilesChannelsVideos } from "./tanstack/get-api-v1-profiles-channels-videos.ts";
 export type { GetApiV1ProfilesMyQueryKey } from "./tanstack/get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesMyQueryKey } from "./tanstack/get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesMyQueryOptions } from "./tanstack/get-api-v1-profiles-my.ts";
@@ -1964,6 +2007,10 @@ export type { PostApiV1ProfilesMutationKey } from "./tanstack/post-api-v1-profil
 export { postApiV1ProfilesMutationKey } from "./tanstack/post-api-v1-profiles.ts";
 export { postApiV1ProfilesMutationOptions } from "./tanstack/post-api-v1-profiles.ts";
 export { usePostApiV1Profiles } from "./tanstack/post-api-v1-profiles.ts";
+export type { PostApiV1ProfilesByProfileIdAttachmentsMutationKey } from "./tanstack/post-api-v1-profiles-by-profile-id-attachments.ts";
+export { postApiV1ProfilesByProfileIdAttachmentsMutationKey } from "./tanstack/post-api-v1-profiles-by-profile-id-attachments.ts";
+export { postApiV1ProfilesByProfileIdAttachmentsMutationOptions } from "./tanstack/post-api-v1-profiles-by-profile-id-attachments.ts";
+export { usePostApiV1ProfilesByProfileIdAttachments } from "./tanstack/post-api-v1-profiles-by-profile-id-attachments.ts";
 export type { PostApiV1ProfilesChannelsMutationKey } from "./tanstack/post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsMutationKey } from "./tanstack/post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsMutationOptions } from "./tanstack/post-api-v1-profiles-channels.ts";
@@ -2035,6 +2082,8 @@ export { createIdeasListBodySchemaSchema } from "./zod/create-ideas-list-body-sc
 export { createIdeasListExportBodySchemaSchema } from "./zod/create-ideas-list-export-body-schema-schema.ts";
 export { createIdeasListExportResponseSchemaSchema } from "./zod/create-ideas-list-export-response-schema-schema.ts";
 export { createIdeasListResponseSchemaSchema } from "./zod/create-ideas-list-response-schema-schema.ts";
+export { createProfileAttachmentBodySchemaSchema } from "./zod/create-profile-attachment-body-schema-schema.ts";
+export { createProfileAttachmentResponseSchemaSchema } from "./zod/create-profile-attachment-response-schema-schema.ts";
 export { createProfileBodySchemaSchema } from "./zod/create-profile-body-schema-schema.ts";
 export { createProfileChannelVideoBodySchemaSchema } from "./zod/create-profile-channel-video-body-schema-schema.ts";
 export { createProfileChannelVideoResponseSchemaSchema } from "./zod/create-profile-channel-video-response-schema-schema.ts";
@@ -2387,6 +2436,28 @@ export {
   getApiV1ProductionStatusesQueryResponseSchema,
 } from "./zod/get-api-v1-production-statuses-schema.ts";
 export {
+  getApiV1ProfilesByProfileIdAttachments200Schema,
+  getApiV1ProfilesByProfileIdAttachments400Schema,
+  getApiV1ProfilesByProfileIdAttachments401Schema,
+  getApiV1ProfilesByProfileIdAttachments402Schema,
+  getApiV1ProfilesByProfileIdAttachments403Schema,
+  getApiV1ProfilesByProfileIdAttachments404Schema,
+  getApiV1ProfilesByProfileIdAttachments500Schema,
+  getApiV1ProfilesByProfileIdAttachmentsPathParamsSchema,
+  getApiV1ProfilesByProfileIdAttachmentsQueryResponseSchema,
+} from "./zod/get-api-v1-profiles-by-profile-id-attachments-schema.ts";
+export {
+  getApiV1ProfilesByProfileIdChannelVideos200Schema,
+  getApiV1ProfilesByProfileIdChannelVideos400Schema,
+  getApiV1ProfilesByProfileIdChannelVideos401Schema,
+  getApiV1ProfilesByProfileIdChannelVideos402Schema,
+  getApiV1ProfilesByProfileIdChannelVideos403Schema,
+  getApiV1ProfilesByProfileIdChannelVideos404Schema,
+  getApiV1ProfilesByProfileIdChannelVideos500Schema,
+  getApiV1ProfilesByProfileIdChannelVideosPathParamsSchema,
+  getApiV1ProfilesByProfileIdChannelVideosQueryResponseSchema,
+} from "./zod/get-api-v1-profiles-by-profile-id-channel-videos-schema.ts";
+export {
   getApiV1ProfilesByProfileId200Schema,
   getApiV1ProfilesByProfileId400Schema,
   getApiV1ProfilesByProfileId401Schema,
@@ -2417,17 +2488,6 @@ export {
   getApiV1ProfilesChannelsPlatforms500Schema,
   getApiV1ProfilesChannelsPlatformsQueryResponseSchema,
 } from "./zod/get-api-v1-profiles-channels-platforms-schema.ts";
-export {
-  getApiV1ProfilesChannelsVideos200Schema,
-  getApiV1ProfilesChannelsVideos400Schema,
-  getApiV1ProfilesChannelsVideos401Schema,
-  getApiV1ProfilesChannelsVideos402Schema,
-  getApiV1ProfilesChannelsVideos403Schema,
-  getApiV1ProfilesChannelsVideos404Schema,
-  getApiV1ProfilesChannelsVideos500Schema,
-  getApiV1ProfilesChannelsVideosQueryParamsSchema,
-  getApiV1ProfilesChannelsVideosQueryResponseSchema,
-} from "./zod/get-api-v1-profiles-channels-videos-schema.ts";
 export {
   getApiV1ProfilesMy200Schema,
   getApiV1ProfilesMy400Schema,
@@ -2670,6 +2730,7 @@ export { getPlatformsForChannelsResponseSchemaSchema } from "./zod/get-platforms
 export { getPlatformsResponseSchemaSchema } from "./zod/get-platforms-response-schema-schema.ts";
 export { getProductFeaturesResponseSchemaSchema } from "./zod/get-product-features-response-schema-schema.ts";
 export { getProductionStatusesResponseSchemaSchema } from "./zod/get-production-statuses-response-schema-schema.ts";
+export { getProfileAttachmentsResponseSchemaSchema } from "./zod/get-profile-attachments-response-schema-schema.ts";
 export { getProfileChannelVideosResponseSchemaSchema } from "./zod/get-profile-channel-videos-response-schema-schema.ts";
 export { getProfileDataSchemaSchema } from "./zod/get-profile-data-schema-schema.ts";
 export { getProfileResponseSchemaSchema } from "./zod/get-profile-response-schema-schema.ts";
@@ -3016,6 +3077,18 @@ export {
   postApiV1IdeasListsMutationResponseSchema,
 } from "./zod/post-api-v1-ideas-lists-schema.ts";
 export {
+  postApiV1ProfilesByProfileIdAttachments201Schema,
+  postApiV1ProfilesByProfileIdAttachments400Schema,
+  postApiV1ProfilesByProfileIdAttachments401Schema,
+  postApiV1ProfilesByProfileIdAttachments402Schema,
+  postApiV1ProfilesByProfileIdAttachments403Schema,
+  postApiV1ProfilesByProfileIdAttachments404Schema,
+  postApiV1ProfilesByProfileIdAttachments500Schema,
+  postApiV1ProfilesByProfileIdAttachmentsMutationRequestSchema,
+  postApiV1ProfilesByProfileIdAttachmentsMutationResponseSchema,
+  postApiV1ProfilesByProfileIdAttachmentsPathParamsSchema,
+} from "./zod/post-api-v1-profiles-by-profile-id-attachments-schema.ts";
+export {
   postApiV1ProfilesChannels201Schema,
   postApiV1ProfilesChannels400Schema,
   postApiV1ProfilesChannels401Schema,
@@ -3152,6 +3225,7 @@ export {
 } from "./zod/post-api-v1-subscriptions-upgrade-schema.ts";
 export { productFeatureSchemaSchema } from "./zod/product-feature-schema-schema.ts";
 export { productionStatusSchemaSchema } from "./zod/production-status-schema-schema.ts";
+export { profileAttachmentExtendedSchemaSchema } from "./zod/profile-attachment-extended-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-url-validation-schema-schema.ts";
 export { profileChannelVideoSchemaSchema } from "./zod/profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";

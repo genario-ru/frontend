@@ -6,7 +6,6 @@
 import { z } from "@/lib/zod/index.ts";
 
 import { platformSchemaSchema } from "./platform-schema-schema.ts";
-import { profileReferencesSchemaSchema } from "./profile-references-schema-schema.ts";
 import { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
 
 /**
@@ -29,11 +28,6 @@ export const getProfileDataSchemaSchema = z
     },
     get platforms() {
       return z.array(platformSchemaSchema.describe("Platform description"));
-    },
-    get references() {
-      return profileReferencesSchemaSchema.describe(
-        "Profile references description",
-      );
     },
   })
   .describe("Get profile data description");

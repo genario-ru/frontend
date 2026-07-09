@@ -4,7 +4,6 @@
  */
 
 import type { PlatformSchema } from "./platform-schema.ts";
-import type { ProfileReferencesSchema } from "./profile-references-schema.ts";
 import type { ProfileTypeSchema } from "./profile-type-schema.ts";
 
 /**
@@ -42,9 +41,4 @@ export type GetProfileDataSchema = {
    * @type array
    */
   platforms: PlatformSchema[];
-  /**
-   * @description Profile references description
-   * @type object
-   */
-  references: ProfileReferencesSchema;
 };

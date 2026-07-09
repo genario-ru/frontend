@@ -4746,9 +4746,11 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v1/profiles/{profileId}/channel-videos": {
       "get": {
-        "operationId": "getApiV1ProfilesChannelsVideos",
+        "operationId": "getApiV1ProfilesByProfileIdChannelVideos",
         "tags": [
           "Profiles"
         ],
@@ -4826,7 +4828,199 @@
         },
         "parameters": [
           {
-            "in": "query",
+            "in": "path",
+            "name": "profileId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/api/v1/profiles/{profileId}/attachments": {
+      "post": {
+        "operationId": "postApiV1ProfilesByProfileIdAttachments",
+        "tags": [
+          "Profiles"
+        ],
+        "responses": {
+          "201": {
+            "description": "Profile attachment created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProfileAttachmentResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProfileAttachmentBodySchema"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getApiV1ProfilesByProfileIdAttachments",
+        "tags": [
+          "Profiles"
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile attachments retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProfileAttachmentsResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponseSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
             "name": "profileId",
             "schema": {
               "type": "string",
@@ -16312,35 +16506,6 @@
         "title": "Get profile channel videos response",
         "description": "Get profile channel videos response description"
       },
-      "DeleteProfileResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ProfileSchema"
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Delete profile response",
-        "description": "Delete profile response description"
-      },
-      "GetProfileTypesResponseSchema": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProfileTypeSchema"
-            }
-          }
-        },
-        "required": [
-          "data"
-        ],
-        "title": "Get profile types response",
-        "description": "Get profile types response description"
-      },
       "ProfileReferenceItemSchema": {
         "type": "object",
         "properties": {
@@ -16372,6 +16537,92 @@
         "title": "Profile reference item",
         "description": "Profile reference item description"
       },
+      "ProfileAttachmentExtendedSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "actor-reference",
+              "thumbnail-reference",
+              "video-reference"
+            ]
+          },
+          "profileId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "attachmentId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "attachment": {
+            "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "profileId",
+          "attachmentId",
+          "createdAt",
+          "updatedAt",
+          "attachment"
+        ],
+        "title": "Profile attachment extended",
+        "description": "Profile attachment extended description"
+      },
+      "CreateProfileAttachmentResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProfileAttachmentExtendedSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Create profile attachment response",
+        "description": "Create profile attachment response description"
+      },
+      "CreateProfileAttachmentBodySchema": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "contentEncoding": "binary",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "actor-reference",
+              "thumbnail-reference",
+              "video-reference"
+            ]
+          }
+        },
+        "required": [
+          "file",
+          "type"
+        ],
+        "title": "Create profile attachment body",
+        "description": "Create profile attachment body description"
+      },
       "ProfileReferencesSchema": {
         "type": "object",
         "properties": {
@@ -16401,6 +16652,48 @@
         ],
         "title": "Profile references",
         "description": "Profile references description"
+      },
+      "GetProfileAttachmentsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProfileReferencesSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get profile attachments response",
+        "description": "Get profile attachments response description"
+      },
+      "DeleteProfileResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProfileSchema"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Delete profile response",
+        "description": "Delete profile response description"
+      },
+      "GetProfileTypesResponseSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileTypeSchema"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Get profile types response",
+        "description": "Get profile types response description"
       },
       "GetProfileDataSchema": {
         "type": "object",
@@ -16491,9 +16784,6 @@
             "items": {
               "$ref": "#/components/schemas/PlatformSchema"
             }
-          },
-          "references": {
-            "$ref": "#/components/schemas/ProfileReferencesSchema"
           }
         },
         "required": [
@@ -16508,8 +16798,7 @@
           "createdAt",
           "updatedAt",
           "type",
-          "platforms",
-          "references"
+          "platforms"
         ],
         "title": "Get profile data",
         "description": "Get profile data description"

@@ -7,65 +7,65 @@ import { z } from "@/lib/zod/index.ts";
 
 import { badRequestResponseSchemaSchema } from "./bad-request-response-schema-schema.ts";
 import { forbiddenResponseSchemaSchema } from "./forbidden-response-schema-schema.ts";
-import { getProfileChannelVideosResponseSchemaSchema } from "./get-profile-channel-videos-response-schema-schema.ts";
+import { getProfileAttachmentsResponseSchemaSchema } from "./get-profile-attachments-response-schema-schema.ts";
 import { internalServerErrorResponseSchemaSchema } from "./internal-server-error-response-schema-schema.ts";
 import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema.ts";
 import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
-export const getApiV1ProfilesChannelsVideosQueryParamsSchema = z.object({
+export const getApiV1ProfilesByProfileIdAttachmentsPathParamsSchema = z.object({
   profileId: z.uuid(),
 });
 
 /**
- * @description Profile channel videos retrieved successfully
+ * @description Profile attachments retrieved successfully
  */
-export const getApiV1ProfilesChannelsVideos200Schema = z
-  .lazy(() => getProfileChannelVideosResponseSchemaSchema)
-  .describe("Get profile channel videos response description");
+export const getApiV1ProfilesByProfileIdAttachments200Schema = z
+  .lazy(() => getProfileAttachmentsResponseSchemaSchema)
+  .describe("Get profile attachments response description");
 
 /**
  * @description Bad request
  */
-export const getApiV1ProfilesChannelsVideos400Schema = z
+export const getApiV1ProfilesByProfileIdAttachments400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const getApiV1ProfilesChannelsVideos401Schema = z
+export const getApiV1ProfilesByProfileIdAttachments401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Payment required
  */
-export const getApiV1ProfilesChannelsVideos402Schema = z
+export const getApiV1ProfilesByProfileIdAttachments402Schema = z
   .lazy(() => paymentRequiredResponseSchemaSchema)
   .describe("Payment required response description");
 
 /**
  * @description Forbidden
  */
-export const getApiV1ProfilesChannelsVideos403Schema = z
+export const getApiV1ProfilesByProfileIdAttachments403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const getApiV1ProfilesChannelsVideos404Schema = z
+export const getApiV1ProfilesByProfileIdAttachments404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const getApiV1ProfilesChannelsVideos500Schema = z
+export const getApiV1ProfilesByProfileIdAttachments500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const getApiV1ProfilesChannelsVideosQueryResponseSchema = z.lazy(
-  () => getApiV1ProfilesChannelsVideos200Schema,
+export const getApiV1ProfilesByProfileIdAttachmentsQueryResponseSchema = z.lazy(
+  () => getApiV1ProfilesByProfileIdAttachments200Schema,
 );
