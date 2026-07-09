@@ -354,6 +354,10 @@ export type { PostApiV1ProfilesByProfileIdAttachmentsMutationKey } from "./post-
 export { postApiV1ProfilesByProfileIdAttachmentsMutationKey } from "./post-api-v1-profiles-by-profile-id-attachments.ts";
 export { postApiV1ProfilesByProfileIdAttachmentsMutationOptions } from "./post-api-v1-profiles-by-profile-id-attachments.ts";
 export { usePostApiV1ProfilesByProfileIdAttachments } from "./post-api-v1-profiles-by-profile-id-attachments.ts";
+export type { PostApiV1ProfilesByProfileIdChannelVideosMutationKey } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { postApiV1ProfilesByProfileIdChannelVideosMutationKey } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { postApiV1ProfilesByProfileIdChannelVideosMutationOptions } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
+export { usePostApiV1ProfilesByProfileIdChannelVideos } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
 export type { PostApiV1ProfilesChannelsMutationKey } from "./post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsMutationKey } from "./post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsMutationOptions } from "./post-api-v1-profiles-channels.ts";
@@ -362,10 +366,6 @@ export type { PostApiV1ProfilesChannelsValidateMutationKey } from "./post-api-v1
 export { postApiV1ProfilesChannelsValidateMutationKey } from "./post-api-v1-profiles-channels-validate.ts";
 export { postApiV1ProfilesChannelsValidateMutationOptions } from "./post-api-v1-profiles-channels-validate.ts";
 export { usePostApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channels-validate.ts";
-export type { PostApiV1ProfilesChannelsVideosMutationKey } from "./post-api-v1-profiles-channels-videos.ts";
-export { postApiV1ProfilesChannelsVideosMutationKey } from "./post-api-v1-profiles-channels-videos.ts";
-export { postApiV1ProfilesChannelsVideosMutationOptions } from "./post-api-v1-profiles-channels-videos.ts";
-export { usePostApiV1ProfilesChannelsVideos } from "./post-api-v1-profiles-channels-videos.ts";
 export type { PostApiV1ScenariosMutationKey } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosMutationKey } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosMutationOptions } from "./post-api-v1-scenarios.ts";

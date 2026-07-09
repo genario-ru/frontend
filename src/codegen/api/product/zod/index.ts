@@ -1032,6 +1032,18 @@ export {
   postApiV1ProfilesByProfileIdAttachmentsPathParamsSchema,
 } from "./post-api-v1-profiles-by-profile-id-attachments-schema.ts";
 export {
+  postApiV1ProfilesByProfileIdChannelVideos200Schema,
+  postApiV1ProfilesByProfileIdChannelVideos400Schema,
+  postApiV1ProfilesByProfileIdChannelVideos401Schema,
+  postApiV1ProfilesByProfileIdChannelVideos402Schema,
+  postApiV1ProfilesByProfileIdChannelVideos403Schema,
+  postApiV1ProfilesByProfileIdChannelVideos404Schema,
+  postApiV1ProfilesByProfileIdChannelVideos500Schema,
+  postApiV1ProfilesByProfileIdChannelVideosMutationRequestSchema,
+  postApiV1ProfilesByProfileIdChannelVideosMutationResponseSchema,
+  postApiV1ProfilesByProfileIdChannelVideosPathParamsSchema,
+} from "./post-api-v1-profiles-by-profile-id-channel-videos-schema.ts";
+export {
   postApiV1ProfilesChannels201Schema,
   postApiV1ProfilesChannels400Schema,
   postApiV1ProfilesChannels401Schema,
@@ -1053,17 +1065,6 @@ export {
   postApiV1ProfilesChannelsValidateMutationRequestSchema,
   postApiV1ProfilesChannelsValidateMutationResponseSchema,
 } from "./post-api-v1-profiles-channels-validate-schema.ts";
-export {
-  postApiV1ProfilesChannelsVideos200Schema,
-  postApiV1ProfilesChannelsVideos400Schema,
-  postApiV1ProfilesChannelsVideos401Schema,
-  postApiV1ProfilesChannelsVideos402Schema,
-  postApiV1ProfilesChannelsVideos403Schema,
-  postApiV1ProfilesChannelsVideos404Schema,
-  postApiV1ProfilesChannelsVideos500Schema,
-  postApiV1ProfilesChannelsVideosMutationRequestSchema,
-  postApiV1ProfilesChannelsVideosMutationResponseSchema,
-} from "./post-api-v1-profiles-channels-videos-schema.ts";
 export {
   postApiV1Profiles201Schema,
   postApiV1Profiles400Schema,

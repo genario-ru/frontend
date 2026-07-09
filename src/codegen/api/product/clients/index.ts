@@ -82,9 +82,9 @@ export { postApiV1IdeasListsByIdeasListIdIdeas } from "./post-api-v1-ideas-lists
 export { postApiV1IdeasListsByIdeasListIdMoreIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
 export { postApiV1Profiles } from "./post-api-v1-profiles.ts";
 export { postApiV1ProfilesByProfileIdAttachments } from "./post-api-v1-profiles-by-profile-id-attachments.ts";
+export { postApiV1ProfilesByProfileIdChannelVideos } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
 export { postApiV1ProfilesChannels } from "./post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channels-validate.ts";
-export { postApiV1ProfilesChannelsVideos } from "./post-api-v1-profiles-channels-videos.ts";
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosByScenarioIdExport } from "./post-api-v1-scenarios-by-scenario-id-export.ts";
 export { postApiV1ScenariosByScenarioIdMetadataGenerate } from "./post-api-v1-scenarios-by-scenario-id-metadata-generate.ts";

@@ -9,10 +9,6 @@
  */
 export type CreateProfileChannelVideoBodySchema = {
   /**
-   * @type string, uuid
-   */
-  profileId: string;
-  /**
    * @type string, uri
    */
   url: string;

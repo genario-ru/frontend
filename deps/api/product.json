@@ -4658,9 +4658,9 @@
         }
       }
     },
-    "/api/v1/profiles/channels/videos": {
+    "/api/v1/profiles/{profileId}/channel-videos": {
       "post": {
-        "operationId": "postApiV1ProfilesChannelsVideos",
+        "operationId": "postApiV1ProfilesByProfileIdChannelVideos",
         "tags": [
           "Profiles"
         ],
@@ -4736,6 +4736,18 @@
             }
           }
         },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -4746,9 +4758,7 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/profiles/{profileId}/channel-videos": {
+      },
       "get": {
         "operationId": "getApiV1ProfilesByProfileIdChannelVideos",
         "tags": [
@@ -16473,18 +16483,12 @@
       "CreateProfileChannelVideoBodySchema": {
         "type": "object",
         "properties": {
-          "profileId": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
           "url": {
             "type": "string",
             "format": "uri"
           }
         },
         "required": [
-          "profileId",
           "url"
         ],
         "title": "Create profile channel video body",

@@ -14,59 +14,63 @@ import { notFoundResponseSchemaSchema } from "./not-found-response-schema-schema
 import { paymentRequiredResponseSchemaSchema } from "./payment-required-response-schema-schema.ts";
 import { unauthorizedResponseSchemaSchema } from "./unauthorized-response-schema-schema.ts";
 
+export const postApiV1ProfilesByProfileIdChannelVideosPathParamsSchema =
+  z.object({
+    profileId: z.uuid(),
+  });
+
 /**
  * @description Profile channel video created successfully
  */
-export const postApiV1ProfilesChannelsVideos200Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos200Schema = z
   .lazy(() => createProfileChannelVideoResponseSchemaSchema)
   .describe("Create profile channel video response description");
 
 /**
  * @description Bad request
  */
-export const postApiV1ProfilesChannelsVideos400Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos400Schema = z
   .lazy(() => badRequestResponseSchemaSchema)
   .describe("Bad request response description");
 
 /**
  * @description Unauthorized
  */
-export const postApiV1ProfilesChannelsVideos401Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos401Schema = z
   .lazy(() => unauthorizedResponseSchemaSchema)
   .describe("Unauthorized response description");
 
 /**
  * @description Payment required
  */
-export const postApiV1ProfilesChannelsVideos402Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos402Schema = z
   .lazy(() => paymentRequiredResponseSchemaSchema)
   .describe("Payment required response description");
 
 /**
  * @description Forbidden
  */
-export const postApiV1ProfilesChannelsVideos403Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos403Schema = z
   .lazy(() => forbiddenResponseSchemaSchema)
   .describe("Forbidden response description");
 
 /**
  * @description Not found
  */
-export const postApiV1ProfilesChannelsVideos404Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos404Schema = z
   .lazy(() => notFoundResponseSchemaSchema)
   .describe("Not found response description");
 
 /**
  * @description Internal server error
  */
-export const postApiV1ProfilesChannelsVideos500Schema = z
+export const postApiV1ProfilesByProfileIdChannelVideos500Schema = z
   .lazy(() => internalServerErrorResponseSchemaSchema)
   .describe("Internal server error response description");
 
-export const postApiV1ProfilesChannelsVideosMutationRequestSchema = z
+export const postApiV1ProfilesByProfileIdChannelVideosMutationRequestSchema = z
   .lazy(() => createProfileChannelVideoBodySchemaSchema)
   .describe("Create profile channel video body description");
 
-export const postApiV1ProfilesChannelsVideosMutationResponseSchema = z.lazy(
-  () => postApiV1ProfilesChannelsVideos200Schema,
-);
+export const postApiV1ProfilesByProfileIdChannelVideosMutationResponseSchema =
+  z.lazy(() => postApiV1ProfilesByProfileIdChannelVideos200Schema);

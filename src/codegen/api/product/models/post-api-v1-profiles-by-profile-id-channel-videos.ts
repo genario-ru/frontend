@@ -12,67 +12,80 @@ import type { NotFoundResponseSchema } from "./not-found-response-schema.ts";
 import type { PaymentRequiredResponseSchema } from "./payment-required-response-schema.ts";
 import type { UnauthorizedResponseSchema } from "./unauthorized-response-schema.ts";
 
+export type PostApiV1ProfilesByProfileIdChannelVideosPathParams = {
+  /**
+   * @type string, uuid
+   */
+  profileId: string;
+};
+
 /**
  * Create profile channel video response
  * @description Profile channel video created successfully
  */
-export type PostApiV1ProfilesChannelsVideos200 =
+export type PostApiV1ProfilesByProfileIdChannelVideos200 =
   CreateProfileChannelVideoResponseSchema;
 
 /**
  * Bad request response
  * @description Bad request
  */
-export type PostApiV1ProfilesChannelsVideos400 = BadRequestResponseSchema;
+export type PostApiV1ProfilesByProfileIdChannelVideos400 =
+  BadRequestResponseSchema;
 
 /**
  * Unauthorized response
  * @description Unauthorized
  */
-export type PostApiV1ProfilesChannelsVideos401 = UnauthorizedResponseSchema;
+export type PostApiV1ProfilesByProfileIdChannelVideos401 =
+  UnauthorizedResponseSchema;
 
 /**
  * Payment required response
  * @description Payment required
  */
-export type PostApiV1ProfilesChannelsVideos402 = PaymentRequiredResponseSchema;
+export type PostApiV1ProfilesByProfileIdChannelVideos402 =
+  PaymentRequiredResponseSchema;
 
 /**
  * Forbidden response
  * @description Forbidden
  */
-export type PostApiV1ProfilesChannelsVideos403 = ForbiddenResponseSchema;
+export type PostApiV1ProfilesByProfileIdChannelVideos403 =
+  ForbiddenResponseSchema;
 
 /**
  * Not found response
  * @description Not found
  */
-export type PostApiV1ProfilesChannelsVideos404 = NotFoundResponseSchema;
+export type PostApiV1ProfilesByProfileIdChannelVideos404 =
+  NotFoundResponseSchema;
 
 /**
  * Internal server error response
  * @description Internal server error
  */
-export type PostApiV1ProfilesChannelsVideos500 =
+export type PostApiV1ProfilesByProfileIdChannelVideos500 =
   InternalServerErrorResponseSchema;
 
 /**
  * Create profile channel video body
  */
-export type PostApiV1ProfilesChannelsVideosMutationRequest =
+export type PostApiV1ProfilesByProfileIdChannelVideosMutationRequest =
   CreateProfileChannelVideoBodySchema;
 
-export type PostApiV1ProfilesChannelsVideosMutationResponse =
-  PostApiV1ProfilesChannelsVideos200;
+export type PostApiV1ProfilesByProfileIdChannelVideosMutationResponse =
+  PostApiV1ProfilesByProfileIdChannelVideos200;
 
-export type PostApiV1ProfilesChannelsVideosMutation = {
-  Response: PostApiV1ProfilesChannelsVideos200;
-  Request: PostApiV1ProfilesChannelsVideosMutationRequest;
+export type PostApiV1ProfilesByProfileIdChannelVideosMutation = {
+  Response: PostApiV1ProfilesByProfileIdChannelVideos200;
+  Request: PostApiV1ProfilesByProfileIdChannelVideosMutationRequest;
+  PathParams: PostApiV1ProfilesByProfileIdChannelVideosPathParams;
   Errors:
-    | PostApiV1ProfilesChannelsVideos400
-    | PostApiV1ProfilesChannelsVideos401
-    | PostApiV1ProfilesChannelsVideos402
-    | PostApiV1ProfilesChannelsVideos403
-    | PostApiV1ProfilesChannelsVideos404
-    | PostApiV1ProfilesChannelsVideos500;
+    | PostApiV1ProfilesByProfileIdChannelVideos400
+    | PostApiV1ProfilesByProfileIdChannelVideos401
+    | PostApiV1ProfilesByProfileIdChannelVideos402
+    | PostApiV1ProfilesByProfileIdChannelVideos403
+    | PostApiV1ProfilesByProfileIdChannelVideos404
+    | PostApiV1ProfilesByProfileIdChannelVideos500;
 };

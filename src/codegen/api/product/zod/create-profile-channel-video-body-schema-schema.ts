@@ -10,7 +10,6 @@ import { z } from "@/lib/zod/index.ts";
  */
 export const createProfileChannelVideoBodySchemaSchema = z
   .object({
-    profileId: z.uuid(),
     url: z.url(),
   })
   .describe("Create profile channel video body description");
