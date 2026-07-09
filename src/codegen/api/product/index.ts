@@ -1,7 +1,9 @@
 export { deleteApiV1BillingPaymentMethodsByPaymentMethodId } from "./clients/delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
 export { deleteApiV1IdeasByIdeaId } from "./clients/delete-api-v1-ideas-by-idea-id.ts";
 export { deleteApiV1IdeasListsByIdeasListId } from "./clients/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentId } from "./clients/delete-api-v1-profiles-attachments-by-attachment-id.ts";
 export { deleteApiV1ProfilesByProfileId } from "./clients/delete-api-v1-profiles-by-profile-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoId } from "./clients/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export { deleteApiV1ScenariosByScenarioId } from "./clients/delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosChaptersByChapterId } from "./clients/delete-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "./clients/delete-api-v1-scenarios-scene-components-by-scene-component-id.ts";
@@ -206,6 +208,18 @@ export type {
   DeleteApiV1IdeasListsByIdeasListIdPathParams,
 } from "./models/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export type {
+  DeleteApiV1ProfilesAttachmentsByAttachmentId200,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId400,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId401,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId402,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId403,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId404,
+  DeleteApiV1ProfilesAttachmentsByAttachmentId500,
+  DeleteApiV1ProfilesAttachmentsByAttachmentIdMutation,
+  DeleteApiV1ProfilesAttachmentsByAttachmentIdMutationResponse,
+  DeleteApiV1ProfilesAttachmentsByAttachmentIdPathParams,
+} from "./models/delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export type {
   DeleteApiV1ProfilesByProfileId200,
   DeleteApiV1ProfilesByProfileId400,
   DeleteApiV1ProfilesByProfileId401,
@@ -217,6 +231,18 @@ export type {
   DeleteApiV1ProfilesByProfileIdMutationResponse,
   DeleteApiV1ProfilesByProfileIdPathParams,
 } from "./models/delete-api-v1-profiles-by-profile-id.ts";
+export type {
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId200,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId400,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId401,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId402,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId403,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId404,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoId500,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutation,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationResponse,
+  DeleteApiV1ProfilesChannelVideosByProfileChannelVideoIdPathParams,
+} from "./models/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export type {
   DeleteApiV1ScenariosByScenarioId200,
   DeleteApiV1ScenariosByScenarioId400,
@@ -268,6 +294,8 @@ export type {
 export type { DeleteIdeaResponseSchema } from "./models/delete-idea-response-schema.ts";
 export type { DeleteIdeasListResponseSchema } from "./models/delete-ideas-list-response-schema.ts";
 export type { DeletePaymentMethodResponseSchema } from "./models/delete-payment-method-response-schema.ts";
+export type { DeleteProfileAttachmentResponseSchema } from "./models/delete-profile-attachment-response-schema.ts";
+export type { DeleteProfileChannelVideoResponseSchema } from "./models/delete-profile-channel-video-response-schema.ts";
 export type { DeleteProfileResponseSchema } from "./models/delete-profile-response-schema.ts";
 export type { DeleteScenarioChapterResponseSchema } from "./models/delete-scenario-chapter-response-schema.ts";
 export type { DeleteScenarioResponseSchema } from "./models/delete-scenario-response-schema.ts";
@@ -1668,10 +1696,18 @@ export type { DeleteApiV1IdeasListsByIdeasListIdMutationKey } from "./tanstack/d
 export { deleteApiV1IdeasListsByIdeasListIdMutationKey } from "./tanstack/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { deleteApiV1IdeasListsByIdeasListIdMutationOptions } from "./tanstack/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { useDeleteApiV1IdeasListsByIdeasListId } from "./tanstack/delete-api-v1-ideas-lists-by-ideas-list-id.ts";
+export type { DeleteApiV1ProfilesAttachmentsByAttachmentIdMutationKey } from "./tanstack/delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentIdMutationKey } from "./tanstack/delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentIdMutationOptions } from "./tanstack/delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { useDeleteApiV1ProfilesAttachmentsByAttachmentId } from "./tanstack/delete-api-v1-profiles-attachments-by-attachment-id.ts";
 export type { DeleteApiV1ProfilesByProfileIdMutationKey } from "./tanstack/delete-api-v1-profiles-by-profile-id.ts";
 export { deleteApiV1ProfilesByProfileIdMutationKey } from "./tanstack/delete-api-v1-profiles-by-profile-id.ts";
 export { deleteApiV1ProfilesByProfileIdMutationOptions } from "./tanstack/delete-api-v1-profiles-by-profile-id.ts";
 export { useDeleteApiV1ProfilesByProfileId } from "./tanstack/delete-api-v1-profiles-by-profile-id.ts";
+export type { DeleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationKey } from "./tanstack/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationKey } from "./tanstack/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationOptions } from "./tanstack/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { useDeleteApiV1ProfilesChannelVideosByProfileChannelVideoId } from "./tanstack/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export type { DeleteApiV1ScenariosByScenarioIdMutationKey } from "./tanstack/delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosByScenarioIdMutationKey } from "./tanstack/delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosByScenarioIdMutationOptions } from "./tanstack/delete-api-v1-scenarios-by-scenario-id.ts";
@@ -2134,6 +2170,17 @@ export {
   deleteApiV1IdeasListsByIdeasListIdPathParamsSchema,
 } from "./zod/delete-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
+  deleteApiV1ProfilesAttachmentsByAttachmentId200Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId400Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId401Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId402Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId403Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId404Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId500Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdMutationResponseSchema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdPathParamsSchema,
+} from "./zod/delete-api-v1-profiles-attachments-by-attachment-id-schema.ts";
+export {
   deleteApiV1ProfilesByProfileId200Schema,
   deleteApiV1ProfilesByProfileId400Schema,
   deleteApiV1ProfilesByProfileId401Schema,
@@ -2144,6 +2191,17 @@ export {
   deleteApiV1ProfilesByProfileIdMutationResponseSchema,
   deleteApiV1ProfilesByProfileIdPathParamsSchema,
 } from "./zod/delete-api-v1-profiles-by-profile-id-schema.ts";
+export {
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId200Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId400Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId401Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId402Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId403Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId404Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId500Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationResponseSchema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdPathParamsSchema,
+} from "./zod/delete-api-v1-profiles-channel-videos-by-profile-channel-video-id-schema.ts";
 export {
   deleteApiV1ScenariosByScenarioId200Schema,
   deleteApiV1ScenariosByScenarioId400Schema,
@@ -2191,6 +2249,8 @@ export {
 export { deleteIdeaResponseSchemaSchema } from "./zod/delete-idea-response-schema-schema.ts";
 export { deleteIdeasListResponseSchemaSchema } from "./zod/delete-ideas-list-response-schema-schema.ts";
 export { deletePaymentMethodResponseSchemaSchema } from "./zod/delete-payment-method-response-schema-schema.ts";
+export { deleteProfileAttachmentResponseSchemaSchema } from "./zod/delete-profile-attachment-response-schema-schema.ts";
+export { deleteProfileChannelVideoResponseSchemaSchema } from "./zod/delete-profile-channel-video-response-schema-schema.ts";
 export { deleteProfileResponseSchemaSchema } from "./zod/delete-profile-response-schema-schema.ts";
 export { deleteScenarioChapterResponseSchemaSchema } from "./zod/delete-scenario-chapter-response-schema-schema.ts";
 export { deleteScenarioResponseSchemaSchema } from "./zod/delete-scenario-response-schema-schema.ts";

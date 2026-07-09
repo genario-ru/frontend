@@ -76,6 +76,17 @@ export {
   deleteApiV1IdeasListsByIdeasListIdPathParamsSchema,
 } from "./delete-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
+  deleteApiV1ProfilesAttachmentsByAttachmentId200Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId400Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId401Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId402Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId403Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId404Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId500Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdMutationResponseSchema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdPathParamsSchema,
+} from "./delete-api-v1-profiles-attachments-by-attachment-id-schema.ts";
+export {
   deleteApiV1ProfilesByProfileId200Schema,
   deleteApiV1ProfilesByProfileId400Schema,
   deleteApiV1ProfilesByProfileId401Schema,
@@ -86,6 +97,17 @@ export {
   deleteApiV1ProfilesByProfileIdMutationResponseSchema,
   deleteApiV1ProfilesByProfileIdPathParamsSchema,
 } from "./delete-api-v1-profiles-by-profile-id-schema.ts";
+export {
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId200Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId400Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId401Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId402Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId403Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId404Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId500Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationResponseSchema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdPathParamsSchema,
+} from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id-schema.ts";
 export {
   deleteApiV1ScenariosByScenarioId200Schema,
   deleteApiV1ScenariosByScenarioId400Schema,
@@ -133,6 +155,8 @@ export {
 export { deleteIdeaResponseSchemaSchema } from "./delete-idea-response-schema-schema.ts";
 export { deleteIdeasListResponseSchemaSchema } from "./delete-ideas-list-response-schema-schema.ts";
 export { deletePaymentMethodResponseSchemaSchema } from "./delete-payment-method-response-schema-schema.ts";
+export { deleteProfileAttachmentResponseSchemaSchema } from "./delete-profile-attachment-response-schema-schema.ts";
+export { deleteProfileChannelVideoResponseSchemaSchema } from "./delete-profile-channel-video-response-schema-schema.ts";
 export { deleteProfileResponseSchemaSchema } from "./delete-profile-response-schema-schema.ts";
 export { deleteScenarioChapterResponseSchemaSchema } from "./delete-scenario-chapter-response-schema-schema.ts";
 export { deleteScenarioResponseSchemaSchema } from "./delete-scenario-response-schema-schema.ts";

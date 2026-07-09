@@ -1,7 +1,9 @@
 export { deleteApiV1BillingPaymentMethodsByPaymentMethodId } from "./delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
 export { deleteApiV1IdeasByIdeaId } from "./delete-api-v1-ideas-by-idea-id.ts";
 export { deleteApiV1IdeasListsByIdeasListId } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentId } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
 export { deleteApiV1ProfilesByProfileId } from "./delete-api-v1-profiles-by-profile-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoId } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export { deleteApiV1ScenariosByScenarioId } from "./delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosChaptersByChapterId } from "./delete-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "./delete-api-v1-scenarios-scene-components-by-scene-component-id.ts";

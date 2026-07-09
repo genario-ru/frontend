@@ -10,10 +10,18 @@ export type { DeleteApiV1IdeasListsByIdeasListIdMutationKey } from "./delete-api
 export { deleteApiV1IdeasListsByIdeasListIdMutationKey } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { deleteApiV1IdeasListsByIdeasListIdMutationOptions } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
 export { useDeleteApiV1IdeasListsByIdeasListId } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
+export type { DeleteApiV1ProfilesAttachmentsByAttachmentIdMutationKey } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentIdMutationKey } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentIdMutationOptions } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
+export { useDeleteApiV1ProfilesAttachmentsByAttachmentId } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
 export type { DeleteApiV1ProfilesByProfileIdMutationKey } from "./delete-api-v1-profiles-by-profile-id.ts";
 export { deleteApiV1ProfilesByProfileIdMutationKey } from "./delete-api-v1-profiles-by-profile-id.ts";
 export { deleteApiV1ProfilesByProfileIdMutationOptions } from "./delete-api-v1-profiles-by-profile-id.ts";
 export { useDeleteApiV1ProfilesByProfileId } from "./delete-api-v1-profiles-by-profile-id.ts";
+export type { DeleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationKey } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationKey } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationOptions } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
+export { useDeleteApiV1ProfilesChannelVideosByProfileChannelVideoId } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export type { DeleteApiV1ScenariosByScenarioIdMutationKey } from "./delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosByScenarioIdMutationKey } from "./delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosByScenarioIdMutationOptions } from "./delete-api-v1-scenarios-by-scenario-id.ts";
