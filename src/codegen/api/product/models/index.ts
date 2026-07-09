@@ -1425,6 +1425,7 @@ export type {
   ProfileAttachmentExtendedSchemaTypeEnumKey,
 } from "./profile-attachment-extended-schema.ts";
 export { profileAttachmentExtendedSchemaTypeEnum } from "./profile-attachment-extended-schema.ts";
+export type { ProfileAttachmentFileSchema } from "./profile-attachment-file-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileChannelVideoSchema } from "./profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";

@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { attachmentSchemaSchema } from "./attachment-schema-schema.ts";
+import { profileAttachmentFileSchemaSchema } from "./profile-attachment-file-schema-schema.ts";
 
 /**
  * @description Profile attachment extended description
@@ -19,7 +19,9 @@ export const profileAttachmentExtendedSchemaSchema = z
     createdAt: z.string(),
     updatedAt: z.string(),
     get attachment() {
-      return attachmentSchemaSchema.describe("Attachment description");
+      return profileAttachmentFileSchemaSchema.describe(
+        "Profile attachment file description",
+      );
     },
   })
   .describe("Profile attachment extended description");

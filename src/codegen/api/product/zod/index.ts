@@ -1194,6 +1194,7 @@ export {
 export { productFeatureSchemaSchema } from "./product-feature-schema-schema.ts";
 export { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
 export { profileAttachmentExtendedSchemaSchema } from "./profile-attachment-extended-schema-schema.ts";
+export { profileAttachmentFileSchemaSchema } from "./profile-attachment-file-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-validation-schema-schema.ts";
 export { profileChannelVideoSchemaSchema } from "./profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";

@@ -4,10 +4,10 @@
  */
 
 /**
- * Attachment
- * @description Attachment description
+ * Profile attachment file
+ * @description Profile attachment file description
  */
-export type AttachmentSchema = {
+export type ProfileAttachmentFileSchema = {
   /**
    * @type string, uuid
    */
@@ -19,15 +19,7 @@ export type AttachmentSchema = {
   /**
    * @type string
    */
-  key: string;
-  /**
-   * @type string
-   */
   fileName: string;
-  /**
-   * @type string
-   */
-  bucketName: string;
   /**
    * @type string
    */
@@ -40,4 +32,8 @@ export type AttachmentSchema = {
    * @type string
    */
   updatedAt: string;
+  /**
+   * @type string
+   */
+  url: string;
 };

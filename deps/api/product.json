@@ -10614,16 +10614,6 @@
           "mimeType": {
             "type": "string"
           },
-          "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "createdAt": {
             "type": "string"
           },
@@ -10638,7 +10628,6 @@
           "fileName",
           "bucketName",
           "mimeType",
-          "url",
           "createdAt",
           "updatedAt"
         ],
@@ -16707,6 +16696,47 @@
         "title": "Get profile channel videos response",
         "description": "Get profile channel videos response description"
       },
+      "ProfileAttachmentFileSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "fileName",
+          "mimeType",
+          "createdAt",
+          "updatedAt",
+          "url"
+        ],
+        "title": "Profile attachment file",
+        "description": "Profile attachment file description"
+      },
       "ProfileAttachmentExtendedSchema": {
         "type": "object",
         "properties": {
@@ -16740,7 +16770,7 @@
             "type": "string"
           },
           "attachment": {
-            "$ref": "#/components/schemas/AttachmentSchema"
+            "$ref": "#/components/schemas/ProfileAttachmentFileSchema"
           }
         },
         "required": [

@@ -1522,6 +1522,7 @@ export type {
   ProfileAttachmentExtendedSchemaTypeEnumKey,
 } from "./models/profile-attachment-extended-schema.ts";
 export { profileAttachmentExtendedSchemaTypeEnum } from "./models/profile-attachment-extended-schema.ts";
+export type { ProfileAttachmentFileSchema } from "./models/profile-attachment-file-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./models/profile-channel-url-validation-schema.ts";
 export type { ProfileChannelVideoSchema } from "./models/profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
@@ -3286,6 +3287,7 @@ export {
 export { productFeatureSchemaSchema } from "./zod/product-feature-schema-schema.ts";
 export { productionStatusSchemaSchema } from "./zod/production-status-schema-schema.ts";
 export { profileAttachmentExtendedSchemaSchema } from "./zod/profile-attachment-extended-schema-schema.ts";
+export { profileAttachmentFileSchemaSchema } from "./zod/profile-attachment-file-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-url-validation-schema-schema.ts";
 export { profileChannelVideoSchemaSchema } from "./zod/profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";

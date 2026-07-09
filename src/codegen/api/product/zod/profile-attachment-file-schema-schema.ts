@@ -6,17 +6,16 @@
 import { z } from "@/lib/zod/index.ts";
 
 /**
- * @description Attachment description
+ * @description Profile attachment file description
  */
-export const attachmentSchemaSchema = z
+export const profileAttachmentFileSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
-    key: z.string(),
     fileName: z.string(),
-    bucketName: z.string(),
     mimeType: z.string(),
     createdAt: z.string(),
     updatedAt: z.string(),
+    url: z.string(),
   })
-  .describe("Attachment description");
+  .describe("Profile attachment file description");
