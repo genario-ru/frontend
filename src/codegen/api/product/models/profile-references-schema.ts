@@ -22,8 +22,4 @@ export type ProfileReferencesSchema = {
    * @type array
    */
   actorReferences: ProfileReferenceItemSchema[];
-  /**
-   * @type array
-   */
-  transcriptReferences: ProfileReferenceItemSchema[];
 };

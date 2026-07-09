@@ -19,11 +19,11 @@ export type AttachmentSchema = {
   /**
    * @type string
    */
-  fileName: string;
+  key: string;
   /**
    * @type string
    */
-  key: string;
+  fileName: string;
   /**
    * @type string
    */
@@ -32,6 +32,7 @@ export type AttachmentSchema = {
    * @type string
    */
   mimeType: string;
+  previewUrl: string | null;
   /**
    * @type string
    */

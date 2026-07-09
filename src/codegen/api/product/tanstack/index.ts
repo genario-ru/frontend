@@ -142,6 +142,10 @@ export type { GetApiV1ProfilesChannelsPlatformsQueryKey } from "./get-api-v1-pro
 export { getApiV1ProfilesChannelsPlatformsQueryKey } from "./get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesChannelsPlatformsQueryOptions } from "./get-api-v1-profiles-channels-platforms.ts";
 export { useGetApiV1ProfilesChannelsPlatforms } from "./get-api-v1-profiles-channels-platforms.ts";
+export type { GetApiV1ProfilesChannelsVideosQueryKey } from "./get-api-v1-profiles-channels-videos.ts";
+export { getApiV1ProfilesChannelsVideosQueryKey } from "./get-api-v1-profiles-channels-videos.ts";
+export { getApiV1ProfilesChannelsVideosQueryOptions } from "./get-api-v1-profiles-channels-videos.ts";
+export { useGetApiV1ProfilesChannelsVideos } from "./get-api-v1-profiles-channels-videos.ts";
 export type { GetApiV1ProfilesMyQueryKey } from "./get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesMyQueryKey } from "./get-api-v1-profiles-my.ts";
 export { getApiV1ProfilesMyQueryOptions } from "./get-api-v1-profiles-my.ts";
@@ -350,6 +354,10 @@ export type { PostApiV1ProfilesChannelsValidateMutationKey } from "./post-api-v1
 export { postApiV1ProfilesChannelsValidateMutationKey } from "./post-api-v1-profiles-channels-validate.ts";
 export { postApiV1ProfilesChannelsValidateMutationOptions } from "./post-api-v1-profiles-channels-validate.ts";
 export { usePostApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channels-validate.ts";
+export type { PostApiV1ProfilesChannelsVideosMutationKey } from "./post-api-v1-profiles-channels-videos.ts";
+export { postApiV1ProfilesChannelsVideosMutationKey } from "./post-api-v1-profiles-channels-videos.ts";
+export { postApiV1ProfilesChannelsVideosMutationOptions } from "./post-api-v1-profiles-channels-videos.ts";
+export { usePostApiV1ProfilesChannelsVideos } from "./post-api-v1-profiles-channels-videos.ts";
 export type { PostApiV1ScenariosMutationKey } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosMutationKey } from "./post-api-v1-scenarios.ts";
 export { postApiV1ScenariosMutationOptions } from "./post-api-v1-scenarios.ts";

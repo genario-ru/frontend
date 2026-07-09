@@ -26,6 +26,8 @@ export { createIdeasListExportBodySchemaSchema } from "./create-ideas-list-expor
 export { createIdeasListExportResponseSchemaSchema } from "./create-ideas-list-export-response-schema-schema.ts";
 export { createIdeasListResponseSchemaSchema } from "./create-ideas-list-response-schema-schema.ts";
 export { createProfileBodySchemaSchema } from "./create-profile-body-schema-schema.ts";
+export { createProfileChannelVideoBodySchemaSchema } from "./create-profile-channel-video-body-schema-schema.ts";
+export { createProfileChannelVideoResponseSchemaSchema } from "./create-profile-channel-video-response-schema-schema.ts";
 export { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
 export { createProfilesFromChannelsBodySchemaSchema } from "./create-profiles-from-channels-body-schema-schema.ts";
 export { createProfilesFromChannelsErrorSchemaSchema } from "./create-profiles-from-channels-error-schema-schema.ts";
@@ -406,6 +408,17 @@ export {
   getApiV1ProfilesChannelsPlatformsQueryResponseSchema,
 } from "./get-api-v1-profiles-channels-platforms-schema.ts";
 export {
+  getApiV1ProfilesChannelsVideos200Schema,
+  getApiV1ProfilesChannelsVideos400Schema,
+  getApiV1ProfilesChannelsVideos401Schema,
+  getApiV1ProfilesChannelsVideos402Schema,
+  getApiV1ProfilesChannelsVideos403Schema,
+  getApiV1ProfilesChannelsVideos404Schema,
+  getApiV1ProfilesChannelsVideos500Schema,
+  getApiV1ProfilesChannelsVideosQueryParamsSchema,
+  getApiV1ProfilesChannelsVideosQueryResponseSchema,
+} from "./get-api-v1-profiles-channels-videos-schema.ts";
+export {
   getApiV1ProfilesMy200Schema,
   getApiV1ProfilesMy400Schema,
   getApiV1ProfilesMy401Schema,
@@ -647,6 +660,7 @@ export { getPlatformsForChannelsResponseSchemaSchema } from "./get-platforms-for
 export { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";
 export { getProductFeaturesResponseSchemaSchema } from "./get-product-features-response-schema-schema.ts";
 export { getProductionStatusesResponseSchemaSchema } from "./get-production-statuses-response-schema-schema.ts";
+export { getProfileChannelVideosResponseSchemaSchema } from "./get-profile-channel-videos-response-schema-schema.ts";
 export { getProfileDataSchemaSchema } from "./get-profile-data-schema-schema.ts";
 export { getProfileResponseSchemaSchema } from "./get-profile-response-schema-schema.ts";
 export { getProfileTypesResponseSchemaSchema } from "./get-profile-types-response-schema-schema.ts";
@@ -1014,6 +1028,17 @@ export {
   postApiV1ProfilesChannelsValidateMutationResponseSchema,
 } from "./post-api-v1-profiles-channels-validate-schema.ts";
 export {
+  postApiV1ProfilesChannelsVideos200Schema,
+  postApiV1ProfilesChannelsVideos400Schema,
+  postApiV1ProfilesChannelsVideos401Schema,
+  postApiV1ProfilesChannelsVideos402Schema,
+  postApiV1ProfilesChannelsVideos403Schema,
+  postApiV1ProfilesChannelsVideos404Schema,
+  postApiV1ProfilesChannelsVideos500Schema,
+  postApiV1ProfilesChannelsVideosMutationRequestSchema,
+  postApiV1ProfilesChannelsVideosMutationResponseSchema,
+} from "./post-api-v1-profiles-channels-videos-schema.ts";
+export {
   postApiV1Profiles201Schema,
   postApiV1Profiles400Schema,
   postApiV1Profiles401Schema,
@@ -1118,6 +1143,7 @@ export {
 export { productFeatureSchemaSchema } from "./product-feature-schema-schema.ts";
 export { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-validation-schema-schema.ts";
+export { profileChannelVideoSchemaSchema } from "./profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
 export { profileReferenceItemSchemaSchema } from "./profile-reference-item-schema-schema.ts";
 export { profileReferencesSchemaSchema } from "./profile-references-schema-schema.ts";

@@ -42,6 +42,8 @@ export type { CreateIdeasListExportBodySchema } from "./create-ideas-list-export
 export type { CreateIdeasListExportResponseSchema } from "./create-ideas-list-export-response-schema.ts";
 export type { CreateIdeasListResponseSchema } from "./create-ideas-list-response-schema.ts";
 export type { CreateProfileBodySchema } from "./create-profile-body-schema.ts";
+export type { CreateProfileChannelVideoBodySchema } from "./create-profile-channel-video-body-schema.ts";
+export type { CreateProfileChannelVideoResponseSchema } from "./create-profile-channel-video-response-schema.ts";
 export type { CreateProfileResponseSchema } from "./create-profile-response-schema.ts";
 export type { CreateProfilesFromChannelsBodySchema } from "./create-profiles-from-channels-body-schema.ts";
 export type { CreateProfilesFromChannelsErrorSchema } from "./create-profiles-from-channels-error-schema.ts";
@@ -481,6 +483,18 @@ export type {
   GetApiV1ProfilesChannelsPlatformsQueryResponse,
 } from "./get-api-v1-profiles-channels-platforms.ts";
 export type {
+  GetApiV1ProfilesChannelsVideos200,
+  GetApiV1ProfilesChannelsVideos400,
+  GetApiV1ProfilesChannelsVideos401,
+  GetApiV1ProfilesChannelsVideos402,
+  GetApiV1ProfilesChannelsVideos403,
+  GetApiV1ProfilesChannelsVideos404,
+  GetApiV1ProfilesChannelsVideos500,
+  GetApiV1ProfilesChannelsVideosQuery,
+  GetApiV1ProfilesChannelsVideosQueryParams,
+  GetApiV1ProfilesChannelsVideosQueryResponse,
+} from "./get-api-v1-profiles-channels-videos.ts";
+export type {
   GetApiV1ProfilesMy200,
   GetApiV1ProfilesMy400,
   GetApiV1ProfilesMy401,
@@ -754,6 +768,7 @@ export type { GetPlatformsForChannelsResponseSchema } from "./get-platforms-for-
 export type { GetPlatformsResponseSchema } from "./get-platforms-response-schema.ts";
 export type { GetProductFeaturesResponseSchema } from "./get-product-features-response-schema.ts";
 export type { GetProductionStatusesResponseSchema } from "./get-production-statuses-response-schema.ts";
+export type { GetProfileChannelVideosResponseSchema } from "./get-profile-channel-videos-response-schema.ts";
 export type { GetProfileDataSchema } from "./get-profile-data-schema.ts";
 export type { GetProfileResponseSchema } from "./get-profile-response-schema.ts";
 export type { GetProfileTypesResponseSchema } from "./get-profile-types-response-schema.ts";
@@ -1234,6 +1249,18 @@ export type {
   PostApiV1ProfilesChannelsValidateMutationResponse,
 } from "./post-api-v1-profiles-channels-validate.ts";
 export type {
+  PostApiV1ProfilesChannelsVideos200,
+  PostApiV1ProfilesChannelsVideos400,
+  PostApiV1ProfilesChannelsVideos401,
+  PostApiV1ProfilesChannelsVideos402,
+  PostApiV1ProfilesChannelsVideos403,
+  PostApiV1ProfilesChannelsVideos404,
+  PostApiV1ProfilesChannelsVideos500,
+  PostApiV1ProfilesChannelsVideosMutation,
+  PostApiV1ProfilesChannelsVideosMutationRequest,
+  PostApiV1ProfilesChannelsVideosMutationResponse,
+} from "./post-api-v1-profiles-channels-videos.ts";
+export type {
   PostApiV1Scenarios201,
   PostApiV1Scenarios400,
   PostApiV1Scenarios401,
@@ -1335,6 +1362,7 @@ export type {
 export type { ProductFeatureSchema } from "./product-feature-schema.ts";
 export type { ProductionStatusSchema } from "./production-status-schema.ts";
 export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
+export type { ProfileChannelVideoSchema } from "./profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 export type { ProfileReferenceItemSchema } from "./profile-reference-item-schema.ts";
 export type { ProfileReferencesSchema } from "./profile-references-schema.ts";

@@ -12,10 +12,11 @@ export const attachmentSchemaSchema = z
   .object({
     id: z.uuid(),
     userId: z.uuid(),
-    fileName: z.string(),
     key: z.string(),
+    fileName: z.string(),
     bucketName: z.string(),
     mimeType: z.string(),
+    previewUrl: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

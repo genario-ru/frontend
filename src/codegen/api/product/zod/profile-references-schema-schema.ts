@@ -33,12 +33,5 @@ export const profileReferencesSchemaSchema = z
         ),
       );
     },
-    get transcriptReferences() {
-      return z.array(
-        profileReferenceItemSchemaSchema.describe(
-          "Profile reference item description",
-        ),
-      );
-    },
   })
   .describe("Profile references description");
