@@ -16,7 +16,7 @@ export const attachmentSchemaSchema = z
     fileName: z.string(),
     bucketName: z.string(),
     mimeType: z.string(),
-    previewUrl: z.union([z.string(), z.null()]),
+    url: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
   })

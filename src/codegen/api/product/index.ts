@@ -1525,8 +1525,6 @@ export { profileAttachmentExtendedSchemaTypeEnum } from "./models/profile-attach
 export type { ProfileChannelUrlValidationSchema } from "./models/profile-channel-url-validation-schema.ts";
 export type { ProfileChannelVideoSchema } from "./models/profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./models/profile-extended-schema.ts";
-export type { ProfileReferenceItemSchema } from "./models/profile-reference-item-schema.ts";
-export type { ProfileReferencesSchema } from "./models/profile-references-schema.ts";
 export type { ProfileSchema } from "./models/profile-schema.ts";
 export type { ProfileTypeSchema } from "./models/profile-type-schema.ts";
 export type {
@@ -3291,8 +3289,6 @@ export { profileAttachmentExtendedSchemaSchema } from "./zod/profile-attachment-
 export { profileChannelUrlValidationSchemaSchema } from "./zod/profile-channel-url-validation-schema-schema.ts";
 export { profileChannelVideoSchemaSchema } from "./zod/profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./zod/profile-extended-schema-schema.ts";
-export { profileReferenceItemSchemaSchema } from "./zod/profile-reference-item-schema-schema.ts";
-export { profileReferencesSchemaSchema } from "./zod/profile-references-schema-schema.ts";
 export { profileSchemaSchema } from "./zod/profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./zod/profile-type-schema-schema.ts";
 export { profilesFromChannelsJobSchemaSchema } from "./zod/profiles-from-channels-job-schema-schema.ts";

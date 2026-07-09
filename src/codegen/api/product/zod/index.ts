@@ -1197,8 +1197,6 @@ export { profileAttachmentExtendedSchemaSchema } from "./profile-attachment-exte
 export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-validation-schema-schema.ts";
 export { profileChannelVideoSchemaSchema } from "./profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
-export { profileReferenceItemSchemaSchema } from "./profile-reference-item-schema-schema.ts";
-export { profileReferencesSchemaSchema } from "./profile-references-schema-schema.ts";
 export { profileSchemaSchema } from "./profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
 export { profilesFromChannelsJobSchemaSchema } from "./profiles-from-channels-job-schema-schema.ts";

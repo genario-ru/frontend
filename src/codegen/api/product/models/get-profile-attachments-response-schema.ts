@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { ProfileReferencesSchema } from "./profile-references-schema.ts";
+import type { ProfileAttachmentExtendedSchema } from "./profile-attachment-extended-schema.ts";
 
 /**
  * Get profile attachments response
@@ -11,8 +11,7 @@ import type { ProfileReferencesSchema } from "./profile-references-schema.ts";
  */
 export type GetProfileAttachmentsResponseSchema = {
   /**
-   * @description Profile references description
-   * @type object
+   * @type array
    */
-  data: ProfileReferencesSchema;
+  data: ProfileAttachmentExtendedSchema[];
 };

@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { ProfileReferenceItemSchema } from "./profile-reference-item-schema.ts";
+import type { AttachmentSchema } from "./attachment-schema.ts";
 
 export const profileAttachmentExtendedSchemaTypeEnum = {
   "actor-reference": "actor-reference",
@@ -44,8 +44,8 @@ export type ProfileAttachmentExtendedSchema = {
    */
   updatedAt: string;
   /**
-   * @description Profile reference item description
+   * @description Attachment description
    * @type object
    */
-  attachment: ProfileReferenceItemSchema;
+  attachment: AttachmentSchema;
 };

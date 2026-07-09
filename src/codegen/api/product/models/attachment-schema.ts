@@ -32,7 +32,7 @@ export type AttachmentSchema = {
    * @type string
    */
   mimeType: string;
-  previewUrl: string | null;
+  url: string | null;
   /**
    * @type string
    */

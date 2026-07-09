@@ -10614,7 +10614,7 @@
           "mimeType": {
             "type": "string"
           },
-          "previewUrl": {
+          "url": {
             "anyOf": [
               {
                 "type": "string"
@@ -10638,7 +10638,7 @@
           "fileName",
           "bucketName",
           "mimeType",
-          "previewUrl",
+          "url",
           "createdAt",
           "updatedAt"
         ],
@@ -16707,37 +16707,6 @@
         "title": "Get profile channel videos response",
         "description": "Get profile channel videos response description"
       },
-      "ProfileReferenceItemSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          },
-          "mimeType": {
-            "type": "string"
-          },
-          "fileName": {
-            "type": "string"
-          },
-          "downloadUrl": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "mimeType",
-          "fileName",
-          "downloadUrl",
-          "createdAt"
-        ],
-        "title": "Profile reference item",
-        "description": "Profile reference item description"
-      },
       "ProfileAttachmentExtendedSchema": {
         "type": "object",
         "properties": {
@@ -16771,7 +16740,7 @@
             "type": "string"
           },
           "attachment": {
-            "$ref": "#/components/schemas/ProfileReferenceItemSchema"
+            "$ref": "#/components/schemas/AttachmentSchema"
           }
         },
         "required": [
@@ -16837,41 +16806,14 @@
         "title": "Delete profile attachment response",
         "description": "Delete profile attachment response description"
       },
-      "ProfileReferencesSchema": {
-        "type": "object",
-        "properties": {
-          "videoReferences": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
-            }
-          },
-          "thumbnailReferences": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
-            }
-          },
-          "actorReferences": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProfileReferenceItemSchema"
-            }
-          }
-        },
-        "required": [
-          "videoReferences",
-          "thumbnailReferences",
-          "actorReferences"
-        ],
-        "title": "Profile references",
-        "description": "Profile references description"
-      },
       "GetProfileAttachmentsResponseSchema": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ProfileReferencesSchema"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileAttachmentExtendedSchema"
+            }
           }
         },
         "required": [

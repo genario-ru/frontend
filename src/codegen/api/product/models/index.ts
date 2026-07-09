@@ -1428,8 +1428,6 @@ export { profileAttachmentExtendedSchemaTypeEnum } from "./profile-attachment-ex
 export type { ProfileChannelUrlValidationSchema } from "./profile-channel-url-validation-schema.ts";
 export type { ProfileChannelVideoSchema } from "./profile-channel-video-schema.ts";
 export type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
-export type { ProfileReferenceItemSchema } from "./profile-reference-item-schema.ts";
-export type { ProfileReferencesSchema } from "./profile-references-schema.ts";
 export type { ProfileSchema } from "./profile-schema.ts";
 export type { ProfileTypeSchema } from "./profile-type-schema.ts";
 export type {
