@@ -7,13 +7,13 @@ import type { GetApiV1ProfilesByProfileIdQueryResponse } from "@/codegen/api/pro
 import { useAppForm } from "@/lib/tanstack-form";
 import { useFormHandlers } from "@/lib/tanstack-form/hooks/use-form-handlers";
 
-import type { ProfileSettingsGeneralFormValues } from "../schemas/profile-settings-general-form-schema";
 import {
   prepareCreateProfileSettingsGeneralSubmitData,
   prepareUpdateProfileSettingsGeneralSubmitData,
 } from "../utils/prepare-profile-settings-general-form-submit-data";
 import { prepareProfileSettingsGeneralFormValues } from "../utils/prepare-profile-settings-general-form-values";
 import {
+  profileSettingsGeneralFormMatchValidateFn,
   profileSettingsGeneralFormOnChangeValidateFn,
   profileSettingsGeneralFormValidateFn,
 } from "../utils/profile-settings-general-form-helpers";
@@ -60,15 +60,27 @@ export function useProfileSettingsGeneralForm({
     [navigate],
   );
 
-  const handleSubmit = useCallback(
-    ({ value }: { value: ProfileSettingsGeneralFormValues }) => {
+  const form = useAppForm({
+    defaultValues: prepareProfileSettingsGeneralFormValues({ profileData }),
+    validators: {
+      onChange: profileSettingsGeneralFormOnChangeValidateFn,
+      onSubmit: profileData
+        ? profileSettingsGeneralFormMatchValidateFn
+        : profileSettingsGeneralFormValidateFn,
+    },
+    onSubmit: ({ value, formApi }) => {
       if (profileData) {
         updateProfile(
           {
             profileId: profileData.data.id,
             data: prepareUpdateProfileSettingsGeneralSubmitData({ value }),
           },
-          { onSuccess: handleUpdateProfileSuccess },
+          {
+            onSuccess: () => {
+              formApi.reset(value);
+              handleUpdateProfileSuccess();
+            },
+          },
         );
 
         return;
@@ -79,28 +91,13 @@ export function useProfileSettingsGeneralForm({
         { onSuccess: handleCreateProfileSuccess },
       );
     },
-    [
-      createProfile,
-      handleCreateProfileSuccess,
-      handleUpdateProfileSuccess,
-      profileData,
-      updateProfile,
-    ],
-  );
-
-  const form = useAppForm({
-    defaultValues: prepareProfileSettingsGeneralFormValues({ profileData }),
-    validators: {
-      onChange: profileSettingsGeneralFormOnChangeValidateFn,
-      onSubmit: profileSettingsGeneralFormValidateFn,
-    },
-    onSubmit: handleSubmit,
   });
 
   const { onFormSubmit } = useFormHandlers({ form });
 
   return {
     form,
+    isEditMode: Boolean(profileData),
     isLoading: isCreateProfilePending || isUpdateProfilePending,
     onFormSubmit,
     onCancelClick: handleCancelClick,

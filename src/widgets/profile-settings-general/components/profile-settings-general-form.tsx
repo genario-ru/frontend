@@ -28,7 +28,7 @@ export function ProfileSettingsGeneralForm({
   profileTypesData,
   platformsData,
 }: ProfileSettingsGeneralFormProps) {
-  const { form, isLoading, onFormSubmit, onCancelClick } =
+  const { form, isEditMode, isLoading, onFormSubmit, onCancelClick } =
     useProfileSettingsGeneralForm({ profileData });
 
   return (
@@ -47,7 +47,9 @@ export function ProfileSettingsGeneralForm({
         </Island>
       </form>
       <ProfileSettingsFormActions
+        form={form}
         formId={PROFILE_SETTINGS_GENERAL_FORM_ID}
+        isEditMode={isEditMode}
         isLoading={isLoading}
         onCancelClick={onCancelClick}
       />

@@ -1,3 +1,4 @@
+import { createFormMatchValidateFn } from "@/lib/tanstack-form/utils/create-form-match-validate-fn";
 import { createFormValidateFn } from "@/lib/tanstack-form/utils/create-form-validate-fn";
 
 import {
@@ -7,6 +8,11 @@ import {
 
 export const profileSettingsGeneralFormValidateFn =
   createFormValidateFn<ProfileSettingsGeneralFormValues>(
+    profileSettingsGeneralFormSchema,
+  );
+
+export const profileSettingsGeneralFormMatchValidateFn =
+  createFormMatchValidateFn<ProfileSettingsGeneralFormValues>(
     profileSettingsGeneralFormSchema,
   );
 
