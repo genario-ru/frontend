@@ -35,8 +35,9 @@ export function ProfileSettingsFormActions({
       </Button>
       <Button
         type="submit"
-        form={formId}
         size="lg"
+        priority="primary"
+        form={formId}
         state={isLoading ? "loading" : "default"}
         className="ml-auto"
       >

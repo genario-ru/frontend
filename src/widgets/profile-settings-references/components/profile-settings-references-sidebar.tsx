@@ -1,8 +1,10 @@
+import { BarChartIcon, InfoIcon, LightbulbIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import { ProfileSettingsSidebarBlock } from "@/features/profile-settings/profile-settings-sidebar-block/components/profile-settings-sidebar-block";
 import { ProfileSettingsReferenceProgressItem } from "@/features/profile-settings-references/profile-settings-reference-progress-item/components/profile-settings-reference-progress-item";
 import { Island } from "@/shared/components/ui/island";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
@@ -31,7 +33,14 @@ export function ProfileSettingsReferencesSidebar({
 
   return (
     <aside className="flex min-w-0 flex-col gap-2">
-      <Island title={title} className="gap-5">
+      <Island
+        title={
+          <div className="flex items-center gap-2">
+            <LucideIcon size="sm" icon={BarChartIcon} />
+            <span>{title}</span>
+          </div>
+        }
+      >
         {profileSettingsReferenceSections.map((section) => (
           <ProfileSettingsReferenceProgressItem
             key={section.key}
@@ -43,10 +52,12 @@ export function ProfileSettingsReferencesSidebar({
       </Island>
       <ProfileSettingsSidebarBlock
         title="Зачем нужны референсы?"
+        icon={InfoIcon}
         items={profileSettingsSidebarReferencesReasons}
       />
       <ProfileSettingsSidebarBlock
         title="Подсказки"
+        icon={LightbulbIcon}
         items={profileSettingsSidebarReferencesHints}
       />
     </aside>

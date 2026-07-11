@@ -11,13 +11,15 @@ import {
   ProfileSettingsGeneralForm,
   ProfileSettingsGeneralFormSkeleton,
 } from "./profile-settings-general-form";
-import { ProfileSettingsSidebarGeneralSkeleton } from "./profile-settings-sidebar-general";
+import { ProfileSettingsSidebarGeneral } from "./profile-settings-sidebar-general";
 
 type ProfileSettingsGeneralProps = ProfileSettingsGeneralSearch;
 
 export function ProfileSettingsGeneral({
   profileId,
 }: ProfileSettingsGeneralProps) {
+  const { isDesktop } = useBreakpoints();
+
   const { profileData, profileTypesData, platformsData, isLoading, isError } =
     useProfileSettings({ profileId });
 
@@ -46,19 +48,13 @@ export function ProfileSettingsGeneral({
   return (
     <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 lg:grid-cols-[minmax(0,1fr)_24rem]">
       {content}
+      {isDesktop && <ProfileSettingsSidebarGeneral />}
     </ContentLayout>
   );
 }
 
 function ProfileSettingsGeneralSkeleton() {
-  const { isDesktop } = useBreakpoints();
-
-  return (
-    <>
-      <ProfileSettingsGeneralFormSkeleton />
-      {isDesktop && <ProfileSettingsSidebarGeneralSkeleton />}
-    </>
-  );
+  return <ProfileSettingsGeneralFormSkeleton />;
 }
 
 function ProfileSettingsGeneralErrorPlug() {

@@ -16,8 +16,8 @@ export function ProfileSettingsReferenceProgressItem({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-2">
-        <span className="text-lg font-medium">{title}</span>
-        <span className="text-lg">
+        <span className="font-medium">{title}</span>
+        <span>
           {progressValue}/{targetCount}
         </span>
       </div>
