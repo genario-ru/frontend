@@ -35,7 +35,7 @@ export function ProfileSettingsReferencesChannelVideoForm({
           disabled={disabled}
           state={isSubmitting ? "loading" : "default"}
           icon={<Link2Icon />}
-          className="md:w-auto"
+          className="w-full md:w-auto"
         >
           Добавить ссылку
         </form.SubmitButton>

@@ -4,13 +4,20 @@ import type {
   GetProfileTypesResponseSchema,
 } from "@/codegen/api/product";
 import { Island } from "@/shared/components/ui/island";
+import { NavigationStepsSkeleton } from "@/shared/components/ui/navigation-steps";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { ProfileSettingsNavigation } from "@/widgets/profile-settings/profile-settings-navigation/components/profile-settings-navigation";
 import { profileSettingsNavigationStepIds } from "@/widgets/profile-settings/profile-settings-navigation/constants";
 
 import { useProfileSettingsGeneralForm } from "../hooks/use-profile-settings-general-form";
-import { ProfileSettingsFormActions } from "./profile-settings-form-actions";
-import { ProfileSettingsGeneralFormFields } from "./profile-settings-general-form-fields";
+import {
+  ProfileSettingsFormActions,
+  ProfileSettingsFormActionsSkeleton,
+} from "./profile-settings-form-actions";
+import {
+  ProfileSettingsGeneralFormFields,
+  ProfileSettingsGeneralFormFieldsSkeleton,
+} from "./profile-settings-general-form-fields";
 import { ProfileSettingsSidebarGeneral } from "./profile-settings-sidebar-general";
 
 const PROFILE_SETTINGS_GENERAL_FORM_ID = "profile-settings-general-form";
@@ -26,7 +33,7 @@ export function ProfileSettingsGeneralForm({
   profileTypesData,
   platformsData,
 }: ProfileSettingsGeneralFormProps) {
-  const { isMobile } = useBreakpoints();
+  const { isMobile, isDesktop } = useBreakpoints();
   const { form, isLoading, onFormSubmit, onCancelClick } =
     useProfileSettingsGeneralForm({ profileData });
 
@@ -58,7 +65,19 @@ export function ProfileSettingsGeneralForm({
           onCancelClick={onCancelClick}
         />
       </section>
-      <ProfileSettingsSidebarGeneral />
+      {isDesktop && <ProfileSettingsSidebarGeneral />}
     </>
+  );
+}
+
+export function ProfileSettingsGeneralFormSkeleton() {
+  return (
+    <section className="flex min-w-0 flex-col gap-2">
+      <Island className="flex-1 gap-6">
+        <NavigationStepsSkeleton count={2} />
+        <ProfileSettingsGeneralFormFieldsSkeleton />
+      </Island>
+      <ProfileSettingsFormActionsSkeleton />
+    </section>
   );
 }

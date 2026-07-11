@@ -3,6 +3,7 @@ import type {
   GetProfileTypesResponseSchema,
 } from "@/codegen/api/product";
 import { withForm } from "@/lib/tanstack-form";
+import { ItemsList } from "@/shared/components/common/items-list";
 import { FieldLayout } from "@/shared/components/layouts/field-layout";
 import {
   CheckboxChipsGroup,
@@ -13,6 +14,8 @@ import {
   RadioCardsGroup,
   RadioCardsGroupItem,
 } from "@/shared/components/ui/radio-cards-group";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
 
 import type { ProfileSettingsGeneralFormValues } from "../schemas/profile-settings-general-form-schema";
 
@@ -151,3 +154,33 @@ export const ProfileSettingsGeneralFormFields = withForm({
     );
   },
 });
+
+const profileSettingsGeneralFormFieldsSkeletonCount = 6;
+const profileSettingsGeneralFormTextareaFieldsSkeletonCount =
+  profileSettingsGeneralFormFieldsSkeletonCount - 1;
+
+export function ProfileSettingsGeneralFormFieldsSkeleton() {
+  return (
+    <div className="flex flex-col gap-6">
+      <ItemsList
+        count={1}
+        item={
+          <div className="flex flex-col gap-2">
+            <TextSkeleton fontSize={16} lineHeight={24} className="w-40" />
+            <Skeleton className="rounded-4 h-14" />
+          </div>
+        }
+      />
+      <ItemsList
+        count={profileSettingsGeneralFormTextareaFieldsSkeletonCount}
+        gap={24}
+        item={
+          <div className="flex flex-col gap-2">
+            <TextSkeleton fontSize={16} lineHeight={24} className="w-40" />
+            <Skeleton className="rounded-4 h-40" />
+          </div>
+        }
+      />
+    </div>
+  );
+}

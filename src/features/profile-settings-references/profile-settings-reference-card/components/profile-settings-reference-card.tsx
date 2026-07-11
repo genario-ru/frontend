@@ -21,9 +21,10 @@ import {
 
 type ProfileSettingsReferenceCardProps = {
   fileName: string;
-  mimeType: string;
+  mimeType?: string;
   previewUrl?: string | null;
   externalUrl?: string | null;
+  hideActions?: boolean;
   isPending?: boolean;
   isRemoveDisabled?: boolean;
   onRemove?: () => void;
@@ -34,12 +35,15 @@ export function ProfileSettingsReferenceCard({
   mimeType,
   previewUrl,
   externalUrl,
+  hideActions = false,
   isPending = false,
   isRemoveDisabled = false,
   onRemove,
 }: ProfileSettingsReferenceCardProps) {
   const isImage = checkIsProfileSettingsReferenceCardImageMimeType(mimeType);
   const isVideo = checkIsProfileSettingsReferenceCardVideoMimeType(mimeType);
+  const hasOverlayActions = Boolean(externalUrl || onRemove);
+  const shouldShowOverlayActions = !hideActions && hasOverlayActions;
 
   const placeholderIcon = useMemo(() => {
     if (isVideo) {
@@ -54,7 +58,7 @@ export function ProfileSettingsReferenceCard({
   }, [isImage, isVideo]);
 
   const actions = useMemo(() => {
-    if (!externalUrl && !onRemove) {
+    if (!shouldShowOverlayActions) {
       return null;
     }
 
@@ -84,7 +88,7 @@ export function ProfileSettingsReferenceCard({
         )}
       </div>
     );
-  }, [externalUrl, isRemoveDisabled, onRemove]);
+  }, [externalUrl, isRemoveDisabled, onRemove, shouldShowOverlayActions]);
 
   const previewContent = useMemo(() => {
     if (previewUrl && isVideo) {
@@ -101,7 +105,7 @@ export function ProfileSettingsReferenceCard({
       );
     }
 
-    if (previewUrl && isImage) {
+    if (previewUrl) {
       return (
         <img
           src={previewUrl}
@@ -116,7 +120,7 @@ export function ProfileSettingsReferenceCard({
         {placeholderIcon}
       </div>
     );
-  }, [previewUrl, fileName, isVideo, isImage, placeholderIcon]);
+  }, [previewUrl, fileName, isVideo, placeholderIcon]);
 
   const fileTypeIcon = useMemo(() => {
     if (isVideo) {

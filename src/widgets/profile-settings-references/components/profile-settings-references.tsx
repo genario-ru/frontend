@@ -25,7 +25,7 @@ type ProfileSettingsReferencesProps = ProfileSettingsReferencesSearch;
 export function ProfileSettingsReferences({
   profileId,
 }: ProfileSettingsReferencesProps) {
-  const { isMobile } = useBreakpoints();
+  const { isMobile, isDesktop } = useBreakpoints();
 
   const {
     referenceSections,
@@ -91,12 +91,15 @@ export function ProfileSettingsReferences({
           {referencesContent}
         </Island>
       </section>
-      <ProfileSettingsReferencesSidebar referencesCounts={referencesCounts} />
+      {isDesktop && (
+        <ProfileSettingsReferencesSidebar referencesCounts={referencesCounts} />
+      )}
     </ContentLayout>
   );
 }
 
 export function ProfileSettingsReferencesSkeleton() {
+  const { isDesktop } = useBreakpoints();
   return (
     <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,1fr)_24rem]">
       <section className="flex min-w-0 flex-col gap-2">
@@ -110,7 +113,7 @@ export function ProfileSettingsReferencesSkeleton() {
           ))}
         </Island>
       </section>
-      <ProfileSettingsReferencesSidebarSkeleton />
+      {isDesktop && <ProfileSettingsReferencesSidebarSkeleton />}
     </ContentLayout>
   );
 }

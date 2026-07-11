@@ -1,11 +1,11 @@
 export function checkIsProfileSettingsReferenceCardImageMimeType(
-  mimeType: string,
+  mimeType?: string,
 ) {
-  return mimeType.startsWith("image/");
+  return mimeType?.startsWith("image/");
 }
 
 export function checkIsProfileSettingsReferenceCardVideoMimeType(
-  mimeType: string,
+  mimeType?: string,
 ) {
-  return mimeType.startsWith("video/");
+  return mimeType?.startsWith("video/");
 }

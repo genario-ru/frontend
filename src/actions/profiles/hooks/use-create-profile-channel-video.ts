@@ -17,16 +17,26 @@ import {
   replaceProfileReferencesListItemById,
 } from "../utils/profile-references-query-cache";
 
-type UseCreateProfileChannelVideoParams = {
-  profileId: string;
-};
-
 type CreateProfileChannelVideoContext = {
   optimisticId: string;
 };
 
+type UseCreateProfileChannelVideoMutationOptions = NonNullable<
+  NonNullable<
+    Parameters<
+      typeof usePostApiV1ProfilesByProfileIdChannelVideos<CreateProfileChannelVideoContext>
+    >[0]
+  >["mutation"]
+>;
+
+type UseCreateProfileChannelVideoParams = {
+  profileId: string;
+  mutationOptions?: UseCreateProfileChannelVideoMutationOptions;
+};
+
 export function useCreateProfileChannelVideo({
   profileId,
+  mutationOptions,
 }: UseCreateProfileChannelVideoParams) {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
@@ -42,6 +52,7 @@ export function useCreateProfileChannelVideo({
     usePostApiV1ProfilesByProfileIdChannelVideos<CreateProfileChannelVideoContext>(
       {
         mutation: {
+          ...mutationOptions,
           onMutate: async (variables) => {
             await cancelProfileReferencesQuery(
               queryClient,
@@ -49,7 +60,6 @@ export function useCreateProfileChannelVideo({
             );
 
             const optimisticId = createOptimisticProfileReferenceId();
-
             const optimisticChannelVideo = createOptimisticProfileChannelVideo({
               profileId: variables.profileId,
               optimisticId,
@@ -64,36 +74,58 @@ export function useCreateProfileChannelVideo({
 
             return { optimisticId };
           },
-          onSuccess: (response, _variables, context) => {
-            if (!context) {
-              return;
+          onSuccess: (response, variables, onMutateResult, context) => {
+            if (onMutateResult) {
+              replaceProfileReferencesListItemById(
+                queryClient,
+                channelVideosQueryKey,
+                onMutateResult.optimisticId,
+                response.data,
+              );
             }
 
-            replaceProfileReferencesListItemById(
-              queryClient,
-              channelVideosQueryKey,
-              context.optimisticId,
-              response.data,
+            mutationOptions?.onSuccess?.(
+              response,
+              variables,
+              onMutateResult,
+              context,
             );
           },
-          onError: (_error, _variables, context) => {
-            if (!context?.optimisticId) {
-              return;
+          onError: (error, variables, onMutateResult, context) => {
+            if (onMutateResult?.optimisticId) {
+              removeProfileReferencesListItemById<
+                GetProfileChannelVideosResponseSchema["data"][number]
+              >(
+                queryClient,
+                channelVideosQueryKey,
+                onMutateResult.optimisticId,
+              );
             }
-
-            removeProfileReferencesListItemById<
-              GetProfileChannelVideosResponseSchema["data"][number]
-            >(queryClient, channelVideosQueryKey, context.optimisticId);
 
             showErrorToast({
               description:
                 "Произошла ошибка при добавлении ссылки. Попробуйте еще раз немного позже",
             });
+
+            mutationOptions?.onError?.(
+              error,
+              variables,
+              onMutateResult,
+              context,
+            );
           },
-          onSettled: () => {
+          onSettled: (data, error, variables, onMutateResult, context) => {
             invalidateProfileReferencesQuery(
               queryClient,
               channelVideosQueryKey,
+            );
+
+            mutationOptions?.onSettled?.(
+              data,
+              error,
+              variables,
+              onMutateResult,
+              context,
             );
           },
         },

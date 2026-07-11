@@ -1,4 +1,7 @@
-import { ProfileSettingsSidebarBlock } from "@/features/profile-settings/profile-settings-sidebar-block/components/profile-settings-sidebar-block";
+import {
+  ProfileSettingsSidebarBlock,
+  ProfileSettingsSidebarBlockSkeleton,
+} from "@/features/profile-settings/profile-settings-sidebar-block/components/profile-settings-sidebar-block";
 
 import {
   profileSettingsSidebarGeneralHints,
@@ -15,6 +18,21 @@ export function ProfileSettingsSidebarGeneral() {
       <ProfileSettingsSidebarBlock
         title="Подсказки"
         items={profileSettingsSidebarGeneralHints}
+      />
+    </aside>
+  );
+}
+
+export function ProfileSettingsSidebarGeneralSkeleton() {
+  return (
+    <aside className="flex min-w-0 flex-col gap-2">
+      <ProfileSettingsSidebarBlockSkeleton
+        titleClassName="w-56"
+        itemsCount={profileSettingsSidebarGeneralReasons.length}
+      />
+      <ProfileSettingsSidebarBlockSkeleton
+        titleClassName="w-32"
+        itemsCount={profileSettingsSidebarGeneralHints.length}
       />
     </aside>
   );

@@ -21,32 +21,30 @@ export function useProfileSettingsReferencesChannelVideoForm({
   profileId,
   disabled = false,
 }: UseProfileSettingsReferencesChannelVideoFormParams) {
-  const { createProfileChannelVideo, isCreateProfileChannelVideoPending } =
-    useCreateProfileChannelVideo({
-      profileId,
-    });
-
   const form = useAppForm({
     defaultValues: profileSettingsReferencesChannelVideoFormDefaultValues,
     validators: {
       onSubmit: profileSettingsReferencesChannelVideoFormValidateFn,
     },
-    onSubmit: async ({ value, formApi }) => {
-      createProfileChannelVideo(
-        {
-          profileId,
-          data: {
-            url: value.url,
-          },
+    onSubmit: async ({ value }) => {
+      createProfileChannelVideo({
+        profileId,
+        data: {
+          url: value.url,
         },
-        {
-          onSuccess: () => {
-            formApi.reset();
-          },
-        },
-      );
+      });
     },
   });
+
+  const { createProfileChannelVideo, isCreateProfileChannelVideoPending } =
+    useCreateProfileChannelVideo({
+      profileId,
+      mutationOptions: {
+        onSuccess: () => {
+          form.reset();
+        },
+      },
+    });
 
   const { onFormSubmit } = useFormHandlers({ form });
 

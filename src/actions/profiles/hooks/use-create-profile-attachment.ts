@@ -18,17 +18,27 @@ import {
 } from "../utils/profile-references-query-cache";
 import { revokeProfileAttachmentPreviewUrl } from "../utils/revoke-profile-attachment-preview-url";
 
-type UseCreateProfileAttachmentParams = {
-  profileId: string;
-};
-
 type CreateProfileAttachmentContext = {
   optimisticId: string;
   previewObjectUrl?: string;
 };
 
+type UseCreateProfileAttachmentMutationOptions = NonNullable<
+  NonNullable<
+    Parameters<
+      typeof usePostApiV1ProfilesByProfileIdAttachments<CreateProfileAttachmentContext>
+    >[0]
+  >["mutation"]
+>;
+
+type UseCreateProfileAttachmentParams = {
+  profileId: string;
+  mutationOptions?: UseCreateProfileAttachmentMutationOptions;
+};
+
 export function useCreateProfileAttachment({
   profileId,
+  mutationOptions,
 }: UseCreateProfileAttachmentParams) {
   const queryClient = useQueryClient();
   const { showErrorToast } = useToast();
@@ -42,16 +52,15 @@ export function useCreateProfileAttachment({
   } =
     usePostApiV1ProfilesByProfileIdAttachments<CreateProfileAttachmentContext>({
       mutation: {
+        ...mutationOptions,
         onMutate: async (variables) => {
           await cancelProfileReferencesQuery(queryClient, attachmentsQueryKey);
 
           const optimisticId = createOptimisticProfileReferenceId();
-
           const fileName =
             variables.data.file instanceof File
               ? variables.data.file.name
               : "file";
-
           const { attachment, previewObjectUrl } =
             createOptimisticProfileAttachment({
               profileId: variables.profileId,
@@ -69,38 +78,50 @@ export function useCreateProfileAttachment({
 
           return { optimisticId, previewObjectUrl };
         },
-        onSuccess: (response, _variables, context) => {
-          if (!context) {
-            return;
+        onSuccess: (response, variables, onMutateResult, context) => {
+          if (onMutateResult) {
+            replaceProfileReferencesListItemById(
+              queryClient,
+              attachmentsQueryKey,
+              onMutateResult.optimisticId,
+              response.data,
+            );
+            revokeProfileAttachmentPreviewUrl(onMutateResult.previewObjectUrl);
           }
 
-          replaceProfileReferencesListItemById(
-            queryClient,
-            attachmentsQueryKey,
-            context.optimisticId,
-            response.data,
+          mutationOptions?.onSuccess?.(
+            response,
+            variables,
+            onMutateResult,
+            context,
           );
-
-          revokeProfileAttachmentPreviewUrl(context.previewObjectUrl);
         },
-        onError: (_error, _variables, context) => {
-          revokeProfileAttachmentPreviewUrl(context?.previewObjectUrl);
+        onError: (error, variables, onMutateResult, context) => {
+          revokeProfileAttachmentPreviewUrl(onMutateResult?.previewObjectUrl);
 
-          if (!context?.optimisticId) {
-            return;
+          if (onMutateResult?.optimisticId) {
+            removeProfileReferencesListItemById<
+              GetProfileAttachmentsResponseSchema["data"][number]
+            >(queryClient, attachmentsQueryKey, onMutateResult.optimisticId);
           }
-
-          removeProfileReferencesListItemById<
-            GetProfileAttachmentsResponseSchema["data"][number]
-          >(queryClient, attachmentsQueryKey, context.optimisticId);
 
           showErrorToast({
             description:
               "Произошла ошибка при загрузке файла. Попробуйте еще раз немного позже",
           });
+
+          mutationOptions?.onError?.(error, variables, onMutateResult, context);
         },
-        onSettled: () => {
+        onSettled: (data, error, variables, onMutateResult, context) => {
           invalidateProfileReferencesQuery(queryClient, attachmentsQueryKey);
+
+          mutationOptions?.onSettled?.(
+            data,
+            error,
+            variables,
+            onMutateResult,
+            context,
+          );
         },
       },
     });

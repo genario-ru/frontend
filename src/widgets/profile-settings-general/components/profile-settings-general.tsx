@@ -3,14 +3,15 @@ import { useMemo } from "react";
 import type { ProfileSettingsGeneralSearch } from "@/routes/_with-auth/_with-subscription/profiles/settings";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
-import { NavigationStepsSkeleton } from "@/shared/components/ui/navigation-steps";
 import { Plug } from "@/shared/components/ui/plug";
-import { Skeleton } from "@/shared/components/ui/skeleton";
-import { TextSkeleton } from "@/shared/components/ui/text-skeleton";
+import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 import { useProfileSettings } from "../hooks/use-profile-settings-general";
-import { ProfileSettingsFormActionsSkeleton } from "./profile-settings-form-actions";
-import { ProfileSettingsGeneralForm } from "./profile-settings-general-form";
+import {
+  ProfileSettingsGeneralForm,
+  ProfileSettingsGeneralFormSkeleton,
+} from "./profile-settings-general-form";
+import { ProfileSettingsSidebarGeneralSkeleton } from "./profile-settings-sidebar-general";
 
 type ProfileSettingsGeneralProps = ProfileSettingsGeneralSearch;
 
@@ -50,52 +51,12 @@ export function ProfileSettingsGeneral({
 }
 
 function ProfileSettingsGeneralSkeleton() {
+  const { isDesktop } = useBreakpoints();
+
   return (
     <>
-      <section className="flex min-w-0 flex-col gap-2">
-        <Island className="gap-6">
-          <NavigationStepsSkeleton count={2} />
-          <div className="flex flex-col gap-6">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="flex flex-col gap-2">
-                <TextSkeleton fontSize={16} lineHeight={24} className="w-40" />
-                <Skeleton
-                  className={index === 0 ? "rounded-4 h-14" : "rounded-4 h-40"}
-                />
-              </div>
-            ))}
-          </div>
-        </Island>
-        <ProfileSettingsFormActionsSkeleton />
-      </section>
-      <aside className="flex min-w-0 flex-col gap-2">
-        <Island className="gap-4">
-          <TextSkeleton fontSize={18} lineHeight={28} className="w-56" />
-          <div className="flex flex-col gap-3">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <TextSkeleton
-                key={index}
-                fontSize={16}
-                lineHeight={24}
-                className="w-full"
-              />
-            ))}
-          </div>
-        </Island>
-        <Island className="gap-4">
-          <TextSkeleton fontSize={18} lineHeight={28} className="w-32" />
-          <div className="flex flex-col gap-3">
-            {Array.from({ length: 2 }).map((_, index) => (
-              <TextSkeleton
-                key={index}
-                fontSize={16}
-                lineHeight={24}
-                className="w-full"
-              />
-            ))}
-          </div>
-        </Island>
-      </aside>
+      <ProfileSettingsGeneralFormSkeleton />
+      {isDesktop && <ProfileSettingsSidebarGeneralSkeleton />}
     </>
   );
 }
