@@ -40,7 +40,6 @@ export function MyProfilesList() {
           name: profile.name,
           description: profile.description,
           typeName: profile.type?.name,
-          tones: profile.tones.map((tone) => tone.name),
           platforms: profile.platforms.map((platform) => platform.name),
         };
 

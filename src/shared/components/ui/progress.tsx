@@ -3,12 +3,17 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
-export const Progress = ({
+type ProgressProps = ComponentProps<typeof ProgressPrimitive.Root> & {
+  indicatorClassName?: string;
+};
+
+export function Progress({
   value,
   max = 100,
   className,
+  indicatorClassName,
   ...props
-}: ComponentProps<typeof ProgressPrimitive.Root>) => {
+}: ProgressProps) {
   const validValue = (value ?? 0) / max;
 
   return (
@@ -22,11 +27,14 @@ export const Progress = ({
       {...props}
     >
       <ProgressPrimitive.Indicator
-        className="bg-neutral-8 h-full w-full flex-1 rounded-full"
+        className={cn(
+          "bg-neutral-8 h-full w-full flex-1 rounded-full",
+          indicatorClassName,
+        )}
         style={{
           transform: `translateX(-${Math.ceil(100 - validValue * 100)}%)`,
         }}
       />
     </ProgressPrimitive.Root>
   );
-};
+}

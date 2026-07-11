@@ -65,7 +65,8 @@ rules:
   already solves the problem.
 - Keep documentation and examples honest. If a referenced local file contains
   mojibake in Russian strings/comments, use it for structure only and do not
-  copy broken text.
+  copy broken text. Always rewrite user-facing Russian strings explicitly and
+  recheck encoding before finishing.
 
 ## Architecture Model
 
@@ -171,9 +172,16 @@ details, and mutation behavior do not leak through the app.
 - Mutations handle side effects through callbacks:
   - define common side effects in the action hook's `mutation.onSuccess`,
     `mutation.onError`, and `mutation.onSettled`;
-  - pass per-call callbacks to `mutate(variables, { onSuccess, onError })`
-    from widget hooks when the side effect depends on the current UI flow;
-  - do not use `mutateAsync` plus `try/catch` for routine UI flows.
+  - use `mutate`, not `mutateAsync`, for ordinary UI flows unless a real
+    promise contract is required;
+  - do not pair backend mutations with `await`/`try-catch` in widget logic;
+  - keep mutation callback typing exact; do not degrade callback args to
+    `unknown` when codegen/react-query types already exist;
+  - for consecutive or parallel mutations where every request must trigger the
+    same lifecycle handlers, configure callbacks in the action hook /
+    `useMutation` declaration, not only in inline `mutate(..., { onSuccess })`
+    call options, because inline `mutate` callbacks are not reliable for every
+    consecutive mutation completion.
 - `try/catch` is reserved for foundational infrastructure and utilities such as
   API client normalization, JSON parsing, clipboard/browser APIs, or similar
   non-query boundaries.
@@ -198,10 +206,16 @@ After route file changes, run `pnpm router:generate`.
 - Use `useAppForm` from `@/lib/tanstack-form`, not bare `useForm`.
 - Forms belong to widgets and widget hooks. Keep `useAppForm`, `withForm`
   subforms, form schemas, form types, and form helpers under the owning widget.
+- Form validator factories and reusable submit/normalization helpers belong in
+  the widget's `utils/**`, not inside hook files.
+- Shared reusable form controls belong in `src/shared/components/ui/**` and, if
+  they integrate with TanStack Form, also in `src/lib/tanstack-form/components/**`.
 - Do not move `withForm` children into `src/features/**`. Only non-form
   presentational pieces may live in features.
 - Use `z` from `@/lib/zod`, not direct imports from `"zod"`.
 - Use `cn()` from `@/shared/utils/cn` for conditional class names.
+- When using `cn()` for dynamic classes, pass object syntax like
+  `cn("base", { "modifier": condition })` instead of boolean `&&` fragments.
 - Prefer `src/shared/components/ui/**` primitives before creating new UI.
 - Do not convert ordinary new UI text to i18n keys by default.
 - Use i18n only when working in an already-i18n area, when the task explicitly
@@ -227,22 +241,70 @@ translation churn.
 - Use `useMemo` for dynamic body/layout/slot content and derived collections
   when conditional rendering or calculations would otherwise clutter the
   component body.
+- When conditional rendering has more than one branch, extract it into
+  `useMemo` with early `if / else` returns instead of stacking ternaries or
+  boolean branches directly in JSX.
+- When a render branch contains several mutually exclusive UI states, prefer one
+  `useMemo` with early `if / else` returns over stacking many boolean branches
+  directly in JSX.
 - Define callbacks inside components/hooks with `useCallback`; pass stable
   handlers to child components.
+- Avoid inline functions, inline conditions, and multiline ternaries in JSX or
+  object literals when the value can be named once with a variable,
+  `useCallback`, or `useMemo`.
+- Do not pass inline ternaries or inline conditions through props or function
+  parameters. Name the value in a local variable first. The only exception is
+  `className`, where inline `cn()` object syntax is allowed.
+- Do not move `className` strings into standalone variables unless the value is
+  reused or the expression is materially complex enough to improve readability.
 - Avoid `useEffect` for actions that can happen imperatively in an event
   handler, mutation callback, router callback, or form submit handler. Use
   `useEffect` only for synchronization with external systems or local library
   integration.
-- Keep component files focused. A `.tsx` component file may contain the main
-  component plus its skeletons, plugs, and simple loading/empty states. Move
-  meaningful child components into separate files.
-- Do not put constants, broad utility logic, or multiple unrelated types in
-  component files. Use colocated `constants`, `utils`, `types`, or `schemas`
-  folders when the data is not just local props/hook params.
+- Keep component files focused. A `.tsx` component file may contain only the
+  main component plus its skeletons, plugs, and simple loading/empty states.
+  Move meaningful child components into separate files.
+- Do not put constants, broad utility logic, validators, or multiple unrelated
+  types in component or hook files. Use colocated `constants`, `utils`,
+  `types`, or `schemas` folders instead.
+- Do not reach for `ref`-driven coordination when ordinary state plus mutation
+  lifecycle callbacks can express the same flow clearly.
+- If a file needs more than one meaningful local type or shared type aliases,
+  move them into a colocated `types/**` file instead of keeping them inside
+  `constants` or component files.
+- Do not use TypeScript type assertions (`as`) unless there is a real
+  necessity, such as narrowing after a validated boundary or working around a
+  known third-party typing gap. Prefer explicit return types, `satisfies`,
+  typed factories, and normal inheritance/composition instead of force casts.
+- Do not add one-line wrapper utilities that only rename or forward a value
+  without real normalization or reuse.
+- Do not trim or otherwise mutate URL values before rendering them in `img src`
+  or similar preview props unless the task explicitly requires it.
 - Feature components should stay presentational and reusable: pass data and
   callbacks in, but keep widget-specific orchestration in widget hooks.
+- Reusable dumb presentational domain components belong in `src/features/**`,
+  not in widgets. Generic reusable UI primitives belong in
+  `src/shared/components/ui/**`.
 - Widgets compose features and own complex UI behavior. Do not clutter widgets
   with small reusable display pieces that belong in `features`.
+- For lists where each item has its own request/mutation behavior, prefer a
+  dedicated widget item component plus colocated hook instead of lifting remove,
+  pending, and mutation state to the parent list and passing callbacks like
+  `isItemRemoving?.(id)`.
+- When one component needs materially different props under a condition, prefer
+  rendering it twice with separate prop sets over one call with many ternary
+  props.
+- Different page or tab layouts need different skeletons. Do not reuse one
+  generic skeleton for materially different forms or steps.
+- Reusable skeletons and empty-state plugs belong in `src/features/**`.
+  Widget-only skeletons and plugs stay in the same component file as a local
+  function below the main export.
+- Widget components with a matching colocated hook should call that hook
+  directly instead of receiving the same logic through props.
+- For create/update flows where the user should see progress immediately,
+  prefer TanStack Query cache optimistic updates in action hooks
+  (`onMutate` / `setQueryData` / rollback in `onError`) instead of parallel
+  local list state and upload spinners on the whole section.
 
 ## Params And Props
 

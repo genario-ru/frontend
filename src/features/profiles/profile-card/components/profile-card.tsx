@@ -12,7 +12,6 @@ export type ProfileCardProps = PropsWithClassName<{
   name: string;
   description: string | null;
   typeName?: string | null;
-  tones: string[];
   platforms: string[];
   actions?: ReactNode;
 }>;
@@ -22,7 +21,6 @@ export const ProfileCard = ({
   name,
   description,
   typeName,
-  tones,
   platforms,
   actions,
   className,
@@ -53,13 +51,6 @@ export const ProfileCard = ({
         {description && (
           <p className="text-new-neutral-6 line-clamp-3">{description}</p>
         )}
-        <div className="flex w-full flex-wrap gap-1">
-          {tones.map((tone) => (
-            <Badge key={tone} size="sm">
-              {tone}
-            </Badge>
-          ))}
-        </div>
         <div className="flex w-full flex-wrap gap-1">
           {platforms.map((platform) => (
             <Badge key={platform} variant="secondary" size="sm">
