@@ -52,6 +52,8 @@ For any non-trivial code task, inspect the relevant local files before editing.
 - Do not pass inline ternaries or inline conditions through props or function
   parameters. Name the value in a local variable first. The only exception is
   `className`.
+- When a condition combines multiple boolean checks, extract named variables
+  instead of nesting parentheses in `if` statements or JSX.
 - Do not extract `className` into a variable unless the computed class set is
   reused or significantly improves readability.
 - Forms, validators, submit helpers, and normalizers stay in the owning widget,
@@ -70,8 +72,8 @@ For any non-trivial code task, inspect the relevant local files before editing.
 - If a file needs several meaningful types, move them into a colocated
   `types/**` file.
 - Do not use TypeScript type assertions (`as`) unless there is a real
-  necessity. Prefer explicit return types, `satisfies`, typed factories, and
-  normal type flow instead of force casts.
+  necessity. Prefer explicit type annotations on declarations and typed
+  factories instead of force casts. Do not use `satisfies`.
 - Do not add one-line wrapper utilities without real normalization or reuse.
 - Do not trim or mutate URL values before rendering previews unless explicitly
   required.
@@ -85,8 +87,22 @@ For any non-trivial code task, inspect the relevant local files before editing.
   separate prop sets instead of ternary props.
 - Use TanStack Query optimistic cache updates in action hooks for immediate
   list feedback; avoid blocking whole upload areas with loading state.
-- Reusable skeletons/plugs go to `features/**`; widget-only ones stay as local
-  functions under the main component export.
+- Page/widget skeletons compose exported child skeletons from the same
+  components they render in the success state. Each child exports its skeleton
+  from the same file; the page only wires layout.
+- For repeated skeleton items, use `ItemsList` from
+  `@/shared/components/common/items-list` instead of
+  `Array.from({ length }).map(...)`.
+- Reusable skeletons/plugs go to `features/**`; widget-only ones export from
+  the component file below the main component.
+- For edit/update forms, use `createFormMatchValidateFn` on submit validation,
+  `form.SubmitButton` for `canSubmit`, and `formApi.reset(value)` after a
+  successful update.
+- For list/card row actions on touch devices, use `SwipeActions` with
+  `hideActions` on the card. Destructive actions open `Dialog` on desktop and
+  `Drawer` on mobile before delete.
+- For navigation between related pages, prefer `AppMenubar` tabs instead of
+  `NavigationSteps` inside page content.
 - Widget components with a matching hook should call it directly, not via props.
 
 ## Claude-Specific Guidance

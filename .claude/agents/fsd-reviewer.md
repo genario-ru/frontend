@@ -55,7 +55,7 @@ routes -> entrypoints -> widgets -> features/actions -> shared/lib
 
 - Widget/component split:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.
 - Presentational feature:
   `src/features/templates/template-card/components/template-card.tsx`.
 - Infrastructure `try/catch`: `src/lib/api/client/index.ts`.

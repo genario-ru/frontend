@@ -107,7 +107,8 @@ would introduce a new custom abstraction/pattern, ask the user before coding.
   and
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
 - Widget-owned form:
-  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`
-  plus the sibling `profile-settings-form*.tsx` files.
+  `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`
+  plus sibling `profile-settings-general-form*.tsx` and
+  `profile-settings-form-actions.tsx` files.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.

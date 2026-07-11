@@ -63,6 +63,17 @@ Keep widget components render-focused. Use `useMemo` for dynamic body/layout
 content, `useCallback` for handlers, and colocated hooks for non-trivial logic.
 Prefer flat props/params and one object parameter.
 
+When touching loading states, skeletons, mobile row actions, delete flows, or
+cross-page navigation, match local precedent:
+
+- compose child skeleton exports; use `ItemsList` for repeated skeleton items;
+- extract named boolean variables for complex conditions;
+- use `SwipeActions` with `hideActions` on touch; confirm delete via
+  `Dialog`/`Drawer`;
+- use `AppMenubar` tabs for related pages;
+- for edit forms, use `createFormMatchValidateFn`, `form.SubmitButton`, and
+  `formApi.reset(value)` after save.
+
 ## Step 4: Verify
 
 - Locale JSON changed intentionally for existing i18n/pluralization:
@@ -82,6 +93,6 @@ and validation commands run.
 - Per-call mutation callback:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
 - Widget-owned form:
-  `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`.
+  `src/widgets/profile-settings-general/components/profile-settings-general-form.tsx`.
 - Reusable feature component:
   `src/features/templates/template-card/components/template-card.tsx`.

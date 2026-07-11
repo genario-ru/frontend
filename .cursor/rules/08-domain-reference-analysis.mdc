@@ -42,7 +42,7 @@ Do not write new domain files before completing this reference pass.
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`,
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
 - Widget forms:
-  `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`.
+  `src/widgets/profile-settings-general/components/profile-settings-general-form.tsx`.
 - Features:
   `src/features/profiles/profile-card/components/profile-card.tsx`,
   `src/features/templates/template-card/components/template-card.tsx`.

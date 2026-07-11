@@ -62,6 +62,20 @@ custom pattern, ask the user before coding.
 - Prefer flat props/params and a single object parameter for functions, hooks,
   and components.
 
+## UI Patterns To Match Local Precedent
+
+- Skeletons: page/widget composes child skeleton exports; repeated items use
+  `ItemsList`.
+- Conditions: extract named boolean variables for multi-check logic.
+- Mobile rows: `SwipeActions` + `hideActions`; delete confirms via
+  `Dialog`/`Drawer`.
+- Cross-page navigation: `AppMenubar` tabs, not `NavigationSteps` in body.
+- Edit forms: `createFormMatchValidateFn`, `form.SubmitButton`, `reset` after
+  save.
+- Parallel mutations: shared lifecycle handlers in action hook `useMutation`,
+  not only inline `mutate(..., callbacks)`.
+- Do not use TypeScript `satisfies`; prefer explicit type annotations.
+
 ## Verification
 
 ```bash
@@ -78,5 +92,5 @@ pnpm lint:typescript
   `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
 - Widget hook/component:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.
 - Feature UI: `src/features/profiles/profile-card/components/profile-card.tsx`.

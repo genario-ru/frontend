@@ -102,6 +102,19 @@ content/collections in `useMemo`, and non-trivial widget logic in colocated
 hooks. Prefer flat props/params and pass functions/hooks/components parameters
 as a single object.
 
+## UI Patterns To Match Local Precedent
+
+- Skeletons: page/widget composes child skeleton exports; repeated items use
+  `ItemsList`.
+- Conditions: extract named boolean variables for multi-check logic.
+- Mobile rows: `SwipeActions` + `hideActions`; delete confirms via
+  `Dialog`/`Drawer`.
+- Cross-page navigation: `AppMenubar` tabs, not `NavigationSteps` in body.
+- Edit forms: `createFormMatchValidateFn`, `form.SubmitButton`, `reset` after
+  save.
+- Parallel mutations: shared lifecycle handlers in action hook `useMutation`,
+  not only inline `mutate(..., callbacks)`.
+
 ## Step 5: Verify
 
 - Locale JSON changed intentionally: run `pnpm i18n:resources`.
@@ -121,7 +134,8 @@ Never edit `src/codegen/**` manually.
   and
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
 - Widget-owned form:
-  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`
-  plus `profile-settings-form*.tsx`.
+  `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`
+  plus `profile-settings-general-form*.tsx` and
+  `profile-settings-form-actions.tsx`.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.

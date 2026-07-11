@@ -23,7 +23,9 @@ untranslated text, or forms bypassing project wrappers.
    - `useAppForm` from `@/lib/tanstack-form`;
    - `withForm` children stay in widgets, not features;
    - schema/value shape matches form usage;
-   - submit/reset buttons follow local form patterns.
+   - submit/reset buttons follow local form patterns;
+   - edit forms use `createFormMatchValidateFn`, `form.SubmitButton`, and
+     `formApi.reset(value)` after successful update.
 3. Validation:
    - `z` from `@/lib/zod`.
 4. Data:
@@ -49,6 +51,15 @@ untranslated text, or forms bypassing project wrappers.
    - props/params are flat unless the full entity is genuinely needed;
    - functions/hooks/components receive a single object parameter;
    - no broad unrelated refactor.
+8. Loading and mobile UI:
+   - page/widget skeletons compose child skeleton exports, not monolithic inline
+     skeletons;
+   - repeated skeleton items use `ItemsList`, not `Array.from().map()`;
+   - complex boolean conditions use named variables;
+   - touch row actions use `SwipeActions` with `hideActions`;
+   - destructive actions confirm via `Dialog`/`Drawer` before delete;
+   - related-page navigation uses `AppMenubar` tabs, not `NavigationSteps` in
+     body.
 
 ## Reference Examples
 
@@ -56,7 +67,14 @@ untranslated text, or forms bypassing project wrappers.
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
 - Widget hook:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget-owned form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget-owned form: `src/widgets/profile-settings-general/**`.
+- Composed skeletons:
+  `src/widgets/profile-settings-references/components/profile-settings-references.tsx`.
+- Swipe/delete patterns:
+  `src/widgets/profile-settings-references/components/profile-settings-reference-attachment.tsx`,
+  `src/widgets/profile-settings-references/components/profile-settings-reference-delete-confirmation.tsx`.
+- AppMenubar tabs:
+  `src/widgets/profile-settings/profile-settings-app-menubar/components/profile-settings-app-menubar.tsx`.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.
 

@@ -70,4 +70,4 @@ Report changed files, references inspected, and validation results.
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
 - Mutation callback hook:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.

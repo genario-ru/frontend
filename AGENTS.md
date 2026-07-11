@@ -115,7 +115,12 @@ Use these files as implementation references before creating new patterns.
 | Mutation action hook with callbacks   | `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`, `src/actions/ideas/hooks/use-save-idea.ts`, `src/actions/onboarding/hooks/use-hide-onboarding.ts`                                                                                                                                                                                                         |
 | Widget logic hook                     | `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`, `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`, `src/widgets/billing/billing-my-subscriptions/hooks/use-billing-my-subscriptions-actions.ts`                                                                                                     |
 | Widget component using memoized slots | `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`, `src/widgets/home/home-onboarding/components/home-onboarding.tsx`, `src/widgets/credits/credits-usage-list/components/credits-usage-list.tsx`                                                                                                                                      |
-| Widget-owned TanStack Form            | `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form.tsx`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form-fields.tsx`, `src/widgets/profile-settings/profile-settings/components/profile-settings-form-buttons.tsx` |
+| Widget-owned TanStack Form            | `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`, `src/widgets/profile-settings-general/components/profile-settings-general-form.tsx`, `src/widgets/profile-settings-general/components/profile-settings-general-form-fields.tsx`, `src/widgets/profile-settings-general/components/profile-settings-form-actions.tsx` |
+| Composed page/widget skeletons        | `src/widgets/profile-settings-references/components/profile-settings-references.tsx`, `src/widgets/profile-settings-general/components/profile-settings-general.tsx`, `src/widgets/profile-settings-references/components/profile-settings-references-section.tsx`                                                                                                      |
+| AppMenubar cross-route/page tabs      | `src/widgets/billing/billing-app-menubar/components/billing-app-menubar.tsx`, `src/widgets/profile-settings/profile-settings-app-menubar/components/profile-settings-app-menubar.tsx`, `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`                                                                                              |
+| Mobile swipe row actions              | `src/widgets/billing/billing-my-payment-methods/components/billing-my-payment-methods-list-item.tsx`, `src/widgets/profiles/my-profiles-list/components/my-profiles-list.tsx`, `src/widgets/profile-settings-references/components/profile-settings-reference-attachment.tsx`                                                                                        |
+| Delete dialog/drawer confirmation     | `src/features/billing/billing-my-payment-methods/components/billing-my-payment-method-delete-dialog.tsx`, `src/widgets/profile-settings-references/components/profile-settings-reference-delete-confirmation.tsx`                                                                                                                                                      |
+| Edit form no-op submit guard          | `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`, `src/widgets/settings/settings-forms/hooks/use-settings-change-name-form.ts`                                                                                                                                                                                                     |
 | Reusable presentational feature       | `src/features/profiles/profile-card/components/profile-card.tsx`, `src/features/templates/template-card/components/template-card.tsx`, `src/features/scenario/scenario-chapter/scenario-chapter-status-select/components/scenario-chapter-status-select.tsx`                                                                                                        |
 | Infrastructure-only `try/catch`       | `src/lib/api/client/index.ts`, `src/shared/utils/parse-json.ts`, `src/shared/utils/copy-element-content.ts`                                                                                                                                                                                                                                                         |
 | Codegen and router configuration      | `kubb.config.ts`, `vite.config.ts`, `scripts/download-openapi-schemas.ts`, `src/codegen/api/product/**`, `src/codegen/router/route-tree.gen.ts`                                                                                                                                                                                                                     |
@@ -223,6 +228,15 @@ After route file changes, run `pnpm router:generate`.
   for correct Russian/English word forms.
 - Never manually edit `src/globals/i18next-resources.d.ts`; run
   `pnpm i18n:resources` after locale JSON changes.
+- For edit/update forms, use `createFormMatchValidateFn` on
+  `validators.onSubmit` so unchanged values cannot be saved again after the
+  first submit attempt.
+- Use `form.SubmitButton` (via `withForm` + `form.AppForm`) so the button
+  respects `canSubmit`.
+- After a successful update, call `formApi.reset(value)` to refresh the form
+  baseline.
+- For submit buttons rendered outside the `<form>` element, pass `form={formId}`
+  to `form.SubmitButton`.
 
 These rules exist because this project has app-level wrappers for validation
 messages, form fields, class merging, and typed locale resources. Bypassing the
@@ -255,6 +269,9 @@ translation churn.
 - Do not pass inline ternaries or inline conditions through props or function
   parameters. Name the value in a local variable first. The only exception is
   `className`, where inline `cn()` object syntax is allowed.
+- When a condition combines multiple boolean checks, extract named variables
+  instead of nesting parentheses in `if` statements or JSX, for example
+  `hasOverlayActions` and `shouldShowOverlayActions`.
 - Do not move `className` strings into standalone variables unless the value is
   reused or the expression is materially complex enough to improve readability.
 - Avoid `useEffect` for actions that can happen imperatively in an event
@@ -274,8 +291,9 @@ translation churn.
   `constants` or component files.
 - Do not use TypeScript type assertions (`as`) unless there is a real
   necessity, such as narrowing after a validated boundary or working around a
-  known third-party typing gap. Prefer explicit return types, `satisfies`,
-  typed factories, and normal inheritance/composition instead of force casts.
+  known third-party typing gap. Prefer explicit type annotations on
+  declarations and typed factories instead of force casts. Do not use
+  `satisfies`.
 - Do not add one-line wrapper utilities that only rename or forward a value
   without real normalization or reuse.
 - Do not trim or otherwise mutate URL values before rendering them in `img src`
@@ -296,15 +314,45 @@ translation churn.
   props.
 - Different page or tab layouts need different skeletons. Do not reuse one
   generic skeleton for materially different forms or steps.
+- Page and widget loading skeletons should compose exported child skeletons from
+  the same components they render in the success state. Do not build one
+  monolithic inline skeleton in the page component.
+- Each meaningful child component that needs a loading state should export its
+  skeleton from the same file as the component, for example
+  `ProfileSettingsReferencesSectionSkeleton`.
+- The page/widget skeleton only wires layout and composes those child skeletons.
+- For repeated skeleton items inside a component, use `ItemsList` from
+  `@/shared/components/common/items-list` instead of
+  `Array.from({ length }).map(...)`.
 - Reusable skeletons and empty-state plugs belong in `src/features/**`.
-  Widget-only skeletons and plugs stay in the same component file as a local
-  function below the main export.
+  Widget-only skeletons stay in the component file as a named export below the
+  main component.
 - Widget components with a matching colocated hook should call that hook
   directly instead of receiving the same logic through props.
 - For create/update flows where the user should see progress immediately,
   prefer TanStack Query cache optimistic updates in action hooks
   (`onMutate` / `setQueryData` / rollback in `onError`) instead of parallel
   local list state and upload spinners on the whole section.
+
+## Mobile Row Actions And Delete Confirmation
+
+- For list/card rows with remove or secondary actions on touch devices, use
+  `SwipeActions` from `@/shared/components/ui/swipe-actions` when
+  `!isDesktop && checkTouchScreen()`.
+- Hide inline row/card actions with a `hideActions` prop while swipe is active.
+- Put swipe action buttons in a colocated widget component.
+- Destructive row actions should open a confirmation flow first: desktop uses
+  `Dialog`, mobile uses `Drawer`.
+- Open confirmation from `handleDeleteButtonClick`; perform delete in
+  `handleConfirmDelete`.
+
+## Page Navigation In AppMenubar
+
+- For navigation between related pages or sections, prefer tabs in `AppMenubar`
+  instead of `NavigationSteps` inside page content.
+- Desktop: tabs in `right`; mobile: same tabs in `bottom` with `expand`.
+- Cross-route tabs follow the billing/scenario/profile-settings menubar pattern
+  with `RadioCardsGroup` and pathname- or route-based active state.
 
 ## Params And Props
 

@@ -94,7 +94,7 @@ existing i18n-backed areas, explicit i18n tasks, or pluralization/inflection.
   `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
 - Widget hook/component:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.
 - Route/entrypoint:
   `src/routes/_with-auth/_with-subscription/scenarios/$scenarioId.tsx` and
   `src/entrypoints/scenario/component.tsx`.
