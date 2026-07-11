@@ -4,10 +4,7 @@ import type {
   GetProfileTypesResponseSchema,
 } from "@/codegen/api/product";
 import { Island } from "@/shared/components/ui/island";
-import { NavigationStepsSkeleton } from "@/shared/components/ui/navigation-steps";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
-import { ProfileSettingsNavigation } from "@/widgets/profile-settings/profile-settings-navigation/components/profile-settings-navigation";
-import { profileSettingsNavigationStepIds } from "@/widgets/profile-settings/profile-settings-navigation/constants";
 
 import { useProfileSettingsGeneralForm } from "../hooks/use-profile-settings-general-form";
 import {
@@ -33,7 +30,7 @@ export function ProfileSettingsGeneralForm({
   profileTypesData,
   platformsData,
 }: ProfileSettingsGeneralFormProps) {
-  const { isMobile, isDesktop } = useBreakpoints();
+  const { isDesktop } = useBreakpoints();
   const { form, isLoading, onFormSubmit, onCancelClick } =
     useProfileSettingsGeneralForm({ profileData });
 
@@ -46,12 +43,6 @@ export function ProfileSettingsGeneralForm({
           className="flex min-w-0 flex-1 flex-col"
         >
           <Island className="flex-1 gap-6">
-            {!isMobile && (
-              <ProfileSettingsNavigation
-                profileId={profileData?.data.id}
-                activeStep={profileSettingsNavigationStepIds.general}
-              />
-            )}
             <ProfileSettingsGeneralFormFields
               form={form}
               profileTypesData={profileTypesData}
@@ -74,7 +65,6 @@ export function ProfileSettingsGeneralFormSkeleton() {
   return (
     <section className="flex min-w-0 flex-col gap-2">
       <Island className="flex-1 gap-6">
-        <NavigationStepsSkeleton count={2} />
         <ProfileSettingsGeneralFormFieldsSkeleton />
       </Island>
       <ProfileSettingsFormActionsSkeleton />

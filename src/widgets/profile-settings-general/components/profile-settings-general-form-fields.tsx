@@ -9,7 +9,6 @@ import {
   CheckboxChipsGroup,
   CheckboxChipsGroupItem,
 } from "@/shared/components/ui/checkbox-chips-group";
-import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import {
   RadioCardsGroup,
   RadioCardsGroupItem,
@@ -55,30 +54,12 @@ export const ProfileSettingsGeneralFormFields = withForm({
                   <RadioCardsGroupItem
                     key={profileType.id}
                     value={profileType.id}
-                    size="lg"
-                    align="start"
                     state={
                       field.state.meta.errors.length > 0 ? "error" : "default"
                     }
                     className="flex w-full items-start gap-3 p-4 text-left"
                   >
-                    {profileType.icon && (
-                      <LucideIcon
-                        icon={profileType.icon}
-                        size="base"
-                        className="mt-0.5 shrink-0"
-                      />
-                    )}
-                    <div className="flex flex-col gap-1">
-                      <div className="text-base font-medium">
-                        {profileType.name}
-                      </div>
-                      {profileType.description && (
-                        <div className="text-neutral-7 text-sm">
-                          {profileType.description}
-                        </div>
-                      )}
-                    </div>
+                    {profileType.name}
                   </RadioCardsGroupItem>
                 ))}
               </RadioCardsGroup>

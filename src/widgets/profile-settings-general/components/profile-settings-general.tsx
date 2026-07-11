@@ -44,7 +44,7 @@ export function ProfileSettingsGeneral({
   }, [isError, isLoading, profileData, platformsData, profileTypesData]);
 
   return (
-    <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,1fr)_24rem]">
+    <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 lg:grid-cols-[minmax(0,1fr)_24rem]">
       {content}
     </ContentLayout>
   );

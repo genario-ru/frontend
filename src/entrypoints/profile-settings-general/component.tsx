@@ -10,7 +10,7 @@ export function ProfileSettingsGeneralComponent() {
   });
 
   return (
-    <PageLayout className="h-fit min-h-full pb-8">
+    <PageLayout className="h-fit min-h-full">
       <ProfileSettingsAppMenubar profileId={profileId} />
       <ProfileSettingsGeneral profileId={profileId} />
     </PageLayout>

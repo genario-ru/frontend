@@ -3,11 +3,8 @@ import { useMemo } from "react";
 import type { ProfileSettingsReferencesSearch } from "@/routes/_with-auth/_with-subscription/profiles/settings/references";
 import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
-import { NavigationStepsSkeleton } from "@/shared/components/ui/navigation-steps";
 import { Plug } from "@/shared/components/ui/plug";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
-import { ProfileSettingsNavigation } from "@/widgets/profile-settings/profile-settings-navigation/components/profile-settings-navigation";
-import { profileSettingsNavigationStepIds } from "@/widgets/profile-settings/profile-settings-navigation/constants";
 
 import { profileSettingsReferenceSections } from "../constants/profile-settings-reference-sections";
 import { useProfileSettingsReferences } from "../hooks/use-profile-settings-references";
@@ -25,7 +22,7 @@ type ProfileSettingsReferencesProps = ProfileSettingsReferencesSearch;
 export function ProfileSettingsReferences({
   profileId,
 }: ProfileSettingsReferencesProps) {
-  const { isMobile, isDesktop } = useBreakpoints();
+  const { isDesktop } = useBreakpoints();
 
   const {
     referenceSections,
@@ -79,17 +76,9 @@ export function ProfileSettingsReferences({
   ]);
 
   return (
-    <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,1fr)_24rem]">
+    <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 lg:grid-cols-[minmax(0,1fr)_24rem]">
       <section className="flex min-w-0 flex-col gap-2">
-        <Island className="flex-1 gap-8">
-          {!isMobile && (
-            <ProfileSettingsNavigation
-              profileId={profileId}
-              activeStep={profileSettingsNavigationStepIds.references}
-            />
-          )}
-          {referencesContent}
-        </Island>
+        <Island className="flex-1 gap-8">{referencesContent}</Island>
       </section>
       {isDesktop && (
         <ProfileSettingsReferencesSidebar referencesCounts={referencesCounts} />
@@ -104,7 +93,6 @@ export function ProfileSettingsReferencesSkeleton() {
     <ContentLayout className="isolate grid flex-1 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,1fr)_24rem]">
       <section className="flex min-w-0 flex-col gap-2">
         <Island className="flex-1 gap-8">
-          <NavigationStepsSkeleton count={2} />
           {profileSettingsReferenceSections.map((section) => (
             <ProfileSettingsReferencesSectionSkeleton
               key={section.key}
