@@ -37,8 +37,6 @@ export function useProfileSettingsAppMenubarTabs({
     select: (routerState) => routerState.location.pathname,
   });
 
-  const isReferencesTabDisabled = !profileId;
-
   const tabs: ProfileSettingsAppMenubarTabItem[] = useMemo(
     () =>
       profileSettingsAppMenubarTabsDefinition.map((tabDefinition) => ({
@@ -50,9 +48,9 @@ export function useProfileSettingsAppMenubarTabs({
         ),
         disabled:
           tabDefinition.slug === profileSettingsAppMenubarTabSlugs.references &&
-          isReferencesTabDisabled,
+          !profileId,
       })),
-    [isReferencesTabDisabled, pathname],
+    [pathname, profileId],
   );
 
   const activeTab = useMemo(() => {
@@ -61,18 +59,17 @@ export function useProfileSettingsAppMenubarTabs({
 
   const handleTabClick = useCallback(
     (nextSlug: string) => {
+      const clickedTab = tabs.find((tab) => tab.slug === nextSlug);
+
+      if (!clickedTab || clickedTab.disabled) {
+        return;
+      }
+
       const tabDefinition = profileSettingsAppMenubarTabsDefinition.find(
         (item) => item.slug === nextSlug,
       );
 
       if (!tabDefinition) {
-        return;
-      }
-
-      if (
-        tabDefinition.slug === profileSettingsAppMenubarTabSlugs.references &&
-        isReferencesTabDisabled
-      ) {
         return;
       }
 
@@ -92,7 +89,7 @@ export function useProfileSettingsAppMenubarTabs({
         replace: true,
       });
     },
-    [isReferencesTabDisabled, navigate, profileId],
+    [navigate, profileId, tabs],
   );
 
   return {
