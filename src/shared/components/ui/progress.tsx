@@ -14,7 +14,8 @@ export function Progress({
   indicatorClassName,
   ...props
 }: ProgressProps) {
-  const validValue = (value ?? 0) / max;
+  const currentValue = Math.min(value ?? 0, max);
+  const validValue = currentValue / max;
 
   return (
     <ProgressPrimitive.Root
