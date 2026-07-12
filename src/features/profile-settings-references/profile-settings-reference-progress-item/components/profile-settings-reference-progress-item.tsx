@@ -11,18 +11,16 @@ export function ProfileSettingsReferenceProgressItem({
   count,
   targetCount,
 }: ProfileSettingsReferenceProgressItemProps) {
-  const progressValue = Math.min(count, targetCount);
-
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-2">
         <span className="font-medium">{title}</span>
         <span>
-          {progressValue}/{targetCount}
+          {count}/{targetCount}
         </span>
       </div>
       <Progress
-        value={progressValue}
+        value={count}
         max={targetCount}
         indicatorClassName="bg-positive-5"
       />

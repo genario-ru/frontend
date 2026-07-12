@@ -1,8 +1,7 @@
 import {
   ArrowUpRightIcon,
-  FileTextIcon,
   ImageIcon,
-  PaperclipIcon,
+  LinkIcon,
   VideoIcon,
   XIcon,
 } from "lucide-react";
@@ -45,18 +44,6 @@ export function ProfileSettingsReferenceCard({
   const hasOverlayActions = Boolean(externalUrl || onRemove);
   const shouldShowOverlayActions = !hideActions && hasOverlayActions;
 
-  const placeholderIcon = useMemo(() => {
-    if (isVideo) {
-      return <VideoIcon className="size-12" />;
-    }
-
-    if (isImage) {
-      return <ImageIcon className="size-12" />;
-    }
-
-    return <FileTextIcon className="size-12" />;
-  }, [isImage, isVideo]);
-
   const actions = useMemo(() => {
     if (!shouldShowOverlayActions) {
       return null;
@@ -91,7 +78,11 @@ export function ProfileSettingsReferenceCard({
   }, [externalUrl, isRemoveDisabled, onRemove, shouldShowOverlayActions]);
 
   const previewContent = useMemo(() => {
-    if (previewUrl && isVideo) {
+    if (!previewUrl) {
+      return null;
+    }
+
+    if (isVideo) {
       return (
         <video
           src={previewUrl}
@@ -105,22 +96,14 @@ export function ProfileSettingsReferenceCard({
       );
     }
 
-    if (previewUrl) {
-      return (
-        <img
-          src={previewUrl}
-          alt={fileName}
-          className="h-full w-full object-contain"
-        />
-      );
-    }
-
     return (
-      <div className="text-neutral-6 flex h-full w-full items-center justify-center">
-        {placeholderIcon}
-      </div>
+      <img
+        src={previewUrl}
+        alt={fileName}
+        className="h-full w-full object-contain"
+      />
     );
-  }, [previewUrl, fileName, isVideo, placeholderIcon]);
+  }, [previewUrl, fileName, isVideo]);
 
   const fileTypeIcon = useMemo(() => {
     if (isVideo) {
@@ -131,7 +114,7 @@ export function ProfileSettingsReferenceCard({
       return ImageIcon;
     }
 
-    return PaperclipIcon;
+    return LinkIcon;
   }, [isImage, isVideo]);
 
   return (
@@ -145,8 +128,8 @@ export function ProfileSettingsReferenceCard({
       <div className="bg-neutral-3 rounded-3 relative aspect-video overflow-hidden">
         {previewContent}
         {isPending && (
-          <div className="bg-neutral-8/20 absolute inset-0 flex items-center justify-center">
-            <Spinner className="size-8" />
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 p-2 backdrop-blur-lg">
+            <Spinner className="size-8 stroke-white" />
           </div>
         )}
       </div>
