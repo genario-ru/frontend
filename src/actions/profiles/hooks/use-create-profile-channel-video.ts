@@ -12,7 +12,7 @@ import { createOptimisticProfileReferenceId } from "../utils/create-optimistic-p
 import {
   appendProfileReferencesListItem,
   cancelProfileReferencesQuery,
-  invalidateProfileReferencesQuery,
+  invalidateProfileReferencesQueryIfNoPendingItems,
   removeProfileReferencesListItemById,
   replaceProfileReferencesListItemById,
 } from "../utils/profile-references-query-cache";
@@ -115,7 +115,7 @@ export function useCreateProfileChannelVideo({
             );
           },
           onSettled: (data, error, variables, onMutateResult, context) => {
-            invalidateProfileReferencesQuery(
+            invalidateProfileReferencesQueryIfNoPendingItems(
               queryClient,
               channelVideosQueryKey,
             );

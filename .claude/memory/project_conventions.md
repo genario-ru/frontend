@@ -46,7 +46,7 @@ needed, ask the user before coding.
 - For consecutive or parallel mutations where every completion must run the
   same lifecycle handlers, declare those handlers in the action hook's
   `useMutation` options instead of relying only on inline `mutate(...,
-  callbacks)`.
+callbacks)`.
 - Keep component handlers in `useCallback` and dynamic body/layout/slot content
   or derived collections in `useMemo`.
 - Avoid `useEffect` when an action can run in an event handler, form submit,

@@ -13,7 +13,7 @@ import { handleDeleteProfileReferenceItem } from "../utils/handle-delete-profile
 import {
   cancelProfileReferencesQuery,
   getProfileReferencesQuerySnapshot,
-  invalidateProfileReferencesQuery,
+  invalidateProfileReferencesQueryIfNoPendingItems,
   removeProfileAttachmentListItemByAttachmentId,
   removeProfileReferencesListItemById,
   restoreProfileReferencesQuerySnapshot,
@@ -76,7 +76,10 @@ export function useDeleteProfileAttachment({
             });
           },
           onSettled: () => {
-            invalidateProfileReferencesQuery(queryClient, attachmentsQueryKey);
+            invalidateProfileReferencesQueryIfNoPendingItems(
+              queryClient,
+              attachmentsQueryKey,
+            );
           },
         },
       },

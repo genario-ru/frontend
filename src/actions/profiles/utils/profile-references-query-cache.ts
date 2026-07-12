@@ -2,6 +2,8 @@ import type { QueryClient, QueryKey } from "@tanstack/react-query";
 
 import type { GetProfileAttachmentsResponseSchema } from "@/codegen/api/product";
 
+import { isOptimisticProfileReferenceId } from "./create-optimistic-profile-reference-id";
+
 type ProfileReferencesListData<TItem> = {
   data: TItem[];
 };
@@ -112,4 +114,22 @@ export function invalidateProfileReferencesQuery(
   queryKey: QueryKey,
 ) {
   void queryClient.invalidateQueries({ queryKey });
+}
+
+export function invalidateProfileReferencesQueryIfNoPendingItems<
+  TItem extends { id: string },
+>(queryClient: QueryClient, queryKey: QueryKey) {
+  const snapshot = getProfileReferencesQuerySnapshot<
+    ProfileReferencesListData<TItem>
+  >(queryClient, queryKey);
+
+  const hasPendingOptimisticItems = snapshot?.data.some((item) =>
+    isOptimisticProfileReferenceId(item.id),
+  );
+
+  if (hasPendingOptimisticItems) {
+    return;
+  }
+
+  invalidateProfileReferencesQuery(queryClient, queryKey);
 }

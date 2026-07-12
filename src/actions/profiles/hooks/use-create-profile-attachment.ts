@@ -12,7 +12,7 @@ import { createOptimisticProfileReferenceId } from "../utils/create-optimistic-p
 import {
   appendProfileReferencesListItem,
   cancelProfileReferencesQuery,
-  invalidateProfileReferencesQuery,
+  invalidateProfileReferencesQueryIfNoPendingItems,
   removeProfileReferencesListItemById,
   replaceProfileReferencesListItemById,
 } from "../utils/profile-references-query-cache";
@@ -113,7 +113,10 @@ export function useCreateProfileAttachment({
           mutationOptions?.onError?.(error, variables, onMutateResult, context);
         },
         onSettled: (data, error, variables, onMutateResult, context) => {
-          invalidateProfileReferencesQuery(queryClient, attachmentsQueryKey);
+          invalidateProfileReferencesQueryIfNoPendingItems(
+            queryClient,
+            attachmentsQueryKey,
+          );
 
           mutationOptions?.onSettled?.(
             data,

@@ -13,7 +13,7 @@ import { handleDeleteProfileReferenceItem } from "../utils/handle-delete-profile
 import {
   cancelProfileReferencesQuery,
   getProfileReferencesQuerySnapshot,
-  invalidateProfileReferencesQuery,
+  invalidateProfileReferencesQueryIfNoPendingItems,
   removeProfileReferencesListItemById,
   restoreProfileReferencesQuerySnapshot,
 } from "../utils/profile-references-query-cache";
@@ -75,7 +75,7 @@ export function useDeleteProfileChannelVideo({
             });
           },
           onSettled: () => {
-            invalidateProfileReferencesQuery(
+            invalidateProfileReferencesQueryIfNoPendingItems(
               queryClient,
               channelVideosQueryKey,
             );
