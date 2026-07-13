@@ -52,7 +52,7 @@ export const ProfilesImportFormFields = withForm({
                   >
                     <subfield.InputField
                       state={isSuccessValidation ? "success" : "default"}
-                      placeholder="Введите ссылку на канал"
+                      placeholder="Ссылка на канал YouTube, Instagram или TikTok"
                       fieldLayoutProps={{
                         message,
                         messageVariant,
