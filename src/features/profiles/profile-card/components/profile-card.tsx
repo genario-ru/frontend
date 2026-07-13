@@ -10,7 +10,7 @@ import { getProfileTailwindColorFromUuid } from "@/shared/utils/get-profile-tail
 export type ProfileCardProps = PropsWithClassName<{
   id: string;
   name: string;
-  description: string | null;
+  positioning: string | null;
   typeName?: string | null;
   platforms: string[];
   actions?: ReactNode;
@@ -19,7 +19,7 @@ export type ProfileCardProps = PropsWithClassName<{
 export const ProfileCard = ({
   id,
   name,
-  description,
+  positioning,
   typeName,
   platforms,
   actions,
@@ -48,8 +48,8 @@ export const ProfileCard = ({
           </div>
           {actions}
         </div>
-        {description && (
-          <p className="text-new-neutral-6 line-clamp-3">{description}</p>
+        {positioning && (
+          <p className="text-new-neutral-6 line-clamp-3">{positioning}</p>
         )}
         <div className="flex w-full flex-wrap gap-1">
           {platforms.map((platform) => (

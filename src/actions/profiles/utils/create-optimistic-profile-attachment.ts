@@ -31,6 +31,41 @@ export function createOptimisticProfileAttachment({
     ? URL.createObjectURL(file)
     : undefined;
 
+  const attachmentFile = {
+    id: optimisticId,
+    userId: optimisticId,
+    fileName,
+    mimeType,
+    createdAt: now,
+    updatedAt: now,
+    url: previewObjectUrl ?? "",
+  };
+
+  if (type === "video-reference") {
+    return {
+      previewObjectUrl,
+      attachment: {
+        id: optimisticId,
+        type,
+        profileId,
+        attachmentId: optimisticId,
+        summary: null,
+        mainTopics: null,
+        keyPoints: null,
+        tone: null,
+        targetAudience: null,
+        quotes: null,
+        timeline: null,
+        wordCount: null,
+        segments: null,
+        transcript: null,
+        createdAt: now,
+        updatedAt: now,
+        attachment: attachmentFile,
+      },
+    };
+  }
+
   return {
     previewObjectUrl,
     attachment: {
@@ -40,15 +75,7 @@ export function createOptimisticProfileAttachment({
       attachmentId: optimisticId,
       createdAt: now,
       updatedAt: now,
-      attachment: {
-        id: optimisticId,
-        userId: optimisticId,
-        fileName,
-        mimeType,
-        createdAt: now,
-        updatedAt: now,
-        url: previewObjectUrl ?? "",
-      },
+      attachment: attachmentFile,
     },
   };
 }

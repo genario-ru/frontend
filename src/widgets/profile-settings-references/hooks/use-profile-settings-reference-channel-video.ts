@@ -36,7 +36,7 @@ export function useProfileSettingsReferenceChannelVideo({
   }, [channelVideo, handleDeleteProfileChannelVideo]);
 
   const isPending = isOptimisticProfileReferenceId(channelVideo.id);
-  const itemName = channelVideo.name ?? channelVideo.url;
+  const itemName = channelVideo.name ?? channelVideo.url ?? "Видео";
   const deleteTexts =
     getProfileSettingsReferenceChannelVideoDeleteTexts(itemName);
 

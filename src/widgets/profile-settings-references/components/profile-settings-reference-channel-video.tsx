@@ -39,7 +39,7 @@ export function ProfileSettingsReferenceChannelVideo({
   const card = useMemo(
     () => (
       <ProfileSettingsReferenceCard
-        fileName={channelVideo.name ?? channelVideo.url}
+        fileName={channelVideo.name ?? channelVideo.url ?? "Видео"}
         previewUrl={channelVideo.thumbnailUrl}
         externalUrl={channelVideo.url}
         hideActions={showSwipeActions}
