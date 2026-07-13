@@ -16,9 +16,5 @@ export const updateProfileBodySchemaSchema = z
     additionalInfo: z.optional(z.union([z.string(), z.null()])),
     typeId: z.optional(z.union([z.uuid(), z.null()])),
     platformIds: z.optional(z.array(z.uuid())),
-    videoReferences: z.optional(z.array(z.uuid())),
-    thumbnailReferences: z.optional(z.array(z.uuid())),
-    actorReferences: z.optional(z.array(z.uuid())),
-    transcriptReferences: z.optional(z.array(z.uuid())),
   })
   .describe("Update profile body description");

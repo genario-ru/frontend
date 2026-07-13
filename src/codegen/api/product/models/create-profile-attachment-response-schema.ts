@@ -12,7 +12,6 @@ import type { ProfileAttachmentExtendedSchema } from "./profile-attachment-exten
 export type CreateProfileAttachmentResponseSchema = {
   /**
    * @description Profile attachment extended description
-   * @type object
    */
   data: ProfileAttachmentExtendedSchema;
 };

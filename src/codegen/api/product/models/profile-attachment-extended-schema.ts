@@ -8,7 +8,6 @@ import type { ProfileAttachmentFileSchema } from "./profile-attachment-file-sche
 export const profileAttachmentExtendedSchemaTypeEnum = {
   "actor-reference": "actor-reference",
   "thumbnail-reference": "thumbnail-reference",
-  "video-reference": "video-reference",
 } as const;
 
 export type ProfileAttachmentExtendedSchemaTypeEnumKey =
@@ -18,34 +17,77 @@ export type ProfileAttachmentExtendedSchemaTypeEnumKey =
  * Profile attachment extended
  * @description Profile attachment extended description
  */
-export type ProfileAttachmentExtendedSchema = {
-  /**
-   * @type string, uuid
-   */
-  id: string;
-  /**
-   * @type string
-   */
-  type: ProfileAttachmentExtendedSchemaTypeEnumKey;
-  /**
-   * @type string, uuid
-   */
-  profileId: string;
-  /**
-   * @type string, uuid
-   */
-  attachmentId: string;
-  /**
-   * @type string
-   */
-  createdAt: string;
-  /**
-   * @type string
-   */
-  updatedAt: string;
-  /**
-   * @description Profile attachment file description
-   * @type object
-   */
-  attachment: ProfileAttachmentFileSchema;
-};
+export type ProfileAttachmentExtendedSchema =
+  | {
+      /**
+       * @type string, uuid
+       */
+      id: string;
+      /**
+       * @type string
+       */
+      type: ProfileAttachmentExtendedSchemaTypeEnumKey;
+      /**
+       * @type string, uuid
+       */
+      profileId: string;
+      /**
+       * @type string, uuid
+       */
+      attachmentId: string;
+      /**
+       * @type string
+       */
+      createdAt: string;
+      /**
+       * @type string
+       */
+      updatedAt: string;
+      /**
+       * @description Profile attachment file description
+       * @type object
+       */
+      attachment: ProfileAttachmentFileSchema;
+    }
+  | {
+      /**
+       * @type string, uuid
+       */
+      id: string;
+      /**
+       * @type string, uuid
+       */
+      profileId: string;
+      /**
+       * @type string, uuid
+       */
+      attachmentId: string;
+      summary: string | null;
+      mainTopics: string[] | null;
+      keyPoints: string[] | null;
+      tone: string | null;
+      targetAudience: string | null;
+      quotes: string[] | null;
+      timeline: string | null;
+      wordCount: number | null;
+      segments: number | null;
+      transcript: string | null;
+      transcriptSegments?: any[] | null;
+      /**
+       * @type string
+       */
+      createdAt: string;
+      /**
+       * @type string
+       */
+      updatedAt: string;
+      /**
+       * @type string
+       */
+      type: "video-reference";
+      /**
+       * @description Profile attachment file description
+       * @type object
+       */
+      attachment: ProfileAttachmentFileSchema;
+    };

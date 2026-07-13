@@ -22,10 +22,7 @@ export type ProfileChannelVideoSchema = {
   platformId: string;
   profileChannelId: string | null;
   externalId: string | null;
-  /**
-   * @type string
-   */
-  url: string;
+  url: string | null;
   thumbnailUrl: string | null;
   name: string | null;
   description: string | null;

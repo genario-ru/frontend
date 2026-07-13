@@ -15,7 +15,7 @@ export const profileChannelVideoSchemaSchema = z
     platformId: z.uuid(),
     profileChannelId: z.union([z.uuid(), z.null()]),
     externalId: z.union([z.string(), z.null()]),
-    url: z.string(),
+    url: z.union([z.string(), z.null()]),
     thumbnailUrl: z.union([z.string(), z.null()]),
     name: z.union([z.string(), z.null()]),
     description: z.union([z.string(), z.null()]),

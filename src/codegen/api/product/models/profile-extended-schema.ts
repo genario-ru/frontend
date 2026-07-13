@@ -24,7 +24,6 @@ export type ProfileExtendedSchema = {
    * @type string
    */
   name: string;
-  description: string | null;
   positioning: string | null;
   targetAudience: string | null;
   additionalInfo: string | null;

@@ -22,20 +22,4 @@ export type UpdateProfileBodySchema = {
    * @type array | undefined
    */
   platformIds?: string[];
-  /**
-   * @type array | undefined
-   */
-  videoReferences?: string[];
-  /**
-   * @type array | undefined
-   */
-  thumbnailReferences?: string[];
-  /**
-   * @type array | undefined
-   */
-  actorReferences?: string[];
-  /**
-   * @type array | undefined
-   */
-  transcriptReferences?: string[];
 };
