@@ -69,7 +69,7 @@ export function BillingMySubscriptionCard({
 
   const right = useMemo(() => {
     if (!isCancellable || hideCancelAction) {
-      return undefined;
+      return null;
     }
 
     return (

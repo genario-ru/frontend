@@ -26,7 +26,7 @@ export function BillingMyPaymentMethodCard({
 
   const right = useMemo(() => {
     if (hideActions) {
-      return undefined;
+      return null;
     }
 
     return (
