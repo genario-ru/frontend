@@ -56,15 +56,20 @@ export function CreditsUsageRow({
     [amountLabel],
   );
 
+  const titleContent = useMemo(
+    () => (
+      <span className="overflow-hidden font-semibold text-ellipsis whitespace-nowrap">
+        {title}
+      </span>
+    ),
+    [title],
+  );
+
   return (
     <Item
       className={className}
       left={left}
-      title={
-        <span className="overflow-hidden font-semibold text-ellipsis whitespace-nowrap">
-          {title}
-        </span>
-      }
+      title={titleContent}
       description={description}
       right={right}
     />
