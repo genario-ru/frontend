@@ -1,5 +1,5 @@
 import { EllipsisIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import type {
   SubscriptionExtendedSchemaStatusEnumKey,
@@ -13,6 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
+import { Item } from "@/shared/components/ui/item";
 import { LDQUO, MDASH, NBSP, RDQUO } from "@/shared/constants/unicode";
 
 import { billingPeriodSuffix } from "../constants/billing-period-suffix";
@@ -46,23 +47,67 @@ export function BillingMySubscriptionCard({
   const suffix = billingPeriod ? billingPeriodSuffix[billingPeriod] : null;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const title = useMemo(
+    () => (
+      <>
+        Тариф
+        {NBSP}
+        {LDQUO}
+        {name}
+        {RDQUO}
+        {NBSP}
+        {MDASH}
+        {NBSP}
+        {price === 0 ? "Бесплатно" : `${price.toLocaleString("ru-RU")} руб`}
+        {suffix && (
+          <span className="text-neutral-6 text-sm font-normal">{suffix}</span>
+        )}
+      </>
+    ),
+    [name, price, suffix],
+  );
+
+  const right = useMemo(() => {
+    if (!isCancellable || hideCancelAction) {
+      return null;
+    }
+
+    return (
+      <DropdownMenu
+        modal={false}
+        open={isMenuOpen}
+        onOpenChange={setIsMenuOpen}
+      >
+        <DropdownMenuTrigger asChild>
+          <Button size="sm" icon={<EllipsisIcon />} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuGroup>
+            <DropdownMenuItem asChild>
+              <Button
+                size="sm"
+                priority="tertiary"
+                variant="negative"
+                rounding="base"
+                align="between"
+                icon={<XIcon />}
+                className="w-full"
+                onClick={onCancelButtonClick}
+              >
+                Отменить
+              </Button>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }, [hideCancelAction, isCancellable, isMenuOpen, onCancelButtonClick]);
+
   return (
-    <div className="bg-neutral-2 relative flex justify-between gap-4 rounded-2xl px-4 py-3">
-      <div className="flex flex-col gap-2">
-        <p className="font-medium">
-          Тариф
-          {NBSP}
-          {LDQUO}
-          {name}
-          {RDQUO}
-          {NBSP}
-          {MDASH}
-          {NBSP}
-          {price === 0 ? "Бесплатно" : `${price.toLocaleString("ru-RU")} руб`}
-          {suffix && (
-            <span className="text-neutral-6 text-sm font-normal">{suffix}</span>
-          )}
-        </p>
+    <Item
+      className="relative"
+      title={title}
+      badges={
         <BillingMySubscriptionCardBadges
           status={status}
           credits={credits}
@@ -70,36 +115,8 @@ export function BillingMySubscriptionCard({
           durationDays={durationDays}
           dateRange={dateRange}
         />
-      </div>
-      {isCancellable && !hideCancelAction && (
-        <DropdownMenu
-          modal={false}
-          open={isMenuOpen}
-          onOpenChange={setIsMenuOpen}
-        >
-          <DropdownMenuTrigger asChild>
-            <Button size="sm" icon={<EllipsisIcon />} />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Button
-                  size="sm"
-                  priority="tertiary"
-                  variant="negative"
-                  rounding="base"
-                  align="between"
-                  icon={<XIcon />}
-                  className="w-full"
-                  onClick={onCancelButtonClick}
-                >
-                  Отменить
-                </Button>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )}
-    </div>
+      }
+      right={right}
+    />
   );
 }
