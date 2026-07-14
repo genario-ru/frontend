@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { PropsWithClassName } from "@/shared/types/props-with-classname";
+import { cn } from "@/shared/utils/cn";
 
 type ItemProps = PropsWithClassName<{
   title: ReactNode;
@@ -20,10 +21,16 @@ export function Item({
   left,
   right,
   bottom,
+  className,
 }: ItemProps) {
   return (
-    <div className="bg-neutral-2 rounded-4 flex flex-col gap-3 p-3">
-      <div className="flex gap-3">
+    <div
+      className={cn(
+        "bg-neutral-2 rounded-4 flex flex-col gap-3 p-3",
+        className,
+      )}
+    >
+      <div className="flex items-center gap-3">
         {left}
         <section className="flex flex-1 flex-col gap-1">
           <div className="flex w-full items-center gap-2">
