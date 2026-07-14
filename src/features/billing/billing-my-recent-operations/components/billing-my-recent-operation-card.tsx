@@ -103,9 +103,7 @@ export function BillingMyRecentOperationCard({
 
   return (
     <Item
-      icon={
-        <LucideIcon icon={icon} className={cn(operationIconColor[status])} />
-      }
+      icon={<LucideIcon icon={icon} className={operationIconColor[status]} />}
       title={title}
       badges={badges}
       right={right}
