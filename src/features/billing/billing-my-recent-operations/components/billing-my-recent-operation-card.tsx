@@ -8,6 +8,7 @@ import { useMemo } from "react";
 
 import type { PaymentExtendedSchemaStatusEnumKey } from "@/codegen/api/product";
 import { Badge } from "@/shared/components/ui/badge";
+import { Item } from "@/shared/components/ui/item";
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { buttonVariants } from "@/shared/constants/button-variants";
 import { LDQUO, RDQUO } from "@/shared/constants/unicode";
@@ -50,33 +51,33 @@ export function BillingMyRecentOperationCard({
     }
   }, [status]);
 
-  return (
-    <div className="bg-neutral-2 flex justify-between gap-4 rounded-2xl px-4 py-3">
-      <div className="flex h-full flex-col justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <LucideIcon icon={icon} className={cn(operationIconColor[status])} />
-          <span className="font-medium">{title}</span>
-        </div>
-        <div className="flex flex-wrap gap-1">
-          <Badge
-            color={operationStatusColor[status]}
-            variant={operationStatusVariant[status]}
-            size="sm"
-          >
-            {operationStatusLabel[status]}
-          </Badge>
-          {tariffName && (
-            <Badge color="neutral" variant="tertiary" size="sm">
-              Тариф {LDQUO}
-              {tariffName}
-              {RDQUO}
-            </Badge>
-          )}
+  const badges = useMemo(
+    () => (
+      <div className="flex flex-wrap gap-1">
+        <Badge
+          color={operationStatusColor[status]}
+          variant={operationStatusVariant[status]}
+          size="sm"
+        >
+          {operationStatusLabel[status]}
+        </Badge>
+        {tariffName && (
           <Badge color="neutral" variant="tertiary" size="sm">
-            {formattedDate}
+            Тариф {LDQUO}
+            {tariffName}
+            {RDQUO}
           </Badge>
-        </div>
+        )}
+        <Badge color="neutral" variant="tertiary" size="sm">
+          {formattedDate}
+        </Badge>
       </div>
+    ),
+    [formattedDate, status, tariffName],
+  );
+
+  const right = useMemo(
+    () => (
       <div className="flex h-full flex-col items-end justify-between gap-2">
         <span className="text-neutral-8 shrink-0 font-semibold">
           {formattedAmount}
@@ -96,6 +97,18 @@ export function BillingMyRecentOperationCard({
           </a>
         )}
       </div>
-    </div>
+    ),
+    [formattedAmount, paymentLink, status],
+  );
+
+  return (
+    <Item
+      icon={
+        <LucideIcon icon={icon} className={cn(operationIconColor[status])} />
+      }
+      title={title}
+      badges={badges}
+      right={right}
+    />
   );
 }
