@@ -11,6 +11,10 @@ type ProfilesImportPlatformsFanItemProps = {
   className?: string;
 };
 
+type ProfilesImportPlatformsFanItemSkeletonProps = {
+  className?: string;
+};
+
 export function ProfilesImportPlatformsFanItem({
   name,
   logoUrl,
@@ -37,10 +41,6 @@ export function ProfilesImportPlatformsFanItem({
     </div>
   );
 }
-
-type ProfilesImportPlatformsFanItemSkeletonProps = {
-  className?: string;
-};
 
 export function ProfilesImportPlatformsFanItemSkeleton({
   className,
