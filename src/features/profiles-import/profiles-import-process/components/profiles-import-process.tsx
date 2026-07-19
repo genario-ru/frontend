@@ -26,8 +26,8 @@ export function ProfilesImportProcess({
     >
       <header className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <LucideIcon icon={ZapIcon} className="text-warning-4 size-6" />
-          <Heading variant="h2" className="text-neutral-1 text-xl">
+          <LucideIcon icon={ZapIcon} color="warning" className="size-6" />
+          <Heading variant="h2" className="text-neutral-1 text-2xl">
             {PROFILES_IMPORT_PROCESS_TITLE}
           </Heading>
         </div>

@@ -9,12 +9,12 @@ export function ProfilesImportOtherPlatforms() {
     <section className="border-neutral-3 rounded-4 flex w-full flex-col gap-4 border p-4">
       <header className="flex w-full flex-col gap-2">
         <div className="flex items-center gap-1.5">
-          <LucideIcon icon={InfoIcon} />
+          <LucideIcon icon={InfoIcon} className="stroke-accent-6" />
           <Heading variant="h3">
             Что делать, если канал на другой платформе?
           </Heading>
         </div>
-        <p className="text-neutral-7">
+        <p className="text-neutral-5">
           Для этого перейдите в режим ручного создания профиля вашего канала
         </p>
       </header>
