@@ -31,7 +31,7 @@ export function ProfilesImportPlatformsFan() {
             <ProfilesImportPlatformsFanItemSkeleton
               key={`profiles-import-platforms-fan-skeleton-${index}`}
               className={cn("absolute -top-3", rotation, {
-                "left-0": index === 0,
+                "left-[-44px]": index === 0,
                 "left-8": index === 1,
                 "left-[54px]": index === 2,
               })}
@@ -56,7 +56,7 @@ export function ProfilesImportPlatformsFan() {
           "absolute -top-3",
           PLATFORM_FAN_ROTATIONS[index] ?? "rotate-0",
           {
-            "left-0 z-1": index === 0,
+            "left-[-44px] z-1": index === 0,
             "left-8 z-2": index === 1,
             "left-[54px] z-3": index === 2,
           },
