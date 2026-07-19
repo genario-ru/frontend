@@ -38,10 +38,12 @@ export function ProfilesImportPlatformsFanItem({
   );
 }
 
+type ProfilesImportPlatformsFanItemSkeletonProps = {
+  className?: string;
+};
+
 export function ProfilesImportPlatformsFanItemSkeleton({
   className,
-}: {
-  className?: string;
-}) {
+}: ProfilesImportPlatformsFanItemSkeletonProps) {
   return <Skeleton className={cn("rounded-3 size-16", className)} />;
 }
