@@ -1,27 +1,24 @@
+import { ProfilesImportProcess } from "@/features/profiles-import/profiles-import-process/components/profiles-import-process";
 import { Island } from "@/shared/components/ui/island";
 
-import { ProfilesImportFeatures } from "../../profiles-import-features/components/profiles-import-features";
 import { ProfilesImportForm } from "../../profiles-import-form/components/profiles-import-form";
 import { ProfilesImportOtherPlatforms } from "../../profiles-import-other-platforms/components/profiles-import-other-platforms";
-import { ProfilesImportPlatformsList } from "../../profiles-import-platforms-list/components/profiles-import-platforms-list";
+import { ProfilesImportPlatformsFan } from "../../profiles-import-platforms-fan/components/profiles-import-platforms-fan";
 
 export function ProfilesImport() {
   return (
-    <Island
-      grow
-      title="Ссылки на ваши каналы"
-      description="Добавьте ссылки на каналы YouTube, Instagram или TikTok, которые хотите использовать в Genario. Мы проверим их и поможем создать профили для дальнейшей персонализации идей, сценариев и метаданных."
-    >
-      <div className="flex w-full flex-col gap-4 lg:flex-row">
-        <section className="flex flex-1 flex-col gap-4">
-          <ProfilesImportForm />
-          <ProfilesImportFeatures />
-        </section>
-        <section className="flex flex-1 flex-col gap-4">
-          <ProfilesImportPlatformsList />
-          <ProfilesImportOtherPlatforms />
-        </section>
-      </div>
-    </Island>
+    <div className="flex w-full flex-col gap-2 lg:flex-row lg:items-stretch">
+      <Island
+        grow
+        title="Ссылки на ваши каналы"
+        description="Добавьте ссылки на каналы, которые хотите использовать в Genario. Мы проверим их и поможем создать профили для дальнейшей персонализации идей, сценариев и метаданных."
+        actions={<ProfilesImportPlatformsFan />}
+        className="gap-6 lg:flex-1"
+      >
+        <ProfilesImportForm />
+        <ProfilesImportOtherPlatforms />
+      </Island>
+      <ProfilesImportProcess />
+    </div>
   );
 }
