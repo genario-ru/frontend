@@ -6,19 +6,24 @@ import {
 } from "@/features/profiles-import/profiles-import-platforms-fan/components/profiles-import-platforms-fan-item";
 import { cn } from "@/shared/utils/cn";
 
+import {
+  PLATFORM_FAN_MAX_ITEMS,
+  PLATFORM_FAN_ROTATIONS,
+} from "../constants/profiles-import-platforms-fan";
 import { useProfilesImportPlatformsFan } from "../hooks/use-profiles-import-platforms-fan";
 
-const PLATFORM_FAN_ROTATIONS = [
-  "-rotate-[10deg]",
-  "rotate-0",
-  "rotate-[10deg]",
-] as const;
-
 export function ProfilesImportPlatformsFan() {
-  const { profileChannelPlatformsData, isProfileChannelPlatformsLoading } =
-    useProfilesImportPlatformsFan();
+  const {
+    profileChannelPlatformsData,
+    isProfileChannelPlatformsLoading,
+    isProfileChannelPlatformsError,
+  } = useProfilesImportPlatformsFan();
 
   const body = useMemo(() => {
+    if (isProfileChannelPlatformsError) {
+      return null;
+    }
+
     if (isProfileChannelPlatformsLoading) {
       return (
         <>
@@ -42,7 +47,7 @@ export function ProfilesImportPlatformsFan() {
       return null;
     }
 
-    return platforms.slice(0, 3).map((platform, index) => (
+    return platforms.slice(0, PLATFORM_FAN_MAX_ITEMS).map((platform, index) => (
       <ProfilesImportPlatformsFanItem
         key={platform.id}
         name={platform.name}
@@ -58,7 +63,11 @@ export function ProfilesImportPlatformsFan() {
         )}
       />
     ));
-  }, [profileChannelPlatformsData, isProfileChannelPlatformsLoading]);
+  }, [
+    profileChannelPlatformsData,
+    isProfileChannelPlatformsLoading,
+    isProfileChannelPlatformsError,
+  ]);
 
   if (!body) {
     return null;

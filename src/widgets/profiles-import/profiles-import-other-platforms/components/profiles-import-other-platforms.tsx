@@ -14,7 +14,7 @@ export function ProfilesImportOtherPlatforms() {
             Что делать, если канал на другой платформе?
           </Heading>
         </div>
-        <p className="text-neutral-5">
+        <p className="text-neutral-7">
           Для этого перейдите в режим ручного создания профиля вашего канала
         </p>
       </header>

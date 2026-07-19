@@ -1,4 +1,5 @@
 import { VideoIcon } from "lucide-react";
+import { useMemo } from "react";
 
 import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { Skeleton } from "@/shared/components/ui/skeleton";
@@ -15,6 +16,16 @@ export function ProfilesImportPlatformsFanItem({
   logoUrl,
   className,
 }: ProfilesImportPlatformsFanItemProps) {
+  const media = useMemo(() => {
+    if (logoUrl) {
+      return (
+        <img src={logoUrl} alt={name} className="size-[52px] object-contain" />
+      );
+    }
+
+    return <LucideIcon icon={VideoIcon} className="size-10" />;
+  }, [logoUrl, name]);
+
   return (
     <div
       className={cn(
@@ -22,11 +33,7 @@ export function ProfilesImportPlatformsFanItem({
         className,
       )}
     >
-      {logoUrl ? (
-        <img src={logoUrl} alt={name} className="size-[52px] object-contain" />
-      ) : (
-        <LucideIcon icon={VideoIcon} className="size-10" />
-      )}
+      {media}
     </div>
   );
 }
