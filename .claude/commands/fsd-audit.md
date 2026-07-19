@@ -46,7 +46,7 @@ pnpm lint:typescript
 
 - Widget/component split:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.
 - Infrastructure-only `try/catch`: `src/lib/api/client/index.ts`.

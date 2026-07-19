@@ -68,8 +68,8 @@ enums, and query keys when they need API contract data.
   and
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
 - Widget-owned form:
-  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`
-  and sibling `profile-settings-form*.tsx` files.
+  `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`
+  and sibling `profile-settings-general-form*.tsx` files.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.
 - Entrypoint composition: `src/entrypoints/scenario/component.tsx`.

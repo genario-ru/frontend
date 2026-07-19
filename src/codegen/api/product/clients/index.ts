@@ -1,7 +1,9 @@
 export { deleteApiV1BillingPaymentMethodsByPaymentMethodId } from "./delete-api-v1-billing-payment-methods-by-payment-method-id.ts";
 export { deleteApiV1IdeasByIdeaId } from "./delete-api-v1-ideas-by-idea-id.ts";
 export { deleteApiV1IdeasListsByIdeasListId } from "./delete-api-v1-ideas-lists-by-ideas-list-id.ts";
+export { deleteApiV1ProfilesAttachmentsByAttachmentId } from "./delete-api-v1-profiles-attachments-by-attachment-id.ts";
 export { deleteApiV1ProfilesByProfileId } from "./delete-api-v1-profiles-by-profile-id.ts";
+export { deleteApiV1ProfilesChannelVideosByProfileChannelVideoId } from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id.ts";
 export { deleteApiV1ScenariosByScenarioId } from "./delete-api-v1-scenarios-by-scenario-id.ts";
 export { deleteApiV1ScenariosChaptersByChapterId } from "./delete-api-v1-scenarios-chapters-by-chapter-id.ts";
 export { deleteApiV1ScenariosSceneComponentsBySceneComponentId } from "./delete-api-v1-scenarios-scene-components-by-scene-component-id.ts";
@@ -29,6 +31,8 @@ export { getApiV1Platforms } from "./get-api-v1-platforms.ts";
 export { getApiV1ProductFeatures } from "./get-api-v1-product-features.ts";
 export { getApiV1ProductionStatuses } from "./get-api-v1-production-statuses.ts";
 export { getApiV1ProfilesByProfileId } from "./get-api-v1-profiles-by-profile-id.ts";
+export { getApiV1ProfilesByProfileIdAttachments } from "./get-api-v1-profiles-by-profile-id-attachments.ts";
+export { getApiV1ProfilesByProfileIdChannelVideos } from "./get-api-v1-profiles-by-profile-id-channel-videos.ts";
 export { getApiV1ProfilesChannelsJobsMy } from "./get-api-v1-profiles-channels-jobs-my.ts";
 export { getApiV1ProfilesChannelsPlatforms } from "./get-api-v1-profiles-channels-platforms.ts";
 export { getApiV1ProfilesMy } from "./get-api-v1-profiles-my.ts";
@@ -79,6 +83,8 @@ export { postApiV1IdeasListsByIdeasListIdExport } from "./post-api-v1-ideas-list
 export { postApiV1IdeasListsByIdeasListIdIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-ideas.ts";
 export { postApiV1IdeasListsByIdeasListIdMoreIdeas } from "./post-api-v1-ideas-lists-by-ideas-list-id-more-ideas.ts";
 export { postApiV1Profiles } from "./post-api-v1-profiles.ts";
+export { postApiV1ProfilesByProfileIdAttachments } from "./post-api-v1-profiles-by-profile-id-attachments.ts";
+export { postApiV1ProfilesByProfileIdChannelVideos } from "./post-api-v1-profiles-by-profile-id-channel-videos.ts";
 export { postApiV1ProfilesChannels } from "./post-api-v1-profiles-channels.ts";
 export { postApiV1ProfilesChannelsValidate } from "./post-api-v1-profiles-channels-validate.ts";
 export { postApiV1Scenarios } from "./post-api-v1-scenarios.ts";

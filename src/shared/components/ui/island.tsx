@@ -17,9 +17,9 @@ export type IslandProps = Omit<ComponentProps<"div">, "title"> & {
   as?: ElementType;
 };
 
-export type IslandSectionProps = ComponentProps<"section"> & {
-  title?: string;
-  description?: string;
+export type IslandSectionProps = Omit<ComponentProps<"section">, "title"> & {
+  title?: ReactNode;
+  description?: ReactNode;
 };
 
 export function Island({
@@ -83,10 +83,10 @@ export function IslandSection({
       {withHeader && (
         <header className="flex flex-col gap-1">
           {title && (
-            <h3 className="text-neutral-8 text-lg font-medium">{title}</h3>
+            <div className="text-neutral-8 text-lg font-medium">{title}</div>
           )}
           {description && (
-            <p className="text-neutral-7 text-sm">{description}</p>
+            <div className="text-neutral-7 text-sm">{description}</div>
           )}
         </header>
       )}

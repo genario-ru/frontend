@@ -35,12 +35,6 @@ export const ProfileCardSkeleton = () => {
           row={true}
           count={4}
           gap={4}
-          item={<Skeleton className="h-6 w-24 rounded-lg" />}
-        />
-        <ItemsList
-          row={true}
-          count={4}
-          gap={4}
           item={<Skeleton className="h-6 w-16 rounded-lg" />}
         />
       </div>

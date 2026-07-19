@@ -56,7 +56,7 @@ implementing it.
 
 ## Reference Examples
 
-- Form typing: `src/widgets/profile-settings/profile-settings/**`.
+- Form typing: `src/widgets/profile-settings-general/**`.
 - Action wrapper typing:
   `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
 - Flat feature props:

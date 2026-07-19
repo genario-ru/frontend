@@ -69,6 +69,31 @@ Keep component files focused:
   callbacks, form submit handlers, or router callbacks.
 - Use `useEffect` mainly for external synchronization and integration with
   browser/third-party APIs.
+- When a condition combines multiple boolean checks, extract named variables
+  instead of nesting parentheses in `if` statements or JSX.
+- Do not use TypeScript `satisfies`. Prefer explicit type annotations.
+
+## Skeletons And Loading States
+
+- Page/widget skeletons compose exported child skeletons from the same
+  components they render in the success state.
+- Each meaningful child exports its skeleton from the same file as the
+  component.
+- For repeated skeleton items, use `ItemsList` from
+  `@/shared/components/common/items-list` instead of
+  `Array.from({ length }).map(...)`.
+
+## Mobile Row Actions And Delete Confirmation
+
+- On touch devices (`!isDesktop && checkTouchScreen()`), use `SwipeActions` for
+  row/card secondary actions and hide inline actions with `hideActions`.
+- Destructive actions open `Dialog` on desktop and `Drawer` on mobile before
+  delete.
+
+## Page Navigation
+
+- For navigation between related pages, prefer `AppMenubar` tabs instead of
+  `NavigationSteps` inside page content.
 
 ## Shared UI components
 
@@ -92,5 +117,16 @@ skeletons, spinners, menus, and form field components where possible.
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
 - Flat feature props:
   `src/features/profiles/profile-card/components/profile-card.tsx`.
+- Composed skeletons:
+  `src/widgets/profile-settings-references/components/profile-settings-references.tsx`,
+  `src/widgets/profile-settings-general/components/profile-settings-general.tsx`.
+- ItemsList in skeletons:
+  `src/widgets/profile-settings-general/components/profile-settings-general-form-fields.tsx`.
+- Swipe row actions:
+  `src/widgets/profile-settings-references/components/profile-settings-reference-attachment.tsx`.
+- Delete confirmation:
+  `src/widgets/profile-settings-references/components/profile-settings-reference-delete-confirmation.tsx`.
+- AppMenubar tabs:
+  `src/widgets/profile-settings/profile-settings-app-menubar/components/profile-settings-app-menubar.tsx`.
 - Infrastructure-only `try/catch`: `src/lib/api/client/index.ts` and
   `src/shared/utils/parse-json.ts`.

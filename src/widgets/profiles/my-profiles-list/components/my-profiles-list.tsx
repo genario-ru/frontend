@@ -38,9 +38,8 @@ export function MyProfilesList() {
         const cardProps = {
           id: profile.id,
           name: profile.name,
-          description: profile.description,
+          positioning: profile.positioning,
           typeName: profile.type?.name,
-          tones: profile.tones.map((tone) => tone.name),
           platforms: profile.platforms.map((platform) => platform.name),
         };
 

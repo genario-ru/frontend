@@ -25,6 +25,7 @@ export type PlatformExtendedSchema = {
   baseUrl: string | null;
   urlRegex: string | null;
   channelUrlRegex: string | null;
+  videoUrlRegex: string | null;
   /**
    * @type boolean
    */

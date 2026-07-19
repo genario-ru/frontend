@@ -5,7 +5,7 @@
 
 import { z } from "@/lib/zod/index.ts";
 
-import { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
+import { getProfileDataSchemaSchema } from "./get-profile-data-schema-schema.ts";
 
 /**
  * @description Get profile response description
@@ -13,8 +13,8 @@ import { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts
 export const getProfileResponseSchemaSchema = z
   .object({
     get data() {
-      return profileExtendedSchemaSchema.describe(
-        "Profile extended description",
+      return getProfileDataSchemaSchema.describe(
+        "Get profile data description",
       );
     },
   })

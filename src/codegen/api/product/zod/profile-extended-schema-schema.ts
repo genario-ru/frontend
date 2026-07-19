@@ -7,8 +7,6 @@ import { z } from "@/lib/zod/index.ts";
 
 import { platformSchemaSchema } from "./platform-schema-schema.ts";
 import { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";
-import { toneSchemaSchema } from "./tone-schema-schema.ts";
-import { userSchemaSchema } from "./user-schema-schema.ts";
 
 /**
  * @description Profile extended description
@@ -19,21 +17,16 @@ export const profileExtendedSchemaSchema = z
     userId: z.uuid(),
     typeId: z.union([z.uuid(), z.null()]),
     name: z.string(),
-    description: z.union([z.string(), z.null()]),
+    positioning: z.union([z.string(), z.null()]),
     targetAudience: z.union([z.string(), z.null()]),
+    additionalInfo: z.union([z.string(), z.null()]),
     createdAt: z.string(),
     updatedAt: z.string(),
-    get user() {
-      return userSchemaSchema.describe("User description");
-    },
     get type() {
       return z.union([profileTypeSchemaSchema, z.null()]);
     },
     get platforms() {
       return z.array(platformSchemaSchema.describe("Platform description"));
-    },
-    get tones() {
-      return z.array(toneSchemaSchema.describe("Tone description"));
     },
   })
   .describe("Profile extended description");

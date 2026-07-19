@@ -25,7 +25,11 @@ export { createIdeasListBodySchemaSchema } from "./create-ideas-list-body-schema
 export { createIdeasListExportBodySchemaSchema } from "./create-ideas-list-export-body-schema-schema.ts";
 export { createIdeasListExportResponseSchemaSchema } from "./create-ideas-list-export-response-schema-schema.ts";
 export { createIdeasListResponseSchemaSchema } from "./create-ideas-list-response-schema-schema.ts";
+export { createProfileAttachmentBodySchemaSchema } from "./create-profile-attachment-body-schema-schema.ts";
+export { createProfileAttachmentResponseSchemaSchema } from "./create-profile-attachment-response-schema-schema.ts";
 export { createProfileBodySchemaSchema } from "./create-profile-body-schema-schema.ts";
+export { createProfileChannelVideoBodySchemaSchema } from "./create-profile-channel-video-body-schema-schema.ts";
+export { createProfileChannelVideoResponseSchemaSchema } from "./create-profile-channel-video-response-schema-schema.ts";
 export { createProfileResponseSchemaSchema } from "./create-profile-response-schema-schema.ts";
 export { createProfilesFromChannelsBodySchemaSchema } from "./create-profiles-from-channels-body-schema-schema.ts";
 export { createProfilesFromChannelsErrorSchemaSchema } from "./create-profiles-from-channels-error-schema-schema.ts";
@@ -72,6 +76,17 @@ export {
   deleteApiV1IdeasListsByIdeasListIdPathParamsSchema,
 } from "./delete-api-v1-ideas-lists-by-ideas-list-id-schema.ts";
 export {
+  deleteApiV1ProfilesAttachmentsByAttachmentId200Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId400Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId401Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId402Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId403Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId404Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentId500Schema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdMutationResponseSchema,
+  deleteApiV1ProfilesAttachmentsByAttachmentIdPathParamsSchema,
+} from "./delete-api-v1-profiles-attachments-by-attachment-id-schema.ts";
+export {
   deleteApiV1ProfilesByProfileId200Schema,
   deleteApiV1ProfilesByProfileId400Schema,
   deleteApiV1ProfilesByProfileId401Schema,
@@ -82,6 +97,17 @@ export {
   deleteApiV1ProfilesByProfileIdMutationResponseSchema,
   deleteApiV1ProfilesByProfileIdPathParamsSchema,
 } from "./delete-api-v1-profiles-by-profile-id-schema.ts";
+export {
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId200Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId400Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId401Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId402Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId403Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId404Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoId500Schema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdMutationResponseSchema,
+  deleteApiV1ProfilesChannelVideosByProfileChannelVideoIdPathParamsSchema,
+} from "./delete-api-v1-profiles-channel-videos-by-profile-channel-video-id-schema.ts";
 export {
   deleteApiV1ScenariosByScenarioId200Schema,
   deleteApiV1ScenariosByScenarioId400Schema,
@@ -129,6 +155,8 @@ export {
 export { deleteIdeaResponseSchemaSchema } from "./delete-idea-response-schema-schema.ts";
 export { deleteIdeasListResponseSchemaSchema } from "./delete-ideas-list-response-schema-schema.ts";
 export { deletePaymentMethodResponseSchemaSchema } from "./delete-payment-method-response-schema-schema.ts";
+export { deleteProfileAttachmentResponseSchemaSchema } from "./delete-profile-attachment-response-schema-schema.ts";
+export { deleteProfileChannelVideoResponseSchemaSchema } from "./delete-profile-channel-video-response-schema-schema.ts";
 export { deleteProfileResponseSchemaSchema } from "./delete-profile-response-schema-schema.ts";
 export { deleteScenarioChapterResponseSchemaSchema } from "./delete-scenario-chapter-response-schema-schema.ts";
 export { deleteScenarioResponseSchemaSchema } from "./delete-scenario-response-schema-schema.ts";
@@ -374,6 +402,28 @@ export {
   getApiV1ProductionStatusesQueryParamsSchema,
   getApiV1ProductionStatusesQueryResponseSchema,
 } from "./get-api-v1-production-statuses-schema.ts";
+export {
+  getApiV1ProfilesByProfileIdAttachments200Schema,
+  getApiV1ProfilesByProfileIdAttachments400Schema,
+  getApiV1ProfilesByProfileIdAttachments401Schema,
+  getApiV1ProfilesByProfileIdAttachments402Schema,
+  getApiV1ProfilesByProfileIdAttachments403Schema,
+  getApiV1ProfilesByProfileIdAttachments404Schema,
+  getApiV1ProfilesByProfileIdAttachments500Schema,
+  getApiV1ProfilesByProfileIdAttachmentsPathParamsSchema,
+  getApiV1ProfilesByProfileIdAttachmentsQueryResponseSchema,
+} from "./get-api-v1-profiles-by-profile-id-attachments-schema.ts";
+export {
+  getApiV1ProfilesByProfileIdChannelVideos200Schema,
+  getApiV1ProfilesByProfileIdChannelVideos400Schema,
+  getApiV1ProfilesByProfileIdChannelVideos401Schema,
+  getApiV1ProfilesByProfileIdChannelVideos402Schema,
+  getApiV1ProfilesByProfileIdChannelVideos403Schema,
+  getApiV1ProfilesByProfileIdChannelVideos404Schema,
+  getApiV1ProfilesByProfileIdChannelVideos500Schema,
+  getApiV1ProfilesByProfileIdChannelVideosPathParamsSchema,
+  getApiV1ProfilesByProfileIdChannelVideosQueryResponseSchema,
+} from "./get-api-v1-profiles-by-profile-id-channel-videos-schema.ts";
 export {
   getApiV1ProfilesByProfileId200Schema,
   getApiV1ProfilesByProfileId400Schema,
@@ -647,6 +697,9 @@ export { getPlatformsForChannelsResponseSchemaSchema } from "./get-platforms-for
 export { getPlatformsResponseSchemaSchema } from "./get-platforms-response-schema-schema.ts";
 export { getProductFeaturesResponseSchemaSchema } from "./get-product-features-response-schema-schema.ts";
 export { getProductionStatusesResponseSchemaSchema } from "./get-production-statuses-response-schema-schema.ts";
+export { getProfileAttachmentsResponseSchemaSchema } from "./get-profile-attachments-response-schema-schema.ts";
+export { getProfileChannelVideosResponseSchemaSchema } from "./get-profile-channel-videos-response-schema-schema.ts";
+export { getProfileDataSchemaSchema } from "./get-profile-data-schema-schema.ts";
 export { getProfileResponseSchemaSchema } from "./get-profile-response-schema-schema.ts";
 export { getProfileTypesResponseSchemaSchema } from "./get-profile-types-response-schema-schema.ts";
 export { getReferralInfoResponseSchemaSchema } from "./get-referral-info-response-schema-schema.ts";
@@ -991,6 +1044,30 @@ export {
   postApiV1IdeasListsMutationResponseSchema,
 } from "./post-api-v1-ideas-lists-schema.ts";
 export {
+  postApiV1ProfilesByProfileIdAttachments201Schema,
+  postApiV1ProfilesByProfileIdAttachments400Schema,
+  postApiV1ProfilesByProfileIdAttachments401Schema,
+  postApiV1ProfilesByProfileIdAttachments402Schema,
+  postApiV1ProfilesByProfileIdAttachments403Schema,
+  postApiV1ProfilesByProfileIdAttachments404Schema,
+  postApiV1ProfilesByProfileIdAttachments500Schema,
+  postApiV1ProfilesByProfileIdAttachmentsMutationRequestSchema,
+  postApiV1ProfilesByProfileIdAttachmentsMutationResponseSchema,
+  postApiV1ProfilesByProfileIdAttachmentsPathParamsSchema,
+} from "./post-api-v1-profiles-by-profile-id-attachments-schema.ts";
+export {
+  postApiV1ProfilesByProfileIdChannelVideos200Schema,
+  postApiV1ProfilesByProfileIdChannelVideos400Schema,
+  postApiV1ProfilesByProfileIdChannelVideos401Schema,
+  postApiV1ProfilesByProfileIdChannelVideos402Schema,
+  postApiV1ProfilesByProfileIdChannelVideos403Schema,
+  postApiV1ProfilesByProfileIdChannelVideos404Schema,
+  postApiV1ProfilesByProfileIdChannelVideos500Schema,
+  postApiV1ProfilesByProfileIdChannelVideosMutationRequestSchema,
+  postApiV1ProfilesByProfileIdChannelVideosMutationResponseSchema,
+  postApiV1ProfilesByProfileIdChannelVideosPathParamsSchema,
+} from "./post-api-v1-profiles-by-profile-id-channel-videos-schema.ts";
+export {
   postApiV1ProfilesChannels201Schema,
   postApiV1ProfilesChannels400Schema,
   postApiV1ProfilesChannels401Schema,
@@ -1116,7 +1193,10 @@ export {
 } from "./post-api-v1-subscriptions-upgrade-schema.ts";
 export { productFeatureSchemaSchema } from "./product-feature-schema-schema.ts";
 export { productionStatusSchemaSchema } from "./production-status-schema-schema.ts";
+export { profileAttachmentExtendedSchemaSchema } from "./profile-attachment-extended-schema-schema.ts";
+export { profileAttachmentFileSchemaSchema } from "./profile-attachment-file-schema-schema.ts";
 export { profileChannelUrlValidationSchemaSchema } from "./profile-channel-url-validation-schema-schema.ts";
+export { profileChannelVideoSchemaSchema } from "./profile-channel-video-schema-schema.ts";
 export { profileExtendedSchemaSchema } from "./profile-extended-schema-schema.ts";
 export { profileSchemaSchema } from "./profile-schema-schema.ts";
 export { profileTypeSchemaSchema } from "./profile-type-schema-schema.ts";

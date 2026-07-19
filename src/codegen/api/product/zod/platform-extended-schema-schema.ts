@@ -21,6 +21,7 @@ export const platformExtendedSchemaSchema = z
     baseUrl: z.union([z.string(), z.null()]),
     urlRegex: z.union([z.string(), z.null()]),
     channelUrlRegex: z.union([z.string(), z.null()]),
+    videoUrlRegex: z.union([z.string(), z.null()]),
     hasAutoImport: z.boolean(),
     priority: z.int().min(-9007199254740991).max(9007199254740991),
     slug: z.string(),

@@ -43,6 +43,10 @@ needed, ask the user before coding.
   `refetch`), not local `try/catch`.
 - Mutation side effects use `onSuccess`, `onError`, and `onSettled` callbacks in
   action hooks or per-call `mutate` options.
+- For consecutive or parallel mutations where every completion must run the
+  same lifecycle handlers, declare those handlers in the action hook's
+  `useMutation` options instead of relying only on inline `mutate(...,
+callbacks)`.
 - Keep component handlers in `useCallback` and dynamic body/layout/slot content
   or derived collections in `useMemo`.
 - Avoid `useEffect` when an action can run in an event handler, form submit,
@@ -51,6 +55,16 @@ needed, ask the user before coding.
   and components.
 - `try/catch` belongs only in infrastructure/util boundaries such as
   `src/lib/api/client/index.ts` or parsing/browser API helpers.
+- Do not use TypeScript `satisfies`. Prefer explicit type annotations.
+- When a condition combines multiple boolean checks, extract named variables
+  instead of nesting parentheses in `if` statements or JSX.
+- Page/widget skeletons compose exported child skeletons; use `ItemsList` for
+  repeated skeleton items.
+- On touch devices, use `SwipeActions` with `hideActions`; destructive actions
+  use `Dialog`/`Drawer` confirmation.
+- For related pages, prefer `AppMenubar` tabs over `NavigationSteps` in body.
+- Edit forms: `createFormMatchValidateFn`, `form.SubmitButton`, `reset` after
+  save.
 
 ## Completion checklist
 
@@ -69,4 +83,4 @@ needed, ask the user before coding.
   `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
 - Memoized widget component:
   `src/widgets/scenario/scenario-app-menubar/components/scenario-app-menubar.tsx`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.

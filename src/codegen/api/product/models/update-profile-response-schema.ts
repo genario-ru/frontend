@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type { ProfileSchema } from "./profile-schema.ts";
+import type { ProfileExtendedSchema } from "./profile-extended-schema.ts";
 
 /**
  * Update profile response
@@ -11,8 +11,8 @@ import type { ProfileSchema } from "./profile-schema.ts";
  */
 export type UpdateProfileResponseSchema = {
   /**
-   * @description Profile description
+   * @description Profile extended description
    * @type object
    */
-  data: ProfileSchema;
+  data: ProfileExtendedSchema;
 };

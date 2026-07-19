@@ -83,6 +83,6 @@ results.
   `src/actions/ideas-lists/hooks/use-create-ideas-list.ts`.
 - Widget hook/component:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.
 - Presentational feature:
   `src/features/profiles/profile-card/components/profile-card.tsx`.

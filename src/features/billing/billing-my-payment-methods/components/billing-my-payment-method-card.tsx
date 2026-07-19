@@ -56,6 +56,7 @@ export function BillingMyPaymentMethodCard({
       icon={<SvgIcon icon={icon} className="stroke-transparent" />}
       title={<span className="truncate">{title}</span>}
       right={right}
+      topClassName="items-center"
     />
   );
 }

@@ -56,6 +56,17 @@ Do not add routine request `try/catch`. Use Query flags for GETs and mutation
 callbacks for side effects. Keep handlers in `useCallback`, dynamic body/slots
 in `useMemo`, and non-trivial logic in colocated hooks.
 
+When touching loading states, skeletons, mobile row actions, delete flows, or
+cross-page navigation, match local precedent:
+
+- compose child skeleton exports; use `ItemsList` for repeated skeleton items;
+- extract named boolean variables for complex conditions;
+- use `SwipeActions` with `hideActions` on touch; confirm delete via
+  `Dialog`/`Drawer`;
+- use `AppMenubar` tabs for related pages;
+- for edit forms, use `createFormMatchValidateFn`, `form.SubmitButton`, and
+  `formApi.reset(value)` after save.
+
 ## Verification
 
 ```bash
@@ -73,4 +84,4 @@ pnpm lint:typescript
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar.ts`.
 - Mutation callback hook:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
-- Widget form: `src/widgets/profile-settings/profile-settings/**`.
+- Widget form: `src/widgets/profile-settings-general/**`.

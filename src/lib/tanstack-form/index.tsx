@@ -1,4 +1,8 @@
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
+import {
+  type AnyFormApi,
+  createFormHook,
+  createFormHookContexts,
+} from "@tanstack/react-form";
 
 import { CheckboxChipsField } from "./components/checkbox-chips-field";
 import { CheckboxField } from "./components/checkbox-field";
@@ -9,6 +13,7 @@ import { ResetButton } from "./components/reset-button";
 import { SelectField } from "./components/select-field";
 import { SubmitButton } from "./components/submit-button";
 import { TextareaField } from "./components/textarea-field";
+import { UploadZoneField } from "./components/upload-zone-field";
 
 export const { fieldContext, useFieldContext, formContext, useFormContext } =
   createFormHookContexts();
@@ -24,8 +29,9 @@ export const { useAppForm, withForm } = createFormHook({
     SelectField,
     MultiSelectField,
     RadioCardsGroupField,
+    UploadZoneField,
   },
   formComponents: { SubmitButton, ResetButton },
 });
 
-export type AppFormApi = ReturnType<typeof useAppForm>;
+export type AppFormApi = AnyFormApi;

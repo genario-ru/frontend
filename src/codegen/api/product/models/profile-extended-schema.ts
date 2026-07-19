@@ -5,8 +5,6 @@
 
 import type { PlatformSchema } from "./platform-schema.ts";
 import type { ProfileTypeSchema } from "./profile-type-schema.ts";
-import type { ToneSchema } from "./tone-schema.ts";
-import type { UserSchema } from "./user-schema.ts";
 
 /**
  * Profile extended
@@ -26,8 +24,9 @@ export type ProfileExtendedSchema = {
    * @type string
    */
   name: string;
-  description: string | null;
+  positioning: string | null;
   targetAudience: string | null;
+  additionalInfo: string | null;
   /**
    * @type string
    */
@@ -36,18 +35,9 @@ export type ProfileExtendedSchema = {
    * @type string
    */
   updatedAt: string;
-  /**
-   * @description User description
-   * @type object
-   */
-  user: UserSchema;
   type: ProfileTypeSchema | null;
   /**
    * @type array
    */
   platforms: PlatformSchema[];
-  /**
-   * @type array
-   */
-  tones: ToneSchema[];
 };

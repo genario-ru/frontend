@@ -10,9 +10,8 @@ import { getProfileTailwindColorFromUuid } from "@/shared/utils/get-profile-tail
 export type ProfileCardProps = PropsWithClassName<{
   id: string;
   name: string;
-  description: string | null;
+  positioning: string | null;
   typeName?: string | null;
-  tones: string[];
   platforms: string[];
   actions?: ReactNode;
 }>;
@@ -20,9 +19,8 @@ export type ProfileCardProps = PropsWithClassName<{
 export const ProfileCard = ({
   id,
   name,
-  description,
+  positioning,
   typeName,
-  tones,
   platforms,
   actions,
   className,
@@ -50,16 +48,9 @@ export const ProfileCard = ({
           </div>
           {actions}
         </div>
-        {description && (
-          <p className="text-new-neutral-6 line-clamp-3">{description}</p>
+        {positioning && (
+          <p className="text-new-neutral-6 line-clamp-3">{positioning}</p>
         )}
-        <div className="flex w-full flex-wrap gap-1">
-          {tones.map((tone) => (
-            <Badge key={tone} size="sm">
-              {tone}
-            </Badge>
-          ))}
-        </div>
         <div className="flex w-full flex-wrap gap-1">
           {platforms.map((platform) => (
             <Badge key={platform} variant="secondary" size="sm">

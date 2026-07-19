@@ -15,25 +15,24 @@ export type CreateProfileBodySchema = {
    */
   name: string;
   /**
-   * @minLength 64
    * @maxLength 8192
-   * @type string
+   * @type string | undefined
    */
-  description: string;
+  positioning?: string;
   /**
-   * @minLength 1
    * @maxLength 1024
    * @type string | undefined
    */
   targetAudience?: string;
   /**
+   * @maxLength 8192
+   * @type string | undefined
+   */
+  additionalInfo?: string;
+  /**
    * @type string, uuid
    */
   typeId: string;
-  /**
-   * @type array | undefined
-   */
-  toneIds?: string[];
   /**
    * @type array | undefined
    */

@@ -23,6 +23,10 @@ export type AttachmentSchema = {
   /**
    * @type string
    */
+  fileName: string;
+  /**
+   * @type string
+   */
   bucketName: string;
   /**
    * @type string

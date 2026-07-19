@@ -67,6 +67,10 @@ Use mutation callbacks for backend-request side effects:
   `mutation.onError`, and `mutation.onSettled`;
 - UI-flow-specific side effects belong in the `mutate(variables, callbacks)`
   call from a widget hook;
+- for consecutive or parallel mutations where every completion must run the
+  same lifecycle handlers, declare those handlers in the action hook's
+  `useMutation` options instead of relying only on inline `mutate(...,
+  callbacks)`;
 - avoid `mutateAsync` plus `try/catch` unless the user approved a custom flow.
 
 ## Router search params
@@ -120,6 +124,18 @@ Common form components include `SubmitButton` and `ResetButton`.
 Large forms may be split with `withForm`, but form parts stay inside the owning
 widget. Do not move `withForm` children into `src/features/**`.
 
+## Edit forms without no-op resubmit
+
+- For edit/update forms, use `createFormMatchValidateFn` on
+  `validators.onSubmit` so unchanged values cannot be saved again after the
+  first submit attempt.
+- Use `form.SubmitButton` (via `withForm` + `form.AppForm`) so the button
+  respects `canSubmit`.
+- After a successful update, call `formApi.reset(value)` to refresh the form
+  baseline.
+- For submit buttons rendered outside the `<form>` element, pass `form={formId}`
+  to `form.SubmitButton`.
+
 ## Reference examples
 
 - GET action hook: `src/actions/templates/hooks/use-get-templates.ts`.
@@ -128,8 +144,10 @@ widget. Do not move `withForm` children into `src/features/**`.
 - Per-call mutation callback from a widget hook:
   `src/widgets/scenario/scenario-app-menubar/hooks/use-scenario-app-menubar-save.ts`.
 - Widget-owned TanStack Form:
-  `src/widgets/profile-settings/profile-settings/hooks/use-profile-settings-form.ts`.
+  `src/widgets/profile-settings-general/hooks/use-profile-settings-general-form.ts`.
 - `withForm` subcomponents:
-  `src/widgets/profile-settings/profile-settings/components/profile-settings-form-fields.tsx`
+  `src/widgets/profile-settings-general/components/profile-settings-general-form-fields.tsx`
   and
-  `src/widgets/profile-settings/profile-settings/components/profile-settings-form-buttons.tsx`.
+  `src/widgets/profile-settings-general/components/profile-settings-form-actions.tsx`.
+- Edit form no-op submit guard:
+  `src/widgets/settings/settings-forms/hooks/use-settings-change-name-form.ts`.

@@ -11,6 +11,7 @@ type ItemProps = PropsWithClassName<{
   left?: ReactNode;
   right?: ReactNode;
   bottom?: ReactNode;
+  topClassName?: string;
 }>;
 
 export function Item({
@@ -22,6 +23,7 @@ export function Item({
   left,
   right,
   bottom,
+  topClassName,
 }: ItemProps) {
   return (
     <div
@@ -30,7 +32,7 @@ export function Item({
         className,
       )}
     >
-      <div className="flex gap-3">
+      <div className={cn("flex gap-3", topClassName)}>
         {left}
         <section className="flex flex-1 flex-col gap-1">
           <div className="flex w-full items-center gap-2">
