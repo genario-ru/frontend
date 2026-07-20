@@ -20,7 +20,6 @@ export function ProfilesImportOtherPlatforms() {
       </header>
       <ButtonLink
         to="/profiles/settings"
-        priority="tertiary"
         icon={<ArrowUpRightIcon />}
         align="center"
         className="w-full"

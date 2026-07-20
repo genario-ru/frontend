@@ -5,21 +5,21 @@ import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/utils/cn";
 
-type ProfilesImportPlatformsFanItemProps = {
+type ProfilesImportSupportedPlatformsItemProps = {
   name: string;
   logoUrl?: string | null;
   className?: string;
 };
 
-type ProfilesImportPlatformsFanItemSkeletonProps = {
+type ProfilesImportSupportedPlatformsItemSkeletonProps = {
   className?: string;
 };
 
-export function ProfilesImportPlatformsFanItem({
+export function ProfilesImportSupportedPlatformsItem({
   name,
   logoUrl,
   className,
-}: ProfilesImportPlatformsFanItemProps) {
+}: ProfilesImportSupportedPlatformsItemProps) {
   const media = useMemo(() => {
     if (logoUrl) {
       return (
@@ -33,7 +33,7 @@ export function ProfilesImportPlatformsFanItem({
   return (
     <div
       className={cn(
-        "bg-neutral-2 rounded-3 flex size-16 items-center justify-center p-1 shadow-sm",
+        "bg-neutral-1 rounded-3 flex size-16 items-center justify-center p-1",
         className,
       )}
     >
@@ -42,8 +42,8 @@ export function ProfilesImportPlatformsFanItem({
   );
 }
 
-export function ProfilesImportPlatformsFanItemSkeleton({
+export function ProfilesImportSupportedPlatformsItemSkeleton({
   className,
-}: ProfilesImportPlatformsFanItemSkeletonProps) {
+}: ProfilesImportSupportedPlatformsItemSkeletonProps) {
   return <Skeleton className={cn("rounded-3 size-16", className)} />;
 }

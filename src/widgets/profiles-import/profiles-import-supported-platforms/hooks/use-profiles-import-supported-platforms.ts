@@ -1,6 +1,6 @@
 import { useGetProfileChannelPlatforms } from "@/actions/profiles/hooks/use-get-profile-channel-platforms";
 
-export function useProfilesImportPlatformsFan() {
+export function useProfilesImportSupportedPlatforms() {
   const {
     profileChannelPlatformsData,
     isProfileChannelPlatformsLoading,
