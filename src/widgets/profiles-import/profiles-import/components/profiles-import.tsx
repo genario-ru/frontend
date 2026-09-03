@@ -1,27 +1,25 @@
+import { ProfilesImportProcess } from "@/features/profiles-import/profiles-import-process/components/profiles-import-process";
+import { ContentLayout } from "@/shared/components/layouts/content-layout";
 import { Island } from "@/shared/components/ui/island";
 
-import { ProfilesImportFeatures } from "../../profiles-import-features/components/profiles-import-features";
 import { ProfilesImportForm } from "../../profiles-import-form/components/profiles-import-form";
 import { ProfilesImportOtherPlatforms } from "../../profiles-import-other-platforms/components/profiles-import-other-platforms";
-import { ProfilesImportPlatformsList } from "../../profiles-import-platforms-list/components/profiles-import-platforms-list";
+import { ProfilesImportSupportedPlatforms } from "../../profiles-import-supported-platforms/components/profiles-import-supported-platforms";
 
 export function ProfilesImport() {
   return (
-    <Island
-      grow
-      title="Ссылки на ваши каналы"
-      description="Добавьте ссылки на каналы YouTube, Instagram или TikTok, которые хотите использовать в Genario. Мы проверим их и поможем создать профили для дальнейшей персонализации идей, сценариев и метаданных."
-    >
-      <div className="flex w-full flex-col gap-4 lg:flex-row">
-        <section className="flex flex-1 flex-col gap-4">
-          <ProfilesImportForm />
-          <ProfilesImportFeatures />
-        </section>
-        <section className="flex flex-1 flex-col gap-4">
-          <ProfilesImportPlatformsList />
-          <ProfilesImportOtherPlatforms />
-        </section>
-      </div>
-    </Island>
+    <ContentLayout className="isolate grid lg:grid-cols-5">
+      <Island
+        grow
+        title="Ссылки на ваши каналы"
+        description="Добавьте ссылки на каналы, которые хотите использовать в Genario. Мы проверим их и поможем создать профили для дальнейшей персонализации идей, сценариев и метаданных."
+        className="gap-6 lg:col-span-3 lg:flex-1"
+      >
+        <ProfilesImportForm />
+        <ProfilesImportSupportedPlatforms />
+        <ProfilesImportOtherPlatforms />
+      </Island>
+      <ProfilesImportProcess className="lg:col-span-2" />
+    </ContentLayout>
   );
 }

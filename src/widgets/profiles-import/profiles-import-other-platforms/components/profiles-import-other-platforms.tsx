@@ -1,24 +1,31 @@
 import { ArrowUpRightIcon, CircleQuestionMarkIcon } from "lucide-react";
 
-import { ProfilesImportIsland } from "@/features/profiles-import/profiles-import-island/components/profiles-import-island";
 import { ButtonLink } from "@/shared/components/ui/button-link";
+import { Heading } from "@/shared/components/ui/heading";
+import { LucideIcon } from "@/shared/components/ui/lucide-icon";
 
 export function ProfilesImportOtherPlatforms() {
   return (
-    <ProfilesImportIsland
-      icon={CircleQuestionMarkIcon}
-      title="Что делать, если канал на другой платформе?"
-      description="Если импорт для вашей платформы пока недоступен, создайте профиль канала вручную и заполните нужные данные самостоятельно."
-    >
+    <section className="border-neutral-3 rounded-4 flex w-full flex-col gap-4 border p-4">
+      <header className="flex w-full flex-col gap-2">
+        <div className="flex items-center gap-1.5">
+          <LucideIcon icon={CircleQuestionMarkIcon} />
+          <Heading variant="h3">
+            Что делать, если канал на другой платформе?
+          </Heading>
+        </div>
+        <p className="text-neutral-7">
+          Для этого перейдите в режим ручного создания профиля вашего канала
+        </p>
+      </header>
       <ButtonLink
         to="/profiles/settings"
-        priority="tertiary"
         icon={<ArrowUpRightIcon />}
         align="center"
         className="w-full"
       >
         К ручному созданию
       </ButtonLink>
-    </ProfilesImportIsland>
+    </section>
   );
 }
